@@ -192,12 +192,12 @@
 		C53AEB232195DD1A0087F0A2 /* Title */ = {
 			isa = PBXGroup;
 			children = (
-				C53AEB242195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift */,
-				C53AEB252195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift */,
 				C53AEB262195DD1A0087F0A2 /* AUITitlePickerController.swift */,
-				C53AEB272195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift */,
-				C53AEB282195DD1A0087F0A2 /* AUITitlePickerItemController.swift */,
 				C53AEB292195DD1A0087F0A2 /* AUITitlePickerComponentController.swift */,
+				C53AEB282195DD1A0087F0A2 /* AUITitlePickerItemController.swift */,
+				C53AEB252195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift */,
+				C53AEB272195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift */,
+				C53AEB242195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift */,
 			);
 			path = Title;
 			sourceTree = "<group>";

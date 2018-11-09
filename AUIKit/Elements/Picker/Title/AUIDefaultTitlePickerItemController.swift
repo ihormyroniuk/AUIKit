@@ -19,4 +19,16 @@ open class AUIDefaultTitlePickerItemController: AUITitlePickerItemController {
   
   open var attributedTitle: NSAttributedString?
   
+  // MARK: Initializer
+  
+  public init() {
+    setup()
+  }
+  
+  // MARK: Setup
+  
+  open func setup() {
+    
+  }
+  
 }
