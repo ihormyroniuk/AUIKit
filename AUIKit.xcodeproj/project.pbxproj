@@ -11,6 +11,29 @@
 		C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */; };
 		C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA22195B01C0087F0A2 /* AUIViewController.swift */; };
 		C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA02195B01C0087F0A2 /* AUIView.swift */; };
+		C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF42195D9710087F0A2 /* AUIDefaultToolbarController.swift */; };
+		C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF52195D9710087F0A2 /* AUIToolbar.swift */; };
+		C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF62195D9710087F0A2 /* AUIToolbarController.swift */; };
+		C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAFC2195D9710087F0A2 /* AUILabel.swift */; };
+		C53AEB0C2195D9710087F0A2 /* AUILabelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAFD2195D9710087F0A2 /* AUILabelController.swift */; };
+		C53AEB0D2195D9710087F0A2 /* AUIDefaultLabelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAFE2195D9710087F0A2 /* AUIDefaultLabelController.swift */; };
+		C53AEB142195DBE30087F0A2 /* AUIDefaultImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB112195DBE30087F0A2 /* AUIDefaultImageViewController.swift */; };
+		C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */; };
+		C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB132195DBE30087F0A2 /* AUIImageView.swift */; };
+		C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */; };
+		C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */; };
+		C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */; };
+		C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */; };
+		C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB222195DD1A0087F0A2 /* AUIPickerController.swift */; };
+		C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB242195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift */; };
+		C53AEB2F2195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB252195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift */; };
+		C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB262195DD1A0087F0A2 /* AUITitlePickerController.swift */; };
+		C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB272195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift */; };
+		C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB282195DD1A0087F0A2 /* AUITitlePickerItemController.swift */; };
+		C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB292195DD1A0087F0A2 /* AUITitlePickerComponentController.swift */; };
+		C53AEB342195DD1B0087F0A2 /* AUIDefaultPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2A2195DD1A0087F0A2 /* AUIDefaultPickerController.swift */; };
+		C53AEB352195DD1B0087F0A2 /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2B2195DD1A0087F0A2 /* AUIPickerComponentController.swift */; };
+		C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +43,29 @@
 		C53AEAA02195B01C0087F0A2 /* AUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIView.swift; sourceTree = "<group>"; };
 		C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewController.swift; sourceTree = "<group>"; };
 		C53AEAA22195B01C0087F0A2 /* AUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIViewController.swift; sourceTree = "<group>"; };
+		C53AEAF42195D9710087F0A2 /* AUIDefaultToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultToolbarController.swift; sourceTree = "<group>"; };
+		C53AEAF52195D9710087F0A2 /* AUIToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIToolbar.swift; sourceTree = "<group>"; };
+		C53AEAF62195D9710087F0A2 /* AUIToolbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIToolbarController.swift; sourceTree = "<group>"; };
+		C53AEAFC2195D9710087F0A2 /* AUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUILabel.swift; sourceTree = "<group>"; };
+		C53AEAFD2195D9710087F0A2 /* AUILabelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUILabelController.swift; sourceTree = "<group>"; };
+		C53AEAFE2195D9710087F0A2 /* AUIDefaultLabelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultLabelController.swift; sourceTree = "<group>"; };
+		C53AEB112195DBE30087F0A2 /* AUIDefaultImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultImageViewController.swift; sourceTree = "<group>"; };
+		C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIImageViewController.swift; sourceTree = "<group>"; };
+		C53AEB132195DBE30087F0A2 /* AUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIImageView.swift; sourceTree = "<group>"; };
+		C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarItemController.swift; sourceTree = "<group>"; };
+		C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultBarItemController.swift; sourceTree = "<group>"; };
+		C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultBarButtonItemController.swift; sourceTree = "<group>"; };
+		C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarButtonItemController.swift; sourceTree = "<group>"; };
+		C53AEB222195DD1A0087F0A2 /* AUIPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerController.swift; sourceTree = "<group>"; };
+		C53AEB242195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTitlePickerItemController.swift; sourceTree = "<group>"; };
+		C53AEB252195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTitlePickerController.swift; sourceTree = "<group>"; };
+		C53AEB262195DD1A0087F0A2 /* AUITitlePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITitlePickerController.swift; sourceTree = "<group>"; };
+		C53AEB272195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTitlePickerComponentController.swift; sourceTree = "<group>"; };
+		C53AEB282195DD1A0087F0A2 /* AUITitlePickerItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITitlePickerItemController.swift; sourceTree = "<group>"; };
+		C53AEB292195DD1A0087F0A2 /* AUITitlePickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITitlePickerComponentController.swift; sourceTree = "<group>"; };
+		C53AEB2A2195DD1A0087F0A2 /* AUIDefaultPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultPickerController.swift; sourceTree = "<group>"; };
+		C53AEB2B2195DD1A0087F0A2 /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
+		C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +108,13 @@
 		C53AEA532195B01C0087F0A2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				C53AEB172195DC470087F0A2 /* BarItem */,
+				C53AEB1A2195DC470087F0A2 /* BarButtonItem */,
 				C53AEA9E2195B01C0087F0A2 /* View */,
+				C53AEAFB2195D9710087F0A2 /* Label */,
+				C53AEB102195DBE30087F0A2 /* ImageView */,
+				C53AEAF32195D9710087F0A2 /* Toolbar */,
+				C53AEB212195DD1A0087F0A2 /* Picker */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -75,6 +127,79 @@
 				C53AEAA02195B01C0087F0A2 /* AUIView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C53AEAF32195D9710087F0A2 /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEAF62195D9710087F0A2 /* AUIToolbarController.swift */,
+				C53AEAF42195D9710087F0A2 /* AUIDefaultToolbarController.swift */,
+				C53AEAF52195D9710087F0A2 /* AUIToolbar.swift */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
+		C53AEAFB2195D9710087F0A2 /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEAFD2195D9710087F0A2 /* AUILabelController.swift */,
+				C53AEAFE2195D9710087F0A2 /* AUIDefaultLabelController.swift */,
+				C53AEAFC2195D9710087F0A2 /* AUILabel.swift */,
+			);
+			path = Label;
+			sourceTree = "<group>";
+		};
+		C53AEB102195DBE30087F0A2 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */,
+				C53AEB112195DBE30087F0A2 /* AUIDefaultImageViewController.swift */,
+				C53AEB132195DBE30087F0A2 /* AUIImageView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		C53AEB172195DC470087F0A2 /* BarItem */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */,
+				C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */,
+			);
+			path = BarItem;
+			sourceTree = "<group>";
+		};
+		C53AEB1A2195DC470087F0A2 /* BarButtonItem */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */,
+				C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */,
+			);
+			path = BarButtonItem;
+			sourceTree = "<group>";
+		};
+		C53AEB212195DD1A0087F0A2 /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB222195DD1A0087F0A2 /* AUIPickerController.swift */,
+				C53AEB2A2195DD1A0087F0A2 /* AUIDefaultPickerController.swift */,
+				C53AEB2B2195DD1A0087F0A2 /* AUIPickerComponentController.swift */,
+				C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */,
+				C53AEB232195DD1A0087F0A2 /* Title */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		C53AEB232195DD1A0087F0A2 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB242195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift */,
+				C53AEB252195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift */,
+				C53AEB262195DD1A0087F0A2 /* AUITitlePickerController.swift */,
+				C53AEB272195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift */,
+				C53AEB282195DD1A0087F0A2 /* AUITitlePickerItemController.swift */,
+				C53AEB292195DD1A0087F0A2 /* AUITitlePickerComponentController.swift */,
+			);
+			path = Title;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,9 +279,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */,
 				C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */,
+				C53AEB142195DBE30087F0A2 /* AUIDefaultImageViewController.swift in Sources */,
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
+				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
+				C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
+				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
+				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,
+				C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */,
+				C53AEB0C2195D9710087F0A2 /* AUILabelController.swift in Sources */,
+				C53AEB342195DD1B0087F0A2 /* AUIDefaultPickerController.swift in Sources */,
+				C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */,
+				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
+				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
+				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
+				C53AEB0D2195D9710087F0A2 /* AUIDefaultLabelController.swift in Sources */,
+				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
+				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
+				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
+				C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */,
+				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
+				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
+				C53AEB2F2195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift in Sources */,
+				C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */,
+				C53AEB352195DD1B0087F0A2 /* AUIPickerComponentController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
