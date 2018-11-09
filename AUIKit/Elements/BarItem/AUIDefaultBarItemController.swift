@@ -10,6 +10,18 @@ import UIKit
 
 open class AUIDefaultBarItemController: AUIBarItemController {
   
+  // MARK: Initializer
+  
+  public init() {
+    setup()
+  }
+  
+  // MARK: Setup
+  
+  open func setup() {
+    
+  }
+  
   // MARK: View
   
   private var _barItem: UIBarItem?
