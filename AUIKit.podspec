@@ -8,13 +8,13 @@ Pod::Spec.new do |s|
 
   s.license      = "MIT"
 
-  s.author             = { "Ihor Myroniuk" => "job.ihormyroniuk@gmail.com" }
+  s.author       = { "Ihor Myroniuk" => "job.ihormyroniuk@gmail.com" }
 
   s.platform     = :ios, "10.0"
 
   s.source       = { :git => "https://github.com/jobihormyroniuk/AUIKit.git", :tag => "0.0.3" }
 
-  s.source_files  = "*"
+  s.source_files  = "AUIKit"
 
   s.swift_version = "4.2"
 
