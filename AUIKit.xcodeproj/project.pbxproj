@@ -34,6 +34,11 @@
 		C53AEB342195DD1B0087F0A2 /* AUIDefaultPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2A2195DD1A0087F0A2 /* AUIDefaultPickerController.swift */; };
 		C53AEB352195DD1B0087F0A2 /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2B2195DD1A0087F0A2 /* AUIPickerComponentController.swift */; };
 		C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */; };
+		C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4A2195FA280087F0A2 /* AUIDefaultScrollViewController.swift */; };
+		C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */; };
+		C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */; };
+		C53AEB592195FA970087F0A2 /* AUIDefaultTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB572195FA970087F0A2 /* AUIDefaultTextViewController.swift */; };
+		C53AEB5A2195FA970087F0A2 /* AUITextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB582195FA970087F0A2 /* AUITextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +71,11 @@
 		C53AEB2A2195DD1A0087F0A2 /* AUIDefaultPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultPickerController.swift; sourceTree = "<group>"; };
 		C53AEB2B2195DD1A0087F0A2 /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
 		C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerItemController.swift; sourceTree = "<group>"; };
+		C53AEB4A2195FA280087F0A2 /* AUIDefaultScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultScrollViewController.swift; sourceTree = "<group>"; };
+		C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIScrollViewController.swift; sourceTree = "<group>"; };
+		C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIScrollView.swift; sourceTree = "<group>"; };
+		C53AEB572195FA970087F0A2 /* AUIDefaultTextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextViewController.swift; sourceTree = "<group>"; };
+		C53AEB582195FA970087F0A2 /* AUITextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +125,8 @@
 				C53AEB102195DBE30087F0A2 /* ImageView */,
 				C53AEAF32195D9710087F0A2 /* Toolbar */,
 				C53AEB212195DD1A0087F0A2 /* Picker */,
+				C53AEB492195FA280087F0A2 /* ScrollView */,
+				C53AEB562195FA970087F0A2 /* TextView */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -202,6 +214,25 @@
 			path = Title;
 			sourceTree = "<group>";
 		};
+		C53AEB492195FA280087F0A2 /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */,
+				C53AEB4A2195FA280087F0A2 /* AUIDefaultScrollViewController.swift */,
+				C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */,
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		C53AEB562195FA970087F0A2 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+				C53AEB582195FA970087F0A2 /* AUITextViewController.swift */,
+				C53AEB572195FA970087F0A2 /* AUIDefaultTextViewController.swift */,
+			);
+			path = TextView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -285,6 +316,7 @@
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
 				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
 				C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */,
+				C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
 				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,
@@ -294,17 +326,21 @@
 				C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
+				C53AEB5A2195FA970087F0A2 /* AUITextViewController.swift in Sources */,
 				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
 				C53AEB0D2195D9710087F0A2 /* AUIDefaultLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
 				C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */,
+				C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */,
 				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C53AEB2F2195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift in Sources */,
 				C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */,
+				C53AEB592195FA970087F0A2 /* AUIDefaultTextViewController.swift in Sources */,
 				C53AEB352195DD1B0087F0A2 /* AUIPickerComponentController.swift in Sources */,
+				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

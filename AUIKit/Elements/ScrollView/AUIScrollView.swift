@@ -1,14 +1,14 @@
 //
-//  AUIToolbar.swift
-//  Level
+//  ScrollView.swift
+//  Scenery
 //
-//  Created by Ihor Myroniuk on 10/1/18.
-//  Copyright © 2018 Brander. All rights reserved.
+//  Created by Ihor Myroniuk on 8/2/18.
+//  Copyright © 2018 Ihor Myroniuk. All rights reserved.
 //
 
 import UIKit
 
-open class AUIToolbar: UIToolbar {
+open class AUIScrollView: UIScrollView {
 
   // MARK: Initializer
   
@@ -18,12 +18,13 @@ open class AUIToolbar: UIToolbar {
     autoLayout()
   }
   
+  @available(*, unavailable)
   public required init?(coder aDecoder: NSCoder) { return nil }
   
   // MARK: Setup
   
   open func setup() {
-    
+    if #available(iOS 11, *) { contentInsetAdjustmentBehavior = .never }
   }
   
   // MARK: AutoLayout
@@ -42,5 +43,5 @@ open class AUIToolbar: UIToolbar {
   open func layout() {
     
   }
-
+  
 }
