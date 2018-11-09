@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class AUIDefaultViewController: AUIViewController, Hashable {
+open class AUIDefaultViewController: AUIViewController, Hashable {
 
   // MARK: Elements
   
-  var _view: UIView?
+  private var _view: UIView?
   public var view: UIView? {
     set {
       if newValue != _view {
@@ -34,38 +34,38 @@ public class AUIDefaultViewController: AUIViewController, Hashable {
   
   // MARK: Setup
   
-  func setup() {
+  open func setup() {
     
   }
   
-  func setupView() {
+  open func setupView() {
     view?.isUserInteractionEnabled = isUserInteractionEnabled
   }
   
-  func unsetupView() {
+  open func unsetupView() {
 
   }
   
   // MARK: State
   
-  public var isUserInteractionEnabled = true {
+  open var isUserInteractionEnabled = true {
     didSet { didSetIsUserInteractionEnabled(oldValue: oldValue) }
   }
-  func didSetIsUserInteractionEnabled(oldValue: Bool) {
+  open func didSetIsUserInteractionEnabled(oldValue: Bool) {
     view?.isUserInteractionEnabled = isUserInteractionEnabled
   }
   
-  public func becomeFirstResponder() {
+  open func becomeFirstResponder() {
     view?.becomeFirstResponder()
   }
   
-  public func resignFirstResponder() {
+  open func resignFirstResponder() {
     view?.resignFirstResponder()
   }
   
   // MARK: Hashable, Equatable
   
-  public var hashValue: Int = Int(arc4random())
+  open var hashValue: Int = Int(arc4random())
   
   public static func == (lhs: AUIDefaultViewController, rhs: AUIDefaultViewController) -> Bool {
     return lhs === rhs
