@@ -28,7 +28,7 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   
   // MARK: Initializer
   
-  init() {
+  public init() {
     setup()
   }
   
