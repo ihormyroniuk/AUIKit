@@ -8,40 +8,40 @@
 
 import UIKit
 
-class AUITableView: UITableView {
+open class AUITableView: UITableView {
 
   // MARK: Initializer
   
-  override init(frame: CGRect = .zero, style: UITableView.Style = .plain) {
+  public override init(frame: CGRect = .zero, style: UITableView.Style = .plain) {
     super.init(frame: frame, style: style)
     setup()
     autoLayout()
   }
   
   @available(*, unavailable)
-  required init?(coder aDecoder: NSCoder) { return nil }
+  public required init?(coder aDecoder: NSCoder) { return nil }
   
   // MARK: Setup
   
-  func setup() {
+  open func setup() {
     if #available(iOS 11, *) { contentInsetAdjustmentBehavior = .never }
     separatorStyle = .none
   }
   
   // MARK: AutoLayout
   
-  func autoLayout() {
+  open func autoLayout() {
     
   }
   
   // Layout
   
-  override func layoutSubviews() {
+  open override func layoutSubviews() {
     super.layoutSubviews()
     layout()
   }
 
-  func layout() {
+  open func layout() {
     
   }
   
