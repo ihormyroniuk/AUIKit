@@ -37,6 +37,7 @@
 		C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8772199866D0057E69F /* AUITableViewHeaderFooterView.swift */; };
 		C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */; };
 		C525D88A2199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */; };
+		C525D88D219998AA0057E69F /* AUIScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D88C219998AA0057E69F /* AUIScreenController.swift */; };
 		C53AEA4D2195AF690087F0A2 /* AUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C53AEA4B2195AF690087F0A2 /* AUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */; };
 		C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA22195B01C0087F0A2 /* AUIViewController.swift */; };
@@ -102,6 +103,7 @@
 		C525D8772199866D0057E69F /* AUITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterController.swift; sourceTree = "<group>"; };
 		C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGenericContainerTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		C525D88C219998AA0057E69F /* AUIScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenController.swift; sourceTree = "<group>"; };
 		C53AEA482195AF690087F0A2 /* AUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C53AEA4B2195AF690087F0A2 /* AUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUIKit.h; sourceTree = "<group>"; };
 		C53AEA4C2195AF690087F0A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +247,14 @@
 			path = HeaderFooter;
 			sourceTree = "<group>";
 		};
+		C525D88B2199989D0057E69F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C525D88C219998AA0057E69F /* AUIScreenController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		C53AEA3E2195AF690087F0A2 = {
 			isa = PBXGroup;
 			children = (
@@ -264,6 +274,7 @@
 		C53AEA4A2195AF690087F0A2 /* AUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C525D88B2199989D0057E69F /* Screens */,
 				C53AEA532195B01C0087F0A2 /* Elements */,
 				C53AEA4B2195AF690087F0A2 /* AUIKit.h */,
 				C53AEA4C2195AF690087F0A2 /* Info.plist */,
@@ -513,6 +524,7 @@
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
+				C525D88D219998AA0057E69F /* AUIScreenController.swift in Sources */,
 				C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */,
 				C525D87D2199866D0057E69F /* AUISingleSectionTableViewController.swift in Sources */,
 				C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */,
