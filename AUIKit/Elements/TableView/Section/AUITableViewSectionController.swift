@@ -10,6 +10,10 @@ import UIKit
 
 open class AUITableViewSectionController {
   
+  public init() {
+    
+  }
+  
   // MARK: Header, Footer
   
   open var headerController: AUITableViewHeaderFooterController?
