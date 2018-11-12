@@ -10,8 +10,8 @@ import UIKit
 
 open class AUIDefaultPageController: AUIPageController {
   
-  open let viewController: AUIViewController
-  open let view: () -> UIView
+  public let viewController: AUIViewController
+  public let view: () -> UIView
   
   // MARK: Initializer
   

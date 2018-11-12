@@ -13,7 +13,7 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   // MARK: Elements
   
   private var _view: UIView?
-  public var view: UIView? {
+  open var view: UIView? {
     set {
       if newValue != _view {
         unsetupView()
