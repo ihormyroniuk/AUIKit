@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView {
   
-  func dequeReusableCell<TVC: UITableViewCell>() -> TVC {
+  public func dequeReusableCell<TVC: UITableViewCell>() -> TVC {
     let identifier = String(describing: TVC.self)
     let cell = dequeueReusableCell(withIdentifier: identifier)
     if let cell = cell as? TVC { return cell }
@@ -18,13 +18,13 @@ extension UITableView {
     return dequeReusableCell()
   }
   
-  func dequeReusableCell<TVC: UITableViewCell>(indexPath: IndexPath) -> TVC {
+  public func dequeReusableCell<TVC: UITableViewCell>(indexPath: IndexPath) -> TVC {
     let identifier = String(describing: TVC.self)
     register(TVC.self, forCellReuseIdentifier: identifier)
     return (dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TVC)!
   }
   
-  func dequeReusableHeaderFooterView<TVHF: UITableViewHeaderFooterView>() -> TVHF {
+  public func dequeReusableHeaderFooterView<TVHF: UITableViewHeaderFooterView>() -> TVHF {
     let identifier = String(describing: TVHF.self)
     let view = dequeueReusableHeaderFooterView(withIdentifier: identifier)
     if let view = view as? TVHF { return view }
