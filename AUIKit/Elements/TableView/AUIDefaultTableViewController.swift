@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import AUIKit
 
-class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
+open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
 
   // MARK: Delegates
   
@@ -17,23 +16,23 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
   
   // MARK: Controllers
   
-  var sectionControllers: [AUITableViewSectionController] = []
+  open var sectionControllers: [AUITableViewSectionController] = []
   
   // MARK: Setup
   
-  override func setup() {
+  open override func setup() {
     super.setup()
     tableViewDelegateProxy.delegate = self
   }
   
   // MARK: View
   
-  var tableView: UITableView? {
+  open var tableView: UITableView? {
     set { view = newValue }
     get { return view as? UITableView }
   }
   
-  override func setupView() {
+  open override func setupView() {
     super.setupView()
     tableView?.dataSource = tableViewDelegateProxy
     tableView?.delegate = tableViewDelegateProxy
@@ -41,7 +40,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     tableView?.reloadData()
   }
 
-  override func unsetupView() {
+  open override func unsetupView() {
     super.unsetupView()
     tableView?.dataSource = nil
     tableView?.delegate = nil
@@ -50,7 +49,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
   
   // MARK: Reload
   
-  func reload() {
+  open func reload() {
     tableView?.reloadData()
   }
 
@@ -86,7 +85,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     return sections
   }*/
   
-  func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
+  open func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
     let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
     for (section, indexPaths) in indexPathsBySections {
       let rows = indexPaths.map({ $0.row })
@@ -94,12 +93,12 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     }
     reload()
   }
-  func deleteCellController(_ cellController: AUITableViewCellController) {
+  open func deleteCellController(_ cellController: AUITableViewCellController) {
     deleteCellControllers([cellController])
   }
   
-  var deletedIndexPaths: [IndexPath] = []
-  func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation) {
+  open var deletedIndexPaths: [IndexPath] = []
+  open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation) {
     let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
     let indexPaths = indexPathsBySections.reduce([]) { $1.value }
     deletedIndexPaths = indexPaths
@@ -117,7 +116,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     }
     CATransaction.commit()
   }
-  func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
+  open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
     deleteCellControllersAnimated([cellController], animation)
   }
   
@@ -138,66 +137,66 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
   
   // MARK: Headers, Footers
   
-  func numberOfSections() -> Int {
+  open func numberOfSections() -> Int {
     return sectionControllers.count
   }
   
-  func headerInSection(_ section: Int, tableView: UITableView) -> UIView? {
+  open func headerInSection(_ section: Int, tableView: UITableView) -> UIView? {
     return sectionControllers[section].header(tableView: tableView)
   }
   
-  func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat {
+  open func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat {
     return sectionControllers[section].headerEstimatedHeight
   }
   
-  func heightForHeaderInSection(_ section: Int) -> CGFloat {
+  open func heightForHeaderInSection(_ section: Int) -> CGFloat {
     return sectionControllers[section].headerHeight
   }
   
-  func didEndDisplayingHeaderInSection(_ section: Int) {
+  open func didEndDisplayingHeaderInSection(_ section: Int) {
     sectionControllers[section].didEndDisplayingHeader()
   }
   
-  func footerInSection(_ section: Int, tableView: UITableView) -> UIView? {
+  open func footerInSection(_ section: Int, tableView: UITableView) -> UIView? {
     return sectionControllers[section].footer(tableView: tableView)
   }
   
-  func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
+  open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
     return sectionControllers[section].footerEstimatedHeight
   }
   
-  func heightForFooterInSection(_ section: Int) -> CGFloat {
+  open func heightForFooterInSection(_ section: Int) -> CGFloat {
     return sectionControllers[section].footerHeight
   }
   
-  func didEndDisplayingFooterInSection(_ section: Int) {
+  open func didEndDisplayingFooterInSection(_ section: Int) {
     sectionControllers[section].didEndDisplayingFooter()
   }
   
   // MARK: Cells
   
-  func numberOfRowsInSection(_ section: Int) -> Int {
+  open func numberOfRowsInSection(_ section: Int) -> Int {
     return sectionControllers[section].numberOfRows
   }
   
-  func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+  open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
     let section = indexPath.section
     return sectionControllers[section].cellForRowAtIndexPath(indexPath, tableView: tableView)
   }
   
-  func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
+  open func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
     let section = indexPath.section
     let index = indexPath.row
     return sectionControllers[section].estimatedHeightForCellAtIndex(index)
   }
   
-  func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
+  open func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
     let section = indexPath.section
     let index = indexPath.row
     return sectionControllers[section].heightForCellAtIndex(index)
   }
   
-  func didEndDisplayingAtIndexPath(_ indexPath: IndexPath) {
+  open func didEndDisplayingAtIndexPath(_ indexPath: IndexPath) {
     if let index = deletedIndexPaths.index(of: indexPath) {
       deletedIndexPaths.remove(at: index)
       return
@@ -207,7 +206,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
   }
   
-  func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+  open func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
     if deletedIndexPaths.contains(indexPath) {
       deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
     }
@@ -216,7 +215,7 @@ class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableVie
     return sectionControllers[section].willDisplayCell(cell, index: index)
   }
   
-  func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
+  open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
     let section = indexPath.section
     let index = indexPath.row
     sectionControllers[section].didSelectCellAtIndex(index)

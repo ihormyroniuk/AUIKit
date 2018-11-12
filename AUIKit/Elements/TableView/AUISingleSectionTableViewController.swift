@@ -8,14 +8,14 @@
 
 import Foundation
 
-class AUISingleSectionTableViewController: AUIDefaultTableViewController {
+open class AUISingleSectionTableViewController: AUIDefaultTableViewController {
   
-  override func setup() {
+  open override func setup() {
     super.setup()
     sectionControllers = [AUITableViewSectionController()]
   }
   
-  var cellControllers: [AUITableViewCellController] {
+  open var cellControllers: [AUITableViewCellController] {
     get { return sectionControllers.first?.cellControllers ?? [] }
     set { sectionControllers.first?.cellControllers = newValue }
   }
