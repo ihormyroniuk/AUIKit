@@ -17,5 +17,6 @@ public protocol AUIScrollViewController: AUIViewController {
   // MARK: Keyboard
   
   var keyboardDismissMode: UIScrollView.KeyboardDismissMode { get set }
+  var isScrollEnabled: Bool { get set }
   
 }
