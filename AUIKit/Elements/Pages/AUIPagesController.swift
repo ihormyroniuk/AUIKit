@@ -12,10 +12,6 @@ public protocol AUIPagesViewControllerDidTransitToPageDelegate: class {
   func pagesViewController(_ pagesViewController: AUIPagesController, didTransitToPageControllers: [AUIPageController])
 }
 
-extension UIPageViewController.OptionsKey: Hashable {
-  
-}
-
 open class AUIPagesController: AUIDefaultViewController, AUIPageViewControllerDataSourceDelegateProxyDelegate {
   
   // MARK: Delegates
@@ -31,11 +27,10 @@ open class AUIPagesController: AUIDefaultViewController, AUIPageViewControllerDa
   // MARK: Initializer
   
   public init(transitionStyle: UIPageViewController.TransitionStyle = .scroll,
-       navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
-       options: [UIPageViewController.OptionsKey : Any] = [:]) {
+       navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal) {
     self.transitionStyle = transitionStyle
     self.navigationOrientation = navigationOrientation
-    self.options = options
+    self.options = [:]
   }
   
   // MARK: State
