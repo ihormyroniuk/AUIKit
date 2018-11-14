@@ -12,6 +12,10 @@ public protocol AUIPagesViewControllerDidTransitToPageDelegate: class {
   func pagesViewController(_ pagesViewController: AUIPagesController, didTransitToPageControllers: [AUIPageController])
 }
 
+extension UIPageViewController.OptionsKey: Hashable {
+  
+}
+
 open class AUIPagesController: AUIDefaultViewController, AUIPageViewControllerDataSourceDelegateProxyDelegate {
   
   // MARK: Delegates
