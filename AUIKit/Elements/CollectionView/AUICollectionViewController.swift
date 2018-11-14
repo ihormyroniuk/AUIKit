@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AUICollectionViewController: AUIDefaultScrollViewController {
+open class AUICollectionViewController: AUIDefaultScrollViewController {
   
   // MARK: - Proxies
   
@@ -19,25 +19,25 @@ class AUICollectionViewController: AUIDefaultScrollViewController {
   
   // MARK: - Controllers
   
-  var cellControllers: [AUICollectionViewCellController] = []
+  open var cellControllers: [AUICollectionViewCellController] = []
   
   // MARK: - View
   
-  var collectionView: UICollectionView? {
+  open var collectionView: UICollectionView? {
     set { view = newValue }
     get { return view as? UICollectionView }
   }
   
   // MARK: - Setup
   
-  override func setup() {
+  override open func setup() {
     super.setup()
     delegateProxy.delegate = self
     dataSourceProxy.delegate = self
     dataSourcePrefetchProxy.delegate = self
   }
   
-  override func setupView() {
+  override open func setupView() {
     super.setupView()
     collectionView?.dataSource = dataSourceProxy
     collectionView?.delegate = delegateProxy
@@ -45,7 +45,7 @@ class AUICollectionViewController: AUIDefaultScrollViewController {
     collectionView?.reloadData()
   }
   
-  override func unsetupView() {
+  override open func unsetupView() {
     collectionView?.dataSource = nil
     collectionView?.delegate = nil
     collectionView?.prefetchDataSource = nil
@@ -53,11 +53,11 @@ class AUICollectionViewController: AUIDefaultScrollViewController {
   
   // MARK: - Reload
   
-  func reload() {
+  open func reload() {
     collectionView?.reloadData()
   }
   
-  func reloadAnimated(oldCount: Int, newCount: Int) {
+  open func reloadAnimated(oldCount: Int, newCount: Int) {
     isBatchUpdates = true
     let oldIndexPathes = createIndexPathes(count: oldCount)
     let newIndexPathes = createIndexPathes(count: newCount)
@@ -85,29 +85,27 @@ class AUICollectionViewController: AUIDefaultScrollViewController {
 
 extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     cellControllers[indexPath.row].didSelectCell()
   }
   
-  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+  open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return true
   }
   
-  func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+  open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
     return true
   }
   
-  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     cellControllers[indexPath.row].willDisplayCell(cell)
   }
   
-  func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//    if !isBatchUpdates {
+  open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
       cellControllers[indexPath.row].didEndDisplayCell()
-//    }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return cellControllers[indexPath.row].size
   }
   
@@ -117,11 +115,11 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
 
 extension AUICollectionViewController: AUICollectionViewDataSourceProxyDelegate {
   
-  func numberOfItems(_ collectionView: UICollectionView) -> Int {
+  open func numberOfItems(_ collectionView: UICollectionView) -> Int {
     return cellControllers.count
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     return cellControllers[indexPath.row].cellForRowAtIndexPath(indexPath, collectionView: collectionView)
   }
   
@@ -131,7 +129,7 @@ extension AUICollectionViewController: AUICollectionViewDataSourceProxyDelegate 
 
 extension AUICollectionViewController: AUICollectionViewDataSourcePrefetchingProxyDelegate {
   
-  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+  open func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
     
   }
   

@@ -10,22 +10,22 @@ import UIKit
 
 // MARK: - AUICollectionViewDataSourceProxyDelegate
 
-protocol AUICollectionViewDataSourceProxyDelegate: class {
+public protocol AUICollectionViewDataSourceProxyDelegate: class {
   func numberOfItems(_ collectionView: UICollectionView) -> Int
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
 }
 
 // MARK: - AUICollectionViewDataSourceProxy
 
-class AUICollectionViewDataSourceProxy: NSObject, UICollectionViewDataSource {
+open class AUICollectionViewDataSourceProxy: NSObject, UICollectionViewDataSource {
   
-  weak var delegate: AUICollectionViewDataSourceProxyDelegate?
+  open weak var delegate: AUICollectionViewDataSourceProxyDelegate?
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return delegate?.numberOfItems(collectionView) ?? 0
   }
   
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     return delegate?.collectionView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
   }
   

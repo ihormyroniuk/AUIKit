@@ -8,12 +8,12 @@
 
 import UIKit
 
-class AUIElementCollectionViewCellController: AUICollectionViewCellController {
+open class AUIElementCollectionViewCellController: AUICollectionViewCellController {
   
-  var estimatedSize: CGSize = .zero
-  var size: CGSize = .zero
+  open var estimatedSize: CGSize = .zero
+  open var size: CGSize = .zero
   
-  var didSelectDelegate: AUICollectionViewCellControllerDelegate?
+  open var didSelectDelegate: AUICollectionViewCellControllerDelegate?
   
   open var view: UIView?
   

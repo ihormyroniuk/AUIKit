@@ -8,20 +8,20 @@
 
 import UIKit
 
-class AUIContainerCollectionViewCell: AUICollectionViewCell {
+open class AUIContainerCollectionViewCell: AUICollectionViewCell {
   
-  var view: UIView { return UIView() }
+  open var view: UIView { return UIView() }
   
   // MARK: - Setup
   
-  override func setup() {
+  override open func setup() {
     super.setup()
     contentView.addSubview(view)
   }
   
   // MARK: - AutoLayout
   
-  override func autoLayout() {
+  override open func autoLayout() {
     super.autoLayout()
   }
 }

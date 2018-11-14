@@ -200,8 +200,8 @@
 		30A7CD42219C144A006DAAA1 /* CellControllers */ = {
 			isa = PBXGroup;
 			children = (
-				30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */,
 				30A7CD45219C144A006DAAA1 /* AUICollectionViewCellController.swift */,
+				30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */,
 			);
 			path = CellControllers;
 			sourceTree = "<group>";

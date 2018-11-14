@@ -8,22 +8,22 @@
 
 import UIKit
 
-class AUICollectionViewCell: UICollectionViewCell {
+open class AUICollectionViewCell: UICollectionViewCell {
   
   // MARK: - Initializer
   
-  override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     setup()
     autoLayout()
   }
   
   @available(*, unavailable)
-  convenience required init?(coder aDecoder: NSCoder) { return nil }
+  convenience required public init?(coder aDecoder: NSCoder) { return nil }
   
   // MARK: - Setup
   
-  func setup() {
+  open func setup() {
     contentView.frame = self.bounds
     autoresizingMask = [.flexibleWidth, .flexibleHeight]
     contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -31,18 +31,18 @@ class AUICollectionViewCell: UICollectionViewCell {
   
   // MARK: - AutoLayout
   
-  func autoLayout() {
+  open func autoLayout() {
     
   }
   
   // MARK: - Layout
   
-  override func layoutSubviews() {
+  override open func layoutSubviews() {
     super.layoutSubviews()
     layout()
   }
   
-  func layout() {
+  open func layout() {
     
   }
 }

@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AUICollectionViewDelegateProxyDelegate
 
-protocol AUICollectionViewDelegateProxyDelegate: class {
+public protocol AUICollectionViewDelegateProxyDelegate: class {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool
   func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool
@@ -21,27 +21,27 @@ protocol AUICollectionViewDelegateProxyDelegate: class {
 
 // MARK: - AUICollectionViewDelegateProxy
 
-class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
+open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
   
-  weak var delegate: AUICollectionViewDelegateProxyDelegate?
+  open weak var delegate: AUICollectionViewDelegateProxyDelegate?
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
   }
   
-  func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+  open func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
     return delegate?.collectionView(collectionView, shouldSelectItemAt: indexPath) ?? true
   }
   
-  func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+  open func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
     return delegate?.collectionView(collectionView, shouldHighlightItemAt: indexPath) ?? true
   }
   
-  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, willDisplay: cell, forItemAt: indexPath)
   }
   
-  func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didEndDisplaying: cell, forItemAt: indexPath)
   }
   
