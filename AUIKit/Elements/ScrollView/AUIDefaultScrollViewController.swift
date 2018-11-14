@@ -27,6 +27,9 @@ open class AUIDefaultScrollViewController: AUIDefaultViewController, AUIScrollVi
   open var keyboardDismissMode: UIScrollView.KeyboardDismissMode = .none {
     didSet { didSetKeyboardDismissMode() }
   }
+  open var isScrollEnabled: Bool = true {
+    didSet { scrollView?.isScrollEnabled = isScrollEnabled }
+  }
   open func didSetKeyboardDismissMode() {
     scrollView?.keyboardDismissMode = keyboardDismissMode
   }

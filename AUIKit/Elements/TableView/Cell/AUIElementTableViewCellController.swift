@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class ElementTableViewCellController: AUITableViewCellController {
+open class AUIElementTableViewCellController: AUITableViewCellController {
   
   open weak var didSelectDelegate: AUITableViewCellControllerDidSelectDelegate?
   
