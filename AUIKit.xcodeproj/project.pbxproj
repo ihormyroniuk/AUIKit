@@ -36,7 +36,7 @@
 		C525D87F2199866D0057E69F /* AUIGenericContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */; };
 		C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D86E2199866D0057E69F /* AUITableViewCellView.swift */; };
 		C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D86F2199866D0057E69F /* AUITableViewCellController.swift */; };
-		C525D8822199866D0057E69F /* ElementTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8702199866D0057E69F /* ElementTableViewCellController.swift */; };
+		C525D8822199866D0057E69F /* AUIElementTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8702199866D0057E69F /* AUIElementTableViewCellController.swift */; };
 		C525D8832199866D0057E69F /* AUIContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8712199866D0057E69F /* AUIContainerTableViewCell.swift */; };
 		C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8722199866D0057E69F /* AUITableViewController.swift */; };
 		C525D8852199866D0057E69F /* AUIDefaultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8732199866D0057E69F /* AUIDefaultTableViewController.swift */; };
@@ -110,7 +110,7 @@
 		C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGenericContainerTableViewCell.swift; sourceTree = "<group>"; };
 		C525D86E2199866D0057E69F /* AUITableViewCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewCellView.swift; sourceTree = "<group>"; };
 		C525D86F2199866D0057E69F /* AUITableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewCellController.swift; sourceTree = "<group>"; };
-		C525D8702199866D0057E69F /* ElementTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementTableViewCellController.swift; sourceTree = "<group>"; };
+		C525D8702199866D0057E69F /* AUIElementTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIElementTableViewCellController.swift; sourceTree = "<group>"; };
 		C525D8712199866D0057E69F /* AUIContainerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIContainerTableViewCell.swift; sourceTree = "<group>"; };
 		C525D8722199866D0057E69F /* AUITableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewController.swift; sourceTree = "<group>"; };
 		C525D8732199866D0057E69F /* AUIDefaultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTableViewController.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 			children = (
 				C525D86F2199866D0057E69F /* AUITableViewCellController.swift */,
 				C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */,
-				C525D8702199866D0057E69F /* ElementTableViewCellController.swift */,
+				C525D8702199866D0057E69F /* AUIElementTableViewCellController.swift */,
 				C525D86E2199866D0057E69F /* AUITableViewCellView.swift */,
 				C525D8712199866D0057E69F /* AUIContainerTableViewCell.swift */,
 			);
@@ -554,7 +554,7 @@
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
 				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
 				30A7CD4F219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift in Sources */,
-				C525D8822199866D0057E69F /* ElementTableViewCellController.swift in Sources */,
+				C525D8822199866D0057E69F /* AUIElementTableViewCellController.swift in Sources */,
 				C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */,
 				C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */,
 				C525D83A219972770057E69F /* AUIPagesController.swift in Sources */,
