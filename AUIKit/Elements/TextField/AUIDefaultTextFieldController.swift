@@ -8,14 +8,6 @@
 
 import UIKit
 
-public protocol TextFieldControllerDidChangeTextDelegate: class {
-  func textFieldControllerDidChangeText(_ controller: AUIDefaultTextFieldController)
-}
-
-public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
-  func textFieldControllerDidTapReturnKey(_ controller: AUIDefaultTextFieldController)
-}
-
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
 
@@ -23,7 +15,7 @@ KeyValueObserverProxyDelegate {
   
   private let keyValueObserverProxy = KeyValueObserverProxy()
   private let textFieldDelegate = UITextFieldDelegateProxy()
-  open weak var didChangeTextDelegate: TextFieldControllerDidChangeTextDelegate?
+  open weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
   open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
   
   // MARK: Controllers
@@ -184,7 +176,7 @@ KeyValueObserverProxyDelegate {
   
   // MARK: Actions
   
-  open override func editingChangedAction() {
+  open override func editingChangedEventAction() {
     text = textField?.text
   }
   

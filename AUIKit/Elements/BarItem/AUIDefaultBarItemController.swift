@@ -44,7 +44,7 @@ open class AUIDefaultBarItemController: AUIBarItemController {
   }
   
   open func unsetupBarItem() {
-    barItem?.isEnabled = isEnabled
+    
   }
   
   // MARK: Title

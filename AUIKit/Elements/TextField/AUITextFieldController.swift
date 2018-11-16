@@ -8,9 +8,20 @@
 
 import UIKit
 
+public protocol AUITextFieldControllerDidChangeTextDelegate: class {
+  func textFieldControllerDidChangeText(_ controller: AUITextFieldController)
+}
+
+public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
+  func textFieldControllerDidTapReturnKey(_ controller: AUITextFieldController)
+}
+
 public protocol AUITextFieldController: AUIControlController {
   
   var textField: UITextField? { get set }
+  
+  var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
+  var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate? { get set }
   
   var text: String? { get set }
   var placeholder: String? { get set }

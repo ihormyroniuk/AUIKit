@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol ControlControllerTouchUpInsideDelegate: class {
+public protocol AUIControlControllerTouchUpInsideDelegate: class {
   func controlControllerTouchUpInside(_ controller: AUIControlController)
 }
 
-public protocol ControlControllerEditingChangedDelegate: class {
+public protocol AUIControlControllerEditingChangedDelegate: class {
   func controlControllerEditingChanged(_ controller: AUIControlController)
 }
 
-public protocol ControlControllerValueChangedDelegate: class {
+public protocol AUIControlControllerValueChangedDelegate: class {
   func controlControllerValueChanged(_ controller: AUIControlController)
 }
 
@@ -24,9 +24,9 @@ public protocol AUIControlController: AUIViewController {
   
   // MARK: Delegates
   
-  var touchUpInsideEventDelegate: ControlControllerTouchUpInsideDelegate? { get set }
-  var editingChangedDelegate: ControlControllerEditingChangedDelegate? { get set }
-  var valueChangedDelegate: ControlControllerValueChangedDelegate? { get set }
+  var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate? { get set }
+  var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
+  var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
   
   // MARK: View
   

@@ -340,7 +340,6 @@
 		C53AEA532195B01C0087F0A2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				30A7CD32219C140D006DAAA1 /* CollectionView */,
 				C53AEB172195DC470087F0A2 /* BarItem */,
 				C53AEB1A2195DC470087F0A2 /* BarButtonItem */,
 				C53AEA9E2195B01C0087F0A2 /* View */,
@@ -355,6 +354,7 @@
 				C53AEB492195FA280087F0A2 /* ScrollView */,
 				C53AEB562195FA970087F0A2 /* TextView */,
 				C525D8652199866D0057E69F /* TableView */,
+				30A7CD32219C140D006DAAA1 /* CollectionView */,
 				C525D833219972770057E69F /* Pages */,
 			);
 			path = Elements;
@@ -749,6 +749,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -774,6 +775,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = AUIKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

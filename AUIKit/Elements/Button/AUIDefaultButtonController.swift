@@ -25,30 +25,30 @@ open class AUIDefaultButtonController: AUIDefaultControlController, AUIButtonCon
   // MARK: State
   
   open var title: String? {
-    didSet { didSetTitle() }
+    didSet { didSetTitle(oldValue: oldValue) }
   }
-  open func didSetTitle() {
+  open func didSetTitle(oldValue: String?) {
     normalTitle = title
   }
   
   open var normalTitle: String? {
-    didSet { didSetNormalTitle() }
+    didSet { didSetNormalTitle(oldValue: oldValue) }
   }
-  open func didSetNormalTitle() {
+  open func didSetNormalTitle(oldValue: String?) {
     button?.setTitle(title, for: .normal)
   }
   
   open var image: UIImage? {
-    didSet{ didSetImage() }
+    didSet{ didSetImage(oldValue: oldValue) }
   }
-  open func didSetImage() {
+  open func didSetImage(oldValue: UIImage?) {
     normalImage = image
   }
   
   open var normalImage: UIImage? {
-    didSet { didSetNormalImage() }
+    didSet { didSetNormalImage(oldValue: oldValue) }
   }
-  open func didSetNormalImage() {
+  open func didSetNormalImage(oldValue: UIImage?) {
     button?.setImage(normalImage, for: .normal)
   }
   
