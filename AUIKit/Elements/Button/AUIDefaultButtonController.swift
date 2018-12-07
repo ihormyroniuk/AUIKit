@@ -20,6 +20,7 @@ open class AUIDefaultButtonController: AUIDefaultControlController, AUIButtonCon
   open override func setupView() {
     super.setupView()
     button?.setTitle(normalTitle, for: .normal)
+    button?.setImage(normalImage, for: .normal)
   }
   
   // MARK: State
