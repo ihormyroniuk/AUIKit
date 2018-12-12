@@ -17,6 +17,11 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
   private let dataSourcePrefetchProxy = AUICollectionViewDataSourcePrefetchingProxy()
   private var isBatchUpdates = false
   
+  open weak var scrollDelegate: AUIScrollViewDelegate? {
+    set { delegateProxy.scrollDelegate = newValue }
+    get { return delegateProxy.scrollDelegate }
+  }
+  
   // MARK: - Controllers
   
   open var cellControllers: [AUICollectionViewCellController] = []

@@ -19,11 +19,20 @@ public protocol AUICollectionViewDelegateProxyDelegate: class {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
 }
 
+// MARK: - AUIScrollViewDelegateProxyDelegate
+
+public protocol AUIScrollViewDelegate: class {
+  func scrollViewDidScroll(_ scrollView: UIScrollView)
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)
+}
+
 // MARK: - AUICollectionViewDelegateProxy
 
 open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
   
   open weak var delegate: AUICollectionViewDelegateProxyDelegate?
+  open weak var scrollDelegate: AUIScrollViewDelegate?
   
   open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
@@ -43,6 +52,18 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*,
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didEndDisplaying: cell, forItemAt: indexPath)
+  }
+  
+  open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    scrollDelegate?.scrollViewDidScroll(scrollView)
+  }
+  
+  open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    scrollDelegate?.scrollViewDidEndDecelerating(scrollView)
+  }
+  
+  open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    scrollDelegate?.scrollViewDidEndScrollingAnimation(scrollView)
   }
   
   // MARK: - UICollectionViewDelegateFlowLayout
