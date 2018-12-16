@@ -111,10 +111,6 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     tableView?.beginUpdates()
     tableView?.deleteRows(at: indexPaths, with: animation)
     tableView?.endUpdates()
-    CATransaction.setCompletionBlock {
-      
-    }
-    CATransaction.commit()
   }
   open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
     deleteCellControllersAnimated([cellController], animation)

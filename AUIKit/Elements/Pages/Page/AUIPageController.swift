@@ -9,9 +9,6 @@
 import UIKit
 
 public protocol AUIPageController {
-  
-  var pageViewController: UIViewController { get }
-  
   var viewController: AUIViewController { get }
   var view: () -> UIView { get }
 }

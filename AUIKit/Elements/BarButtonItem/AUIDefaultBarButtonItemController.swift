@@ -12,7 +12,7 @@ open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBa
  
   // MARK: Delegates
   
-  open weak var tapEventDelegate: AUIBarButtonItemControllerTapEventDelegate?
+  open weak var didSelectDelegate: AUIBarButtonItemControllerDidSelectDelegate?
   
   // MARK: View
   
@@ -23,7 +23,7 @@ open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBa
   
   open override func setupBarItem() {
     barButtonItem?.target = self
-    barButtonItem?.action = #selector(tapEventAction)
+    barButtonItem?.action = #selector(didSelectAction)
   }
   
   open override func unsetupBarItem() {
@@ -33,8 +33,8 @@ open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBa
   
   // MARK: - Events -
   
-  @objc private func tapEventAction() {
-    tapEventDelegate?.barButtonItemControllerDidTap(self)
+  @objc private func didSelectAction() {
+    didSelectDelegate?.barButtonItemControllerDidSelect(self)
   }
   
 }

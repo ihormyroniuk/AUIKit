@@ -24,7 +24,7 @@ open class AUIScrollView: UIScrollView {
   // MARK: Setup
   
   open func setup() {
-    if #available(iOS 11, *) { contentInsetAdjustmentBehavior = .never }
+    
   }
   
   // MARK: AutoLayout

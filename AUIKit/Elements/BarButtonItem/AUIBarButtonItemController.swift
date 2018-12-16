@@ -8,8 +8,8 @@
 
 import Foundation
 
-public protocol AUIBarButtonItemControllerTapEventDelegate: class {
-  func barButtonItemControllerDidTap(_ barItemController: AUIBarItemController)
+public protocol AUIBarButtonItemControllerDidSelectDelegate: class {
+  func barButtonItemControllerDidSelect(_ barItemController: AUIBarItemController)
 }
 
 public protocol AUIBarButtonItemController: AUIBarItemController {
@@ -20,6 +20,6 @@ public protocol AUIBarButtonItemController: AUIBarItemController {
   
   // MARK: Tap
   
-  var tapEventDelegate: AUIBarButtonItemControllerTapEventDelegate? { get set }
+  var didSelectDelegate: AUIBarButtonItemControllerDidSelectDelegate? { get set }
   
 }

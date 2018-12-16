@@ -40,6 +40,9 @@ open class AUIDefaultBarItemController: AUIBarItemController {
   
   open func setupBarItem() {
     barItem?.title = title
+    barItem?.image = image
+    barItem?.landscapeImagePhone = landscapeImagePhone
+    if #available(iOS 11.0, *) { barItem?.largeContentSizeImage = largeContentSizeImage }
     barItem?.isEnabled = isEnabled
   }
   
@@ -50,10 +53,34 @@ open class AUIDefaultBarItemController: AUIBarItemController {
   // MARK: Title
   
   open var title: String? {
-    didSet { didSetTitle() }
+    didSet { didSetTitle(oldValue: oldValue) }
   }
-  open func didSetTitle() {
+  open func didSetTitle(oldValue: String?) {
     barItem?.title = title
+  }
+  
+  // MARK: Image
+  
+  open var image: UIImage? {
+    didSet { didSetImage(oldValue: oldValue) }
+  }
+  open func didSetImage(oldValue: UIImage?) {
+    barItem?.image = image
+  }
+  
+  open var landscapeImagePhone: UIImage? {
+    didSet { didSetLandscapeImagePhone(oldValue: oldValue) }
+  }
+  open func didSetLandscapeImagePhone(oldValue: UIImage?) {
+    barItem?.landscapeImagePhone = landscapeImagePhone
+  }
+  
+  open var largeContentSizeImage: UIImage? {
+    didSet { if #available(iOS 11.0, *) { didSetLargeContentSizeImage(oldValue: oldValue) } }
+  }
+  @available(iOS 11.0, *)
+  open func didSetLargeContentSizeImage(oldValue: UIImage?) {
+    barItem?.largeContentSizeImage = largeContentSizeImage
   }
   
   // MARK: State

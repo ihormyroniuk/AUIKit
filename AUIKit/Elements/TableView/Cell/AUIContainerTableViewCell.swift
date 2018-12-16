@@ -23,9 +23,6 @@ open class AUIContainerTableViewCell: AUITableViewCellView {
   
   open override func autoLayout() {
     super.autoLayout()
-    /*view.snp.makeConstraints { (make) in
-      make.leading.trailing.top.bottom.equalToSuperview()
-    }*/
   }
   
 }

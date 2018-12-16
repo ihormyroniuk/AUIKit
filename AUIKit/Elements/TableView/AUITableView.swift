@@ -5,14 +5,13 @@
 //  Created by Ihor Myroniuk on 8/17/18.
 //  Copyright © 2018 Brander. All rights reserved.
 //
-
 import UIKit
 
 open class AUITableView: UITableView {
-
+  
   // MARK: Initializer
   
-  public override init(frame: CGRect = .zero, style: UITableView.Style = .plain) {
+  public override init(frame: CGRect, style: UITableView.Style) {
     super.init(frame: frame, style: style)
     setup()
     autoLayout()
@@ -24,8 +23,7 @@ open class AUITableView: UITableView {
   // MARK: Setup
   
   open func setup() {
-    if #available(iOS 11, *) { contentInsetAdjustmentBehavior = .never }
-    separatorStyle = .none
+
   }
   
   // MARK: AutoLayout
@@ -40,7 +38,7 @@ open class AUITableView: UITableView {
     super.layoutSubviews()
     layout()
   }
-
+  
   open func layout() {
     
   }

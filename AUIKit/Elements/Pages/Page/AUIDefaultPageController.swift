@@ -19,11 +19,4 @@ open class AUIDefaultPageController: AUIPageController {
     self.viewController = viewController
     self.view = view
   }
-  
-  // MARK: AUIPageController
-  
-  open var pageViewController: UIViewController {
-    return UIViewController()
-  }
-  
 }
