@@ -77,8 +77,8 @@ class AUIElementTableViewSectionController {
     cellControllers[index].willDisplayCell(cell)
   }
   
-  func didSelectCellAtIndex(_ index: Int) {
-    cellControllers[index].didSelectCell()
+  func didSelectCellAtIndex(_ index: IndexPath, tableView: UITableView) {
+    cellControllers[index.row].didSelectCell(index, tableView: tableView)
   }
   
 }

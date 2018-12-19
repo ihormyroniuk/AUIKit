@@ -215,10 +215,9 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     return sectionControllers[section].willDisplayCell(cell, index: index)
   }
   
-  open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
+  open func didSelectCellAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) {
     let section = indexPath.section
-    let index = indexPath.row
-    sectionControllers[section].didSelectCellAtIndex(index)
+    sectionControllers[section].didSelectCellAtIndex(indexPath, tableView: tableView)
   }
   
 }
@@ -233,7 +232,7 @@ private protocol AUITableViewDelegateProxyDelegate: class {
   func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
   func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath)
   func didEndDisplayingAtIndexPath(_ indexPath: IndexPath)
-  func didSelectCellAtIndexPath(_ indexPath: IndexPath)
+  func didSelectCellAtIndexPath(_ indexPath: IndexPath, tableView: UITableView)
   
   // MARK: Headers, Footers
   
@@ -325,7 +324,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    delegate?.didSelectCellAtIndexPath(indexPath)
+    delegate?.didSelectCellAtIndexPath(indexPath, tableView: tableView)
   }
   
 }

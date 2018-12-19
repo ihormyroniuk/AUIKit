@@ -19,7 +19,7 @@ public protocol AUITableViewCellController: class {
   func didEndDisplayingCell()
 
   var didSelectDelegate: AUITableViewCellControllerDidSelectDelegate? { get set }
-  func didSelectCell()
+  func didSelectCell(_ indexPath: IndexPath, tableView: UITableView)
   
   var estimatedHeight: CGFloat { get }
   var height: CGFloat { get }

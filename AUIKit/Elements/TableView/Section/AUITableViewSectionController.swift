@@ -81,8 +81,8 @@ open class AUITableViewSectionController {
     cellControllers[index].willDisplayCell(cell)
   }
   
-  open func didSelectCellAtIndex(_ index: Int) {
-    cellControllers[index].didSelectCell()
+  open func didSelectCellAtIndex(_ index: IndexPath, tableView: UITableView) {
+    cellControllers[index.row].didSelectCell(index, tableView: tableView)
   }
   
 }
