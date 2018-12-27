@@ -24,6 +24,10 @@ public protocol AUITextFieldControllerDidEndEditingDelegate: class {
   func textFieldControllerDidEndEditing(_ controller: AUITextFieldController)
 }
 
+public protocol AUITextFieldControllerDidEndEditingReasonDelegate: class {
+  func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason)
+}
+
 public protocol AUITextFieldController: AUIControlController {
   
   var textField: UITextField? { get set }
@@ -33,6 +37,7 @@ public protocol AUITextFieldController: AUIControlController {
   
   var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
   var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
+  var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate? { get set }
   
   var text: String? { get set }
   var placeholder: String? { get set }

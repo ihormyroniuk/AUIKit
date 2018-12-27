@@ -19,6 +19,7 @@ KeyValueObserverProxyDelegate {
   open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
   open weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
   open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
+  open weak var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
   
   // MARK: Controllers
   
@@ -151,7 +152,7 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidEndEditing(reason: UITextField.DidEndEditingReason) {
-    
+    didEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(self, reason: reason)
   }
   
   open func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
