@@ -19,9 +19,4 @@ public protocol AUIButtonController {
   var title: String? { get set }
   var normalTitle: String? { get set }
   
-  // MARK: Image
-  
-  var image: UIImage? { get set }
-  var normalImage: UIImage? { get set }
-  
 }
