@@ -10,7 +10,7 @@ import UIKit
 
 open class AUIContainerCollectionViewCell: AUICollectionViewCell {
   
-  open var view: UIView { return UIView() }
+  open var view: UIView = UIView()
   
   // MARK: - Setup
   

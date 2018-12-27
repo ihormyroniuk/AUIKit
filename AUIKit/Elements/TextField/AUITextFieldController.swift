@@ -16,12 +16,23 @@ public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
   func textFieldControllerDidTapReturnKey(_ controller: AUITextFieldController)
 }
 
+public protocol AUITextFieldControllerDidBeginEditingDelegate: class {
+  func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController)
+}
+
+public protocol AUITextFieldControllerDidEndEditingDelegate: class {
+  func textFieldControllerDidEndEditing(_ controller: AUITextFieldController)
+}
+
 public protocol AUITextFieldController: AUIControlController {
   
   var textField: UITextField? { get set }
   
   var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
   var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate? { get set }
+  
+  var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
+  var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
   
   var text: String? { get set }
   var placeholder: String? { get set }
