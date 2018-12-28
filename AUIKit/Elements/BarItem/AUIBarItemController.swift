@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUIBarItemController {
+public protocol AUIBarItemController: class {
   
   // MARK: Bar Item
   
