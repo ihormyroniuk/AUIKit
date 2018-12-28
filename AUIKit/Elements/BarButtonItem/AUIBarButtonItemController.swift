@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol AUIBarButtonItemControllerDidSelectDelegate: class {
-  func barButtonItemControllerDidSelect(_ barItemController: AUIBarItemController)
+  func barButtonItemControllerDidSelect(_ barButtonItemController: AUIBarButtonItemController)
 }
 
 public protocol AUIBarButtonItemController: AUIBarItemController {
