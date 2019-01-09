@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let UITextFieldTextPropertyKey = "text"
+
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
 
@@ -56,7 +58,6 @@ KeyValueObserverProxyDelegate {
   
   open override func setupView() {
     super.setupView()
-    textField?.addObserver(keyValueObserverProxy, forKeyPath: "text", options: [.new, .old], context: nil)
     textField?.placeholder = placeholder
     textField?.keyboardType = keyboardType
     textField?.delegate = textFieldDelegate
@@ -67,12 +68,13 @@ KeyValueObserverProxyDelegate {
     textField?.text = text
     inputAccessoryViewController?.view = textField?.inputAccessoryView
     inputViewController?.view = textField?.inputView
+    textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
   }
   
   open override func unsetupView() {
     super.unsetupView()
+    textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
     textField?.delegate = nil
-    textField?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
     inputAccessoryViewController?.view = nil
     inputViewController?.view = nil
   }
@@ -246,7 +248,7 @@ private class KeyValueObserverProxy: NSObject {
   weak var delegate: KeyValueObserverProxyDelegate?
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if keyPath == "text", let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
+    if keyPath == UITextFieldTextPropertyKey, let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
   }
   
 }
