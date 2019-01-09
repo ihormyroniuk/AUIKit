@@ -79,6 +79,10 @@ KeyValueObserverProxyDelegate {
     inputViewController?.view = nil
   }
   
+  deinit {
+    unsetupView()
+  }
+  
   // MARK: States
 
   open var text: String? {
