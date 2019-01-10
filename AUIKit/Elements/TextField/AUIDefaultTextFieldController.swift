@@ -17,6 +17,8 @@ KeyValueObserverProxyDelegate {
   private let textFieldDelegate = UITextFieldDelegateProxy()
   open weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
   open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
+  open weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
+  open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
   
   // MARK: Controllers
   
@@ -137,7 +139,7 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidBeginEditing() {
-    
+    didBeginEditingDelegate?.textFieldControllerDidBeginEditing(self)
   }
   
   open func textFieldShouldEndEditing() -> Bool {
@@ -145,7 +147,7 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidEndEditing() {
-    
+    didEndEditingDelegate?.textFieldControllerDidEndEditing(self)
   }
   
   open func textFieldDidEndEditing(reason: UITextField.DidEndEditingReason) {

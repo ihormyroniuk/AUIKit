@@ -20,7 +20,6 @@ open class AUIDefaultButtonController: AUIDefaultControlController, AUIButtonCon
   open override func setupView() {
     super.setupView()
     button?.setTitle(normalTitle, for: .normal)
-    button?.setImage(normalImage, for: .normal)
   }
   
   // MARK: State
@@ -37,20 +36,6 @@ open class AUIDefaultButtonController: AUIDefaultControlController, AUIButtonCon
   }
   open func didSetNormalTitle(oldValue: String?) {
     button?.setTitle(title, for: .normal)
-  }
-  
-  open var image: UIImage? {
-    didSet{ didSetImage(oldValue: oldValue) }
-  }
-  open func didSetImage(oldValue: UIImage?) {
-    normalImage = image
-  }
-  
-  open var normalImage: UIImage? {
-    didSet { didSetNormalImage(oldValue: oldValue) }
-  }
-  open func didSetNormalImage(oldValue: UIImage?) {
-    button?.setImage(normalImage, for: .normal)
   }
   
 }
