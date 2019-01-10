@@ -27,12 +27,17 @@ public protocol AUIScrollViewDelegate: class {
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)
 }
 
+public protocol AUIScrollWillBeginDraggingDelegate: class {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+}
+
 // MARK: - AUICollectionViewDelegateProxy
 
 open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
   
   open weak var delegate: AUICollectionViewDelegateProxyDelegate?
   open weak var scrollDelegate: AUIScrollViewDelegate?
+  open weak var scrollWillBeginDraggingDelegate: AUIScrollWillBeginDraggingDelegate?
   
   open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
@@ -64,6 +69,10 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*,
   
   open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
     scrollDelegate?.scrollViewDidEndScrollingAnimation(scrollView)
+  }
+  
+  open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    scrollWillBeginDraggingDelegate?.scrollViewWillBeginDragging(scrollView)
   }
   
   // MARK: - UICollectionViewDelegateFlowLayout

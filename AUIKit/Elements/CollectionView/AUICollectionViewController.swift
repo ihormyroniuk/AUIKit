@@ -21,6 +21,10 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     set { delegateProxy.scrollDelegate = newValue }
     get { return delegateProxy.scrollDelegate }
   }
+  open weak var scrollWillBeginDraggingDelegate: AUIScrollWillBeginDraggingDelegate? {
+    set { delegateProxy.scrollWillBeginDraggingDelegate = newValue }
+    get { return delegateProxy.scrollWillBeginDraggingDelegate }
+  }
   
   // MARK: - Controllers
   
