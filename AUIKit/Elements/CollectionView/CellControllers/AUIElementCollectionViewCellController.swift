@@ -38,7 +38,7 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
     return cell
   }
   
-  open func willDisplayCell(_ cell: UICollectionViewCell) {
+  open func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath) {
     
   }
   

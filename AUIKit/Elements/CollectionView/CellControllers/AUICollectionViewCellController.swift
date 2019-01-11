@@ -21,7 +21,7 @@ public protocol AUICollectionViewCellController: class {
   
   func cellForRowAtIndexPath(_ indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell
   
-  func willDisplayCell(_ cell: UICollectionViewCell)
+  func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath)
   func didEndDisplayCell()
   
   func didSelectCell()
