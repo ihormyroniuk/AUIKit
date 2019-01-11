@@ -11,7 +11,7 @@ public protocol AUITextView {
   func textViewSetText(_ text: String?)
 }
 
-public protocol AUITextViewController {
+public protocol AUITextViewController: AUIViewController {
   
   // MARK: View
   
