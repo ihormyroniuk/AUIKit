@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUITextViewController: AUIScrollViewController {
+public protocol AUITextViewViewController: AUIScrollViewController {
  
   var textView: UITextView? { get set }
   

@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextViewDelegateProxyDelegate {
+open class AUIDefaultTextViewViewController: AUIDefaultScrollViewController, AUITextViewViewController, UITextViewDelegateProxyDelegate {
 
   // MARK: Delegates
   
