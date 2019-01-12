@@ -33,7 +33,7 @@ public protocol AUIScrollWillBeginDraggingDelegate: class {
 
 // MARK: - AUICollectionViewDelegateProxy
 
-open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
+open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   
   open weak var delegate: AUICollectionViewDelegateProxyDelegate?
   open weak var scrollDelegate: AUIScrollViewDelegate?
@@ -77,7 +77,7 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*,
   
   // MARK: - UICollectionViewDelegateFlowLayout
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return delegate?.collectionView(
       collectionView, layout:collectionViewLayout,
       sizeForItemAt:indexPath) ?? getDefaultItemSize()
