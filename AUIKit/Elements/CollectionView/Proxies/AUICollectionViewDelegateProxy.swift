@@ -77,9 +77,14 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*,
   
   // MARK: - UICollectionViewDelegateFlowLayout
   
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    return delegate?.collectionView(collectionView, layout:collectionViewLayout, sizeForItemAt:indexPath) ?? CGSize.zero
-//  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return delegate?.collectionView(
+      collectionView, layout:collectionViewLayout,
+      sizeForItemAt:indexPath) ?? getDefaultItemSize()
+  }
   
+  private func getDefaultItemSize() -> CGSize {
+    return CGSize(width: UIScreen.main.bounds.width, height: 44)
+  }
   
 }

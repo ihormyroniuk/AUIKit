@@ -10,8 +10,7 @@ import UIKit
 
 open class AUIElementCollectionViewCellController: AUICollectionViewCellController {
   
-  open var estimatedSize: CGSize = .zero
-  open var size: CGSize = .zero
+  open var size: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 44)
   
   open var didSelectDelegate: AUICollectionViewCellControllerDelegate?
   
