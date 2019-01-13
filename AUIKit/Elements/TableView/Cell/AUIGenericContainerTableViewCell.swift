@@ -25,6 +25,7 @@ open class AUIGenericContainerTableViewCell<V: UIView>: AUIContainerTableViewCel
   }
   
   open func autoLayoutView() {
+    view.translatesAutoresizingMaskIntoConstraints = false
     contentView.addConstraints([
       NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0),
       NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
