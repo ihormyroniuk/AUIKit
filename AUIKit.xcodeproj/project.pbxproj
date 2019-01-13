@@ -81,6 +81,7 @@
 		C54D0F1321E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */; };
 		C55FA68521E8B2E600DF03A7 /* AUITextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA68421E8B2E600DF03A7 /* AUITextViewController.swift */; };
 		C55FA68721E8B36600DF03A7 /* AUIDefaultTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA68621E8B36600DF03A7 /* AUIDefaultTextViewController.swift */; };
+		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +161,7 @@
 		C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextFieldViewController.swift; sourceTree = "<group>"; };
 		C55FA68421E8B2E600DF03A7 /* AUITextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewController.swift; sourceTree = "<group>"; };
 		C55FA68621E8B36600DF03A7 /* AUIDefaultTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextViewController.swift; sourceTree = "<group>"; };
+		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,10 +288,10 @@
 			isa = PBXGroup;
 			children = (
 				C525D86F2199866D0057E69F /* AUITableViewCellController.swift */,
-				C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */,
 				C525D8702199866D0057E69F /* AUIElementTableViewCellController.swift */,
 				C525D86E2199866D0057E69F /* AUITableViewCellView.swift */,
 				C525D8712199866D0057E69F /* AUIContainerTableViewCell.swift */,
+				C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -342,6 +344,7 @@
 		C53AEA4A2195AF690087F0A2 /* AUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C563738021EA5551008FAF87 /* Stories */,
 				C525D88B2199989D0057E69F /* Screens */,
 				C53AEA532195B01C0087F0A2 /* Elements */,
 				C53AEA4B2195AF690087F0A2 /* AUIKit.h */,
@@ -495,6 +498,14 @@
 			path = Text;
 			sourceTree = "<group>";
 		};
+		C563738021EA5551008FAF87 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -594,6 +605,7 @@
 				C525D83A219972770057E69F /* AUIDefaultPagesController.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
+				C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */,
 				C525D88A2199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift in Sources */,
 				C525D87A2199866D0057E69F /* AUIElementTableViewSectionController.swift in Sources */,
 				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,

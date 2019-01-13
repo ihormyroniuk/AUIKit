@@ -25,11 +25,12 @@ open class AUIGenericContainerTableViewCell<V: UIView>: AUIContainerTableViewCel
   }
   
   open func autoLayoutView() {
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
-    view.topAnchor.constraint(equalTo: contentView.topAnchor)
-    view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-    view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+    contentView.addConstraints([
+      NSLayoutConstraint(item: contentView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 0),
+      NSLayoutConstraint(item: contentView, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 0),
+      NSLayoutConstraint(item: contentView, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1, constant: 0),
+      NSLayoutConstraint(item: contentView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+    ])
   }
   
 }
