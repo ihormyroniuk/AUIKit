@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AUINavigationControllerWithoutBar: UINavigationController, UIGestureRecognizerDelegate {
+open class AUINavigationControllerWithoutBar: UINavigationController, UIGestureRecognizerDelegate {
   
   // MARK: Initializer
   
@@ -16,7 +16,7 @@ class AUINavigationControllerWithoutBar: UINavigationController, UIGestureRecogn
     setup()
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setup()
   }
@@ -29,8 +29,8 @@ class AUINavigationControllerWithoutBar: UINavigationController, UIGestureRecogn
   
   // MARK: Events
   
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+  open override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     interactivePopGestureRecognizer?.isEnabled = true
     interactivePopGestureRecognizer?.delegate = self
   }
