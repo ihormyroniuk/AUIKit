@@ -11,7 +11,7 @@ open class AUINavigationControllerWithoutBar: UINavigationController, UIGestureR
   
   // MARK: Initializer
   
-  init() {
+  public init() {
     super.init(nibName: nil, bundle: nil)
     setup()
   }
