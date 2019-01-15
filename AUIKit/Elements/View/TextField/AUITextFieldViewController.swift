@@ -5,10 +5,14 @@
 //  Created by Ihor Myroniuk on 1/9/19.
 //
 
-import Foundation
+import UIKit
 
 public protocol AUITextFieldView {
   var textField: UITextField { get }
+  func editingEmpty()
+  func notEditingEmpty()
+  func editingNotEmpty()
+  func notEditingNotEmpty()
 }
 
 public protocol AUITextFieldViewController: AUITextFieldController {

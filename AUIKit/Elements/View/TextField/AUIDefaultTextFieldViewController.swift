@@ -7,27 +7,85 @@
 
 import Foundation
 
-class AUIDefaultTextFieldViewController: AUIDefaultViewController {
+class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldControllerDidChangeTextDelegate, AUITextFieldControllerDidBeginEditingDelegate, AUITextFieldControllerDidEndEditingDelegate {
   
-  /*var textField: UITextField?
+  var textField: UITextField? {
+    set {  }
+    get { return nil }
+  }
   
-  var text: String?
+  var text: String? {
+    get {
+      return textFieldController.text
+    }
+    set {
+      textFieldController.text = newValue
+    }
+  }
   
-  var placeholder: String?
+  var placeholder: String? {
+    get {
+      return textFieldController.placeholder
+    }
+    set {
+      textFieldController.placeholder = newValue
+    }
+  }
   
-  var keyboardType: UIKeyboardType
+  var keyboardType: UIKeyboardType {
+    get {
+      return textFieldController.keyboardType
+    }
+    set {
+      textFieldController.keyboardType = newValue
+    }
+  }
   
-  var isSecureTextEntry: Bool
+  var isSecureTextEntry: Bool {
+    get {
+      return textFieldController.isSecureTextEntry
+    }
+    set {
+      textFieldController.isSecureTextEntry = newValue
+    }
+  }
   
-  var autocorrectionType: UITextAutocorrectionType
+  var autocorrectionType: UITextAutocorrectionType {
+    get {
+      return textFieldController.autocorrectionType
+    }
+    set {
+      textFieldController.autocorrectionType = newValue
+    }
+  }
   
-  var autocapitalizationType: UITextAutocapitalizationType
+  var autocapitalizationType: UITextAutocapitalizationType {
+    get {
+      return textFieldController.autocapitalizationType
+    }
+    set {
+      textFieldController.autocapitalizationType = newValue
+    }
+  }
   
-  var returnKeyType: UIReturnKeyType
+  var returnKeyType: UIReturnKeyType {
+    get {
+      return textFieldController.returnKeyType
+    }
+    set {
+      textFieldController.returnKeyType = newValue
+    }
+  }
   
-  var control: UIControl?
+  var control: UIControl? {
+    set {  }
+    get { return nil }
+  }
   
-  var isEnabled: Bool
+  var isEnabled: Bool {
+    get { return textFieldController.isEnabled }
+    set { textFieldController.isEnabled = newValue }
+  }
   
   // MARK: Delegates
   
@@ -78,10 +136,20 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController {
   
   func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
     didBeginEditingDelegate?.textFieldControllerDidBeginEditing(textFieldController)
+    if text?.isEmpty == false {
+      textFieldView?.editingNotEmpty()
+    } else {
+      textFieldView?.editingEmpty()
+    }
   }
   
   func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
     didEndEditingDelegate?.textFieldControllerDidEndEditing(textFieldController)
-  }*/
+    if text?.isEmpty == false {
+      textFieldView?.notEditingNotEmpty()
+    } else {
+      textFieldView?.notEditingEmpty()
+    }
+  }
   
 }
