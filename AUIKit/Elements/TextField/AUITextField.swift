@@ -7,40 +7,40 @@
 
 import UIKit
 
-class AUITextField: UITextField {
+open class AUITextField: UITextField {
   
   // MARK: Initializer
   
-  override init(frame: CGRect) {
+  public override init(frame: CGRect) {
     super.init(frame: frame)
     setup()
     autoLayout()
   }
   
-  required init?(coder aDecoder: NSCoder) {
+  public required init?(coder aDecoder: NSCoder) {
     return nil
   }
   
   // MARK: Setup
   
-  func setup() {
+  open func setup() {
     
   }
   
   // MARK: Layout
   
-  override func layoutSubviews() {
+  open override func layoutSubviews() {
     super.layoutSubviews()
     layout()
   }
   
-  func layout() {
+  open func layout() {
     
   }
   
   // MARK: Auto Layout
   
-  func autoLayout() {
+  open func autoLayout() {
     
   }
   
