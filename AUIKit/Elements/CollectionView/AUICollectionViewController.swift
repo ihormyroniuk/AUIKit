@@ -88,6 +88,25 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     }
     return indexPathes
   }
+  
+  // MARK: - Deleting
+  
+  open var deletedIndexPaths: [IndexPath] = []
+  open func deleteCellControllers(_ cellControllersToDelete: [AUICollectionViewCellController]) {
+    let indexes = cellControllersToDelete.compactMap { cellController -> Int? in
+      cellControllers.firstIndex(where: { $0 === cellController })
+    }
+    let removableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+    deletedIndexPaths = removableIndexPaths
+    cellControllers = cellControllers.filter({ controller -> Bool in
+      !cellControllersToDelete.contains(where: { $0 === controller })
+    })
+    collectionView?.deleteItems(at: removableIndexPaths)
+  }
+  
+  open func deleteCellController(_ cellController: AUICollectionViewCellController) {
+    deleteCellControllers([cellController])
+  }
 }
 
 // MARK: - AUICollectionViewDelegateProxyDelegate
@@ -111,7 +130,11 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-      cellControllers[indexPath.row].didEndDisplayCell()
+    if let index = deletedIndexPaths.index(of: indexPath) {
+      deletedIndexPaths.remove(at: index)
+      return
+    }
+    cellControllers[indexPath.row].didEndDisplayCell()
   }
   
   open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
