@@ -7,14 +7,14 @@
 
 import Foundation
 
-class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldControllerDidChangeTextDelegate, AUITextFieldControllerDidBeginEditingDelegate, AUITextFieldControllerDidEndEditingDelegate {
+open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldControllerDidChangeTextDelegate, AUITextFieldControllerDidBeginEditingDelegate, AUITextFieldControllerDidEndEditingDelegate {
   
-  var textField: UITextField? {
+  open var textField: UITextField? {
     set {  }
     get { return nil }
   }
   
-  var text: String? {
+  open var text: String? {
     get {
       return textFieldController.text
     }
@@ -23,7 +23,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var placeholder: String? {
+  open var placeholder: String? {
     get {
       return textFieldController.placeholder
     }
@@ -32,7 +32,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var keyboardType: UIKeyboardType {
+  open var keyboardType: UIKeyboardType {
     get {
       return textFieldController.keyboardType
     }
@@ -41,7 +41,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var isSecureTextEntry: Bool {
+  open var isSecureTextEntry: Bool {
     get {
       return textFieldController.isSecureTextEntry
     }
@@ -50,7 +50,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var autocorrectionType: UITextAutocorrectionType {
+  open var autocorrectionType: UITextAutocorrectionType {
     get {
       return textFieldController.autocorrectionType
     }
@@ -59,7 +59,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var autocapitalizationType: UITextAutocapitalizationType {
+  open var autocapitalizationType: UITextAutocapitalizationType {
     get {
       return textFieldController.autocapitalizationType
     }
@@ -68,7 +68,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var returnKeyType: UIReturnKeyType {
+  open var returnKeyType: UIReturnKeyType {
     get {
       return textFieldController.returnKeyType
     }
@@ -77,34 +77,34 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  var control: UIControl? {
+  open var control: UIControl? {
     set {  }
     get { return nil }
   }
   
-  var isEnabled: Bool {
+  open var isEnabled: Bool {
     get { return textFieldController.isEnabled }
     set { textFieldController.isEnabled = newValue }
   }
   
   // MARK: Delegates
   
-  weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
-  weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
-  weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
-  weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
-  weak var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
-  weak var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate?
-  weak var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate?
-  weak var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate?
+  open weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
+  open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
+  open weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
+  open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
+  open weak var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
+  open weak var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate?
+  open weak var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate?
+  open weak var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate?
   
   // MARK: Elements
   
-  let textFieldController: AUITextFieldController = AUIDefaultTextFieldController()
+  public let textFieldController: AUITextFieldController = AUIDefaultTextFieldController()
   
   // MARK: Setup
   
-  override func setup() {
+  open override func setup() {
     super.setup()
     textFieldController.didChangeTextDelegate = self
     textFieldController.didBeginEditingDelegate = self
@@ -130,11 +130,11 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
   
   // MARK: Events
   
-  func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
+  open func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
     didChangeTextDelegate?.textFieldControllerDidChangeText(textFieldController)
   }
   
-  func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
+  open func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
     didBeginEditingDelegate?.textFieldControllerDidBeginEditing(textFieldController)
     if text?.isEmpty == false {
       textFieldView?.editingNotEmpty()
@@ -143,7 +143,7 @@ class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldC
     }
   }
   
-  func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
+  open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
     didEndEditingDelegate?.textFieldControllerDidEndEditing(textFieldController)
     if text?.isEmpty == false {
       textFieldView?.notEditingNotEmpty()
