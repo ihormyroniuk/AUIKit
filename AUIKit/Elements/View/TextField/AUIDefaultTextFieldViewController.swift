@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldControllerDidChangeTextDelegate, AUITextFieldControllerDidBeginEditingDelegate, AUITextFieldControllerDidEndEditingDelegate {
+open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextFieldControllerDidChangeTextDelegate, AUITextFieldControllerDidBeginEditingDelegate, AUITextFieldControllerDidEndEditingDelegate, AUITextFieldControllerDidEndEditingReasonDelegate {
   
   open var textField: UITextField? {
     set {  }
@@ -109,6 +109,7 @@ open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextF
     textFieldController.didChangeTextDelegate = self
     textFieldController.didBeginEditingDelegate = self
     textFieldController.didEndEditingDelegate = self
+    textFieldController.didEndEditingReasonDelegate = self
   }
   
   // MARK: View
@@ -145,6 +146,15 @@ open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextF
   
   open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
     didEndEditingDelegate?.textFieldControllerDidEndEditing(textFieldController)
+    if text?.isEmpty == false {
+      textFieldView?.notEditingNotEmpty()
+    } else {
+      textFieldView?.notEditingEmpty()
+    }
+  }
+  
+  public func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
+    didEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(controller, reason: reason)
     if text?.isEmpty == false {
       textFieldView?.notEditingNotEmpty()
     } else {
