@@ -14,8 +14,6 @@ public protocol AUICollectionViewCellControllerDelegate: class {
 
 public protocol AUICollectionViewCellController: class {
   
-  var size: CGSize { get set }
-  
   var didSelectDelegate: AUICollectionViewCellControllerDelegate? { get set }
   
   func cellForRowAtIndexPath(_ indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell

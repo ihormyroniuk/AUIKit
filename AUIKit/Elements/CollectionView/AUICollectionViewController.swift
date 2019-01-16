@@ -137,10 +137,6 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
     cellControllers[indexPath.row].didEndDisplayCell()
   }
   
-  open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return cellControllers[indexPath.row].size
-  }
-  
 }
 
 // MARK: - AUICollectionViewDataSourceProxyDelegate

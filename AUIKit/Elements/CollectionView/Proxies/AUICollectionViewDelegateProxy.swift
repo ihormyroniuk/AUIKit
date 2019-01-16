@@ -16,7 +16,6 @@ public protocol AUICollectionViewDelegateProxyDelegate: class {
   func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
 }
 
 // MARK: - AUIScrollViewDelegateProxyDelegate
@@ -33,7 +32,7 @@ public protocol AUIScrollWillBeginDraggingDelegate: class {
 
 // MARK: - AUICollectionViewDelegateProxy
 
-open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate {
   
   open weak var delegate: AUICollectionViewDelegateProxyDelegate?
   open weak var scrollDelegate: AUIScrollViewDelegate?
@@ -73,18 +72,6 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate, U
   
   open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     scrollWillBeginDraggingDelegate?.scrollViewWillBeginDragging(scrollView)
-  }
-  
-  // MARK: - UICollectionViewDelegateFlowLayout
-  
-  open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return delegate?.collectionView(
-      collectionView, layout:collectionViewLayout,
-      sizeForItemAt:indexPath) ?? getDefaultItemSize()
-  }
-  
-  private func getDefaultItemSize() -> CGSize {
-    return CGSize(width: UIScreen.main.bounds.width, height: 44)
   }
   
 }
