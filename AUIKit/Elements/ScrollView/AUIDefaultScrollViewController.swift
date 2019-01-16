@@ -20,6 +20,7 @@ open class AUIDefaultScrollViewController: AUIDefaultViewController, AUIScrollVi
   open override func setupView() {
     super.setupView()
     scrollView?.keyboardDismissMode = keyboardDismissMode
+    scrollView?.isScrollEnabled = isScrollEnabled
   }
   
   // MARK: States
