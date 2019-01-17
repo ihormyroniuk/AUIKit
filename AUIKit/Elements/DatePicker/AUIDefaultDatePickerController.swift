@@ -29,7 +29,10 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   }
   
   open func didSetDate(_ oldValue: Date) {
-    datePicker?.date = date
+    if oldValue != date {
+      datePicker?.date = date
+      didSelectDateDelegate?.datePickerController(self, didSelectDate: date)
+    }
   }
   
   public var minimumDate: Date? = nil {
@@ -60,7 +63,9 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   open override func valueChangedEventAction() {
     super.valueChangedEventAction()
-    didSelectDateDelegate?.datePickerController(self, didSelectDate: date)
+    if let date = datePicker?.date {
+      self.date = date
+    }
   }
   
 }
