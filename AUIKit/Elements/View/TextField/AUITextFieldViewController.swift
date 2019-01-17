@@ -9,6 +9,7 @@ import UIKit
 
 public protocol AUITextFieldView {
   var textField: UITextField { get }
+  
   func editingEmpty()
   func notEditingEmpty()
   func editingNotEmpty()
@@ -16,5 +17,9 @@ public protocol AUITextFieldView {
 }
 
 public protocol AUITextFieldViewController: AUITextFieldController {
+  
+  // MARK: TextFieldView
+  
   var textFieldView: (UIView & AUITextFieldView)? { get set }
+  
 }
