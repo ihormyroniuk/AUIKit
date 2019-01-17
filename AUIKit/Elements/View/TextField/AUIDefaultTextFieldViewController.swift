@@ -133,6 +133,11 @@ open class AUIDefaultTextFieldViewController: AUIDefaultViewController, AUITextF
   
   open func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
     didChangeTextDelegate?.textFieldControllerDidChangeText(textFieldController)
+    if text?.isEmpty == false {
+      textFieldView?.editingNotEmpty()
+    } else {
+      textFieldView?.editingEmpty()
+    }
   }
   
   open func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
