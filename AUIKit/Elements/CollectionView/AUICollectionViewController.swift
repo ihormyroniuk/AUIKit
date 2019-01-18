@@ -107,6 +107,21 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
   open func deleteCellController(_ cellController: AUICollectionViewCellController) {
     deleteCellControllers([cellController])
   }
+  
+  // MARK: - Inserting
+  
+  open func insertCellControllersAtBegin(_ cellControllersToInsert: [AUICollectionViewCellController]) {
+    let indexes = cellControllersToInsert.compactMap { cellController -> Int? in
+      cellControllersToInsert.firstIndex(where: { $0 === cellController })
+    }
+    let insertableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+    cellControllers.insert(contentsOf: cellControllersToInsert, at: 0)
+    collectionView?.insertItems(at: insertableIndexPaths)
+  }
+  
+  open func insertCellControllerAtBegin(_ cellController: AUICollectionViewCellController) {
+    insertCellControllersAtBegin([cellController])
+  }
 }
 
 // MARK: - AUICollectionViewDelegateProxyDelegate
