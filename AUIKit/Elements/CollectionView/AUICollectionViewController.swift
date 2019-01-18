@@ -165,11 +165,9 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    if let index = deletedIndexPaths.index(of: indexPath) {
-      deletedIndexPaths.remove(at: index)
-      return
+    if indexPath.row < cellControllers.count {
+      cellControllers[indexPath.row].didEndDisplayCell()
     }
-    cellControllers[indexPath.row].didEndDisplayCell()
   }
   
 }
