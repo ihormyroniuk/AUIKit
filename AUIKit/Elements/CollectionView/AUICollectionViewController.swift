@@ -92,7 +92,7 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
   // MARK: - Deleting
   
   open var deletedIndexPaths: [IndexPath] = []
-  open func deleteCellControllers(_ cellControllersToDelete: [AUICollectionViewCellController]) {
+  open func deleteCellControllersAnimated(_ cellControllersToDelete: [AUICollectionViewCellController]) {
     let indexes = cellControllersToDelete.compactMap { cellController -> Int? in
       cellControllers.firstIndex(where: { $0 === cellController })
     }
@@ -102,6 +102,17 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
       !cellControllersToDelete.contains(where: { $0 === controller })
     })
     collectionView?.deleteItems(at: removableIndexPaths)
+  }
+  
+  open func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController) {
+    deleteCellControllersAnimated([cellController])
+  }
+  
+  open func deleteCellControllers(_ cellControllersToDelete: [AUICollectionViewCellController]) {
+    cellControllers = cellControllers.filter({ controller -> Bool in
+      !cellControllersToDelete.contains(where: { $0 === controller })
+    })
+    reload()
   }
   
   open func deleteCellController(_ cellController: AUICollectionViewCellController) {
