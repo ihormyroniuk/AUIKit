@@ -65,7 +65,9 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   
   // MARK: Hashable, Equatable
   
-  open var hashValue: Int = Int(arc4random())
+  open var hashValue: Int {
+    return ObjectIdentifier(self).hashValue
+  }
   
   public static func == (lhs: AUIDefaultViewController, rhs: AUIDefaultViewController) -> Bool {
     return lhs === rhs

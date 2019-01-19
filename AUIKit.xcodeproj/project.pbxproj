@@ -390,8 +390,8 @@
 				C53AEAA22195B01C0087F0A2 /* AUIViewController.swift */,
 				C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */,
 				C53AEAA02195B01C0087F0A2 /* AUIView.swift */,
-				C54D0F0F21E62C9900A09F16 /* TextField */,
 				C55FA68321E8B2BC00DF03A7 /* Text */,
+				C54D0F0F21E62C9900A09F16 /* TextField */,
 			);
 			path = View;
 			sourceTree = "<group>";
