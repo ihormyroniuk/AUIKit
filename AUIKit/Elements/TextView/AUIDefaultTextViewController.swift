@@ -17,6 +17,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   open weak var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate?
   open weak var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate?
   open weak var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate?
+  open weak var shouldChangeTextDelegate: AUITextViewControllerSholdChangeTextDelegate?
   
   // MARK: - Setup
   
@@ -97,7 +98,8 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   }
   
   open func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    return true
+    return shouldChangeTextDelegate?.textViewControllerShouldChangeText(in: self, at: range, replacementString: text)
+      ?? true
   }
   
   open func textViewDidChange() {

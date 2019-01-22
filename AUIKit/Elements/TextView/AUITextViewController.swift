@@ -15,6 +15,7 @@ public protocol AUITextViewController: AUIScrollViewController {
   var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate? { get set }
   var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate? { get set }
   var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate? { get set }
+  var shouldChangeTextDelegate: AUITextViewControllerSholdChangeTextDelegate? { get set }
   
   var text: String? { get set }
   var keyboardType: UIKeyboardType { get set }
@@ -33,4 +34,8 @@ public protocol AUITextViewControllerDidBeginEditingDelegate: class {
 
 public protocol AUITextViewControllerDidEndEditingDelegate: class {
   func textViewControllerDidEndEditing(_ controller: AUITextViewController)
+}
+
+public protocol AUITextViewControllerSholdChangeTextDelegate: class {
+  func textViewControllerShouldChangeText(in controller: AUITextViewController, at range: NSRange, replacementString string: String) -> Bool
 }
