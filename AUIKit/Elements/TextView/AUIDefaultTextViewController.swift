@@ -30,11 +30,13 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   // MARK: - States
   
   open var text: String? {
-    didSet { didSetText(text) }
+    didSet { didSetText(oldValue: oldValue) }
   }
-  open func didSetText(_ text: String?) {
-    textView?.text = text
-    didChangeTextDelegate?.textViewControllerDidChangeText(self)
+  open func didSetText(oldValue: String?) {
+    if oldValue != text {
+      textView?.text = text
+      didChangeTextDelegate?.textViewControllerDidChangeText(self)
+    }
   }
   
   open var keyboardType: UIKeyboardType = .default {
