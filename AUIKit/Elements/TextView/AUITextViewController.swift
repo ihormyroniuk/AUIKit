@@ -12,4 +12,25 @@ public protocol AUITextViewController: AUIScrollViewController {
  
   var textView: UITextView? { get set }
   
+  var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate? { get set }
+  var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate? { get set }
+  var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate? { get set }
+  
+  var text: String? { get set }
+  var keyboardType: UIKeyboardType { get set }
+  var autocorrectionType: UITextAutocorrectionType { get set }
+  var autocapitalizationType: UITextAutocapitalizationType { get set }
+  
+}
+
+public protocol AUITextViewControllerDidChangeTextDelegate: class {
+  func textViewControllerDidChangeText(_ controller: AUITextViewController)
+}
+
+public protocol AUITextViewControllerDidBeginEditingDelegate: class {
+  func textViewControllerDidBeginEditing(_ controller: AUITextViewController)
+}
+
+public protocol AUITextViewControllerDidEndEditingDelegate: class {
+  func textViewControllerDidEndEditing(_ controller: AUITextViewController)
 }

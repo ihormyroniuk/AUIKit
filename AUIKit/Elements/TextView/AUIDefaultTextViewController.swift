@@ -8,20 +8,56 @@
 
 import UIKit
 
-open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextViewDelegateProxyDelegate {
-
-  // MARK: Delegates
+open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextViewDelegateProxyDelegate, KeyValueObserverProxyDelegate {
   
+  // MARK: - Delegates
+  
+  private let keyValueObserverProxy = KeyValueObserverProxy()
   private let textViewDelegate = UITextViewDelegateProxy()
+  open weak var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate?
+  open weak var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate?
+  open weak var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate?
   
-  // MARK: Setup
+  // MARK: - Setup
   
   open override func setup() {
     super.setup()
+    keyValueObserverProxy.delegate = self
     textViewDelegate.delegate = self
   }
   
-  // MARK: View
+  // MARK: - States
+  
+  open var text: String? {
+    didSet { didSetText(text) }
+  }
+  open func didSetText(_ text: String?) {
+    textView?.text = text
+    didChangeTextDelegate?.textViewControllerDidChangeText(self)
+  }
+  
+  open var keyboardType: UIKeyboardType = .default {
+    didSet { didSetKeyboardType(keyboardType) }
+  }
+  open func didSetKeyboardType(_ keyboardType: UIKeyboardType) {
+    textView?.keyboardType = keyboardType
+  }
+  
+  open var autocorrectionType: UITextAutocorrectionType = .default {
+    didSet { didSetAutocorrectionType(autocorrectionType) }
+  }
+  open func didSetAutocorrectionType(_ type: UITextAutocorrectionType) {
+    textView?.autocorrectionType = type
+  }
+  
+  open var autocapitalizationType: UITextAutocapitalizationType = .none {
+    didSet { didSetAutocapitalizationType(autocapitalizationType) }
+  }
+  open func didSetAutocapitalizationType(_ type: UITextAutocapitalizationType) {
+    textView?.autocapitalizationType = type
+  }
+  
+  // MARK: - View
   
   open var textView: UITextView? {
     set { view = newValue }
@@ -31,6 +67,10 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   open override func setupView() {
     super.setupView()
     textView?.delegate = textViewDelegate
+    textView?.keyboardType = keyboardType
+    textView?.autocorrectionType = autocorrectionType
+    textView?.autocapitalizationType = autocapitalizationType
+    textView?.text = text
   }
   
   open override func unsetupView() {
@@ -38,7 +78,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
     textView?.delegate = nil
   }
   
-  // MARK: UITextViewDelegate
+  // MARK: - UITextViewDelegate
   
   open func textViewShouldBeginEditing() -> Bool {
     return true
@@ -49,11 +89,11 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   }
   
   open func textViewDidBeginEditing() {
-    
+    didBeginEditingDelegate?.textViewControllerDidBeginEditing(self)
   }
   
   open func textViewDidEndEditing() {
-    
+    didEndEditingDelegate?.textViewControllerDidEndEditing(self)
   }
   
   open func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -82,6 +122,12 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
   open func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
     return true
+  }
+  
+  // MARK: - KeyValueObserverProxyDelegate
+  
+  func textViewDidChangeText(_ textView: UITextView) {
+    text = textView.text
   }
   
 }
@@ -148,4 +194,19 @@ private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
     return delegate?.textView(shouldInteractWith: textAttachment, in: characterRange) ?? false
   }
   
+}
+
+// MARK: - KeyValueObserverProxy
+
+private protocol KeyValueObserverProxyDelegate: class {
+  func textViewDidChangeText(_ textView: UITextView)
+}
+
+private class KeyValueObserverProxy: NSObject {
+  
+  weak var delegate: KeyValueObserverProxyDelegate?
+  
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    if keyPath == "text", let textView = object as? UITextView { delegate?.textViewDidChangeText(textView) }
+  }
 }
