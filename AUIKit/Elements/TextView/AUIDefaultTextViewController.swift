@@ -67,6 +67,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
   open override func setupView() {
     super.setupView()
+    textView?.addObserver(keyValueObserverProxy, forKeyPath: "text", options: [.new, .old], context: nil)
     textView?.delegate = textViewDelegate
     textView?.keyboardType = keyboardType
     textView?.autocorrectionType = autocorrectionType
@@ -76,6 +77,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
   open override func unsetupView() {
     super.unsetupView()
+    textField?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
     textView?.delegate = nil
   }
   
