@@ -77,7 +77,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
   open override func unsetupView() {
     super.unsetupView()
-    textField?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
+    textView?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
     textView?.delegate = nil
   }
   
