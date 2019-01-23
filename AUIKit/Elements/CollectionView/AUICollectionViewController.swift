@@ -119,7 +119,7 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     deleteCellControllers([cellController])
   }
   
-  // MARK: - Inserting
+  // MARK: - Insert at beging
   
   open func insertCellControllersAtBeginAnimated(_ cellControllersToInsert: [AUICollectionViewCellController]) {
     let indexes = cellControllersToInsert.compactMap { cellController -> Int? in
@@ -141,6 +141,32 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
   
   open func insertCellControllerAtBegin(_ cellController: AUICollectionViewCellController) {
     insertCellControllersAtBegin([cellController])
+  }
+  
+  // MARK: - Insert at end
+  
+  open func insertCellControllersAtEnd(_ cellControllersToInsert: [AUICollectionViewCellController]) {
+    cellControllers.append(contentsOf: cellControllersToInsert)
+    reload()
+  }
+  
+  open func insertCellControllerAtEnd(_ cellController: AUICollectionViewCellController) {
+    insertCellControllersAtEnd([cellController])
+  }
+  
+  // MARK: - Insert before
+  
+  open func insertCellControllers(_ cellControllersToInsert: [AUICollectionViewCellController],
+                                  before: AUICollectionViewCellController) {
+    let cellIndex = cellControllers.firstIndex { $0 === before }
+    guard let index = cellIndex else { return }
+    cellControllers.insert(contentsOf: cellControllersToInsert, at: index)
+    reload()
+  }
+  
+  open func insertCellController(_ cellController: AUICollectionViewCellController,
+                                 before: AUICollectionViewCellController) {
+    insertCellControllers([cellController], before: before)
   }
 }
 
