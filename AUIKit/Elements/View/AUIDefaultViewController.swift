@@ -8,14 +8,14 @@
 
 import UIKit
 
-open class AUIDefaultViewController: AUIViewController, Hashable {
+open class AUIDefaultViewController: AUIViewController {
 
   // MARK: Elements
   
   private var _view: UIView?
   open var view: UIView? {
     set {
-      if newValue != _view {
+      if newValue !== _view {
         unsetupView()
         _view = newValue
         setupView()
@@ -61,16 +61,6 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   
   open func resignFirstResponder() {
     view?.resignFirstResponder()
-  }
-  
-  // MARK: Hashable, Equatable
-  
-  open var hashValue: Int {
-    return ObjectIdentifier(self).hashValue
-  }
-  
-  public static func == (lhs: AUIDefaultViewController, rhs: AUIDefaultViewController) -> Bool {
-    return lhs === rhs
   }
   
 }

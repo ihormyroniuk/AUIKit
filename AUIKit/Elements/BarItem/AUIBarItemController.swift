@@ -6,7 +6,7 @@
 //  Copyright © 2018 Brander. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol AUIBarItemController: class {
   
