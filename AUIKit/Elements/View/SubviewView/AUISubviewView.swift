@@ -11,6 +11,6 @@ public protocol AUISubviewView {
   
   // MARK: Subview
   
-  var subview: UIView? { get set }
+  var subview: UIView? { get }
   
 }

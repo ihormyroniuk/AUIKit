@@ -11,6 +11,6 @@ public protocol AUISubtextFieldView: AUISubviewView {
   
   // MARK: Subcontrol
   
-  var subtextField: UITextField? { get set }
+  var subtextField: UITextField? { get }
   
 }
