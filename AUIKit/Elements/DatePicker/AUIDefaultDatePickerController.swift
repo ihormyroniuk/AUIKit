@@ -45,12 +45,23 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.minimumDate = minimumDate
   }
   
+  public var maximumDate: Date? = nil {
+    didSet {
+      didSetMaximumDate(oldValue)
+    }
+  }
+  
+  open func didSetMaximumDate(_ oldValue: Date?) {
+    datePicker?.maximumDate = maximumDate
+  }
+  
   // MARK: View
   
   open override func setupView() {
     super.setupView()
     datePicker?.date = date
     datePicker?.minimumDate = minimumDate
+    datePicker?.maximumDate = maximumDate
   }
   
   open override func unsetupView() {
@@ -62,10 +73,10 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   // MARK: Events
   
   open override func valueChangedEventAction() {
-    super.valueChangedEventAction()
     if let date = datePicker?.date {
       self.date = date
     }
+    super.valueChangedEventAction()
   }
   
 }

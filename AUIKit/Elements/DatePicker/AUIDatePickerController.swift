@@ -25,5 +25,6 @@ public protocol AUIDatePickerController: AUIControlController {
   
   var date: Date { get set }
   var minimumDate: Date? { get set }
+  var maximumDate: Date? { get set }
   
 }
