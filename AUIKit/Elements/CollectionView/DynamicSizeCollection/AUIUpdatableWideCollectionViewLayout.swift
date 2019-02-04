@@ -49,7 +49,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
         let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
         layoutAttributes.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         itemsLayoutAttributes.append(layoutAttributes)
-        print("prepare cell: \(indexPath)")
         contentViewHeight += cellSize.height
       }
     }

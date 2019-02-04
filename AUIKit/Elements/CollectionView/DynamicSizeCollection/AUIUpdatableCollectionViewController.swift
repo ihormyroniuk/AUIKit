@@ -127,7 +127,6 @@ extension AUIUpdatableCollectionViewController: AUIUpdatableCollectionViewLayout
 extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDelegate {
   
   open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print("did select: \(indexPath)")
     cellControllers[indexPath.row].didSelectCell()
   }
   
@@ -144,7 +143,6 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    print("end displaying: \(indexPath)")
     if let deletedCellController = deletedCellControllers[indexPath] {
       deletedCellController.didEndDisplayCell()
       deletedCellControllers.removeValue(forKey: indexPath)
@@ -163,7 +161,6 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDataSourceProxy
   }
   
   open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    print("cell for row: \(indexPath)")
     return cellControllers[indexPath.row].cellForRowAtIndexPath(indexPath, collectionView: collectionView)
   }
 }
