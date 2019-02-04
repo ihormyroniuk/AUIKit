@@ -15,6 +15,7 @@ public protocol AUIUpdatableCollectionViewLayout: class {
   var delegate: AUIUpdatableCollectionViewLayoutDelegate? { get set }
   func prepareForInsert(at indexPaths: [IndexPath])
   func prepareForDelete(at indexPaths: [IndexPath])
+  func prepareForUpdate(at indexPaths: [IndexPath])
 }
 
 open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpdatableCollectionViewLayout {
@@ -57,9 +58,8 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
       guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
       
       if findLayoutAttributes(for: indexPath) == nil {
-        let cell = cellController.cellForRowAtIndexPath(IndexPath(row: 0, section: 0), collectionView: mockCollectionView)
         let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
+        let cellSize = getCellSize(for: cellController)
         layoutAttributes.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         itemsLayoutAttributes.append(layoutAttributes)
         contentViewHeight += cellSize.height
@@ -67,8 +67,17 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     }
   }
   
+  private func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
+    let cell = cellController.cellForRowAtIndexPath(IndexPath(row: 0, section: 0), collectionView: mockCollectionView)
+    let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
+    return cellSize
+  }
+  
   override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    return itemsLayoutAttributes.filter({ return rect.intersects($0.frame) })
+    let attributes = itemsLayoutAttributes.filter({ return rect.intersects($0.frame) })
+    print(rect)
+    print(attributes.count)
+    return attributes
   }
   
   override open var collectionViewContentSize: CGSize {
@@ -88,9 +97,8 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   private func insertLayoutAttributes(for indexPath: IndexPath) {
     guard let cellController = delegate?.getCellController(for: indexPath) else { return }
-    let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
+    let cellSize = getCellSize(for: cellController)
     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-    let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
     
     let attributesToChange = itemsLayoutAttributes.filter { $0.indexPath >= indexPath }
     attributesToChange.forEach {
@@ -135,14 +143,14 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   // MARK: - Prepare for update
   
-//  open func prepareForUpdate(at indexPaths: [IndexPath]) {
-//    indexPaths.forEach { updateLayoutAttribute(for: $0) }
-//  }
-//
-//  private func updateLayoutAttribute(for indexPath: IndexPath) {
-//    let foundLayoutAttribute = itemsLayoutAttributes.first { $0.indexPath == indexPath }
-//    guard let layoutAttribute = foundLayoutAttribute else { return }
-//  }
+  open func prepareForUpdate(at indexPaths: [IndexPath]) {
+    indexPaths.forEach { updateLayoutAttribute(for: $0) }
+  }
+
+  private func updateLayoutAttribute(for indexPath: IndexPath) {
+    deleteLayoutAttribute(for: indexPath)
+    insertLayoutAttributes(for: indexPath)
+  }
   
   // MARK: - Find layout attributes
   
@@ -154,7 +162,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
 extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDataSource {
   
   public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return delegate?.getCellControllers().count ?? 0
+    return 1
   }
   
   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

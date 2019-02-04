@@ -105,6 +105,15 @@ extension AUIUpdatableCollectionViewController: AUIDeletingCollectionViewControl
   }
 }
 
+// MARK: - AUIUpdatingCollectionViewController
+
+//extension AUIUpdatableCollectionViewController: AUIUpdatingCollectionViewController {
+//
+//  open func updateCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
+//    updateCells(with: cellControllers, animated: animated)
+//  }
+//}
+
 // MARK: - UpdatableCollectionViewLayoutDelegate
 
 extension AUIUpdatableCollectionViewController: AUIUpdatableCollectionViewLayoutDelegate {
@@ -262,7 +271,9 @@ private extension AUIUpdatableCollectionViewController {
   func insertItems(indexPaths: [IndexPath], animated: Bool) {
     layout?.prepareForInsert(at: indexPaths)
     if animated {
-      collectionView?.insertItems(at: indexPaths)
+      collectionView?.performBatchUpdates({ [weak self] in
+        self?.collectionView?.insertItems(at: indexPaths)
+      }, completion: nil)
     } else {
       collectionView?.reloadData()
     }
@@ -292,9 +303,29 @@ private extension AUIUpdatableCollectionViewController {
   func deleteItems(at indexPaths: [IndexPath], animated: Bool) {
     layout?.prepareForDelete(at: indexPaths)
     if animated {
-      collectionView?.deleteItems(at: indexPaths)
+      collectionView?.performBatchUpdates({ [weak self] in
+        self?.collectionView?.deleteItems(at: indexPaths)
+      }, completion: nil)
     } else {
       collectionView?.reloadData()
     }
   }
+  
+  // MARK: - Update cells
+  
+//  func updateCells(with updatableCellControllers: [AUICollectionViewCellController], animated: Bool) {
+//    deleteCells(with: updatableCellControllers, animated: animated)
+//  }
+//
+//  func updateItems(at indexPath: [IndexPath], animated: Bool) {
+//    layout?.prepareForUpdate(at: indexPath)
+//    if animated {
+//      collectionView?.performBatchUpdates({ [weak self] in
+//        self?.collectionView?.deleteItems(at: indexPath)
+//        self?.collectionView?.insertItems(at: indexPath)
+//      }, completion: nil)
+//    } else {
+//      collectionView?.reloadData()
+//    }
+//  }
 }

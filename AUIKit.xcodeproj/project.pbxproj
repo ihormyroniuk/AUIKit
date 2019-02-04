@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3013CE412208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */; };
 		30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */; };
 		30A7CD4A219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */; };
 		30A7CD4E219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */; };
@@ -86,6 +87,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCollectionViewController.swift; sourceTree = "<group>"; };
 		30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				30BB5E562206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift */,
 				30BB5E552206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift */,
+				3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */,
 				30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */,
 				30BB5E572206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift */,
 			);
@@ -628,6 +631,7 @@
 				30A7CD52219C144A006DAAA1 /* AUICollectionViewController.swift in Sources */,
 				C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */,
 				C525D83B219972770057E69F /* UIPageControl+PreferredSize.swift in Sources */,
+				3013CE412208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift in Sources */,
 				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C525D832219971F70057E69F /* AUIDefaultTextFieldController.swift in Sources */,
