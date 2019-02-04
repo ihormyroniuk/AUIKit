@@ -143,6 +143,7 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard !indexPath.isEmpty else { return }
     if let deletedCellController = deletedCellControllers[indexPath] {
       deletedCellController.didEndDisplayCell()
       deletedCellControllers.removeValue(forKey: indexPath)
