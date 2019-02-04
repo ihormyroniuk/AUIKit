@@ -317,12 +317,11 @@ private extension AUIUpdatableCollectionViewController {
 //    deleteCells(with: updatableCellControllers, animated: animated)
 //  }
 //
-//  func updateItems(at indexPath: [IndexPath], animated: Bool) {
-//    layout?.prepareForUpdate(at: indexPath)
+//  func updateItems(at indexPaths: [IndexPath], animated: Bool) {
+//    layout?.prepareForUpdate(at: indexPaths)
 //    if animated {
 //      collectionView?.performBatchUpdates({ [weak self] in
-//        self?.collectionView?.deleteItems(at: indexPath)
-//        self?.collectionView?.insertItems(at: indexPath)
+//        self?.collectionView?.reloadItems(at: indexPaths)
 //      }, completion: nil)
 //    } else {
 //      collectionView?.reloadData()

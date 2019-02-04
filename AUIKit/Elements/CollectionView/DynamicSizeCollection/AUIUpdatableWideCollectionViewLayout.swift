@@ -74,10 +74,11 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   }
   
   override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    let attributes = itemsLayoutAttributes.filter({ return rect.intersects($0.frame) })
-    print(rect)
-    print(attributes.count)
-    return attributes
+    return itemsLayoutAttributes.filter({ return rect.intersects($0.frame) })
+  }
+  
+  override open func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    return itemsLayoutAttributes.first { $0.indexPath == indexPath }
   }
   
   override open var collectionViewContentSize: CGSize {
