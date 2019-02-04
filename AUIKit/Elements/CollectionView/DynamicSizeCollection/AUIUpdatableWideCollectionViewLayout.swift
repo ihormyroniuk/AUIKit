@@ -29,7 +29,21 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   private var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
-  private let mockCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+  private let mockCollectionView: UICollectionView
+  
+  override public init() {
+    let layout = NormalLayout()
+    layout.itemSize = CGSize(width: 100, height: 100)
+    mockCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    super.init()
+    mockCollectionView.dataSource = self
+    mockCollectionView.delegate = self
+    mockCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+  }
+
+  required public init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   // MARK: - Prepare
   
@@ -43,7 +57,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
       guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
       
       if findLayoutAttributes(for: indexPath) == nil {
-        let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
+        let cell = cellController.cellForRowAtIndexPath(IndexPath(row: 0, section: 0), collectionView: mockCollectionView)
         let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
         layoutAttributes.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
@@ -63,11 +77,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   open func register(_ cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String) {
     mockCollectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
-  }
-  
-  func prepareLayoutAttributesAfterInsert(indexPath: IndexPath) -> UICollectionViewLayoutAttributes {
-    let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-    return layoutAttributes
   }
   
   // MARK: - Prepare for insert
@@ -139,5 +148,36 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   private func findLayoutAttributes(for indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     return itemsLayoutAttributes.first { $0.indexPath == indexPath }
+  }
+}
+
+extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDataSource {
+  
+  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return delegate?.getCellControllers().count ?? 0
+  }
+  
+  public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+    return cell
+  }
+}
+
+extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+  
+  public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 100, height: 100)
+  }
+  
+}
+
+class NormalLayout: UICollectionViewFlowLayout {
+
+  override func prepare() {
+    
+  }
+  
+  override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    return nil
   }
 }
