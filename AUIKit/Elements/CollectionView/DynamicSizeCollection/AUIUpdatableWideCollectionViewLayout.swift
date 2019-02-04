@@ -35,7 +35,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   override open func prepare() {
     super.prepare()
-    contentViewHeight = 0
     
     guard let delegate = delegate else { return }
     let cellControllers = delegate.getCellControllers()
@@ -122,7 +121,19 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
       $0.frame.origin.y -= layoutAttribute.frame.height
       $0.indexPath.row -= 1
     }
+    contentViewHeight -= layoutAttribute.frame.height
   }
+  
+  // MARK: - Prepare for update
+  
+//  open func prepareForUpdate(at indexPaths: [IndexPath]) {
+//    indexPaths.forEach { updateLayoutAttribute(for: $0) }
+//  }
+//
+//  private func updateLayoutAttribute(for indexPath: IndexPath) {
+//    let foundLayoutAttribute = itemsLayoutAttributes.first { $0.indexPath == indexPath }
+//    guard let layoutAttribute = foundLayoutAttribute else { return }
+//  }
   
   // MARK: - Find layout attributes
   
