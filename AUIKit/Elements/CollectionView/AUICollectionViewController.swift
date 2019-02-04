@@ -98,10 +98,14 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     }
     let removableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
     deletedIndexPaths = removableIndexPaths
-    cellControllers = cellControllers.filter({ controller -> Bool in
-      !cellControllersToDelete.contains(where: { $0 === controller })
+    collectionView?.performBatchUpdates({
+      cellControllers = cellControllers.filter({ controller -> Bool in
+        !cellControllersToDelete.contains(where: { $0 === controller })
+      })
+      self.collectionView?.deleteItems(at: removableIndexPaths)
+    }, completion: { _ in
+      
     })
-    collectionView?.deleteItems(at: removableIndexPaths)
   }
   
   open func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController) {
@@ -126,8 +130,11 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
       cellControllersToInsert.firstIndex(where: { $0 === cellController })
     }
     let insertableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
-    cellControllers.insert(contentsOf: cellControllersToInsert, at: 0)
-    collectionView?.insertItems(at: insertableIndexPaths)
+    collectionView?.performBatchUpdates({
+      cellControllers.insert(contentsOf: cellControllersToInsert, at: 0)
+      self.collectionView?.insertItems(at: insertableIndexPaths)
+    }, completion: nil)
+    
   }
   
   open func insertCellControllerAtBeginAnimated(_ cellController: AUICollectionViewCellController) {
@@ -191,6 +198,12 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if deletedIndexPaths.contains(indexPath) {
+      if let index = deletedIndexPaths.index(of: indexPath) {
+        deletedIndexPaths.remove(at: index)
+      }
+      return
+    }
     if indexPath.row < cellControllers.count {
       cellControllers[indexPath.row].didEndDisplayCell()
     }
