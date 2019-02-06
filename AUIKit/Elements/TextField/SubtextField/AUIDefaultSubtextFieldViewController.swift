@@ -44,24 +44,24 @@ open class AUIDefaultSubtextFieldViewController: AUIDefaultSubcontrolViewControl
   
   // MARK: Events
   
-  open func textFieldControllerDidEndEditing(_ controller: AUITextFieldController) {
-    subtextFieldControllerDidEndEditingDelegate?.textFieldControllerDidEndEditing(controller)
+  open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
+    subtextFieldControllerDidEndEditingDelegate?.textFieldControllerDidEndEditing(textFieldController)
   }
   
-  open func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
-    subtextFieldControllerDidEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(controller, reason: reason)
+  open func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
+    subtextFieldControllerDidEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(textFieldController, reason: reason)
   }
   
-  open func textFieldControllerDidChangeText(_ controller: AUITextFieldController) {
-    subtextFieldControllerDidChangeTextDelegate?.textFieldControllerDidChangeText(controller)
+  open func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
+    subtextFieldControllerDidChangeTextDelegate?.textFieldControllerDidChangeText(textFieldController)
   }
   
-  open func textFieldControllerDidTapReturnKey(_ controller: AUITextFieldController) {
-    subtextFieldControllerDidTapReturnKeyDelegate?.textFieldControllerDidTapReturnKey(controller)
+  open func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController) {
+    subtextFieldControllerDidTapReturnKeyDelegate?.textFieldControllerDidTapReturnKey(textFieldController)
   }
   
-  open func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
-    subtextFieldControllerDidBeginEditingDelegate?.textFieldControllerDidBeginEditing(controller)
+  open func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
+    subtextFieldControllerDidBeginEditingDelegate?.textFieldControllerDidBeginEditing(textFieldController)
   }
   
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AUISubtextFieldView: AUISubviewView {
+public protocol AUISubtextFieldView: AUISubcontrolView {
   
   // MARK: Subcontrol
   

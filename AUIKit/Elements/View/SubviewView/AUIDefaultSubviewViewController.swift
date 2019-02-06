@@ -26,11 +26,11 @@ open class AUIDefaultSubviewViewController: AUIDefaultViewController, AUISubview
   }
   
   open func setupSubviewController() {
-    
+    subviewController?.view = subviewView?.subview
   }
   
   open func unsetupSubviewController() {
-    
+    subviewController?.view = nil
   }
   
   // MARK: View

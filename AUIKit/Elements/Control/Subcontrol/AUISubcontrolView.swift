@@ -7,10 +7,10 @@
 
 import Foundation
 
-public protocol AUISubcontrolView {
+public protocol AUISubcontrolView: AUISubviewView {
   
   // MARK: Subcontrol
   
-  var subcontrol: UIControl? { get set }
+  var subcontrol: UIControl? { get }
   
 }

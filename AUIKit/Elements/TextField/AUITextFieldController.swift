@@ -9,23 +9,23 @@
 import UIKit
 
 public protocol AUITextFieldControllerDidChangeTextDelegate: class {
-  func textFieldControllerDidChangeText(_ controller: AUITextFieldController)
+  func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController)
 }
 
 public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
-  func textFieldControllerDidTapReturnKey(_ controller: AUITextFieldController)
+  func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController)
 }
 
 public protocol AUITextFieldControllerDidBeginEditingDelegate: class {
-  func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController)
+  func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController)
 }
 
 public protocol AUITextFieldControllerDidEndEditingDelegate: class {
-  func textFieldControllerDidEndEditing(_ controller: AUITextFieldController)
+  func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController)
 }
 
 public protocol AUITextFieldControllerDidEndEditingReasonDelegate: class {
-  func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason)
+  func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason)
 }
 
 public protocol AUITextFieldController: AUIControlController {

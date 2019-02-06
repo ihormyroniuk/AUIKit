@@ -9,15 +9,15 @@
 import UIKit
 
 public protocol AUIControlControllerTouchUpInsideDelegate: class {
-  func controlControllerTouchUpInside(_ controller: AUIControlController)
+  func controlControllerTouchUpInside(_ сontrolController: AUIControlController)
 }
 
 public protocol AUIControlControllerEditingChangedDelegate: class {
-  func controlControllerEditingChanged(_ controller: AUIControlController)
+  func controlControllerEditingChanged(_ сontrolController: AUIControlController)
 }
 
 public protocol AUIControlControllerValueChangedDelegate: class {
-  func controlControllerValueChanged(_ controller: AUIControlController)
+  func controlControllerValueChanged(_ сontrolController: AUIControlController)
 }
 
 public protocol AUIControlController: AUIViewController {
