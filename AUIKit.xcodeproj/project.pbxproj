@@ -90,7 +90,6 @@
 		3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCellControllers.swift; sourceTree = "<group>"; };
 		3016176D220F605D00DA07AC /* AUIViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewContainer.swift; sourceTree = "<group>"; };
 		30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
-		30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		30A7CD3E219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
 		30A7CD3F219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
@@ -197,7 +196,6 @@
 			children = (
 				3016176D220F605D00DA07AC /* AUIViewContainer.swift */,
 				30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */,
-				30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */,
 				30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */,
 				30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */,
 			);
