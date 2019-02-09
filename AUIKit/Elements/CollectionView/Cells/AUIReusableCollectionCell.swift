@@ -24,7 +24,7 @@ open class AUIReusableCollectionCell: UICollectionViewCell, AUIViewContainer {
   
   // MARK: - Life cycle
   
-  override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     initConfigure()
   }
