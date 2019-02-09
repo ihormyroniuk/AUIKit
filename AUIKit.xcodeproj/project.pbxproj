@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3013CE412208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */; };
+		3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */; };
 		30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */; };
 		30A7CD4A219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */; };
 		30A7CD4E219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */; };
@@ -16,8 +16,8 @@
 		30A7CD52219C144A006DAAA1 /* AUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD41219C144A006DAAA1 /* AUICollectionViewController.swift */; };
 		30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */; };
 		30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD45219C144A006DAAA1 /* AUICollectionViewCellController.swift */; };
-		30BB5E592206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E552206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift */; };
-		30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E562206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift */; };
+		30BB5E592206FA6A00F7DA0F /* AUIInsertingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E552206FA6A00F7DA0F /* AUIInsertingCellControllers.swift */; };
+		30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E562206FA6A00F7DA0F /* AUIDeletingCellControllers.swift */; };
 		30BB5E5B2206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E572206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift */; };
 		30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */; };
 		30BB5E5F2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */; };
@@ -87,7 +87,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCollectionViewController.swift; sourceTree = "<group>"; };
+		3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCellControllers.swift; sourceTree = "<group>"; };
 		30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
@@ -96,8 +96,8 @@
 		30A7CD41219C144A006DAAA1 /* AUICollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewController.swift; sourceTree = "<group>"; };
 		30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIElementCollectionViewCellController.swift; sourceTree = "<group>"; };
 		30A7CD45219C144A006DAAA1 /* AUICollectionViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCellController.swift; sourceTree = "<group>"; };
-		30BB5E552206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIInsertingCollectionViewController.swift; sourceTree = "<group>"; };
-		30BB5E562206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDeletingCollectionViewController.swift; sourceTree = "<group>"; };
+		30BB5E552206FA6A00F7DA0F /* AUIInsertingCellControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIInsertingCellControllers.swift; sourceTree = "<group>"; };
+		30BB5E562206FA6A00F7DA0F /* AUIDeletingCellControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDeletingCellControllers.swift; sourceTree = "<group>"; };
 		30BB5E572206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIUpdatableWideCollectionViewLayout.swift; sourceTree = "<group>"; };
 		30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIUpdatableCollectionViewController.swift; sourceTree = "<group>"; };
 		30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDynamicSizeCollectionCell.swift; sourceTree = "<group>"; };
@@ -224,9 +224,9 @@
 		30BB5E542206FA0C00F7DA0F /* DynamicSizeCollection */ = {
 			isa = PBXGroup;
 			children = (
-				30BB5E562206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift */,
-				30BB5E552206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift */,
-				3013CE402208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift */,
+				30BB5E562206FA6A00F7DA0F /* AUIDeletingCellControllers.swift */,
+				30BB5E552206FA6A00F7DA0F /* AUIInsertingCellControllers.swift */,
+				3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */,
 				30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */,
 				30BB5E572206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift */,
 			);
@@ -592,7 +592,7 @@
 				C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */,
 				C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */,
 				C525D83A219972770057E69F /* AUIDefaultPagesController.swift in Sources */,
-				30BB5E592206FA6A00F7DA0F /* AUIInsertingCollectionViewController.swift in Sources */,
+				30BB5E592206FA6A00F7DA0F /* AUIInsertingCellControllers.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
 				30BB5E5F2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift in Sources */,
@@ -609,7 +609,7 @@
 				C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */,
 				C525D8852199866D0057E69F /* AUIDefaultTableViewController.swift in Sources */,
 				C525D87B2199866D0057E69F /* AUITableViewSectionController.swift in Sources */,
-				30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCollectionViewController.swift in Sources */,
+				30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCellControllers.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C53AEB5A2195FA970087F0A2 /* AUITextViewController.swift in Sources */,
@@ -631,7 +631,7 @@
 				30A7CD52219C144A006DAAA1 /* AUICollectionViewController.swift in Sources */,
 				C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */,
 				C525D83B219972770057E69F /* UIPageControl+PreferredSize.swift in Sources */,
-				3013CE412208D54F0015AE99 /* AUIUpdatingCollectionViewController.swift in Sources */,
+				3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */,
 				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C525D832219971F70057E69F /* AUIDefaultTextFieldController.swift in Sources */,

@@ -33,13 +33,12 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   private let mockCollectionView: UICollectionView
   
   override public init() {
-    let layout = NormalLayout()
+    let layout = UICollectionViewFlowLayout()
     layout.itemSize = CGSize(width: 100, height: 100)
     mockCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     super.init()
     mockCollectionView.dataSource = self
     mockCollectionView.delegate = self
-    mockCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
   }
 
   required public init?(coder aDecoder: NSCoder) {
@@ -167,8 +166,7 @@ extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDataSource {
   }
   
   public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    return cell
+    return UICollectionViewCell()
   }
 }
 
@@ -178,15 +176,4 @@ extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDelegate, UIColl
     return CGSize(width: 100, height: 100)
   }
   
-}
-
-class NormalLayout: UICollectionViewFlowLayout {
-
-  override func prepare() {
-    
-  }
-  
-  override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    return nil
-  }
 }

@@ -31,17 +31,15 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
     let cell = cellCreateBlock(collectionView, indexPath) ?? UICollectionViewCell()
     let containerCell = cell as? AUIContainerCollectionViewCell
     view = containerCell?.view
-    if let view = view { controller.view = view }
     return cell
   }
   
   open func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath) {
-    
+    if let view = view { controller.view = view }
   }
   
   open func didEndDisplayCell() {
     if view != nil { controller.view = nil }
-    view = nil
   }
   
   

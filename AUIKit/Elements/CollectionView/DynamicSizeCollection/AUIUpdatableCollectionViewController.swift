@@ -67,13 +67,16 @@ open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController 
   }
 }
 
-// MARK: - AUIInsertingCollectionViewController
+// MARK: - AUIInsertingCellControllers
 
-extension AUIUpdatableCollectionViewController: AUIInsertingCollectionViewController {
+extension AUIUpdatableCollectionViewController: AUIInsertingCellControllers {
   
   open func insertCellControllersAtBegin(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
+    let cellCountBeforeInsert = self.cellControllers.count
     self.cellControllers.insert(contentsOf: cellControllers, at: 0)
-    insertCellsAtBegin(for: cellControllers, animated: animated)
+    insertCellsAtBegin(for: cellControllers,
+                       countBeforeInsert: cellCountBeforeInsert,
+                       animated: animated)
   }
   
   open func insertCellControllersAtEnd(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
@@ -96,18 +99,18 @@ extension AUIUpdatableCollectionViewController: AUIInsertingCollectionViewContro
   }
 }
 
-// MARK: - AUIDeletingCollectionViewController
+// MARK: - AUIDeletingCellControllers
 
-extension AUIUpdatableCollectionViewController: AUIDeletingCollectionViewController {
+extension AUIUpdatableCollectionViewController: AUIDeletingCellControllers {
   
   open func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
     deleteCells(with: cellControllers, animated: animated)
   }
 }
 
-// MARK: - AUIUpdatingCollectionViewController
+// MARK: - AUIUpdatingCellControllers
 
-//extension AUIUpdatableCollectionViewController: AUIUpdatingCollectionViewController {
+//extension AUIUpdatableCollectionViewController: AUIUpdatingCellControllers {
 //
 //  open func updateCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
 //    updateCells(with: cellControllers, animated: animated)
@@ -205,9 +208,13 @@ private extension AUIUpdatableCollectionViewController {
   
   // MARK: - Insert cells at begin
   
-  func insertCellsAtBegin(for cellControllers: [AUICollectionViewCellController], animated: Bool) {
+  func insertCellsAtBegin(for cellControllers: [AUICollectionViewCellController],
+                          countBeforeInsert: Int,
+                          animated: Bool) {
     let indexPaths = generateInsertAtBeginIndexPaths(cellCount: cellControllers.count)
-    insertItems(indexPaths: indexPaths, animated: animated)
+    insertItems(indexPaths: indexPaths,
+                countBeforeInsert: countBeforeInsert,
+                animated: animated)
   }
   
   func generateInsertAtBeginIndexPaths(cellCount: Int) -> [IndexPath] {
@@ -224,7 +231,9 @@ private extension AUIUpdatableCollectionViewController {
                         countBeforeInsert: Int,
                         animated: Bool) {
     let indexPaths = generateInsertAtEndIndexPaths(cellCount: cellControllers.count, countBeforeInsert: countBeforeInsert)
-    insertItems(indexPaths: indexPaths, animated: animated)
+    insertItems(indexPaths: indexPaths,
+                countBeforeInsert: countBeforeInsert,
+                animated: animated)
   }
   
   func generateInsertAtEndIndexPaths(cellCount: Int, countBeforeInsert: Int) -> [IndexPath] {
@@ -239,9 +248,14 @@ private extension AUIUpdatableCollectionViewController {
   
   // MARK: - Insert cells after
   
-  func insertCells(with cellControllers: [AUICollectionViewCellController], after: Int, animated: Bool) {
+  func insertCells(with cellControllers: [AUICollectionViewCellController],
+                   after: Int,
+                   countBeforeInsert: Int,
+                   animated: Bool) {
     let indexPaths = generateInsertAfterIndexPaths(cellCount: cellControllers.count, after: after)
-    insertItems(indexPaths: indexPaths, animated: animated)
+    insertItems(indexPaths: indexPaths,
+                countBeforeInsert: countBeforeInsert,
+                animated: animated)
   }
   
   func generateInsertAfterIndexPaths(cellCount: Int, after: Int) -> [IndexPath] {
@@ -254,9 +268,14 @@ private extension AUIUpdatableCollectionViewController {
   
   // MARK: - Insert cells before
   
-  func insertCells(with cellControllers: [AUICollectionViewCellController], before: Int, animated: Bool) {
+  func insertCells(with cellControllers: [AUICollectionViewCellController],
+                   before: Int,
+                   countBeforeInsert: Int,
+                   animated: Bool) {
     let indexPaths = generateInsertBeforeIndexPaths(cellCount: cellControllers.count, before: before)
-    insertItems(indexPaths: indexPaths, animated: animated)
+    insertItems(indexPaths: indexPaths,
+                countBeforeInsert: countBeforeInsert,
+                animated: animated)
   }
   
   func generateInsertBeforeIndexPaths(cellCount: Int, before: Int) -> [IndexPath] {
@@ -268,9 +287,9 @@ private extension AUIUpdatableCollectionViewController {
     return indexPaths
   }
   
-  func insertItems(indexPaths: [IndexPath], animated: Bool) {
+  func insertItems(indexPaths: [IndexPath], countBeforeInsert: Int, animated: Bool) {
     layout?.prepareForInsert(at: indexPaths)
-    if animated {
+    if animated && countBeforeInsert > 0 {
       collectionView?.performBatchUpdates({ [weak self] in
         self?.collectionView?.insertItems(at: indexPaths)
       }, completion: nil)

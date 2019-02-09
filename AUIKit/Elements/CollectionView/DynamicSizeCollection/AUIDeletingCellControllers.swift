@@ -1,10 +1,10 @@
 //
-//  AUIDeletingCollectionViewController.swift
+//  AUIDeletingCellControllers.swift
 //  Copyright © 2019 BRANDER. All rights reserved.
 //
 
 import UIKit
 
-public protocol AUIDeletingCollectionViewController {
+public protocol AUIDeletingCellControllers {
   func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool)
 }
