@@ -15,15 +15,23 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   open weak var subcontrolControllerEditingChangedEventDelegate: AUIControlControllerEditingChangedDelegate?
   open weak var subcontrolControllerValueChangedEventDelegate: AUIControlControllerValueChangedDelegate?
   
-  // MARK: Subcontrol
+  // MARK: Subcontrol Controller
   
   open var subcontrolController: AUIControlController? {
-    set { subviewController = newValue }
-    get { return subviewController as? AUIControlController }
+    set {
+      subviewController = newValue
+    }
+    get {
+      return subviewController as? AUIControlController
+    }
   }
   
   open override func setupSubviewController() {
     super.setupSubviewController()
+    setupSubcontrolController()
+  }
+  
+  open func setupSubcontrolController() {
     subcontrolController?.touchUpInsideEventDelegate = self
     subcontrolController?.editingChangedEventDelegate = self
     subcontrolController?.valueChangedEventDelegate = self
@@ -31,6 +39,10 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   
   open override func unsetupSubviewController() {
     super.unsetupSubviewController()
+    unsetupSubcontrolController()
+  }
+  
+  open func unsetupSubcontrolController() {
     subcontrolController?.touchUpInsideEventDelegate = nil
     subcontrolController?.editingChangedEventDelegate = nil
     subcontrolController?.valueChangedEventDelegate = nil
@@ -38,16 +50,16 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   
   // MARK: Events
   
-  open func controlControllerTouchUpInside(_ controller: AUIControlController) {
-    subcontrolControllerTouchUpInsideEventDelegate?.controlControllerTouchUpInside(controller)
+  open func controlControllerTouchUpInside(_ controlController: AUIControlController) {
+    subcontrolControllerTouchUpInsideEventDelegate?.controlControllerTouchUpInside(controlController)
   }
   
-  open func controlControllerEditingChanged(_ controller: AUIControlController) {
-    subcontrolControllerEditingChangedEventDelegate?.controlControllerEditingChanged(controller)
+  open func controlControllerEditingChanged(_ controlController: AUIControlController) {
+    subcontrolControllerEditingChangedEventDelegate?.controlControllerEditingChanged(controlController)
   }
   
-  open func controlControllerValueChanged(_ controller: AUIControlController) {
-    subcontrolControllerValueChangedEventDelegate?.controlControllerValueChanged(controller)
+  open func controlControllerValueChanged(_ controlController: AUIControlController) {
+    subcontrolControllerValueChangedEventDelegate?.controlControllerValueChanged(controlController)
   }
   
 }

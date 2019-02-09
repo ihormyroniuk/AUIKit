@@ -30,14 +30,17 @@ public protocol AUITextFieldControllerDidEndEditingReasonDelegate: class {
 
 public protocol AUITextFieldController: AUIControlController {
   
-  var textField: UITextField? { get set }
+  // MARK: Delegates
   
   var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
   var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate? { get set }
-  
   var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
   var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
   var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate? { get set }
+  
+  // MARK: Text Field
+  
+  var textField: UITextField? { get set }
   
   var text: String? { get set }
   var placeholder: String? { get set }

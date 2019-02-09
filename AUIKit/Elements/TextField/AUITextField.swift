@@ -27,6 +27,12 @@ open class AUITextField: UITextField {
     
   }
   
+  // MARK: Auto Layout
+  
+  open func autoLayout() {
+    
+  }
+  
   // MARK: Layout
   
   open override func layoutSubviews() {
@@ -35,12 +41,6 @@ open class AUITextField: UITextField {
   }
   
   open func layout() {
-    
-  }
-  
-  // MARK: Auto Layout
-  
-  open func autoLayout() {
     
   }
   

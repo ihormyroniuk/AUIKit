@@ -13,6 +13,12 @@ private let UITextFieldTextPropertyKey = "text"
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
 
+  // MARK: Deinitializer
+  
+  deinit {
+    unsetupTextField()
+  }
+  
   // MARK: Delegates
   
   private let keyValueObserverProxy = KeyValueObserverProxy()
@@ -23,7 +29,7 @@ KeyValueObserverProxyDelegate {
   open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
   open weak var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
   
-  // MARK: Controllers
+  // MARK: Input Accessory View Controller
   
   open var inputAccessoryViewController: AUIViewController? {
     didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
@@ -32,6 +38,8 @@ KeyValueObserverProxyDelegate {
     oldValue?.view = nil
     inputAccessoryViewController?.view = textField?.inputAccessoryView
   }
+  
+  // MARK: Input View Controller
   
   open var inputViewController: AUIViewController? {
     didSet { didSetInputViewController(oldValue: oldValue) }
@@ -56,8 +64,12 @@ KeyValueObserverProxyDelegate {
     get { return view as? UITextField }
   }
   
-  open override func setupView() {
-    super.setupView()
+  open override func setupControl() {
+    super.setupControl()
+    setupTextField()
+  }
+  
+  open func setupTextField() {
     textField?.placeholder = placeholder
     textField?.keyboardType = keyboardType
     textField?.delegate = textFieldDelegate
@@ -71,16 +83,16 @@ KeyValueObserverProxyDelegate {
     textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
   }
   
-  open override func unsetupView() {
-    super.unsetupView()
+  open override func unsetupControl() {
+    super.unsetupControl()
+    unsetupTextField()
+  }
+  
+  func unsetupTextField() {
     textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
     textField?.delegate = nil
     inputAccessoryViewController?.view = nil
     inputViewController?.view = nil
-  }
-  
-  deinit {
-    unsetupView()
   }
   
   // MARK: States

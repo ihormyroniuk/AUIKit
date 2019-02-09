@@ -24,8 +24,12 @@ open class AUIDefaultSubtextFieldViewController: AUIDefaultSubcontrolViewControl
     get { return subviewController as? AUITextFieldController }
   }
   
-  open override func setupSubviewController() {
-    super.setupSubviewController()
+  open override func setupSubcontrolController() {
+    super.setupSubcontrolController()
+    setupSubtextFieldController()
+  }
+  
+  open func setupSubtextFieldController() {
     subtextFieldController?.didChangeTextDelegate = self
     subtextFieldController?.didTapReturnKeyDelegate = self
     subtextFieldController?.didBeginEditingDelegate = self
@@ -33,8 +37,12 @@ open class AUIDefaultSubtextFieldViewController: AUIDefaultSubcontrolViewControl
     subtextFieldController?.didEndEditingReasonDelegate = self
   }
   
-  open override func unsetupSubviewController() {
-    super.unsetupSubviewController()
+  open override func unsetupSubcontrolController() {
+    super.unsetupSubcontrolController()
+    unsetupSubtextFieldController()
+  }
+  
+  open func unsetupSubtextFieldController() {
     subtextFieldController?.didChangeTextDelegate = nil
     subtextFieldController?.didTapReturnKeyDelegate = nil
     subtextFieldController?.didBeginEditingDelegate = nil

@@ -9,10 +9,6 @@ import Foundation
 
 public protocol AUISubtextFieldViewController: AUISubcontrolViewController {
   
-  // MARK: Subview
-  
-  var subtextFieldController: AUITextFieldController? { get set }
-  
   // MARK: Delegates
   
   var subtextFieldControllerDidChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
@@ -20,5 +16,9 @@ public protocol AUISubtextFieldViewController: AUISubcontrolViewController {
   var subtextFieldControllerDidBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
   var subtextFieldControllerDidEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
   var subtextFieldControllerDidEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate? { get set }
+  
+  // MARK: Subview
+  
+  var subtextFieldController: AUITextFieldController? { get set }
   
 }

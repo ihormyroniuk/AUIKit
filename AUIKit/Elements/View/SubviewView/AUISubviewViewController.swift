@@ -9,8 +9,7 @@ import Foundation
 
 public protocol AUISubviewViewController: AUIViewController {
  
-  // MARK: Subview
+  // MARK: Subview Controller
   
   var subviewController: AUIViewController? { get set }
-  
 }

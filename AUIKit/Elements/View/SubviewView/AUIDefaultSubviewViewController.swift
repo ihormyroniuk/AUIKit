@@ -9,7 +9,7 @@ import Foundation
 
 open class AUIDefaultSubviewViewController: AUIDefaultViewController, AUISubviewViewController {
   
-  // MARK: Subview
+  // MARK: Subview Controller
   
   private var _subviewController: AUIViewController?
   open var subviewController: AUIViewController? {
@@ -33,11 +33,15 @@ open class AUIDefaultSubviewViewController: AUIDefaultViewController, AUISubview
     subviewController?.view = nil
   }
   
-  // MARK: View
+  // MARK: Subview
   
   open var subviewView: (UIView & AUISubviewView)? {
-    set { view = newValue }
-    get { return view as? (UIView & AUISubviewView) }
+    set {
+      view = newValue
+    }
+    get {
+      return view as? (UIView & AUISubviewView)
+    }
   }
   
   open override func setupView() {

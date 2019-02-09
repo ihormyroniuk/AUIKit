@@ -9,14 +9,14 @@ import Foundation
 
 public protocol AUISubcontrolViewController: AUISubviewViewController {
   
-  // MARK: Subview
-  
-  var subcontrolController: AUIControlController? { get set }
-  
   // MARK: Delegates
   
   var subcontrolControllerTouchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate? { get set }
   var subcontrolControllerEditingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
   var subcontrolControllerValueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
+  
+  // MARK: Subview
+  
+  var subcontrolController: AUIControlController? { get set }
   
 }

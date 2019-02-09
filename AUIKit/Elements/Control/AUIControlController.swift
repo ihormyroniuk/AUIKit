@@ -28,9 +28,11 @@ public protocol AUIControlController: AUIViewController {
   var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
   var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
   
-  // MARK: View
+  // MARK: Control
   
   var control: UIControl? { get set }
+  
+  // MARK: Enabled
   
   var isEnabled: Bool { get set }
   
