@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */; };
+		3016176E220F605D00DA07AC /* AUIViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3016176D220F605D00DA07AC /* AUIViewContainer.swift */; };
 		30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */; };
-		30A7CD4A219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */; };
 		30A7CD4E219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */; };
 		30A7CD4F219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3E219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift */; };
 		30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3F219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift */; };
@@ -88,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCellControllers.swift; sourceTree = "<group>"; };
+		3016176D220F605D00DA07AC /* AUIViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewContainer.swift; sourceTree = "<group>"; };
 		30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIContainerCollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
@@ -194,6 +195,7 @@
 		30A7CD36219C144A006DAAA1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				3016176D220F605D00DA07AC /* AUIViewContainer.swift */,
 				30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */,
 				30A7CD38219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift */,
 				30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */,
@@ -615,8 +617,8 @@
 				C53AEB5A2195FA970087F0A2 /* AUITextViewController.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */,
+				3016176E220F605D00DA07AC /* AUIViewContainer.swift in Sources */,
 				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
-				30A7CD4A219C144A006DAAA1 /* AUIContainerCollectionViewCell.swift in Sources */,
 				C53AEB0D2195D9710087F0A2 /* AUIDefaultLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */,

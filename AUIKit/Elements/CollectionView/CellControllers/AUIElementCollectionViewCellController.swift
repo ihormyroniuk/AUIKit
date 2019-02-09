@@ -29,7 +29,7 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
   
   open func cellForRowAtIndexPath(_ indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
     let cell = cellCreateBlock(collectionView, indexPath) ?? UICollectionViewCell()
-    let containerCell = cell as? AUIContainerCollectionViewCell
+    let containerCell = cell as? AUIViewContainer
     view = containerCell?.view
     return cell
   }

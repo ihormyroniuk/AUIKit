@@ -8,9 +8,9 @@
 
 import UIKit
 
-open class AUIContainerCollectionViewCell: AUICollectionViewCell {
+open class AUIContainerCollectionViewCell: AUICollectionViewCell, AUIViewContainer {
   
-  open var view: UIView = UIView()
+  open var view: UIView? = UIView()
   
   // MARK: - Setup
   

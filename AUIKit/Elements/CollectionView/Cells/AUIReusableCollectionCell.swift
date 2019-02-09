@@ -8,12 +8,19 @@
 
 import UIKit
 
-open class AUIReusableCollectionCell: UICollectionViewCell {
+open class AUIReusableCollectionCell: UICollectionViewCell, AUIViewContainer {
   
   // MARK: - Private variables
   
   private var createViewBlock: (() -> UIView)?
   public var containerView: UIView?
+  
+  // MARK: - AUIViewContainer
+  
+  public var view: UIView? {
+    get { return containerView }
+    set { containerView = newValue }
+  }
   
   // MARK: - Life cycle
   
