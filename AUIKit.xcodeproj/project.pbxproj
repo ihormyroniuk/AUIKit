@@ -74,8 +74,6 @@
 		C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4A2195FA280087F0A2 /* AUIDefaultScrollViewController.swift */; };
 		C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */; };
 		C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */; };
-		C53AEB592195FA970087F0A2 /* AUIDefaultTextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB572195FA970087F0A2 /* AUIDefaultTextViewViewController.swift */; };
-		C53AEB5A2195FA970087F0A2 /* AUITextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB582195FA970087F0A2 /* AUITextViewViewController.swift */; };
 		C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC221FBA9670019C79E /* AUISubviewView.swift */; };
 		C53F8EC521FBA9EB0019C79E /* AUISubviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC421FBA9EB0019C79E /* AUISubviewViewController.swift */; };
 		C53F8EC721FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC621FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift */; };
@@ -91,8 +89,6 @@
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
 		C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */; };
 		C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A85B321EE234200A30B42 /* AUITextField.swift */; };
-		C55FA68521E8B2E600DF03A7 /* AUITextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA68421E8B2E600DF03A7 /* AUITextViewController.swift */; };
-		C55FA68721E8B36600DF03A7 /* AUIDefaultTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA68621E8B36600DF03A7 /* AUIDefaultTextViewController.swift */; };
 		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -166,8 +162,6 @@
 		C53AEB4A2195FA280087F0A2 /* AUIDefaultScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultScrollViewController.swift; sourceTree = "<group>"; };
 		C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIScrollViewController.swift; sourceTree = "<group>"; };
 		C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIScrollView.swift; sourceTree = "<group>"; };
-		C53AEB572195FA970087F0A2 /* AUIDefaultTextViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextViewViewController.swift; sourceTree = "<group>"; };
-		C53AEB582195FA970087F0A2 /* AUITextViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITextViewViewController.swift; sourceTree = "<group>"; };
 		C53F8EC221FBA9670019C79E /* AUISubviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubviewView.swift; sourceTree = "<group>"; };
 		C53F8EC421FBA9EB0019C79E /* AUISubviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubviewViewController.swift; sourceTree = "<group>"; };
 		C53F8EC621FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSubviewViewController.swift; sourceTree = "<group>"; };
@@ -183,8 +177,6 @@
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
 		C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultDatePickerController.swift; sourceTree = "<group>"; };
 		C55A85B321EE234200A30B42 /* AUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextField.swift; sourceTree = "<group>"; };
-		C55FA68421E8B2E600DF03A7 /* AUITextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewController.swift; sourceTree = "<group>"; };
-		C55FA68621E8B36600DF03A7 /* AUIDefaultTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextViewController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,15 +344,6 @@
 			path = Page;
 			sourceTree = "<group>";
 		};
-		C535CA05220F2CEC000281E3 /* SubtextView */ = {
-			isa = PBXGroup;
-			children = (
-				C53AEB582195FA970087F0A2 /* AUITextViewViewController.swift */,
-				C53AEB572195FA970087F0A2 /* AUIDefaultTextViewViewController.swift */,
-			);
-			path = SubtextView;
-			sourceTree = "<group>";
-		};
 		C53AEA3E2195AF690087F0A2 = {
 			isa = PBXGroup;
 			children = (
@@ -398,7 +381,6 @@
 				C525D81D21996AF10057E69F /* Control */,
 				C525D81921996AF10057E69F /* Button */,
 				C525D82E219971F70057E69F /* TextField */,
-				C53AEB562195FA970087F0A2 /* TextView */,
 				C525D81621996AF10057E69F /* RefreshControl */,
 				C53AEB212195DD1A0087F0A2 /* Picker */,
 				C5527C7C21F072AC0098D498 /* DatePicker */,
@@ -506,16 +488,6 @@
 				C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */,
 			);
 			path = ScrollView;
-			sourceTree = "<group>";
-		};
-		C53AEB562195FA970087F0A2 /* TextView */ = {
-			isa = PBXGroup;
-			children = (
-				C55FA68421E8B2E600DF03A7 /* AUITextViewController.swift */,
-				C55FA68621E8B36600DF03A7 /* AUIDefaultTextViewController.swift */,
-				C535CA05220F2CEC000281E3 /* SubtextView */,
-			);
-			path = TextView;
 			sourceTree = "<group>";
 		};
 		C53F8EC121FBA8EB0019C79E /* SubviewView */ = {
@@ -652,9 +624,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */,
-				C55FA68521E8B2E600DF03A7 /* AUITextViewController.swift in Sources */,
 				C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */,
-				C55FA68721E8B36600DF03A7 /* AUIDefaultTextViewController.swift in Sources */,
 				C525D831219971F70057E69F /* AUITextFieldController.swift in Sources */,
 				C525D8872199866D0057E69F /* AUIElementTableViewHeaderFooterController.swift in Sources */,
 				C525D82221996AF20057E69F /* AUIButtonController.swift in Sources */,
@@ -696,7 +666,6 @@
 				C525D87B2199866D0057E69F /* AUITableViewSectionController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
-				C53AEB5A2195FA970087F0A2 /* AUITextViewViewController.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */,
 				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
@@ -729,7 +698,6 @@
 				C53AEB2F2195DD1A0087F0A2 /* AUIDefaultTitlePickerController.swift in Sources */,
 				C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */,
 				C525D8862199866D0057E69F /* AUIContainerTableViewHeaderFooterView.swift in Sources */,
-				C53AEB592195FA970087F0A2 /* AUIDefaultTextViewViewController.swift in Sources */,
 				C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */,
 				30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,

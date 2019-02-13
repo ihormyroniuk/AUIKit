@@ -10,12 +10,6 @@ import UIKit
 
 open class AUIDefaultControlController: AUIDefaultViewController, AUIControlController {
   
-  // MARK: Deinitializer
-  
-  deinit {
-    unsetupControl()
-  }
-  
   // MARK: Delegates
 
   open weak var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate?

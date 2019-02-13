@@ -12,12 +12,6 @@ private let UITextFieldTextPropertyKey = "text"
 
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
-
-  // MARK: Deinitializer
-  
-  deinit {
-    unsetupTextField()
-  }
   
   // MARK: Delegates
   
