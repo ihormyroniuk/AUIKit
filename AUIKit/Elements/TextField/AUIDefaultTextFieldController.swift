@@ -51,7 +51,7 @@ KeyValueObserverProxyDelegate {
     textFieldDelegate.delegate = self
   }
   
-  // MARK: View
+  // MARK: TextField
   
   open var textField: UITextField? {
     set { view = newValue }

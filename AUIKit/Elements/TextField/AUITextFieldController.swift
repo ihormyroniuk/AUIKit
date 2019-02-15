@@ -50,4 +50,12 @@ public protocol AUITextFieldController: AUIControlController {
   var autocapitalizationType: UITextAutocapitalizationType { get set }
   var returnKeyType: UIReturnKeyType { get set }
   
+  // MARK: Input Accessory View Controller
+  
+  var inputAccessoryViewController: AUIViewController? { get set }
+  
+  // MARK: Input View Controller
+  
+  var inputViewController: AUIViewController? { get set }
+  
 }
