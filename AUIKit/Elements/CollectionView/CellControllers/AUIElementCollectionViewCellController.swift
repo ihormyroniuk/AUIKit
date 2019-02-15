@@ -10,7 +10,7 @@ import UIKit
 
 open class AUIElementCollectionViewCellController: AUICollectionViewCellController {
   
-  open var didSelectDelegate: AUICollectionViewCellControllerDelegate?
+  open weak var didSelectDelegate: AUICollectionViewCellControllerDelegate?
   
   open var view: UIView?
   
