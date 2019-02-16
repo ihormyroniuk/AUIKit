@@ -217,6 +217,14 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     sectionControllers[section].didSelectCellAtIndex(index)
   }
   
+  func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
+    
+  }
+  
+  func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
+    
+  }
+  
 }
 
 private protocol AUITableViewDelegateProxyDelegate: class {
@@ -230,6 +238,8 @@ private protocol AUITableViewDelegateProxyDelegate: class {
   func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath)
   func didEndDisplayingAtIndexPath(_ indexPath: IndexPath)
   func didSelectCellAtIndexPath(_ indexPath: IndexPath)
+  func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath])
+  func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath])
   
   // MARK: Headers, Footers
   
@@ -289,11 +299,11 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
   // MARK: Cells
   
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-    
+    delegate?.prefetchRowsAtIndexPaths(indexPaths)
   }
   
   func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-    
+    delegate?.cancelPrefetchingForRowsAtIndexPaths(indexPaths)
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

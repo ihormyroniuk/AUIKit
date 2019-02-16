@@ -1,88 +1,29 @@
 //
-//  TableViewSectionController.swift
-//  Level
+//  AUITableViewSectionController.swift
+//  AUIKit
 //
-//  Created by Ihor Myroniuk on 8/17/18.
-//  Copyright © 2018 Brander. All rights reserved.
+//  Created by Ihor Myroniuk on 2/16/19.
 //
 
-import UIKit
+import Foundation
 
-open class AUITableViewSectionController {
+public protocol AUITableViewSectionController: class {
+  func header(tableView: UITableView) -> UIView?
+  var headerHeight: CGFloat { get }
+  var headerEstimatedHeight: CGFloat { get }
+  func didEndDisplayingHeader()
+  func footer(tableView: UITableView) -> UIView?
+  var footerHeight: CGFloat { get }
+  var footerEstimatedHeight: CGFloat { get }
+  func didEndDisplayingFooter()
   
-  public init() {
-    
-  }
+  var cellControllers: [AUITableViewCellController] { get set }
   
-  // MARK: Header, Footer
-  
-  open var headerController: AUITableViewHeaderFooterController?
-  
-  open func header(tableView: UITableView) -> UIView? {
-    return headerController?.view(tableView: tableView)
-  }
-  
-  open var headerHeight: CGFloat {
-    return headerController?.height ?? 0
-  }
-  
-  open var headerEstimatedHeight: CGFloat {
-    return headerController?.estimatedHeight ?? 0
-  }
-  
-  open func didEndDisplayingHeader() {
-    headerController?.didEndDisplaying()
-  }
-  
-  open var footerController: AUITableViewHeaderFooterController?
-  
-  open func footer(tableView: UITableView) -> UIView? {
-    return footerController?.view(tableView: tableView)
-  }
-  
-  open var footerHeight: CGFloat {
-    return footerController?.height ?? 0
-  }
-  
-  open var footerEstimatedHeight: CGFloat {
-    return footerController?.estimatedHeight ?? 0
-  }
-  
-  open func didEndDisplayingFooter() {
-    footerController?.didEndDisplaying()
-  }
-  
-  // MARK: Cells
-  
-  open var cellControllers: [AUITableViewCellController] = []
-  
-  open var numberOfRows: Int { return cellControllers.count }
-  
-  open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-    let index = indexPath.row
-    return cellControllers[index].cellForRowAtIndexPath(indexPath, tableView: tableView)
-  }
-  
-  open func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat {
-    return cellControllers[index].estimatedHeight
-  }
-  
-  open func heightForCellAtIndex(_ index: Int) -> CGFloat {
-    return cellControllers[index].height
-  }
-  
-  open func didEndDisplayingCellAtIndex(index: Int) {
-    if cellControllers.count > index {
-      cellControllers[index].didEndDisplayingCell()
-    }
-  }
-  
-  open func willDisplayCell(_ cell: UITableViewCell, index: Int) {
-    cellControllers[index].willDisplayCell(cell)
-  }
-  
-  open func didSelectCellAtIndex(_ index: Int) {
-    cellControllers[index].didSelectCell()
-  }
-  
+  var numberOfRows: Int { get }
+  func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
+  func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
+  func heightForCellAtIndex(_ index: Int) -> CGFloat
+  func didEndDisplayingCellAtIndex(index: Int)
+  func willDisplayCell(_ cell: UITableViewCell, index: Int)
+  func didSelectCellAtIndex(_ index: Int)
 }

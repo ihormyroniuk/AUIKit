@@ -14,13 +14,10 @@ public protocol AUITableViewCellControllerDidSelectDelegate: class {
 
 public protocol AUITableViewCellController: class {
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
-  
   func willDisplayCell(_ cell: UITableViewCell)
   func didEndDisplayingCell()
-
   var didSelectDelegate: AUITableViewCellControllerDidSelectDelegate? { get set }
   func didSelectCell()
-  
   var estimatedHeight: CGFloat { get }
   var height: CGFloat { get }
 }
