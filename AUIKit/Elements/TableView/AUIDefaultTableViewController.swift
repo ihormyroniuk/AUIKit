@@ -53,25 +53,25 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     tableView?.reloadData()
   }
 
-  /*func deleteSectionControllers(_ sectionControllers: [AUITableViewSectionController]) {
+  /*open func deleteSectionControllers(_ sectionControllers: [AUITableViewSectionController]) {
     let sections = sectionsForSectionControllers(sectionControllers)
     for section in sections {
       self.sectionControllers.remove(at: section)
     }
     reload()
   }
-  func deleteSectionController(_ sectionController: AUITableViewSectionController) {
+  open func deleteSectionController(_ sectionController: AUITableViewSectionController) {
     deleteSectionControllers([sectionController])
   }
   
-  func deleteSectionControllersAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableViewRowAnimation) {
+  open func deleteSectionControllersAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation) {
     let sections = sectionsForSectionControllers(sectionControllers)
     for section in sections {
       self.sectionControllers.remove(at: section)
     }
-    genericScrollView?.deleteSections(IndexSet(sections), with: animation)
+    tableView?.deleteSections(IndexSet(sections), with: animation)
   }
-  func deleteSectionControllerAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableViewRowAnimation) {
+  open func deleteSectionControllerAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation) {
     deleteSectionControllersAnimated([sectionController], animation)
   }
   
@@ -107,7 +107,6 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
       let rows = indexPaths.map({ $0.row })
       sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
     }
-    CATransaction.begin()
     tableView?.beginUpdates()
     tableView?.deleteRows(at: indexPaths, with: animation)
     tableView?.endUpdates()

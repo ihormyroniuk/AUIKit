@@ -23,11 +23,11 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
   }
   
   open var headerHeight: CGFloat {
-    return headerController?.height ?? 0
+    return headerController?.height ?? 1
   }
   
   open var headerEstimatedHeight: CGFloat {
-    return headerController?.estimatedHeight ?? 0
+    return headerController?.estimatedHeight ?? 1
   }
   
   open func didEndDisplayingHeader() {
@@ -41,11 +41,11 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
   }
   
   open var footerHeight: CGFloat {
-    return footerController?.height ?? 0
+    return footerController?.height ?? 1
   }
   
   open var footerEstimatedHeight: CGFloat {
-    return footerController?.estimatedHeight ?? 0
+    return footerController?.estimatedHeight ?? 1
   }
   
   open func didEndDisplayingFooter() {

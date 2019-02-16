@@ -31,7 +31,7 @@ open class AUIElementTableViewHeaderFooterController: AUITableViewHeaderFooterCo
   }
   
   open var estimatedHeight: CGFloat {
-    return UITableView.automaticDimension
+    return 40
   }
   
   open var height: CGFloat {

@@ -18,14 +18,4 @@ open class AUIContainerTableViewHeaderFooterView: AUITableViewHeaderFooterView {
     super.setup()
     addSubview(view)
   }
-  
-  // MARK: AutoLayout
-  
-  open override func autoLayout() {
-    super.autoLayout()
-    /*view.snp.makeConstraints { (make) in
-      make.leading.trailing.top.bottom.equalToSuperview()
-    }*/
-  }
-
 }
