@@ -9,6 +9,8 @@
 import UIKit
 
 open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
+  
+  
 
   // MARK: Delegates
   
@@ -130,11 +132,15 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     return indexPathsBySections
   }
   
-  // MARK: Headers, Footers
-  
   open func numberOfSections() -> Int {
     return sectionControllers.count
   }
+  
+  open func numberOfRowsInSection(_ section: Int) -> Int {
+    return sectionControllers[section].numberOfRows
+  }
+  
+  // MARK: Headers
   
   open func headerInSection(_ section: Int, tableView: UITableView) -> UIView? {
     return sectionControllers[section].header(tableView: tableView)
@@ -148,9 +154,15 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     return sectionControllers[section].headerHeight
   }
   
+  open func willDisplayHeaderView(_ view: UIView, forSection section: Int) {
+    
+  }
+  
   open func didEndDisplayingHeaderInSection(_ section: Int) {
     sectionControllers[section].didEndDisplayingHeader()
   }
+  
+  // MARK: Footers
   
   open func footerInSection(_ section: Int, tableView: UITableView) -> UIView? {
     return sectionControllers[section].footer(tableView: tableView)
@@ -164,14 +176,22 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     return sectionControllers[section].footerHeight
   }
   
+  open func willDisplayFooterView(_ view: UIView, forSection section: Int) {
+    
+  }
+  
   open func didEndDisplayingFooterInSection(_ section: Int) {
     sectionControllers[section].didEndDisplayingFooter()
   }
   
   // MARK: Cells
   
-  open func numberOfRowsInSection(_ section: Int) -> Int {
-    return sectionControllers[section].numberOfRows
+  open func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
+    
+  }
+  
+  open func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
+    
   }
   
   open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
@@ -191,16 +211,6 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     return sectionControllers[section].heightForCellAtIndex(index)
   }
   
-  open func didEndDisplayingAtIndexPath(_ indexPath: IndexPath) {
-    if let index = deletedIndexPaths.index(of: indexPath) {
-      deletedIndexPaths.remove(at: index)
-      return
-    }
-    let section = indexPath.section
-    let index = indexPath.row
-    return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
-  }
-  
   open func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
     if deletedIndexPaths.contains(indexPath) {
       deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
@@ -216,40 +226,47 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     sectionControllers[section].didSelectCellAtIndex(index)
   }
   
-  func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
-    
+  open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+    if let index = deletedIndexPaths.index(of: indexPath) {
+      deletedIndexPaths.remove(at: index)
+      return
+    }
+    let section = indexPath.section
+    let index = indexPath.row
+    return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
   }
-  
-  func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
-    
-  }
-  
 }
 
 private protocol AUITableViewDelegateProxyDelegate: class {
   
+  func numberOfSections() -> Int
+  func numberOfRowsInSection(_ section: Int) -> Int
+  
+  // MARK: Headers
+
+  func headerInSection(_ section: Int, tableView: UITableView) -> UIView?
+  func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat
+  func heightForHeaderInSection(_ section: Int) -> CGFloat
+  func willDisplayHeaderView(_ view: UIView, forSection section: Int)
+  func didEndDisplayingHeaderInSection(_ section: Int)
+  
   // MARK: Cells
   
-  func numberOfRowsInSection(_ section: Int) -> Int
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
   func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
   func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath)
-  func didEndDisplayingAtIndexPath(_ indexPath: IndexPath)
+  func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
   func didSelectCellAtIndexPath(_ indexPath: IndexPath)
   func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath])
   func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath])
   
-  // MARK: Headers, Footers
+  // MARK: Footers
   
-  func numberOfSections() -> Int
-  func headerInSection(_ section: Int, tableView: UITableView) -> UIView?
-  func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat
-  func heightForHeaderInSection(_ section: Int) -> CGFloat
-  func didEndDisplayingHeaderInSection(_ section: Int)
   func footerInSection(_ section: Int, tableView: UITableView) -> UIView?
   func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat
   func heightForFooterInSection(_ section: Int) -> CGFloat
+  func willDisplayFooterView(_ view: UIView, forSection section: Int)
   func didEndDisplayingFooterInSection(_ section: Int)
 }
 
@@ -257,11 +274,15 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
   
   weak var delegate: AUITableViewDelegateProxyDelegate?
   
-  // MARK: Headers, Footers
-  
   func numberOfSections(in tableView: UITableView) -> Int {
     return delegate?.numberOfSections() ?? 0
   }
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return delegate?.numberOfRowsInSection(section) ?? 0
+  }
+  
+  // MARK: Headers
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     return delegate?.headerInSection(section, tableView: tableView)
@@ -275,9 +296,15 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     return delegate?.heightForHeaderInSection(section) ?? 0
   }
   
+  func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    
+  }
+  
   func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
     delegate?.didEndDisplayingHeaderInSection(section)
   }
+  
+  // MARK: Footers
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     return delegate?.footerInSection(section, tableView: tableView)
@@ -291,22 +318,22 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     return delegate?.heightForFooterInSection(section) ?? 0
   }
   
+  func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    
+  }
+  
   func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
     delegate?.didEndDisplayingFooterInSection(section)
   }
   
   // MARK: Cells
-  
+
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
     delegate?.prefetchRowsAtIndexPaths(indexPaths)
   }
   
   func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
     delegate?.cancelPrefetchingForRowsAtIndexPaths(indexPaths)
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return delegate?.numberOfRowsInSection(section) ?? 0
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -325,12 +352,12 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     delegate?.willDisplayCell(cell, atIndexPath: indexPath)
   }
   
-  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    delegate?.didEndDisplayingAtIndexPath(indexPath)
-  }
-  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     delegate?.didSelectCellAtIndexPath(indexPath)
+  }
+  
+  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    delegate?.didEndDisplayingCellAtIndexPath(indexPath)
   }
   
 }

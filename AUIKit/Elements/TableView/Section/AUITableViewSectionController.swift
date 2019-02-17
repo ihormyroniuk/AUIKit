@@ -8,14 +8,16 @@
 import Foundation
 
 public protocol AUITableViewSectionController: class {
+  
+  // MARK: Header
+  
   func header(tableView: UITableView) -> UIView?
-  var headerHeight: CGFloat { get }
   var headerEstimatedHeight: CGFloat { get }
+  var headerHeight: CGFloat { get }
+  func willDisplayHeader(_ view: UIView)
   func didEndDisplayingHeader()
-  func footer(tableView: UITableView) -> UIView?
-  var footerHeight: CGFloat { get }
-  var footerEstimatedHeight: CGFloat { get }
-  func didEndDisplayingFooter()
+
+  // MARK: Cells
   
   var cellControllers: [AUITableViewCellController] { get set }
   
@@ -23,7 +25,15 @@ public protocol AUITableViewSectionController: class {
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
   func heightForCellAtIndex(_ index: Int) -> CGFloat
-  func didEndDisplayingCellAtIndex(index: Int)
   func willDisplayCell(_ cell: UITableViewCell, index: Int)
   func didSelectCellAtIndex(_ index: Int)
+  func didEndDisplayingCellAtIndex(index: Int)
+
+  // MARK: Footer
+  
+  func footer(tableView: UITableView) -> UIView?
+  var footerEstimatedHeight: CGFloat { get }
+  var footerHeight: CGFloat { get }
+  func willDisplayFooter(_ view: UIView)
+  func didEndDisplayingFooter()
 }

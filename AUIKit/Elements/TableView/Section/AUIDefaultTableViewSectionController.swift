@@ -9,12 +9,12 @@
 import UIKit
 
 open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
-  
+
   public init() {
     
   }
   
-  // MARK: Header, Footer
+  // MARK: Header
   
   open var headerController: AUITableViewHeaderFooterController?
   
@@ -22,34 +22,19 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
     return headerController?.view(tableView: tableView)
   }
   
+  open var headerEstimatedHeight: CGFloat {
+    return headerController?.estimatedHeight ?? 1
+  }
   open var headerHeight: CGFloat {
     return headerController?.height ?? 1
   }
   
-  open var headerEstimatedHeight: CGFloat {
-    return headerController?.estimatedHeight ?? 1
+  open func willDisplayHeader(_ view: UIView) {
+    
   }
   
   open func didEndDisplayingHeader() {
     headerController?.didEndDisplaying()
-  }
-  
-  open var footerController: AUITableViewHeaderFooterController?
-  
-  open func footer(tableView: UITableView) -> UIView? {
-    return footerController?.view(tableView: tableView)
-  }
-  
-  open var footerHeight: CGFloat {
-    return footerController?.height ?? 1
-  }
-  
-  open var footerEstimatedHeight: CGFloat {
-    return footerController?.estimatedHeight ?? 1
-  }
-  
-  open func didEndDisplayingFooter() {
-    footerController?.didEndDisplaying()
   }
   
   // MARK: Cells
@@ -83,6 +68,30 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
   
   open func didSelectCellAtIndex(_ index: Int) {
     cellControllers[index].didSelectCell()
+  }
+  
+  // MARK: Footer
+  
+  open var footerController: AUITableViewHeaderFooterController?
+  
+  open func footer(tableView: UITableView) -> UIView? {
+    return footerController?.view(tableView: tableView)
+  }
+  
+  open var footerHeight: CGFloat {
+    return footerController?.height ?? 1
+  }
+  
+  open var footerEstimatedHeight: CGFloat {
+    return footerController?.estimatedHeight ?? 1
+  }
+  
+  open func willDisplayFooter(_ view: UIView) {
+    
+  }
+  
+  open func didEndDisplayingFooter() {
+    footerController?.didEndDisplaying()
   }
   
 }
