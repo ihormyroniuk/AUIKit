@@ -8,9 +8,14 @@
 
 import UIKit
 
+public protocol AUICollectionCellWillDisplayDelegate: class {
+  func willDisplayCell(with controller: AUIElementCollectionViewCellController, indexPath: IndexPath)
+}
+
 open class AUIElementCollectionViewCellController: AUICollectionViewCellController {
   
   open weak var didSelectDelegate: AUICollectionViewCellControllerDelegate?
+  open weak var willDisplayDelegate: AUICollectionCellWillDisplayDelegate?
   
   open var view: UIView?
   
@@ -37,6 +42,7 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
   
   open func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath) {
     if let view = view { controller.view = view }
+    willDisplayDelegate?.willDisplayCell(with: self, indexPath: indexPath)
   }
   
   open func didEndDisplayCell() {
