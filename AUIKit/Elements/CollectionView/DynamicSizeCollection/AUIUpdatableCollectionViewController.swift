@@ -65,6 +65,12 @@ open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController 
     collectionView?.delegate = nil
     collectionView?.prefetchDataSource = nil
   }
+  
+  // MARK: - Cell controllers count
+  
+  func getCellControllersCount() -> Int {
+    return cellControllers.count
+  }
 }
 
 // MARK: - AUIInsertingCellControllers
@@ -107,15 +113,6 @@ extension AUIUpdatableCollectionViewController: AUIDeletingCellControllers {
     deleteCells(with: cellControllers, animated: animated)
   }
 }
-
-// MARK: - AUIUpdatingCellControllers
-
-//extension AUIUpdatableCollectionViewController: AUIUpdatingCellControllers {
-//
-//  open func updateCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
-//    updateCells(with: cellControllers, animated: animated)
-//  }
-//}
 
 // MARK: - UpdatableCollectionViewLayoutDelegate
 
@@ -329,21 +326,4 @@ private extension AUIUpdatableCollectionViewController {
       collectionView?.reloadData()
     }
   }
-  
-  // MARK: - Update cells
-  
-//  func updateCells(with updatableCellControllers: [AUICollectionViewCellController], animated: Bool) {
-//    deleteCells(with: updatableCellControllers, animated: animated)
-//  }
-//
-//  func updateItems(at indexPaths: [IndexPath], animated: Bool) {
-//    layout?.prepareForUpdate(at: indexPaths)
-//    if animated {
-//      collectionView?.performBatchUpdates({ [weak self] in
-//        self?.collectionView?.reloadItems(at: indexPaths)
-//      }, completion: nil)
-//    } else {
-//      collectionView?.reloadData()
-//    }
-//  }
 }
