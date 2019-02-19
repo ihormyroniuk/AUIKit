@@ -68,7 +68,7 @@ open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController 
   
   // MARK: - Cell controllers count
   
-  func getCellControllersCount() -> Int {
+  open func getCellControllersCount() -> Int {
     return cellControllers.count
   }
 }
