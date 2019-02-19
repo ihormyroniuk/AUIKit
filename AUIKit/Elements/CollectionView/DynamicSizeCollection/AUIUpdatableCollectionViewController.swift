@@ -112,6 +112,10 @@ extension AUIUpdatableCollectionViewController: AUIDeletingCellControllers {
   open func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool) {
     deleteCells(with: cellControllers, animated: animated)
   }
+  
+  open func deleteAllCellControllers(animated: Bool) {
+    deleteCellControllers(cellControllers, animated: animated)
+  }
 }
 
 // MARK: - UpdatableCollectionViewLayoutDelegate

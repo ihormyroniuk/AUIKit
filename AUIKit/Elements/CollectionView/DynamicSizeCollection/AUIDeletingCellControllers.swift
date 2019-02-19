@@ -7,4 +7,5 @@ import UIKit
 
 public protocol AUIDeletingCellControllers {
   func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], animated: Bool)
+  func deleteAllCellControllers(animated: Bool)
 }
