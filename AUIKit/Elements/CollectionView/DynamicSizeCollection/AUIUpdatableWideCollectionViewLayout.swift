@@ -124,7 +124,8 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   // MARK: - Prepare for delete
   
   open func prepareForDelete(at indexPaths: [IndexPath]) {
-    indexPaths.forEach { deleteLayoutAttribute(for: $0) }
+    let sortedIndexPaths = indexPaths.sorted(by: > )
+    sortedIndexPaths.forEach { deleteLayoutAttribute(for: $0) }
   }
   
   private func deleteLayoutAttribute(for indexPath: IndexPath) {
