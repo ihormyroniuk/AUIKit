@@ -23,10 +23,10 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
   }
   
   open var headerEstimatedHeight: CGFloat {
-    return headerController?.estimatedHeight ?? 1
+    return headerController?.estimatedHeight ?? 0
   }
   open var headerHeight: CGFloat {
-    return headerController?.height ?? 1
+    return headerController?.height ?? 0
   }
   
   open func willDisplayHeader(_ view: UIView) {
