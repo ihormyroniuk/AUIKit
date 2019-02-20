@@ -13,7 +13,11 @@ open class AUIDefaultSegmentedControlItemController: AUISegmentedControlItemCont
     // MARK: Title
  
     open var title: String?
+  
+    public init() {
     
+    }
+  
     open weak var didSelectDelegate: AUISegmentedControlItemControllerDidSelectDelegate?
     
     open func didSelect() {

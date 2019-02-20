@@ -17,7 +17,11 @@ open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AU
             
         }
     }
+  
+  public override init() {
     
+  }
+  
     // MARK: SegmentedControl
     
     open var segmentedControl: UISegmentedControl? {
