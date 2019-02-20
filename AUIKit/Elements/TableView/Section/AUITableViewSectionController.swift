@@ -9,6 +9,8 @@ import Foundation
 
 public protocol AUITableViewSectionController: class {
   
+  var numberOfRows: Int { get }
+  
   // MARK: Header
   
   func header(tableView: UITableView) -> UIView?
@@ -20,8 +22,6 @@ public protocol AUITableViewSectionController: class {
   // MARK: Cells
   
   var cellControllers: [AUITableViewCellController] { get set }
-  
-  var numberOfRows: Int { get }
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
   func heightForCellAtIndex(_ index: Int) -> CGFloat

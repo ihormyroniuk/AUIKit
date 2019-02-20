@@ -79,11 +79,11 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
   }
   
   open var footerHeight: CGFloat {
-    return footerController?.height ?? 1
+    return footerController?.height ?? 0
   }
   
   open var footerEstimatedHeight: CGFloat {
-    return footerController?.estimatedHeight ?? 1
+    return footerController?.estimatedHeight ?? 0
   }
   
   open func willDisplayFooter(_ view: UIView) {

@@ -92,6 +92,10 @@
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
 		C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */; };
 		C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A85B321EE234200A30B42 /* AUITextField.swift */; };
+		C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */; };
+		C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */; };
+		C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */; };
+		C55B80AE221D83AC003D84C1 /* AUISegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */; };
 		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -183,6 +187,10 @@
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
 		C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultDatePickerController.swift; sourceTree = "<group>"; };
 		C55A85B321EE234200A30B42 /* AUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextField.swift; sourceTree = "<group>"; };
+		C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultSegmentedControlItemController.swift; sourceTree = "<group>"; };
+		C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultSegmentedControlController.swift; sourceTree = "<group>"; };
+		C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlItemController.swift; sourceTree = "<group>"; };
+		C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -393,6 +401,7 @@
 				C53AEAFB2195D9710087F0A2 /* Label */,
 				C53AEB102195DBE30087F0A2 /* ImageView */,
 				C525D81D21996AF10057E69F /* Control */,
+				C55B80A6221D8365003D84C1 /* SegmentControl */,
 				C525D81921996AF10057E69F /* Button */,
 				C525D82E219971F70057E69F /* TextField */,
 				C53AEB492195FA280087F0A2 /* ScrollView */,
@@ -563,6 +572,17 @@
 			path = DatePicker;
 			sourceTree = "<group>";
 		};
+		C55B80A6221D8365003D84C1 /* SegmentControl */ = {
+			isa = PBXGroup;
+			children = (
+				C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */,
+				C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */,
+				C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */,
+				C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */,
+			);
+			path = SegmentControl;
+			sourceTree = "<group>";
+		};
 		C563738021EA5551008FAF87 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +672,7 @@
 				C53E7C7B22187747006CB0D9 /* AUIDefaultSubtextViewViewController.swift in Sources */,
 				C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */,
 				C525D831219971F70057E69F /* AUITextFieldController.swift in Sources */,
+				C55B80AE221D83AC003D84C1 /* AUISegmentedControlController.swift in Sources */,
 				C525D8872199866D0057E69F /* AUIElementTableViewHeaderFooterController.swift in Sources */,
 				C525D82221996AF20057E69F /* AUIButtonController.swift in Sources */,
 				C525D82121996AF20057E69F /* AUIDefaultRefreshControlController.swift in Sources */,
@@ -690,6 +711,7 @@
 				C525D8852199866D0057E69F /* AUIDefaultTableViewController.swift in Sources */,
 				C525D87B2199866D0057E69F /* AUIDefaultTableViewSectionController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
+				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
@@ -704,6 +726,7 @@
 				C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */,
 				C53F8EC521FBA9EB0019C79E /* AUISubviewViewController.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
+				C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */,
 				C525D88D219998AA0057E69F /* AUIScreenController.swift in Sources */,
 				C53F8ECC21FBAF080019C79E /* AUISubcontrolViewController.swift in Sources */,
 				C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */,
@@ -729,6 +752,7 @@
 				C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */,
 				30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,
+				C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */,
 				C525D82521996AF20057E69F /* AUIControlController.swift in Sources */,
 				C51DBB2C2216F62D0009605A /* AUIDefaultTextViewController.swift in Sources */,
 				C525D87F2199866D0057E69F /* AUIGenericContainerTableViewCell.swift in Sources */,
