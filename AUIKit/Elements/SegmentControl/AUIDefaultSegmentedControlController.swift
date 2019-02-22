@@ -47,6 +47,9 @@ open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AU
       if let title = itemController.title {
         segmentedControl?.insertSegment(withTitle: title, at: index, animated: false)
       }
+      if itemController === selectedItemController {
+        segmentedControl?.selectedSegmentIndex = index
+      }
       index += 1
     }
   }
