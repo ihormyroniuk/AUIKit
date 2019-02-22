@@ -12,49 +12,52 @@ open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AU
     
     // MARK: Items
     
-    open var itemControllers: [AUISegmentedControlItemController] = [] {
-        didSet {
+  open var itemControllers: [AUISegmentedControlItemController] = [] {
+    didSet {
             
-        }
     }
+  }
+  
+  open var selectedItemController: AUISegmentedControlItemController?
   
   public override init() {
     
   }
   
-    // MARK: SegmentedControl
+  // MARK: SegmentedControl
     
-    open var segmentedControl: UISegmentedControl? {
-        set {
-            view = newValue
-        }
-        get {
-            return view as? UISegmentedControl
-        }
+  open var segmentedControl: UISegmentedControl? {
+    set {
+      view = newValue
     }
+    get {
+      return view as? UISegmentedControl
+    }
+  }
     
-    open override func setupControl() {
-        super.setupControl()
-        setupSegmentedControl()
-    }
+  open override func setupControl() {
+    super.setupControl()
+    setupSegmentedControl()
+  }
     
-    open func setupSegmentedControl() {
-        segmentedControl?.removeAllSegments()
-        var index = 0
-        for itemController in itemControllers {
-            if let title = itemController.title {
-                segmentedControl?.insertSegment(withTitle: title, at: index, animated: false)
-            }
-            index += 1
-        }
+  open func setupSegmentedControl() {
+    segmentedControl?.removeAllSegments()
+    var index = 0
+    for itemController in itemControllers {
+      if let title = itemController.title {
+        segmentedControl?.insertSegment(withTitle: title, at: index, animated: false)
+      }
+      index += 1
     }
+  }
     
-    open override func valueChangedEventAction() {
-        if let selectedSegmentIndex = segmentedControl?.selectedSegmentIndex {
-            let selectedItemController = itemControllers[selectedSegmentIndex]
-            selectedItemController.didSelect()
-        }
-        super.valueChangedEventAction()
+  open override func valueChangedEventAction() {
+    if let selectedSegmentIndex = segmentedControl?.selectedSegmentIndex {
+      let selectedItemController = itemControllers[selectedSegmentIndex]
+      self.selectedItemController = selectedItemController
+      selectedItemController.didSelect()
     }
+    super.valueChangedEventAction()
+  }
     
 }
