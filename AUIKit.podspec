@@ -12,7 +12,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "10.0"
 
-  s.source       = { :git => "https://github.com/jobihormyroniuk/AUIKit.git", :tag => "0.0.3" }
+  s.source       = { :git => "https://github.com/jobihormyroniuk/AUIKit.git", 
+:tag => "0.1" }
 
   s.source_files = "AUIKit/**/*.{swift}"
 
