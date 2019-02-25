@@ -9,8 +9,6 @@
 import UIKit
 
 open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
-  
-  
 
   // MARK: Delegates
   
@@ -222,8 +220,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   
   open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
     let section = indexPath.section
-    let index = indexPath.row
-    sectionControllers[section].didSelectCellAtIndex(index)
+    sectionControllers[section].didSelectCellAtIndex(section)
   }
   
   open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {

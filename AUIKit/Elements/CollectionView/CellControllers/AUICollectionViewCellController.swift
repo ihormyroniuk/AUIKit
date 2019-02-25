@@ -14,14 +14,11 @@ public protocol AUICollectionViewCellControllerDelegate: class {
 
 public protocol AUICollectionViewCellController: class {
   
-  var estimatedSize: CGSize { get }
-  var size: CGSize { get set }
-  
   var didSelectDelegate: AUICollectionViewCellControllerDelegate? { get set }
   
   func cellForRowAtIndexPath(_ indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell
   
-  func willDisplayCell(_ cell: UICollectionViewCell)
+  func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath)
   func didEndDisplayCell()
   
   func didSelectCell()

@@ -24,6 +24,7 @@ open class AUIDefaultScrollViewController: AUIDefaultViewController, AUIScrollVi
   
   open func setupScrollView() {
     scrollView?.keyboardDismissMode = keyboardDismissMode
+    scrollView?.isScrollEnabled = isScrollEnabled
   }
   
   open override func unsetupView() {

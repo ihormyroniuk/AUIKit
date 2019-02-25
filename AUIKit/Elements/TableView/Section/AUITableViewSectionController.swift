@@ -20,7 +20,7 @@ public protocol AUITableViewSectionController: class {
   func didEndDisplayingHeader()
 
   // MARK: Cells
-  
+
   var cellControllers: [AUITableViewCellController] { get set }
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat

@@ -16,7 +16,6 @@ public protocol AUICollectionViewDelegateProxyDelegate: class {
   func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
 }
 
 // MARK: - AUIScrollViewDelegateProxyDelegate
@@ -27,12 +26,17 @@ public protocol AUIScrollViewDelegate: class {
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)
 }
 
+public protocol AUIScrollWillBeginDraggingDelegate: class {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+}
+
 // MARK: - AUICollectionViewDelegateProxy
 
-open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*, UICollectionViewDelegateFlowLayout*/ {
+open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate {
   
   open weak var delegate: AUICollectionViewDelegateProxyDelegate?
   open weak var scrollDelegate: AUIScrollViewDelegate?
+  open weak var scrollWillBeginDraggingDelegate: AUIScrollWillBeginDraggingDelegate?
   
   open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     delegate?.collectionView(collectionView, didSelectItemAt: indexPath)
@@ -66,11 +70,8 @@ open class AUICollectionViewDelegateProxy: NSObject, UICollectionViewDelegate/*,
     scrollDelegate?.scrollViewDidEndScrollingAnimation(scrollView)
   }
   
-  // MARK: - UICollectionViewDelegateFlowLayout
-  
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    return delegate?.collectionView(collectionView, layout:collectionViewLayout, sizeForItemAt:indexPath) ?? CGSize.zero
-//  }
-  
+  open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    scrollWillBeginDraggingDelegate?.scrollViewWillBeginDragging(scrollView)
+  }
   
 }

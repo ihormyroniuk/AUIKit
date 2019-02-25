@@ -21,6 +21,10 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     set { delegateProxy.scrollDelegate = newValue }
     get { return delegateProxy.scrollDelegate }
   }
+  open weak var scrollWillBeginDraggingDelegate: AUIScrollWillBeginDraggingDelegate? {
+    set { delegateProxy.scrollWillBeginDraggingDelegate = newValue }
+    get { return delegateProxy.scrollWillBeginDraggingDelegate }
+  }
   
   // MARK: - Controllers
   
@@ -84,6 +88,93 @@ open class AUICollectionViewController: AUIDefaultScrollViewController {
     }
     return indexPathes
   }
+  
+  // MARK: - Deleting
+  
+  open var deletedIndexPaths: [IndexPath] = []
+  open func deleteCellControllersAnimated(_ cellControllersToDelete: [AUICollectionViewCellController]) {
+    let indexes = cellControllersToDelete.compactMap { cellController -> Int? in
+      cellControllers.firstIndex(where: { $0 === cellController })
+    }
+    let removableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+    deletedIndexPaths = removableIndexPaths
+    collectionView?.performBatchUpdates({
+      cellControllers = cellControllers.filter({ controller -> Bool in
+        !cellControllersToDelete.contains(where: { $0 === controller })
+      })
+      self.collectionView?.deleteItems(at: removableIndexPaths)
+    }, completion: { _ in
+      
+    })
+  }
+  
+  open func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController) {
+    deleteCellControllersAnimated([cellController])
+  }
+  
+  open func deleteCellControllers(_ cellControllersToDelete: [AUICollectionViewCellController]) {
+    cellControllers = cellControllers.filter({ controller -> Bool in
+      !cellControllersToDelete.contains(where: { $0 === controller })
+    })
+    reload()
+  }
+  
+  open func deleteCellController(_ cellController: AUICollectionViewCellController) {
+    deleteCellControllers([cellController])
+  }
+  
+  // MARK: - Insert at beging
+  
+  open func insertCellControllersAtBeginAnimated(_ cellControllersToInsert: [AUICollectionViewCellController]) {
+    let indexes = cellControllersToInsert.compactMap { cellController -> Int? in
+      cellControllersToInsert.firstIndex(where: { $0 === cellController })
+    }
+    let insertableIndexPaths = indexes.map { IndexPath(item: $0, section: 0) }
+    collectionView?.performBatchUpdates({
+      cellControllers.insert(contentsOf: cellControllersToInsert, at: 0)
+      self.collectionView?.insertItems(at: insertableIndexPaths)
+    }, completion: nil)
+    
+  }
+  
+  open func insertCellControllerAtBeginAnimated(_ cellController: AUICollectionViewCellController) {
+    insertCellControllersAtBeginAnimated([cellController])
+  }
+  
+  open func insertCellControllersAtBegin(_ cellControllersToInsert: [AUICollectionViewCellController]) {
+    cellControllers.insert(contentsOf: cellControllersToInsert, at: 0)
+    reload()
+  }
+  
+  open func insertCellControllerAtBegin(_ cellController: AUICollectionViewCellController) {
+    insertCellControllersAtBegin([cellController])
+  }
+  
+  // MARK: - Insert at end
+  
+  open func insertCellControllersAtEnd(_ cellControllersToInsert: [AUICollectionViewCellController]) {
+    cellControllers.append(contentsOf: cellControllersToInsert)
+    reload()
+  }
+  
+  open func insertCellControllerAtEnd(_ cellController: AUICollectionViewCellController) {
+    insertCellControllersAtEnd([cellController])
+  }
+  
+  // MARK: - Insert before
+  
+  open func insertCellControllers(_ cellControllersToInsert: [AUICollectionViewCellController],
+                                  before: AUICollectionViewCellController) {
+    let cellIndex = cellControllers.firstIndex { $0 === before }
+    guard let index = cellIndex else { return }
+    cellControllers.insert(contentsOf: cellControllersToInsert, at: index)
+    reload()
+  }
+  
+  open func insertCellController(_ cellController: AUICollectionViewCellController,
+                                 before: AUICollectionViewCellController) {
+    insertCellControllers([cellController], before: before)
+  }
 }
 
 // MARK: - AUICollectionViewDelegateProxyDelegate
@@ -103,15 +194,19 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   }
   
   open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    cellControllers[indexPath.row].willDisplayCell(cell)
+    cellControllers[indexPath.row].willDisplayCell(cell, indexPath: indexPath)
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if deletedIndexPaths.contains(indexPath) {
+      if let index = deletedIndexPaths.index(of: indexPath) {
+        deletedIndexPaths.remove(at: index)
+      }
+      return
+    }
+    if indexPath.row < cellControllers.count {
       cellControllers[indexPath.row].didEndDisplayCell()
-  }
-  
-  open func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return cellControllers[indexPath.row].size
+    }
   }
   
 }

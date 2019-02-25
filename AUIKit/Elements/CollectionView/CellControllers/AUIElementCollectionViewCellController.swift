@@ -8,12 +8,14 @@
 
 import UIKit
 
+public protocol AUICollectionCellWillDisplayDelegate: class {
+  func willDisplayCell(with controller: AUIElementCollectionViewCellController, indexPath: IndexPath)
+}
+
 open class AUIElementCollectionViewCellController: AUICollectionViewCellController {
   
-  open var estimatedSize: CGSize = .zero
-  open var size: CGSize = .zero
-  
-  open var didSelectDelegate: AUICollectionViewCellControllerDelegate?
+  open weak var didSelectDelegate: AUICollectionViewCellControllerDelegate?
+  open weak var willDisplayDelegate: AUICollectionCellWillDisplayDelegate?
   
   open var view: UIView?
   
@@ -32,19 +34,19 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
   
   open func cellForRowAtIndexPath(_ indexPath: IndexPath, collectionView: UICollectionView) -> UICollectionViewCell {
     let cell = cellCreateBlock(collectionView, indexPath) ?? UICollectionViewCell()
-    let containerCell = cell as? AUIContainerCollectionViewCell
+    let containerCell = cell as? AUIViewContainer
     view = containerCell?.view
     if let view = view { controller.view = view }
     return cell
   }
   
-  open func willDisplayCell(_ cell: UICollectionViewCell) {
-    
+  open func willDisplayCell(_ cell: UICollectionViewCell, indexPath: IndexPath) {
+    if let view = view { controller.view = view }
+    willDisplayDelegate?.willDisplayCell(with: self, indexPath: indexPath)
   }
   
   open func didEndDisplayCell() {
     if view != nil { controller.view = nil }
-    view = nil
   }
   
   

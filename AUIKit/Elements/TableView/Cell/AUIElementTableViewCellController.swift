@@ -25,6 +25,7 @@ open class AUIElementTableViewCellController: AUITableViewCellController {
     self.cell = cell
   }
   
+  
   open func didSelectCell() {
     didSelectDelegate?.didSelectTableViewCellController(self)
   }

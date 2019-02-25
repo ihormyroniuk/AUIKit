@@ -30,7 +30,7 @@ public protocol AUITextViewController: AUIScrollViewController {
   // MARK: Text Field
   
   var textView: UITextView? { get set }
-  
+
   var text: String! { get set }
   
   var keyboardType: UIKeyboardType { get set }
@@ -46,5 +46,4 @@ public protocol AUITextViewController: AUIScrollViewController {
   // MARK: Input View Controller
   
   var inputViewController: AUIViewController? { get set }
-  
 }
