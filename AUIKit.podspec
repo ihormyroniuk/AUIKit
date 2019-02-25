@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AUIKit"
-  s.version      = "0.0.3"
+  s.version      = "0.1"
   s.summary      = "Advanced UIKit."
   s.description  = "Advanced UIKit approach."
   s.homepage     = "https://github.com/jobihormyroniuk/AUIKit"
