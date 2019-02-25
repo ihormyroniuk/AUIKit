@@ -130,41 +130,41 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
   // MARK: UITextFieldDelegateProxyDelegate
   
-  func textViewShouldBeginEditing() -> Bool {
+  open func textViewShouldBeginEditing() -> Bool {
     return true
   }
   
-  func textViewDidBeginEditing() {
+  open func textViewDidBeginEditing() {
     didBeginEditingDelegate?.textViewControllerDidBeginEditing(self)
   }
   
-  func textViewShouldEndEditing() -> Bool {
+  open func textViewShouldEndEditing() -> Bool {
     return true
   }
   
-  func textViewDidEndEditing() {
+  open func textViewDidEndEditing() {
     didEndEditingDelegate?.textViewControllerDidEndEditing(self)
   }
   
-  func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+  open func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
     return true
   }
   
-  func textViewDidChange() {
+  open func textViewDidChange() {
     if let textView = textView {
       text = textView.text
     }
   }
   
-  func textViewDidChangeSelection() {
+  open func textViewDidChangeSelection() {
     
   }
   
-  func textView(shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+  open func textView(shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
     return true
   }
   
-  func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+  open func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
     return true
   }
   
