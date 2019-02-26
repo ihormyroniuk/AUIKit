@@ -27,12 +27,34 @@ open class AUIDynamicSizeCollectionCell: AUIReusableCollectionCell {
   }
   
   override open func sizeThatFits(_ size: CGSize) -> CGSize {
-    var resultHeight: CGFloat = 0
-    let containerViewSize = containerView?.sizeThatFits(size)
-    resultHeight += insets.top + insets.bottom
-    resultHeight += height ?? containerViewSize?.height ?? 44
-    var resultWidth = insets.left + insets.right
-    resultWidth += width ?? containerViewSize?.width ?? size.width
-    return CGSize(width: resultWidth, height: resultHeight)
+    let correctedSize = getCorrectedContentSize(from: size, insets: insets)
+    let containerViewSize = containerView?.sizeThatFits(correctedSize) ?? getDefaultSize()
+    
+    let resultSize = CGSize(
+      width: (width ?? containerViewSize.width) + calculateWidthOffset(insets: insets),
+      height: (height ?? containerViewSize.height) + calculateHeightOffset(insets: insets))
+    return resultSize
+  }
+  
+  private func getDefaultSize() -> CGSize {
+    return CGSize(width: UIScreen.main.bounds.width, height: 44)
+  }
+  
+  private func calculateWidthOffset(insets: UIEdgeInsets) -> CGFloat {
+    return insets.left + insets.right
+  }
+  
+  private func calculateHeightOffset(insets: UIEdgeInsets) -> CGFloat {
+    return insets.top + insets.bottom
+  }
+  
+  private func getCorrectedContentSize(from size: CGSize, insets: UIEdgeInsets) -> CGSize {
+    return CGSize(width: width ?? size.width - calculateWidthOffset(insets: insets),
+                  height: height ?? size.height - calculateHeightOffset(insets: insets))
+  }
+  
+  private func getCorrectedSize(from size: CGSize, insets: UIEdgeInsets) -> CGSize {
+    return CGSize(width: size.width - calculateWidthOffset(insets: insets),
+                  height: size.height - calculateHeightOffset(insets: insets))
   }
 }
