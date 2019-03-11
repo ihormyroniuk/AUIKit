@@ -102,6 +102,7 @@ open class AUIReusableCollectionCell: UICollectionViewCell, AUIViewContainer {
       constant: -insets.bottom)
     
     containerView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.removeConstraints(contentView.constraints)
     contentView.addConstraints([leading, top, bottom, trailing])
     
     if let height = height {
