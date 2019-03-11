@@ -62,7 +62,7 @@ open class AUIReusableCollectionCell: UICollectionViewCell, AUIViewContainer {
     }
   }
   
-  private func placeContainerView(insets: UIEdgeInsets, height: CGFloat?, width: CGFloat?) {
+  open func placeContainerView(insets: UIEdgeInsets, height: CGFloat?, width: CGFloat?) {
     guard let containerView = containerView else { return }
     
     let leading = NSLayoutConstraint(

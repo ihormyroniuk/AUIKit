@@ -26,9 +26,10 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   // MARK: - Private variables
   
-  private var contentViewHeight: CGFloat = 0
+  var contentViewHeight: CGFloat = 0
+  var bounds: CGRect?
   
-  private var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+  var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
   private let mockCollectionView: UICollectionView
   
@@ -66,7 +67,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     }
   }
   
-  private func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
+  func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
     let indexPath = IndexPath(row: 0, section: 0)
     let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
     let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
@@ -89,6 +90,20 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     mockCollectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
   }
   
+  override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    if let oldBounds = bounds {
+      if oldBounds.size != newBounds.size {
+        bounds = newBounds
+        return true
+      } else {
+        return false
+      }
+    } else {
+      bounds = newBounds
+      return true
+    }
+  }
+  
   // MARK: - Prepare for insert
   
   open func prepareForInsert(at indexPaths: [IndexPath]) {
@@ -96,7 +111,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     sortedIndexPaths.forEach { insertLayoutAttributes(for: $0) }
   }
   
-  private func insertLayoutAttributes(for indexPath: IndexPath) {
+  func insertLayoutAttributes(for indexPath: IndexPath) {
     guard let cellController = delegate?.getCellController(for: indexPath) else { return }
     let cellSize = getCellSize(for: cellController)
     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
@@ -128,7 +143,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     sortedIndexPaths.forEach { deleteLayoutAttribute(for: $0) }
   }
   
-  private func deleteLayoutAttribute(for indexPath: IndexPath) {
+  func deleteLayoutAttribute(for indexPath: IndexPath) {
     let foundLayoutAttribute = itemsLayoutAttributes.first { $0.indexPath == indexPath }
     guard let layoutAttribute = foundLayoutAttribute else { return }
     let attributesToChange = itemsLayoutAttributes.filter { $0.indexPath > indexPath }
@@ -156,7 +171,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   // MARK: - Find layout attributes
   
-  private func findLayoutAttributes(for indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+  func findLayoutAttributes(for indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     return itemsLayoutAttributes.first { $0.indexPath == indexPath }
   }
 }
