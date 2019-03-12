@@ -93,15 +93,17 @@ extension AUIUpdatableCollectionViewController: AUIInsertingCellControllers {
   
   open func insertCellControllers(_ cellControllers: [AUICollectionViewCellController], before: AUICollectionViewCellController, animated: Bool) {
     guard let index = findIndex(of: before) else { return }
+    let cellCountBeforeInsert = self.cellControllers.count
     self.cellControllers.insert(contentsOf: cellControllers, at: index)
-    
+    insertCells(with: cellControllers, before: index, countBeforeInsert: cellCountBeforeInsert, animated: animated)
   }
   
   open func insertCellControllers(_ cellControllers: [AUICollectionViewCellController], after: AUICollectionViewCellController, animated: Bool) {
     guard let index = findIndex(of: after) else { return }
     let newIndex = index + 1
+    let cellCountBeforeInsert = self.cellControllers.count
     self.cellControllers.insert(contentsOf: cellControllers, at: newIndex)
-    
+    insertCells(with: cellControllers, after: index, countBeforeInsert: cellCountBeforeInsert, animated: animated)
   }
 }
 
@@ -264,8 +266,8 @@ private extension AUIUpdatableCollectionViewController {
   
   func generateInsertAfterIndexPaths(cellCount: Int, after: Int) -> [IndexPath] {
     var indexPaths: [IndexPath] = []
-    for index in after..<cellCount {
-      indexPaths.append(IndexPath(row: index, section: 0))
+    for index in 0..<cellCount {
+      indexPaths.append(IndexPath(row: index + after + 1, section: 0))
     }
     return indexPaths
   }
@@ -284,9 +286,8 @@ private extension AUIUpdatableCollectionViewController {
   
   func generateInsertBeforeIndexPaths(cellCount: Int, before: Int) -> [IndexPath] {
     var indexPaths: [IndexPath] = []
-    let indexBefore = (before - 1) < 0 ? before - 1 : 0
-    for index in indexBefore..<cellCount {
-      indexPaths.append(IndexPath(row: index, section: 0))
+    for index in 0..<cellCount {
+      indexPaths.append(IndexPath(row: index + before, section: 0))
     }
     return indexPaths
   }
