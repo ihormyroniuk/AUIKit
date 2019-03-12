@@ -18,19 +18,6 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
       itemsLayoutAttributes.forEach {
         $0.frame = calculateFrameForItem(indexPath: $0.indexPath, itemSize: $0.frame.size)
       }
-      bounds = nil
-    }
-    
-    guard let delegate = delegate else { return }
-    let cellControllers = delegate.getCellControllers()
-    
-    for cellController in cellControllers {
-      guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
-      
-      if findLayoutAttributes(for: indexPath) == nil {
-        let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let cellSize = getCellSize(for: cellController)
-      }
     }
   }
   

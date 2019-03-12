@@ -54,6 +54,18 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     guard let delegate = delegate else { return }
     let cellControllers = delegate.getCellControllers()
     
+    if bounds != nil {
+      contentViewHeight = 0
+      let sortedLayoutAttributes = itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
+      sortedLayoutAttributes.forEach {
+        if let cellController = delegate.getCellController(for: $0.indexPath) {
+          let cellSize = getCellSize(for: cellController)
+          $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
+          contentViewHeight += cellSize.height
+        }
+      }
+    }
+    
     for cellController in cellControllers {
       guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
       
@@ -70,8 +82,8 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
     let indexPath = IndexPath(row: 0, section: 0)
     let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
-    let cellSize = cell.sizeThatFits(CGSize(width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
-    return cellSize
+    let cellSize = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
+    return CGSize(width: collectionViewContentSize.width, height: cellSize.height)
   }
   
   override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
