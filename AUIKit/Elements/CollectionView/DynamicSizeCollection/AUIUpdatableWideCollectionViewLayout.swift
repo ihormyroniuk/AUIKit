@@ -16,6 +16,7 @@ public protocol AUIUpdatableCollectionViewLayout: class {
   func prepareForInsert(at indexPaths: [IndexPath])
   func prepareForDelete(at indexPaths: [IndexPath])
   func prepareForUpdate(at indexPaths: [IndexPath])
+  func recalculateCellsSizes()
 }
 
 open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpdatableCollectionViewLayout {
@@ -27,7 +28,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   // MARK: - Private variables
   
   var contentViewHeight: CGFloat = 0
-  var bounds: CGRect?
   
   var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
@@ -53,18 +53,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     
     guard let delegate = delegate else { return }
     let cellControllers = delegate.getCellControllers()
-    
-    if bounds != nil {
-      contentViewHeight = 0
-      let sortedLayoutAttributes = itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
-      sortedLayoutAttributes.forEach {
-        if let cellController = delegate.getCellController(for: $0.indexPath) {
-          let cellSize = getCellSize(for: cellController)
-          $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
-          contentViewHeight += cellSize.height
-        }
-      }
-    }
     
     for cellController in cellControllers {
       guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
@@ -103,16 +91,12 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   }
   
   override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-    if let oldBounds = bounds {
-      if oldBounds.size != newBounds.size {
-        bounds = newBounds
-        return true
-      } else {
-        return false
-      }
-    } else {
-      bounds = newBounds
+    guard let collectionView = collectionView else { return true }
+    if collectionView.bounds.size != newBounds.size {
+      recalculateCellsSizes()
       return true
+    } else {
+      return false
     }
   }
   
@@ -186,6 +170,20 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   func findLayoutAttributes(for indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
     return itemsLayoutAttributes.first { $0.indexPath == indexPath }
   }
+  
+  open func recalculateCellsSizes() {
+    guard let delegate = delegate else { return }
+    contentViewHeight = 0
+    let sortedLayoutAttributes = itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
+    sortedLayoutAttributes.forEach {
+      if let cellController = delegate.getCellController(for: $0.indexPath) {
+        let cellSize = getCellSize(for: cellController)
+        $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
+        contentViewHeight += cellSize.height
+      }
+    }
+  }
+  
 }
 
 extension AUIUpdatableWideCollectionViewLayout: UICollectionViewDataSource {

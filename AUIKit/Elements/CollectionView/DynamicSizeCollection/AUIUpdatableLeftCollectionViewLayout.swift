@@ -9,18 +9,6 @@ import UIKit
 
 open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewLayout {
   
-  // MARK: - Prepare
-  
-  override open func prepare() {
-    super.prepare()
-    
-    if bounds != nil {
-      itemsLayoutAttributes.forEach {
-        $0.frame = calculateFrameForItem(indexPath: $0.indexPath, itemSize: $0.frame.size)
-      }
-    }
-  }
-  
   // MARK: - Prepare for insert
   
   override func insertLayoutAttributes(for indexPath: IndexPath) {
@@ -97,6 +85,14 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
       attributeItem.frame = calculateFrameForItem(indexPath: newIndexPath, itemSize: attributeItem.frame.size)
     }
     updateContentView()
+  }
+  
+  // MARK: - Recalculate cells sizes
+  
+  override open func recalculateCellsSizes() {
+    itemsLayoutAttributes.forEach {
+      $0.frame = calculateFrameForItem(indexPath: $0.indexPath, itemSize: $0.frame.size)
+    }
   }
   
   private func updateContentView() {

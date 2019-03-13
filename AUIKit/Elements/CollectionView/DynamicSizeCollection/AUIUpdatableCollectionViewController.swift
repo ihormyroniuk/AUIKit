@@ -71,6 +71,12 @@ open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController 
   open func getCellControllersCount() -> Int {
     return cellControllers.count
   }
+  
+  // MARK: - Update layout
+  
+  open func updateLayout() {
+    layout?.recalculateCellsSizes()
+  }
 }
 
 // MARK: - AUIInsertingCellControllers
