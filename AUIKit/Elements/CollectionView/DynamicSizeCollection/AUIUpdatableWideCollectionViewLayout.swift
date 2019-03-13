@@ -31,7 +31,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
-  private let mockCollectionView: UICollectionView
+  let mockCollectionView: UICollectionView
   
   override public init() {
     let layout = UICollectionViewFlowLayout()
@@ -59,7 +59,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
       
       if findLayoutAttributes(for: indexPath) == nil {
         let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let cellSize = getCellSize(for: cellController)
+        let cellSize = getCellSize(for: cellController, collectionView: mockCollectionView)
         layoutAttributes.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         itemsLayoutAttributes.append(layoutAttributes)
         contentViewHeight += cellSize.height
@@ -67,9 +67,9 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     }
   }
   
-  func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
+  func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
     let indexPath = IndexPath(row: 0, section: 0)
-    let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
+    let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: collectionView)
     let cellSize = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
     return CGSize(width: collectionViewContentSize.width, height: cellSize.height)
   }
@@ -109,7 +109,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   func insertLayoutAttributes(for indexPath: IndexPath) {
     guard let cellController = delegate?.getCellController(for: indexPath) else { return }
-    let cellSize = getCellSize(for: cellController)
+    let cellSize = getCellSize(for: cellController, collectionView: mockCollectionView)
     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
     
     let attributesToChange = itemsLayoutAttributes.filter { $0.indexPath >= indexPath }
@@ -176,11 +176,9 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     contentViewHeight = 0
     let sortedLayoutAttributes = itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
     sortedLayoutAttributes.forEach {
-      if let cellController = delegate.getCellController(for: $0.indexPath) {
-        let cellSize = getCellSize(for: cellController)
-        if let collectionView = collectionView {
-          _ = cellController.cellForRowAtIndexPath($0.indexPath, collectionView: collectionView)
-        }
+      if let cellController = delegate.getCellController(for: $0.indexPath),
+        let collectionView = collectionView {
+        let cellSize = getCellSize(for: cellController, collectionView: collectionView)
         $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         contentViewHeight += cellSize.height
       }

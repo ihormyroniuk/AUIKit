@@ -13,7 +13,7 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
   
   override func insertLayoutAttributes(for indexPath: IndexPath) {
     guard let cellController = delegate?.getCellController(for: indexPath) else { return }
-    let cellSize = getCellSize(for: cellController)
+    let cellSize = getCellSize(for: cellController, collectionView: mockCollectionView)
     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
     
     layoutAttributes.frame = calculateFrameForItem(indexPath: indexPath, itemSize: cellSize)
