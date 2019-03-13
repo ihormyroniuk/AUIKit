@@ -68,10 +68,15 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   }
   
   func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
+    let cellSize = calculateCellSize(for: cellController, collectionView: collectionView)
+    return CGSize(width: collectionViewContentSize.width, height: cellSize.height)
+  }
+  
+  func calculateCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
     let indexPath = IndexPath(row: 0, section: 0)
     let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: collectionView)
     let cellSize = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
-    return CGSize(width: collectionViewContentSize.width, height: cellSize.height)
+    return cellSize
   }
   
   override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {

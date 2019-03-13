@@ -99,4 +99,8 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
     contentViewHeight = itemsLayoutAttributes.max { $0.frame.maxY < $1.frame.maxY }?.frame.maxY ?? 0
   }
   
+  override func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
+    return calculateCellSize(for: cellController, collectionView: collectionView)
+  }
+  
 }
