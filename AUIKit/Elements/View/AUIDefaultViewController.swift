@@ -19,8 +19,6 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
         unsetupView()
         _view = newValue
         setupView()
-        setupViewContent()
-        setupViewActions()
       }
     }
     get {
@@ -42,14 +40,6 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   
   open func setupView() {
     view?.isUserInteractionEnabled = isUserInteractionEnabled
-  }
-  
-  open func setupViewContent() {
-    
-  }
-  
-  open func setupViewActions() {
-    
   }
   
   open func unsetupView() {

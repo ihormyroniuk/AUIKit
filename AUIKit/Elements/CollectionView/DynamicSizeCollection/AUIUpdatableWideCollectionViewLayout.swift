@@ -178,7 +178,12 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     sortedLayoutAttributes.forEach {
       if let cellController = delegate.getCellController(for: $0.indexPath),
         let collectionView = collectionView {
-        let cellSize = getCellSize(for: cellController, collectionView: collectionView)
+        let oldView = (cellController as? AUIElementCollectionViewCellController)?.view
+        let cell = cellController.cellForRowAtIndexPath($0.indexPath, collectionView: collectionView)
+        (cellController as? AUIElementCollectionViewCellController)?.view = oldView
+        (cellController as? AUIElementCollectionViewCellController)?.controller.view = oldView
+        let cellSizeFitted = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
+        let cellSize = CGSize(width: collectionViewContentSize.width, height: cellSizeFitted.height)
         $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         contentViewHeight += cellSize.height
       }
