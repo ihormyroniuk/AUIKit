@@ -28,7 +28,7 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
       attributeItem.indexPath = newIndexPath
       attributeItem.frame = calculateFrameForItem(indexPath: newIndexPath, itemSize: attributeItem.frame.size)
     }
-    updateContentView()
+    updateContentSize()
   }
   
   func getIndexPathBefore(indexPath: IndexPath) -> IndexPath? {
@@ -84,7 +84,7 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
       attributeItem.indexPath = newIndexPath
       attributeItem.frame = calculateFrameForItem(indexPath: newIndexPath, itemSize: attributeItem.frame.size)
     }
-    updateContentView()
+    updateContentSize()
   }
   
   // MARK: - Recalculate cells sizes
@@ -94,9 +94,10 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
     sortedItemsLayoutAttributes.forEach {
       $0.frame = calculateFrameForItem(indexPath: $0.indexPath, itemSize: $0.frame.size)
     }
+    updateContentSize()
   }
   
-  private func updateContentView() {
+  private func updateContentSize() {
     contentViewHeight = itemsLayoutAttributes.max { $0.frame.maxY < $1.frame.maxY }?.frame.maxY ?? 0
   }
   
