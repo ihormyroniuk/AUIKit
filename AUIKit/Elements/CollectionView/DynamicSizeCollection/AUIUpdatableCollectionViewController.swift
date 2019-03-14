@@ -299,17 +299,14 @@ private extension AUIUpdatableCollectionViewController {
   }
   
   func insertItems(indexPaths: [IndexPath], countBeforeInsert: Int, animated: Bool) {
-    DispatchQueue.main.async { [weak self] in
-      guard let strongSelf = self else { return }
-      strongSelf.layout?.prepareForInsert(at: indexPaths)
-      if let collectionView = strongSelf.collectionView {
-        if animated && countBeforeInsert > 0, !collectionView.indexPathsForVisibleItems.isEmpty {
-          collectionView.performBatchUpdates({ [weak collectionView] in
-            collectionView?.insertItems(at: indexPaths)
-            }, completion: nil)
-        } else {
-          collectionView.reloadData()
-        }
+    layout?.prepareForInsert(at: indexPaths)
+    if let collectionView = collectionView {
+      if animated && countBeforeInsert > 0, !collectionView.indexPathsForVisibleItems.isEmpty {
+        collectionView.performBatchUpdates({ [weak self] in
+          self?.collectionView?.insertItems(at: indexPaths)
+          }, completion: nil)
+      } else {
+        collectionView.reloadData()
       }
     }
   }
@@ -336,17 +333,14 @@ private extension AUIUpdatableCollectionViewController {
   }
   
   func deleteItems(at indexPaths: [IndexPath], animated: Bool) {
-    DispatchQueue.main.async { [weak self] in
-      guard let strongSelf = self else { return }
-      strongSelf.layout?.prepareForDelete(at: indexPaths)
-      if let collectionView = strongSelf.collectionView {
-        if animated, !collectionView.indexPathsForVisibleItems.isEmpty {
-          collectionView.performBatchUpdates({ [weak collectionView] in
-            collectionView?.deleteItems(at: indexPaths)
-            }, completion: nil)
-        } else {
-          collectionView.reloadData()
-        }
+    layout?.prepareForDelete(at: indexPaths)
+    if let collectionView = collectionView {
+      if animated, !collectionView.indexPathsForVisibleItems.isEmpty {
+        collectionView.performBatchUpdates({ [weak self] in
+          self?.collectionView?.deleteItems(at: indexPaths)
+          }, completion: nil)
+      } else {
+        collectionView.reloadData()
       }
     }
   }
