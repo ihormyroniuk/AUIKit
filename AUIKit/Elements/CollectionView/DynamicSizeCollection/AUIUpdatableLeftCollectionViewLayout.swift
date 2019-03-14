@@ -90,7 +90,8 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
   // MARK: - Recalculate cells sizes
   
   override open func recalculateCellsSizes() {
-    itemsLayoutAttributes.forEach {
+    let sortedItemsLayoutAttributes = getSortedByIndexPathLayoutAttributes()
+    sortedItemsLayoutAttributes.forEach {
       $0.frame = calculateFrameForItem(indexPath: $0.indexPath, itemSize: $0.frame.size)
     }
   }

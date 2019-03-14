@@ -174,10 +174,14 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     return itemsLayoutAttributes.first { $0.indexPath == indexPath }
   }
   
+  func getSortedByIndexPathLayoutAttributes() -> [UICollectionViewLayoutAttributes] {
+    return itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
+  }
+  
   open func recalculateCellsSizes() {
     guard let delegate = delegate else { return }
     contentViewHeight = 0
-    let sortedLayoutAttributes = itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
+    let sortedLayoutAttributes = getSortedByIndexPathLayoutAttributes()
     sortedLayoutAttributes.forEach {
       if let cellController = delegate.getCellController(for: $0.indexPath),
         let collectionView = collectionView {
