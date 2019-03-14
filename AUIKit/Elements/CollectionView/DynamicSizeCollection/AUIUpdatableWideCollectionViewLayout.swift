@@ -28,6 +28,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   // MARK: - Private variables
   
   var contentViewHeight: CGFloat = 0
+  private var oldSize: CGSize?
   
   var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
@@ -51,7 +52,14 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   override open func prepare() {
     super.prepare()
     
-    guard let delegate = delegate else { return }
+    guard let collectionView = collectionView,
+          let delegate = delegate else { return }
+    
+    if let oldSize = oldSize, collectionView.bounds.size != oldSize {
+      recalculateCellsSizes()
+    }
+    oldSize = collectionView.bounds.size
+    
     let cellControllers = delegate.getCellControllers()
     
     for cellController in cellControllers {
@@ -93,16 +101,6 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   open func register(_ cellClass: AnyClass?, forCellWithReuseIdentifier identifier: String) {
     mockCollectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
-  }
-  
-  override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-    guard let collectionView = collectionView else { return true }
-    if collectionView.bounds.size != newBounds.size {
-      recalculateCellsSizes()
-      return true
-    } else {
-      return false
-    }
   }
   
   // MARK: - Prepare for insert
