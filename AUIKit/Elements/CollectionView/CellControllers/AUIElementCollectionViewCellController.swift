@@ -49,6 +49,7 @@ open class AUIElementCollectionViewCellController: AUICollectionViewCellControll
   
   open func didEndDisplayCell() {
     if view != nil { controller.view = nil }
+    view = nil
   }
   
   
