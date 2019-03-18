@@ -13,6 +13,7 @@ public protocol AUIUpdatableCollectionViewLayoutDelegate: class {
 
 public protocol AUIUpdatableCollectionViewLayout: class {
   var delegate: AUIUpdatableCollectionViewLayoutDelegate? { get set }
+  var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] { get set }
   func prepareForInsert(at indexPaths: [IndexPath])
   func prepareForDelete(at indexPaths: [IndexPath])
   func prepareForUpdate(at indexPaths: [IndexPath])
@@ -30,7 +31,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   var contentViewHeight: CGFloat = 0
   private var oldSize: CGSize?
   
-  var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
+  public var itemsLayoutAttributes: [UICollectionViewLayoutAttributes] = []
   
   let mockCollectionView: UICollectionView
   
@@ -52,27 +53,12 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   override open func prepare() {
     super.prepare()
     
-    guard let collectionView = collectionView,
-          let delegate = delegate else { return }
+    guard let collectionView = collectionView  else { return }
     
     if let oldSize = oldSize, collectionView.bounds.size != oldSize {
       recalculateCellsSizes()
     }
     oldSize = collectionView.bounds.size
-    
-    let cellControllers = delegate.getCellControllers()
-    
-    for cellController in cellControllers {
-      guard let indexPath = delegate.getIndexPath(for: cellController) else { continue }
-      
-      if findLayoutAttributes(for: indexPath) == nil {
-        let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-        let cellSize = getCellSize(for: cellController, collectionView: mockCollectionView)
-        layoutAttributes.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
-        itemsLayoutAttributes.append(layoutAttributes)
-        contentViewHeight += cellSize.height
-      }
-    }
   }
   
   func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {

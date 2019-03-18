@@ -302,9 +302,7 @@ private extension AUIUpdatableCollectionViewController {
     layout?.prepareForInsert(at: indexPaths)
     if let collectionView = collectionView {
       if animated && countBeforeInsert > 0, !collectionView.indexPathsForVisibleItems.isEmpty {
-        collectionView.performBatchUpdates({ [weak self] in
-          self?.collectionView?.insertItems(at: indexPaths)
-          }, completion: nil)
+        collectionView.insertItems(at: indexPaths)
       } else {
         collectionView.reloadData()
       }
@@ -336,9 +334,7 @@ private extension AUIUpdatableCollectionViewController {
     layout?.prepareForDelete(at: indexPaths)
     if let collectionView = collectionView {
       if animated, !collectionView.indexPathsForVisibleItems.isEmpty {
-        collectionView.performBatchUpdates({ [weak self] in
-          self?.collectionView?.deleteItems(at: indexPaths)
-          }, completion: nil)
+        collectionView.deleteItems(at: indexPaths)
       } else {
         collectionView.reloadData()
       }
