@@ -301,12 +301,16 @@ private extension AUIUpdatableCollectionViewController {
   func insertItems(indexPaths: [IndexPath], countBeforeInsert: Int, animated: Bool) {
     layout?.prepareForInsert(at: indexPaths)
     if let collectionView = collectionView {
-      if animated && countBeforeInsert > 0, !collectionView.indexPathsForVisibleItems.isEmpty {
+      if animated && canUpdateCollectionAnimated() {
         collectionView.insertItems(at: indexPaths)
       } else {
         collectionView.reloadData()
       }
     }
+  }
+  
+  private func canUpdateCollectionAnimated() -> Bool {
+    return collectionView?.window != nil
   }
   
   // MARK: - Delete cells
@@ -333,7 +337,7 @@ private extension AUIUpdatableCollectionViewController {
   func deleteItems(at indexPaths: [IndexPath], animated: Bool) {
     layout?.prepareForDelete(at: indexPaths)
     if let collectionView = collectionView {
-      if animated, !collectionView.indexPathsForVisibleItems.isEmpty {
+      if animated, canUpdateCollectionAnimated() {
         collectionView.deleteItems(at: indexPaths)
       } else {
         collectionView.reloadData()
