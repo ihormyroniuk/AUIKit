@@ -32,7 +32,7 @@ open class AUIDynamicSizeCollectionCell: AUIReusableCollectionCell {
     
     let resultSize = CGSize(
       width: (width ?? containerViewSize.width) + calculateWidthOffset(insets: insets),
-      height: (height ?? containerViewSize.height) + calculateHeightOffset(insets: insets))
+      height: ((height ?? containerViewSize.height) + calculateHeightOffset(insets: insets)).rounded(.toNearestOrAwayFromZero))
     return resultSize
   }
   
