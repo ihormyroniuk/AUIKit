@@ -52,13 +52,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   
   override open func prepare() {
     super.prepare()
-    
-//    guard let collectionView = collectionView  else { return }
-//
-//    if let oldSize = oldSize, collectionView.bounds.size != oldSize {
-//      recalculateCellsSizes()
-//    }
-//    oldSize = collectionView?.bounds.size
+    oldSize = collectionView?.bounds.size
   }
   
   func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
@@ -155,12 +149,16 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   }
   
   override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-    if oldSize != newBounds.size {
+    return true
+  }
+  
+  override open func invalidationContext(forBoundsChange newBounds: CGRect) -> UICollectionViewLayoutInvalidationContext {
+    let context = super.invalidationContext(forBoundsChange: newBounds)
+    if let oldSize = oldSize, oldSize != newBounds.size {
       recalculateCellsSizes(collectionSize: newBounds.size)
-      oldSize = newBounds.size
-      return true
     }
-    return super.shouldInvalidateLayout(forBoundsChange: newBounds)
+    oldSize = newBounds.size
+    return context
   }
   
   // MARK: - Find layout attributes
