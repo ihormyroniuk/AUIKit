@@ -17,7 +17,7 @@ public protocol AUIUpdatableCollectionViewLayout: class {
   func prepareForInsert(at indexPaths: [IndexPath])
   func prepareForDelete(at indexPaths: [IndexPath])
   func prepareForUpdate(at indexPaths: [IndexPath])
-  func recalculateCellsSizes()
+  func recalculateCellsSizes(collectionSize: CGSize)
 }
 
 open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpdatableCollectionViewLayout {
@@ -53,12 +53,12 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
   override open func prepare() {
     super.prepare()
     
-    guard let collectionView = collectionView  else { return }
-    
-    if let oldSize = oldSize, collectionView.bounds.size != oldSize {
-      recalculateCellsSizes()
-    }
-    oldSize = collectionView.bounds.size
+//    guard let collectionView = collectionView  else { return }
+//
+//    if let oldSize = oldSize, collectionView.bounds.size != oldSize {
+//      recalculateCellsSizes()
+//    }
+//    oldSize = collectionView?.bounds.size
   }
   
   func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
@@ -154,6 +154,15 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     insertLayoutAttributes(for: indexPath)
   }
   
+  override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    if oldSize != newBounds.size {
+      recalculateCellsSizes(collectionSize: newBounds.size)
+      oldSize = newBounds.size
+      return true
+    }
+    return super.shouldInvalidateLayout(forBoundsChange: newBounds)
+  }
+  
   // MARK: - Find layout attributes
   
   func findLayoutAttributes(for indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
@@ -164,7 +173,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     return itemsLayoutAttributes.sorted { $0.indexPath < $1.indexPath }
   }
   
-  open func recalculateCellsSizes() {
+  open func recalculateCellsSizes(collectionSize: CGSize) {
     guard let delegate = delegate else { return }
     contentViewHeight = 0
     let sortedLayoutAttributes = getSortedByIndexPathLayoutAttributes()
@@ -175,8 +184,8 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
         let cell = cellController.cellForRowAtIndexPath($0.indexPath, collectionView: collectionView)
         (cellController as? AUIElementCollectionViewCellController)?.view = oldView
         (cellController as? AUIElementCollectionViewCellController)?.controller.view = oldView
-        let cellSizeFitted = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
-        let cellSize = CGSize(width: collectionViewContentSize.width, height: cellSizeFitted.height)
+        let cellSizeFitted = cell.sizeThatFits(CGSize(width: collectionSize.width, height: CGFloat.greatestFiniteMagnitude))
+        let cellSize = CGSize(width: collectionSize.width, height: cellSizeFitted.height)
         $0.frame = CGRect(x: 0, y: contentViewHeight, width: cellSize.width, height: cellSize.height)
         contentViewHeight += cellSize.height
       }
