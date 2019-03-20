@@ -73,6 +73,13 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     return cellSize
   }
   
+  override open func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+    if let oldSize = oldSize, oldSize != newBounds.size {
+      return true
+    }
+    return false
+  }
+  
   override open func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     return itemsLayoutAttributes.filter({ return rect.intersects($0.frame) })
   }
