@@ -160,6 +160,7 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    print("willDisplay: \(indexPath.row)")
     guard !indexPath.isEmpty else { return }
     if deletedCellControllers[indexPath] != nil {
       deletedCellControllers.removeValue(forKey: indexPath)
@@ -168,6 +169,7 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    print("didEndDisplay: \(indexPath.row)")
     guard !indexPath.isEmpty else { return }
     if deletedCellControllers[indexPath] != nil {
       deletedCellControllers.removeValue(forKey: indexPath)
@@ -316,19 +318,26 @@ private extension AUIUpdatableCollectionViewController {
   // MARK: - Delete cells
   
   func deleteCells(with cellControllersToDelete: [AUICollectionViewCellController], animated: Bool) {
-    let indexPathsToDelete = generateDeleteIndexPaths(cellControllers: cellControllersToDelete)
+    let indexPathsToDelete = generateDeleteIndexPaths(cellControllers: cellControllersToDelete, animated: animated)
     cellControllers = cellControllers.filter({ controller -> Bool in
       !cellControllersToDelete.contains(where: { $0 === controller })
     })
     deleteItems(at: indexPathsToDelete, animated: animated)
   }
   
-  func generateDeleteIndexPaths(cellControllers: [AUICollectionViewCellController]) -> [IndexPath] {
+  func generateDeleteIndexPaths(cellControllers: [AUICollectionViewCellController], animated: Bool) -> [IndexPath] {
     var indexPathsToDelete: [IndexPath] = []
     cellControllers.forEach { cellControllerItem in
       if let index = findIndexPath(for: cellControllerItem) {
         indexPathsToDelete.append(index)
         deletedCellControllers[index] = cellControllerItem
+      }
+    }
+    if !animated {
+      self.cellControllers.forEach { cellControllerItem in
+        if let index = findIndexPath(for: cellControllerItem) {
+          deletedCellControllers[index] = cellControllerItem
+        }
       }
     }
     return indexPathsToDelete
