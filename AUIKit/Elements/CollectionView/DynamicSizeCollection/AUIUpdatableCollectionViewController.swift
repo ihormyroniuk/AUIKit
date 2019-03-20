@@ -75,7 +75,7 @@ open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController 
   // MARK: - Update layout
   
   open func updateLayout() {
-    layout?.recalculateCellsSizes(collectionSize: collectionView?.bounds.size ?? .zero)
+    layout?.recalculateCellsSizes()
   }
 }
 
