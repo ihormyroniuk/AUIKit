@@ -161,9 +161,6 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   
   open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard !indexPath.isEmpty else { return }
-    if deletedCellControllers[indexPath] != nil {
-      deletedCellControllers.removeValue(forKey: indexPath)
-    }
     cellControllers[indexPath.row].willDisplayCell(cell, indexPath: indexPath)
   }
   

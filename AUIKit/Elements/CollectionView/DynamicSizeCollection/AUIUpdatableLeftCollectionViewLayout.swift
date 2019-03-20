@@ -13,7 +13,7 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
   
   override func insertLayoutAttributes(for indexPath: IndexPath) {
     guard let cellController = delegate?.getCellController(for: indexPath) else { return }
-    let cellSize = getCellSize(for: cellController, collectionView: mockCollectionView)
+    let cellSize = getCellSize(for: cellController)
     let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
     
     layoutAttributes.frame = calculateFrameForItem(indexPath: indexPath, itemSize: cellSize)
@@ -101,8 +101,8 @@ open class AUIUpdatableLeftCollectionViewLayout: AUIUpdatableWideCollectionViewL
     contentViewHeight = itemsLayoutAttributes.max { $0.frame.maxY < $1.frame.maxY }?.frame.maxY ?? 0
   }
   
-  override func getCellSize(for cellController: AUICollectionViewCellController, collectionView: UICollectionView) -> CGSize {
-    return calculateCellSize(for: cellController, collectionView: collectionView)
+  override func getCellSize(for cellController: AUICollectionViewCellController) -> CGSize {
+    return calculateCellSize(for: cellController)
   }
   
 }
