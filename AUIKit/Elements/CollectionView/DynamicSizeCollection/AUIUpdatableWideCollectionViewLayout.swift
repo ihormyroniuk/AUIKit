@@ -55,7 +55,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     
     guard let collectionView = collectionView  else { return }
     
-    if let oldSize = oldSize, collectionView.bounds.size != oldSize {
+    if let oldSize = oldSize, collectionView.bounds.size.width != oldSize.width {
       recalculateCellsSizes()
     }
     oldSize = collectionView.bounds.size
@@ -176,10 +176,9 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     contentViewHeight = 0
     let sortedLayoutAttributes = getSortedByIndexPathLayoutAttributes()
     sortedLayoutAttributes.forEach {
-      if let cellController = delegate.getCellController(for: $0.indexPath),
-        let collectionView = collectionView {
+      if let cellController = delegate.getCellController(for: $0.indexPath) {
         let oldView = (cellController as? AUIElementCollectionViewCellController)?.view
-        let cell = cellController.cellForRowAtIndexPath($0.indexPath, collectionView: collectionView)
+        let cell = cellController.cellForRowAtIndexPath(IndexPath(row: 0, section: 0), collectionView: mockCollectionView)
         (cellController as? AUIElementCollectionViewCellController)?.view = oldView
         (cellController as? AUIElementCollectionViewCellController)?.controller.view = oldView
         let cellSizeFitted = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
