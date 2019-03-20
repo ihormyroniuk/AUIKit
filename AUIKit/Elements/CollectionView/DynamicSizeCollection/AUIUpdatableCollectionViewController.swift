@@ -160,7 +160,6 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    print("willDisplay: \(indexPath.row)")
     guard !indexPath.isEmpty else { return }
     if deletedCellControllers[indexPath] != nil {
       deletedCellControllers.removeValue(forKey: indexPath)
@@ -169,7 +168,6 @@ extension AUIUpdatableCollectionViewController: AUICollectionViewDelegateProxyDe
   }
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    print("didEndDisplay: \(indexPath.row)")
     guard !indexPath.isEmpty else { return }
     if deletedCellControllers[indexPath] != nil {
       deletedCellControllers.removeValue(forKey: indexPath)
