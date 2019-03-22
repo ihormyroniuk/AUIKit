@@ -103,6 +103,8 @@
 		C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */; };
 		C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */; };
 		C55B80AE221D83AC003D84C1 /* AUISegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */; };
+		C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF7E224537C80086A8CA /* AUISwitchController.swift */; };
+		C55EFF81224538980086A8CA /* AUIDefaultSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */; };
 		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +207,8 @@
 		C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultSegmentedControlController.swift; sourceTree = "<group>"; };
 		C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlItemController.swift; sourceTree = "<group>"; };
 		C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlController.swift; sourceTree = "<group>"; };
+		C55EFF7E224537C80086A8CA /* AUISwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISwitchController.swift; sourceTree = "<group>"; };
+		C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSwitchController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -433,6 +437,7 @@
 				C55B80A6221D8365003D84C1 /* SegmentControl */,
 				C525D81921996AF10057E69F /* Button */,
 				C525D82E219971F70057E69F /* TextField */,
+				C55EFF7D2245379E0086A8CA /* Switch */,
 				C53AEB492195FA280087F0A2 /* ScrollView */,
 				C51DBB262216F2BF0009605A /* TextView */,
 				C525D8652199866D0057E69F /* TableView */,
@@ -612,6 +617,15 @@
 			path = SegmentControl;
 			sourceTree = "<group>";
 		};
+		C55EFF7D2245379E0086A8CA /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+				C55EFF7E224537C80086A8CA /* AUISwitchController.swift */,
+				C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */,
+			);
+			path = Switch;
+			sourceTree = "<group>";
+		};
 		C563738021EA5551008FAF87 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -750,6 +764,7 @@
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
+				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
 				C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */,
@@ -792,6 +807,7 @@
 				30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,
 				C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */,
+				C55EFF81224538980086A8CA /* AUIDefaultSwitchController.swift in Sources */,
 				C525D82521996AF20057E69F /* AUIControlController.swift in Sources */,
 				C51DBB2C2216F62D0009605A /* AUIDefaultTextViewController.swift in Sources */,
 				C525D87F2199866D0057E69F /* AUIGenericContainerTableViewCell.swift in Sources */,
