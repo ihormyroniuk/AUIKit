@@ -220,7 +220,8 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   
   open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
     let section = indexPath.section
-    sectionControllers[section].didSelectCellAtIndex(section)
+    let index = indexPath.row
+    sectionControllers[section].didSelectCellAtIndex(index)
   }
   
   open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
