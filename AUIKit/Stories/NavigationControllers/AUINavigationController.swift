@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUINavigationController: UINavigationController {
+open class AUINavigationController: UINavigationController, UIGestureRecognizerDelegate {
   
   // MARK: Initializer
   
@@ -25,6 +25,21 @@ open class AUINavigationController: UINavigationController {
   
   open func setup() {
     
+  }
+  
+  // MARK: Events
+  
+  open override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    interactivePopGestureRecognizer?.isEnabled = true
+    interactivePopGestureRecognizer?.delegate = self
+  }
+  
+  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    if viewControllers.count > 2 {
+      return true
+    }
+    return false
   }
   
 }

@@ -7,20 +7,12 @@
 
 import UIKit
 
-open class AUINavigationControllerWithoutBar: AUINavigationController, UIGestureRecognizerDelegate {
+open class AUINavigationControllerWithoutBar: AUINavigationController {
 
   // MARK: Setup
   
   open override func setup() {
     setNavigationBarHidden(true, animated: false)
-  }
-  
-  // MARK: Events
-  
-  open override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    interactivePopGestureRecognizer?.isEnabled = true
-    interactivePopGestureRecognizer?.delegate = self
   }
   
 }
