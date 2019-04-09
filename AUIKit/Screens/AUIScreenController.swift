@@ -13,7 +13,7 @@ open class AUIScreenController: UIViewController {
   
   public init(view: UIView) {
     super.init(nibName: nil, bundle: nil)
-    self.view = view
+    screenView = view
     setup()
   }
   
@@ -22,11 +22,17 @@ open class AUIScreenController: UIViewController {
   
   // MARK: Setup
   
+  
   open func setup() {
     
   }
   
   // MARK: Life Cycle
+  
+  private let screenView: UIView
+  open override func loadView() {
+    self.view = screenView
+  }
   
   open var isAppeared = false
   open override func viewDidAppear(_ animated: Bool) {
