@@ -12,8 +12,8 @@ open class AUIScreenController: UIViewController {
   // MARK: Initializers
   
   public init(view: UIView) {
-    super.init(nibName: nil, bundle: nil)
     screenView = view
+    super.init(nibName: nil, bundle: nil)
     setup()
   }
   
