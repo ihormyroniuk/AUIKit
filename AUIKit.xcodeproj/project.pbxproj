@@ -94,6 +94,8 @@
 		C53F8ED321FBB7CB0019C79E /* AUISubtextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8ED221FBB7CB0019C79E /* AUISubtextFieldViewController.swift */; };
 		C53F8ED521FBB7DA0019C79E /* AUIDefaultSubtextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8ED421FBB7DA0019C79E /* AUIDefaultSubtextFieldViewController.swift */; };
 		C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */; };
+		C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544776E225CC962002BE89F /* AUITabBarController.swift */; };
+		C5447773225CCA27002BE89F /* AUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5447772225CCA27002BE89F /* AUINavigationController.swift */; };
 		C54D0F1121E62CC500A09F16 /* AUITextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D0F1021E62CC500A09F16 /* AUITextFieldViewController.swift */; };
 		C54D0F1321E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */; };
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
@@ -198,6 +200,8 @@
 		C53F8ED221FBB7CB0019C79E /* AUISubtextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubtextFieldViewController.swift; sourceTree = "<group>"; };
 		C53F8ED421FBB7DA0019C79E /* AUIDefaultSubtextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSubtextFieldViewController.swift; sourceTree = "<group>"; };
 		C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
+		C544776E225CC962002BE89F /* AUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITabBarController.swift; sourceTree = "<group>"; };
+		C5447772225CCA27002BE89F /* AUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationController.swift; sourceTree = "<group>"; };
 		C54D0F1021E62CC500A09F16 /* AUITextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldViewController.swift; sourceTree = "<group>"; };
 		C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextFieldViewController.swift; sourceTree = "<group>"; };
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
@@ -588,6 +592,23 @@
 			path = SubtextField;
 			sourceTree = "<group>";
 		};
+		C5447770225CC9F0002BE89F /* NavigationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C5447772225CCA27002BE89F /* AUINavigationController.swift */,
+				C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */,
+			);
+			path = NavigationControllers;
+			sourceTree = "<group>";
+		};
+		C5447771225CCA02002BE89F /* TabBarControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C544776E225CC962002BE89F /* AUITabBarController.swift */,
+			);
+			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
 		C54D0F0F21E62C9900A09F16 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -629,7 +650,8 @@
 		C563738021EA5551008FAF87 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
-				C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */,
+				C5447770225CC9F0002BE89F /* NavigationControllers */,
+				C5447771225CCA02002BE89F /* TabBarControllers */,
 			);
 			path = Stories;
 			sourceTree = "<group>";
@@ -796,6 +818,7 @@
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C525D832219971F70057E69F /* AUIDefaultTextFieldController.swift in Sources */,
 				C528BA4421BC410200FFCE53 /* AUIPagesController.swift in Sources */,
+				C5447773225CCA27002BE89F /* AUINavigationController.swift in Sources */,
 				C525D82321996AF20057E69F /* AUIButton.swift in Sources */,
 				C525D838219972770057E69F /* AUIDefaultPageController.swift in Sources */,
 				30BB5E602206FC0500F7DA0F /* AUIReusableCollectionCell.swift in Sources */,
@@ -804,6 +827,7 @@
 				C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */,
 				C525D8862199866D0057E69F /* AUIContainerTableViewHeaderFooterView.swift in Sources */,
 				C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */,
+				C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */,
 				30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,
 				C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */,

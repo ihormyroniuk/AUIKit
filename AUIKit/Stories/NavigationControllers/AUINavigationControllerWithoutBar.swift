@@ -5,25 +5,13 @@
 //  Created by Ihor Myroniuk on 1/12/19.
 //
 
-import Foundation
+import UIKit
 
-open class AUINavigationControllerWithoutBar: UINavigationController, UIGestureRecognizerDelegate {
-  
-  // MARK: Initializer
-  
-  public init() {
-    super.init(nibName: nil, bundle: nil)
-    setup()
-  }
-  
-  public required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
+open class AUINavigationControllerWithoutBar: AUINavigationController, UIGestureRecognizerDelegate {
+
   // MARK: Setup
   
-  func setup() {
+  override func setup() {
     setNavigationBarHidden(true, animated: false)
   }
   
