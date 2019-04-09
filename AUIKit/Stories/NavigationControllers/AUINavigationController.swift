@@ -23,7 +23,7 @@ open class AUINavigationController: UINavigationController {
   
   // MARK: Setup
   
-  func setup() {
+  open func setup() {
     
   }
   

@@ -11,7 +11,7 @@ open class AUINavigationControllerWithoutBar: AUINavigationController, UIGesture
 
   // MARK: Setup
   
-  override func setup() {
+  open override func setup() {
     setNavigationBarHidden(true, animated: false)
   }
   

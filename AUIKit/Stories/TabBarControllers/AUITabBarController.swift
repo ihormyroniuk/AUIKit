@@ -23,7 +23,7 @@ open class AUITabBarController: UITabBarController {
   
   // MARK: Setup
   
-  func setup() {
+  open func setup() {
     
   }
   
