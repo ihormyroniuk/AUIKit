@@ -39,9 +39,6 @@ open class AUIScreenController: UIViewController {
     super.viewDidAppear(animated)
     isAppeared = true
     didSetStatusBarStyle()
-    if self == navigationController?.topViewController {
-      navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
   }
   
   open override func viewDidDisappear(_ animated: Bool) {
