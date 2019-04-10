@@ -35,4 +35,11 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
     interactivePopGestureRecognizer?.delegate = self
   }
   
+  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    if viewControllers.count > 2 {
+      return true
+    }
+    return false
+  }
+  
 }
