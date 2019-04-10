@@ -36,10 +36,7 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
   }
   
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    if viewControllers.count > 1 {
-      return true
-    }
-    return false
+    return viewControllers.count > 1
   }
   
 }
