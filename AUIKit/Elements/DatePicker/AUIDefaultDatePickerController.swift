@@ -43,6 +43,9 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   open func didSetMinimumDate(_ oldValue: Date?) {
     datePicker?.minimumDate = minimumDate
+    if let minimumDate = minimumDate, minimumDate > date {
+      date = minimumDate
+    }
   }
   
   public var maximumDate: Date? = nil {
@@ -53,6 +56,9 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   open func didSetMaximumDate(_ oldValue: Date?) {
     datePicker?.maximumDate = maximumDate
+    if let maximumDate = maximumDate, maximumDate < date {
+      date = maximumDate
+    }
   }
   
   // MARK: View
