@@ -14,6 +14,8 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   
   private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
   
+  public weak var didSelectDelegate: AUITitlePickerControllerDidSelectDelegate?
+  
   // MARK: Controllers
   
   open var components: [AUITitlePickerComponentController] = []
@@ -57,7 +59,10 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   }
   
   open func didSelectItem(_ item: Int, inComponent component: Int) {
-    components[component].didSelectItemAtIndex(item)
+    let selectedComponentController = components[component]
+    let selectedItemController = selectedComponentController.items[item]
+    selectedComponentController.didSelectItemAtIndex(item)
+    didSelectDelegate?.titlePickerControllerDidSelect(component: selectedComponentController, item: selectedItemController)
   }
   
   // MARK: Index Path
