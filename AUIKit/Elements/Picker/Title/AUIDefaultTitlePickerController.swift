@@ -89,6 +89,14 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
     pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: true)
   }
   
+  // MARK: Selected item
+  
+  open func getSelectedItem(for component: AUITitlePickerComponentController) -> AUITitlePickerItemController? {
+    guard
+      let componentIndex = components.firstIndex(where: { $0 === component }),
+      let itemIndex = pickerView?.selectedRow(inComponent: componentIndex) else { return nil }
+    return component.items[itemIndex]
+  }
 }
 
 private protocol  UIPickerViewDelegateProxyDelegate: class {

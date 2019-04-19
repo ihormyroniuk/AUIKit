@@ -16,4 +16,6 @@ public protocol AUITitlePickerController: AUIPickerController {
   
   var didSelectDelegate: AUITitlePickerControllerDidSelectDelegate? { set get }
   var components: [AUITitlePickerComponentController] { set get }
+  
+  func getSelectedItem(for component: AUITitlePickerComponentController) -> AUITitlePickerItemController?
 }
