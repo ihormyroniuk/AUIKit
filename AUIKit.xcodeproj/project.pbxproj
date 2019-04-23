@@ -86,6 +86,7 @@
 		C53E7C7922187739006CB0D9 /* AUISubtextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E7C7822187739006CB0D9 /* AUISubtextViewViewController.swift */; };
 		C53E7C7B22187747006CB0D9 /* AUIDefaultSubtextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E7C7A22187747006CB0D9 /* AUIDefaultSubtextViewViewController.swift */; };
 		C53E7C7D22187C31006CB0D9 /* AUITableViewSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E7C7C22187C31006CB0D9 /* AUITableViewSectionController.swift */; };
+		C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53E80DF226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift */; };
 		C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC221FBA9670019C79E /* AUISubviewView.swift */; };
 		C53F8EC521FBA9EB0019C79E /* AUISubviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC421FBA9EB0019C79E /* AUISubviewViewController.swift */; };
 		C53F8EC721FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8EC621FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift */; };
@@ -192,6 +193,7 @@
 		C53E7C7822187739006CB0D9 /* AUISubtextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubtextViewViewController.swift; sourceTree = "<group>"; };
 		C53E7C7A22187747006CB0D9 /* AUIDefaultSubtextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSubtextViewViewController.swift; sourceTree = "<group>"; };
 		C53E7C7C22187C31006CB0D9 /* AUITableViewSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITableViewSectionController.swift; sourceTree = "<group>"; };
+		C53E80DF226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+ArrangedSubviews.swift"; sourceTree = "<group>"; };
 		C53F8EC221FBA9670019C79E /* AUISubviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubviewView.swift; sourceTree = "<group>"; };
 		C53F8EC421FBA9EB0019C79E /* AUISubviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISubviewViewController.swift; sourceTree = "<group>"; };
 		C53F8EC621FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSubviewViewController.swift; sourceTree = "<group>"; };
@@ -434,6 +436,7 @@
 		C53AEA532195B01C0087F0A2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
+				C53E80DE226F007600DD78C8 /* StackView */,
 				C53AEA9E2195B01C0087F0A2 /* View */,
 				C53AEAFB2195D9710087F0A2 /* Label */,
 				C53AEB102195DBE30087F0A2 /* ImageView */,
@@ -562,6 +565,14 @@
 				C53E7C7A22187747006CB0D9 /* AUIDefaultSubtextViewViewController.swift */,
 			);
 			path = SubtextView;
+			sourceTree = "<group>";
+		};
+		C53E80DE226F007600DD78C8 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				C53E80DF226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift */,
+			);
+			path = StackView;
 			sourceTree = "<group>";
 		};
 		C53F8EC121FBA8EB0019C79E /* Subview */ = {
@@ -796,6 +807,7 @@
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
+				C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */,
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
 				C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */,
 				C53F8EC521FBA9EB0019C79E /* AUISubviewViewController.swift in Sources */,
