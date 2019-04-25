@@ -25,7 +25,7 @@ public protocol AUITableViewSectionController: class {
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
   func heightForCellAtIndex(_ index: Int) -> CGFloat
-  func willDisplayCell(_ cell: UITableViewCell, index: Int)
+  func willDisplayCell(_ cell: UITableViewCell, index: IndexPath)
   func didSelectCellAtIndex(_ index: Int)
   func didEndDisplayingCellAtIndex(index: Int)
 

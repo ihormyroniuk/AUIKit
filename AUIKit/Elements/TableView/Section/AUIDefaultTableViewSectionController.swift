@@ -62,8 +62,8 @@ open class AUIDefaultTableViewSectionController: AUITableViewSectionController {
     }
   }
   
-  open func willDisplayCell(_ cell: UITableViewCell, index: Int) {
-    cellControllers[index].willDisplayCell(cell)
+  open func willDisplayCell(_ cell: UITableViewCell, index: IndexPath) {
+    cellControllers[index.row].willDisplayCell(cell, indexPath: index)
   }
   
   open func didSelectCellAtIndex(_ index: Int) {

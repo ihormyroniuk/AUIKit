@@ -10,6 +10,7 @@ import UIKit
 
 open class AUIElementTableViewCellController: AUITableViewCellController {
   
+  open weak var willDisplayDelegate: AUITableViewCellControllerWillDisplayDelegate?
   open weak var didSelectDelegate: AUITableViewCellControllerDidSelectDelegate?
   
   open var view: UIView?
@@ -48,8 +49,8 @@ open class AUIElementTableViewCellController: AUITableViewCellController {
     return UITableView.automaticDimension
   }
   
-  open func willDisplayCell(_ cell: UITableViewCell) {
-    
+  open func willDisplayCell(_ cell: UITableViewCell, indexPath: IndexPath) {
+    willDisplayDelegate?.willDisplayTableViewCellController(self, indexPath: indexPath)
   }
   
   open func didEndDisplayingCell() {
