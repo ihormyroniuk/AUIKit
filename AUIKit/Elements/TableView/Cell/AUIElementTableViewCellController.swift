@@ -16,12 +16,12 @@ open class AUIElementTableViewCellController: AUITableViewCellController {
   open var view: UIView?
   
   public let controller: AUIViewController
-  public let cell: (UITableView, IndexPath) -> AUIContainerTableViewCell?
+  public let cell: (UITableView, IndexPath) -> UITableViewCell
   
   // MARK: Initializer
   
   public init(controller: AUIViewController,
-       cell: @escaping (UITableView, IndexPath) -> AUIContainerTableViewCell?) {
+       cell: @escaping (UITableView, IndexPath) -> UITableViewCell) {
     self.controller = controller
     self.cell = cell
   }
@@ -34,7 +34,7 @@ open class AUIElementTableViewCellController: AUITableViewCellController {
   // MARK: TableViewCellController
   
   open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-    let cell = self.cell(tableView, indexPath) ?? UITableViewCell()
+    let cell = self.cell(tableView, indexPath)
     if let containerCell = cell as? AUIContainerTableViewCell {
       view = containerCell.view
     } else {
