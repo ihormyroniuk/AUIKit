@@ -8,9 +8,12 @@
 
 import UIKit
 
-open class AUIContainerTableViewCell: AUITableViewCellView {
+open class AUIContainerTableViewCell: AUITableViewCellView, AUIViewContainerable {
   
   open var view: UIView { fatalError() }
+  open var containerView: UIView? {
+    return view
+  }
   
   // MARK: Setup
   
