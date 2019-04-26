@@ -17,7 +17,7 @@
 		30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */; };
 		30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD45219C144A006DAAA1 /* AUICollectionViewCellController.swift */; };
 		30AA58BB2272E84100BA0189 /* AUIViewContainerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58BA2272E84100BA0189 /* AUIViewContainerable.swift */; };
-		30AA58BD2272E86C00BA0189 /* AUIReusableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58BC2272E86C00BA0189 /* AUIReusableTableView.swift */; };
+		30AA58BD2272E86C00BA0189 /* AUIReusableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58BC2272E86C00BA0189 /* AUIReusableTableViewCell.swift */; };
 		30AA58BF2272EB4100BA0189 /* AUIConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30AA58BE2272EB4100BA0189 /* AUIConfigurableView.swift */; };
 		30BB5E592206FA6A00F7DA0F /* AUIInsertingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E552206FA6A00F7DA0F /* AUIInsertingCellControllers.swift */; };
 		30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E562206FA6A00F7DA0F /* AUIDeletingCellControllers.swift */; };
@@ -125,7 +125,7 @@
 		30A7CD44219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIElementCollectionViewCellController.swift; sourceTree = "<group>"; };
 		30A7CD45219C144A006DAAA1 /* AUICollectionViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCellController.swift; sourceTree = "<group>"; };
 		30AA58BA2272E84100BA0189 /* AUIViewContainerable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewContainerable.swift; sourceTree = "<group>"; };
-		30AA58BC2272E86C00BA0189 /* AUIReusableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIReusableTableView.swift; sourceTree = "<group>"; };
+		30AA58BC2272E86C00BA0189 /* AUIReusableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIReusableTableViewCell.swift; sourceTree = "<group>"; };
 		30AA58BE2272EB4100BA0189 /* AUIConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIConfigurableView.swift; sourceTree = "<group>"; };
 		30BB5E552206FA6A00F7DA0F /* AUIInsertingCellControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIInsertingCellControllers.swift; sourceTree = "<group>"; };
 		30BB5E562206FA6A00F7DA0F /* AUIDeletingCellControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDeletingCellControllers.swift; sourceTree = "<group>"; };
@@ -379,7 +379,7 @@
 				C525D8712199866D0057E69F /* AUIContainerTableViewCell.swift */,
 				C525D86D2199866D0057E69F /* AUIGenericContainerTableViewCell.swift */,
 				30AA58BA2272E84100BA0189 /* AUIViewContainerable.swift */,
-				30AA58BC2272E86C00BA0189 /* AUIReusableTableView.swift */,
+				30AA58BC2272E86C00BA0189 /* AUIReusableTableViewCell.swift */,
 				30AA58BE2272EB4100BA0189 /* AUIConfigurableView.swift */,
 			);
 			path = Cell;
@@ -779,7 +779,7 @@
 				30AA58BB2272E84100BA0189 /* AUIViewContainerable.swift in Sources */,
 				C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */,
 				C525D83A219972770057E69F /* AUIDefaultPagesController.swift in Sources */,
-				30AA58BD2272E86C00BA0189 /* AUIReusableTableView.swift in Sources */,
+				30AA58BD2272E86C00BA0189 /* AUIReusableTableViewCell.swift in Sources */,
 				C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,

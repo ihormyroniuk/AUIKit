@@ -1,5 +1,5 @@
 //
-//  AUIReusableTableView.swift
+//  AUIReusableTableViewCell.swift
 //  AUIKit
 //
 //  Created by branderstudio on 4/26/19.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIReusableTableView: AUITableViewCellView, AUIViewContainerable, AUIConfigurableView {
+open class AUIReusableTableViewCell: AUITableViewCellView, AUIViewContainerable, AUIConfigurableView {
   
   private var createViewBlock: (() -> UIView)?
   private(set) public var containerView: UIView?
@@ -19,18 +19,18 @@ open class AUIReusableTableView: AUITableViewCellView, AUIViewContainerable, AUI
   }
   
   open func setupUI(insets: UIEdgeInsets = .zero, height: CGFloat? = nil) {
-    initContainerViewIfNeeded()
-    placeContainerView(insets: insets, height: height)
+    initContainerViewIfNeeded(insets: insets, height: height)
   }
   
   // MARK: - Private
   
-  private func initContainerViewIfNeeded() {
+  private func initContainerViewIfNeeded(insets: UIEdgeInsets, height: CGFloat?) {
     if containerView == nil {
       guard let createViewBlock = createViewBlock else { return }
       let createdContainerView = createViewBlock()
       containerView = createdContainerView
       contentView.addSubview(createdContainerView)
+      placeContainerView(insets: insets, height: height)
     }
   }
   
