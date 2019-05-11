@@ -12,6 +12,10 @@ public protocol AUIControlControllerTouchUpInsideDelegate: class {
   func controlControllerTouchUpInside(_ controlController: AUIControlController)
 }
 
+public protocol AUIControlControllerDidTouchDownDelegate: class {
+  func controlControllerDidTouchDown(_ controlController: AUIControlController)
+}
+
 public protocol AUIControlControllerEditingChangedDelegate: class {
   func controlControllerEditingChanged(_ сontrolController: AUIControlController)
 }
@@ -25,6 +29,7 @@ public protocol AUIControlController: AUIViewController {
   // MARK: Delegates
   
   var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate? { get set }
+  var didTouchDownDelegate: AUIControlControllerDidTouchDownDelegate? { get set }
   var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
   var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
   

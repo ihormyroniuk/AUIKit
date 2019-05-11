@@ -13,6 +13,7 @@ open class AUIDefaultControlController: AUIDefaultViewController, AUIControlCont
   // MARK: Delegates
 
   open weak var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate?
+  open weak var didTouchDownDelegate: AUIControlControllerDidTouchDownDelegate?
   open weak var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate?
   open weak var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate?
   
@@ -35,6 +36,7 @@ open class AUIDefaultControlController: AUIDefaultViewController, AUIControlCont
   open func setupControl() {
     control?.isEnabled = isEnabled
     control?.addTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
+    control?.addTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
     control?.addTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
     control?.addTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
   }
@@ -46,6 +48,7 @@ open class AUIDefaultControlController: AUIDefaultViewController, AUIControlCont
   
   open func unsetupControl() {
     control?.removeTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
+    control?.removeTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
     control?.removeTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
     control?.removeTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
   }
@@ -65,6 +68,10 @@ open class AUIDefaultControlController: AUIDefaultViewController, AUIControlCont
   
   @objc open func touchUpInsideEventAction() {
     touchUpInsideEventDelegate?.controlControllerTouchUpInside(self)
+  }
+  
+  @objc open func touchDownEventAction() {
+    didTouchDownDelegate?.controlControllerDidTouchDown(self)
   }
   
   @objc open func editingChangedEventAction() {
