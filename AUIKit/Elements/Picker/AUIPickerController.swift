@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol AUIPickerControllerDidSelectItemControllerDelegate {
-  func pickerController(_ pickerController: AUIPickerController, didSelect itemController: AUIPickerItemController)
+  func pickerController(_ pickerController: AUIPickerController, didSelectItemController itemController: AUIPickerItemController)
 }
 
 public protocol AUIPickerController: AUIViewController {
@@ -17,6 +17,10 @@ public protocol AUIPickerController: AUIViewController {
   // MARK: Picker View
   
   var pickerView: UIPickerView? { get set }
+  
+  // MARK: Delegate
+  
+  var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate { get set }
   
   // MARK: Select
   

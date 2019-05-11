@@ -295,6 +295,7 @@
 				C51DBB292216F3A80009605A /* AUITextViewController.swift */,
 				C51DBB2B2216F62D0009605A /* AUIDefaultTextViewController.swift */,
 				C51DBB272216F2DA0009605A /* AUITextView.swift */,
+				C53E7C772218764B006CB0D9 /* SubtextView */,
 			);
 			path = TextView;
 			sourceTree = "<group>";
@@ -323,6 +324,7 @@
 			children = (
 				C525D81E21996AF20057E69F /* AUIControlController.swift */,
 				C525D81F21996AF20057E69F /* AUIDefaultControlController.swift */,
+				C53F8EC821FBAE590019C79E /* Subcontrol */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -333,6 +335,7 @@
 				C525D82F219971F70057E69F /* AUITextFieldController.swift */,
 				C525D830219971F70057E69F /* AUIDefaultTextFieldController.swift */,
 				C55A85B321EE234200A30B42 /* AUITextField.swift */,
+				C53F8ECF21FBB6DF0019C79E /* SubtextField */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -343,7 +346,6 @@
 				C528BA4321BC410200FFCE53 /* AUIPagesController.swift */,
 				C525D836219972770057E69F /* AUIDefaultPagesController.swift */,
 				C528BA4521BC42EF00FFCE53 /* Page */,
-				C525D837219972770057E69F /* UIPageControl+PreferredSize.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -458,13 +460,14 @@
 				C525D8652199866D0057E69F /* TableView */,
 				30A7CD32219C140D006DAAA1 /* CollectionView */,
 				C525D833219972770057E69F /* Pages */,
+				C5454CC722870A0700F26838 /* PageControl */,
+				C53E80DE226F007600DD78C8 /* StackView */,
 				C53AEB172195DC470087F0A2 /* BarItem */,
 				C53AEB1A2195DC470087F0A2 /* BarButtonItem */,
 				C53AEAF32195D9710087F0A2 /* Toolbar */,
 				C525D81621996AF10057E69F /* RefreshControl */,
 				C53AEB212195DD1A0087F0A2 /* Picker */,
 				C5527C7C21F072AC0098D498 /* DatePicker */,
-				C53E80DE226F007600DD78C8 /* StackView */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -477,9 +480,6 @@
 				C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */,
 				C53AEAA02195B01C0087F0A2 /* AUIView.swift */,
 				C53F8EC121FBA8EB0019C79E /* Subview */,
-				C53F8EC821FBAE590019C79E /* Subcontrol */,
-				C53F8ECF21FBB6DF0019C79E /* SubtextField */,
-				C53E7C772218764B006CB0D9 /* SubtextView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,6 +627,14 @@
 				C544776E225CC962002BE89F /* AUITabBarController.swift */,
 			);
 			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		C5454CC722870A0700F26838 /* PageControl */ = {
+			isa = PBXGroup;
+			children = (
+				C525D837219972770057E69F /* UIPageControl+PreferredSize.swift */,
+			);
+			path = PageControl;
 			sourceTree = "<group>";
 		};
 		C54D0F0F21E62C9900A09F16 /* TextField */ = {
