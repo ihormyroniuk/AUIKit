@@ -445,7 +445,6 @@
 		C53AEA532195B01C0087F0A2 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				C53E80DE226F007600DD78C8 /* StackView */,
 				C53AEA9E2195B01C0087F0A2 /* View */,
 				C53AEAFB2195D9710087F0A2 /* Label */,
 				C53AEB102195DBE30087F0A2 /* ImageView */,
@@ -465,6 +464,7 @@
 				C525D81621996AF10057E69F /* RefreshControl */,
 				C53AEB212195DD1A0087F0A2 /* Picker */,
 				C5527C7C21F072AC0098D498 /* DatePicker */,
+				C53E80DE226F007600DD78C8 /* StackView */,
 			);
 			path = Elements;
 			sourceTree = "<group>";

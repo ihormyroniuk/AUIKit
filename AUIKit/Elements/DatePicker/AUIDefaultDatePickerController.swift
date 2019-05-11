@@ -20,6 +20,18 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   public weak var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate?
   
+  // MARK: Mode
+  
+  public var mode: UIDatePicker.Mode = UIDatePicker.Mode.dateAndTime {
+    didSet {
+      didSetMode(oldValue)
+    }
+  }
+  
+  open func didSetMode(_ oldValue: UIDatePicker.Mode?) {
+    datePicker?.datePickerMode = mode
+  }
+  
   // MARK: Dates
   
   public var date: Date = Date() {
@@ -61,6 +73,60 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     }
   }
   
+  // MARK: Locale
+  
+  public var locale: Locale? {
+    didSet {
+      didSetLocale(oldValue)
+    }
+  }
+  
+  open func didSetLocale(_ oldValue: Locale?) {
+    datePicker?.locale = locale
+  }
+  
+  public var calendar: Calendar = Calendar.current {
+    didSet {
+      didSetCalendar(oldValue)
+    }
+  }
+  
+  open func didSetCalendar(_ oldValue: Calendar) {
+    datePicker?.calendar = calendar
+  }
+  
+  public var timeZone: TimeZone? {
+    didSet {
+      didSetTimeZone(oldValue)
+    }
+  }
+  
+  open func didSetTimeZone(_ oldValue: TimeZone?) {
+    datePicker?.timeZone = timeZone
+  }
+  
+  // MARK:
+  
+  public var countDownDuration: TimeInterval = 0.0 {
+    didSet {
+      didSetCountDownDuration(oldValue)
+    }
+  }
+  
+  open func didSetCountDownDuration(_ oldValue: TimeInterval) {
+    datePicker?.countDownDuration = countDownDuration
+  }
+  
+  public var minuteInterval: Int = 1 {
+    didSet {
+      didSetMinuteInterval(oldValue)
+    }
+  }
+
+  open func didSetMinuteInterval(_ oldValue: Int) {
+    datePicker?.minuteInterval = minuteInterval
+  }
+  
   // MARK: View
   
   open override func setupView() {
@@ -68,12 +134,14 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.date = date
     datePicker?.minimumDate = minimumDate
     datePicker?.maximumDate = maximumDate
+    datePicker?.datePickerMode = mode
   }
   
   open override func unsetupView() {
     super.unsetupView()
     datePicker?.date = date
-    datePicker?.minimumDate = minimumDate
+    datePicker?.minimumDate = nil
+    datePicker?.maximumDate = nil
   }
   
   // MARK: Events

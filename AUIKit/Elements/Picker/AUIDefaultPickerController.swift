@@ -50,11 +50,7 @@ open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerContro
   
   // MARK: Select
   
-  open func select(_ itemController: AUIPickerItemController) {
-    
-  }
-  
-  open func selectAnimated(_ itemController: AUIPickerItemController) {
+  open func select(_ itemController: AUIPickerItemController, animated: Bool) {
     
   }
 }

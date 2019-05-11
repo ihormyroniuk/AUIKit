@@ -21,10 +21,25 @@ public protocol AUIDatePickerController: AUIControlController {
   
   var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate? { get set }
   
+  // MARK: Mode
+  
+  var mode: UIDatePicker.Mode { get set }
+  
   // MARK: Data
   
   var date: Date { get set }
   var minimumDate: Date? { get set }
   var maximumDate: Date? { get set }
+  
+  // MARK: Locale
+  
+  var locale: Locale? { get set }
+  var calendar: Calendar { get set }
+  var timeZone: TimeZone? { get set }
+  
+  // MARK: 
+  
+  var countDownDuration: TimeInterval { get set }
+  var minuteInterval: Int { get set }
   
 }

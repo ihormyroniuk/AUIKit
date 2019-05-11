@@ -79,14 +79,9 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   
   // MARK: Select
   
-  open override func select(_ itemController: AUIPickerItemController) {
+  open override func select(_ itemController: AUIPickerItemController, animated: Bool) {
     guard let indexPath = indexPathForItemController(itemController) else { return }
-    pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: false)
-  }
-  
-  open override func selectAnimated(_ itemController: AUIPickerItemController) {
-    guard let indexPath = indexPathForItemController(itemController) else { return }
-    pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: true)
+    pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: animated)
   }
   
   // MARK: Selected item
