@@ -112,6 +112,15 @@
 		C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF7E224537C80086A8CA /* AUISwitchController.swift */; };
 		C55EFF81224538980086A8CA /* AUIDefaultSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */; };
 		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
+		C5EC0D3F228AD830005E7447 /* AUIInputtedTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */; };
+		C5EC0D42228AD957005E7447 /* AUIInputtedTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D41228AD957005E7447 /* AUIInputtedTextFormatter.swift */; };
+		C5EC0D44228ADA36005E7447 /* AUITextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D43228ADA36005E7447 /* AUITextFormatter.swift */; };
+		C5EC0D47228ADB2C005E7447 /* AUIValidatingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D46228ADB2C005E7447 /* AUIValidatingTextFieldController.swift */; };
+		C5EC0D4A228ADC7F005E7447 /* AUIFormattingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D49228ADC7F005E7447 /* AUIFormattingTextFieldController.swift */; };
+		C5EC0D4D228ADECE005E7447 /* AUIValidatingFormattingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D4C228ADECE005E7447 /* AUIValidatingFormattingTextFieldController.swift */; };
+		C5EC0D4F228ADF25005E7447 /* AUIDefaultValidatingFormattingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D4E228ADF25005E7447 /* AUIDefaultValidatingFormattingTextFieldController.swift */; };
+		C5EC0D51228AE6BA005E7447 /* AUIDefaultFormattingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D50228AE6BA005E7447 /* AUIDefaultFormattingTextFieldController.swift */; };
+		C5EC0D53228AE915005E7447 /* AUIDefaultValidatingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D52228AE915005E7447 /* AUIDefaultValidatingTextFieldController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -222,6 +231,15 @@
 		C55EFF7E224537C80086A8CA /* AUISwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISwitchController.swift; sourceTree = "<group>"; };
 		C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSwitchController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
+		C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInputtedTextValidator.swift; sourceTree = "<group>"; };
+		C5EC0D41228AD957005E7447 /* AUIInputtedTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInputtedTextFormatter.swift; sourceTree = "<group>"; };
+		C5EC0D43228ADA36005E7447 /* AUITextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFormatter.swift; sourceTree = "<group>"; };
+		C5EC0D46228ADB2C005E7447 /* AUIValidatingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIValidatingTextFieldController.swift; sourceTree = "<group>"; };
+		C5EC0D49228ADC7F005E7447 /* AUIFormattingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIFormattingTextFieldController.swift; sourceTree = "<group>"; };
+		C5EC0D4C228ADECE005E7447 /* AUIValidatingFormattingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIValidatingFormattingTextFieldController.swift; sourceTree = "<group>"; };
+		C5EC0D4E228ADF25005E7447 /* AUIDefaultValidatingFormattingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultValidatingFormattingTextFieldController.swift; sourceTree = "<group>"; };
+		C5EC0D50228AE6BA005E7447 /* AUIDefaultFormattingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultFormattingTextFieldController.swift; sourceTree = "<group>"; };
+		C5EC0D52228AE915005E7447 /* AUIDefaultValidatingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultValidatingTextFieldController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,6 +353,9 @@
 				C525D82F219971F70057E69F /* AUITextFieldController.swift */,
 				C525D830219971F70057E69F /* AUIDefaultTextFieldController.swift */,
 				C55A85B321EE234200A30B42 /* AUITextField.swift */,
+				C5EC0D45228ADADB005E7447 /* Validating */,
+				C5EC0D48228ADC64005E7447 /* Formatting */,
+				C5EC0D4B228ADE7E005E7447 /* ValidatingFormatting */,
 				C53F8ECF21FBB6DF0019C79E /* SubtextField */,
 			);
 			path = TextField;
@@ -438,6 +459,7 @@
 				C563738021EA5551008FAF87 /* Stories */,
 				C525D88B2199989D0057E69F /* Screens */,
 				C53AEA532195B01C0087F0A2 /* Elements */,
+				C5EC0D54228AEA5E005E7447 /* Behaviour  */,
 				C53AEA4B2195AF690087F0A2 /* AUIKit.h */,
 				C53AEA4C2195AF690087F0A2 /* Info.plist */,
 			);
@@ -684,6 +706,91 @@
 			path = Stories;
 			sourceTree = "<group>";
 		};
+		C5EC0D3D228AD7FF005E7447 /* Inputted */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */,
+			);
+			path = Inputted;
+			sourceTree = "<group>";
+		};
+		C5EC0D40228AD901005E7447 /* Inputted */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D41228AD957005E7447 /* AUIInputtedTextFormatter.swift */,
+			);
+			path = Inputted;
+			sourceTree = "<group>";
+		};
+		C5EC0D45228ADADB005E7447 /* Validating */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D46228ADB2C005E7447 /* AUIValidatingTextFieldController.swift */,
+				C5EC0D52228AE915005E7447 /* AUIDefaultValidatingTextFieldController.swift */,
+			);
+			path = Validating;
+			sourceTree = "<group>";
+		};
+		C5EC0D48228ADC64005E7447 /* Formatting */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D49228ADC7F005E7447 /* AUIFormattingTextFieldController.swift */,
+				C5EC0D50228AE6BA005E7447 /* AUIDefaultFormattingTextFieldController.swift */,
+			);
+			path = Formatting;
+			sourceTree = "<group>";
+		};
+		C5EC0D4B228ADE7E005E7447 /* ValidatingFormatting */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D4C228ADECE005E7447 /* AUIValidatingFormattingTextFieldController.swift */,
+				C5EC0D4E228ADF25005E7447 /* AUIDefaultValidatingFormattingTextFieldController.swift */,
+			);
+			path = ValidatingFormatting;
+			sourceTree = "<group>";
+		};
+		C5EC0D54228AEA5E005E7447 /* Behaviour  */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D57228AEA91005E7447 /* Formatters */,
+				C5EC0D56228AEA7F005E7447 /* Validators */,
+			);
+			path = "Behaviour ";
+			sourceTree = "<group>";
+		};
+		C5EC0D56228AEA7F005E7447 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D59228AEB2B005E7447 /* Text */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		C5EC0D57228AEA91005E7447 /* Formatters */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D58228AEADD005E7447 /* Text */,
+			);
+			path = Formatters;
+			sourceTree = "<group>";
+		};
+		C5EC0D58228AEADD005E7447 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D43228ADA36005E7447 /* AUITextFormatter.swift */,
+				C5EC0D40228AD901005E7447 /* Inputted */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
+		C5EC0D59228AEB2B005E7447 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D3D228AD7FF005E7447 /* Inputted */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -772,11 +879,13 @@
 				C53F8EC721FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift in Sources */,
 				C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */,
 				30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */,
+				C5EC0D4D228ADECE005E7447 /* AUIValidatingFormattingTextFieldController.swift in Sources */,
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
 				C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */,
 				C53AEB142195DBE30087F0A2 /* AUIDefaultImageViewController.swift in Sources */,
 				C53F8ED321FBB7CB0019C79E /* AUISubtextFieldViewController.swift in Sources */,
 				C525D82621996AF20057E69F /* AUIDefaultControlController.swift in Sources */,
+				C5EC0D4F228ADF25005E7447 /* AUIDefaultValidatingFormattingTextFieldController.swift in Sources */,
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
 				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
 				30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */,
@@ -790,7 +899,9 @@
 				30AA58BD2272E86C00BA0189 /* AUIReusableTableViewCell.swift in Sources */,
 				C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
+				C5EC0D42228AD957005E7447 /* AUIInputtedTextFormatter.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
+				C5EC0D3F228AD830005E7447 /* AUIInputtedTextValidator.swift in Sources */,
 				C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */,
 				30BB5E592206FA6A00F7DA0F /* AUIInsertingCellControllers.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
@@ -818,6 +929,7 @@
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
 				C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */,
+				C5EC0D44228ADA36005E7447 /* AUITextFormatter.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */,
 				3016176E220F605D00DA07AC /* AUIViewContainer.swift in Sources */,
@@ -840,12 +952,15 @@
 				C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */,
 				C53E7C7D22187C31006CB0D9 /* AUITableViewSectionController.swift in Sources */,
 				C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */,
+				C5EC0D53228AE915005E7447 /* AUIDefaultValidatingTextFieldController.swift in Sources */,
 				C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */,
 				30A7CD52219C144A006DAAA1 /* AUICollectionViewController.swift in Sources */,
+				C5EC0D51228AE6BA005E7447 /* AUIDefaultFormattingTextFieldController.swift in Sources */,
 				C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */,
 				C525D83B219972770057E69F /* UIPageControl+PreferredSize.swift in Sources */,
 				3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */,
 				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
+				C5EC0D4A228ADC7F005E7447 /* AUIFormattingTextFieldController.swift in Sources */,
 				C54D0F1321E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift in Sources */,
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C525D832219971F70057E69F /* AUIDefaultTextFieldController.swift in Sources */,
@@ -859,6 +974,7 @@
 				C53AEB2E2195DD1A0087F0A2 /* AUIDefaultTitlePickerItemController.swift in Sources */,
 				C525D8862199866D0057E69F /* AUIContainerTableViewHeaderFooterView.swift in Sources */,
 				C53F8EC321FBA9670019C79E /* AUISubviewView.swift in Sources */,
+				C5EC0D47228ADB2C005E7447 /* AUIValidatingTextFieldController.swift in Sources */,
 				C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */,
 				30A7CD50219C144A006DAAA1 /* AUICollectionViewDelegateProxy.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,

@@ -20,7 +20,7 @@ public protocol AUIPickerController: AUIViewController {
   
   // MARK: Delegate
   
-  var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate { get set }
+  //var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate { get set }
   
   // MARK: Select
   
