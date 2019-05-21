@@ -32,7 +32,7 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.datePickerMode = mode
   }
   
-  // MARK: Dates
+  // MARK: Date
   
   public var date: Date = Date() {
     didSet {
@@ -42,7 +42,7 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   open func didSetDate(_ oldValue: Date) {
     if oldValue != date {
-      datePicker?.date = date
+      datePicker?.setDate(date, animated: true)
       didSelectDateDelegate?.datePickerController(self, didSelectDate: date)
     }
   }
@@ -135,13 +135,11 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.minimumDate = minimumDate
     datePicker?.maximumDate = maximumDate
     datePicker?.datePickerMode = mode
-  }
-  
-  open override func unsetupView() {
-    super.unsetupView()
-    datePicker?.date = date
-    datePicker?.minimumDate = nil
-    datePicker?.maximumDate = nil
+    datePicker?.locale = locale
+    datePicker?.calendar = calendar
+    datePicker?.timeZone = timeZone
+    datePicker?.countDownDuration = countDownDuration
+    datePicker?.minuteInterval = minuteInterval
   }
   
   // MARK: Events

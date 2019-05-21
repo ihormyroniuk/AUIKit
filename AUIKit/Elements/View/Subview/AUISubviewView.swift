@@ -5,9 +5,9 @@
 //  Created by Ihor Myroniuk on 1/25/19.
 //
 
-import Foundation
+import UIKit
 
-public protocol AUISubviewView {
+public protocol AUISubviewView where Self: UIView {
   
   // MARK: Subview
   

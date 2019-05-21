@@ -25,7 +25,7 @@ public protocol AUIDatePickerController: AUIControlController {
   
   var mode: UIDatePicker.Mode { get set }
   
-  // MARK: Data
+  // MARK: Date
   
   var date: Date { get set }
   var minimumDate: Date? { get set }
