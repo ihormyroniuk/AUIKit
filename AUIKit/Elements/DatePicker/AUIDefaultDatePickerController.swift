@@ -131,10 +131,10 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
   open override func setupView() {
     super.setupView()
-    datePicker?.date = date
+    datePicker?.datePickerMode = mode
+    datePicker?.setDate(date, animated: false)
     datePicker?.minimumDate = minimumDate
     datePicker?.maximumDate = maximumDate
-    datePicker?.datePickerMode = mode
     datePicker?.locale = locale
     datePicker?.calendar = calendar
     datePicker?.timeZone = timeZone
