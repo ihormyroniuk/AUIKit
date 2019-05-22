@@ -8,22 +8,28 @@
 
 import UIKit
 
-public protocol AUIPickerControllerDidSelectItemControllerDelegate {
-  func pickerController(_ pickerController: AUIPickerController, didSelectItemController itemController: AUIPickerItemController)
+public protocol AUIPickerControllerDidSelectItemControllerDelegate: class {
+  func pickerController(_ pickerController: AUIPickerController, didSelectItemController itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController)
 }
 
 public protocol AUIPickerController: AUIViewController {
-  
+
   // MARK: Picker View
   
   var pickerView: UIPickerView? { get set }
   
+  // MARK: Components
+  
+  var componentControllers: [AUIPickerComponentController] { get }
+  
   // MARK: Delegate
   
-  //var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate { get set }
+  var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate? { get set }
   
   // MARK: Select
   
-  func select(_ itemController: AUIPickerItemController, animated: Bool)
+  func selectItemController(_ itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController, animated: Bool)
+  
+  func selectedItemController(atComponentController componentController: AUIPickerComponentController) -> AUIPickerItemController?
   
 }

@@ -8,14 +8,9 @@
 
 import Foundation
 
-public protocol AUITitlePickerControllerDidSelectDelegate: class {
-  func titlePickerControllerDidSelect(component: AUITitlePickerComponentController, item: AUITitlePickerItemController)
-}
-
 public protocol AUITitlePickerController: AUIPickerController {
   
-  var didSelectDelegate: AUITitlePickerControllerDidSelectDelegate? { set get }
-  var components: [AUITitlePickerComponentController] { set get }
+  // MARK: Component Controllers
   
-  func getSelectedItem(for component: AUITitlePickerComponentController) -> AUITitlePickerItemController?
+  var titleComponentControllers: [AUITitlePickerComponentController] { set get }
 }

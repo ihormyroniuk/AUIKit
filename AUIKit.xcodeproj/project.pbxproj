@@ -568,6 +568,7 @@
 				C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */,
 				C53AEB2C2195DD1A0087F0A2 /* AUIPickerItemController.swift */,
 				C53AEB232195DD1A0087F0A2 /* Title */,
+				C544E64322955A2900DE9156 /* View */,
 			);
 			path = Picker;
 			sourceTree = "<group>";
@@ -666,6 +667,13 @@
 				C544776E225CC962002BE89F /* AUITabBarController.swift */,
 			);
 			path = TabBarControllers;
+			sourceTree = "<group>";
+		};
+		C544E64322955A2900DE9156 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C5454CC722870A0700F26838 /* PageControl */ = {
