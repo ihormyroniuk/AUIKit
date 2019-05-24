@@ -11,13 +11,13 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   
   // MARK: Delegates
   
-  open weak var subcontrolControllerDidTouchDownDelegate: AUIControlControllerDidTouchDownDelegate?
-  open weak var subcontrolControllerDidTouchUpInsideDelegate: AUIControlControllerDidTouchUpInsideDelegate?
-  open weak var subcontrolControllerDidTouchUpOutsideDelegate: AUIControlControllerDidTouchUpOutsideDelegate?
-  open weak var subcontrolControllerDidValueChangedDelegate: AUIControlControllerDidValueChangedDelegate?
-  open weak var subcontrolControllerDidEditingChangedDelegate: AUIControlControllerDidEditingChangedDelegate?
+  open weak var subcontrolViewControllerDidTouchDownDelegate: AUISubcontrolViewControllerDidTouchDownDelegate?
+  open weak var subcontrolViewControllerDidTouchUpInsideDelegate: AUISubcontrolViewControllerDidTouchUpInsideDelegate?
+  open weak var subcontrolViewControllerDidTouchUpOutsideDelegate: AUISubcontrolViewControllerDidTouchUpOutsideDelegate?
+  open weak var subcontrolViewControllerDidValueChangedDelegate: AUISubcontrolViewControllerDidValueChangedDelegate?
+  open weak var subcontrolViewControllerDidEditingChangedDelegate: AUISubcontrolViewControllerDidEditingChangedDelegate?
   
-  // MARK: Subcontrol Controller
+  // MARK: SubcontrolController
   
   open var subcontrolController: AUIControlController? {
     set {
@@ -57,22 +57,22 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   // MARK: Events
   
   public func controlControllerDidTouchDown(_ controlController: AUIControlController) {
-    subcontrolControllerDidTouchDownDelegate?.controlControllerDidTouchDown(controlController)
+    subcontrolViewControllerDidTouchDownDelegate?.subcontrolViewControllerDidTouchDown(self)
   }
   
   open func controlControllerDidTouchUpInside(_ controlController: AUIControlController) {
-    subcontrolControllerDidTouchUpInsideDelegate?.controlControllerDidTouchUpInside(controlController)
+    subcontrolViewControllerDidTouchUpInsideDelegate?.subcontrolViewControllerDidTouchUpInside(self)
   }
   
   public func controlControllerDidTouchUpOutside(_ controlController: AUIControlController) {
-    subcontrolControllerDidTouchUpOutsideDelegate?.controlControllerDidTouchUpOutside(controlController)
+    subcontrolViewControllerDidTouchUpOutsideDelegate?.subcontrolViewControllerDidTouchUpOutside(self)
   }
   
   open func controlControllerDidValueChanged(_ controlController: AUIControlController) {
-    subcontrolControllerDidValueChangedDelegate?.controlControllerDidValueChanged(controlController)
+    subcontrolViewControllerDidValueChangedDelegate?.subcontrolViewControllerDidValueChanged(self)
   }
   
   open func controlControllerDidEditingChanged(_ controlController: AUIControlController) {
-    subcontrolControllerDidEditingChangedDelegate?.controlControllerDidEditingChanged(controlController)
+    subcontrolViewControllerDidEditingChangedDelegate?.subcontrolViewControllerDidEditingChanged(self)
   }
 }

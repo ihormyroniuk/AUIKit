@@ -11,13 +11,13 @@ open class AUIDefaultSubtextFieldViewController: AUIDefaultSubcontrolViewControl
   
   // MARK: Delegates
   
-  open weak var subtextFieldControllerDidChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
-  open weak var subtextFieldControllerDidTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
-  open weak var subtextFieldControllerDidBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
-  open weak var subtextFieldControllerDidEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
-  open weak var subtextFieldControllerDidEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
+  open weak var subtextFieldViewControllerDidChangeTextDelegate: AUISubtextFieldViewControllerDidChangeTextDelegate?
+  open weak var subtextFieldViewControllerDidTapReturnKeyDelegate: AUISubtextFieldViewControllerDidTapReturnKeyDelegate?
+  open weak var subtextFieldViewControllerDidBeginEditingDelegate: AUISubtextFieldViewControllerDidBeginEditingDelegate?
+  open weak var subtextFieldViewControllerDidEndEditingDelegate: AUISubtextFieldViewControllerDidEndEditingDelegate?
+  open weak var subtextFieldViewControllerDidEndEditingReasonDelegate: AUISubtextFieldViewControllerDidEndEditingReasonDelegate?
   
-  // MARK: SubtextField
+  // MARK: SubtextFieldController
   
   open var subtextFieldController: AUITextFieldController? {
     set { subviewController = newValue }
@@ -52,24 +52,23 @@ open class AUIDefaultSubtextFieldViewController: AUIDefaultSubcontrolViewControl
   
   // MARK: Events
   
-  open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
-    subtextFieldControllerDidEndEditingDelegate?.textFieldControllerDidEndEditing(textFieldController)
-  }
-  
-  open func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
-    subtextFieldControllerDidEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(textFieldController, reason: reason)
-  }
-  
   open func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
-    subtextFieldControllerDidChangeTextDelegate?.textFieldControllerDidChangeText(textFieldController)
+    subtextFieldViewControllerDidChangeTextDelegate?.textFieldViewControllerDidChangeText(self)
   }
   
   open func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController) {
-    subtextFieldControllerDidTapReturnKeyDelegate?.textFieldControllerDidTapReturnKey(textFieldController)
+    subtextFieldViewControllerDidTapReturnKeyDelegate?.textFieldViewControllerDidTapReturnKey(self)
   }
   
   open func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
-    subtextFieldControllerDidBeginEditingDelegate?.textFieldControllerDidBeginEditing(textFieldController)
+    subtextFieldViewControllerDidBeginEditingDelegate?.textFieldViewControllerDidBeginEditing(self)
   }
   
+  open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
+    subtextFieldViewControllerDidEndEditingDelegate?.textFieldViewControllerDidEndEditing(self)
+  }
+  
+  open func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
+   subtextFieldViewControllerDidEndEditingReasonDelegate?.textFieldViewControllerDidEndEditingReason(self, reason: reason)
+  }
 }

@@ -56,7 +56,7 @@ public protocol AUITextFieldController: AUIControlController {
   
   var inputViewController: AUIViewController? { get set }
   
-  // MARK: Text Field
+  // MARK: TextField
   
   var textField: UITextField? { get set }
   

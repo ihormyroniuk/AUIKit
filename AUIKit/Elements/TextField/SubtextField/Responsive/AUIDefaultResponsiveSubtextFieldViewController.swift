@@ -9,6 +9,8 @@ import UIKit
 
 open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFieldViewController, AUIResponsiveSubtextFieldViewController {
   
+  // MARK: ResponsiveSubtextFieldView
+  
   open var responsiveSubtextFieldView: AUIResponsiveSubtextFieldView? {
     get {
       return view as? AUIResponsiveSubtextFieldView
@@ -17,6 +19,15 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
       view = newValue as? UIView
     }
   }
+  
+  // MARK: View
+  
+  open override func setupView() {
+    super.setupView()
+    
+  }
+  
+  // MARK: Events
   
   open override func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
     super.textFieldControllerDidBeginEditing(controller)
