@@ -8,30 +8,35 @@
 
 import UIKit
 
-public protocol AUIControlControllerTouchUpInsideDelegate: class {
-  func controlControllerTouchUpInside(_ controlController: AUIControlController)
-}
-
 public protocol AUIControlControllerDidTouchDownDelegate: class {
   func controlControllerDidTouchDown(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerEditingChangedDelegate: class {
-  func controlControllerEditingChanged(_ сontrolController: AUIControlController)
+public protocol AUIControlControllerDidTouchUpInsideDelegate: class {
+  func controlControllerDidTouchUpInside(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerValueChangedDelegate: class {
-  func controlControllerValueChanged(_ сontrolController: AUIControlController)
+public protocol AUIControlControllerDidTouchUpOutsideDelegate: class {
+  func controlControllerDidTouchUpOutside(_ controlController: AUIControlController)
+}
+
+public protocol AUIControlControllerDidEditingChangedDelegate: class {
+  func controlControllerDidEditingChanged(_ сontrolController: AUIControlController)
+}
+
+public protocol AUIControlControllerDidValueChangedDelegate: class {
+  func controlControllerDidValueChanged(_ сontrolController: AUIControlController)
 }
 
 public protocol AUIControlController: AUIViewController {
   
   // MARK: Delegates
   
-  var touchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate? { get set }
   var didTouchDownDelegate: AUIControlControllerDidTouchDownDelegate? { get set }
-  var editingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
-  var valueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
+  var didTouchUpInsideDelegate: AUIControlControllerDidTouchUpInsideDelegate? { get set }
+  var didTouchUpOutsideDelegate: AUIControlControllerDidTouchUpOutsideDelegate? { get set }
+  var didValueChangedDelegate: AUIControlControllerDidValueChangedDelegate? { get set }
+  var didEditingChangedDelegate: AUIControlControllerDidEditingChangedDelegate? { get set }
   
   // MARK: Control
   

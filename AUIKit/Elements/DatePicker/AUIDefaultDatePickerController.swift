@@ -9,17 +9,6 @@ import UIKit
 
 open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDatePickerController {
   
-  // MARK: UIDatePicker
-  
-  public var datePicker: UIDatePicker? {
-    set { view = newValue }
-    get { return view as? UIDatePicker }
-  }
-  
-  // MARK: Delegates
-  
-  public weak var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate?
-  
   // MARK: Mode
   
   public var mode: UIDatePicker.Mode = UIDatePicker.Mode.dateAndTime {
@@ -47,6 +36,8 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     }
   }
   
+  // MARK: Minimum Date
+  
   public var minimumDate: Date? = nil {
     didSet {
       didSetMinimumDate(oldValue)
@@ -59,6 +50,8 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
       date = minimumDate
     }
   }
+  
+  // MARK: Maximum Date
   
   public var maximumDate: Date? = nil {
     didSet {
@@ -85,6 +78,8 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.locale = locale
   }
   
+  // MARK: Calendar
+  
   public var calendar: Calendar = Calendar.current {
     didSet {
       didSetCalendar(oldValue)
@@ -94,6 +89,8 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   open func didSetCalendar(_ oldValue: Calendar) {
     datePicker?.calendar = calendar
   }
+  
+  // MARK: Time Zone
   
   public var timeZone: TimeZone? {
     didSet {
@@ -105,7 +102,7 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.timeZone = timeZone
   }
   
-  // MARK:
+  // MARK: Count Down Duration
   
   public var countDownDuration: TimeInterval = 0.0 {
     didSet {
@@ -117,6 +114,8 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.countDownDuration = countDownDuration
   }
   
+  // MARK: Minute Interval
+  
   public var minuteInterval: Int = 1 {
     didSet {
       didSetMinuteInterval(oldValue)
@@ -127,7 +126,16 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.minuteInterval = minuteInterval
   }
   
-  // MARK: View
+  // MARK: Delegate
+  
+  public weak var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate?
+  
+  // MARK: UIDatePicker
+  
+  public var datePicker: UIDatePicker? {
+    set { view = newValue }
+    get { return view as? UIDatePicker }
+  }
   
   open override func setupView() {
     super.setupView()
@@ -145,10 +153,10 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   // MARK: Events
   
   open override func valueChangedEventAction() {
+    super.valueChangedEventAction()
     if let date = datePicker?.date {
       self.date = date
     }
-    super.valueChangedEventAction()
   }
   
 }

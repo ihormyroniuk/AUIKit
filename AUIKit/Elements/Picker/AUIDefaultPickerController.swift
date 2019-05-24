@@ -59,7 +59,7 @@ open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerContro
   }
   
   // MARK: Select ItemController
-  
+
   open func selectItemController(_ itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController, animated: Bool) {
     guard let component = componentControllers.firstIndex(where: { $0 === componentController }) else { return }
     guard let item = componentController.itemControllers.firstIndex(where: { $0 === itemController }) else { return }

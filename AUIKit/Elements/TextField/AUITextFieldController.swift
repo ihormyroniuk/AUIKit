@@ -38,9 +38,7 @@ public protocol AUITextFieldController: AUIControlController {
   var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
   var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate? { get set }
   
-  // MARK: Text Field
-  
-  var textField: UITextField? { get set }
+  // MARK: 
   
   var text: String? { get set }
   var placeholder: String? { get set }
@@ -57,5 +55,9 @@ public protocol AUITextFieldController: AUIControlController {
   // MARK: Input View Controller
   
   var inputViewController: AUIViewController? { get set }
+  
+  // MARK: Text Field
+  
+  var textField: UITextField? { get set }
   
 }

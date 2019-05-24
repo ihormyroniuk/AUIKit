@@ -14,7 +14,7 @@ public protocol AUIPickerControllerDidSelectItemControllerDelegate: class {
 
 public protocol AUIPickerController: AUIViewController {
 
-  // MARK: Picker View
+  // MARK: UIPickerView
   
   var pickerView: UIPickerView? { get set }
   

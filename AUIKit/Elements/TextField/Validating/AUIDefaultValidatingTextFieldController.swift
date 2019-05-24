@@ -11,11 +11,11 @@ open class AUIDefaultValidatingTextFieldController: AUIDefaultTextFieldControlle
   
   // MARK: AUIValidatingFormattingTextFieldController
   
-  open var inputtedTextValidator: AUIInputtedTextValidator? {
+  open var inputtedTextValidator: AUIInputtingTextValidator? {
     didSet { didSetInputtedTextValidator(oldValue) }
   }
-  open func didSetInputtedTextValidator(_ oldValue: AUIInputtedTextValidator?) {
-    if !(inputtedTextValidator?.isValidInputtedText(currentText: text, newText: text) ?? true) {
+  open func didSetInputtedTextValidator(_ oldValue: AUIInputtingTextValidator?) {
+    if !(inputtedTextValidator?.isValidInputtingText(currentText: text, newText: text) ?? true) {
       text = nil
     }
   }
@@ -23,7 +23,7 @@ open class AUIDefaultValidatingTextFieldController: AUIDefaultTextFieldControlle
   open override func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard let textRange = Range(range, in: text ?? "") else { return true }
     let newText = (text ?? "").replacingCharacters(in: textRange, with: string)
-    return inputtedTextValidator?.isValidInputtedText(currentText: text, newText: newText) ?? true
+    return inputtedTextValidator?.isValidInputtingText(currentText: text, newText: newText) ?? true
   }
   
 }

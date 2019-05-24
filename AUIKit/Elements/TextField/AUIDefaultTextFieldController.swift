@@ -64,16 +64,16 @@ KeyValueObserverProxyDelegate {
   }
   
   open func setupTextField() {
+    inputAccessoryViewController?.view = textField?.inputAccessoryView
+    inputViewController?.view = textField?.inputView
     textField?.placeholder = placeholder
     textField?.keyboardType = keyboardType
-    textField?.delegate = textFieldDelegate
     textField?.isSecureTextEntry = isSecureTextEntry
     textField?.autocorrectionType = autocorrectionType
     textField?.autocapitalizationType = autocapitalizationType
     textField?.returnKeyType = returnKeyType
     textField?.text = text
-    inputAccessoryViewController?.view = textField?.inputAccessoryView
-    inputViewController?.view = textField?.inputView
+    textField?.delegate = textFieldDelegate
     textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
   }
   
@@ -83,10 +83,10 @@ KeyValueObserverProxyDelegate {
   }
   
   func unsetupTextField() {
-    textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
-    textField?.delegate = nil
     inputAccessoryViewController?.view = nil
     inputViewController?.view = nil
+    textField?.delegate = nil
+    textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
   }
   
   // MARK: States
@@ -104,42 +104,54 @@ KeyValueObserverProxyDelegate {
   }
   
   open var placeholder: String? {
-    didSet { didSetPlaceholder(oldValue: oldValue) }
+    didSet {
+      didSetPlaceholder(oldValue: oldValue)
+    }
   }
   open func didSetPlaceholder(oldValue: String?) {
     textField?.placeholder = placeholder
   }
   
   open var keyboardType: UIKeyboardType = .default {
-    didSet { didSetKeyboardType(oldValue: oldValue) }
+    didSet {
+      didSetKeyboardType(oldValue: oldValue)
+    }
   }
   open func didSetKeyboardType(oldValue: UIKeyboardType) {
     textField?.keyboardType = keyboardType
   }
   
   open var isSecureTextEntry: Bool = false {
-    didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
+    didSet {
+      didSetIsSecureTextEntry(oldValue: oldValue)
+    }
   }
   open func didSetIsSecureTextEntry(oldValue: Bool) {
     textField?.isSecureTextEntry = isSecureTextEntry
   }
   
   open var autocorrectionType: UITextAutocorrectionType = .default {
-    didSet { didSetAutocorrectionType(oldValue: oldValue) }
+    didSet {
+      didSetAutocorrectionType(oldValue: oldValue)
+    }
   }
   open func didSetAutocorrectionType(oldValue: UITextAutocorrectionType) {
     textField?.autocorrectionType = autocorrectionType
   }
   
   open var autocapitalizationType: UITextAutocapitalizationType = .none {
-    didSet { didSetAutocapitalizationType(oldValue: oldValue) }
+    didSet {
+      didSetAutocapitalizationType(oldValue: oldValue)
+    }
   }
   open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
     textField?.autocapitalizationType = autocapitalizationType
   }
   
   open var returnKeyType: UIReturnKeyType = .default {
-    didSet { didSetReturnKeyType(oldValue: oldValue) }
+    didSet {
+      didSetReturnKeyType(oldValue: oldValue)
+    }
   }
   open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
     textField?.returnKeyType = returnKeyType

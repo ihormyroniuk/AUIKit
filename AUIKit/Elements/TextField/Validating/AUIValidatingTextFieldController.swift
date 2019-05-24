@@ -11,6 +11,6 @@ public protocol AUIValidatingTextFieldController: AUITextFieldController {
   
   // MARK: Inputted Text Validator
   
-  var inputtedTextValidator: AUIInputtedTextValidator? { get set }
+  var inputtedTextValidator: AUIInputtingTextValidator? { get set }
   
 }

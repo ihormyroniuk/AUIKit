@@ -10,16 +10,29 @@ import UIKit
 
 open class AUIDefaultButtonController: AUIDefaultControlController, AUIButtonController {
   
-  // MARK: View
+  // MARK: Button
   
   open var button: UIButton? {
     set { view = newValue }
     get { return view as? UIButton }
   }
   
-  open override func setupView() {
-    super.setupView()
+  open override func setupControl() {
+    super.setupControl()
+    setupButton()
+  }
+  
+  open func setupButton() {
     button?.setTitle(normalTitle, for: .normal)
+  }
+  
+  open override func unsetupControl() {
+    super.unsetupControl()
+    unsetupButton()
+  }
+  
+  open func unsetupButton() {
+    
   }
   
   // MARK: State

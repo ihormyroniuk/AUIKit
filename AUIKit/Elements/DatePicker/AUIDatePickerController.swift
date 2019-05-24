@@ -8,18 +8,10 @@
 import UIKit
 
 public protocol AUIDatePickerControllerDidSelectDateDelegate: class {
-  func datePickerController(_ datePickerController: AUIControlController, didSelectDate selectedDate: Date)
+  func datePickerController(_ datePickerController: AUIControlController, didSelectDate date: Date)
 }
 
 public protocol AUIDatePickerController: AUIControlController {
-  
-  // MARK: UIDatePicker
-  
-  var datePicker: UIDatePicker? { get set }
-  
-  // MARK: Delegate
-  
-  var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate? { get set }
   
   // MARK: Mode
   
@@ -28,18 +20,41 @@ public protocol AUIDatePickerController: AUIControlController {
   // MARK: Date
   
   var date: Date { get set }
+  
+  // MARK: Minimum Date
+  
   var minimumDate: Date? { get set }
+  
+  // MARK: Maximum Date
+  
   var maximumDate: Date? { get set }
   
   // MARK: Locale
   
   var locale: Locale? { get set }
+  
+  // MARK: Calendar
+  
   var calendar: Calendar { get set }
+  
+  // MARK: Time Zone
+  
   var timeZone: TimeZone? { get set }
   
-  // MARK: 
+  // MARK: Count Down Duration
   
   var countDownDuration: TimeInterval { get set }
+  
+  // MARK: Minute Interval
+  
   var minuteInterval: Int { get set }
+  
+  // MARK: Delegate
+  
+  var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate? { get set }
+  
+  // MARK: UIDatePicker
+  
+  var datePicker: UIDatePicker? { get set }
   
 }

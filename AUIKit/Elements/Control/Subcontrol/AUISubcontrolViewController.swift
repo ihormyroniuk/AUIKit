@@ -11,9 +11,11 @@ public protocol AUISubcontrolViewController: AUISubviewViewController {
   
   // MARK: Delegates
   
-  var subcontrolControllerTouchUpInsideEventDelegate: AUIControlControllerTouchUpInsideDelegate? { get set }
-  var subcontrolControllerEditingChangedEventDelegate: AUIControlControllerEditingChangedDelegate? { get set }
-  var subcontrolControllerValueChangedEventDelegate: AUIControlControllerValueChangedDelegate? { get set }
+  var subcontrolControllerDidTouchDownDelegate: AUIControlControllerDidTouchDownDelegate? { get set }
+  var subcontrolControllerDidTouchUpInsideDelegate: AUIControlControllerDidTouchUpInsideDelegate? { get set }
+  var subcontrolControllerDidTouchUpOutsideDelegate: AUIControlControllerDidTouchUpOutsideDelegate? { get set }
+  var subcontrolControllerDidValueChangedDelegate: AUIControlControllerDidValueChangedDelegate? { get set }
+  var subcontrolControllerDidEditingChangedDelegate: AUIControlControllerDidEditingChangedDelegate? { get set }
   
   // MARK: Subview
   

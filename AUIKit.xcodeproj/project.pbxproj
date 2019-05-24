@@ -109,8 +109,6 @@
 		C544E64B2295600B00DE9156 /* AUIDefaultViewPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */; };
 		C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */; };
 		C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */; };
-		C54D0F1121E62CC500A09F16 /* AUITextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D0F1021E62CC500A09F16 /* AUITextFieldViewController.swift */; };
-		C54D0F1321E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */; };
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
 		C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */; };
 		C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A85B321EE234200A30B42 /* AUITextField.swift */; };
@@ -121,7 +119,7 @@
 		C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF7E224537C80086A8CA /* AUISwitchController.swift */; };
 		C55EFF81224538980086A8CA /* AUIDefaultSwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */; };
 		C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */; };
-		C5EC0D3F228AD830005E7447 /* AUIInputtedTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */; };
+		C5EC0D3F228AD830005E7447 /* AUIInputtingTextValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D3E228AD830005E7447 /* AUIInputtingTextValidator.swift */; };
 		C5EC0D42228AD957005E7447 /* AUIInputtedTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D41228AD957005E7447 /* AUIInputtedTextFormatter.swift */; };
 		C5EC0D44228ADA36005E7447 /* AUITextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D43228ADA36005E7447 /* AUITextFormatter.swift */; };
 		C5EC0D47228ADB2C005E7447 /* AUIValidatingTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EC0D46228ADB2C005E7447 /* AUIValidatingTextFieldController.swift */; };
@@ -237,8 +235,6 @@
 		C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerController.swift; sourceTree = "<group>"; };
 		C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerComponentController.swift; sourceTree = "<group>"; };
 		C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerItemController.swift; sourceTree = "<group>"; };
-		C54D0F1021E62CC500A09F16 /* AUITextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldViewController.swift; sourceTree = "<group>"; };
-		C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextFieldViewController.swift; sourceTree = "<group>"; };
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
 		C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultDatePickerController.swift; sourceTree = "<group>"; };
 		C55A85B321EE234200A30B42 /* AUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextField.swift; sourceTree = "<group>"; };
@@ -249,7 +245,7 @@
 		C55EFF7E224537C80086A8CA /* AUISwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISwitchController.swift; sourceTree = "<group>"; };
 		C55EFF80224538980086A8CA /* AUIDefaultSwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultSwitchController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerWithoutBar.swift; sourceTree = "<group>"; };
-		C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInputtedTextValidator.swift; sourceTree = "<group>"; };
+		C5EC0D3E228AD830005E7447 /* AUIInputtingTextValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInputtingTextValidator.swift; sourceTree = "<group>"; };
 		C5EC0D41228AD957005E7447 /* AUIInputtedTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInputtedTextFormatter.swift; sourceTree = "<group>"; };
 		C5EC0D43228ADA36005E7447 /* AUITextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFormatter.swift; sourceTree = "<group>"; };
 		C5EC0D46228ADB2C005E7447 /* AUIValidatingTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIValidatingTextFieldController.swift; sourceTree = "<group>"; };
@@ -490,24 +486,24 @@
 				C53AEA9E2195B01C0087F0A2 /* View */,
 				C53AEAFB2195D9710087F0A2 /* Label */,
 				C53AEB102195DBE30087F0A2 /* ImageView */,
-				C525D81D21996AF10057E69F /* Control */,
-				C55B80A6221D8365003D84C1 /* SegmentControl */,
-				C525D81921996AF10057E69F /* Button */,
-				C525D82E219971F70057E69F /* TextField */,
-				C55EFF7D2245379E0086A8CA /* Switch */,
+				C53AEAF32195D9710087F0A2 /* Toolbar */,
+				C53AEB212195DD1A0087F0A2 /* Picker */,
+				C53E80DE226F007600DD78C8 /* StackView */,
 				C53AEB492195FA280087F0A2 /* ScrollView */,
 				C51DBB262216F2BF0009605A /* TextView */,
 				C525D8652199866D0057E69F /* TableView */,
 				30A7CD32219C140D006DAAA1 /* CollectionView */,
-				C525D833219972770057E69F /* Pages */,
+				C525D81D21996AF10057E69F /* Control */,
+				C525D81921996AF10057E69F /* Button */,
+				C525D82E219971F70057E69F /* TextField */,
 				C5454CC722870A0700F26838 /* PageControl */,
-				C53E80DE226F007600DD78C8 /* StackView */,
+				C55EFF7D2245379E0086A8CA /* Switch */,
+				C5527C7C21F072AC0098D498 /* DatePicker */,
+				C525D81621996AF10057E69F /* RefreshControl */,
+				C55B80A6221D8365003D84C1 /* SegmentControl */,
+				C525D833219972770057E69F /* Pages */,
 				C53AEB172195DC470087F0A2 /* BarItem */,
 				C53AEB1A2195DC470087F0A2 /* BarButtonItem */,
-				C53AEAF32195D9710087F0A2 /* Toolbar */,
-				C525D81621996AF10057E69F /* RefreshControl */,
-				C53AEB212195DD1A0087F0A2 /* Picker */,
-				C5527C7C21F072AC0098D498 /* DatePicker */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -515,7 +511,6 @@
 		C53AEA9E2195B01C0087F0A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C54D0F0F21E62C9900A09F16 /* TextField */,
 				C53AEAA22195B01C0087F0A2 /* AUIViewController.swift */,
 				C53AEAA12195B01C0087F0A2 /* AUIDefaultViewController.swift */,
 				C53AEAA02195B01C0087F0A2 /* AUIView.swift */,
@@ -702,15 +697,6 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
-		C54D0F0F21E62C9900A09F16 /* TextField */ = {
-			isa = PBXGroup;
-			children = (
-				C54D0F1021E62CC500A09F16 /* AUITextFieldViewController.swift */,
-				C54D0F1221E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift */,
-			);
-			path = TextField;
-			sourceTree = "<group>";
-		};
 		C5527C7C21F072AC0098D498 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,12 +735,12 @@
 			path = Stories;
 			sourceTree = "<group>";
 		};
-		C5EC0D3D228AD7FF005E7447 /* Inputted */ = {
+		C5EC0D3D228AD7FF005E7447 /* Inputting */ = {
 			isa = PBXGroup;
 			children = (
-				C5EC0D3E228AD830005E7447 /* AUIInputtedTextValidator.swift */,
+				C5EC0D3E228AD830005E7447 /* AUIInputtingTextValidator.swift */,
 			);
-			path = Inputted;
+			path = Inputting;
 			sourceTree = "<group>";
 		};
 		C5EC0D40228AD901005E7447 /* Inputted */ = {
@@ -829,7 +815,7 @@
 		C5EC0D59228AEB2B005E7447 /* Text */ = {
 			isa = PBXGroup;
 			children = (
-				C5EC0D3D228AD7FF005E7447 /* Inputted */,
+				C5EC0D3D228AD7FF005E7447 /* Inputting */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -947,7 +933,7 @@
 				C5EC0D42228AD957005E7447 /* AUIInputtedTextFormatter.swift in Sources */,
 				C53AEB052195D9710087F0A2 /* AUIDefaultToolbarController.swift in Sources */,
 				C544E64922955B2A00DE9156 /* AUIViewPickerItemController.swift in Sources */,
-				C5EC0D3F228AD830005E7447 /* AUIInputtedTextValidator.swift in Sources */,
+				C5EC0D3F228AD830005E7447 /* AUIInputtingTextValidator.swift in Sources */,
 				C563738221EA5563008FAF87 /* AUINavigationControllerWithoutBar.swift in Sources */,
 				30BB5E592206FA6A00F7DA0F /* AUIInsertingCellControllers.swift in Sources */,
 				C53AEAEE2195BD980087F0A2 /* AUIView.swift in Sources */,
@@ -962,7 +948,6 @@
 				C53AEB0C2195D9710087F0A2 /* AUILabelController.swift in Sources */,
 				C53AEB342195DD1B0087F0A2 /* AUIDefaultPickerController.swift in Sources */,
 				C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */,
-				C54D0F1121E62CC500A09F16 /* AUITextFieldViewController.swift in Sources */,
 				C525D82021996AF20057E69F /* AUIRefreshControlController.swift in Sources */,
 				C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */,
 				C544E64722955B0600DE9156 /* AUIViewPickerComponentController.swift in Sources */,
@@ -1012,7 +997,6 @@
 				3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */,
 				C53AEB0B2195D9710087F0A2 /* AUILabel.swift in Sources */,
 				C5EC0D4A228ADC7F005E7447 /* AUIFormattingTextFieldController.swift in Sources */,
-				C54D0F1321E62E8900A09F16 /* AUIDefaultTextFieldViewController.swift in Sources */,
 				C53AEB322195DD1B0087F0A2 /* AUITitlePickerItemController.swift in Sources */,
 				C525D832219971F70057E69F /* AUIDefaultTextFieldController.swift in Sources */,
 				C528BA4421BC410200FFCE53 /* AUIPagesController.swift in Sources */,
