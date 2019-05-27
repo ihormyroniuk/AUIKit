@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, AUISubcontrolViewController, AUIControlControllerDidTouchDownDelegate, AUIControlControllerDidTouchUpInsideDelegate, AUIControlControllerDidEditingChangedDelegate, AUIControlControllerDidValueChangedDelegate, AUIControlControllerDidTouchUpOutsideDelegate {
+open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, AUISubcontrolViewController, AUIControlControllerDidTouchDownObserver, AUIControlControllerDidTouchUpInsideObserver, AUIControlControllerDidEditingChangedObserver, AUIControlControllerDidValueChangedObserver, AUIControlControllerDidTouchUpOutsideObserver {
   
   // MARK: Delegates
   

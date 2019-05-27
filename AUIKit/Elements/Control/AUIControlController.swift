@@ -8,23 +8,23 @@
 
 import UIKit
 
-public protocol AUIControlControllerDidTouchDownDelegate: class {
+public protocol AUIControlControllerDidTouchDownObserver: class {
   func controlControllerDidTouchDown(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidTouchUpInsideDelegate: class {
+public protocol AUIControlControllerDidTouchUpInsideObserver: class {
   func controlControllerDidTouchUpInside(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidTouchUpOutsideDelegate: class {
+public protocol AUIControlControllerDidTouchUpOutsideObserver: class {
   func controlControllerDidTouchUpOutside(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidEditingChangedDelegate: class {
+public protocol AUIControlControllerDidEditingChangedObserver: class {
   func controlControllerDidEditingChanged(_ сontrolController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidValueChangedDelegate: class {
+public protocol AUIControlControllerDidValueChangedObserver: class {
   func controlControllerDidValueChanged(_ сontrolController: AUIControlController)
 }
 
@@ -32,20 +32,20 @@ public protocol AUIControlController: AUIViewController {
   
   // MARK: Delegates
   
-  func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate)
-  func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate)
+  func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
+  func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
   
-  func addDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate)
-  func removeDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate)
+  func addDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideObserver)
+  func removeDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideObserver)
   
-  func addDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate)
-  func removeDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate)
+  func addDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideObserver)
+  func removeDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideObserver)
   
-  func addDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate)
-  func removeDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate)
+  func addDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedObserver)
+  func removeDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedObserver)
   
-  func addDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate)
-  func removeDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate)
+  func addDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedObserver)
+  func removeDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedObserver)
   
   // MARK: Control
   

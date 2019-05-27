@@ -8,23 +8,23 @@
 
 import UIKit
 
-public protocol AUITextFieldControllerDidChangeTextDelegate: class {
+public protocol AUITextFieldControllerDidChangeTextObserver: class {
   func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
+public protocol AUITextFieldControllerDidTapReturnKeyObserver: class {
   func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidBeginEditingDelegate: class {
+public protocol AUITextFieldControllerDidBeginEditingObserver: class {
   func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidEndEditingDelegate: class {
+public protocol AUITextFieldControllerDidEndEditingObserver: class {
   func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidEndEditingReasonDelegate: class {
+public protocol AUITextFieldControllerDidEndEditingReasonObserver: class {
   func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason)
 }
 
@@ -32,20 +32,20 @@ public protocol AUITextFieldController: AUIControlController {
   
   // MARK: Delegates
   
-  func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate)
-  func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate)
+  func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
+  func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
 
-  func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate)
-  func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate)
+  func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
+  func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
   
-  func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate)
-  func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate)
+  func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
+  func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
   
-  func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate)
-  func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate)
+  func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
+  func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
   
-  func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate)
-  func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate)
+  func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
+  func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
   
   // MARK: 
   
