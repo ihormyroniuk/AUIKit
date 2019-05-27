@@ -13,15 +13,62 @@ private let UITextFieldTextPropertyKey = "text"
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
   
+  
+  
   // MARK: Delegates
   
   private let keyValueObserverProxy = KeyValueObserverProxy()
   private let textFieldDelegate = UITextFieldDelegateProxy()
-  open weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
-  open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
-  open weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
-  open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
-  open weak var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate?
+  
+  open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate) {
+    didChangeTextObservers.add(observer)
+  }
+  
+  open func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate) {
+    didChangeTextObservers.remove(observer)
+  }
+  
+  open var didTapReturnKeyObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate) {
+    didTapReturnKeyObservers.add(observer)
+  }
+  
+  open func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate) {
+    didTapReturnKeyObservers.remove(observer)
+  }
+  
+  open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate) {
+    didBeginEditingObservers.add(observer)
+  }
+  
+  open func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate) {
+    didBeginEditingObservers.remove(observer)
+  }
+  
+  open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate) {
+    didEndEditingObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate) {
+    didEndEditingObservers.remove(observer)
+  }
+
+  open var didEndEditingReasonObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate) {
+    didEndEditingReasonObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate) {
+    didEndEditingReasonObservers.remove(observer)
+  }
   
   // MARK: Input Accessory View Controller
   
@@ -99,7 +146,10 @@ KeyValueObserverProxyDelegate {
   open func didSetText(oldValue: String?) {
     if oldValue != text {
       textField?.text = text
-      didChangeTextDelegate?.textFieldControllerDidChangeText(self)
+      for object in didChangeTextObservers.allObjects {
+        guard let observer = object as? AUITextFieldControllerDidChangeTextDelegate else { continue }
+        observer.textFieldControllerDidChangeText(self)
+      }
     }
   }
   
@@ -164,7 +214,10 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidBeginEditing() {
-    didBeginEditingDelegate?.textFieldControllerDidBeginEditing(self)
+    for object in didBeginEditingObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidBeginEditingDelegate else { continue }
+      observer.textFieldControllerDidBeginEditing(self)
+    }
   }
   
   open func textFieldShouldEndEditing() -> Bool {
@@ -172,11 +225,17 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidEndEditing() {
-    didEndEditingDelegate?.textFieldControllerDidEndEditing(self)
+    for object in didEndEditingObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidEndEditingDelegate else { continue }
+      observer.textFieldControllerDidEndEditing(self)
+    }
   }
   
   open func textFieldDidEndEditing(reason: UITextField.DidEndEditingReason) {
-    didEndEditingReasonDelegate?.textFieldControllerDidEndEditingReason(self, reason: reason)
+    for object in didEndEditingReasonObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidEndEditingReasonDelegate else { continue }
+      observer.textFieldControllerDidEndEditingReason(self, reason: reason)
+    }
   }
   
   open func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -188,8 +247,11 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldShouldReturn() -> Bool {
-    if didTapReturnKeyDelegate != nil {
-      didTapReturnKeyDelegate?.textFieldControllerDidTapReturnKey(self)
+    if !didTapReturnKeyObservers.allObjects.isEmpty {
+      for object in didTapReturnKeyObservers.allObjects {
+        guard let observer = object as? AUITextFieldControllerDidTapReturnKeyDelegate else { continue }
+        observer.textFieldControllerDidTapReturnKey(self)
+      }
       return false
     }
     return true

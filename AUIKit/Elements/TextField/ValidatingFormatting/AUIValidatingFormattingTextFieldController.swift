@@ -7,6 +7,10 @@
 
 import Foundation
 
-protocol AUIValidatingFormattingTextFieldController: AUIValidatingTextFieldController, AUIFormattingTextFieldController {
+public protocol AUIValidatingFormattingTextFieldController: AUITextFieldController {
+  
+  var inputtedTextFormatter: AUIInputtedTextFormatter? { get set }
+  
+  var inputtedTextValidator: AUIInputtingTextValidator? { get set }
   
 }

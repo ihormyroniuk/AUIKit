@@ -34,11 +34,11 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   }
   
   open func setupSubcontrolController() {
-    subcontrolController?.didTouchDownDelegate = self
+    /*subcontrolController?.didTouchDownDelegate = self
     subcontrolController?.didTouchUpInsideDelegate = self
     subcontrolController?.didTouchUpOutsideDelegate = self
     subcontrolController?.didValueChangedDelegate = self
-    subcontrolController?.didEditingChangedDelegate = self
+    subcontrolController?.didEditingChangedDelegate = self*/
   }
   
   open override func unsetupSubviewController() {
@@ -47,11 +47,11 @@ open class AUIDefaultSubcontrolViewController: AUIDefaultSubviewViewController, 
   }
   
   open func unsetupSubcontrolController() {
-    subcontrolController?.didTouchDownDelegate = nil
+    /*subcontrolController?.didTouchDownDelegate = nil
     subcontrolController?.didTouchUpInsideDelegate = nil
     subcontrolController?.didTouchUpOutsideDelegate = nil
     subcontrolController?.didValueChangedDelegate = nil
-    subcontrolController?.didEditingChangedDelegate = nil
+    subcontrolController?.didEditingChangedDelegate = nil*/
   }
   
   // MARK: Events

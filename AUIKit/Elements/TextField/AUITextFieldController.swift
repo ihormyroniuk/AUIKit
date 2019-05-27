@@ -32,11 +32,20 @@ public protocol AUITextFieldController: AUIControlController {
   
   // MARK: Delegates
   
-  var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
-  var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate? { get set }
-  var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
-  var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
-  var didEndEditingReasonDelegate: AUITextFieldControllerDidEndEditingReasonDelegate? { get set }
+  func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate)
+  func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextDelegate)
+
+  func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate)
+  func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyDelegate)
+  
+  func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate)
+  func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingDelegate)
+  
+  func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate)
+  func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingDelegate)
+  
+  func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate)
+  func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonDelegate)
   
   // MARK: 
   

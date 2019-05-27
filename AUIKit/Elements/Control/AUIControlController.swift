@@ -32,11 +32,20 @@ public protocol AUIControlController: AUIViewController {
   
   // MARK: Delegates
   
-  var didTouchDownDelegate: AUIControlControllerDidTouchDownDelegate? { get set }
-  var didTouchUpInsideDelegate: AUIControlControllerDidTouchUpInsideDelegate? { get set }
-  var didTouchUpOutsideDelegate: AUIControlControllerDidTouchUpOutsideDelegate? { get set }
-  var didValueChangedDelegate: AUIControlControllerDidValueChangedDelegate? { get set }
-  var didEditingChangedDelegate: AUIControlControllerDidEditingChangedDelegate? { get set }
+  func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate)
+  func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate)
+  
+  func addDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate)
+  func removeDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate)
+  
+  func addDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate)
+  func removeDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate)
+  
+  func addDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate)
+  func removeDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate)
+  
+  func addDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate)
+  func removeDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate)
   
   // MARK: Control
   

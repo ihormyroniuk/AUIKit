@@ -11,12 +11,56 @@ import UIKit
 open class AUIDefaultControlController: AUIDefaultViewController, AUIControlController {
   
   // MARK: Delegates
+
+  open var didTouchDownObservers = NSHashTable<AnyObject>.weakObjects()
   
-  open weak var didTouchDownDelegate: AUIControlControllerDidTouchDownDelegate?
-  open weak var didTouchUpInsideDelegate: AUIControlControllerDidTouchUpInsideDelegate?
-  open weak var didTouchUpOutsideDelegate: AUIControlControllerDidTouchUpOutsideDelegate?
-  open weak var didValueChangedDelegate: AUIControlControllerDidValueChangedDelegate?
-  open weak var didEditingChangedDelegate: AUIControlControllerDidEditingChangedDelegate?
+  open func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate) {
+    didTouchDownObservers.add(observer)
+  }
+  
+  open func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownDelegate) {
+    didTouchDownObservers.remove(observer)
+  }
+  
+  open var didTouchUpInsideObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate) {
+    didTouchUpInsideObservers.add(observer)
+  }
+  
+  open func removeDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideDelegate) {
+    didTouchUpInsideObservers.remove(observer)
+  }
+  
+  open var didTouchUpOutsideObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate) {
+    didTouchUpOutsideObservers.add(observer)
+  }
+  
+  open func removeDidTouchUpOutsideObserver(_ observer: AUIControlControllerDidTouchUpOutsideDelegate) {
+    didTouchUpOutsideObservers.remove(observer)
+  }
+  
+  open var didValueChangedObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate) {
+    didValueChangedObservers.add(observer)
+  }
+  
+  open func removeDidValueChangedObserver(_ observer: AUIControlControllerDidValueChangedDelegate) {
+    didValueChangedObservers.remove(observer)
+  }
+  
+  open var didEditingChangedObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate) {
+    didEditingChangedObservers.add(observer)
+  }
+  
+  open func removeDidEditingChangedObserver(_ observer: AUIControlControllerDidEditingChangedDelegate) {
+    didEditingChangedObservers.remove(observer)
+  }
   
   // MARK: Control
   
@@ -70,23 +114,38 @@ open class AUIDefaultControlController: AUIDefaultViewController, AUIControlCont
   // MARK: Events
   
   @objc open func touchDownEventAction() {
-    didTouchDownDelegate?.controlControllerDidTouchDown(self)
+    for object in didTouchDownObservers.allObjects {
+      guard let observer = object as? AUIControlControllerDidTouchDownDelegate else { continue }
+      observer.controlControllerDidTouchDown(self)
+    }
   }
   
   @objc open func touchUpInsideEventAction() {
-    didTouchUpInsideDelegate?.controlControllerDidTouchUpInside(self)
+    for object in didTouchUpInsideObservers.allObjects {
+      guard let observer = object as? AUIControlControllerDidTouchUpInsideDelegate else { continue }
+      observer.controlControllerDidTouchUpInside(self)
+    }
   }
   
   @objc open func touchUpOutsideEventAction() {
-    didTouchUpOutsideDelegate?.controlControllerDidTouchUpOutside(self)
+    for object in didTouchUpOutsideObservers.allObjects {
+      guard let observer = object as? AUIControlControllerDidTouchUpOutsideDelegate else { continue }
+      observer.controlControllerDidTouchUpOutside(self)
+    }
   }
   
   @objc open func valueChangedEventAction() {
-    didValueChangedDelegate?.controlControllerDidValueChanged(self)
+    for object in didValueChangedObservers.allObjects {
+      guard let observer = object as? AUIControlControllerDidValueChangedDelegate else { continue }
+      observer.controlControllerDidValueChanged(self)
+    }
   }
-  
+
   @objc open func editingChangedEventAction() {
-    didEditingChangedDelegate?.controlControllerDidEditingChanged(self)
+    for object in didEditingChangedObservers.allObjects {
+      guard let observer = object as? AUIControlControllerDidEditingChangedDelegate else { continue }
+      observer.controlControllerDidEditingChanged(self)
+    }
   }
   
 }
