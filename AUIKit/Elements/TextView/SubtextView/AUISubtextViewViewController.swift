@@ -11,9 +11,9 @@ public protocol AUISubtextViewViewController: AUISubcontrolViewController {
   
   // MARK: Delegates
   
-  var subtextViewControllerDidChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate? { get set }
-  var subtextViewControllerDidBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate? { get set }
-  var subtextViewControllerDidEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate? { get set }
+  var subtextViewControllerDidChangeTextDelegate: AUITextViewControllerDidChangeTextObserver? { get set }
+  var subtextViewControllerDidBeginEditingDelegate: AUITextViewControllerDidBeginEditingObserver? { get set }
+  var subtextViewControllerDidEndEditingDelegate: AUITextViewControllerDidEndEditingObserver? { get set }
   
   // MARK: Subview
   

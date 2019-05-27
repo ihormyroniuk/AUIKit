@@ -30,7 +30,7 @@ public protocol AUITextFieldControllerDidEndEditingReasonObserver: class {
 
 public protocol AUITextFieldController: AUIControlController {
   
-  // MARK: Delegates
+  // MARK: Observers
   
   func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
   func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)

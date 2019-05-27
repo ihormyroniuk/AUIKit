@@ -14,9 +14,36 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   // MARK: Delegates
   
   private let textFieldDelegate = UITextViewDelegateProxy()
-  open weak var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate?
-  open weak var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate?
-  open weak var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate?
+  
+  open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+    didChangeTextObservers.add(observer)
+  }
+  
+  open func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+    didChangeTextObservers.remove(observer)
+  }
+  
+  open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.add(observer)
+  }
+  
+  open func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.remove(observer)
+  }
+  
+  open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+    didEndEditingObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+    didEndEditingObservers.remove(observer)
+  }
   
   // MARK: Input Accessory View Controller
   
@@ -89,7 +116,10 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   open func didSetText(oldValue: String!) {
     if oldValue != text {
       textView?.text = text
-      didChangeTextDelegate?.textViewControllerDidChangeText(self)
+      for object in didChangeTextObservers.allObjects {
+        guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
+        observer.textViewControllerDidChangeText(self)
+      }
     }
   }
   
@@ -135,7 +165,10 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   }
   
   open func textViewDidBeginEditing() {
-    didBeginEditingDelegate?.textViewControllerDidBeginEditing(self)
+    for object in didBeginEditingObservers.allObjects {
+      guard let observer = object as? AUITextViewControllerDidBeginEditingObserver else { continue }
+      observer.textViewControllerDidBeginEditing(self)
+    }
   }
   
   open func textViewShouldEndEditing() -> Bool {
@@ -143,7 +176,10 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   }
   
   open func textViewDidEndEditing() {
-    didEndEditingDelegate?.textViewControllerDidEndEditing(self)
+    for object in didEndEditingObservers.allObjects {
+      guard let observer = object as? AUITextViewControllerDidEndEditingObserver else { continue }
+      observer.textViewControllerDidEndEditing(self)
+    }
   }
   
   open func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

@@ -7,13 +7,13 @@
 
 import Foundation
 
-open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewController, AUISubtextViewViewController, AUITextViewControllerDidChangeTextDelegate, AUITextViewControllerDidBeginEditingDelegate, AUITextViewControllerDidEndEditingDelegate {
+open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewController, AUISubtextViewViewController, AUITextViewControllerDidChangeTextObserver, AUITextViewControllerDidBeginEditingObserver, AUITextViewControllerDidEndEditingObserver {
   
   // MARK: Delegates
   
-  open weak var subtextViewControllerDidChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate?
-  open weak var subtextViewControllerDidBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate?
-  open weak var subtextViewControllerDidEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate?
+  open weak var subtextViewControllerDidChangeTextDelegate: AUITextViewControllerDidChangeTextObserver?
+  open weak var subtextViewControllerDidBeginEditingDelegate: AUITextViewControllerDidBeginEditingObserver?
+  open weak var subtextViewControllerDidEndEditingDelegate: AUITextViewControllerDidEndEditingObserver?
   
   // MARK: SubtextField
   
@@ -28,9 +28,9 @@ open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewControll
   }
   
   open func setupSubtextFieldController() {
-    subtextViewController?.didChangeTextDelegate = self
-    subtextViewController?.didBeginEditingDelegate = self
-    subtextViewController?.didEndEditingDelegate = self
+    subtextViewController?.addDidChangeTextObserver(self)
+    subtextViewController?.addDidBeginEditingObserver(self)
+    subtextViewController?.addDidEndEditingObserver(self)
   }
   
   open override func unsetupSubcontrolController() {
@@ -39,9 +39,9 @@ open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewControll
   }
   
   open func unsetupSubtextFieldController() {
-    subtextViewController?.didChangeTextDelegate = nil
-    subtextViewController?.didBeginEditingDelegate = nil
-    subtextViewController?.didEndEditingDelegate = nil
+    subtextViewController?.removeDidChangeTextObserver(self)
+    subtextViewController?.removeDidBeginEditingObserver(self)
+    subtextViewController?.removeDidEndEditingObserver(self)
   }
   
   // MARK: Events

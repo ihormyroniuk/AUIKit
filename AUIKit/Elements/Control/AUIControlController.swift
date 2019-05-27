@@ -30,7 +30,7 @@ public protocol AUIControlControllerDidValueChangedObserver: class {
 
 public protocol AUIControlController: AUIViewController {
   
-  // MARK: Delegates
+  // MARK: Observers
   
   func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
   func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)

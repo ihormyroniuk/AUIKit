@@ -7,32 +7,38 @@
 
 import UIKit
 
-public protocol AUITextViewControllerDidChangeTextDelegate: class {
+public protocol AUITextViewControllerDidChangeTextObserver: class {
   func textViewControllerDidChangeText(_ textFieldController: AUITextViewController)
 }
 
-public protocol AUITextViewControllerDidBeginEditingDelegate: class {
+public protocol AUITextViewControllerDidBeginEditingObserver: class {
   func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
 }
 
-public protocol AUITextViewControllerDidEndEditingDelegate: class {
+public protocol AUITextViewControllerDidEndEditingObserver: class {
   func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
 }
 
 public protocol AUITextViewController: AUIScrollViewController {
   
-  // MARK: Delegates
+  // MARK: Observers
   
-  var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate? { get set }
-  var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate? { get set }
-  var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate? { get set }
+  func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+  func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+  
+  func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+  func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+  
+  func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+  func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
   
   // MARK: Text Field
   
   var textView: UITextView? { get set }
 
-  var text: String! { get set }
+  // MARK:
   
+  var text: String! { get set }
   var keyboardType: UIKeyboardType { get set }
   var returnKeyType: UIReturnKeyType { get set }
   var autocorrectionType: UITextAutocorrectionType { get set }
