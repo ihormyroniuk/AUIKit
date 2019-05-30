@@ -10,7 +10,7 @@ import UIKit
 
 open class AUIDefaultToolbarController: AUIDefaultViewController, AUIToolbarController {
 
-  // MARK: View
+  // MARK: Toolbar
   
   open var toolbar: UIToolbar? {
     set { view = newValue }

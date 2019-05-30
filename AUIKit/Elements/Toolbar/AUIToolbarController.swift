@@ -10,7 +10,7 @@ import Foundation
 
 public protocol AUIToolbarController: AUIViewController {
   
-  // MARK: Image View
+  // MARK: Toolbar
   
   var toolbar: UIToolbar? { get set }
   
