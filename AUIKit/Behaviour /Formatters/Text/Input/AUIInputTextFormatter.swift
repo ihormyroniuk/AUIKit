@@ -9,6 +9,6 @@ import Foundation
 
 public typealias AUIInputtedTextFormatterResult = (formattedText: String?, caretBeginOffset: Int)
 
-public protocol AUIInputtedTextFormatter: AUITextFormatter {
+public protocol AUIInputTextFormatter: AUITextFormatter {
   func formatInputtedText(currentText: String?, range: NSRange, replacementString text: String?) -> AUIInputtedTextFormatterResult
 }

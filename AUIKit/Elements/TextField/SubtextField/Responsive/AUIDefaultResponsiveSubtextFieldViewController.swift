@@ -29,6 +29,17 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   // MARK: Events
   
+  open override func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
+    super.textFieldControllerDidChangeText(textFieldController)
+    if !textFieldController.isFirstResponder {
+      if subtextFieldController?.text?.isEmpty == false {
+        responsiveSubtextFieldView?.responsiveSubtextFieldDidEndEditingNonempty(animated: false)
+      } else {
+        responsiveSubtextFieldView?.responsiveSubtextFieldDidEndEditingEmpty(animated: false)
+      }
+    }
+  }
+  
   open override func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
     super.textFieldControllerDidBeginEditing(controller)
     if subtextFieldController?.text?.isEmpty == false {

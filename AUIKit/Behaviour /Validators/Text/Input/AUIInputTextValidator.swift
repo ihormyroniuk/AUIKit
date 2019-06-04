@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol AUIInputtingTextValidator {
+public protocol AUIInputTextValidator {
   func isValidInputtingText(currentText: String?, newText: String?) -> Bool
 }
