@@ -32,7 +32,10 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   open func didSetDate(_ oldValue: Date) {
     if oldValue != date {
       datePicker?.setDate(date, animated: true)
-      didSelectDateDelegate?.datePickerController(self, didSelectDate: date)
+      for object in didSelectDateObservers.allObjects {
+        guard let observer = object as? AUIDatePickerControllerDidSelectDateObserver else { continue }
+        observer.datePickerController(self, didSelectDate: date)
+      }
     }
   }
   
@@ -126,9 +129,17 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     datePicker?.minuteInterval = minuteInterval
   }
   
-  // MARK: Delegate
+  // MARK: Observers
   
-  public weak var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate?
+  open var didSelectDateObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidSelectDateObserver(_ observer: AUIDatePickerControllerDidSelectDateObserver) {
+    didSelectDateObservers.add(observer)
+  }
+  
+  open func removeDidSelectDateObserver(_ observer: AUIDatePickerControllerDidSelectDateObserver) {
+    didSelectDateObservers.remove(observer)
+  }
   
   // MARK: UIDatePicker
   

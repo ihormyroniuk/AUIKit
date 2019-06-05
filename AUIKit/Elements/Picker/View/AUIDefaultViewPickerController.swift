@@ -59,7 +59,10 @@ open class AUIDefaultViewPickerController: AUIDefaultPickerController, AUIViewPi
     let componentController = componentControllers[component]
     guard componentController.itemControllers.count < item else { return }
     let itemController = componentController.itemControllers[item]
-    didSelectItemControllerDelegate?.pickerController(self, didSelectItemController: itemController, atComponentController: componentController)
+    for object in didSelectItemControllerObservers.allObjects {
+      guard let observer = object as? AUIPickerControllerDidSelectItemControllerObserver else { continue }
+      observer.pickerController(self, didSelectItemController: itemController, atComponentController: componentController)
+    }
   }
 }
 

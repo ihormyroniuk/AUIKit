@@ -60,9 +60,14 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   }
   
   open func didSelectItem(_ item: Int, inComponent component: Int) {
+    guard componentControllers.count > component else { return }
     let componentController = componentControllers[component]
+    guard componentController.itemControllers.count > item else { return }
     let itemController = componentController.itemControllers[item]
-    didSelectItemControllerDelegate?.pickerController(self, didSelectItemController: itemController, atComponentController: componentController)
+    for object in didSelectItemControllerObservers.allObjects {
+      guard let observer = object as? AUIPickerControllerDidSelectItemControllerObserver else { continue }
+      observer.pickerController(self, didSelectItemController: itemController, atComponentController: componentController)
+    }
   }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol AUIDatePickerControllerDidSelectDateDelegate: class {
+public protocol AUIDatePickerControllerDidSelectDateObserver: class {
   func datePickerController(_ datePickerController: AUIControlController, didSelectDate date: Date)
 }
 
@@ -49,9 +49,10 @@ public protocol AUIDatePickerController: AUIControlController {
   
   var minuteInterval: Int { get set }
   
-  // MARK: Delegate
+  // MARK: Observers
   
-  var didSelectDateDelegate: AUIDatePickerControllerDidSelectDateDelegate? { get set }
+  func addDidSelectDateObserver(_ observer: AUIDatePickerControllerDidSelectDateObserver)
+  func removeDidSelectDateObserver(_ observer: AUIDatePickerControllerDidSelectDateObserver)
   
   // MARK: UIDatePicker
   

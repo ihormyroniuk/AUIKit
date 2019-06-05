@@ -16,9 +16,17 @@ open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerContro
     return []
   }
   
-  // MARK: Delegate
+  // MARK: Ovservers
   
-  weak public var didSelectItemControllerDelegate: AUIPickerControllerDidSelectItemControllerDelegate?
+  open var didSelectItemControllerObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver) {
+    didSelectItemControllerObservers.add(observer)
+  }
+  
+  open func removeDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver) {
+    didSelectItemControllerObservers.remove(observer)
+  }
 
   // MARK: Delegates
   
