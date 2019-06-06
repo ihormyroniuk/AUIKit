@@ -105,6 +105,7 @@
 		C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */; };
 		C543BB93228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB92228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift */; };
 		C543BB95228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB94228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift */; };
+		C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BB022A91B75003DE568 /* AUIApplication.swift */; };
 		C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544776E225CC962002BE89F /* AUITabBarController.swift */; };
 		C5447773225CCA27002BE89F /* AUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5447772225CCA27002BE89F /* AUINavigationController.swift */; };
 		C544E64522955AD800DE9156 /* AUIViewPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64422955AD800DE9156 /* AUIViewPickerController.swift */; };
@@ -113,7 +114,7 @@
 		C544E64B2295600B00DE9156 /* AUIDefaultViewPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */; };
 		C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */; };
 		C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */; };
-		C548387622983CAB000254B0 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIApplication.swift */; };
+		C548387622983CAB000254B0 /* AUIDefaultApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIDefaultApplication.swift */; };
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
 		C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */; };
 		C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A85B321EE234200A30B42 /* AUITextField.swift */; };
@@ -236,6 +237,7 @@
 		C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
 		C543BB92228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveSubtextFieldView.swift; sourceTree = "<group>"; };
 		C543BB94228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveSubtextFieldViewController.swift; sourceTree = "<group>"; };
+		C5443BB022A91B75003DE568 /* AUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplication.swift; sourceTree = "<group>"; };
 		C544776E225CC962002BE89F /* AUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITabBarController.swift; sourceTree = "<group>"; };
 		C5447772225CCA27002BE89F /* AUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationController.swift; sourceTree = "<group>"; };
 		C544E64422955AD800DE9156 /* AUIViewPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewPickerController.swift; sourceTree = "<group>"; };
@@ -244,7 +246,7 @@
 		C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerController.swift; sourceTree = "<group>"; };
 		C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerComponentController.swift; sourceTree = "<group>"; };
 		C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerItemController.swift; sourceTree = "<group>"; };
-		C548387522983CAB000254B0 /* AUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplication.swift; sourceTree = "<group>"; };
+		C548387522983CAB000254B0 /* AUIDefaultApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultApplication.swift; sourceTree = "<group>"; };
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
 		C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultDatePickerController.swift; sourceTree = "<group>"; };
 		C55A85B321EE234200A30B42 /* AUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextField.swift; sourceTree = "<group>"; };
@@ -721,7 +723,8 @@
 		C548387422983C7F000254B0 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				C548387522983CAB000254B0 /* AUIApplication.swift */,
+				C5443BB022A91B75003DE568 /* AUIApplication.swift */,
+				C548387522983CAB000254B0 /* AUIDefaultApplication.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -985,7 +988,7 @@
 				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,
 				30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */,
 				C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */,
-				C548387622983CAB000254B0 /* AUIApplication.swift in Sources */,
+				C548387622983CAB000254B0 /* AUIDefaultApplication.swift in Sources */,
 				C53F8ED521FBB7DA0019C79E /* AUIDefaultSubtextFieldViewController.swift in Sources */,
 				30BB5E5B2206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift in Sources */,
 				C53AEB0C2195D9710087F0A2 /* AUILabelController.swift in Sources */,
@@ -1013,6 +1016,7 @@
 				30AA58BF2272EB4100BA0189 /* AUIConfigurableView.swift in Sources */,
 				C53AEB0D2195D9710087F0A2 /* AUIDefaultLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
+				C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */,
 				30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */,
