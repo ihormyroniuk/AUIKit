@@ -1,13 +1,13 @@
 //
-//  AUIDefaultValidatingFormattingTextFieldController.swift
+//  AUIDefaultInputTextFilterValidatorFormatterTextViewController.swift
 //  AUIKit
 //
-//  Created by Ihor Myroniuk on 5/14/19.
+//  Created by Ihor Myroniuk on 6/5/19.
 //
 
 import Foundation
 
-open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDefaultTextFieldController, AUIInputTextFilterTextFieldController, AUIInputTextValidatorTextFieldController, AUIInputTextFormatterTextFieldController {
+open class AUIDefaultInputTextFilterValidatorFormatterTextViewController: AUIDefaultTextViewController, AUIInputTextFilterTextViewController, AUIInputTextValidatorTextViewController, AUIInputTextFormatterTextViewController {
   
   // MARK: AUIValidatingFormattingTextFieldController
   
@@ -18,10 +18,10 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
   }
   private func didSetFormattedText(oldValue: String?) {
     if oldValue != formattedText {
-      textField?.text = formattedText
+      textView?.text = formattedText
       for object in didChangeTextObservers.allObjects {
-        guard let observer = object as? AUITextFieldControllerDidChangeTextObserver else { continue }
-        observer.textFieldControllerDidChangeText(self)
+        guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
+        observer.textViewControllerDidChangeText(self)
       }
     }
   }
@@ -88,13 +88,13 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
   
   // MARK: UITextFieldDelegate
   
-  open override func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    var filteredString = string
+  open override func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    var filteredString = text
     if let inputTextFilter = inputTextFilter {
-      filteredString = inputTextFilter.filterInputText(string) ?? ""
+      filteredString = inputTextFilter.filterInputText(text) ?? ""
     }
     guard let inputtedTextFormatter = inputTextFormatter else {
-      guard let textRange = Range(range, in: text ?? "") else { return true }
+      guard let textRange = Range(range, in: text) else { return true }
       let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
       return inputTextValidator?.isValidInputtingText(currentText: formattedText, newText: newText) ?? true
     }
@@ -103,8 +103,8 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
     let newUnformattedText = inputtedTextFormatter.unformat(formattedText: formattingResult.formattedText)
     guard (inputTextValidator?.isValidInputtingText(currentText: currentUnformattedText, newText: newUnformattedText) ?? true) else { return false }
     formattedText = formattingResult.formattedText
-    if let textField = textField, let cursorLocation = textField.position(from: textField.beginningOfDocument, offset: formattingResult.caretBeginOffset) {
-      DispatchQueue.main.async { textField.selectedTextRange = textField.textRange(from: cursorLocation, to: cursorLocation) }
+    if let textView = textView, let cursorLocation = textView.position(from: textView.beginningOfDocument, offset: formattingResult.caretBeginOffset) {
+      DispatchQueue.main.async { textView.selectedTextRange = textView.textRange(from: cursorLocation, to: cursorLocation) }
     }
     return false
   }

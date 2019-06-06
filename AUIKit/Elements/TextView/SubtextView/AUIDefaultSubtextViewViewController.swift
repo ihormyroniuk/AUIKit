@@ -9,12 +9,6 @@ import Foundation
 
 open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewController, AUISubtextViewViewController, AUITextViewControllerDidChangeTextObserver, AUITextViewControllerDidBeginEditingObserver, AUITextViewControllerDidEndEditingObserver {
   
-  // MARK: Delegates
-  
-  open weak var subtextViewControllerDidChangeTextDelegate: AUITextViewControllerDidChangeTextObserver?
-  open weak var subtextViewControllerDidBeginEditingDelegate: AUITextViewControllerDidBeginEditingObserver?
-  open weak var subtextViewControllerDidEndEditingDelegate: AUITextViewControllerDidEndEditingObserver?
-  
   // MARK: SubtextField
   
   open var subtextViewController: AUITextViewController? {
@@ -47,14 +41,14 @@ open class AUIDefaultSubtextViewViewController: AUIDefaultSubcontrolViewControll
   // MARK: Events
   
   open func textViewControllerDidEndEditing(_ textViewController: AUITextViewController) {
-    subtextViewControllerDidEndEditingDelegate?.textViewControllerDidEndEditing(textViewController)
+   
   }
 
   open func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
-    subtextViewControllerDidChangeTextDelegate?.textViewControllerDidChangeText(textViewController)
+   
   }
   
   open func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController) {
-    subtextViewControllerDidBeginEditingDelegate?.textViewControllerDidBeginEditing(textViewController)
+
   }
 }
