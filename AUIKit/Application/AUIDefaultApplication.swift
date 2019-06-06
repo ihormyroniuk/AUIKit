@@ -10,19 +10,21 @@ import UIKit
 open class AUIDefaultApplication: UIApplication, AUIApplication {
   
   open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    return willFinishLaunching()
+    willFinishLaunching()
+    return true
   }
   
-  open func willFinishLaunching() -> Bool {
-    return true
+  open func willFinishLaunching() {
+    
   }
   
   open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    return didFinishLaunching()
+    didFinishLaunching()
+    return true
   }
   
-  open func didFinishLaunching() -> Bool {
-    return true
+  open func didFinishLaunching() {
+    
   }
   
 }

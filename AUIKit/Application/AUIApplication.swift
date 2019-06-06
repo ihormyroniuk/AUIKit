@@ -7,6 +7,7 @@
 
 import UIKit
 
-protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
-  
+public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
+  func willFinishLaunching()
+  func didFinishLaunching()
 }
