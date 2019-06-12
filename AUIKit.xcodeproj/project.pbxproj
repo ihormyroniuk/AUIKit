@@ -108,8 +108,8 @@
 		C543BB93228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB92228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift */; };
 		C543BB95228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB94228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift */; };
 		C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BB022A91B75003DE568 /* AUIApplication.swift */; };
-		C5443BCB22A9568A003DE568 /* AutoLayoutAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCA22A9568A003DE568 /* AutoLayoutAlignedContentViewScrollView.swift */; };
-		C5443BCD22A956F7003DE568 /* AutoLayoutTopAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCC22A956F7003DE568 /* AutoLayoutTopAlignedContentViewScrollView.swift */; };
+		C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */; };
+		C5443BCD22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */; };
 		C5443BCF22A9624D003DE568 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCE22A9624D003DE568 /* UIColor+Extension.swift */; };
 		C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544776E225CC962002BE89F /* AUITabBarController.swift */; };
 		C5447773225CCA27002BE89F /* AUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5447772225CCA27002BE89F /* AUINavigationController.swift */; };
@@ -249,8 +249,8 @@
 		C543BB92228D7C58003BDED3 /* AUIResponsiveSubtextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveSubtextFieldView.swift; sourceTree = "<group>"; };
 		C543BB94228D7D2F003BDED3 /* AUIResponsiveSubtextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveSubtextFieldViewController.swift; sourceTree = "<group>"; };
 		C5443BB022A91B75003DE568 /* AUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplication.swift; sourceTree = "<group>"; };
-		C5443BCA22A9568A003DE568 /* AutoLayoutAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
-		C5443BCC22A956F7003DE568 /* AutoLayoutTopAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutTopAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
+		C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
+		C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutTopAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
 		C5443BCE22A9624D003DE568 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C544776E225CC962002BE89F /* AUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITabBarController.swift; sourceTree = "<group>"; };
 		C5447772225CCA27002BE89F /* AUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationController.swift; sourceTree = "<group>"; };
@@ -717,8 +717,8 @@
 		C5443BC722A955C7003DE568 /* AutoLayoutAlignedContentView */ = {
 			isa = PBXGroup;
 			children = (
-				C5443BCA22A9568A003DE568 /* AutoLayoutAlignedContentViewScrollView.swift */,
-				C5443BCC22A956F7003DE568 /* AutoLayoutTopAlignedContentViewScrollView.swift */,
+				C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */,
+				C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */,
 			);
 			path = AutoLayoutAlignedContentView;
 			sourceTree = "<group>";
@@ -1037,7 +1037,7 @@
 				C53BB79A228EFC3700003495 /* AUIDefaultResponsiveSubtextFieldViewController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
-				C5443BCB22A9568A003DE568 /* AutoLayoutAlignedContentViewScrollView.swift in Sources */,
+				C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
 				C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */,
@@ -1067,7 +1067,7 @@
 				C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */,
 				C5E729F122A667C60094EAD9 /* AUIInputTextFilterTextFieldController.swift in Sources */,
 				C53E7C7D22187C31006CB0D9 /* AUITableViewSectionController.swift in Sources */,
-				C5443BCD22A956F7003DE568 /* AutoLayoutTopAlignedContentViewScrollView.swift in Sources */,
+				C5443BCD22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift in Sources */,
 				C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */,
 				C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */,
 				C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */,

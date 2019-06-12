@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AutoLayoutAlignedContentViewScrollView: AUIScrollView {
+open class AUIAutoLayoutAlignedContentViewScrollView: AUIScrollView {
   
   // MARK: Componenets
   

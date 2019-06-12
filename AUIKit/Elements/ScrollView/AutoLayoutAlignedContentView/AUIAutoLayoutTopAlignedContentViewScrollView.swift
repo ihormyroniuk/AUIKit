@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AutoLayoutTopAlignedContentViewScrollView: AutoLayoutAlignedContentViewScrollView {
+open class AUIAutoLayoutTopAlignedContentViewScrollView: AUIAutoLayoutAlignedContentViewScrollView {
   
   override open func autoLayoutContentAlignmentView() {
     contentAlignmentView.translatesAutoresizingMaskIntoConstraints = false
