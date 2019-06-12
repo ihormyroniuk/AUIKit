@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUIInputTextValidatorTextViewController: AUITextViewController {
-  var inputTextValidator: AUIInputTextValidator? { get set }
+  var inputTextValidator: AUITextInputValidator? { get set }
 }

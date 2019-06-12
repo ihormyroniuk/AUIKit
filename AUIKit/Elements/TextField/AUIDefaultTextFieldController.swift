@@ -18,6 +18,8 @@ KeyValueObserverProxyDelegate {
   private let keyValueObserverProxy = KeyValueObserverProxy()
   private let textFieldDelegate = UITextFieldDelegateProxy()
   
+  // MARK: Observers
+  
   open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
   
   open func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver) {

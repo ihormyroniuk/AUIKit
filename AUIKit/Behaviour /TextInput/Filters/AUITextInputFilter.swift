@@ -7,6 +7,6 @@
 
 import Foundation
 
-public protocol AUITextFilter {
+public protocol AUITextInputFilter {
   func filter(text: String?) -> String?
 }

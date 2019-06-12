@@ -8,8 +8,10 @@
 import UIKit
 
 public protocol AUIResponsiveSubtextFieldView {
-  func responsiveSubtextFieldDidBeginEditingEmpty(animated: Bool)
-  func responsiveSubtextFieldDidBeginEditingNonempty(animated: Bool)
-  func responsiveSubtextFieldDidEndEditingEmpty(animated: Bool)
-  func responsiveSubtextFieldDidEndEditingNonempty(animated: Bool)
+  func responsiveSubtextFieldViewDidBeginEditingEmpty(animated: Bool)
+  func responsiveSubtextFieldViewDidBeginEditingNonempty(animated: Bool)
+  func responsiveSubtextFieldViewDidBecomeEmpty(animated: Bool)
+  func responsiveSubtextFieldViewDidBecomeNonEmpty(animated: Bool)
+  func responsiveSubtextFieldViewDidEndEditingEmpty(animated: Bool)
+  func responsiveSubtextFieldViewDidEndEditingNonempty(animated: Bool)
 }

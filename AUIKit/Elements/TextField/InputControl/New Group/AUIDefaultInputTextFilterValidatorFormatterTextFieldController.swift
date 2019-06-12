@@ -29,7 +29,7 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
     set {
       var filteredNewValue = newValue
       if let inputTextFilter = inputTextFilter {
-        filteredNewValue = inputTextFilter.filterInputText(newValue) ?? ""
+        filteredNewValue = inputTextFilter.filter(text: newValue) ?? ""
       }
       guard (inputTextValidator?.isValidInputtingText(currentText: "", newText: filteredNewValue) ?? true) else { return }
       if let inputtedTextFormatter = inputTextFormatter {
@@ -53,21 +53,21 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
   
   // MARK: AUIInputTextFilterTextFieldController
   
-  open var inputTextFilter: AUIInputTextFilter? {
+  open var inputTextFilter: AUITextInputFilter? {
     didSet { didSetInputTextFilter(oldValue) }
   }
-  open func didSetInputTextFilter(_ oldValue: AUIInputTextFilter?) {
+  open func didSetInputTextFilter(_ oldValue: AUITextInputFilter?) {
     if let inputTextFilter = inputTextFilter {
-      text = inputTextFilter.filterInputText(text)
+      text = inputTextFilter.filter(text: text)
     }
   }
   
   // MARK: AUIInputTextValidatorTextFieldController
   
-  open var inputTextValidator: AUIInputTextValidator? {
+  open var inputTextValidator: AUITextInputValidator? {
     didSet { didSetInputtedTextValidator(oldValue) }
   }
-  open func didSetInputtedTextValidator(_ oldValue: AUIInputTextValidator?) {
+  open func didSetInputtedTextValidator(_ oldValue: AUITextInputValidator?) {
     if !(inputTextValidator?.isValidInputtingText(currentText: text, newText: text) ?? true) {
       text = nil
     }
@@ -75,10 +75,10 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
   
   // MARK: AUIInputTextFormatterTextFieldController
   
-  open var inputTextFormatter: AUIInputTextFormatter? {
+  open var inputTextFormatter: AUITextInputFormatter? {
     didSet { didSetInputtedTextFormatter(oldValue) }
   }
-  open func didSetInputtedTextFormatter(_ oldValue: AUIInputTextFormatter?) {
+  open func didSetInputtedTextFormatter(_ oldValue: AUITextInputFormatter?) {
     var oldUnformattedText = text
     if let oldValue = oldValue {
       oldUnformattedText = oldValue.unformat(formattedText: text)
@@ -91,7 +91,7 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDe
   open override func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     var filteredString = string
     if let inputTextFilter = inputTextFilter {
-      filteredString = inputTextFilter.filterInputText(string) ?? ""
+      filteredString = inputTextFilter.filter(text: string) ?? ""
     }
     guard let inputtedTextFormatter = inputTextFormatter else {
       guard let textRange = Range(range, in: text ?? "") else { return true }

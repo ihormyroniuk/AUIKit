@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUIInputTextFilterTextFieldController: AUITextFieldController {
-  var inputTextFilter: AUIInputTextFilter? { get set }
+  var inputTextFilter: AUITextInputFilter? { get set }
 }

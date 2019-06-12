@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUIInputTextFormatterTextFieldController: AUITextFieldController {
-  var inputTextFormatter: AUIInputTextFormatter? { get set }
+  var inputTextFormatter: AUITextInputFormatter? { get set }
 }
