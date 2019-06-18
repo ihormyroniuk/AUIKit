@@ -89,6 +89,10 @@ KeyValueObserverProxyDelegate {
     inputViewController?.view = nil
   }
   
+  deinit {
+    textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
+  }
+  
   // MARK: States
 
   open var text: String? {
