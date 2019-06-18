@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIDefaultApplication: NSObject, AUIApplication {
+open class AUIDefaultApplication: UIApplication, AUIApplication {
   
   open var window: UIWindow?
   
@@ -16,19 +16,11 @@ open class AUIDefaultApplication: NSObject, AUIApplication {
       willFinishLaunchingLocation()
       return true
     }
-    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-      willFinishLaunchingShortcutItem(shortcutItem)
-      return true
-    }
     willFinishLaunching()
     return true
   }
   
   open func willFinishLaunchingLocation() {
-    
-  }
-  
-  open func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem) {
     
   }
   
@@ -41,19 +33,11 @@ open class AUIDefaultApplication: NSObject, AUIApplication {
       didFinishLaunchingLocation()
       return true
     }
-    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
-      didFinishLaunchingShortcutItem(shortcutItem)
-      return true
-    }
     didFinishLaunching()
     return true
   }
   
   open func didFinishLaunchingLocation() {
-    
-  }
-  
-  open func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem) {
     
   }
   

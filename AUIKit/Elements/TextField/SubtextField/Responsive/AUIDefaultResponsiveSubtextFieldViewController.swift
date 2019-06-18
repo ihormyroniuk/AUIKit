@@ -31,17 +31,17 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   open override func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
     super.textFieldControllerDidChangeText(textFieldController)
+    if textFieldController.text?.isEmpty == false {
+      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
+    } else {
+      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
+    }
     if !textFieldController.isFirstResponder {
       if subtextFieldController?.text?.isEmpty == false {
         responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingNonempty(animated: false)
       } else {
         responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingEmpty(animated: false)
       }
-    }
-    if textFieldController.text?.isEmpty == false {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
-    } else {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
     }
   }
   

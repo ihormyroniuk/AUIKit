@@ -9,8 +9,6 @@ import Foundation
 
 open class AUIFilterValidatorFormatterTextInputControl: AUITextInputControl {
   
-  
-  
   open var inputTextFilter: AUITextInputFilter?
   open var inputTextValidator: AUITextInputValidator?
   open var inputTextFormatter: AUITextInputFormatter?
