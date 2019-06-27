@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AUIPresentation {
+public protocol AUIPresentation {
   
 }

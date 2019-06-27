@@ -12,13 +12,13 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesControll
   
   // MARK: Delegates
   
-  open weak var didTransitToPageDelegate: AUIPagesViewControllerDidTransitToPageDelegate?
+  open weak var didTransitToPageDelegate: AUIPagesViewControllerDidTransitToPageObserver?
   private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
   
   // MARK: Controllers
   
   private var pagesViewController: AUISelfLayoutPageViewController?
-  open var pageControllers: [AUIPageController] = []
+  open var pageControllers: [AUIPageViewController] = []
   
   // MARK: Initializer
   
@@ -45,7 +45,7 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesControll
     }
     return currentPageNumbers
   }
-  open var currentPageControllers: [AUIPageController] {
+  open var currentPageControllers: [AUIPageViewController] {
     let currentPageNumbers = self.currentPageNumbers
     return pageControllers.enumerated().filter({ currentPageNumbers.contains($0.offset) }).map({$1})
   }

@@ -11,6 +11,8 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   
   open var window: UIWindow?
   
+  // MARK: Launching
+  
   open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
       willFinishLaunchingLocation()
@@ -42,6 +44,34 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   }
   
   open func didFinishLaunching() {
+    
+  }
+  
+  // MARK: States
+  
+  open func willEnterForeground() {
+    
+  }
+  
+  open func didBecomeActive() {
+    
+  }
+  
+  open func willResignActive() {
+    
+  }
+  
+  open func didEnterBackground() {
+    
+  }
+  
+  open func willTerminate() {
+    
+  }
+  
+  // MARK: Memory Warning
+  
+  open func didReceiveMemoryWarning() {
     
   }
   
