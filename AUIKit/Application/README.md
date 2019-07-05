@@ -40,3 +40,7 @@ Method is called when when application is almost launching because of user taps 
 
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
+
+---
+
+There is a default implementation of `AUIApplication`, it is class `AUIDefaultApplication`.
