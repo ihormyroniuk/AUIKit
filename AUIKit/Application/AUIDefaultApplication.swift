@@ -47,32 +47,4 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  // MARK: States
-  
-  open func willEnterForeground() {
-    
-  }
-  
-  open func didBecomeActive() {
-    
-  }
-  
-  open func willResignActive() {
-    
-  }
-  
-  open func didEnterBackground() {
-    
-  }
-  
-  open func willTerminate() {
-    
-  }
-  
-  // MARK: Memory Warning
-  
-  open func didReceiveMemoryWarning() {
-    
-  }
-  
 }

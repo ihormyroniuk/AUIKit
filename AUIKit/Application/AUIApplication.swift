@@ -16,16 +16,4 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
   func didFinishLaunching()
   func didFinishLaunchingLocation()
   
-  // MARK: States
-  
-  func willEnterForeground()
-  func didBecomeActive()
-  func willResignActive()
-  func didEnterBackground()
-  func willTerminate()
-  
-  // MARK: Memory Warning
-  
-  func didReceiveMemoryWarning()
-  
 }
