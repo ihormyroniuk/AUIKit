@@ -10,9 +10,12 @@ import Foundation
 
 open class AUIDefaultTitlePickerComponentController: AUITitlePickerComponentController {
   
-  // MARK: Controllers
+  // MARK: Items Controllers
   
-  open var items: [AUITitlePickerItemController] = []
+  open var itemControllers: [AUIPickerItemController] {
+    return titleItemControllers
+  }
+  open var titleItemControllers: [AUITitlePickerItemController] = []
   
   // MARK: Initializer
   
@@ -26,9 +29,4 @@ open class AUIDefaultTitlePickerComponentController: AUITitlePickerComponentCont
     
   }
   
-  // MARK: Select
-  
-  open func didSelectItemAtIndex(_ index: Int) {
-    items[index].didSelect()
-  }
 }

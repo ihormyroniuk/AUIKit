@@ -8,24 +8,8 @@
 
 import UIKit
 
-open class AUIDefaultViewController: AUIViewController, Hashable {
+open class AUIDefaultViewController: AUIViewController {
 
-  // MARK: Elements
-  
-  private var _view: UIView?
-  open var view: UIView? {
-    set {
-      if newValue != _view {
-        unsetupView()
-        _view = newValue
-        setupView()
-      }
-    }
-    get {
-      return _view
-    }
-  }
-  
   // MARK: Initializer
   
   public init() {
@@ -38,6 +22,22 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
     
   }
   
+  // MARK: View
+  
+  private var _view: UIView?
+  open var view: UIView? {
+    set {
+      if newValue !== _view {
+        unsetupView()
+        _view = newValue
+        setupView()
+      }
+    }
+    get {
+      return _view
+    }
+  }
+  
   open func setupView() {
     view?.isUserInteractionEnabled = isUserInteractionEnabled
   }
@@ -46,13 +46,21 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
 
   }
   
-  // MARK: State
+  // MARK: User Interaction
   
   open var isUserInteractionEnabled = true {
-    didSet { didSetIsUserInteractionEnabled(oldValue: oldValue) }
+    didSet {
+      didSetIsUserInteractionEnabled(oldValue: oldValue)
+    }
   }
   open func didSetIsUserInteractionEnabled(oldValue: Bool) {
     view?.isUserInteractionEnabled = isUserInteractionEnabled
+  }
+  
+  // MARK: First Responder
+  
+  open var isFirstResponder: Bool {
+    return view?.isFirstResponder ?? false
   }
   
   open func becomeFirstResponder() {
@@ -61,14 +69,6 @@ open class AUIDefaultViewController: AUIViewController, Hashable {
   
   open func resignFirstResponder() {
     view?.resignFirstResponder()
-  }
-  
-  // MARK: Hashable, Equatable
-  
-  open var hashValue: Int = Int(arc4random())
-  
-  public static func == (lhs: AUIDefaultViewController, rhs: AUIDefaultViewController) -> Bool {
-    return lhs === rhs
   }
   
 }

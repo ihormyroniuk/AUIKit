@@ -10,7 +10,8 @@ import Foundation
 
 public protocol AUITitlePickerItemController: AUIPickerItemController {
   
+  // MARK: Title
+  
   var title: String? { get }
   var attributedTitle: NSAttributedString? { get }
-  
 }

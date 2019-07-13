@@ -9,14 +9,10 @@
 import Foundation
 
 open class AUIDefaultTitlePickerItemController: AUITitlePickerItemController {
-  open func didSelect() {
-    didSelectDelegate?.didSelectPickerItemController(self)
-  }
-  
-  open weak var didSelectDelegate: AUIPickerItemControllerDidSelectDelegate?
+
+  // MARK: Title
   
   open var title: String?
-  
   open var attributedTitle: NSAttributedString?
   
   // MARK: Initializer

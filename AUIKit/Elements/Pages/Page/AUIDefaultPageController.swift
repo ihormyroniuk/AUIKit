@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultPageController: AUIPageController {
+open class AUIDefaultPageController: AUIPageViewController {
   
   public let viewController: AUIViewController
   public let view: () -> UIView

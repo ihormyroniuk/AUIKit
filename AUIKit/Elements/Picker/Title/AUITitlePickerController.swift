@@ -10,4 +10,7 @@ import Foundation
 
 public protocol AUITitlePickerController: AUIPickerController {
   
+  // MARK: Component Controllers
+  
+  var titleComponentControllers: [AUITitlePickerComponentController] { set get }
 }

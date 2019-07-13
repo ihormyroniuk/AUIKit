@@ -10,32 +10,39 @@ import UIKit
 
 open class AUIElementTableViewCellController: AUITableViewCellController {
   
+  open weak var willDisplayDelegate: AUITableViewCellControllerWillDisplayDelegate?
   open weak var didSelectDelegate: AUITableViewCellControllerDidSelectDelegate?
   
   open var view: UIView?
   
   public let controller: AUIViewController
-  public let cell: (UITableView, IndexPath) -> AUIContainerTableViewCell?
+  public let cell: (UITableView, IndexPath) -> UITableViewCell
   
   // MARK: Initializer
   
   public init(controller: AUIViewController,
-       cell: @escaping (UITableView, IndexPath) -> AUIContainerTableViewCell?) {
+       cell: @escaping (UITableView, IndexPath) -> UITableViewCell) {
     self.controller = controller
     self.cell = cell
   }
   
   
-  open func didSelectCell(_ indexPath: IndexPath, tableView: UITableView) {
+  open func didSelectCell() {
     didSelectDelegate?.didSelectTableViewCellController(self)
   }
   
   // MARK: TableViewCellController
   
   open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-    let cell = self.cell(tableView, indexPath) ?? UITableViewCell()
-    let containerCell = cell as? AUIContainerTableViewCell
-    view = containerCell?.view
+    let cell = self.cell(tableView, indexPath)
+    if let containerCell = cell as? AUIContainerTableViewCell {
+      view = containerCell.view
+    } else {
+      let containerCell = cell as? AUIViewContainerable
+      (cell as? AUIConfigurableView)?.setupUIIfNeeded()
+      view = containerCell?.containerView
+    }
+    
     if let view = view { controller.view = view }
     return cell
   }
@@ -48,8 +55,8 @@ open class AUIElementTableViewCellController: AUITableViewCellController {
     return UITableView.automaticDimension
   }
   
-  open func willDisplayCell(_ cell: UITableViewCell) {
-    
+  open func willDisplayCell(_ cell: UITableViewCell, indexPath: IndexPath) {
+    willDisplayDelegate?.willDisplayTableViewCellController(self, indexPath: indexPath)
   }
   
   open func didEndDisplayingCell() {

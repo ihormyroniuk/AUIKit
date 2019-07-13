@@ -7,10 +7,10 @@
 
 import Foundation
 
-public protocol AUIPagesViewControllerDidTransitToPageDelegate: class {
-  func pagesViewController(_ pagesViewController: AUIPagesController, didTransitToPageControllers: [AUIPageController])
+public protocol AUIPagesViewControllerDidTransitToPageObserver: class {
+  func pagesViewController(_ pagesViewController: AUIPagesController, didTransitToPageControllers: [AUIPageViewController])
 }
 
 public protocol AUIPagesController {
-  var didTransitToPageDelegate: AUIPagesViewControllerDidTransitToPageDelegate? { get set }
+  var didTransitToPageDelegate: AUIPagesViewControllerDidTransitToPageObserver? { get set }
 }

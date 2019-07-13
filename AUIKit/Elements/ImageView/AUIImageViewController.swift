@@ -10,7 +10,7 @@ import UIKit
 
 public protocol AUIImageViewController: AUIViewController {
   
-  // MARK: Image View
+  // MARK: ImageView
   
   var imageView: UIImageView? { get set }
   

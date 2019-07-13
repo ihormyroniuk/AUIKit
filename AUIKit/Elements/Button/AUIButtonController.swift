@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUIButtonController {
+public protocol AUIButtonController: AUIControlController {
   
   // MARK: Button
   

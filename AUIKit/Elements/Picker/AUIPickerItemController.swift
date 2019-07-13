@@ -8,11 +8,6 @@
 
 import Foundation
 
-public protocol AUIPickerItemControllerDidSelectDelegate: class {
-  func didSelectPickerItemController(_ itemController: AUIPickerItemController)
-}
-
 public protocol AUIPickerItemController: class {
-  var didSelectDelegate: AUIPickerItemControllerDidSelectDelegate? { get set }
-  func didSelect()
+  
 }

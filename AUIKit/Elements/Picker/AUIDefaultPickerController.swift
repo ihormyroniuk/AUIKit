@@ -9,6 +9,24 @@
 import UIKit
 
 open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerController, UIPickerViewDataSourceProxyDelegate {
+  
+  // MARK: Components
+  
+  open var componentControllers: [AUIPickerComponentController] {
+    return []
+  }
+  
+  // MARK: Ovservers
+  
+  open var didSelectItemControllerObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver) {
+    didSelectItemControllerObservers.add(observer)
+  }
+  
+  open func removeDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver) {
+    didSelectItemControllerObservers.remove(observer)
+  }
 
   // MARK: Delegates
   
@@ -21,7 +39,7 @@ open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerContro
     pickerViewDataSourceProxy.delegate = self
   }
   
-  // MARK: View
+  // MARK: UIPickerView
   
   open var pickerView: UIPickerView? {
     set { view = newValue }
@@ -41,21 +59,25 @@ open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerContro
   // MARK: UIPickerViewDataSourceProxyDelegate
   
   open func numberOfComponents() -> Int {
-    return 0
+    return componentControllers.count
   }
   
   open func numberOfItemsInComponent(_ component: Int) -> Int {
-    return 0
+    return componentControllers[component].itemControllers.count
   }
   
-  // MARK: Select
-  
-  open func select(_ itemController: AUIPickerItemController) {
-    
+  // MARK: Select ItemController
+
+  open func selectItemController(_ itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController, animated: Bool) {
+    guard let component = componentControllers.firstIndex(where: { $0 === componentController }) else { return }
+    guard let item = componentController.itemControllers.firstIndex(where: { $0 === itemController }) else { return }
+    pickerView?.selectRow(item, inComponent: component, animated: true)
   }
   
-  open func selectAnimated(_ itemController: AUIPickerItemController) {
-    
+  public func selectedItemController(atComponentController componentController: AUIPickerComponentController) -> AUIPickerItemController? {
+    guard let component = componentControllers.firstIndex(where: { $0 === componentController }) else { return nil }
+    guard let item = pickerView?.selectedRow(inComponent: component) else { return nil }
+    return componentController.itemControllers[item]
   }
 }
 

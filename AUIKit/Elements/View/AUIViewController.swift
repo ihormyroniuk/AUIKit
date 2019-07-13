@@ -14,11 +14,13 @@ public protocol AUIViewController: class {
   
   var view: UIView? { get set }
   
-  // MARK: State
+  // MARK: User Interaction
   
   var isUserInteractionEnabled: Bool { get set }
   
   // MARK: First Responder
+  
+  var isFirstResponder: Bool { get }
   
   func becomeFirstResponder()
   

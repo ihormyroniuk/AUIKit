@@ -10,6 +10,7 @@ import Foundation
 
 public protocol AUITitlePickerComponentController: AUIPickerComponentController {
   
-  var items: [AUITitlePickerItemController] { get }
+  // MARK: Items Controllers
   
+  var titleItemControllers: [AUITitlePickerItemController] { get }
 }

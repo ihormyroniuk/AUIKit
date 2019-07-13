@@ -8,31 +8,46 @@
 
 import UIKit
 
-public protocol AUITextFieldControllerDidChangeTextDelegate: class {
-  func textFieldControllerDidChangeText(_ controller: AUITextFieldController)
+public protocol AUITextFieldControllerDidChangeTextObserver: class {
+  func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidTapReturnKeyDelegate: class {
-  func textFieldControllerDidTapReturnKey(_ controller: AUITextFieldController)
+public protocol AUITextFieldControllerDidTapReturnKeyObserver: class {
+  func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidBeginEditingDelegate: class {
-  func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController)
+public protocol AUITextFieldControllerDidBeginEditingObserver: class {
+  func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController)
 }
 
-public protocol AUITextFieldControllerDidEndEditingDelegate: class {
-  func textFieldControllerDidEndEditing(_ controller: AUITextFieldController)
+public protocol AUITextFieldControllerDidEndEditingObserver: class {
+  func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController)
+}
+
+public protocol AUITextFieldControllerDidEndEditingReasonObserver: class {
+  func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason)
 }
 
 public protocol AUITextFieldController: AUIControlController {
   
-  var textField: UITextField? { get set }
+  // MARK: Observers
   
-  var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate? { get set }
-  var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate? { get set }
+  func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
+  func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
+
+  func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
+  func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
   
-  var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate? { get set }
-  var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate? { get set }
+  func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
+  func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
+  
+  func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
+  func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
+  
+  func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
+  func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
+  
+  // MARK: 
   
   var text: String? { get set }
   var placeholder: String? { get set }
@@ -41,5 +56,17 @@ public protocol AUITextFieldController: AUIControlController {
   var autocorrectionType: UITextAutocorrectionType { get set }
   var autocapitalizationType: UITextAutocapitalizationType { get set }
   var returnKeyType: UIReturnKeyType { get set }
+  
+  // MARK: Input Accessory View Controller
+  
+  var inputAccessoryViewController: AUIViewController? { get set }
+  
+  // MARK: Input View Controller
+  
+  var inputViewController: AUIViewController? { get set }
+  
+  // MARK: TextField
+  
+  var textField: UITextField? { get set }
   
 }

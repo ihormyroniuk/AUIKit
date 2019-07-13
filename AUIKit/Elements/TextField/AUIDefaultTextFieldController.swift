@@ -8,19 +8,69 @@
 
 import UIKit
 
+private let UITextFieldTextPropertyKey = "text"
+
 open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController, UITextFieldDelegateProxyDelegate,
 KeyValueObserverProxyDelegate {
-
+  
   // MARK: Delegates
   
   private let keyValueObserverProxy = KeyValueObserverProxy()
   private let textFieldDelegate = UITextFieldDelegateProxy()
-  open weak var didChangeTextDelegate: AUITextFieldControllerDidChangeTextDelegate?
-  open weak var didTapReturnKeyDelegate: AUITextFieldControllerDidTapReturnKeyDelegate?
-  open weak var didBeginEditingDelegate: AUITextFieldControllerDidBeginEditingDelegate?
-  open weak var didEndEditingDelegate: AUITextFieldControllerDidEndEditingDelegate?
   
-  // MARK: Controllers
+  // MARK: Observers
+  
+  open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver) {
+    didChangeTextObservers.add(observer)
+  }
+  
+  open func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver) {
+    didChangeTextObservers.remove(observer)
+  }
+  
+  open var didTapReturnKeyObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver) {
+    didTapReturnKeyObservers.add(observer)
+  }
+  
+  open func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver) {
+    didTapReturnKeyObservers.remove(observer)
+  }
+  
+  open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.add(observer)
+  }
+  
+  open func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.remove(observer)
+  }
+  
+  open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver) {
+    didEndEditingObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver) {
+    didEndEditingObservers.remove(observer)
+  }
+
+  open var didEndEditingReasonObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver) {
+    didEndEditingReasonObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver) {
+    didEndEditingReasonObservers.remove(observer)
+  }
+  
+  // MARK: Input Accessory View Controller
   
   open var inputAccessoryViewController: AUIViewController? {
     didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
@@ -29,6 +79,8 @@ KeyValueObserverProxyDelegate {
     oldValue?.view = nil
     inputAccessoryViewController?.view = textField?.inputAccessoryView
   }
+  
+  // MARK: Input View Controller
   
   open var inputViewController: AUIViewController? {
     didSet { didSetInputViewController(oldValue: oldValue) }
@@ -46,34 +98,42 @@ KeyValueObserverProxyDelegate {
     textFieldDelegate.delegate = self
   }
   
-  // MARK: View
+  // MARK: TextField
   
   open var textField: UITextField? {
     set { view = newValue }
     get { return view as? UITextField }
   }
   
-  open override func setupView() {
-    super.setupView()
-    textField?.addObserver(keyValueObserverProxy, forKeyPath: "text", options: [.new, .old], context: nil)
+  open override func setupControl() {
+    super.setupControl()
+    setupTextField()
+  }
+  
+  open func setupTextField() {
+    inputAccessoryViewController?.view = textField?.inputAccessoryView
+    inputViewController?.view = textField?.inputView
     textField?.placeholder = placeholder
     textField?.keyboardType = keyboardType
-    textField?.delegate = textFieldDelegate
     textField?.isSecureTextEntry = isSecureTextEntry
     textField?.autocorrectionType = autocorrectionType
     textField?.autocapitalizationType = autocapitalizationType
     textField?.returnKeyType = returnKeyType
     textField?.text = text
-    inputAccessoryViewController?.view = textField?.inputAccessoryView
-    inputViewController?.view = textField?.inputView
+    textField?.delegate = textFieldDelegate
+    textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
   }
   
-  open override func unsetupView() {
-    super.unsetupView()
-    textField?.delegate = nil
-    textField?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
+  open override func unsetupControl() {
+    super.unsetupControl()
+    unsetupTextField()
+  }
+  
+  func unsetupTextField() {
     inputAccessoryViewController?.view = nil
     inputViewController?.view = nil
+    textField?.delegate = nil
+    textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
   }
   
   // MARK: States
@@ -86,47 +146,62 @@ KeyValueObserverProxyDelegate {
   open func didSetText(oldValue: String?) {
     if oldValue != text {
       textField?.text = text
-      didChangeTextDelegate?.textFieldControllerDidChangeText(self)
+      for object in didChangeTextObservers.allObjects {
+        guard let observer = object as? AUITextFieldControllerDidChangeTextObserver else { continue }
+        observer.textFieldControllerDidChangeText(self)
+      }
     }
   }
   
   open var placeholder: String? {
-    didSet { didSetPlaceholder(oldValue: oldValue) }
+    didSet {
+      didSetPlaceholder(oldValue: oldValue)
+    }
   }
   open func didSetPlaceholder(oldValue: String?) {
     textField?.placeholder = placeholder
   }
   
   open var keyboardType: UIKeyboardType = .default {
-    didSet { didSetKeyboardType(oldValue: oldValue) }
+    didSet {
+      didSetKeyboardType(oldValue: oldValue)
+    }
   }
   open func didSetKeyboardType(oldValue: UIKeyboardType) {
     textField?.keyboardType = keyboardType
   }
   
   open var isSecureTextEntry: Bool = false {
-    didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
+    didSet {
+      didSetIsSecureTextEntry(oldValue: oldValue)
+    }
   }
   open func didSetIsSecureTextEntry(oldValue: Bool) {
     textField?.isSecureTextEntry = isSecureTextEntry
   }
   
   open var autocorrectionType: UITextAutocorrectionType = .default {
-    didSet { didSetAutocorrectionType(oldValue: oldValue) }
+    didSet {
+      didSetAutocorrectionType(oldValue: oldValue)
+    }
   }
   open func didSetAutocorrectionType(oldValue: UITextAutocorrectionType) {
     textField?.autocorrectionType = autocorrectionType
   }
   
   open var autocapitalizationType: UITextAutocapitalizationType = .none {
-    didSet { didSetAutocapitalizationType(oldValue: oldValue) }
+    didSet {
+      didSetAutocapitalizationType(oldValue: oldValue)
+    }
   }
   open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
     textField?.autocapitalizationType = autocapitalizationType
   }
   
   open var returnKeyType: UIReturnKeyType = .default {
-    didSet { didSetReturnKeyType(oldValue: oldValue) }
+    didSet {
+      didSetReturnKeyType(oldValue: oldValue)
+    }
   }
   open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
     textField?.returnKeyType = returnKeyType
@@ -139,7 +214,10 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidBeginEditing() {
-    didBeginEditingDelegate?.textFieldControllerDidBeginEditing(self)
+    for object in didBeginEditingObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidBeginEditingObserver else { continue }
+      observer.textFieldControllerDidBeginEditing(self)
+    }
   }
   
   open func textFieldShouldEndEditing() -> Bool {
@@ -147,11 +225,17 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldDidEndEditing() {
-    didEndEditingDelegate?.textFieldControllerDidEndEditing(self)
+    for object in didEndEditingObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidEndEditingObserver else { continue }
+      observer.textFieldControllerDidEndEditing(self)
+    }
   }
   
   open func textFieldDidEndEditing(reason: UITextField.DidEndEditingReason) {
-    
+    for object in didEndEditingReasonObservers.allObjects {
+      guard let observer = object as? AUITextFieldControllerDidEndEditingReasonObserver else { continue }
+      observer.textFieldControllerDidEndEditingReason(self, reason: reason)
+    }
   }
   
   open func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -163,8 +247,11 @@ KeyValueObserverProxyDelegate {
   }
   
   open func textFieldShouldReturn() -> Bool {
-    if didTapReturnKeyDelegate != nil {
-      didTapReturnKeyDelegate?.textFieldControllerDidTapReturnKey(self)
+    if !didTapReturnKeyObservers.allObjects.isEmpty {
+      for object in didTapReturnKeyObservers.allObjects {
+        guard let observer = object as? AUITextFieldControllerDidTapReturnKeyObserver else { continue }
+        observer.textFieldControllerDidTapReturnKey(self)
+      }
       return false
     }
     return true
@@ -245,7 +332,7 @@ private class KeyValueObserverProxy: NSObject {
   weak var delegate: KeyValueObserverProxyDelegate?
   
   override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if keyPath == "text", let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
+    if keyPath == UITextFieldTextPropertyKey, let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
   }
   
 }

@@ -14,9 +14,20 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   
   private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
   
-  // MARK: Controllers
+  // MARK: Component Controllers
   
-  open var components: [AUITitlePickerComponentController] = []
+  open var titleComponentControllers: [AUITitlePickerComponentController] = [] {
+    didSet {
+      didSetTitleComponentControllers(oldValue)
+    }
+  }
+  func didSetTitleComponentControllers(_ oldValue: [AUITitlePickerComponentController]) {
+    pickerView?.reloadAllComponents()
+  }
+  
+  open override var componentControllers: [AUIPickerComponentController] {
+    return titleComponentControllers
+  }
   
   // MARK: Setup
   
@@ -25,7 +36,7 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
     pickerViewDelegateProxy.delegate = self
   }
   
-  // MARK: View
+  // MARK: UIPickerView
   
   open override func setupView() {
     super.setupView()
@@ -40,50 +51,24 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   
   // MARK: UIPickerViewDelegateProxyDelegate
   
-  open override func numberOfComponents() -> Int {
-    return components.count
-  }
-  
-  open override func numberOfItemsInComponent(_ component: Int) -> Int {
-    return components[component].items.count
-  }
-  
   open func titleForItem(_ item: Int, inComponent component: Int) -> String? {
-    return components[component].items[item].title
+    return titleComponentControllers[component].titleItemControllers[item].title
   }
   
   open func attributedTitleForItem(_ item: Int, inComponent component: Int) -> NSAttributedString? {
-    return components[component].items[item].attributedTitle
+    return titleComponentControllers[component].titleItemControllers[item].attributedTitle
   }
   
   open func didSelectItem(_ item: Int, inComponent component: Int) {
-    components[component].didSelectItemAtIndex(item)
-  }
-  
-  // MARK: Index Path
-  
-  private func indexPathForItemController(_ itemController: AUIPickerItemController) -> IndexPath? {
-    var indexPath: IndexPath?
-    components.forEach { (component) in
-      guard let itemIndex = component.items.firstIndex(where: { $0 === itemController }) else { return }
-      guard let componentIndex = components.firstIndex(where: { $0 === component}) else { return }
-      indexPath = IndexPath(item: itemIndex, section: componentIndex)
+    guard componentControllers.count > component else { return }
+    let componentController = componentControllers[component]
+    guard componentController.itemControllers.count > item else { return }
+    let itemController = componentController.itemControllers[item]
+    for object in didSelectItemControllerObservers.allObjects {
+      guard let observer = object as? AUIPickerControllerDidSelectItemControllerObserver else { continue }
+      observer.pickerController(self, didSelectItemController: itemController, atComponentController: componentController)
     }
-    return indexPath
   }
-  
-  // MARK: Select
-  
-  open override func select(_ itemController: AUIPickerItemController) {
-    guard let indexPath = indexPathForItemController(itemController) else { return }
-    pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: false)
-  }
-  
-  open override func selectAnimated(_ itemController: AUIPickerItemController) {
-    guard let indexPath = indexPathForItemController(itemController) else { return }
-    pickerView?.selectRow(indexPath.item, inComponent: indexPath.section, animated: true)
-  }
-  
 }
 
 private protocol  UIPickerViewDelegateProxyDelegate: class {

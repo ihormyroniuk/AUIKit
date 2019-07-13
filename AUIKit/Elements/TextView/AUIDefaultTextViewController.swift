@@ -1,113 +1,195 @@
 //
-//  TextViewController.swift
-//  Scenery
+//  AUIDefaultTextViewController.swift
+//  AUIKit
 //
-//  Created by Ihor Myroniuk on 8/2/18.
-//  Copyright © 2018 Ihor Myroniuk. All rights reserved.
+//  Created by Ihor Myroniuk on 2/15/19.
 //
 
-import UIKit
+import Foundation
 
-open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextViewDelegateProxyDelegate, KeyValueObserverProxyDelegate {
+private let UITextViewTextPropertyKey = "text"
+
+open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextFieldDelegateProxyDelegate {
+
+  // MARK: Delegates
   
-  // MARK: - Delegates
+  private let textFieldDelegate = UITextViewDelegateProxy()
   
-  private let keyValueObserverProxy = KeyValueObserverProxy()
-  private let textViewDelegate = UITextViewDelegateProxy()
-  open weak var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate?
-  open weak var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate?
-  open weak var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate?
-  open weak var shouldChangeTextDelegate: AUITextViewControllerSholdChangeTextDelegate?
+  open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
   
-  // MARK: - Setup
+  open func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+    didChangeTextObservers.add(observer)
+  }
+  
+  open func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+    didChangeTextObservers.remove(observer)
+  }
+  
+  open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.add(observer)
+  }
+  
+  open func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+    didBeginEditingObservers.remove(observer)
+  }
+  
+  open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+    didEndEditingObservers.add(observer)
+  }
+  
+  open func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+    didEndEditingObservers.remove(observer)
+  }
+  
+  // MARK: Input Accessory View Controller
+  
+  open var inputAccessoryViewController: AUIViewController? {
+    didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
+  }
+  open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
+    oldValue?.view = nil
+    inputAccessoryViewController?.view = textView?.inputAccessoryView
+  }
+  
+  // MARK: Input View Controller
+  
+  open var inputViewController: AUIViewController? {
+    didSet { didSetInputViewController(oldValue: oldValue) }
+  }
+  open func didSetInputViewController(oldValue: AUIViewController?) {
+    oldValue?.view = nil
+    inputViewController?.view = textView?.inputView
+  }
+  
+  // MARK: Setup
   
   open override func setup() {
     super.setup()
-    keyValueObserverProxy.delegate = self
-    textViewDelegate.delegate = self
+    textFieldDelegate.delegate = self
   }
   
-  // MARK: - States
-  
-  open var text: String? {
-    didSet { didSetText(oldValue: oldValue) }
-  }
-  open func didSetText(oldValue: String?) {
-    if oldValue != text {
-      textView?.text = text
-      didChangeTextDelegate?.textViewControllerDidChangeText(self)
-    }
-  }
-  
-  open var keyboardType: UIKeyboardType = .default {
-    didSet { didSetKeyboardType(keyboardType) }
-  }
-  open func didSetKeyboardType(_ keyboardType: UIKeyboardType) {
-    textView?.keyboardType = keyboardType
-  }
-  
-  open var autocorrectionType: UITextAutocorrectionType = .default {
-    didSet { didSetAutocorrectionType(autocorrectionType) }
-  }
-  open func didSetAutocorrectionType(_ type: UITextAutocorrectionType) {
-    textView?.autocorrectionType = type
-  }
-  
-  open var autocapitalizationType: UITextAutocapitalizationType = .none {
-    didSet { didSetAutocapitalizationType(autocapitalizationType) }
-  }
-  open func didSetAutocapitalizationType(_ type: UITextAutocapitalizationType) {
-    textView?.autocapitalizationType = type
-  }
-  
-  // MARK: - View
+  // MARK: TextView
   
   open var textView: UITextView? {
     set { view = newValue }
     get { return view as? UITextView }
   }
   
-  open override func setupView() {
-    super.setupView()
-    textView?.addObserver(keyValueObserverProxy, forKeyPath: "text", options: [.new, .old], context: nil)
-    textView?.delegate = textViewDelegate
+  open override func setupScrollView() {
+    super.setupScrollView()
+    setupTextView()
+  }
+  
+  open func setupTextView() {
+    textView?.delegate = textFieldDelegate
+    inputAccessoryViewController?.view = textView?.inputAccessoryView
+    inputViewController?.view = textView?.inputView
     textView?.keyboardType = keyboardType
+    textView?.returnKeyType = returnKeyType
     textView?.autocorrectionType = autocorrectionType
     textView?.autocapitalizationType = autocapitalizationType
-    textView?.text = text
+    textView?.isSecureTextEntry = isSecureTextEntry
   }
   
-  open override func unsetupView() {
-    super.unsetupView()
-    textView?.removeObserver(keyValueObserverProxy, forKeyPath: "text", context: nil)
+  open override func unsetupScrollView() {
+    super.unsetupScrollView()
+    unsetupTextField()
+  }
+  
+  func unsetupTextField() {
     textView?.delegate = nil
+    inputAccessoryViewController?.view = nil
+    inputViewController?.view = nil
+  }
+
+  // MARK: States
+  
+  open var text: String! {
+    didSet {
+      didSetText(oldValue: oldValue)
+    }
+  }
+  open func didSetText(oldValue: String!) {
+    if oldValue != text {
+      textView?.text = text
+      for object in didChangeTextObservers.allObjects {
+        guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
+        observer.textViewControllerDidChangeText(self)
+      }
+    }
   }
   
-  // MARK: - UITextViewDelegate
+  open var keyboardType: UIKeyboardType = .default {
+    didSet { didSetKeyboardType(oldValue: oldValue) }
+  }
+  open func didSetKeyboardType(oldValue: UIKeyboardType) {
+    textView?.keyboardType = keyboardType
+  }
+  
+  open var returnKeyType: UIReturnKeyType = .default {
+    didSet { didSetReturnKeyType(oldValue: oldValue) }
+  }
+  open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
+    textView?.returnKeyType = returnKeyType
+  }
+  
+  open var autocorrectionType: UITextAutocorrectionType = .default {
+    didSet { didSetAutocorrectionType(oldValue: oldValue) }
+  }
+  open func didSetAutocorrectionType(oldValue: UITextAutocorrectionType) {
+    textView?.autocorrectionType = autocorrectionType
+  }
+  
+  open var autocapitalizationType: UITextAutocapitalizationType = .none {
+    didSet { didSetAutocapitalizationType(oldValue: oldValue) }
+  }
+  open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
+    textView?.autocapitalizationType = autocapitalizationType
+  }
+  
+  open var isSecureTextEntry: Bool = false {
+    didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
+  }
+  open func didSetIsSecureTextEntry(oldValue: Bool) {
+    textView?.isSecureTextEntry = isSecureTextEntry
+  }
+  
+  // MARK: UITextFieldDelegateProxyDelegate
   
   open func textViewShouldBeginEditing() -> Bool {
     return true
+  }
+  
+  open func textViewDidBeginEditing() {
+    for object in didBeginEditingObservers.allObjects {
+      guard let observer = object as? AUITextViewControllerDidBeginEditingObserver else { continue }
+      observer.textViewControllerDidBeginEditing(self)
+    }
   }
   
   open func textViewShouldEndEditing() -> Bool {
     return true
   }
   
-  open func textViewDidBeginEditing() {
-    didBeginEditingDelegate?.textViewControllerDidBeginEditing(self)
-  }
-  
   open func textViewDidEndEditing() {
-    didEndEditingDelegate?.textViewControllerDidEndEditing(self)
+    for object in didEndEditingObservers.allObjects {
+      guard let observer = object as? AUITextViewControllerDidEndEditingObserver else { continue }
+      observer.textViewControllerDidEndEditing(self)
+    }
   }
   
   open func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    return shouldChangeTextDelegate?.textViewControllerShouldChangeText(in: self, at: range, replacementString: text)
-      ?? true
+    return true
   }
   
   open func textViewDidChange() {
-    
+    if let textView = textView {
+      text = textView.text
+    }
   }
   
   open func textViewDidChangeSelection() {
@@ -122,42 +204,25 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
     return true
   }
   
-  open func textView(shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-    return true
-  }
-  
-  open func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-    return true
-  }
-  
-  // MARK: - KeyValueObserverProxyDelegate
-  
-  func textViewDidChangeText(_ textView: UITextView) {
-    text = textView.text
-  }
-  
 }
 
-private protocol UITextViewDelegateProxyDelegate: class {
+private protocol UITextFieldDelegateProxyDelegate: class {
   func textViewShouldBeginEditing() -> Bool
-  func textViewShouldEndEditing() -> Bool
   func textViewDidBeginEditing()
+  func textViewShouldEndEditing() -> Bool
   func textViewDidEndEditing()
   func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
   func textViewDidChange()
   func textViewDidChangeSelection()
   func textView(shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
   func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
-  func textView(shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool
-  func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool
 }
 
 private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
-  
-  weak var delegate: UITextViewDelegateProxyDelegate?
+  weak var delegate: UITextFieldDelegateProxyDelegate?
   
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-    return delegate?.textViewShouldBeginEditing() ?? false
+    return delegate?.textViewShouldBeginEditing() ?? true
   }
   
   func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
@@ -173,7 +238,7 @@ private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
   }
   
   func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-    return delegate?.textView(shouldChangeTextIn: range, replacementText: text) ?? false
+    return delegate?.textView(shouldChangeTextIn: range, replacementText: text) ?? true
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -185,34 +250,11 @@ private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
   }
   
   func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-    return delegate?.textView(shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? false
+    return delegate?.textView(shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true
   }
   
   func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-    return delegate?.textView(shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? false
+    return delegate?.textView(shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
   }
   
-  func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange) -> Bool {
-    return delegate?.textView(shouldInteractWith: URL, in: characterRange) ?? false
-  }
-  
-  func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-    return delegate?.textView(shouldInteractWith: textAttachment, in: characterRange) ?? false
-  }
-  
-}
-
-// MARK: - KeyValueObserverProxy
-
-private protocol KeyValueObserverProxyDelegate: class {
-  func textViewDidChangeText(_ textView: UITextView)
-}
-
-private class KeyValueObserverProxy: NSObject {
-  
-  weak var delegate: KeyValueObserverProxyDelegate?
-  
-  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-    if keyPath == "text", let textView = object as? UITextView { delegate?.textViewDidChangeText(textView) }
-  }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol AUIPageController {
+public protocol AUIPageViewController {
   var viewController: AUIViewController { get }
   var view: () -> UIView { get }
 }

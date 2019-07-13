@@ -8,15 +8,29 @@
 
 import UIKit
 
+public protocol AUIPickerControllerDidSelectItemControllerObserver: class {
+  func pickerController(_ pickerController: AUIPickerController, didSelectItemController itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController)
+}
+
 public protocol AUIPickerController: AUIViewController {
+
+  // MARK: Components
   
-  // MARK: Picker View
+  var componentControllers: [AUIPickerComponentController] { get }
   
-  var pickerView: UIPickerView? { get set }
+  // MARK: Observers
+  
+  func addDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver)
+  func removeDidSelectItemControllerObserver(_ observer: AUIPickerControllerDidSelectItemControllerObserver)
   
   // MARK: Select
   
-  func select(_ itemController: AUIPickerItemController)
-  func selectAnimated(_ itemController: AUIPickerItemController)
+  func selectItemController(_ itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController, animated: Bool)
+  
+  func selectedItemController(atComponentController componentController: AUIPickerComponentController) -> AUIPickerItemController?
+  
+  // MARK: UIPickerView
+  
+  var pickerView: UIPickerView? { get set }
   
 }

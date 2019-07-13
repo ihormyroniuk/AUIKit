@@ -9,5 +9,8 @@
 import Foundation
 
 public protocol AUIPickerComponentController: class {
-  func didSelectItemAtIndex(_ index: Int)
+  
+  // MARK: ItemControllers
+  
+  var itemControllers: [AUIPickerItemController] { get }
 }

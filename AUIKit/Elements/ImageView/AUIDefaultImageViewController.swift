@@ -10,24 +10,41 @@ import UIKit
 
 open class AUIDefaultImageViewController: AUIDefaultViewController, AUIImageViewController {
   
-  // MARK: Image View
+  // MARK: ImageView
   
   open var imageView: UIImageView? {
-    set { view = newValue }
-    get { return view as? UIImageView }
+    set {
+      view = newValue
+    }
+    get {
+      return view as? UIImageView
+    }
   }
-  
-  // MARK: Setup
   
   open override func setupView() {
     super.setupView()
+    setupImageView()
+  }
+  
+  open func setupImageView() {
+    imageView?.image = image
+  }
+  
+  open override func unsetupView() {
+    super.unsetupView()
+    unsetupImageView()
+  }
+  
+  open func unsetupImageView() {
     imageView?.image = image
   }
   
   // MARK: State
   
   open var image: UIImage? {
-    didSet { didSetImage() }
+    didSet {
+      didSetImage()
+    }
   }
   open func didSetImage() {
     imageView?.image = image

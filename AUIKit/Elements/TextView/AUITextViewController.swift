@@ -1,41 +1,55 @@
 //
 //  AUITextViewController.swift
-//  Level
+//  AUIKit
 //
-//  Created by Ihor Myroniuk on 11/6/18.
-//  Copyright © 2018 Brander. All rights reserved.
+//  Created by Ihor Myroniuk on 2/15/19.
 //
 
-import Foundation
+import UIKit
+
+public protocol AUITextViewControllerDidChangeTextObserver: class {
+  func textViewControllerDidChangeText(_ textFieldController: AUITextViewController)
+}
+
+public protocol AUITextViewControllerDidBeginEditingObserver: class {
+  func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
+}
+
+public protocol AUITextViewControllerDidEndEditingObserver: class {
+  func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
+}
 
 public protocol AUITextViewController: AUIScrollViewController {
- 
+  
+  // MARK: Observers
+  
+  func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+  func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+  
+  func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+  func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+  
+  func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+  func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+  
+  // MARK: Text Field
+  
   var textView: UITextView? { get set }
+
+  // MARK:
   
-  var didChangeTextDelegate: AUITextViewControllerDidChangeTextDelegate? { get set }
-  var didBeginEditingDelegate: AUITextViewControllerDidBeginEditingDelegate? { get set }
-  var didEndEditingDelegate: AUITextViewControllerDidEndEditingDelegate? { get set }
-  var shouldChangeTextDelegate: AUITextViewControllerSholdChangeTextDelegate? { get set }
-  
-  var text: String? { get set }
+  var text: String! { get set }
   var keyboardType: UIKeyboardType { get set }
+  var returnKeyType: UIReturnKeyType { get set }
   var autocorrectionType: UITextAutocorrectionType { get set }
   var autocapitalizationType: UITextAutocapitalizationType { get set }
+  var isSecureTextEntry: Bool { get set }
   
-}
-
-public protocol AUITextViewControllerDidChangeTextDelegate: class {
-  func textViewControllerDidChangeText(_ controller: AUITextViewController)
-}
-
-public protocol AUITextViewControllerDidBeginEditingDelegate: class {
-  func textViewControllerDidBeginEditing(_ controller: AUITextViewController)
-}
-
-public protocol AUITextViewControllerDidEndEditingDelegate: class {
-  func textViewControllerDidEndEditing(_ controller: AUITextViewController)
-}
-
-public protocol AUITextViewControllerSholdChangeTextDelegate: class {
-  func textViewControllerShouldChangeText(in controller: AUITextViewController, at range: NSRange, replacementString string: String) -> Bool
+  // MARK: Input Accessory View Controller
+  
+  var inputAccessoryViewController: AUIViewController? { get set }
+  
+  // MARK: Input View Controller
+  
+  var inputViewController: AUIViewController? { get set }
 }
