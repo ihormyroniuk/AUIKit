@@ -72,7 +72,7 @@ open class AUIUpdatableWideCollectionViewLayout: UICollectionViewLayout, AUIUpda
     let cell = cellController.cellForRowAtIndexPath(indexPath, collectionView: mockCollectionView)
     (cellController as? AUIElementCollectionViewCellController)?.view = oldView
     (cellController as? AUIElementCollectionViewCellController)?.controller.view = oldView
-    let cellSize = cell.sizeThatFits(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
+    let cellSize = cell.systemLayoutSizeFitting(CGSize(width: collectionViewContentSize.width, height: CGFloat.greatestFiniteMagnitude))
     return cellSize
   }
   

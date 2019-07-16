@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3013CE412208D54F0015AE99 /* AUIUpdatingCellControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */; };
 		3016176E220F605D00DA07AC /* AUIViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3016176D220F605D00DA07AC /* AUIViewContainer.swift */; };
+		303A7F7F22D9EF8E00699118 /* AUIUpdatableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303A7F7E22D9EF8E00699118 /* AUIUpdatableTableViewController.swift */; };
 		30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */; };
 		30A7CD4E219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */; };
 		30A7CD4F219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A7CD3E219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift */; };
@@ -151,6 +152,7 @@
 /* Begin PBXFileReference section */
 		3013CE402208D54F0015AE99 /* AUIUpdatingCellControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatingCellControllers.swift; sourceTree = "<group>"; };
 		3016176D220F605D00DA07AC /* AUIViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewContainer.swift; sourceTree = "<group>"; };
+		303A7F7E22D9EF8E00699118 /* AUIUpdatableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIUpdatableTableViewController.swift; sourceTree = "<group>"; };
 		30A7CD37219C144A006DAAA1 /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
 		30A7CD3D219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		30A7CD3E219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUICollectionViewDataSourcePrefetchingProxy.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				C525D8662199866D0057E69F /* Section */,
 				C525D8742199866D0057E69F /* HeaderFooter */,
 				C525D86C2199866D0057E69F /* Cell */,
+				303A7F7E22D9EF8E00699118 /* AUIUpdatableTableViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				C53F8EC721FBAA5E0019C79E /* AUIDefaultSubviewViewController.swift in Sources */,
 				C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */,
 				30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */,
+				303A7F7F22D9EF8E00699118 /* AUIUpdatableTableViewController.swift in Sources */,
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
 				C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */,
 				C53C63D122A7F6FF000D26D7 /* AUIInputTextFormatterTextViewController.swift in Sources */,

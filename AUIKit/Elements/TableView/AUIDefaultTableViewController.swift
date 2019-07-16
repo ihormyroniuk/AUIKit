@@ -228,13 +228,14 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
       deletedIndexPaths.remove(at: index)
       return
     }
+    if indexPath.section > sectionControllers.count { return }
     let section = indexPath.section
     let index = indexPath.row
     return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
   }
 }
 
-private protocol AUITableViewDelegateProxyDelegate: class {
+protocol AUITableViewDelegateProxyDelegate: class {
   
   func numberOfSections() -> Int
   func numberOfRowsInSection(_ section: Int) -> Int
@@ -267,7 +268,7 @@ private protocol AUITableViewDelegateProxyDelegate: class {
   func didEndDisplayingFooterInSection(_ section: Int)
 }
 
-private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
+class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
   
   weak var delegate: AUITableViewDelegateProxyDelegate?
   
