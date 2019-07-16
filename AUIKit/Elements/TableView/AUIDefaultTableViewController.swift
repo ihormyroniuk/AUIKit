@@ -228,7 +228,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
       deletedIndexPaths.remove(at: index)
       return
     }
-    if indexPath.section > sectionControllers.count { return }
+    if indexPath.section >= sectionControllers.count { return }
     let section = indexPath.section
     let index = indexPath.row
     return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
