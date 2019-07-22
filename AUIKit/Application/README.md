@@ -8,7 +8,7 @@ Protocol inherits [`UIApplicationDelegate`](https://developer.apple.com/document
 
 ```swift
 public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
-  // ...
+  ...
 }
 ```
 
