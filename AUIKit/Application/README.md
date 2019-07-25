@@ -20,7 +20,7 @@ This assumes that implementation inherits [`UIApplication`](https://developer.ap
 optional func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
 ```
 
-This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. `AUIApplication` separate this method on several ones by reasons the application was launched. Only one of them is called: 
+This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
 ##### `willFinishLaunchingLocation()`
 Method is called when application begins launching because of application has subscribed on location changes events and location has changed.
