@@ -1,6 +1,6 @@
 # [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift)
 
-`AUIApplication` is a proctocol, which provides more _friendly_ inteface for classes [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)
+[`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) is a proctocol, which provides more _friendly_ inteface for classes [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)
 
 ### Inheritance & Restriction
 
@@ -50,4 +50,4 @@ Method is called when when application is almost launching because of user taps 
 
 ---
 
-There is a default implementation of `AUIApplication`, it is class `AUIDefaultApplication`.
+There is a default implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class `AUIDefaultApplication`.
