@@ -39,14 +39,14 @@ optional func application(_ application: UIApplication, didFinishLaunchingWithOp
 
 This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. `AUIApplication` separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
-##### `didFinishLaunching()`
-Method is called when when application is almost launching because of user taps application icon on the Home screen.
-
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
 
 ##### `didFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])`
 Method is called when application is almost launching because of user taps notification's alert.
+
+##### `didFinishLaunching()`
+Method is called when when application is almost launching because of user taps application icon on the Home screen.
 
 ---
 
