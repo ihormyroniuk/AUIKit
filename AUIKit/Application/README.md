@@ -1,4 +1,4 @@
-# `AUIApplication`
+# (`AUIApplication`)[https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift]
 
 `AUIApplication` is a proctocol, which provides more _friendly_ inteface for classes [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)
 
