@@ -25,7 +25,7 @@ This method is called, when launch process has begun. Using `launchOptions` it i
 ##### `willFinishLaunchingLocation()`
 Method is called when application begins launching because of application has subscribed on location changes events and location has changed.
 
-##### `willFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])`
+##### `willFinishLaunchingNotification(payload: [AnyHashable: Any])`
 Method is called when application begins launching because of user taps notification's alert.
 
 ##### `willFinishLaunching()`
@@ -42,7 +42,7 @@ This method is called, when launch process is almost done. Using `launchOptions`
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
 
-##### `didFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])`
+##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
 Method is called when application is almost launching because of user taps notification's alert.
 
 ##### `didFinishLaunching()`

@@ -18,6 +18,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
       willFinishLaunchingLocation()
       return true
     }
+    if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+      willFinishLaunchingNotification(payload: payload)
+      return true
+    }
     willFinishLaunching()
     return true
   }
@@ -26,7 +30,7 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  public func willFinishLaunchingRemoteNotification(payload: [AnyHashable : Any]) {
+  public func willFinishLaunchingNotification(payload: [AnyHashable : Any]) {
     
   }
   
@@ -39,6 +43,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
       didFinishLaunchingLocation()
       return true
     }
+    if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+      didFinishLaunchingNotification(payload: payload)
+      return true
+    }
     didFinishLaunching()
     return true
   }
@@ -47,7 +55,7 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  public func didFinishLaunchingRemoteNotification(payload: [AnyHashable : Any]) {
+  public func didFinishLaunchingNotification(payload: [AnyHashable : Any]) {
     
   }
   
