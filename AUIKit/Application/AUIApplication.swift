@@ -11,9 +11,10 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
   
   // MARK: Launching
   
-  func willFinishLaunching()
   func willFinishLaunchingLocation()
-  func didFinishLaunching()
+  func willFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])
+  func willFinishLaunching()
   func didFinishLaunchingLocation()
-  
+  func didFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])
+  func didFinishLaunching()
 }

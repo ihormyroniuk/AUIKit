@@ -22,17 +22,21 @@ optional func application(_ application: UIApplication, willFinishLaunchingWithO
 
 This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. `AUIApplication` separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
-##### `willFinishLaunching()`
-Method is called when application begins launching because of user taps application icon on the Home screen.
-
 ##### `willFinishLaunchingLocation()`
 Method is called when application begins launching because of application has subscribed on location changes events and location has changed.
+
+##### `willFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])`
+Method is called when application begins launching because of user taps notification's alert.
+
+##### `willFinishLaunching()`
+Method is called when application begins launching because of user taps application icon on the Home screen.
 
 #### Method [`application(_:didFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
 ```swift
 optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
 ```
+
 This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. `AUIApplication` separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
 ##### `didFinishLaunching()`
@@ -40,6 +44,9 @@ Method is called when when application is almost launching because of user taps 
 
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
+
+##### `didFinishLaunchingRemoteNotification(payload: [AnyHashable: Any])`
+Method is called when application is almost launching because of user taps notification's alert.
 
 ---
 

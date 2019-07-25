@@ -8,7 +8,7 @@
 import UIKit
 
 open class AUIDefaultApplication: UIApplication, AUIApplication {
-  
+ 
   open var window: UIWindow?
   
   // MARK: Launching
@@ -26,6 +26,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
+  public func willFinishLaunchingRemoteNotification(payload: [AnyHashable : Any]) {
+    
+  }
+  
   open func willFinishLaunching() {
     
   }
@@ -40,6 +44,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   }
   
   open func didFinishLaunchingLocation() {
+    
+  }
+  
+  public func didFinishLaunchingRemoteNotification(payload: [AnyHashable : Any]) {
     
   }
   
