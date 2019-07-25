@@ -37,7 +37,7 @@ Method is called when application begins launching because of user taps applicat
 optional func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
 ```
 
-This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. `AUIApplication` separate this method on several ones by reasons the application was launched. Only one of them is called: 
+This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
@@ -50,4 +50,4 @@ Method is called when when application is almost launching because of user taps 
 
 ---
 
-There is a default implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class `AUIDefaultApplication`.
+There is a default implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class [`AUIDefaultApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIDefaultApplication.swift).
