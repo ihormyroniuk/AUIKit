@@ -166,6 +166,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   }
   
   open func didEndDisplayingHeaderInSection(_ section: Int) {
+    guard section < sectionControllers.count else { return }
     sectionControllers[section].didEndDisplayingHeader()
   }
   
@@ -188,6 +189,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   }
   
   open func didEndDisplayingFooterInSection(_ section: Int) {
+    guard section < sectionControllers.count else { return }
     sectionControllers[section].didEndDisplayingFooter()
   }
   
@@ -233,6 +235,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   }
   
   open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+    guard indexPath.section < sectionControllers.count else { return }
     if let index = deletedIndexPaths.index(of: indexPath) {
       deletedIndexPaths.remove(at: index)
       return

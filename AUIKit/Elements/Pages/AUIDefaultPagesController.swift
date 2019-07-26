@@ -32,7 +32,7 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   // MARK: Initializer
   
   public init(transitionStyle: UIPageViewController.TransitionStyle = .scroll,
-       navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal) {
+       navigationOrientation: UIPageViewController.NavigationOrientation = .vertical) {
     self.transitionStyle = transitionStyle
     self.navigationOrientation = navigationOrientation
     self.options = [:]
@@ -91,8 +91,12 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   
   open func reload() {
     guard let pageViewController = pageControllers.first else { return }
-    let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController, view: pageViewController.view())
-    pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false, completion: nil)
+    let pageViewController2 = pageControllers[1]
+    let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController,
+                                                                     view: pageViewController.view())
+    let containerPageViewController2 = AUIContainerPageViewController(viewController: pageViewController2.viewController,
+                                                                     view: pageViewController2.view())
+    pagesViewController?.setViewControllers([containerPageViewController, containerPageViewController2], direction: .forward, animated: false, completion: nil)
     for object in didTransitToPageObservers.allObjects {
       guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
       observer.pagesViewController(self, didTransitToPageViewControllers
@@ -104,6 +108,7 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   // MARK: Events
   
   open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    print("before")
     guard let beforeContainerPageViewController = viewController as? AUIContainerPageViewController else { return nil }
     let beforePageViewController = beforeContainerPageViewController.viewController
     guard let beforeIndex = pageControllers.index(where: { beforePageViewController === $0.viewController}) else { return nil }
@@ -116,6 +121,7 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   }
   
   open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    print("after")
     guard let afterContainerPageViewController = viewController as? AUIContainerPageViewController else { return nil }
     let afterPageViewController = afterContainerPageViewController.viewController
     guard let afterIndex = pageControllers.index(where: { afterPageViewController === $0.viewController}) else { return nil }
@@ -128,6 +134,7 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   }
   
   open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    print("finish")
     for object in didTransitToPageObservers.allObjects {
       guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
       observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
@@ -166,6 +173,7 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
     self.containerView = containerView
     super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     containerView.addSubview(view)
+    isDoubleSided = true
   }
   
   required init?(coder: NSCoder) { return nil }
