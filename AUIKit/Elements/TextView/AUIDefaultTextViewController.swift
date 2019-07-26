@@ -9,7 +9,7 @@ import Foundation
 
 private let UITextViewTextPropertyKey = "text"
 
-open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController, UITextFieldDelegateProxyDelegate {
+open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController {
 
   // MARK: Delegates
   
@@ -206,20 +206,8 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
   
 }
 
-private protocol UITextFieldDelegateProxyDelegate: class {
-  func textViewShouldBeginEditing() -> Bool
-  func textViewDidBeginEditing()
-  func textViewShouldEndEditing() -> Bool
-  func textViewDidEndEditing()
-  func textView(shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool
-  func textViewDidChange()
-  func textViewDidChangeSelection()
-  func textView(shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
-  func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool
-}
-
 private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
-  weak var delegate: UITextFieldDelegateProxyDelegate?
+  weak var delegate: AUIDefaultTextViewController?
   
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
     return delegate?.textViewShouldBeginEditing() ?? true

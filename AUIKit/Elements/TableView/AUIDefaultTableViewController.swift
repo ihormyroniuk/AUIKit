@@ -115,6 +115,13 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     deleteCellControllersAnimated([cellController], animation)
   }
   
+  open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
+    /*guard let sectionIndex = self.sectionControllers.firstIndex(where: { $0 === section }) else { return }
+    let itemIndex = section.cellControllers.count*/
+    section.cellControllers.append(cellController)
+    reload()
+  }
+  
   private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUITableViewCellController]) -> [Int: [IndexPath]] {
     var indexPathsBySections: [Int: [IndexPath]] = [:]
     for (section, sectionController) in sectionControllers.enumerated() {
@@ -129,6 +136,8 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     }
     return indexPathsBySections
   }
+  
+  
   
   open func numberOfSections() -> Int {
     return sectionControllers.count

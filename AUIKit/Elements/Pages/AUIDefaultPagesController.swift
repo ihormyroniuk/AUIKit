@@ -8,11 +8,20 @@
 
 import UIKit
 
-open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesController, AUIPageViewControllerDataSourceDelegateProxyDelegate {
+open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewController {
   
   // MARK: Delegates
   
-  open weak var didTransitToPageDelegate: AUIPagesViewControllerDidTransitToPageObserver?
+  open var didTransitToPageObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  public func addDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver) {
+    didTransitToPageObservers.add(observer)
+  }
+  
+  public func removeDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver) {
+    didTransitToPageObservers.remove(observer)
+  }
+  
   private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
   
   // MARK: Controllers
@@ -84,7 +93,12 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesControll
     guard let pageViewController = pageControllers.first else { return }
     let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController, view: pageViewController.view())
     pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false, completion: nil)
-    didTransitToPageDelegate?.pagesViewController(self, didTransitToPageControllers: currentPageControllers)
+    for object in didTransitToPageObservers.allObjects {
+      guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
+      observer.pagesViewController(self, didTransitToPageViewControllers
+        
+        : currentPageControllers)
+    }
   }
   
   // MARK: Events
@@ -114,21 +128,17 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesControll
   }
   
   open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    didTransitToPageDelegate?.pagesViewController(self, didTransitToPageControllers: currentPageControllers)
+    for object in didTransitToPageObservers.allObjects {
+      guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
+      observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
+    }
   }
   
 }
 
-private protocol AUIPageViewControllerDataSourceDelegateProxyDelegate: class {
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController?
-  func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController?
-  func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController],
-                          transitionCompleted completed: Bool)
-}
-
 private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
   
-  weak var delegate: AUIPageViewControllerDataSourceDelegateProxyDelegate?
+  weak var delegate: AUIDefaultPagesController?
   
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     return delegate?.pageViewController(pageViewController, viewControllerBefore: viewController)

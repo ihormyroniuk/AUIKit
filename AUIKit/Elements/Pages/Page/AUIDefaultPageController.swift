@@ -20,3 +20,33 @@ open class AUIDefaultPageController: AUIPageViewController {
     self.view = view
   }
 }
+
+private class AUIContainerPageViewController: UIViewController {
+  
+  // MARK: Controllers
+  
+  var viewController: AUIViewController
+  
+  // MARK: Initializers
+  
+  init(viewController: AUIViewController, view: UIView) {
+    self.viewController = viewController
+    super.init(nibName: nil, bundle: nil)
+    self.view = view
+    setup()
+  }
+  
+  @available(*, unavailable)
+  convenience required init?(coder aDecoder: NSCoder) { return nil }
+  
+  // MARK: Setup
+  
+  func setup() {
+    viewController.view = view
+  }
+  
+  deinit {
+    viewController.view = nil
+  }
+}
+
