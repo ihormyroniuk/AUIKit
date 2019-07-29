@@ -10,14 +10,18 @@ import UIKit
 
 open class AUIDefaultPageController: AUIPageViewController {
   
-  public let viewController: AUIViewController
+  public let viewController2: AUIViewController
   public let view: () -> UIView
   
   // MARK: Initializer
   
   public init(viewController: AUIViewController, view: @escaping () -> UIView) {
-    self.viewController = viewController
+    self.viewController2 = viewController
     self.view = view
+  }
+  
+  public var viewController: UIViewController {
+    return AUIContainerPageViewController(viewController: viewController2, view: view())
   }
 }
 

@@ -32,10 +32,11 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   // MARK: Initializer
   
   public init(transitionStyle: UIPageViewController.TransitionStyle = .scroll,
-       navigationOrientation: UIPageViewController.NavigationOrientation = .vertical) {
+              navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
+              options: [UIPageViewController.OptionsKey : Any] = [:]) {
     self.transitionStyle = transitionStyle
     self.navigationOrientation = navigationOrientation
-    self.options = [:]
+    self.options = options
   }
   
   // MARK: State
@@ -46,12 +47,8 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   
   open var pagesCount: Int { return pageControllers.count }
   open var currentPageNumbers: [Int] {
-    guard let containerPageViewControllers = pagesViewController?.viewControllers as? [AUIContainerPageViewController] else { return [] }
-    let pageControllerViewControllers = containerPageViewControllers.map { $0.viewController }
-    var currentPageNumbers: [Int] = []
-    pageControllers.enumerated().forEach { (index, pageController) in
-      if pageControllerViewControllers.contains(where: { $0 === pageController.viewController }) { currentPageNumbers.append(index)  }
-    }
+    guard let containerPageViewControllers = pagesViewController?.viewControllers as? [NumberedContainerViewController] else { return [] }
+    let currentPageNumbers: [Int] = containerPageViewControllers.map({ Int($0.number) })
     return currentPageNumbers
   }
   open var currentPageControllers: [AUIPageViewController] {
@@ -90,51 +87,43 @@ open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewCont
   // MARK: Reloal
   
   open func reload() {
-    guard let pageViewController = pageControllers.first else { return }
-    let pageViewController2 = pageControllers[1]
-    let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController,
-                                                                     view: pageViewController.view())
-    let containerPageViewController2 = AUIContainerPageViewController(viewController: pageViewController2.viewController,
-                                                                     view: pageViewController2.view())
-    pagesViewController?.setViewControllers([containerPageViewController, containerPageViewController2], direction: .forward, animated: false, completion: nil)
-    for object in didTransitToPageObservers.allObjects {
-      guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
-      observer.pagesViewController(self, didTransitToPageViewControllers
-        
-        : currentPageControllers)
+    if pagesViewController?.spineLocation == .mid {
+      //if pagesViewController
+    } else {
+      guard let pageViewController = pageControllers.first else { return }
+      let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
+      pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false, completion: nil)
+      for object in didTransitToPageObservers.allObjects {
+        guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
+        observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
+      }
     }
+    
   }
   
   // MARK: Events
-  
+
   open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    print("before")
-    guard let beforeContainerPageViewController = viewController as? AUIContainerPageViewController else { return nil }
-    let beforePageViewController = beforeContainerPageViewController.viewController
-    guard let beforeIndex = pageControllers.index(where: { beforePageViewController === $0.viewController}) else { return nil }
-    guard beforeIndex > 0 else { return nil }
-    let pageViewController = pageControllers[beforeIndex - 1]
-    
-    
-    let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController, view: pageViewController.view())
-    return containerPageViewController
+    guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
+    let number = numberedContainerViewController.number
+    guard number > 0 else { return nil }
+    let beforeNumber = number - 1
+    let beforePageController = pageControllers[beforeNumber]
+    let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
+    return beforeNumberedContainerViewController
   }
   
   open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    print("after")
-    guard let afterContainerPageViewController = viewController as? AUIContainerPageViewController else { return nil }
-    let afterPageViewController = afterContainerPageViewController.viewController
-    guard let afterIndex = pageControllers.index(where: { afterPageViewController === $0.viewController}) else { return nil }
-    guard afterIndex < pageControllers.count - 1 else { return nil }
-    let pageViewController = pageControllers[afterIndex + 1]
-    
-    
-    let containerPageViewController = AUIContainerPageViewController(viewController: pageViewController.viewController, view: pageViewController.view())
-    return containerPageViewController
+    guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
+    let number = numberedContainerViewController.number
+    guard number < (pageControllers.count - 1) else { return nil }
+    let afterNumber = number + 1
+    let afterPageController = pageControllers[afterNumber]
+    let afterNumberedContainerViewController = NumberedContainerViewController(number: afterNumber, viewController: afterPageController.viewController)
+    return afterNumberedContainerViewController
   }
   
   open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    print("finish")
     for object in didTransitToPageObservers.allObjects {
       guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
       observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
@@ -173,7 +162,6 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
     self.containerView = containerView
     super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
     containerView.addSubview(view)
-    isDoubleSided = true
   }
   
   required init?(coder: NSCoder) { return nil }
@@ -187,32 +175,26 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
   
 }
 
-private class AUIContainerPageViewController: UIViewController {
+private class NumberedContainerViewController: UIViewController {
   
-  // MARK: Controllers
+  let number: Int
+  private let viewController: UIViewController
   
-  var viewController: AUIViewController
-  
-  // MARK: Initializers
-  
-  init(viewController: AUIViewController, view: UIView) {
+  init(number: Int, viewController: UIViewController) {
+    self.number = number
     self.viewController = viewController
     super.init(nibName: nil, bundle: nil)
-    self.view = view
-    setup()
+    viewController.view.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(viewController.view)
+    addChild(viewController)
+    viewController.didMove(toParent: viewController)
   }
   
   @available(*, unavailable)
   convenience required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
-  
-  func setup() {
-    viewController.view = view
-  }
-  
-  deinit {
-    viewController.view = nil
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    viewController.view.frame = view?.bounds ?? .zero
   }
 }
-
