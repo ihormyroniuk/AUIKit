@@ -122,6 +122,12 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     reload()
   }
   
+  public func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
+    guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
+    section.cellControllers.insert(contentsOf: cellControllers, at: index)
+    reload()
+  }
+  
   private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUITableViewCellController]) -> [Int: [IndexPath]] {
     var indexPathsBySections: [Int: [IndexPath]] = [:]
     for (section, sectionController) in sectionControllers.enumerated() {
