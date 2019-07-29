@@ -124,7 +124,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
   
   public func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
     guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
-    section.cellControllers.insert(contentsOf: cellControllers, at: index)
+    section.cellControllers.insert(contentsOf: cellControllers, at: index + 1)
     reload()
   }
   
