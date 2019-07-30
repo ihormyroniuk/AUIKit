@@ -25,7 +25,7 @@ public protocol AUIControlControllerDidEditingChangedObserver: class {
 }
 
 public protocol AUIControlControllerDidValueChangedObserver: class {
-  func controlControllerDidValueChanged(_ сontrolController: AUIControlController)
+  func controlControllerDidValueChanged(_ controlController: AUIControlController)
 }
 
 public protocol AUIControlController: AUIViewController {
