@@ -21,7 +21,7 @@ public protocol AUIControlControllerDidTouchUpOutsideObserver: class {
 }
 
 public protocol AUIControlControllerDidEditingChangedObserver: class {
-  func controlControllerDidEditingChanged(_ сontrolController: AUIControlController)
+  func controlControllerDidEditingChanged(_ controlController: AUIControlController)
 }
 
 public protocol AUIControlControllerDidValueChangedObserver: class {
