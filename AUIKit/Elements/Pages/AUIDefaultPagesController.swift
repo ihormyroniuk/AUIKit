@@ -184,7 +184,7 @@ private class NumberedContainerViewController: UIViewController {
     self.number = number
     self.viewController = viewController
     super.init(nibName: nil, bundle: nil)
-    viewController.view.translatesAutoresizingMaskIntoConstraints = false
+    //viewController.view.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(viewController.view)
     addChild(viewController)
     viewController.didMove(toParent: viewController)
@@ -193,8 +193,8 @@ private class NumberedContainerViewController: UIViewController {
   @available(*, unavailable)
   convenience required init?(coder aDecoder: NSCoder) { return nil }
   
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
     viewController.view.frame = view?.bounds ?? .zero
   }
 }
