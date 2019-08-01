@@ -35,6 +35,8 @@ Method is called when when application is almost launching because of applicatio
 ##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
 Method is called when application is almost launching because of user taps notification's alert.
 
+### Difference
+
 #### Method [`application(_:willFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623032-application)
 
 ```swift
