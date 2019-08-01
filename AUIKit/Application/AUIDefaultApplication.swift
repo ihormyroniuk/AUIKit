@@ -26,7 +26,7 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     return true
   }
   
-  open func willFinishLaunchingLocation() {
+  open func willFinishLaunching() {
     
   }
   
@@ -34,10 +34,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  open func willFinishLaunching() {
+  open func willFinishLaunchingLocation() {
     
   }
-  
+
   open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
       didFinishLaunchingLocation()
@@ -51,7 +51,7 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     return true
   }
   
-  open func didFinishLaunchingLocation() {
+  open func didFinishLaunching() {
     
   }
   
@@ -59,10 +59,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  open func didFinishLaunching() {
+  open func didFinishLaunchingLocation() {
     
   }
-  
+
   // MARK: States
   
   open func applicationWillEnterForeground(_ application: UIApplication) {
@@ -113,12 +113,6 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   
   open func didReceiveMemoryWarning() {
     
-  }
-  
-  // MARK:
-  
-  open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return true
   }
   
 }
