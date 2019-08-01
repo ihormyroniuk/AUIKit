@@ -53,6 +53,6 @@ optional func application(_ application: UIApplication, didFinishLaunchingWithOp
 
 This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) separate this method on several ones by reasons the application was launched. Only one of them is called: 
 
----
+### Implementation
 
 There is a default implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class [`AUIDefaultApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIDefaultApplication.swift).
