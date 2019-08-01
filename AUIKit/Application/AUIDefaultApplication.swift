@@ -30,7 +30,7 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  public func willFinishLaunchingNotification(payload: [AnyHashable : Any]) {
+  open func willFinishLaunchingNotification(payload: [AnyHashable : Any]) {
     
   }
   
@@ -55,12 +55,70 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     
   }
   
-  public func didFinishLaunchingNotification(payload: [AnyHashable : Any]) {
+  open func didFinishLaunchingNotification(payload: [AnyHashable : Any]) {
     
   }
   
   open func didFinishLaunching() {
     
+  }
+  
+  // MARK: States
+  
+  open func applicationWillEnterForeground(_ application: UIApplication) {
+    willEnterForeground()
+  }
+  
+  open func willEnterForeground() {
+    
+  }
+  
+  open func applicationDidBecomeActive(_ application: UIApplication) {
+    didBecomeActive()
+  }
+  
+  open func didBecomeActive() {
+    
+  }
+  
+  open func applicationWillResignActive(_ application: UIApplication) {
+    willResignActive()
+  }
+  
+  open func willResignActive() {
+    
+  }
+  
+  open func applicationDidEnterBackground(_ application: UIApplication) {
+    didEnterBackground()
+  }
+  
+  open func didEnterBackground() {
+    
+  }
+  
+  open func applicationWillTerminate(_ application: UIApplication) {
+    willTerminate()
+  }
+  
+  open func willTerminate() {
+    
+  }
+  
+  // MARK: Memory
+  
+  open func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+    didReceiveMemoryWarning()
+  }
+  
+  open func didReceiveMemoryWarning() {
+    
+  }
+  
+  // MARK:
+  
+  open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return true
   }
   
 }

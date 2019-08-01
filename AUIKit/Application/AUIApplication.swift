@@ -17,4 +17,17 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
   func didFinishLaunchingLocation()
   func didFinishLaunchingNotification(payload: [AnyHashable: Any])
   func didFinishLaunching()
+  
+  // MARK: States
+  
+  func willEnterForeground()
+  func didBecomeActive()
+  func willResignActive()
+  func didEnterBackground()
+  func willTerminate()
+  
+  // MARK: Memory
+  
+  func didReceiveMemoryWarning()
+  
 }

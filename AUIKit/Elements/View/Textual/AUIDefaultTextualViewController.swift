@@ -9,16 +9,16 @@ import Foundation
 
 open class AUIDefaultTextualViewController: AUIDefaultViewController, AUITextualViewController {
   
-  public var text: String? {
+  open var text: String? {
     didSet {
       didSetText(oldValue)
     }
   }
-  func didSetText(_ oldValue: String?) {
+  open func didSetText(_ oldValue: String?) {
     textualView?.textualViewSetText(text)
   }
   
-  var textualView: AUITextualView? {
+  open var textualView: AUITextualView? {
     get {
       return view as? AUITextualView
     }
