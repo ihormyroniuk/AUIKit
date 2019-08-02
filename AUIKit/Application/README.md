@@ -67,6 +67,18 @@ Method is called when application is about to enter the foreground.
 ##### `didBecomeActive()`
 Method is called when application has become active.
 
+##### `willResignActive()`
+Method is called when application is about to become inactive.
+
+##### `didEnterBackground()`
+Method is called when application is now in the background.
+
+##### `willTerminate()`
+Method is called when application is about to terminate.
+
+##### `didReceiveMemoryWarning()`
+Method is called when application receives a memory warning.
+
 ### Difference
 
 #### Method [`application(_:willFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623032-application)
