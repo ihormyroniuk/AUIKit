@@ -17,26 +17,25 @@ This assumes that implementation inherits [`UIApplication`](https://developer.ap
 ### Methods
 
 ##### `willFinishLaunching()`
-Method is called when application begins launching because of user taps application icon on the Home screen.
+Method is called when application begins launching in response to the user tapping a Home screen icon.
+
+##### `willFinishLaunchingNotification(payload: [AnyHashable: Any])`
+Method is called when application begins launching in response to the user selecting notification alert.
 
 ##### `willFinishLaunchingLocation()`
 Method is called when application begins launching because of application has subscribed on location changes events and location has changed.
 
-##### `willFinishLaunchingNotification(payload: [AnyHashable: Any])`
-Method is called when application begins launching because of user taps notification's alert.
-
 ##### `willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`
 Method is called when application begins launching in response to the user selecting a Home screen quick action.
 
-
 ##### `didFinishLaunching()`
-Method is called when when application is almost launching because of user taps application icon on the Home screen.
+Method is called when application is almost launching in response to the user tapping a Home screen icon.
+
+##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
+Method is called when application is almost launching in response to the user selecting notification alert..
 
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
-
-##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
-Method is called when application is almost launching because of user taps notification's alert.
 
 ##### `didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`
 Method is called when application is almost launching in response to the user selecting a Home screen quick action.
