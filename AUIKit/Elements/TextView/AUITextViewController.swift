@@ -8,7 +8,7 @@
 import UIKit
 
 public protocol AUITextViewControllerDidChangeTextObserver: class {
-  func textViewControllerDidChangeText(_ textFieldController: AUITextViewController)
+  func textViewControllerDidChangeText(_ textViewController: AUITextViewController)
 }
 
 public protocol AUITextViewControllerDidBeginEditingObserver: class {

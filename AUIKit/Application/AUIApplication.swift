@@ -14,9 +14,11 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
   func willFinishLaunching()
   func willFinishLaunchingNotification(payload: [AnyHashable: Any])
   func willFinishLaunchingLocation()
+  func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
   func didFinishLaunching()
   func didFinishLaunchingNotification(payload: [AnyHashable: Any])
   func didFinishLaunchingLocation()
+  func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
   
   // MARK: States
   

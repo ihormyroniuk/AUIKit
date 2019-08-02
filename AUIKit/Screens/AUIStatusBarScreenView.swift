@@ -34,7 +34,9 @@ open class AUIStatusBarScreenView: AUIView {
     layoutStatusBarView()
   }
   
-  open var statusBarFrame: CGRect = UIApplication.shared.statusBarFrame
+  open var statusBarFrame: CGRect {
+    return UIApplication.shared.statusBarFrame
+  }
   open func layoutStatusBarView() {
     statusBarView.frame = statusBarFrame
   }

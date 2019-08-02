@@ -22,6 +22,9 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
       willFinishLaunchingNotification(payload: payload)
       return true
     }
+    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+      willFinishLaunchingShortcutItem(shortcutItem)
+    }
     willFinishLaunching()
     return true
   }
@@ -37,6 +40,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   open func willFinishLaunchingLocation() {
     
   }
+  
+  open func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem) {
+    
+  }
 
   open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
@@ -46,6 +53,9 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
     if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
       didFinishLaunchingNotification(payload: payload)
       return true
+    }
+    if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+      didFinishLaunchingShortcutItem(shortcutItem)
     }
     didFinishLaunching()
     return true
@@ -60,6 +70,10 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
   }
   
   open func didFinishLaunchingLocation() {
+    
+  }
+  
+  open func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem) {
     
   }
 
