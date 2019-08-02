@@ -25,6 +25,9 @@ Method is called when application begins launching because of application has su
 ##### `willFinishLaunchingNotification(payload: [AnyHashable: Any])`
 Method is called when application begins launching because of user taps notification's alert.
 
+##### `willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`
+Method is called when application begins launching in response to the user selecting a Home screen quick action.
+
 
 ##### `didFinishLaunching()`
 Method is called when when application is almost launching because of user taps application icon on the Home screen.
@@ -34,6 +37,9 @@ Method is called when when application is almost launching because of applicatio
 
 ##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
 Method is called when application is almost launching because of user taps notification's alert.
+
+##### `didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`
+Method is called when application is almost launching in response to the user selecting a Home screen quick action.
 
 ### Difference
 
