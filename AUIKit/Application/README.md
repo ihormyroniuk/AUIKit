@@ -35,8 +35,6 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
 
 Protocol inherits [`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate) and can be implemented only by [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) and its subclasses. 
 
-This assumes that implementation inherits [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) and implements [`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate).
-
 ### Methods
 
 ##### `willFinishLaunching()`
@@ -55,13 +53,19 @@ Method is called when application begins launching in response to the user selec
 Method is called when application is almost launching in response to the user tapping a Home screen icon.
 
 ##### `didFinishLaunchingNotification(payload: [AnyHashable: Any])`
-Method is called when application is almost launching in response to the user selecting notification alert..
+Method is called when application is almost launching in response to the user selecting notification alert.
 
 ##### `didFinishLaunchingLocation()`
 Method is called when when application is almost launching because of application has subscribed on location changes events and location has changed.
 
 ##### `didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`
 Method is called when application is almost launching in response to the user selecting a Home screen quick action.
+
+##### `willEnterForeground()`
+Method is called when application is about to enter the foreground.
+
+##### `didBecomeActive()`
+Method is called when application has become active.
 
 ### Difference
 
