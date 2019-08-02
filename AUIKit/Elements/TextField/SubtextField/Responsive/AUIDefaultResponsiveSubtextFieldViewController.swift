@@ -11,9 +11,9 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   // MARK: ResponsiveSubtextFieldView
   
-  open var responsiveSubtextFieldView: AUIResponsiveSubtextFieldView? {
+  open var responsiveSubtextFieldView: AUIResponsiveSubtextInputView? {
     get {
-      return view as? AUIResponsiveSubtextFieldView
+      return view as? AUIResponsiveSubtextInputView
     }
     set {
       view = newValue as? UIView
@@ -32,15 +32,15 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   open override func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
     super.textFieldControllerDidChangeText(textFieldController)
     if textFieldController.text?.isEmpty == false {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
     } else {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
     }
     if !textFieldController.isFirstResponder {
       if subtextFieldController?.text?.isEmpty == false {
-        responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingNonempty(animated: false)
+        responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: false)
       } else {
-        responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingEmpty(animated: false)
+        responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: false)
       }
     }
   }
@@ -48,27 +48,27 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   open override func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
     super.textFieldControllerDidBeginEditing(controller)
     if subtextFieldController?.text?.isEmpty == false {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBeginEditingNonempty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidBeginEditingNonempty(animated: true)
     } else {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidBeginEditingEmpty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidBeginEditingEmpty(animated: true)
     }
   }
   
   open override func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
     super.textFieldControllerDidEndEditing(textFieldController)
     if subtextFieldController?.text?.isEmpty == false {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingNonempty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: true)
     } else {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingEmpty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: true)
     }
   }
   
   open override func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
     super.textFieldControllerDidEndEditingReason(controller, reason: reason)
     if subtextFieldController?.text?.isEmpty == false {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingNonempty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: true)
     } else {
-      responsiveSubtextFieldView?.responsiveSubtextFieldViewDidEndEditingEmpty(animated: true)
+      responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: true)
     }
   }
   

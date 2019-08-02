@@ -11,6 +11,6 @@ protocol AUIResponsiveSubtextFieldViewController: AUISubtextFieldViewController 
   
   // MARK: ResponsiveSubtextFieldView
   
-  var responsiveSubtextFieldView: AUIResponsiveSubtextFieldView? { get set }
+  var responsiveSubtextFieldView: AUIResponsiveSubtextInputView? { get set }
   
 }
