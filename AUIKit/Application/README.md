@@ -2,15 +2,38 @@
 
 [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) is a proctocol, which provides more _friendly_ inteface for classes [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)
 
+```swift
+public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
+  
+  // MARK: Launching
+  
+  func willFinishLaunching()
+  func willFinishLaunchingNotification(payload: [AnyHashable: Any])
+  func willFinishLaunchingLocation()
+  func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
+  func didFinishLaunching()
+  func didFinishLaunchingNotification(payload: [AnyHashable: Any])
+  func didFinishLaunchingLocation()
+  func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
+  
+  // MARK: States
+  
+  func willEnterForeground()
+  func didBecomeActive()
+  func willResignActive()
+  func didEnterBackground()
+  func willTerminate()
+  
+  // MARK: Memory
+  
+  func didReceiveMemoryWarning()
+  
+}
+```
+
 ### Inheritance & Restriction
 
 Protocol inherits [`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate) and can be implemented only by [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) and its subclasses. 
-
-```swift
-public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
-  ...
-}
-```
 
 This assumes that implementation inherits [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) and implements [`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate).
 
