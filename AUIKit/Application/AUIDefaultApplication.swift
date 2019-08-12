@@ -11,6 +11,19 @@ open class AUIDefaultApplication: UIApplication, AUIApplication {
  
   open var window: UIWindow?
   
+  // MAKR: Initializer
+  
+  public override init() {
+    super.init()
+    setup()
+  }
+  
+  // MARK: Setup
+  
+  open func setup() {
+    
+  }
+  
   // MARK: Launching
   
   open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
