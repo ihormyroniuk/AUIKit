@@ -122,7 +122,7 @@ open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITab
     reload()
   }
   
-  func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
+  open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
     if section.cellControllers.isEmpty {
       section.cellControllers.append(cellController)
     } else {
