@@ -1,6 +1,6 @@
 # [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift)
 
-[`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) is a proctocol, which provides more _friendly_ inteface for class [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)
+[`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) is a proctocol, which provides more _friendly_ inteface for class [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) and its delegate [`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)
 
 ```swift
 public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
