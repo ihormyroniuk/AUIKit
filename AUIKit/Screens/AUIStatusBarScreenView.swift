@@ -28,7 +28,7 @@ open class AUIStatusBarScreenView: AUIView {
     setupStatusBarView()
   }
   
-  public func setupStatusBarView() {
+  open func setupStatusBarView() {
     
   }
   
