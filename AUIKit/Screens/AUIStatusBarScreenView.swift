@@ -25,6 +25,11 @@ open class AUIStatusBarScreenView: AUIView {
   open override func setup() {
     super.setup()
     addSubview(statusBarView)
+    setupStatusBarView()
+  }
+  
+  public func setupStatusBarView() {
+    
   }
   
   // MARK: Layout
