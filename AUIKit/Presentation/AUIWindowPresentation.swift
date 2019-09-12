@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIDefaultPresentation: AUIPresentation {
+open class AUIWindowPresentation: AUIPresentation {
   
   public let window: UIWindow
   

@@ -126,10 +126,10 @@
 		C546ACCF22AAA5880047AA44 /* AUITextInputControlTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546ACCE22AAA5880047AA44 /* AUITextInputControlTextFieldController.swift */; };
 		C546ACD222AAA6280047AA44 /* AUIDefaultTextInputControlTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546ACD122AAA6280047AA44 /* AUIDefaultTextInputControlTextFieldController.swift */; };
 		C546ACD522AAB72B0047AA44 /* AUIFilterValidatorFormatterTextInputControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C546ACD422AAB72B0047AA44 /* AUIFilterValidatorFormatterTextInputControl.swift */; };
-		C548387622983CAB000254B0 /* AUIDefaultApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIDefaultApplication.swift */; };
+		C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIEmptyApplication.swift */; };
 		C54B11AC22B116E6003EBBA0 /* AUIScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AB22B116E6003EBBA0 /* AUIScreenController.swift */; };
 		C54B11AF22B125FE003EBBA0 /* AUIPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */; };
-		C54C730422C3B5260070AAC8 /* AUIDefaultPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730322C3B5260070AAC8 /* AUIDefaultPresentation.swift */; };
+		C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */; };
 		C54C730D22C3CE580070AAC8 /* AUIStatusBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */; };
 		C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5522B5D22BA357200CD6365 /* AUIAttributedLabel.swift */; };
 		C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5527C7D21F073280098D498 /* AUIDatePickerController.swift */; };
@@ -283,10 +283,10 @@
 		C546ACCE22AAA5880047AA44 /* AUITextInputControlTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputControlTextFieldController.swift; sourceTree = "<group>"; };
 		C546ACD122AAA6280047AA44 /* AUIDefaultTextInputControlTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextInputControlTextFieldController.swift; sourceTree = "<group>"; };
 		C546ACD422AAB72B0047AA44 /* AUIFilterValidatorFormatterTextInputControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIFilterValidatorFormatterTextInputControl.swift; sourceTree = "<group>"; };
-		C548387522983CAB000254B0 /* AUIDefaultApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultApplication.swift; sourceTree = "<group>"; };
+		C548387522983CAB000254B0 /* AUIEmptyApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplication.swift; sourceTree = "<group>"; };
 		C54B11AB22B116E6003EBBA0 /* AUIScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenController.swift; sourceTree = "<group>"; };
 		C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPresentation.swift; sourceTree = "<group>"; };
-		C54C730322C3B5260070AAC8 /* AUIDefaultPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultPresentation.swift; sourceTree = "<group>"; };
+		C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentation.swift; sourceTree = "<group>"; };
 		C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIStatusBarScreenView.swift; sourceTree = "<group>"; };
 		C5522B5D22BA357200CD6365 /* AUIAttributedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAttributedLabel.swift; sourceTree = "<group>"; };
 		C5527C7D21F073280098D498 /* AUIDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDatePickerController.swift; sourceTree = "<group>"; };
@@ -830,7 +830,7 @@
 			isa = PBXGroup;
 			children = (
 				C5443BB022A91B75003DE568 /* AUIApplication.swift */,
-				C548387522983CAB000254B0 /* AUIDefaultApplication.swift */,
+				C548387522983CAB000254B0 /* AUIEmptyApplication.swift */,
 				C5FE62CF22CE4A370064F989 /* README.md */,
 			);
 			path = Application;
@@ -840,7 +840,7 @@
 			isa = PBXGroup;
 			children = (
 				C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */,
-				C54C730322C3B5260070AAC8 /* AUIDefaultPresentation.swift */,
+				C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1088,7 +1088,7 @@
 				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,
 				30A7CD49219C144A006DAAA1 /* AUICollectionViewCell.swift in Sources */,
 				C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */,
-				C548387622983CAB000254B0 /* AUIDefaultApplication.swift in Sources */,
+				C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */,
 				C53F8ED521FBB7DA0019C79E /* AUIDefaultSubtextFieldViewController.swift in Sources */,
 				30BB5E5B2206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift in Sources */,
 				C546ACD222AAA6280047AA44 /* AUIDefaultTextInputControlTextFieldController.swift in Sources */,
@@ -1109,7 +1109,7 @@
 				C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
-				C54C730422C3B5260070AAC8 /* AUIDefaultPresentation.swift in Sources */,
+				C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */,
 				C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */,
 				C5758A7922F08745001D60B4 /* AUISubviewSubviewViewController.swift in Sources */,
 				C525D839219972770057E69F /* AUIPageViewController.swift in Sources */,

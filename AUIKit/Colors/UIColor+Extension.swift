@@ -13,4 +13,9 @@ public extension UIColor {
     self.init(red: CGFloat(red8Bits) / CGFloat(UInt8.max), green: CGFloat(green8Bits) / CGFloat(UInt8.max), blue: CGFloat(blue8Bits) / CGFloat(UInt8.max), alpha: alpha)
   }
   
+  var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    let color = CIColor(color: self)
+    return (color.red, color.green, color.blue, color.alpha)
+  }
+  
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIDefaultApplication: UIApplication, AUIApplication {
+open class AUIEmptyApplication: UIApplication, AUIApplication {
  
   open var window: UIWindow?
   
