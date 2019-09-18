@@ -11,8 +11,17 @@ open class AUIWindowPresentation: AUIPresentation {
   
   public let window: UIWindow
   
+  // MARK: Initialization
+  
   public init(window: UIWindow) {
     self.window = window
+    setup()
+  }
+  
+  // MARK: Setup
+  
+  open func setup() {
+    
   }
   
 }
