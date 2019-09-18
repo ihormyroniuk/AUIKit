@@ -101,4 +101,4 @@ This method is called, when launch process is almost done. Using `launchOptions`
 
 ### Implementation
 
-There is a default implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class [`AUIDefaultApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIDefaultApplication.swift).
+There is an empty implementation of [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift), it is class [`AUIEmptyApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIEmptyApplication.swift).

@@ -63,12 +63,14 @@ open class AUIDefaultViewController: AUIViewController {
     return view?.isFirstResponder ?? false
   }
   
-  open func becomeFirstResponder() {
-    view?.becomeFirstResponder()
+  @discardableResult
+  open func becomeFirstResponder() -> Bool {
+    return view?.becomeFirstResponder() ?? false
   }
   
-  open func resignFirstResponder() {
-    view?.resignFirstResponder()
+  @discardableResult
+  open func resignFirstResponder() -> Bool {
+    return view?.resignFirstResponder() ?? true
   }
   
 }

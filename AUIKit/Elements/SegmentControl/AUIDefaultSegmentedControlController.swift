@@ -18,7 +18,17 @@ open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AU
     }
   }
   
-  open var selectedItemController: AUISegmentedControlItemController?
+  open var selectedItemController: AUISegmentedControlItemController? {
+    didSet {
+      
+    }
+  }
+  func didSetSelectedItemController(_ oldValue: AUISegmentedControlItemController?) {
+    guard let index = itemControllers.firstIndex(where: { $0 === selectedItemController }) else {
+      return
+    }
+    segmentedControl?.selectedSegmentIndex = index
+  }
   
   public override init() {
     

@@ -37,6 +37,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     }
     if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
       willFinishLaunchingShortcutItem(shortcutItem)
+      return true
     }
     willFinishLaunching()
     return true
@@ -69,6 +70,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     }
     if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
       didFinishLaunchingShortcutItem(shortcutItem)
+      return true
     }
     didFinishLaunching()
     return true

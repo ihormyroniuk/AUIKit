@@ -151,6 +151,7 @@
 		C5FDD09822F18E690017B885 /* AUITextualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDD09722F18E690017B885 /* AUITextualView.swift */; };
 		C5FDD09A22F193B50017B885 /* AUITextualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDD09922F193B50017B885 /* AUITextualViewController.swift */; };
 		C5FDD09C22F194540017B885 /* AUIDefaultTextualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FDD09B22F194540017B885 /* AUIDefaultTextualViewController.swift */; };
+		C5FE2EC5232CDD83000546F4 /* AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FE2EC4232CDD83000546F4 /* AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift */; };
 		C5FE62CC22CE3DDC0064F989 /* AUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA02195B01C0087F0A2 /* AUIView.swift */; };
 		C5FE62CD22CE3DDC0064F989 /* AUIDefaultToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF42195D9710087F0A2 /* AUIDefaultToolbarController.swift */; };
 		C5FE62CE22CE3DDC0064F989 /* AUIDefaultTableViewSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8682199866D0057E69F /* AUIDefaultTableViewSectionController.swift */; };
@@ -308,6 +309,7 @@
 		C5FDD09722F18E690017B885 /* AUITextualView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextualView.swift; sourceTree = "<group>"; };
 		C5FDD09922F193B50017B885 /* AUITextualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextualViewController.swift; sourceTree = "<group>"; };
 		C5FDD09B22F194540017B885 /* AUIDefaultTextualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextualViewController.swift; sourceTree = "<group>"; };
+		C5FE2EC4232CDD83000546F4 /* AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift; sourceTree = "<group>"; };
 		C5FE62CF22CE4A370064F989 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -912,6 +914,7 @@
 		C5EC0D4B228ADE7E005E7447 /* InputControl */ = {
 			isa = PBXGroup;
 			children = (
+				C5FE2EC3232CDD75000546F4 /* New Group */,
 				C546ACCE22AAA5880047AA44 /* AUITextInputControlTextFieldController.swift */,
 				C546ACD122AAA6280047AA44 /* AUIDefaultTextInputControlTextFieldController.swift */,
 			);
@@ -950,6 +953,14 @@
 				C5FDD09722F18E690017B885 /* AUITextualView.swift */,
 			);
 			path = Textual;
+			sourceTree = "<group>";
+		};
+		C5FE2EC3232CDD75000546F4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C5FE2EC4232CDD83000546F4 /* AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1048,6 +1059,7 @@
 				C53AEAE52195B01C0087F0A2 /* AUIDefaultViewController.swift in Sources */,
 				30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */,
 				C5FDD09822F18E690017B885 /* AUITextualView.swift in Sources */,
+				C5FE2EC5232CDD83000546F4 /* AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift in Sources */,
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
 				C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */,
 				C53C63D122A7F6FF000D26D7 /* AUIInputTextFormatterTextViewController.swift in Sources */,

@@ -22,8 +22,10 @@ public protocol AUIViewController: class {
   
   var isFirstResponder: Bool { get }
   
-  func becomeFirstResponder()
+  @discardableResult
+  func becomeFirstResponder() -> Bool
   
-  func resignFirstResponder()
+  @discardableResult
+  func resignFirstResponder() -> Bool
   
 }

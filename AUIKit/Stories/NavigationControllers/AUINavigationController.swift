@@ -29,8 +29,8 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
   
   // MARK: Events
   
-  open override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
+  open override func viewDidLoad() {
+    super.viewDidLoad()
     interactivePopGestureRecognizer?.isEnabled = true
     interactivePopGestureRecognizer?.delegate = self
   }
