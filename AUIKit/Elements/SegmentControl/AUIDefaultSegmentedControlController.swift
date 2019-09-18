@@ -20,10 +20,10 @@ open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AU
   
   open var selectedItemController: AUISegmentedControlItemController? {
     didSet {
-      
+      didSetSelectedItemController(oldValue)
     }
   }
-  func didSetSelectedItemController(_ oldValue: AUISegmentedControlItemController?) {
+  open func didSetSelectedItemController(_ oldValue: AUISegmentedControlItemController?) {
     guard let index = itemControllers.firstIndex(where: { $0 === selectedItemController }) else {
       return
     }
