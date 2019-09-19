@@ -25,6 +25,7 @@
 		30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */; };
 		30BB5E5F2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */; };
 		30BB5E602206FC0500F7DA0F /* AUIReusableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */; };
+		C50295E82332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */; };
 		C5041C2322F4197700907F45 /* AUIResponsiveSubtextViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5041C2222F4197700907F45 /* AUIResponsiveSubtextViewViewController.swift */; };
 		C5041C2522F419CA00907F45 /* AUIDefaultResponsiveSubtextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5041C2422F419CA00907F45 /* AUIDefaultResponsiveSubtextInputViewController.swift */; };
 		C5041C2822F41B5900907F45 /* AUIDefaultTextInputControlTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5041C2722F41B5900907F45 /* AUIDefaultTextInputControlTextViewController.swift */; };
@@ -178,6 +179,7 @@
 		30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIUpdatableCollectionViewController.swift; sourceTree = "<group>"; };
 		30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDynamicSizeCollectionCell.swift; sourceTree = "<group>"; };
 		30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIReusableCollectionCell.swift; sourceTree = "<group>"; };
+		C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEndRefreshingDelayRefreshControl.swift; sourceTree = "<group>"; };
 		C5041C2222F4197700907F45 /* AUIResponsiveSubtextViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveSubtextViewViewController.swift; sourceTree = "<group>"; };
 		C5041C2422F419CA00907F45 /* AUIDefaultResponsiveSubtextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultResponsiveSubtextInputViewController.swift; sourceTree = "<group>"; };
 		C5041C2722F41B5900907F45 /* AUIDefaultTextInputControlTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultTextInputControlTextViewController.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 			children = (
 				C525D81721996AF10057E69F /* AUIRefreshControlController.swift */,
 				C525D81821996AF10057E69F /* AUIDefaultRefreshControlController.swift */,
+				C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */,
 			);
 			path = RefreshControl;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
 				30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */,
 				C5FEB1F722EEF591001EC21D /* AUIViewControllerPageController.swift in Sources */,
+				C50295E82332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift in Sources */,
 				30A7CD4F219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift in Sources */,
 				C53F8ECE21FBB3AE0019C79E /* AUIDefaultSubcontrolViewController.swift in Sources */,
 				C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */,
