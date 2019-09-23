@@ -89,7 +89,7 @@ optional func application(_ application: UIApplication, willFinishLaunchingWithO
 
 This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) separate this method on several ones by reasons the application was launched:
 [`willFinishLaunching()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunching),
-[`willFinishLaunchingNotification(payload: [AnyHashable: Any])`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingnotificationpayload-anyhashable-any), [`willFinishLaunchingLocation()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchinglocation), [`willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingshortcutitem_-shortcutitem-uiapplicationshortcutitem)
+[`willFinishLaunchingNotification(payload: [AnyHashable: Any])`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingnotificationpayload-anyhashable-any), [`willFinishLaunchingLocation()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchinglocation), [`willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingshortcutitem_-shortcutitem-uiapplicationshortcutitem).
 
 #### Method [`application(_:didFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
@@ -99,7 +99,7 @@ optional func application(_ application: UIApplication, didFinishLaunchingWithOp
 
 This method is called, when launch process is almost done. Using `launchOptions` it is possible to define reasons the application was launched. [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) separate this method on several ones by reasons the application was launched:
 [`didFinishLaunching()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunching),
-[`didFinishLaunchingNotification(payload: [AnyHashable: Any])`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchingnotificationpayload-anyhashable-any), [`didFinishLaunchingLocation()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchinglocation), [`didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchingshortcutitem_-shortcutitem-uiapplicationshortcutitem)
+[`didFinishLaunchingNotification(payload: [AnyHashable: Any])`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchingnotificationpayload-anyhashable-any), [`didFinishLaunchingLocation()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchinglocation), [`didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#didfinishlaunchingshortcutitem_-shortcutitem-uiapplicationshortcutitem).
 
 ### Implementation
 
