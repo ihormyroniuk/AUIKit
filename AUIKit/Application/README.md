@@ -87,7 +87,9 @@ Method is called when application receives a memory warning.
 optional func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool
 ```
 
-This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication) separate this method on several ones by reasons the application was launched. Only one of them is called:
+This method is called, when launch process has begun. Using `launchOptions` it is possible to define reasons the application was launched. [`AUIApplication`](https://github.com/ihormyroniuk/AUIKit/blob/master/AUIKit/Application/AUIApplication.swift) separate this method on several ones by reasons the application was launched:
+[`willFinishLaunching()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunching),
+[`willFinishLaunchingNotification(payload: [AnyHashable: Any])`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingnotificationpayload-anyhashable-any), [`willFinishLaunchingLocation()`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchinglocation), [`willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)`](https://github.com/ihormyroniuk/AUIKit/tree/master/AUIKit/Application#willfinishlaunchingshortcutitem_-shortcutitem-uiapplicationshortcutitem)
 
 #### Method [`application(_:didFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application)
 
