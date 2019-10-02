@@ -9,8 +9,6 @@ import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {
  
-  open var window: UIWindow?
-  
   // MAKR: Initializer
   
   public override init() {
@@ -23,6 +21,10 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
   open func setup() {
     
   }
+  
+  // MARK: Window
+  
+  open var window: UIWindow?
   
   // MARK: Launching
   

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUINavigationControllerWithoutBar: AUINavigationController {
+open class AUIHiddenBarInteractiveNavigationController: AUIInteractiveNavigationController {
 
   // MARK: Setup
   

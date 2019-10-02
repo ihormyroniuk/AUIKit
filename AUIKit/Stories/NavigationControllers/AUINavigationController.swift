@@ -2,17 +2,22 @@
 //  AUINavigationController.swift
 //  AUIKit
 //
-//  Created by Ihor Myroniuk on 4/9/19.
+//  Created by Ihor Myroniuk on 9/22/19.
 //
 
-import Foundation
+import UIKit
 
-open class AUINavigationController: UINavigationController, UIGestureRecognizerDelegate {
+open class AUINavigationController: UINavigationController {
   
   // MARK: Initializer
   
   public init() {
     super.init(nibName: nil, bundle: nil)
+    setup()
+  }
+  
+  public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     setup()
   }
   
@@ -26,17 +31,5 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
   open func setup() {
     
   }
-  
-  // MARK: Events
-  
-  open override func viewDidLoad() {
-    super.viewDidLoad()
-    interactivePopGestureRecognizer?.isEnabled = true
-    interactivePopGestureRecognizer?.delegate = self
-  }
-  
-  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    return viewControllers.count > 1
-  }
-  
+
 }

@@ -10,9 +10,17 @@ import Foundation
 
 open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBarButtonItemController {
  
-  // MARK: Delegates
+  // MARK: Observers
   
-  open weak var didSelectDelegate: AUIBarButtonItemControllerDidSelectDelegate?
+  open var didSelectObservers = NSHashTable<AnyObject>.weakObjects()
+  
+  open func addDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver) {
+    didSelectObservers.add(observer)
+  }
+  
+  open func removeDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver) {
+    didSelectObservers.remove(observer)
+  }
   
   // MARK: View
   
@@ -31,10 +39,13 @@ open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBa
     barButtonItem?.action = nil
   }
   
-  // MARK: - Events -
+  // MARK: Events
   
-  @objc private func didSelectAction() {
-    didSelectDelegate?.barButtonItemControllerDidSelect(self)
+  @objc open func didSelectAction() {
+    for object in didSelectObservers.allObjects {
+      guard let observer = object as? AUIBarButtonItemControllerDidSelectObserver else { continue }
+      observer.barButtonItemControllerDidSelect(self)
+    }
   }
   
 }

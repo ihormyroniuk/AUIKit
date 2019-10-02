@@ -8,18 +8,19 @@
 
 import Foundation
 
-public protocol AUIBarButtonItemControllerDidSelectDelegate: class {
+public protocol AUIBarButtonItemControllerDidSelectObserver: class {
   func barButtonItemControllerDidSelect(_ barButtonItemController: AUIBarButtonItemController)
 }
 
 public protocol AUIBarButtonItemController: AUIBarItemController {
   
+  // MARK: Observers
+  
+  func addDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver)
+  func removeDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver)
+  
   // MARK: Bar Button Item
   
   var barButtonItem: UIBarButtonItem? { get set }
-  
-  // MARK: Tap
-  
-  var didSelectDelegate: AUIBarButtonItemControllerDidSelectDelegate? { get set }
   
 }

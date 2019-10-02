@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIStatusBarScreenView: AUIView {
+open class AUIScreenViewWithStatusBar: AUIView {
   
   // MARK: Elements
   

@@ -12,6 +12,10 @@ public protocol AUIPagesViewControllerDidTransitToPageObserver: class {
 }
 
 public protocol AUIPagesViewController {
+  
+  // MARK: Observers
+  
   func addDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
   func removeDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
+  
 }

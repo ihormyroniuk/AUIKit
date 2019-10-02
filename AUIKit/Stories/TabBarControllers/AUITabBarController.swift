@@ -16,6 +16,11 @@ open class AUITabBarController: UITabBarController {
     setup()
   }
   
+  public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    setup()
+  }
+  
   public required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setup()

@@ -9,9 +9,11 @@ import UIKit
 
 open class AUIWindowPresentation: AUIPresentation {
   
+  // MARK: Elements
+  
   public let window: UIWindow
   
-  // MARK: Initialization
+  // MARK: Initializer
   
   public init(window: UIWindow) {
     self.window = window
