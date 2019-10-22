@@ -7,6 +7,6 @@
 
 import UIKit
 
-public protocol AUITextViewInputView where Self: UIView {
+public protocol AUITextViewTextInputView where Self: UIView {
     var textView: UITextView { get }
 }

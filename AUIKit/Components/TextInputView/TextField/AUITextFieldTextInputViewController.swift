@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol AUITextFieldInputViewController: AUIViewController {
+public protocol AUITextFieldTextInputViewController: AUIViewController {
 
     // MARK: TextFieldInputView
     
-    var textFieldInputView: AUITextFieldInputView? { get set }
+    var textFieldInputView: AUITextFieldTextInputView? { get set }
     
     // MARK: TextFieldController
   

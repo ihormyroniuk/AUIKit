@@ -7,13 +7,13 @@
 
 import Foundation
 
-open class AUIEmptyTextViewInputViewController: AUIDefaultViewController, AUITextViewInputViewController, AUITextViewControllerDidChangeTextObserver, AUITextViewControllerDidBeginEditingObserver, AUITextViewControllerDidEndEditingObserver {
+open class AUIEmptyTextViewTextInputViewController: AUIDefaultViewController, AUITextViewInputTextViewController, AUITextViewControllerDidChangeTextObserver, AUITextViewControllerDidBeginEditingObserver, AUITextViewControllerDidEndEditingObserver {
   
     // MARK: TextFieldInputView
     
-    open var textViewInputView: AUITextViewInputView? {
+    open var textViewInputView: AUITextViewTextInputView? {
         set { view = newValue }
-        get { return view as? AUITextViewInputView }
+        get { return view as? AUITextViewTextInputView }
     }
     
     open override func setupView() {
