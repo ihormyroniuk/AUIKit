@@ -5,28 +5,28 @@
 ```swift
 public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
   
-  // MARK: Launching
+    // MARK: Launching
   
-  func willFinishLaunching()
-  func willFinishLaunchingNotification(payload: [AnyHashable: Any])
-  func willFinishLaunchingLocation()
-  func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
-  func didFinishLaunching()
-  func didFinishLaunchingNotification(payload: [AnyHashable: Any])
-  func didFinishLaunchingLocation()
-  func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
+    func willFinishLaunching()
+    func willFinishLaunchingNotification(payload: [AnyHashable: Any])
+    func willFinishLaunchingLocation()
+    func willFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
+    func didFinishLaunching()
+    func didFinishLaunchingNotification(payload: [AnyHashable: Any])
+    func didFinishLaunchingLocation()
+    func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
   
-  // MARK: States
+    // MARK: States
   
-  func willEnterForeground()
-  func didBecomeActive()
-  func willResignActive()
-  func didEnterBackground()
-  func willTerminate()
+    func willEnterForeground()
+    func didBecomeActive()
+    func willResignActive()
+    func didEnterBackground()
+    func willTerminate()
   
-  // MARK: Memory
+    // MARK: Memory
   
-  func didReceiveMemoryWarning()
+    func didReceiveMemoryWarning()
   
 }
 ```

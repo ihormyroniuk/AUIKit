@@ -19,6 +19,10 @@ public extension UIColor {
     self.init(red: CGFloat(red8Bits) / CGFloat(UInt8.max), green: CGFloat(green8Bits) / CGFloat(UInt8.max), blue: CGFloat(blue8Bits) / CGFloat(UInt8.max), alpha: alpha)
   }
   
+  convenience init(red8Bits: UInt8, green8Bits: UInt8, blue8Bits: UInt8) {
+    self.init(red: CGFloat(red8Bits) / CGFloat(UInt8.max), green: CGFloat(green8Bits) / CGFloat(UInt8.max), blue: CGFloat(blue8Bits) / CGFloat(UInt8.max), alpha: 1)
+  }
+  
   // MARK: Components
   
   var componentsRGBA: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
