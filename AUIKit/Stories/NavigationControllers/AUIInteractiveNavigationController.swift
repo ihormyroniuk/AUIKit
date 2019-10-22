@@ -9,19 +9,19 @@ import UIKit
 
 open class AUIInteractiveNavigationController: AUINavigationController, UIGestureRecognizerDelegate {
   
-  // MARK: Events
+    // MARK: Events
   
-  open override func viewDidLoad() {
-    super.viewDidLoad()
-    interactivePopGestureRecognizer?.isEnabled = true
-    interactivePopGestureRecognizer?.delegate = self
-  }
-  
-  public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-    if interactivePopGestureRecognizer == gestureRecognizer {
-      return viewControllers.count > 1
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.isEnabled = true
+        interactivePopGestureRecognizer?.delegate = self
     }
-    return true
-  }
+  
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if interactivePopGestureRecognizer == gestureRecognizer {
+            return viewControllers.count > 1
+        }
+        return true
+    }
   
 }

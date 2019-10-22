@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFieldViewController, AUIResponsiveSubtextFieldViewController {
+open class AUIResponsiveTextFieldInputViewController: AUIEmptyTextFieldInputViewController {
   
   // MARK: ResponsiveSubtextFieldView
   
@@ -16,7 +16,7 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
       return view as? AUIResponsiveSubtextInputView
     }
     set {
-      view = newValue as? UIView
+        view = newValue
     }
   }
   
@@ -37,7 +37,7 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
     }
     if !textFieldController.isFirstResponder {
-      if subtextFieldController?.text?.isEmpty == false {
+      if self.textFieldController?.text?.isEmpty == false {
         responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: false)
       } else {
         responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: false)
@@ -47,7 +47,7 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   open override func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
     super.textFieldControllerDidBeginEditing(controller)
-    if subtextFieldController?.text?.isEmpty == false {
+    if self.textFieldController?.text?.isEmpty == false {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidBeginEditingNonempty(animated: true)
     } else {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidBeginEditingEmpty(animated: true)
@@ -56,7 +56,7 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   open override func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
     super.textFieldControllerDidEndEditing(textFieldController)
-    if subtextFieldController?.text?.isEmpty == false {
+    if self.textFieldController?.text?.isEmpty == false {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: true)
     } else {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: true)
@@ -65,7 +65,7 @@ open class AUIDefaultResponsiveSubtextFieldViewController: AUIDefaultSubtextFiel
   
   open override func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
     super.textFieldControllerDidEndEditingReason(controller, reason: reason)
-    if subtextFieldController?.text?.isEmpty == false {
+    if self.textFieldController?.text?.isEmpty == false {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingNonempty(animated: true)
     } else {
       responsiveSubtextFieldView?.responsiveSubtextInputViewDidEndEditingEmpty(animated: true)

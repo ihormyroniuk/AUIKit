@@ -9,7 +9,7 @@ import Foundation
 
 private let UITextViewTextPropertyKey = "text"
 
-open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUITextViewController {
+open class AUIEmptyTextViewController: AUIDefaultScrollViewController, AUITextViewController {
 
   // MARK: Delegates
   
@@ -207,7 +207,7 @@ open class AUIDefaultTextViewController: AUIDefaultScrollViewController, AUIText
 }
 
 private class UITextViewDelegateProxy: NSObject, UITextViewDelegate {
-  weak var delegate: AUIDefaultTextViewController?
+  weak var delegate: AUIEmptyTextViewController?
   
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
     return delegate?.textViewShouldBeginEditing() ?? true

@@ -9,11 +9,11 @@ import UIKit
 
 open class AUIHiddenBarInteractiveNavigationController: AUIInteractiveNavigationController {
 
-  // MARK: Setup
+    // MARK: Setup
   
-  open override func setup() {
-    super.setup()
-    setNavigationBarHidden(true, animated: false)
-  }
+    open override func setup() {
+        super.setup()
+        setNavigationBarHidden(true, animated: false)
+    }
   
 }

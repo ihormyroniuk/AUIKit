@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIDefaultInputTextFilterValidatorFormatterTextViewController: AUIDefaultTextViewController, AUIInputTextFilterTextViewController, AUIInputTextValidatorTextViewController, AUIInputTextFormatterTextViewController {
+open class AUITextInputFilterValidatorFormatterTextViewController: AUIEmptyTextViewController {
   
   // MARK: AUIValidatingFormattingTextFieldController
   
@@ -94,7 +94,7 @@ open class AUIDefaultInputTextFilterValidatorFormatterTextViewController: AUIDef
       filteredString = inputTextFilter.filter(text: text) ?? ""
     }
     guard let inputtedTextFormatter = inputTextFormatter else {
-      guard let textRange = Range(range, in: text) else { return true }
+      guard let textRange = Range(range, in: self.text ?? "") else { return true }
       let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
       return inputTextValidator?.isValidInputtingText(currentText: formattedText, newText: newText) ?? true
     }

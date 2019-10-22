@@ -9,51 +9,51 @@ import UIKit
 
 open class AUIDefaultScreenController: UIViewController, AUIScreenController {
   
-  // MARK: Initializers
+    // MARK: Initializers
   
-  public init(view: UIView) {
-    screenView = view
-    super.init(nibName: nil, bundle: nil)
-    setup()
-  }
+    public init(view: UIView) {
+        screenView = view
+        super.init(nibName: nil, bundle: nil)
+        setup()
+    }
   
-  @available(*, unavailable)
-  public convenience required init?(coder aDecoder: NSCoder) { return nil }
+    @available(*, unavailable)
+    public convenience required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open func setup() {
+    open func setup() {
     
-  }
+    }
   
-  // MARK: Life Cycle
+    // MARK: Life Cycle
   
-  private let screenView: UIView
-  open override func loadView() {
-    self.view = screenView
-  }
+    private let screenView: UIView
+    open override func loadView() {
+        self.view = screenView
+    }
   
-  open var isAppeared = false
-  open override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    isAppeared = true
-    didSetStatusBarStyle()
-  }
+    open var isAppeared = false
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        isAppeared = true
+        didSetStatusBarStyle()
+    }
   
-  open override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    isAppeared = false
-  }
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isAppeared = false
+    }
   
-  open override var preferredStatusBarStyle: UIStatusBarStyle { return statusBarStyle }
-  open var statusBarStyle: UIStatusBarStyle = .default {
-    didSet { didSetStatusBarStyle() }
-  }
-  open func didSetStatusBarStyle() {
-    guard isAppeared == true else { return }
-    navigationController?.navigationBar.barStyle = (statusBarStyle == .default) ? .black : .default
-    setNeedsStatusBarAppearanceUpdate()
-  }
+    open override var preferredStatusBarStyle: UIStatusBarStyle { return statusBarStyle }
+    open var statusBarStyle: UIStatusBarStyle = .default {
+        didSet { didSetStatusBarStyle() }
+    }
+    open func didSetStatusBarStyle() {
+        guard isAppeared == true else { return }
+        navigationController?.navigationBar.barStyle = (statusBarStyle == .default) ? .black : .default
+        setNeedsStatusBarAppearanceUpdate()
+    }
   
 }
 

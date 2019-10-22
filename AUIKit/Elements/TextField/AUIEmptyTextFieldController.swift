@@ -10,7 +10,7 @@ import UIKit
 
 private let UITextFieldTextPropertyKey = "text"
 
-open class AUIDefaultTextFieldController: AUIDefaultControlController, AUITextFieldController,
+open class AUIEmptyTextFieldController: AUIDefaultControlController, AUITextFieldController,
 KeyValueObserverProxyDelegate {
   
   // MARK: Delegates
@@ -277,7 +277,7 @@ KeyValueObserverProxyDelegate {
 }
 
 private class UITextFieldDelegateProxy: NSObject, UITextFieldDelegate {
-  weak var delegate: AUIDefaultTextFieldController?
+  weak var delegate: AUIEmptyTextFieldController?
   
   func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
     return delegate?.textFieldShouldBeginEditing() ?? false

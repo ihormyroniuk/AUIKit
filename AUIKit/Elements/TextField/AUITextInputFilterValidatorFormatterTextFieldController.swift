@@ -7,7 +7,7 @@
 
 import Foundation
 
-/*open class AUIDefaultInputTextFilterValidatorFormatterTextFieldController: AUIDefaultTextFieldController {
+open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyTextFieldController {
   
   // MARK: AUIValidatingFormattingTextFieldController
   
@@ -20,8 +20,8 @@ import Foundation
     if oldValue != formattedText {
       textField?.text = formattedText
       for object in didChangeTextObservers.allObjects {
-        guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
-        observer.textViewControllerDidChangeText(self)
+        guard let observer = object as? AUITextFieldControllerDidChangeTextObserver else { continue }
+        observer.textFieldControllerDidChangeText(self)
       }
     }
   }
@@ -89,14 +89,14 @@ import Foundation
   // MARK: UITextFieldDelegate
   
   open override func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    var filteredString = text
+    var filteredString = string
     if let inputTextFilter = inputTextFilter {
-      filteredString = inputTextFilter.filter(text: text) ?? ""
+        filteredString = inputTextFilter.filter(text: text) ?? ""
     }
     guard let inputtedTextFormatter = inputTextFormatter else {
-      guard let textRange = Range(range, in: string) else { return true }
-      let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
-      return inputTextValidator?.isValidInputtingText(currentText: formattedText, newText: newText) ?? true
+        guard let textRange = Range(range, in: text ?? "") else { return true }
+        let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
+        return inputTextValidator?.isValidInputtingText(currentText: formattedText, newText: newText) ?? true
     }
     let formattingResult = inputtedTextFormatter.formatInputtedText(currentText: formattedText, range: range, replacementString: filteredString)
     let currentUnformattedText = inputtedTextFormatter.unformat(formattedText: formattedText)
@@ -104,9 +104,9 @@ import Foundation
     guard (inputTextValidator?.isValidInputtingText(currentText: currentUnformattedText, newText: newUnformattedText) ?? true) else { return false }
     formattedText = formattingResult.formattedText
     if let textField = textField, let cursorLocation = textField.position(from: textField.beginningOfDocument, offset: formattingResult.caretBeginOffset) {
-      DispatchQueue.main.async { textField.selectedTextRange = textField.textRange(from: cursorLocation, to: cursorLocation) }
+        DispatchQueue.main.async { textField.selectedTextRange = textField.textRange(from: cursorLocation, to: cursorLocation) }
     }
     return false
   }
   
-}*/
+}

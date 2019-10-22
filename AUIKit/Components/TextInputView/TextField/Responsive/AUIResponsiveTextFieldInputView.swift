@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol AUIResponsiveSubtextInputView {
+public protocol AUIResponsiveSubtextInputView: AUITextFieldInputView {
   func responsiveSubtextInputViewDidBeginEditingEmpty(animated: Bool)
   func responsiveSubtextInputViewDidBeginEditingNonempty(animated: Bool)
   func responsiveSubtextInputViewDidBecomeEmpty(animated: Bool)

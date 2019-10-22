@@ -18,7 +18,9 @@ open class AUITextField: UITextField {
   }
   
   public required init?(coder aDecoder: NSCoder) {
-    return nil
+    super.init(coder: aDecoder)
+    setup()
+    autoLayout()
   }
   
   // MARK: Setup

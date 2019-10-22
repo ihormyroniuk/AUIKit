@@ -9,41 +9,41 @@ import UIKit
 
 open class AUIScreenViewWithStatusBar: AUIView {
   
-  // MARK: Elements
+    // MARK: Elements
   
-  public let statusBarView: UIView
+    public let statusBarView: UIView
   
-  // MARK: Initializer
+    // MARK: Initializer
   
-  public init(frame: CGRect = .zero, statusBarView: UIView = UIView()) {
-    self.statusBarView = statusBarView
-    super.init(frame: frame)
-  }
+    public init(frame: CGRect = .zero, statusBarView: UIView = UIView()) {
+        self.statusBarView = statusBarView
+        super.init(frame: frame)
+    }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open override func setup() {
-    super.setup()
-    addSubview(statusBarView)
-    setupStatusBarView()
-  }
+    open override func setup() {
+        super.setup()
+        addSubview(statusBarView)
+        setupStatusBarView()
+    }
   
-  open func setupStatusBarView() {
+    open func setupStatusBarView() {
     
-  }
+    }
   
-  // MARK: Layout
+    // MARK: Layout
   
-  open override func layout() {
-    super.layout()
-    layoutStatusBarView()
-  }
+    open override func layout() {
+        super.layout()
+        layoutStatusBarView()
+    }
   
-  open var statusBarFrame: CGRect {
-    return UIApplication.shared.statusBarFrame
-  }
-  open func layoutStatusBarView() {
-    statusBarView.frame = statusBarFrame
-  }
+    open var statusBarFrame: CGRect {
+        return UIApplication.shared.statusBarFrame
+    }
+    open func layoutStatusBarView() {
+        statusBarView.frame = statusBarFrame
+    }
   
 }

@@ -9,21 +9,21 @@ import UIKit
 
 open class AUIWindowPresentation: AUIPresentation {
   
-  // MARK: Elements
+    // MARK: Elements
   
-  public let window: UIWindow
+    public let window: UIWindow
   
-  // MARK: Initializer
+    // MARK: Initializer
   
-  public init(window: UIWindow) {
-    self.window = window
-    setup()
-  }
+    public init(window: UIWindow? = nil) {
+        self.window = window ?? UIWindow()
+        setup()
+    }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open func setup() {
+    open func setup() {
     
-  }
+    }
   
 }
