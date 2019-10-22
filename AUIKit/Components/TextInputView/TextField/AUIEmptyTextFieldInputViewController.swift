@@ -47,8 +47,8 @@ open class AUIEmptyTextFieldInputViewController: AUIDefaultViewController, AUITe
         oldValue?.removeDidTapReturnKeyObserver(self)
         oldValue?.removeDidBeginEditingObserver(self)
         oldValue?.removeDidEndEditingObserver(self)
-        oldValue?.textField = nil
         oldValue?.removeDidEndEditingReasonObserver(self)
+        oldValue?.textField = nil
         textFieldController?.addDidChangeTextObserver(self)
         textFieldController?.addDidTapReturnKeyObserver(self)
         textFieldController?.addDidBeginEditingObserver(self)
@@ -78,4 +78,5 @@ open class AUIEmptyTextFieldInputViewController: AUIDefaultViewController, AUITe
     open func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
         
     }
+    
 }

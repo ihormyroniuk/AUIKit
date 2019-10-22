@@ -11,13 +11,9 @@ open class AUIResponsiveTextFieldInputViewController: AUIEmptyTextFieldInputView
   
   // MARK: ResponsiveSubtextFieldView
   
-  open var responsiveSubtextFieldView: AUIResponsiveSubtextInputView? {
-    get {
-      return view as? AUIResponsiveSubtextInputView
-    }
-    set {
-        view = newValue
-    }
+  open var responsiveSubtextFieldView: AUIResponsiveTextInputView? {
+    get { return view as? AUIResponsiveTextInputView }
+    set { view = newValue }
   }
   
   // MARK: View

@@ -9,7 +9,7 @@ import Foundation
 
 public protocol AUITextFieldInputViewController: AUIViewController {
 
-    // MARK: Button
+    // MARK: TextFieldInputView
     
     var textFieldInputView: AUITextFieldInputView? { get set }
     
