@@ -12,12 +12,12 @@ open class AUIElementTableViewHeaderFooterController: AUITableViewHeaderFooterCo
   
   open var view: UIView?
   
-  public let controller: AUIDefaultViewController
+  public let controller: AUIEmptyViewController
   public let headerFooterView: (UITableView) -> AUIContainerTableViewHeaderFooterView?
   
   // MARK: Initializer
   
-  public init(controller: AUIDefaultViewController, headerFooterView: @escaping (UITableView) -> AUIContainerTableViewHeaderFooterView?) {
+  public init(controller: AUIEmptyViewController, headerFooterView: @escaping (UITableView) -> AUIContainerTableViewHeaderFooterView?) {
     self.controller = controller
     self.headerFooterView = headerFooterView
   }

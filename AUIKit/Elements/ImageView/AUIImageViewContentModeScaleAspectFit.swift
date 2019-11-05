@@ -9,9 +9,9 @@ import UIKit
 
 open class AUIImageViewContentModeScaleAspectFit: AUIImageView {
   
-  open override func setup() {
-    super.setup()
-    contentMode = .scaleAspectFit
-  }
+    open override func setup() {
+        super.setup()
+        contentMode = .scaleAspectFit
+    }
   
 }

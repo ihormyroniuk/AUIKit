@@ -199,7 +199,7 @@ extension AUICollectionViewController: AUICollectionViewDelegateProxyDelegate {
   
   open func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     if deletedIndexPaths.contains(indexPath) {
-      if let index = deletedIndexPaths.index(of: indexPath) {
+        if let index = deletedIndexPaths.firstIndex(of: indexPath) {
         deletedIndexPaths.remove(at: index)
       }
       return

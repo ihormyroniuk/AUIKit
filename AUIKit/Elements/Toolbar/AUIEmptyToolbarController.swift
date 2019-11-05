@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultToolbarController: AUIDefaultViewController, AUIToolbarController {
+open class AUIEmptyToolbarController: AUIEmptyViewController, AUIToolbarController {
 
   // MARK: Toolbar
   

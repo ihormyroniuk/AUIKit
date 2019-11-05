@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIEmptyTextFieldTextInputViewController: AUIDefaultViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidChangeTextObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextFieldControllerDidBeginEditingObserver, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
+open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidChangeTextObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextFieldControllerDidBeginEditingObserver, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
     
     // MARK: AUITextFieldInputView
     

@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUITextInputFilter {
-  func filter(text: String?) -> String?
+  func filter(inputtedText: String?) -> String?
 }

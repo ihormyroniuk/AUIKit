@@ -10,12 +10,12 @@ import Foundation
 
 public protocol AUILabelController: AUIViewController {
   
-  // MARK: Label
+    // MARK: Label
+    
+    var label: UILabel? { get set }
   
-  var label: UILabel? { get set }
+    // MARK: Text
   
-  // MARK: Text
-  
-  var text: String? { get set }
+    var text: String? { get set }
   
 }

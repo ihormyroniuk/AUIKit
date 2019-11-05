@@ -10,38 +10,38 @@ import UIKit
 
 open class AUILabel: UILabel {
 
-  // MARK: Initializer
+    // MARK: Initializer
   
-  public override init(frame: CGRect = .zero) {
-    super.init(frame: frame)
-    setup()
-    autoLayout()
-  }
+    public override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        setup()
+        autoLayout()
+    }
   
-  @available(*, unavailable)
-  public required init?(coder aDecoder: NSCoder) { return nil }
+    @available(*, unavailable)
+    public required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
+    // MARK: Setup
  
-  open func setup() {
+    open func setup() {
     
-  }
+    }
   
-  // MARK: AutoLayout
+    // MARK: AutoLayout
   
-  open func autoLayout() {
+    open func autoLayout() {
     
-  }
+    }
   
-  // MARK: Layout
+    // MARK: Layout
   
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    layout()
-  }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
   
-  open func layout() {
+    open func layout() {
     
-  }
+    }
   
 }

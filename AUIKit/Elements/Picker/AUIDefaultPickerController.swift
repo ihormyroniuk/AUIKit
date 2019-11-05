@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultPickerController: AUIDefaultViewController, AUIPickerController, UIPickerViewDataSourceProxyDelegate {
+open class AUIDefaultPickerController: AUIEmptyViewController, AUIPickerController, UIPickerViewDataSourceProxyDelegate {
   
   // MARK: Components
   

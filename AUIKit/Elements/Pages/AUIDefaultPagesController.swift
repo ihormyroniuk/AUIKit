@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultPagesController: AUIDefaultViewController, AUIPagesViewController {
+open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewController {
   
   // MARK: Delegates
   

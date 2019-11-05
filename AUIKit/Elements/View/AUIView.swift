@@ -10,38 +10,38 @@ import UIKit
 
 open class AUIView: UIView {
 
-  // MARK: Initializers
+    // MARK: Initializers
   
-  public override init(frame: CGRect = .zero) {
-    super.init(frame: frame)
-    setup()
-    autoLayout()
-  }
+    public override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        setup()
+        autoLayout()
+    }
   
-  @available(*, unavailable)
-  public convenience required init?(coder aDecoder: NSCoder) { return nil }
+    @available(*, unavailable)
+    public convenience required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open func setup() {
+    open func setup() {
     
-  }
+    }
   
-  // MAR: AutoLayout
+    // MAR: AutoLayout
   
-  open func autoLayout() {
+    open func autoLayout() {
     
-  }
+    }
   
-  // MARK: Layout
+    // MARK: Layout
   
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    layout()
-  }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
   
-  open func layout() {
-    
-  }
+    open func layout() {
+        
+    }
   
 }

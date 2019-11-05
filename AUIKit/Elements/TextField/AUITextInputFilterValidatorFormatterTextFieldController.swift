@@ -29,7 +29,7 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
     set {
       var filteredNewValue = newValue
       if let inputTextFilter = inputTextFilter {
-        filteredNewValue = inputTextFilter.filter(text: newValue) ?? ""
+        filteredNewValue = inputTextFilter.filter(inputtedText: newValue) ?? ""
       }
       guard (inputTextValidator?.isValidInputtingText(currentText: "", newText: filteredNewValue) ?? true) else { return }
       if let inputtedTextFormatter = inputTextFormatter {
@@ -58,7 +58,7 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
   }
   open func didSetInputTextFilter(_ oldValue: AUITextInputFilter?) {
     if let inputTextFilter = inputTextFilter {
-      text = inputTextFilter.filter(text: text)
+      text = inputTextFilter.filter(inputtedText: text)
     }
   }
   
@@ -91,7 +91,7 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
   open override func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     var filteredString = string
     if let inputTextFilter = inputTextFilter {
-        filteredString = inputTextFilter.filter(text: text) ?? ""
+        filteredString = inputTextFilter.filter(inputtedText: text) ?? ""
     }
     guard let inputtedTextFormatter = inputTextFormatter else {
         guard let textRange = Range(range, in: text ?? "") else { return true }

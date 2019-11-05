@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultScrollViewController: AUIDefaultViewController, AUIScrollViewController {
+open class AUIDefaultScrollViewController: AUIEmptyViewController, AUIScrollViewController {
 
   // MARK: View
   
