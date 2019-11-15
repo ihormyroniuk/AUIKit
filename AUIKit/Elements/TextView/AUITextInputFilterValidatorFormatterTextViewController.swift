@@ -31,7 +31,7 @@ open class AUITextInputFilterValidatorFormatterTextViewController: AUIEmptyTextV
       if let inputTextFilter = inputTextFilter {
         filteredNewValue = inputTextFilter.filter(inputtedText: newValue) ?? ""
       }
-      guard (inputTextValidator?.isValidInputtingText(currentText: "", newText: filteredNewValue) ?? true) else { return }
+      guard (inputTextValidator?.validate(inputtedText: "") ?? true) else { return }
       if let inputtedTextFormatter = inputTextFormatter {
         guard formattedText != filteredNewValue else { return }
         formattedText = inputtedTextFormatter.format(text: filteredNewValue)
@@ -68,7 +68,7 @@ open class AUITextInputFilterValidatorFormatterTextViewController: AUIEmptyTextV
     didSet { didSetInputtedTextValidator(oldValue) }
   }
   open func didSetInputtedTextValidator(_ oldValue: AUITextInputValidator?) {
-    if !(inputTextValidator?.isValidInputtingText(currentText: text, newText: text) ?? true) {
+    if !(inputTextValidator?.validate(inputtedText: text) ?? true) {
       text = nil
     }
   }
@@ -96,12 +96,12 @@ open class AUITextInputFilterValidatorFormatterTextViewController: AUIEmptyTextV
     guard let inputtedTextFormatter = inputTextFormatter else {
       guard let textRange = Range(range, in: self.text ?? "") else { return true }
       let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
-      return inputTextValidator?.isValidInputtingText(currentText: formattedText, newText: newText) ?? true
+      return inputTextValidator?.validate(inputtedText: formattedText) ?? true
     }
     let formattingResult = inputtedTextFormatter.formatInputtedText(currentText: formattedText, range: range, replacementString: filteredString)
     let currentUnformattedText = inputtedTextFormatter.unformat(formattedText: formattedText)
     let newUnformattedText = inputtedTextFormatter.unformat(formattedText: formattingResult.formattedText)
-    guard (inputTextValidator?.isValidInputtingText(currentText: currentUnformattedText, newText: newUnformattedText) ?? true) else { return false }
+    guard (inputTextValidator?.validate(inputtedText: currentUnformattedText) ?? true) else { return false }
     formattedText = formattingResult.formattedText
     if let textView = textView, let cursorLocation = textView.position(from: textView.beginningOfDocument, offset: formattingResult.caretBeginOffset) {
       DispatchQueue.main.async { textView.selectedTextRange = textView.textRange(from: cursorLocation, to: cursorLocation) }

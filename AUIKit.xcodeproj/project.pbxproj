@@ -387,9 +387,9 @@
 		3333F9FE235F2D12007215AB /* Responsive */ = {
 			isa = PBXGroup;
 			children = (
+				C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */,
 				C53BB799228EFC3700003495 /* AUIResponsiveTextFieldTextInputViewController.swift */,
 				C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */,
-				C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */,
 			);
 			path = Responsive;
 			sourceTree = "<group>";
