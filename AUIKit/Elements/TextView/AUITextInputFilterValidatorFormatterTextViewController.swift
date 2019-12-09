@@ -96,12 +96,12 @@ open class AUITextInputFilterValidatorFormatterTextViewController: AUIEmptyTextV
     guard let inputtedTextFormatter = inputTextFormatter else {
       guard let textRange = Range(range, in: self.text ?? "") else { return true }
       let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
-      return inputTextValidator?.validate(inputtedText: formattedText) ?? true
+      return inputTextValidator?.validate(inputtedText: newText) ?? true
     }
     let formattingResult = inputtedTextFormatter.formatInputtedText(currentText: formattedText, range: range, replacementString: filteredString)
     let currentUnformattedText = inputtedTextFormatter.unformat(formattedText: formattedText)
     let newUnformattedText = inputtedTextFormatter.unformat(formattedText: formattingResult.formattedText)
-    guard (inputTextValidator?.validate(inputtedText: currentUnformattedText) ?? true) else { return false }
+    guard (inputTextValidator?.validate(inputtedText: newUnformattedText) ?? true) else { return false }
     formattedText = formattingResult.formattedText
     if let textView = textView, let cursorLocation = textView.position(from: textView.beginningOfDocument, offset: formattingResult.caretBeginOffset) {
       DispatchQueue.main.async { textView.selectedTextRange = textView.textRange(from: cursorLocation, to: cursorLocation) }

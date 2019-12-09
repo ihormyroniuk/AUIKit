@@ -25,9 +25,13 @@
 		30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */; };
 		30BB5E5F2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */; };
 		30BB5E602206FC0500F7DA0F /* AUIReusableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */; };
+		330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5941239E558800C39DC0 /* UIImage+TintColor.swift */; };
+		33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */; };
 		3333F9F6235F00BE007215AB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F5235F00BE007215AB /* UIColor+RGB.swift */; };
 		3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */; };
 		3333F9FC235F293B007215AB /* AUITextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */; };
+		3384096B239166570094A920 /* AUICompositeTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */; };
+		3384096D239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */; };
 		3386686A236315050071A2C8 /* AUIKitUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33866869236315050071A2C8 /* AUIKitUnitTesting.swift */; };
 		3386686C236315050071A2C8 /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53AEA482195AF690087F0A2 /* AUIKit.framework */; };
 		C50295E82332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */; };
@@ -172,9 +176,13 @@
 		30BB5E582206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIUpdatableCollectionViewController.swift; sourceTree = "<group>"; };
 		30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDynamicSizeCollectionCell.swift; sourceTree = "<group>"; };
 		30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIReusableCollectionCell.swift; sourceTree = "<group>"; };
+		330C5941239E558800C39DC0 /* UIImage+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TintColor.swift"; sourceTree = "<group>"; };
+		33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabel.swift; sourceTree = "<group>"; };
 		3333F9F5235F00BE007215AB /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
 		3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewTextInputView.swift; sourceTree = "<group>"; };
+		3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICompositeTextInputValidator.swift; sourceTree = "<group>"; };
+		3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidator.swift; sourceTree = "<group>"; };
 		33866867236315050071A2C8 /* AUIKitUnitTesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AUIKitUnitTesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		33866869236315050071A2C8 /* AUIKitUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIKitUnitTesting.swift; sourceTree = "<group>"; };
 		3386686B236315050071A2C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -366,6 +374,22 @@
 			path = DynamicSizeCollection;
 			sourceTree = "<group>";
 		};
+		330C593F239E554F00C39DC0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				330C5940239E556300C39DC0 /* TintColor */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		330C5940239E556300C39DC0 /* TintColor */ = {
+			isa = PBXGroup;
+			children = (
+				330C5941239E558800C39DC0 /* UIImage+TintColor.swift */,
+			);
+			path = TintColor;
+			sourceTree = "<group>";
+		};
 		3333F9F4235F0098007215AB /* RGB */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,8 +401,8 @@
 		3333F9F7235F0F00007215AB /* TextInput */ = {
 			isa = PBXGroup;
 			children = (
-				33FCF7A723699779004AB5B2 /* Filter */,
-				C5EC0D3E228AD830005E7447 /* AUITextInputValidator.swift */,
+				338409692391662E0094A920 /* Validator */,
+				C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */,
 				C5EC0D41228AD957005E7447 /* AUITextInputFormatter.swift */,
 			);
 			path = TextInput;
@@ -392,6 +416,16 @@
 				C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */,
 			);
 			path = Responsive;
+			sourceTree = "<group>";
+		};
+		338409692391662E0094A920 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D3E228AD830005E7447 /* AUITextInputValidator.swift */,
+				3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */,
+				3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */,
+			);
+			path = Validator;
 			sourceTree = "<group>";
 		};
 		33866868236315050071A2C8 /* AUIKitUnitTesting */ = {
@@ -439,14 +473,6 @@
 				3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */,
 			);
 			path = TextView;
-			sourceTree = "<group>";
-		};
-		33FCF7A723699779004AB5B2 /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */,
-			);
-			path = Filter;
 			sourceTree = "<group>";
 		};
 		C50A5BA72338EC70007E1166 /* RGBA */ = {
@@ -617,6 +643,7 @@
 				33A708FA2358BCC50063DF41 /* Components */,
 				3333F9F7235F0F00007215AB /* TextInput */,
 				C54B11B022B12957003EBBA0 /* Colors */,
+				330C593F239E554F00C39DC0 /* Images */,
 				C53AEA4B2195AF690087F0A2 /* AUIKit.h */,
 				C53AEA4C2195AF690087F0A2 /* Info.plist */,
 			);
@@ -678,6 +705,7 @@
 				C53AEAFE2195D9710087F0A2 /* AUIEmptyLabelController.swift */,
 				C53AEAFC2195D9710087F0A2 /* AUILabel.swift */,
 				C5522B5D22BA357200CD6365 /* AUIAttributedLabel.swift */,
+				33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -1002,6 +1030,7 @@
 				30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */,
 				C5FE2EC5232CDD83000546F4 /* AUITextInputFilterValidatorFormatterTextFieldController.swift in Sources */,
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
+				330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */,
 				C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */,
 				C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */,
 				C53AEB142195DBE30087F0A2 /* AUIEmptyImageViewController.swift in Sources */,
@@ -1056,6 +1085,7 @@
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
 				C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */,
+				3384096B239166570094A920 /* AUICompositeTextInputValidator.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerComponentController.swift in Sources */,
 				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
 				C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */,
@@ -1063,6 +1093,7 @@
 				C525D839219972770057E69F /* AUIPageViewController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCellView.swift in Sources */,
 				3016176E220F605D00DA07AC /* AUIViewContainer.swift in Sources */,
+				33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */,
 				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
 				30AA58BF2272EB4100BA0189 /* AUIConfigurableView.swift in Sources */,
 				C53AEB0D2195D9710087F0A2 /* AUIEmptyLabelController.swift in Sources */,
@@ -1087,6 +1118,7 @@
 				C5443BCD22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift in Sources */,
 				C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */,
 				C53AEB502195FA280087F0A2 /* AUIDefaultScrollViewController.swift in Sources */,
+				3384096D239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift in Sources */,
 				C5527C8021F073440098D498 /* AUIDefaultDatePickerController.swift in Sources */,
 				30A7CD52219C144A006DAAA1 /* AUICollectionViewController.swift in Sources */,
 				C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */,
