@@ -26,6 +26,7 @@
 		30BB5E5F2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */; };
 		30BB5E602206FC0500F7DA0F /* AUIReusableCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */; };
 		330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5941239E558800C39DC0 /* UIImage+TintColor.swift */; };
+		3310353F23A13B8B000C4FFF /* UIFont+CGFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310353E23A13B8B000C4FFF /* UIFont+CGFont.swift */; };
 		33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */; };
 		3333F9F6235F00BE007215AB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F5235F00BE007215AB /* UIColor+RGB.swift */; };
 		3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */; };
@@ -177,6 +178,7 @@
 		30BB5E5D2206FC0500F7DA0F /* AUIDynamicSizeCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDynamicSizeCollectionCell.swift; sourceTree = "<group>"; };
 		30BB5E5E2206FC0500F7DA0F /* AUIReusableCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIReusableCollectionCell.swift; sourceTree = "<group>"; };
 		330C5941239E558800C39DC0 /* UIImage+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TintColor.swift"; sourceTree = "<group>"; };
+		3310353E23A13B8B000C4FFF /* UIFont+CGFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CGFont.swift"; sourceTree = "<group>"; };
 		33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabel.swift; sourceTree = "<group>"; };
 		3333F9F5235F00BE007215AB /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
@@ -377,17 +379,17 @@
 		330C593F239E554F00C39DC0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				330C5940239E556300C39DC0 /* TintColor */,
+				330C5941239E558800C39DC0 /* UIImage+TintColor.swift */,
 			);
 			path = Images;
 			sourceTree = "<group>";
 		};
-		330C5940239E556300C39DC0 /* TintColor */ = {
+		3310353D23A13B70000C4FFF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				330C5941239E558800C39DC0 /* UIImage+TintColor.swift */,
+				3310353E23A13B8B000C4FFF /* UIFont+CGFont.swift */,
 			);
-			path = TintColor;
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		3333F9F4235F0098007215AB /* RGB */ = {
@@ -643,6 +645,7 @@
 				33A708FA2358BCC50063DF41 /* Components */,
 				3333F9F7235F0F00007215AB /* TextInput */,
 				C54B11B022B12957003EBBA0 /* Colors */,
+				3310353D23A13B70000C4FFF /* Fonts */,
 				330C593F239E554F00C39DC0 /* Images */,
 				C53AEA4B2195AF690087F0A2 /* AUIKit.h */,
 				C53AEA4C2195AF690087F0A2 /* Info.plist */,
@@ -1019,6 +1022,7 @@
 				C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */,
 				C53E7C7B22187747006CB0D9 /* AUIEmptyTextViewTextInputViewController.swift in Sources */,
 				C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */,
+				3310353F23A13B8B000C4FFF /* UIFont+CGFont.swift in Sources */,
 				C5443BCF22A9624D003DE568 /* UIColor+RGBA.swift in Sources */,
 				C525D831219971F70057E69F /* AUITextFieldController.swift in Sources */,
 				C55B80AE221D83AC003D84C1 /* AUISegmentedControlController.swift in Sources */,
