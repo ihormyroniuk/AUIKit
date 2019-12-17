@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUIViewContainer {
-  var view: UIView? { get set }
+    var view: UIView? { get set }
 }
