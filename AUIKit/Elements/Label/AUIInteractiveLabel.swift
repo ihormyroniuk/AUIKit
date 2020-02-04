@@ -78,4 +78,42 @@ open class AUIInteractiveLabel: AUILabel {
         }
     }
 
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let touchPoint = point
+        let textContainer = NSTextContainer(size: bounds.size)
+        textContainer.lineFragmentPadding = 0.0
+        textContainer.lineBreakMode = lineBreakMode
+        textContainer.maximumNumberOfLines = numberOfLines
+        let layoutManager = NSLayoutManager()
+        layoutManager.addTextContainer(textContainer)
+        guard let attributedText = attributedText else { return false }
+        let textStorage = NSTextStorage(attributedString: attributedText)
+        textStorage.addLayoutManager(layoutManager)
+        let textBoundingBox = layoutManager.usedRect(for: textContainer)
+        var alignmentOffset: CGFloat!
+        switch textAlignment {
+        case .left, .natural, .justified:
+            alignmentOffset = 0.0
+        case .center:
+            alignmentOffset = 0.5
+        case .right:
+            alignmentOffset = 1.0
+        @unknown default:
+            alignmentOffset = 0.0
+        }
+        let xOffset = (bounds.size.width - textBoundingBox.size.width) * alignmentOffset - textBoundingBox.origin.x
+        let yOffset = (bounds.size.height - textBoundingBox.size.height) * alignmentOffset - textBoundingBox.origin.y
+        let locationOfTouchInTextContainer = CGPoint(x: touchPoint.x - xOffset, y: touchPoint.y - yOffset)
+        let characterIndex = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        let attributeValue = self.attributedText?.attribute(NSAttributedString.Key.interaction, at: characterIndex, effectiveRange: nil)
+        if attributeValue != nil {
+            let range = NSRange(location: characterIndex, length: 1)
+            let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+            if rect.contains(touchPoint) {
+                return true
+            }
+        }
+        return false
+    }
+
 }
