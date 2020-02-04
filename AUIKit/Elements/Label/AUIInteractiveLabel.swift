@@ -13,35 +13,38 @@ public extension NSAttributedString.Key {
 
 open class AUIInteractiveLabel: AUILabel {
 
+    // MARK: Setup
+
     open override func setup() {
         super.setup()
         isUserInteractionEnabled = true
     }
 
-    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        let superBool = super.point(inside: point, with: event)
+    // MARK: Events
 
-        // Configure NSTextContainer
+    private let control = UIControl()
+
+    open func addTarget(_ target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        control.addTarget(target, action: action, for: controlEvents)
+    }
+
+    open func removeTarget(_ target: Any?, action: Selector?, for controlEvents: UIControl.Event) {
+        control.removeTarget(target, action: action, for: controlEvents)
+    }
+
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        guard touches.count == 1 else { return }
+        guard let touchPoint = touches.first?.location(in: self) else { return }
         let textContainer = NSTextContainer(size: bounds.size)
         textContainer.lineFragmentPadding = 0.0
         textContainer.lineBreakMode = lineBreakMode
         textContainer.maximumNumberOfLines = numberOfLines
-
-        // Configure NSLayoutManager and add the text container
         let layoutManager = NSLayoutManager()
         layoutManager.addTextContainer(textContainer)
-
-        guard let attributedText = attributedText else {return false}
-
-        // Configure NSTextStorage and apply the layout manager
+        guard let attributedText = attributedText else {return }
         let textStorage = NSTextStorage(attributedString: attributedText)
-        textStorage.addAttribute(NSAttributedString.Key.font, value: font!, range: NSMakeRange(0, attributedText.length))
         textStorage.addLayoutManager(layoutManager)
-
-        // get the tapped character location
-        let locationOfTouchInLabel = point
-
-        // account for text alignment and insets
         let textBoundingBox = layoutManager.usedRect(for: textContainer)
         var alignmentOffset: CGFloat!
         switch textAlignment {
@@ -52,30 +55,27 @@ open class AUIInteractiveLabel: AUILabel {
         case .right:
             alignmentOffset = 1.0
         @unknown default:
-            fatalError()
+            alignmentOffset = 0.0
         }
-
-        let xOffset = ((bounds.size.width - textBoundingBox.size.width) * alignmentOffset) - textBoundingBox.origin.x
-        let yOffset = ((bounds.size.height - textBoundingBox.size.height) * alignmentOffset) - textBoundingBox.origin.y
-        let locationOfTouchInTextContainer = CGPoint(x: locationOfTouchInLabel.x - xOffset, y: locationOfTouchInLabel.y - yOffset)
-
-        // work out which character was tapped
+        let xOffset = (bounds.size.width - textBoundingBox.size.width) * alignmentOffset - textBoundingBox.origin.x
+        let yOffset = (bounds.size.height - textBoundingBox.size.height) * alignmentOffset - textBoundingBox.origin.y
+        let locationOfTouchInTextContainer = CGPoint(x: touchPoint.x - xOffset, y: touchPoint.y - yOffset)
         let characterIndex = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-
-        // work out how many characters are in the string up to and including the line tapped, to ensure we are not off the end of the character string
-        let lineTapped = Int(ceil(locationOfTouchInLabel.y / font.lineHeight)) - 1
-        let rightMostPointInLineTapped = CGPoint(x: bounds.size.width, y: font.lineHeight * CGFloat(lineTapped))
-        let charsInLineTapped = layoutManager.characterIndex(for: rightMostPointInLineTapped, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-
-        guard characterIndex < charsInLineTapped else {return false}
-
         let attributeValue = self.attributedText?.attribute(NSAttributedString.Key.interaction, at: characterIndex, effectiveRange: nil)
-
         if let value = attributeValue {
-            print(value)
+            let range = NSRange(location: characterIndex, length: 1)
+            let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+            if rect.contains(touchPoint) {
+                let event = UIControl.Event.touchUpInside
+                let targets = control.allTargets
+                for target in targets {
+                    guard let actions = control.actions(forTarget: target, forControlEvent: event) else { continue }
+                    for action in actions {
+                        Thread.detachNewThreadSelector(Selector(action), toTarget: target, with: value)
+                    }
+                }
+            }
         }
-
-        return superBool
-
     }
+
 }
