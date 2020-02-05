@@ -31,6 +31,7 @@
 		3333F9F6235F00BE007215AB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F5235F00BE007215AB /* UIColor+RGB.swift */; };
 		3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */; };
 		3333F9FC235F293B007215AB /* AUITextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */; };
+		335283D023EAEC96009E3A6A /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335283CF23EAEC96009E3A6A /* AUIControl.swift */; };
 		3384096B239166570094A920 /* AUICompositeTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */; };
 		3384096D239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */; };
 		3386686A236315050071A2C8 /* AUIKitUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33866869236315050071A2C8 /* AUIKitUnitTesting.swift */; };
@@ -183,6 +184,7 @@
 		3333F9F5235F00BE007215AB /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
 		3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewTextInputView.swift; sourceTree = "<group>"; };
+		335283CF23EAEC96009E3A6A /* AUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
 		3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICompositeTextInputValidator.swift; sourceTree = "<group>"; };
 		3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidator.swift; sourceTree = "<group>"; };
 		33866867236315050071A2C8 /* AUIKitUnitTesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AUIKitUnitTesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -521,6 +523,8 @@
 			children = (
 				C525D81E21996AF20057E69F /* AUIControlController.swift */,
 				C525D81F21996AF20057E69F /* AUIDefaultControlController.swift */,
+				335283CF23EAEC96009E3A6A /* AUIControl.swift */,
+				33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -708,7 +712,6 @@
 				C53AEAFE2195D9710087F0A2 /* AUIEmptyLabelController.swift */,
 				C53AEAFC2195D9710087F0A2 /* AUILabel.swift */,
 				C5522B5D22BA357200CD6365 /* AUIAttributedLabel.swift */,
-				33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */,
 				C54C730D22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift in Sources */,
 				C54B11AC22B116E6003EBBA0 /* AUIScreenController.swift in Sources */,
+				335283D023EAEC96009E3A6A /* AUIControl.swift in Sources */,
 				C503D0432344CC5400334A1F /* UITableView+Scroll.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
 				C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */,
