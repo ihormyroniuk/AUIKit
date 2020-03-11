@@ -21,8 +21,8 @@ open class AUIMaximumLenghtTextInputValidator: AUITextInputValidator {
 
     // MARK: AUITextInputValidator
 
-    open func validate(inputtedText: String?) -> Bool {
-        guard let inputtedText = inputtedText else { return true }
+    open func validate(textInput: String?) -> Bool {
+        guard let inputtedText = textInput else { return true }
         let isValid = inputtedText.count <= maximumLength
         return isValid
     }

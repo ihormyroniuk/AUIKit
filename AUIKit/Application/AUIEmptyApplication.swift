@@ -75,7 +75,6 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
             return true
         }
         didFinishLaunching()
-        print(UUID().uuidString)
         return true
     }
   

@@ -406,8 +406,8 @@
 			isa = PBXGroup;
 			children = (
 				338409692391662E0094A920 /* Validator */,
-				C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */,
-				C5EC0D41228AD957005E7447 /* AUITextInputFormatter.swift */,
+				3349DD1F2412967A0042A10E /* Filter */,
+				3349DD202412969E0042A10E /* Formatter */,
 			);
 			path = TextInput;
 			sourceTree = "<group>";
@@ -422,12 +422,28 @@
 			path = Responsive;
 			sourceTree = "<group>";
 		};
+		3349DD1F2412967A0042A10E /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		3349DD202412969E0042A10E /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				C5EC0D41228AD957005E7447 /* AUITextInputFormatter.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
 		338409692391662E0094A920 /* Validator */ = {
 			isa = PBXGroup;
 			children = (
 				C5EC0D3E228AD830005E7447 /* AUITextInputValidator.swift */,
-				3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */,
 				3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */,
+				3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";

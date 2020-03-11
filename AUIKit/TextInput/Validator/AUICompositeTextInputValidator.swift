@@ -21,9 +21,9 @@ open class AUICompositeTextInputValidator: AUITextInputValidator {
 
     // MARK: AUITextInputValidator
 
-    open func validate(inputtedText: String?) -> Bool {
+    open func validate(textInput: String?) -> Bool {
         for textInputValidator in textInputValidators {
-            if !textInputValidator.validate(inputtedText: inputtedText) {
+            if !textInputValidator.validate(textInput: textInput) {
                 return false
             }
         }

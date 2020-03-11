@@ -8,5 +8,5 @@
 import Foundation
 
 public protocol AUITextInputValidator {
-    func validate(inputtedText: String?) -> Bool
+    func validate(textInput: String?) -> Bool
 }
