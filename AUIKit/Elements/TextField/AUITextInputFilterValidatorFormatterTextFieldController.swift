@@ -98,7 +98,7 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
         let newText = (formattedText ?? "").replacingCharacters(in: textRange, with: filteredString)
         return inputTextValidator?.validate(textInput: newText) ?? true
     }
-    let formattingResult = inputtedTextFormatter.formatInputtedText(currentText: formattedText, range: range, replacementString: filteredString)
+    let formattingResult = inputtedTextFormatter.formatTextInput(currentText: formattedText, range: range, replacementText: filteredString)
     let newUnformattedText = inputtedTextFormatter.unformat(formattedText: formattingResult.formattedText)
     guard (inputTextValidator?.validate(textInput: newUnformattedText) ?? true) else { return false }
     formattedText = formattingResult.formattedText
