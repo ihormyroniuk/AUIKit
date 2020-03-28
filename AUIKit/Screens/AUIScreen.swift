@@ -7,6 +7,6 @@
 
 import UIKit
 
-public protocol AUIScreenController where Self: UIViewController {
+public protocol AUIScreen where Self: UIViewController {
     
 }

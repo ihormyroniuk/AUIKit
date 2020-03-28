@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIDefaultScreenController: UIViewController, AUIScreenController {
+open class AUIDefaultScreenController: UIViewController {
   
     // MARK: Initializers
   

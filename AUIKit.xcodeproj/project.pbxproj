@@ -123,7 +123,7 @@
 		C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */; };
 		C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */; };
 		C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIEmptyApplication.swift */; };
-		C54B11AC22B116E6003EBBA0 /* AUIScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AB22B116E6003EBBA0 /* AUIScreenController.swift */; };
+		C54B11AC22B116E6003EBBA0 /* AUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */; };
 		C54B11AF22B125FE003EBBA0 /* AUIPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */; };
 		C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */; };
 		C54C730D22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */; };
@@ -282,7 +282,7 @@
 		C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerComponentController.swift; sourceTree = "<group>"; };
 		C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerItemController.swift; sourceTree = "<group>"; };
 		C548387522983CAB000254B0 /* AUIEmptyApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplication.swift; sourceTree = "<group>"; };
-		C54B11AB22B116E6003EBBA0 /* AUIScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenController.swift; sourceTree = "<group>"; };
+		C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreen.swift; sourceTree = "<group>"; };
 		C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPresentation.swift; sourceTree = "<group>"; };
 		C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentation.swift; sourceTree = "<group>"; };
 		C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenViewWithStatusBar.swift; sourceTree = "<group>"; };
@@ -619,7 +619,7 @@
 		C525D88B2199989D0057E69F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C54B11AB22B116E6003EBBA0 /* AUIScreenController.swift */,
+				C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */,
 				C525D88C219998AA0057E69F /* AUIDefaultScreenController.swift */,
 				C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */,
 			);
@@ -1128,7 +1128,7 @@
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
 				C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */,
 				C54C730D22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift in Sources */,
-				C54B11AC22B116E6003EBBA0 /* AUIScreenController.swift in Sources */,
+				C54B11AC22B116E6003EBBA0 /* AUIScreen.swift in Sources */,
 				335283D023EAEC96009E3A6A /* AUIControl.swift in Sources */,
 				C503D0432344CC5400334A1F /* UITableView+Scroll.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
