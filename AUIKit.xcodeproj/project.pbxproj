@@ -28,6 +28,7 @@
 		330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330C5941239E558800C39DC0 /* UIImage+TintColor.swift */; };
 		3310353F23A13B8B000C4FFF /* UIFont+CGFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3310353E23A13B8B000C4FFF /* UIFont+CGFont.swift */; };
 		33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */; };
+		331D9A092433F53600A4C338 /* AUIImageViewSetIntrinsicContentSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331D9A082433F53600A4C338 /* AUIImageViewSetIntrinsicContentSize.swift */; };
 		3333F9F6235F00BE007215AB /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F5235F00BE007215AB /* UIColor+RGB.swift */; };
 		3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */; };
 		3333F9FC235F293B007215AB /* AUITextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */; };
@@ -107,7 +108,6 @@
 		C53F8ED321FBB7CB0019C79E /* AUITextFieldTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8ED221FBB7CB0019C79E /* AUITextFieldTextInputViewController.swift */; };
 		C53F8ED521FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8ED421FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift */; };
 		C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */; };
-		C540177F22B4032400381918 /* AUIImageViewContentModeScaleAspectFit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540177E22B4032400381918 /* AUIImageViewContentModeScaleAspectFit.swift */; };
 		C540178122B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540178022B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift */; };
 		C543BB93228D7C58003BDED3 /* AUIResponsiveTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */; };
 		C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BB022A91B75003DE568 /* AUIApplication.swift */; };
@@ -181,6 +181,7 @@
 		330C5941239E558800C39DC0 /* UIImage+TintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TintColor.swift"; sourceTree = "<group>"; };
 		3310353E23A13B8B000C4FFF /* UIFont+CGFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+CGFont.swift"; sourceTree = "<group>"; };
 		33107F4F23912D3900789467 /* AUIInteractiveLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabel.swift; sourceTree = "<group>"; };
+		331D9A082433F53600A4C338 /* AUIImageViewSetIntrinsicContentSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIImageViewSetIntrinsicContentSize.swift; sourceTree = "<group>"; };
 		3333F9F5235F00BE007215AB /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
 		3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewTextInputView.swift; sourceTree = "<group>"; };
@@ -266,7 +267,6 @@
 		C53F8ED221FBB7CB0019C79E /* AUITextFieldTextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputViewController.swift; sourceTree = "<group>"; };
 		C53F8ED421FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTextFieldTextInputViewController.swift; sourceTree = "<group>"; };
 		C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
-		C540177E22B4032400381918 /* AUIImageViewContentModeScaleAspectFit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIImageViewContentModeScaleAspectFit.swift; sourceTree = "<group>"; };
 		C540178022B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutBottomAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
 		C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveTextInputView.swift; sourceTree = "<group>"; };
 		C5443BB022A91B75003DE568 /* AUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplication.swift; sourceTree = "<group>"; };
@@ -738,7 +738,7 @@
 				C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */,
 				C53AEB112195DBE30087F0A2 /* AUIEmptyImageViewController.swift */,
 				C53AEB132195DBE30087F0A2 /* AUIImageView.swift */,
-				C540177E22B4032400381918 /* AUIImageViewContentModeScaleAspectFit.swift */,
+				331D9A082433F53600A4C338 /* AUIImageViewSetIntrinsicContentSize.swift */,
 			);
 			path = ImageView;
 			sourceTree = "<group>";
@@ -1048,11 +1048,11 @@
 				C525D8872199866D0057E69F /* AUIElementTableViewHeaderFooterController.swift in Sources */,
 				C525D82221996AF20057E69F /* AUIButtonController.swift in Sources */,
 				C525D82121996AF20057E69F /* AUIDefaultRefreshControlController.swift in Sources */,
-				C540177F22B4032400381918 /* AUIImageViewContentModeScaleAspectFit.swift in Sources */,
 				C53AEAE52195B01C0087F0A2 /* AUIEmptyViewController.swift in Sources */,
 				30A7CD55219C144A006DAAA1 /* AUICollectionViewCellController.swift in Sources */,
 				C5FE2EC5232CDD83000546F4 /* AUITextInputFilterValidatorFormatterTextFieldController.swift in Sources */,
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
+				331D9A092433F53600A4C338 /* AUIImageViewSetIntrinsicContentSize.swift in Sources */,
 				330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */,
 				C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */,
 				C5527C7E21F073280098D498 /* AUIDatePickerController.swift in Sources */,
