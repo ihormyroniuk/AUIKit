@@ -13,16 +13,9 @@ open class AUIResponsiveTextViewTextInputViewController: AUIEmptyTextViewTextInp
 
   // MARK: ResponsiveSubtextViewView
   
-  open var responsiveSubtextInputView: AUIResponsiveTextInputView? {
+  open var responsiveTextInputView: AUIResponsiveTextInputView? {
     get { return view as? AUIResponsiveTextInputView }
     set { view = newValue }
-  }
-  
-  // MARK: View
-  
-  open override func setupView() {
-    super.setupView()
-    
   }
   
   // MARK: Events
@@ -30,15 +23,15 @@ open class AUIResponsiveTextViewTextInputViewController: AUIEmptyTextViewTextInp
   open override func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
     super.textViewControllerDidChangeText(textViewController)
     if textViewController.text?.isEmpty == false {
-      responsiveSubtextInputView?.responsiveTextInputViewDidBecomeNonEmpty(animated: textViewController.isFirstResponder)
+      responsiveTextInputView?.responsiveTextInputViewDidBecomeNonEmpty(animated: textViewController.isFirstResponder)
     } else {
-      responsiveSubtextInputView?.responsiveTextInputViewDidBecomeEmpty(animated: textViewController.isFirstResponder)
+      responsiveTextInputView?.responsiveTextInputViewDidBecomeEmpty(animated: textViewController.isFirstResponder)
     }
     if !textViewController.isFirstResponder {
       if self.textViewController?.text?.isEmpty == false {
-        responsiveSubtextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: false)
+        responsiveTextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: false)
       } else {
-        responsiveSubtextInputView?.responsiveTextInputViewDidEndEditingEmpty(animated: false)
+        responsiveTextInputView?.responsiveTextInputViewDidEndEditingEmpty(animated: false)
       }
     }
   }
@@ -46,18 +39,18 @@ open class AUIResponsiveTextViewTextInputViewController: AUIEmptyTextViewTextInp
   open override func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController) {
     super.textViewControllerDidBeginEditing(textViewController)
     if self.textViewController?.text?.isEmpty == false {
-      responsiveSubtextInputView?.responsiveTextInputViewDidBeginEditingNonempty(animated: true)
+      responsiveTextInputView?.responsiveTextInputViewDidBeginEditingNonempty(animated: true)
     } else {
-      responsiveSubtextInputView?.responsiveTextInputViewDidBeginEditingEmpty(animated: true)
+      responsiveTextInputView?.responsiveTextInputViewDidBeginEditingEmpty(animated: true)
     }
   }
   
   open override func textViewControllerDidEndEditing(_ textViewController: AUITextViewController) {
     super.textViewControllerDidEndEditing(textViewController)
     if self.textViewController?.text?.isEmpty == false {
-      responsiveSubtextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: true)
+      responsiveTextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: true)
     } else {
-      responsiveSubtextInputView?.responsiveTextInputViewDidEndEditingEmpty(animated: true)
+      responsiveTextInputView?.responsiveTextInputViewDidEndEditingEmpty(animated: true)
     }
   }
 

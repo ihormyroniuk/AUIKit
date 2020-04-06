@@ -33,6 +33,7 @@
 		3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */; };
 		3333F9FC235F293B007215AB /* AUITextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */; };
 		335283D023EAEC96009E3A6A /* AUIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335283CF23EAEC96009E3A6A /* AUIControl.swift */; };
+		3369BCC3243BE173004704C2 /* AUIApplicationMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369BCC2243BE173004704C2 /* AUIApplicationMain.swift */; };
 		3384096B239166570094A920 /* AUICompositeTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */; };
 		3384096D239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */; };
 		3386686A236315050071A2C8 /* AUIKitUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33866869236315050071A2C8 /* AUIKitUnitTesting.swift */; };
@@ -186,6 +187,7 @@
 		3333F9F8235F22D7007215AB /* AUITextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextFieldTextInputView.swift; sourceTree = "<group>"; };
 		3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewTextInputView.swift; sourceTree = "<group>"; };
 		335283CF23EAEC96009E3A6A /* AUIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIControl.swift; sourceTree = "<group>"; };
+		3369BCC2243BE173004704C2 /* AUIApplicationMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplicationMain.swift; sourceTree = "<group>"; };
 		3384096A239166570094A920 /* AUICompositeTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICompositeTextInputValidator.swift; sourceTree = "<group>"; };
 		3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidator.swift; sourceTree = "<group>"; };
 		33866867236315050071A2C8 /* AUIKitUnitTesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AUIKitUnitTesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +659,7 @@
 		C53AEA4A2195AF690087F0A2 /* AUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				3369BCC2243BE173004704C2 /* AUIApplicationMain.swift */,
 				C548387422983C7F000254B0 /* Application */,
 				C54B11AD22B12554003EBBA0 /* Presentation */,
 				C563738021EA5551008FAF87 /* Stories */,
@@ -1070,6 +1073,7 @@
 				C525D8822199866D0057E69F /* AUIElementTableViewCellController.swift in Sources */,
 				C53AEB302195DD1A0087F0A2 /* AUITitlePickerController.swift in Sources */,
 				30AA58BB2272E84100BA0189 /* AUIViewContainerable.swift in Sources */,
+				3369BCC3243BE173004704C2 /* AUIApplicationMain.swift in Sources */,
 				C53AEB542195FA280087F0A2 /* AUIScrollViewController.swift in Sources */,
 				C525D83A219972770057E69F /* AUIDefaultPagesController.swift in Sources */,
 				30AA58BD2272E86C00BA0189 /* AUIReusableTableViewCell.swift in Sources */,
