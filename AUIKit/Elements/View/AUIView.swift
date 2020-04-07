@@ -33,15 +33,4 @@ open class AUIView: UIView {
     
     }
   
-    // MARK: Layout
-  
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        layout()
-    }
-  
-    open func layout() {
-        
-    }
-  
 }

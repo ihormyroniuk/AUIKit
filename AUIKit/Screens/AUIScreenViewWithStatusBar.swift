@@ -19,7 +19,7 @@ open class AUIScreenViewWithStatusBar: AUIView {
         self.statusBarView = statusBarView
         super.init(frame: frame)
     }
-  
+
     // MARK: Setup
   
     open override func setup() {
@@ -34,8 +34,8 @@ open class AUIScreenViewWithStatusBar: AUIView {
   
     // MARK: Layout
   
-    open override func layout() {
-        super.layout()
+    open override func layoutSubviews() {
+        super.layoutSubviews()
         layoutStatusBarView()
     }
   
