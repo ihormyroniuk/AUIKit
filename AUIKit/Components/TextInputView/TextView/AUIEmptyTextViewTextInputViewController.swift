@@ -43,13 +43,13 @@ open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUIT
     
     open func didSetTextViewController(_ oldValue: AUITextViewController?) {
         guard textViewController !== oldValue else { return }
-        oldValue?.addDidChangeTextObserver(self)
-        oldValue?.addDidBeginEditingObserver(self)
-        oldValue?.addDidEndEditingObserver(self)
+        oldValue?.removeDidChangeTextObserver(self)
+        oldValue?.removeDidBeginEditingObserver(self)
+        oldValue?.removeDidEndEditingObserver(self)
         oldValue?.textView = nil
-        textViewController?.removeDidChangeTextObserver(self)
-        textViewController?.removeDidBeginEditingObserver(self)
-        textViewController?.removeDidEndEditingObserver(self)
+        textViewController?.addDidChangeTextObserver(self)
+        textViewController?.addDidBeginEditingObserver(self)
+        textViewController?.addDidEndEditingObserver(self)
         textViewController?.textView = textViewInputView?.textView
     }
   
