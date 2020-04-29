@@ -9,40 +9,41 @@ import UIKit
 
 public protocol AUIDatePickerController: AUIControlController {
   
-  // MARK: Mode
+    // MARK: Mode
   
-  var mode: UIDatePicker.Mode { get set }
+    var mode: UIDatePicker.Mode { get set }
   
-  // MARK: Date
+    // MARK: Date
   
-  var date: Date { get set }
+    var date: Date { get }
+    func setDate(_ date: Date, animated: Bool)
   
-  // MARK: Minimum Date
+    // MARK: Minimum Date
   
-  var minimumDate: Date? { get set }
+    var minimumDate: Date? { get set }
   
-  // MARK: Maximum Date
+    // MARK: Maximum Date
   
-  var maximumDate: Date? { get set }
+    var maximumDate: Date? { get set }
   
-  // MARK: Locale
+    // MARK: Locale
   
-  var locale: Locale? { get set }
+    var locale: Locale? { get set }
   
-  // MARK: Calendar
+    // MARK: Calendar
   
-  var calendar: Calendar { get set }
+    var calendar: Calendar { get set }
   
-  // MARK: Time Zone
+    // MARK: Time Zone
   
-  var timeZone: TimeZone? { get set }
+    var timeZone: TimeZone? { get set }
   
-  // MARK: Count Down Duration
+    // MARK: Count Down Duration
   
-  var countDownDuration: TimeInterval { get set }
+    var countDownDuration: TimeInterval { get set }
   
-  // MARK: Minute Interval
+    // MARK: Minute Interval
   
-  var minuteInterval: Int { get set }
+    var minuteInterval: Int { get set }
 
 }
