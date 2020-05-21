@@ -8,6 +8,7 @@
 import UIKit
 
 @discardableResult
-public func AUIApplicationMain(_ argc: Int32, _ argv: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>, _ principalClassName: String?) -> Int32 {
+public func AUIApplicationMain(_ argc: Int32, _ argv: UnsafeMutablePointer<UnsafeMutablePointer<Int8>?>, _ principalClass: AnyClass) -> Int32 {
+    let principalClassName = NSStringFromClass(principalClass)
     return UIApplicationMain(argc, argv, principalClassName, principalClassName)
 }

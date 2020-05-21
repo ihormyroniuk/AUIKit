@@ -15,8 +15,8 @@ open class AUIWindowPresentation: AUIPresentation {
   
     // MARK: Initializer
   
-    public init(window: UIWindow? = nil) {
-        self.window = window ?? UIWindow()
+    public init(window: UIWindow) {
+        self.window = window
         setup()
     }
   

@@ -172,4 +172,24 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         
     }
     
+    // MARK: Time
+    
+    open func applicationSignificantTimeChange(_ application: UIApplication) {
+        significantTimeChange()
+    }
+    
+    open func significantTimeChange() {
+        
+    }
+    
+    // MARK: URL
+    
+    open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return open(url: url, options: options)
+    }
+    
+    open func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return false
+    }
+    
 }

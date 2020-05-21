@@ -37,5 +37,13 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
     func didRegisterForRemoteNotificationsWithDeviceToken(_ deviceToken: Data)
     func didFailToRegisterForRemoteNotificationsWithError(_ error: Error)
     func didReceiveRemoteNotification(userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+    
+    // MARK: Time
+    
+    func significantTimeChange()
+    
+    // MARK: URL
+    
+    func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool
   
 }
