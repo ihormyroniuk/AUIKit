@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUICollectionViewCell: UICollectionViewCell {
+open class AUICollectionViewCellAutoLayout: UICollectionViewCell {
   
   // MARK: - Initializer
   

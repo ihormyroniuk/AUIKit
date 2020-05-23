@@ -9,39 +9,31 @@ import UIKit
 
 open class AUITextView: UITextView {
   
-  // MARK: Initializer
-  
-  public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
-    super.init(frame: frame, textContainer: textContainer)
-    setup()
-    autoLayout()
-  }
+  // MARK: Initializers
 
-  public required init?(coder aDecoder: NSCoder) {
-    return nil
-  }
-  
-  // MARK: Setup
-  
-  open func setup() {
-    
-  }
-  
-  // MARK: Auto Layout
-  
-  open func autoLayout() {
-    
-  }
-  
-  // MARK: Layout
-  
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    layout()
-  }
-  
-  open func layout() {
-    
-  }
+   public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
+       super.init(frame: frame, textContainer: textContainer)
+       setup()
+       autoLayout()
+   }
+
+  @available(*, unavailable)
+   public required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+       setup()
+       autoLayout()
+   }
+
+   // MARK: Setup
+
+   open func setup() {
+
+   }
+
+   // MARK: AutoLayout
+
+   open func autoLayout() {
+
+   }
   
 }

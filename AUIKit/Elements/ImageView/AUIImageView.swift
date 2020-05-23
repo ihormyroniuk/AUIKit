@@ -10,7 +10,7 @@ import UIKit
 
 open class AUIImageView: UIImageView {
   
-    // MARK: Initializer
+    // MARK: Initializers
   
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -19,7 +19,11 @@ open class AUIImageView: UIImageView {
     }
   
     @available(*, unavailable)
-    public required init?(coder aDecoder: NSCoder) { return nil }
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+        autoLayout()
+    }
   
     // MARK: Setup
   
@@ -30,17 +34,6 @@ open class AUIImageView: UIImageView {
     // MARK: AutoLayout
   
     open func autoLayout() {
-    
-    }
-  
-    // MARK: Layout
-  
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        layout()
-    }
-  
-    open func layout() {
     
     }
   

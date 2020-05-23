@@ -1,18 +1,17 @@
 //
-//  Label.swift
-//  agroportex-ios
+//  AUICollectionViewCell.swift
+//  AUIKit
 //
-//  Created by Ihor Myroniuk on 1/25/18.
-//  Copyright © 2018 Brander. All rights reserved.
+//  Created by Ihor Myroniuk on 23.05.2020.
 //
 
 import UIKit
 
-open class AUILabel: UILabel {
-
-    // MARK: Initializers
+open class AUICollectionViewCell: UICollectionViewCell {
   
-    public override init(frame: CGRect = .zero) {
+    // MARK: - Initializer
+    
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
         autoLayout()
@@ -24,17 +23,16 @@ open class AUILabel: UILabel {
         setup()
         autoLayout()
     }
-  
-    // MARK: Setup
- 
+    // MARK: - Setup
+    
     open func setup() {
     
     }
   
-    // MARK: AutoLayout
+    // MARK: - AutoLayout
   
     open func autoLayout() {
     
     }
-  
+    
 }

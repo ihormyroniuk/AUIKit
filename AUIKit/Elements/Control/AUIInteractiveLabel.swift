@@ -115,8 +115,8 @@ open class AUIInteractiveLabel: AUIControl {
 
     // MARK: Layout
 
-    open override func layout() {
-        super.layout()
+    open override func layoutSubviews() {
+        super.layoutSubviews()
         label.frame = bounds
         button.frame = bounds
     }
