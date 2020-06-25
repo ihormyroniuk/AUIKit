@@ -8,7 +8,7 @@
 import UIKit
 
 public extension NSAttributedString.Key {
-    static let interaction: NSAttributedString.Key = NSAttributedString.Key("interaction")
+    static let interaction: NSAttributedString.Key = NSAttributedString.Key("me.ihormyroniuk.AUIKit.interaction")
 }
 
 open class AUIInteractiveLabel: AUIControl {

@@ -8,19 +8,6 @@
 import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {
- 
-    // MAKR: Initializer
-  
-    public override init() {
-        super.init()
-        setup()
-    }
-  
-    // MARK: Setup
-  
-    open func setup() {
-        
-    }
   
     // MARK: Window
   
