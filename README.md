@@ -4,7 +4,7 @@
 
 ### [CocoaPods](https://cocoapods.org)
 
-```
+```ruby
 pod 'AUIKit'
 ```
 
