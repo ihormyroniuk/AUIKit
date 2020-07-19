@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "AUIKit"
-  s.version      = "0.1.2"
+  s.version      = "1.0.0"
   s.summary      = "Advanced extension for UIKit framework"
   s.description  = "Advanced extension for UIKit framework."
   s.homepage     = "https://github.com/ihormyroniuk/AUIKit"
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/ihormyroniuk/AUIKit.git", :tag => "1.0.0" }
 
-  s.source_files = "AUIKit/AUIKit/**/*.{swift}"
+  s.source_files = "AUIKit/**/*.{swift}"
 
   s.swift_version = "4.2"
 
