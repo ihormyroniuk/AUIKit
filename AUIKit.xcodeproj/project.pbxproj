@@ -112,7 +112,6 @@
 		C53F8ED521FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53F8ED421FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift */; };
 		C53FB4A321C68A9B0067C46C /* AUIPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */; };
 		C540178122B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C540178022B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift */; };
-		C541D52B24C4E2AA0036FC7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541D52A24C4E2AA0036FC7A /* ViewController.swift */; };
 		C541D53024C4E2AB0036FC7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C541D52F24C4E2AB0036FC7A /* Assets.xcassets */; };
 		C541D53324C4E2AB0036FC7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C541D53124C4E2AB0036FC7A /* LaunchScreen.storyboard */; };
 		C541D53924C4E2BC0036FC7A /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53AEA482195AF690087F0A2 /* AUIKit.framework */; };
@@ -306,7 +305,6 @@
 		C53FB4A221C68A9B0067C46C /* AUIPickerComponentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerComponentController.swift; sourceTree = "<group>"; };
 		C540178022B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutBottomAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
 		C541D52424C4E2AA0036FC7A /* AUIKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUIKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C541D52A24C4E2AA0036FC7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C541D52F24C4E2AB0036FC7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C541D53224C4E2AB0036FC7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C541D53424C4E2AB0036FC7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -874,9 +872,8 @@
 			children = (
 				C541D54024C4E3230036FC7A /* main.swift */,
 				C541D53E24C4E31A0036FC7A /* Application.swift */,
-				C541D52A24C4E2AA0036FC7A /* ViewController.swift */,
+				C554CBB024C6B4CA002F2DF1 /* Presentation */,
 				C541D52F24C4E2AB0036FC7A /* Assets.xcassets */,
-				C541D53124C4E2AB0036FC7A /* LaunchScreen.storyboard */,
 				C541D53424C4E2AB0036FC7A /* Info.plist */,
 			);
 			path = AUIKitDemo;
@@ -990,6 +987,30 @@
 				C5527C7F21F073440098D498 /* AUIDefaultDatePickerController.swift */,
 			);
 			path = DatePicker;
+			sourceTree = "<group>";
+		};
+		C554CBB024C6B4CA002F2DF1 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C554CBB124C6BD9C002F2DF1 /* Screens */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C554CBB124C6BD9C002F2DF1 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				C554CBB224C6BDA8002F2DF1 /* Launch */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		C554CBB224C6BDA8002F2DF1 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				C541D53124C4E2AB0036FC7A /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		C55B80A6221D8365003D84C1 /* SegmentControl */ = {
@@ -1320,7 +1341,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C541D53F24C4E31A0036FC7A /* Application.swift in Sources */,
-				C541D52B24C4E2AA0036FC7A /* ViewController.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
