@@ -13,3 +13,7 @@ pod 'AUIKit'
 ```
 github "ihormyroniuk/AUIKit"
 ```
+
+## Principles
+
+- Make a user interface (UI) in code

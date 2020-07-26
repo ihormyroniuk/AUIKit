@@ -12,6 +12,8 @@ public extension NSAttributedString.Key {
 }
 
 open class AUIInteractiveLabel: AUIControl {
+    
+    // MARK: Subviews
 
     private let button: UIButton = UIButton()
     private let label: UILabel = UILabel()
@@ -96,19 +98,22 @@ open class AUIInteractiveLabel: AUIControl {
         let yOffset = (bounds.size.height - textBoundingBox.size.height) * alignmentOffset - textBoundingBox.origin.y
         let locationOfTouchInTextContainer = CGPoint(x: touchPoint.x - xOffset, y: touchPoint.y - yOffset)
         let characterIndex = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-        let attributeValue = self.label.attributedText?.attribute(NSAttributedString.Key.interaction, at: characterIndex, effectiveRange: nil)
+        let attributeValue = self.label.attributedText?.attribute(.interaction, at: characterIndex, effectiveRange: nil)
         if let value = attributeValue {
             let range = NSRange(location: characterIndex, length: 1)
             let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
             if rect.contains(touchPoint) {
-                let event = UIControl.Event.touchUpInside
-                let targets = allTargets
-                for target in targets {
-                    guard let actions = actions(forTarget: target, forControlEvent: event) else { continue }
-                    for action in actions {
-                        Thread.detachNewThreadSelector(Selector(action), toTarget: target, with: value)
-                    }
-                }
+                sendAllActions(.touchUpInside, value: value)
+            }
+        }
+    }
+    
+    private func sendAllActions(_ event: UIControl.Event, value: Any) {
+        for target in allTargets {
+            guard let actions = actions(forTarget: target, forControlEvent: event) else { continue }
+            for action in actions {
+                let selector = Selector(action)
+                (target as NSObjectProtocol).perform(selector, with: value)
             }
         }
     }

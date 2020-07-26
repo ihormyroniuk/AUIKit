@@ -12,13 +12,16 @@ class Application: AUIEmptyApplication {
     
     override func didFinishLaunching() {
         super.didFinishLaunching()
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .green
-        if window == nil {
-            window = UIWindow()
-        }
-        window?.rootViewController = viewController
-        window?.makeKeyAndVisible()
+        presentation.show()
     }
+    
+    // MARK: Presentation
+    
+    private lazy var presentation: Presentation = {
+        let window = self.window ?? UIWindow()
+        let presentation = Presentation(window: window)
+        presentation.window.makeKeyAndVisible()
+        return presentation
+    }()
     
 }
