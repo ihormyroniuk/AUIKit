@@ -43,6 +43,8 @@
 		C5060C2B2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */; };
 		C5060C2D2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5060C2C2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift */; };
 		C50FCE2A2336CB5D0018A8DD /* AUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FCE292336CB5D0018A8DD /* AUINavigationController.swift */; };
+		C51A43C124D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A43C024D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift */; };
+		C51A43C324D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A43C224D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift */; };
 		C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51DBB272216F2DA0009605A /* AUITextView.swift */; };
 		C51DBB2A2216F3A80009605A /* AUITextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51DBB292216F3A80009605A /* AUITextViewController.swift */; };
 		C51DBB2C2216F62D0009605A /* AUIEmptyTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51DBB2B2216F62D0009605A /* AUIEmptyTextViewController.swift */; };
@@ -133,6 +135,7 @@
 		C544E64B2295600B00DE9156 /* AUIDefaultViewPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */; };
 		C544E64D2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */; };
 		C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */; };
+		C5475AFF24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5475AFE24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift */; };
 		C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIEmptyApplication.swift */; };
 		C54B11AC22B116E6003EBBA0 /* AUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */; };
 		C54B11AF22B125FE003EBBA0 /* AUIPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */; };
@@ -240,6 +243,8 @@
 		C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
 		C5060C2C2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINotAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
 		C50FCE292336CB5D0018A8DD /* AUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationController.swift; sourceTree = "<group>"; };
+		C51A43C024D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAllowedCharactersTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
+		C51A43C224D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINotAllowedCharactersTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C51DBB272216F2DA0009605A /* AUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextView.swift; sourceTree = "<group>"; };
 		C51DBB292216F3A80009605A /* AUITextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextViewController.swift; sourceTree = "<group>"; };
 		C51DBB2B2216F62D0009605A /* AUIEmptyTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTextViewController.swift; sourceTree = "<group>"; };
@@ -335,6 +340,7 @@
 		C544E64A2295600B00DE9156 /* AUIDefaultViewPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerController.swift; sourceTree = "<group>"; };
 		C544E64C2295685E00DE9156 /* AUIDefaultViewPickerComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerComponentController.swift; sourceTree = "<group>"; };
 		C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerItemController.swift; sourceTree = "<group>"; };
+		C5475AFE24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICompositeTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C548387522983CAB000254B0 /* AUIEmptyApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplication.swift; sourceTree = "<group>"; };
 		C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreen.swift; sourceTree = "<group>"; };
 		C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPresentation.swift; sourceTree = "<group>"; };
@@ -1130,6 +1136,9 @@
 			isa = PBXGroup;
 			children = (
 				C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */,
+				C51A43C024D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift */,
+				C51A43C224D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift */,
+				C5475AFE24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -1293,6 +1302,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C51A43C124D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
+				C5475AFF24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift in Sources */,
+				C51A43C324D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
 				C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

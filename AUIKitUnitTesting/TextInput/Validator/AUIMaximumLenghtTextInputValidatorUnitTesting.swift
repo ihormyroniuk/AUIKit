@@ -40,7 +40,7 @@ class AUIMaximumLenghtTextInputValidatorUnitTesting: XCTestCase {
         XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
     }
     
-    func testTextInputLengthEqualToZero() {
+    func testTextInputEmpty() {
         let textInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
         let textInput = ""
         
@@ -50,7 +50,7 @@ class AUIMaximumLenghtTextInputValidatorUnitTesting: XCTestCase {
         XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
     }
     
-    func testTextInputLengthEqualToNil() {
+    func testTextInputNil() {
         let textInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
         let textInput: String? = nil
         

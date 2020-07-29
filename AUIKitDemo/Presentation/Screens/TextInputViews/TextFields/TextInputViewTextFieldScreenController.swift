@@ -60,6 +60,7 @@ class TextInputViewTextFieldScreenController: AUIDefaultScreenController, AUICon
         countDownDurationDatePickerConroller.countDownDuration = 60 * 60 * 7
         countDownDurationDatePickerConroller.addDidValueChangedObserver(self)
         countDownDurationDatePickerConroller.minuteInterval = 1
+        countDownDurationTextFieldController.addDidBeginEditingObserver(self)
         countDownDurationTextFieldController.inputViewController = countDownDurationDatePickerConroller
         countDownDurationTextFieldTextInputView.view = textInputViewTextFieldScreenView.countDownDurationTextFieldTextInputView
         countDownDurationTextFieldTextInputView.textFieldController = countDownDurationTextFieldController
@@ -71,6 +72,10 @@ class TextInputViewTextFieldScreenController: AUIDefaultScreenController, AUICon
         if dateTextFieldController === textFieldController {
             let date = dateDatePickerConroller.date
             dateTextFieldController.text = "\(date)"
+        }
+        if countDownDurationTextFieldController === textFieldController {
+            let countDownDuration = countDownDurationDatePickerConroller.countDownDuration
+            countDownDurationTextFieldController.text = "\(countDownDuration)"
         }
     }
     
