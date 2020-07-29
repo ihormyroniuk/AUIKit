@@ -19,6 +19,7 @@ class Application: AUIEmptyApplication {
     
     private lazy var presentation: Presentation = {
         let window = self.window ?? UIWindow()
+        self.window = window
         let presentation = Presentation(window: window)
         presentation.window.makeKeyAndVisible()
         return presentation

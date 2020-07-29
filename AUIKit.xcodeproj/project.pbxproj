@@ -170,7 +170,6 @@
 		C5FE62CC22CE3DDC0064F989 /* AUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA02195B01C0087F0A2 /* AUIView.swift */; };
 		C5FE62CD22CE3DDC0064F989 /* AUIEmptyToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF42195D9710087F0A2 /* AUIEmptyToolbarController.swift */; };
 		C5FE62CE22CE3DDC0064F989 /* AUIDefaultTableViewSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8682199866D0057E69F /* AUIDefaultTableViewSectionController.swift */; };
-		C5FE62D022CE4A370064F989 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C5FE62CF22CE4A370064F989 /* README.md */; };
 		C5FEB1F722EEF591001EC21D /* AUIViewControllerPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */; };
 /* End PBXBuildFile section */
 
@@ -372,7 +371,6 @@
 		C5EC0D3E228AD830005E7447 /* AUITextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputValidator.swift; sourceTree = "<group>"; };
 		C5EC0D41228AD957005E7447 /* AUITextInputFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFormatter.swift; sourceTree = "<group>"; };
 		C5FE2EC4232CDD83000546F4 /* AUITextInputFilterValidatorFormatterTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilterValidatorFormatterTextFieldController.swift; sourceTree = "<group>"; };
-		C5FE62CF22CE4A370064F989 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -977,7 +975,6 @@
 			children = (
 				C5443BB022A91B75003DE568 /* AUIApplication.swift */,
 				C548387522983CAB000254B0 /* AUIEmptyApplication.swift */,
-				C5FE62CF22CE4A370064F989 /* README.md */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1282,7 +1279,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5FE62D022CE4A370064F989 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
