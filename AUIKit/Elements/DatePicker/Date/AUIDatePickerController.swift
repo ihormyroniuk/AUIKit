@@ -7,11 +7,28 @@
 
 import UIKit
 
+public enum AUIDatePickerControllerMode {
+    case time
+    case date
+    case dateAndTime
+    
+    var datePickerMode: UIDatePicker.Mode {
+        switch self {
+        case .time:
+            return .time
+        case .date:
+            return .date
+        case .dateAndTime:
+            return .dateAndTime
+        }
+    }
+}
+
 public protocol AUIDatePickerController: AUIControlController {
   
     // MARK: Mode
   
-    var mode: UIDatePicker.Mode { get set }
+    var mode: AUIDatePickerControllerMode { get set }
   
     // MARK: Date
   
@@ -37,13 +54,5 @@ public protocol AUIDatePickerController: AUIControlController {
     // MARK: Time Zone
   
     var timeZone: TimeZone? { get set }
-  
-    // MARK: Count Down Duration
-  
-    var countDownDuration: TimeInterval { get set }
-  
-    // MARK: Minute Interval
-  
-    var minuteInterval: Int { get set }
 
 }

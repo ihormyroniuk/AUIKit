@@ -14,8 +14,11 @@ class Presentation: AUIWindowPresentation {
 //        let screenView = InteractiveLabelScreenView()
 //        let screenController = InteractiveLabelScreenController(view: screenView)
         
-        let screenView = LabelsScreenView()
-        let screenController = LabelsScreenController(view: screenView)
+//        let screenView = LabelsScreenView()
+//        let screenController = LabelsScreenController(view: screenView)
+        
+        let screenView = TextInputViewTextFieldScreenView()
+        let screenController = TextInputViewTextFieldScreenController(view: screenView)
         
         window.rootViewController = screenController
     }

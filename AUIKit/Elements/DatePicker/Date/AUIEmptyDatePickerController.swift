@@ -7,18 +7,18 @@
 
 import UIKit
 
-open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDatePickerController {
+open class AUIEmptyDatePickerController: AUIDefaultControlController, AUIDatePickerController {
   
     // MARK: Mode
   
-    public var mode: UIDatePicker.Mode = UIDatePicker.Mode.dateAndTime {
+    public var mode: AUIDatePickerControllerMode = .dateAndTime {
         didSet {
             didSetMode(oldValue)
         }
     }
   
-    open func didSetMode(_ oldValue: UIDatePicker.Mode?) {
-        datePicker?.datePickerMode = mode
+    open func didSetMode(_ oldValue: AUIDatePickerControllerMode) {
+        datePicker?.datePickerMode = mode.datePickerMode
     }
   
     // MARK: Date
@@ -29,7 +29,7 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     }
     
     public func setDate(_ date: Date, animated: Bool) {
-        let oldValue = date
+        let oldValue = _date
         _date = date
         didSetDate(oldValue, animated: animated)
     }
@@ -109,36 +109,6 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
     open func didSetTimeZone(_ oldValue: TimeZone?) {
         datePicker?.timeZone = timeZone
     }
-  
-    // MARK: Count Down Duration
-  
-    public var countDownDuration: TimeInterval = 0.0 {
-        didSet {
-            didSetCountDownDuration(oldValue)
-        }
-    }
-  
-    open func didSetCountDownDuration(_ oldValue: TimeInterval) {
-        if oldValue != countDownDuration {
-            datePicker?.countDownDuration = countDownDuration
-            for object in didValueChangedObservers.allObjects {
-                guard let observer = object as? AUIControlControllerDidValueChangedObserver else { continue }
-                observer.controlControllerDidValueChanged(self)
-            }
-        }
-    }
-  
-    // MARK: Minute Interval
-  
-    public var minuteInterval: Int = 1 {
-        didSet {
-            didSetMinuteInterval(oldValue)
-        }
-    }
-
-    open func didSetMinuteInterval(_ oldValue: Int) {
-        datePicker?.minuteInterval = minuteInterval
-    }
 
     // MARK: UIDatePicker
   
@@ -149,15 +119,13 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
   
     open override func setupView() {
         super.setupView()
-        datePicker?.datePickerMode = mode
-        datePicker?.setDate(date, animated: false)
+        datePicker?.datePickerMode = mode.datePickerMode
         datePicker?.minimumDate = minimumDate
         datePicker?.maximumDate = maximumDate
         datePicker?.locale = locale
         datePicker?.calendar = calendar
         datePicker?.timeZone = timeZone
-        datePicker?.countDownDuration = countDownDuration
-        datePicker?.minuteInterval = minuteInterval
+        datePicker?.setDate(date, animated: false)
     }
   
     // MARK: Events
@@ -166,9 +134,6 @@ open class AUIDefaultDatePickerController: AUIDefaultControlController, AUIDateP
         super.valueChangedEventAction()
         if let date = datePicker?.date {
             setDate(date, animated: true)
-        }
-        if let countDownDuration = datePicker?.countDownDuration {
-            self.countDownDuration = countDownDuration
         }
     }
   
