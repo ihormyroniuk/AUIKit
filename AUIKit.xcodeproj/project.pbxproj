@@ -157,6 +157,7 @@
 		C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF7E224537C80086A8CA /* AUISwitchController.swift */; };
 		C55EFF81224538980086A8CA /* AUIEmptySwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */; };
 		C563738221EA5563008FAF87 /* AUIHiddenBarInteractiveNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563738121EA5563008FAF87 /* AUIHiddenBarInteractiveNavigationController.swift */; };
+		C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */; };
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */; };
 		C567F90124C9C575002DB6FD /* InteractiveLabelScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */; };
@@ -361,6 +362,7 @@
 		C55EFF7E224537C80086A8CA /* AUISwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISwitchController.swift; sourceTree = "<group>"; };
 		C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptySwitchController.swift; sourceTree = "<group>"; };
 		C563738121EA5563008FAF87 /* AUIHiddenBarInteractiveNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIHiddenBarInteractiveNavigationController.swift; sourceTree = "<group>"; };
+		C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextInputView.swift; sourceTree = "<group>"; };
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenView.swift; sourceTree = "<group>"; };
 		C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenController.swift; sourceTree = "<group>"; };
@@ -721,6 +723,7 @@
 			isa = PBXGroup;
 			children = (
 				C530009C24CE1EEC00CA032A /* TextFields */,
+				C567E5C724D20742005EC4CA /* TextViews */,
 			);
 			path = TextInputViews;
 			sourceTree = "<group>";
@@ -1104,6 +1107,14 @@
 			path = Stories;
 			sourceTree = "<group>";
 		};
+		C567E5C724D20742005EC4CA /* TextViews */ = {
+			isa = PBXGroup;
+			children = (
+				C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */,
+			);
+			path = TextViews;
+			sourceTree = "<group>";
+		};
 		C567F8FD24C9C575002DB6FD /* InteractiveLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,6 +1478,7 @@
 				C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */,
 				C53000A024CE1F2C00CA032A /* TextInputViewTextFieldScreenView.swift in Sources */,
 				C530009E24CE1F1F00CA032A /* TextInputViewTextFieldScreenController.swift in Sources */,
+				C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
 				C557C70E24CA1F7F004801AC /* LabelsScreenView.swift in Sources */,

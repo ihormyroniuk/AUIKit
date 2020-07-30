@@ -19,17 +19,16 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             willFinishLaunchingLocation()
             return true
-        }
-        if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+        } else if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             willFinishLaunchingNotification(payload: payload)
             return true
-        }
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        } else if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             willFinishLaunchingShortcutItem(shortcutItem)
             return true
+        } else {
+            willFinishLaunching()
+            return true
         }
-        willFinishLaunching()
-        return true
     }
   
     open func willFinishLaunching() {
@@ -52,17 +51,16 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
             didFinishLaunchingLocation()
             return true
-        }
-        if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
+        } else if let payload = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
             didFinishLaunchingNotification(payload: payload)
             return true
-        }
-        if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+        } else if let shortcutItem = launchOptions?[UIApplication.LaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
             didFinishLaunchingShortcutItem(shortcutItem)
             return true
+        } else {
+            didFinishLaunching()
+            return true
         }
-        didFinishLaunching()
-        return true
     }
   
     open func didFinishLaunching() {
