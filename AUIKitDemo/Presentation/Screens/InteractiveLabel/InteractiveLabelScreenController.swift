@@ -27,7 +27,7 @@ class InteractiveLabelScreenController: AUIDefaultScreenController {
     // MARK: Events
     
     @objc private func interactiveLabelTouchUpInsideEventAction(_ key: Any?) {
-        print(key)
+        
     }
     
     // MARK: Content
