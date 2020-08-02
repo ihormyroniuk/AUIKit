@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class InteractiveLabelScreenController: AUIDefaultScreenController {
+class InteractiveLabelScreenController: AUIEmptyScreenController {
     
     // MARK: View
     

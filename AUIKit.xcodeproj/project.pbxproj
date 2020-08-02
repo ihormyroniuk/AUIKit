@@ -74,7 +74,7 @@
 		C525D8882199866D0057E69F /* AUITableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8772199866D0057E69F /* AUITableViewHeaderFooterView.swift */; };
 		C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */; };
 		C525D88A2199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */; };
-		C525D88D219998AA0057E69F /* AUIDefaultScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D88C219998AA0057E69F /* AUIDefaultScreenController.swift */; };
+		C525D88D219998AA0057E69F /* AUIEmptyScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */; };
 		C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4121BC3EC500FFCE53 /* AUITableView.swift */; };
 		C528BA4421BC410200FFCE53 /* AUIPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4321BC410200FFCE53 /* AUIPagesViewController.swift */; };
 		C530009E24CE1F1F00CA032A /* TextInputViewTextFieldScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530009D24CE1F1F00CA032A /* TextInputViewTextFieldScreenController.swift */; };
@@ -161,6 +161,7 @@
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */; };
 		C567F90124C9C575002DB6FD /* InteractiveLabelScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */; };
+		C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
 		C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */; };
 		C5E8BFFA24D083240080E41B /* AUICountDownDurationDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF924D083240080E41B /* AUICountDownDurationDatePickerController.swift */; };
@@ -275,7 +276,7 @@
 		C525D8772199866D0057E69F /* AUITableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterController.swift; sourceTree = "<group>"; };
 		C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGenericContainerTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
-		C525D88C219998AA0057E69F /* AUIDefaultScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultScreenController.swift; sourceTree = "<group>"; };
+		C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyScreenController.swift; sourceTree = "<group>"; };
 		C528BA4121BC3EC500FFCE53 /* AUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITableView.swift; sourceTree = "<group>"; };
 		C528BA4321BC410200FFCE53 /* AUIPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPagesViewController.swift; sourceTree = "<group>"; };
 		C530009D24CE1F1F00CA032A /* TextInputViewTextFieldScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputViewTextFieldScreenController.swift; sourceTree = "<group>"; };
@@ -366,6 +367,7 @@
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenView.swift; sourceTree = "<group>"; };
 		C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenController.swift; sourceTree = "<group>"; };
+		C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentationUnitTesting.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
 		C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C5E8BFF924D083240080E41B /* AUICountDownDurationDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICountDownDurationDatePickerController.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 		33866868236315050071A2C8 /* AUIKitUnitTesting */ = {
 			isa = PBXGroup;
 			children = (
+				C5AC902424D417D5009E2DE7 /* Presentation */,
 				C5E8BFF324D056FB0080E41B /* TextInput */,
 				3386686B236315050071A2C8 /* Info.plist */,
 			);
@@ -703,7 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */,
-				C525D88C219998AA0057E69F /* AUIDefaultScreenController.swift */,
+				C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */,
 				C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */,
 			);
 			path = Screens;
@@ -1132,6 +1135,14 @@
 			path = ApplicationMain;
 			sourceTree = "<group>";
 		};
+		C5AC902424D417D5009E2DE7 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		C5E8BFF324D056FB0080E41B /* TextInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -1309,6 +1320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */,
 				C51A43C124D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
 				C5475AFF24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift in Sources */,
 				C51A43C324D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
@@ -1420,7 +1432,7 @@
 				C503D0432344CC5400334A1F /* UITableView+Scroll.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
 				C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */,
-				C525D88D219998AA0057E69F /* AUIDefaultScreenController.swift in Sources */,
+				C525D88D219998AA0057E69F /* AUIEmptyScreenController.swift in Sources */,
 				C543BB93228D7C58003BDED3 /* AUIResponsiveTextInputView.swift in Sources */,
 				C53AEB2D2195DD1A0087F0A2 /* AUIPickerController.swift in Sources */,
 				30A7CD4E219C144A006DAAA1 /* AUICollectionViewDataSourceProxy.swift in Sources */,

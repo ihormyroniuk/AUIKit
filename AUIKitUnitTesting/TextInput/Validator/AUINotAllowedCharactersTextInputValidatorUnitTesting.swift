@@ -18,7 +18,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputWithOnlyNotAllowedCharacters() {
@@ -29,7 +29,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputWithSomeAllowedCharacters() {
@@ -40,7 +40,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputEmpty() {
@@ -51,7 +51,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputNil() {
@@ -62,7 +62,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
 }

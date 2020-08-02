@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class TextInputViewTextFieldScreenController: AUIDefaultScreenController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
+class TextInputViewTextFieldScreenController: AUIEmptyScreenController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
     
     // MARK: View
     

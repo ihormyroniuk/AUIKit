@@ -21,7 +21,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputLengthEqualToMaximumLengthWithOnlyAllowedCharacters() {
@@ -35,7 +35,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputLengthLessThanMaximumLengthWithOnlyAllowedCharacters() {
@@ -49,7 +49,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputLengthGreaterThanMaximumLengthWithSomeAllowedCharacters() {
@@ -63,7 +63,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputLengthEqualToMaximumLengthWithSomeAllowedCharacters() {
@@ -77,7 +77,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputLengthLessThanMaximumLengthWithSomeAllowedCharacters() {
@@ -91,7 +91,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputEmpty() {
@@ -105,7 +105,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
     func testTextInputNil() {
@@ -119,7 +119,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(String(describing: actualIsValid))] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
     }
     
 }
