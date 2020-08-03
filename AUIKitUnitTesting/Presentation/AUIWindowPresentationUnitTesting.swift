@@ -28,7 +28,6 @@ class AUIWindowPresentationUnitTesting: XCTestCase {
         override func setup() {
             super.setup()
             isMethodSetupCalled = true
-            
         }
     }
     

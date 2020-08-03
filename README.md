@@ -16,7 +16,7 @@ pod 'AUIKit'
 
 [Carthage](https://github.com/Carthage/Carthage) is intended to be the simplest way to add frameworks to your Cocoa application.
 
-```
+```ogdl
 github "ihormyroniuk/AUIKit"
 ```
 

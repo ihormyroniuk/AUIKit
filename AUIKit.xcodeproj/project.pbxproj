@@ -137,7 +137,6 @@
 		C544E64F229569A400DE9156 /* AUIDefaultViewPickerItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */; };
 		C5475AFF24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5475AFE24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift */; };
 		C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C548387522983CAB000254B0 /* AUIEmptyApplication.swift */; };
-		C54B11AC22B116E6003EBBA0 /* AUIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */; };
 		C54B11AF22B125FE003EBBA0 /* AUIPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */; };
 		C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */; };
 		C54C730D22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */; };
@@ -161,6 +160,8 @@
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */; };
 		C567F90124C9C575002DB6FD /* InteractiveLabelScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */; };
+		C57F0F7B24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */; };
+		C57F0F7D24D84EAA007C47B4 /* AUIViewUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */; };
 		C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
 		C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */; };
@@ -343,7 +344,6 @@
 		C544E64E229569A400DE9156 /* AUIDefaultViewPickerItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIDefaultViewPickerItemController.swift; sourceTree = "<group>"; };
 		C5475AFE24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICompositeTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C548387522983CAB000254B0 /* AUIEmptyApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplication.swift; sourceTree = "<group>"; };
-		C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreen.swift; sourceTree = "<group>"; };
 		C54B11AE22B125FE003EBBA0 /* AUIPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPresentation.swift; sourceTree = "<group>"; };
 		C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentation.swift; sourceTree = "<group>"; };
 		C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenViewWithStatusBar.swift; sourceTree = "<group>"; };
@@ -367,6 +367,8 @@
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenView.swift; sourceTree = "<group>"; };
 		C567F8FF24C9C575002DB6FD /* InteractiveLabelScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelScreenController.swift; sourceTree = "<group>"; };
+		C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyViewControllerUnitTesting.swift; sourceTree = "<group>"; };
+		C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewUnitTesting.swift; sourceTree = "<group>"; };
 		C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentationUnitTesting.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
 		C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				C5AC902424D417D5009E2DE7 /* Presentation */,
+				C57F0F7824D84D7B007C47B4 /* Elements */,
 				C5E8BFF324D056FB0080E41B /* TextInput */,
 				3386686B236315050071A2C8 /* Info.plist */,
 			);
@@ -705,7 +708,6 @@
 		C525D88B2199989D0057E69F /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C54B11AB22B116E6003EBBA0 /* AUIScreen.swift */,
 				C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */,
 				C54C730C22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift */,
 			);
@@ -1135,6 +1137,23 @@
 			path = ApplicationMain;
 			sourceTree = "<group>";
 		};
+		C57F0F7824D84D7B007C47B4 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				C57F0F7924D84DA0007C47B4 /* View */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		C57F0F7924D84DA0007C47B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */,
+				C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C5AC902424D417D5009E2DE7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1321,10 +1340,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */,
+				C57F0F7D24D84EAA007C47B4 /* AUIViewUnitTesting.swift in Sources */,
 				C51A43C124D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
 				C5475AFF24D168E400CC2FB8 /* AUICompositeTextInputValidatorUnitTesting.swift in Sources */,
 				C51A43C324D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */,
 				C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */,
+				C57F0F7B24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1427,7 +1448,6 @@
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
 				C51DBB282216F2DA0009605A /* AUITextView.swift in Sources */,
 				C54C730D22C3CE580070AAC8 /* AUIScreenViewWithStatusBar.swift in Sources */,
-				C54B11AC22B116E6003EBBA0 /* AUIScreen.swift in Sources */,
 				335283D023EAEC96009E3A6A /* AUIControl.swift in Sources */,
 				C503D0432344CC5400334A1F /* UITableView+Scroll.swift in Sources */,
 				C525D8842199866D0057E69F /* AUITableViewController.swift in Sources */,
