@@ -18,7 +18,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as valid because it does not contain not allowed symbols.")
     }
     
     func testTextInputWithOnlyNotAllowedCharacters() {
@@ -29,7 +29,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as not valid because it contains only not allowed symbols.")
     }
     
     func testTextInputWithSomeAllowedCharacters() {
@@ -40,7 +40,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as not valid because it contains some not allowed symbols.")
     }
     
     func testTextInputEmpty() {
@@ -51,7 +51,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Empty text input \"\(textInput)\" has to be recognized as valid because it does not contain not allowed symbols and .")
     }
     
     func testTextInputNil() {
@@ -62,7 +62,7 @@ class AUINotAllowedCharactersTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Nil text input \"\(String(describing: textInput))\" has to be recognized as valid because nil text input is always valid.")
     }
     
 }

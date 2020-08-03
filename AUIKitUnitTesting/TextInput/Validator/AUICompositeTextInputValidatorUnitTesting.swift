@@ -11,7 +11,8 @@ import AUIKit
 class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
 
     func testTextInputLengthGreaterThanMaximumLengthWithOnlyAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -21,11 +22,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as not valid because its length (\(textInput.count) symbol(s)) greater than required maximum lenght (\(maximumLength).")
     }
     
     func testTextInputLengthEqualToMaximumLengthWithOnlyAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -35,11 +37,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as valid because its length (\(textInput.count) symbol(s)) equal to required maximum lenght (\(maximumLength) and it contains only allowed symbols.")
     }
     
     func testTextInputLengthLessThanMaximumLengthWithOnlyAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -49,11 +52,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as valid because its length (\(textInput.count) symbol(s)) less than required maximum lenght (\(maximumLength) and it contains only allowed symbols.")
     }
     
     func testTextInputLengthGreaterThanMaximumLengthWithSomeAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -63,25 +67,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
-    }
-    
-    func testTextInputLengthEqualToMaximumLengthWithSomeAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
-        let allowedCharacters = CharacterSet(charactersIn: "0123456789")
-        let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
-        let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
-        let textInputValidator = AUICompositeTextInputValidator(textInputValidators: textInputValidators)
-        let textInput = "1425asf2ff"
-        
-        let actualIsValid = textInputValidator.validate(textInput: textInput)
-        
-        let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as not valid because its length (\(textInput.count) symbol(s)) greater than required maximum lenght (\(maximumLength) and it contains only not allowed symbols.")
     }
     
     func testTextInputLengthLessThanMaximumLengthWithSomeAllowedCharacters() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -91,11 +82,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = false
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Text input \"\(textInput)\" has to be recognized as not valid because it contains some not allowed symbols.")
     }
     
     func testTextInputEmpty() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -105,11 +97,12 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Empty text input \"\(textInput)\" has to be recognized as valid because it contains only allowed symbols and empty text input length (0 symbols) less than or equal to required maximum lenght (\(maximumLength).")
     }
     
     func testTextInputNil() {
-        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
+        let maximumLength: UInt = 10
+        let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: maximumLength)
         let allowedCharacters = CharacterSet(charactersIn: "0123456789")
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
@@ -119,7 +112,7 @@ class AUICompositeTextInputValidatorUnitTesting: XCTestCase {
         let actualIsValid = textInputValidator.validate(textInput: textInput)
         
         let expectedIsValid = true
-        XCTAssert(actualIsValid == expectedIsValid, "Actual isValid [\(actualIsValid)] is not equal to [\(expectedIsValid)]")
+        XCTAssert(actualIsValid == expectedIsValid, "Nil text input \"\(String(describing: textInput))\" has to be recognized as valid because nil text input is always valid.")
     }
     
 }
