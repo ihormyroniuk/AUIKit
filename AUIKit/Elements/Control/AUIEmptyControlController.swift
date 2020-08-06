@@ -8,9 +8,9 @@
 
 import UIKit
 
-open class AUIDefaultControlController: AUIEmptyViewController, AUIControlController {
+open class AUIEmptyControlController: AUIEmptyViewController, AUIControlController {
   
-    // MARK: Delegates
+    // MARK: Observers
 
     open var didTouchDownObservers = NSHashTable<AnyObject>.weakObjects()
   

@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class TextInputViewTextFieldScreenView: AUIScreenViewWithStatusBar {
+class TextInputViewTextFieldScreenView: NavigationBarScreenView {
     
     // MARK: Subviews
     
@@ -52,7 +52,7 @@ class TextInputViewTextFieldScreenView: AUIScreenViewWithStatusBar {
     
     private func layoutScrollView() {
         let x: CGFloat = 0
-        let y = statusBarView.frame.origin.y + statusBarView.frame.size.height + 1
+        let y = navigationBarView.frame.origin.y + navigationBarView.frame.size.height + 1
         let origin = CGPoint(x: x, y: y)
         let width = bounds.width
         let height = bounds.height - y
@@ -67,7 +67,7 @@ class TextInputViewTextFieldScreenView: AUIScreenViewWithStatusBar {
     
     private func layoutStringTextFieldTextInputView() {
         let x: CGFloat = 24
-        let y: CGFloat = statusBarView.frame.origin.y + statusBarView.frame.size.height + 24
+        let y: CGFloat = 24
         let origin = CGPoint(x: x, y: y)
         let possibleWidth = bounds.width - 2 * x
         let possibleHeight = CGFloat.greatestFiniteMagnitude

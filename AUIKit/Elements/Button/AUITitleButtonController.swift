@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUITitleButtonController: AUIDefaultControlController, AUIButtonController {
+open class AUITitleButtonController: AUIEmptyControlController, AUIButtonController {
   
   // MARK: Button
   

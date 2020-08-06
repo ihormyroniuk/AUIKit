@@ -70,7 +70,7 @@ open class AUIEmptyViewController: AUIViewController {
   
     @discardableResult
     open func resignFirstResponder() -> Bool {
-        return view?.resignFirstResponder() ?? true
+        return view?.resignFirstResponder() ?? false
     }
   
 }

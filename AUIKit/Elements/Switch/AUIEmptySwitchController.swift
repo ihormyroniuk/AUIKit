@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUIEmptySwitchController: AUIDefaultControlController, AUISwitchController {
+open class AUIEmptySwitchController: AUIEmptyControlController, AUISwitchController {
 
   // MARK: View
   

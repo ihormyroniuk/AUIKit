@@ -10,17 +10,6 @@ import AUIKit
 
 class AUIWindowPresentationUnitTesting: XCTestCase {
     
-    // MARK: Setting Window
-
-    func testSettingView() {
-        let window = UIWindow()
-        let presentation = AUIWindowPresentation(window: window)
-        
-        let presentationWindow = presentation.window
-        
-        XCTAssert(presentationWindow == window, "Presentation window [\(presentationWindow))] is not the same as window [\(window)] used for initialization.")
-    }
-    
     // MARK: Calling Method Setup
     
     private class TestAUIWindowPresentation: AUIWindowPresentation {

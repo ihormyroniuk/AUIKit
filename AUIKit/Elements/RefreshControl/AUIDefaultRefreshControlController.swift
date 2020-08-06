@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultRefreshControlController: AUIDefaultControlController, AUIRefreshControlController {
+open class AUIDefaultRefreshControlController: AUIEmptyControlController, AUIRefreshControlController {
   
   // MARK: View
   

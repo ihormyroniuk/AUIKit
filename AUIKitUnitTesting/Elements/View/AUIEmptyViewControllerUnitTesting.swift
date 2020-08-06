@@ -11,127 +11,118 @@ import UIKit
 
 class AUIEmptyViewControllerUnitTesting: XCTestCase {
     
-    func testSettingView() {
+    // MARK: Set isUserInteractionEnabled
+    
+    func testSettingViewIsUserInteractionEnabledBeforeSettingView() {
+        let view = UIView()
+        let viewController = AUIEmptyViewController()
+        
+        viewController.isUserInteractionEnabled = false
+        viewController.view = view
+        let viewIsUserInteractionEnabled = view.isUserInteractionEnabled
+        
+        let expectedViewIsUserInteractionEnabled = false
+        XCTAssert(viewIsUserInteractionEnabled == expectedViewIsUserInteractionEnabled, "AUIEmptyViewController does not set isUserInteractionEnabled for setting UIView.")
+    }
+    
+    func testSettingViewIsUserInteractionEnabledAfterSettingView() {
         let view = UIView()
         let viewController = AUIEmptyViewController()
         
         viewController.view = view
-        let actualView = viewController.view
+        viewController.isUserInteractionEnabled = false
+        let viewIsUserInteractionEnabled = view.isUserInteractionEnabled
         
-        let expectedView = view
-        XCTAssert(actualView == expectedView, "Actual view isUserInteractionEnabled [\(String(describing: actualView))] is not equal to [\(expectedView)]")
+        let expectedViewIsUserInteractionEnabled = false
+        XCTAssert(viewIsUserInteractionEnabled == expectedViewIsUserInteractionEnabled, "AUIEmptyViewController does not set isUserInteractionEnabled for setted UIView.")
+    }
+    
+    // MARK: Set isFirstResponder
+    
+    func testIsFirstResponderWithoutView() {
+        let viewController = AUIEmptyViewController()
+        
+        let isFirstResponder = viewController.isFirstResponder
+        
+        let expectedIsFirstResponder = false
+        XCTAssert(isFirstResponder == expectedIsFirstResponder, "AUIEmptyViewController without UIView can not be first responder.")
+    }
+    
+    func testBecomeFirstResponderWithoutView() {
+        let viewController = AUIEmptyViewController()
+        
+        let doesBecomeFirstResponder = viewController.becomeFirstResponder()
+        
+        let expectedDoesBecomeFirstResponder = false
+        XCTAssert(doesBecomeFirstResponder == expectedDoesBecomeFirstResponder, "AUIEmptyViewController without UIView can not become first responder.")
+    }
+    
+    func testResignFirstResponderWithoutView() {
+        let viewController = AUIEmptyViewController()
+        
+        let doesResignFirstResponder = viewController.resignFirstResponder()
+        
+        let expectedDoesResignFirstResponder = false
+        XCTAssert(doesResignFirstResponder == expectedDoesResignFirstResponder, "AUIEmptyViewController without UIView can not resign first responder.")
+    }
+    
+    private class TestUIView: UIView {
+        
+        var isGetterIsFirstResponderCalled = false
+        override var isFirstResponder: Bool {
+            let isFirstResponder = super.isFirstResponder
+            isGetterIsFirstResponderCalled = true
+            return isFirstResponder
+        }
+        
+        var isMethodBecomeFirstResponderCalled = false
+        override func becomeFirstResponder() -> Bool {
+            let becomeFirstResponder = super.becomeFirstResponder()
+            isMethodBecomeFirstResponderCalled = true
+            return becomeFirstResponder
+        }
+        
+        var isMethodResignFirstResponderCalled = false
+        override func resignFirstResponder() -> Bool {
+            let resignFirstResponder = super.becomeFirstResponder()
+            isMethodResignFirstResponderCalled = true
+            return resignFirstResponder
+        }
+        
     }
     
     func testIsFirstResponderWithView() {
-        let view = UIView()
-        let viewController = AUIEmptyViewController()
-        
-        viewController.view = view
-        let actualIsFirstResponder = viewController.isFirstResponder
-        
-        let expectedIsFirstResponder = view.isFirstResponder
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
-    }
-    
-    func testIsFirstResponderWithNilView() {
-        let view: UIView? = nil
-        let viewController = AUIEmptyViewController()
-        
-        viewController.view = view
-        let actualIsFirstResponder = viewController.isFirstResponder
-        
-        let expectedIsFirstResponder = view?.isFirstResponder ?? false
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
-    }
-    
-    func testIsFirstResponderWithViewAfterBecomeFirstResponder() {
         let view = TestUIView()
         let viewController = AUIEmptyViewController()
-        
         viewController.view = view
-        let actualIsFirstResponder = viewController.becomeFirstResponder()
         
-        let expectedIsFirstResponder = true
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
+        let _ = viewController.isFirstResponder
+        let isGetterIsFirstResponderCalled = view.isGetterIsFirstResponderCalled
+        
+        XCTAssert(isGetterIsFirstResponderCalled, "AUIEmptyViewController has to call UIView getter `isFirstResponder`.")
     }
     
-    func testIsFirstResponderWithViewAfterResignFirstResponder() {
+    func testBecomeFirstResponderWithView() {
         let view = TestUIView()
         let viewController = AUIEmptyViewController()
-        
         viewController.view = view
-        let actualIsFirstResponder = viewController.resignFirstResponder()
         
-        let expectedIsFirstResponder = true
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
+        viewController.becomeFirstResponder()
+        let isMethodBecomeFirstResponderCalled = view.isMethodBecomeFirstResponderCalled
+        
+        XCTAssert(isMethodBecomeFirstResponderCalled, "AUIEmptyViewController has to call UIView method `resignFirstResponder()`.")
     }
     
-    func testIsFirstResponderWithNilViewAfterBecomeFirstResponder() {
-        let view: UIView? = nil
+    func testResignFirstResponderWithView() {
+        let view = TestUIView()
         let viewController = AUIEmptyViewController()
-        
         viewController.view = view
-        let actualIsFirstResponder = viewController.becomeFirstResponder()
         
-        let expectedIsFirstResponder = false
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
+        viewController.resignFirstResponder()
+        let isMethodResignFirstResponderCalled = view.isMethodResignFirstResponderCalled
+        
+        XCTAssert(isMethodResignFirstResponderCalled, "AUIEmptyViewController has to call UIView method `resignFirstResponder()`.")
     }
     
-    func testIsFirstResponderWithNilViewAfterResignFirstResponder() {
-        let view: UIView? = nil
-        let viewController = AUIEmptyViewController()
-        
-        viewController.view = view
-        let actualIsFirstResponder = viewController.resignFirstResponder()
-        
-        let expectedIsFirstResponder = true
-        XCTAssert(actualIsFirstResponder == expectedIsFirstResponder, "Actual isFirstResponder [\(String(describing: actualIsFirstResponder))] is not equal to [\(expectedIsFirstResponder)]")
-    }
-
-    func testSettingViewIsUserInteractionEnabledTrueBeforeSettingView() {
-        let view = UIView()
-        let viewController = AUIEmptyViewController()
-        
-        viewController.isUserInteractionEnabled = true
-        viewController.view = view
-        let actualViewIsUserInteractionEnabled = view.isUserInteractionEnabled
-        
-        let expectedViewIsUserInteractionEnabled = true
-        XCTAssert(actualViewIsUserInteractionEnabled == expectedViewIsUserInteractionEnabled, "Actual view isUserInteractionEnabled [\(String(describing: actualViewIsUserInteractionEnabled))] is not equal to [\(expectedViewIsUserInteractionEnabled)]")
-    }
-    
-    func testSettingViewIsUserInteractionEnabledTrueAfterSettingView() {
-        let view = UIView()
-        let viewController = AUIEmptyViewController()
-        
-        viewController.view = view
-        viewController.isUserInteractionEnabled = true
-        let actualViewIsUserInteractionEnabled = view.isUserInteractionEnabled
-        
-        let expectedViewIsUserInteractionEnabled = true
-        XCTAssert(actualViewIsUserInteractionEnabled == expectedViewIsUserInteractionEnabled, "Actual view isUserInteractionEnabled [\(String(describing: actualViewIsUserInteractionEnabled))] is not equal to [\(expectedViewIsUserInteractionEnabled)]")
-    }
-    
-}
-
-private class TestUIView: UIView {
-    
-    private var testIsFirstResponder: Bool = false
-    
-    override var isFirstResponder: Bool {
-        return testIsFirstResponder
-    }
-    
-    override func becomeFirstResponder() -> Bool {
-        super.becomeFirstResponder()
-        testIsFirstResponder = true
-        return testIsFirstResponder
-    }
-    
-    override func resignFirstResponder() -> Bool {
-        super.resignFirstResponder()
-        testIsFirstResponder = false
-        return true
-    }
     
 }

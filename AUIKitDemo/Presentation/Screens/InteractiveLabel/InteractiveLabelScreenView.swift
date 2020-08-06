@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class InteractiveLabelScreenView: AUIScreenViewWithStatusBar {
+class InteractiveLabelScreenView: AUIStatusBarScreenView {
     
     // MARK: Subviews
     

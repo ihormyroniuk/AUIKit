@@ -1,19 +1,19 @@
 //
-//  AUIViewUnitTesting.swift
+//  AUIControlUnitTesting.swift
 //  AUIKitUnitTesting
 //
-//  Created by Ihor Myroniuk on 03.08.2020.
+//  Created by Ihor Myroniuk on 06.08.2020.
 //
 
 import XCTest
 import AUIKit
 import UIKit
 
-class AUIViewUnitTesting: XCTestCase {
+class AUIControlUnitTesting: XCTestCase {
     
-    // MARK: Call Method Setup
+    // MARK: Calling Method Setup
     
-    private class TestAUIView: AUIView {
+    private class TestAUIControl: AUIControl {
         var isMethodSetupCalled = false
         override func setup() {
             super.setup()
@@ -22,8 +22,8 @@ class AUIViewUnitTesting: XCTestCase {
     }
     
     func testCallingMethodSetupDuringInitialization() {
-        let view = TestAUIView()
-        let isMethodSetupCalled = view.isMethodSetupCalled
+        let control = TestAUIControl()
+        let isMethodSetupCalled = control.isMethodSetupCalled
         
         XCTAssert(isMethodSetupCalled, "Method `setup()` is not called during initialization.")
     }

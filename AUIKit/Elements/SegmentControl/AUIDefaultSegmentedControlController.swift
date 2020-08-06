@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultSegmentedControlController: AUIDefaultControlController, AUISegmentedControlController {
+open class AUIDefaultSegmentedControlController: AUIEmptyControlController, AUISegmentedControlController {
     
     // MARK: Items
     

@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class LabelsScreenView: AUIScreenViewWithStatusBar {
+class LabelsScreenView: AUIStatusBarScreenView {
     
     // MARK: Subviews
     

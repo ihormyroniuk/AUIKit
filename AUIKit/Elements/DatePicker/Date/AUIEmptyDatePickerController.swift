@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyDatePickerController: AUIDefaultControlController, AUIDatePickerController {
+open class AUIEmptyDatePickerController: AUIEmptyControlController, AUIDatePickerController {
   
     // MARK: Mode
   

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyCountDownDurationDatePickerController: AUIDefaultControlController, AUICountDownDurationDatePickerController {
+open class AUIEmptyCountDownDurationDatePickerController: AUIEmptyControlController, AUICountDownDurationDatePickerController {
   
     // MARK: Count Down Duration
   
