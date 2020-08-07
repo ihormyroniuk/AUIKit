@@ -1,6 +1,6 @@
 # AUIKit
 
-AUIKit is an advanced extension for UIKit framework. It contains source code, principles and best practices for building efficient, reliable and maintable user interface.
+AUIKit is an advanced extension for [UIKit](https://developer.apple.com/documentation/uikit) framework. It contains source code, principles and best practices for building efficient, reliable and maintable user interface.
 
 ## Installation
 
