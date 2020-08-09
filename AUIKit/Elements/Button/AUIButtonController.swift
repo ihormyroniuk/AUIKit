@@ -10,13 +10,13 @@ import Foundation
 
 public protocol AUIButtonController: AUIControlController {
   
-  // MARK: Button
+    // MARK: Button
   
-  var button: UIButton? { get set }
+    var button: UIButton? { get set }
   
-  // MARK: Title
+    // MARK: Title
   
-  var title: String? { get set }
-  var normalTitle: String? { get set }
+    var title: String? { get set }
+    var normalTitle: String? { get set }
   
 }

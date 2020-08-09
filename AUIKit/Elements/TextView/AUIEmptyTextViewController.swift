@@ -9,154 +9,154 @@ import Foundation
 
 private let UITextViewTextPropertyKey = "text"
 
-open class AUIEmptyTextViewController: AUIDefaultScrollViewController, AUITextViewController {
+open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextViewController {
 
-  // MARK: Delegates
+    // MARK: Delegates
   
-  private let textFieldDelegate = UITextViewDelegateProxy()
+    private let textFieldDelegate = UITextViewDelegateProxy()
   
-  open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
+    open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
   
-  open func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
-    didChangeTextObservers.add(observer)
-  }
+    open func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+        didChangeTextObservers.add(observer)
+    }
   
-  open func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
-    didChangeTextObservers.remove(observer)
-  }
+    open func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver) {
+        didChangeTextObservers.remove(observer)
+    }
   
-  open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
+    open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
   
-  open func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
-    didBeginEditingObservers.add(observer)
-  }
+    open func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+        didBeginEditingObservers.add(observer)
+    }
   
-  open func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
-    didBeginEditingObservers.remove(observer)
-  }
+    open func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver) {
+        didBeginEditingObservers.remove(observer)
+    }
   
-  open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
+    open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
   
-  open func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
-    didEndEditingObservers.add(observer)
-  }
+    open func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+        didEndEditingObservers.add(observer)
+    }
   
-  open func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
-    didEndEditingObservers.remove(observer)
-  }
+    open func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver) {
+        didEndEditingObservers.remove(observer)
+    }
   
-  // MARK: Input Accessory View Controller
+    // MARK: Input Accessory View Controller
   
-  open var inputAccessoryViewController: AUIViewController? {
-    didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
-  }
-  open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
-    oldValue?.view = nil
-    inputAccessoryViewController?.view = textView?.inputAccessoryView
-  }
+    open var inputAccessoryViewController: AUIViewController? {
+        didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
+    }
+    open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputAccessoryViewController?.view = textView?.inputAccessoryView
+    }
   
-  // MARK: Input View Controller
+    // MARK: Input View Controller
   
-  open var inputViewController: AUIViewController? {
-    didSet { didSetInputViewController(oldValue: oldValue) }
-  }
-  open func didSetInputViewController(oldValue: AUIViewController?) {
-    oldValue?.view = nil
-    inputViewController?.view = textView?.inputView
-  }
+    open var inputViewController: AUIViewController? {
+        didSet { didSetInputViewController(oldValue: oldValue) }
+    }
+    open func didSetInputViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputViewController?.view = textView?.inputView
+    }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open override func setup() {
-    super.setup()
-    textFieldDelegate.delegate = self
-  }
+    open override func setup() {
+        super.setup()
+        textFieldDelegate.delegate = self
+    }
   
-  // MARK: TextView
+    // MARK: TextView
   
-  open var textView: UITextView? {
-    set { view = newValue }
-    get { return view as? UITextView }
-  }
+    open var textView: UITextView? {
+        set { view = newValue }
+        get { return view as? UITextView }
+    }
   
-  open override func setupScrollView() {
-    super.setupScrollView()
-    setupTextView()
-  }
+    open override func setupScrollView() {
+        super.setupScrollView()
+        setupTextView()
+    }
   
-  open func setupTextView() {
-    textView?.delegate = textFieldDelegate
-    inputAccessoryViewController?.view = textView?.inputAccessoryView
-    inputViewController?.view = textView?.inputView
-    textView?.keyboardType = keyboardType
-    textView?.returnKeyType = returnKeyType
-    textView?.autocorrectionType = autocorrectionType
-    textView?.autocapitalizationType = autocapitalizationType
-    textView?.isSecureTextEntry = isSecureTextEntry
-  }
+    open func setupTextView() {
+        textView?.delegate = textFieldDelegate
+        inputAccessoryViewController?.view = textView?.inputAccessoryView
+        inputViewController?.view = textView?.inputView
+        textView?.keyboardType = keyboardType
+        textView?.returnKeyType = returnKeyType
+        textView?.autocorrectionType = autocorrectionType
+        textView?.autocapitalizationType = autocapitalizationType
+        textView?.isSecureTextEntry = isSecureTextEntry
+    }
   
-  open override func unsetupScrollView() {
-    super.unsetupScrollView()
-    unsetupTextField()
-  }
+    open override func unsetupScrollView() {
+        super.unsetupScrollView()
+        unsetupTextField()
+    }
   
-  func unsetupTextField() {
-    textView?.delegate = nil
-    inputAccessoryViewController?.view = nil
-    inputViewController?.view = nil
-  }
+    func unsetupTextField() {
+        textView?.delegate = nil
+        inputAccessoryViewController?.view = nil
+        inputViewController?.view = nil
+    }
 
-  // MARK: States
+    // MARK: States
   
-  open var text: String! {
-    didSet {
-      didSetText(oldValue: oldValue)
+    open var text: String! {
+        didSet {
+            didSetText(oldValue: oldValue)
+        }
     }
-  }
-  open func didSetText(oldValue: String!) {
-    if oldValue != text {
-      textView?.text = text
-      for object in didChangeTextObservers.allObjects {
-        guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
-        observer.textViewControllerDidChangeText(self)
-      }
+    open func didSetText(oldValue: String!) {
+        if oldValue != text {
+            textView?.text = text
+            for object in didChangeTextObservers.allObjects {
+                guard let observer = object as? AUITextViewControllerDidChangeTextObserver else { continue }
+                observer.textViewControllerDidChangeText(self)
+            }
+        }
     }
-  }
   
-  open var keyboardType: UIKeyboardType = .default {
-    didSet { didSetKeyboardType(oldValue: oldValue) }
-  }
-  open func didSetKeyboardType(oldValue: UIKeyboardType) {
-    textView?.keyboardType = keyboardType
-  }
+    open var keyboardType: UIKeyboardType = .default {
+        didSet { didSetKeyboardType(oldValue: oldValue) }
+    }
+    open func didSetKeyboardType(oldValue: UIKeyboardType) {
+        textView?.keyboardType = keyboardType
+    }
   
-  open var returnKeyType: UIReturnKeyType = .default {
-    didSet { didSetReturnKeyType(oldValue: oldValue) }
-  }
-  open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
-    textView?.returnKeyType = returnKeyType
-  }
+    open var returnKeyType: UIReturnKeyType = .default {
+        didSet { didSetReturnKeyType(oldValue: oldValue) }
+    }
+    open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
+        textView?.returnKeyType = returnKeyType
+    }
   
-  open var autocorrectionType: UITextAutocorrectionType = .default {
-    didSet { didSetAutocorrectionType(oldValue: oldValue) }
-  }
-  open func didSetAutocorrectionType(oldValue: UITextAutocorrectionType) {
-    textView?.autocorrectionType = autocorrectionType
-  }
+    open var autocorrectionType: UITextAutocorrectionType = .default {
+        didSet { didSetAutocorrectionType(oldValue: oldValue) }
+    }
+    open func didSetAutocorrectionType(oldValue: UITextAutocorrectionType) {
+        textView?.autocorrectionType = autocorrectionType
+    }
   
-  open var autocapitalizationType: UITextAutocapitalizationType = .none {
-    didSet { didSetAutocapitalizationType(oldValue: oldValue) }
-  }
-  open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
-    textView?.autocapitalizationType = autocapitalizationType
-  }
+    open var autocapitalizationType: UITextAutocapitalizationType = .none {
+        didSet { didSetAutocapitalizationType(oldValue: oldValue) }
+    }
+    open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
+        textView?.autocapitalizationType = autocapitalizationType
+    }
   
-  open var isSecureTextEntry: Bool = false {
-    didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
-  }
-  open func didSetIsSecureTextEntry(oldValue: Bool) {
-    textView?.isSecureTextEntry = isSecureTextEntry
-  }
+    open var isSecureTextEntry: Bool = false {
+        didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
+    }
+    open func didSetIsSecureTextEntry(oldValue: Bool) {
+        textView?.isSecureTextEntry = isSecureTextEntry
+    }
   
   // MARK: UITextFieldDelegateProxyDelegate
   

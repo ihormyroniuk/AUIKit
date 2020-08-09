@@ -47,7 +47,7 @@ public protocol AUITextFieldController: AUIControlController {
     func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
     func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
   
-    // MARK:
+    // MARK: State
   
     var text: String? { get set }
     var placeholder: String? { get set }
@@ -56,6 +56,8 @@ public protocol AUITextFieldController: AUIControlController {
     var autocorrectionType: UITextAutocorrectionType { get set }
     var autocapitalizationType: UITextAutocapitalizationType { get set }
     var returnKeyType: UIReturnKeyType { get set }
+    var shouldBeginEditing: Bool { get set }
+    var shouldEndEditing: Bool { get set }
   
     // MARK: Input Accessory View Controller
   

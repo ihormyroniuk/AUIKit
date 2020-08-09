@@ -7,17 +7,17 @@
 
 import UIKit
 
-open class AUIEmptyDatePickerController: AUIEmptyControlController, AUIDatePickerController {
+open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateTimePickerController {
   
     // MARK: Mode
   
-    public var mode: AUIDatePickerControllerMode = .dateAndTime {
+    public var mode: AUIDateTimePickerControllerMode = .dateAndTime {
         didSet {
             didSetMode(oldValue)
         }
     }
   
-    open func didSetMode(_ oldValue: AUIDatePickerControllerMode) {
+    open func didSetMode(_ oldValue: AUIDateTimePickerControllerMode) {
         datePicker?.datePickerMode = mode.datePickerMode
     }
   

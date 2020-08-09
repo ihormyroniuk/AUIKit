@@ -1,21 +1,20 @@
 //
-//  SignupTextFieldTextInputView.swift
+//  SignupTextViewTextInputView.swift
 //  AUIKitDemo
 //
-//  Created by Ihor Myroniuk on 04.08.2020.
+//  Created by Ihor Myroniuk on 07.08.2020.
 //
 
 import UIKit
 import AUIKit
 
-class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIResponsiveTextInputView {
+class SignupTextViewTextInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextInputView {
     
     // MARK: Subviews
     
-    let iconImageView = UIImageView()
-    let textField = UITextField()
+    let placeholderLabel = UILabel()
+    let textView = UITextView()
     let underlineView = UIView()
-    let placeholderLabel = AUIAttributedLabel()
     
     // MARK: States
     
@@ -39,23 +38,20 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
     
     override func setup() {
         super.setup()
-        addSubview(iconImageView)
-        setupIconImageView()
-        addSubview(textField)
-        setupTextField()
+        addSubview(textView)
+        setupTextView()
         addSubview(underlineView)
         setupUnderlineView()
         addSubview(placeholderLabel)
         setupPlaceholderLabel()
     }
     
-    private func setupIconImageView() {
-        iconImageView.contentMode = .scaleAspectFit
-    }
-    
-    private func setupTextField() {
-        textField.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        textField.tintColor = .black
+    private func setupTextView() {
+        textView.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        textView.tintColor = .black
+        textView.isScrollEnabled = false
+        textView.textContainerInset = .zero
+        textView.textContainer.lineFragmentPadding = 0
     }
     
     private func setupUnderlineView() {
@@ -79,30 +75,18 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        iconImageView.frame = layoutIconImageView(bounds.size)
         placeholderLabel.frame = layoutPlaceholderLabel(bounds.size)
-        textField.frame = layoutTextField(bounds.size)
+        textView.frame = layoutTextView(bounds.size)
         underlineView.frame = layoutUnderlineView(bounds.size)
     }
     
-    func layoutIconImageView(_ boundsSize: CGSize) -> CGRect {
-        let textFieldPossibleSize = CGSize(width: boundsSize.width, height: boundsSize.height)
-        let textFieldSize = textField.sizeThatFits(textFieldPossibleSize)
+    func layoutTextView(_ boundsSize: CGSize) -> CGRect {
         let x: CGFloat = 0
-        let y = placeholderLabelSize(boundsSize).height + 1
-        let width = textFieldSize.height + 8
-        let height = textFieldSize.height + 8
-        let frame = CGRect(x: x, y: y, width: width, height: height)
-        return frame
-    }
-    
-    func layoutTextField(_ boundsSize: CGSize) -> CGRect {
-        let x = layoutIconImageView(boundsSize).width + 8
         let y = placeholderLabelSize(boundsSize).height + 1
         let origin = CGPoint(x: x, y: y)
         let width = boundsSize.width - x
         let possibleSize = CGSize(width: width, height: boundsSize.height)
-        var size = textField.sizeThatFits(possibleSize)
+        var size = textView.sizeThatFits(possibleSize)
         size.width = width
         size.height = size.height + 8
         let frame = CGRect(origin: origin, size: size)
@@ -117,7 +101,7 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
         return size
     }
     private func layoutPlaceholderLabelTop(_ boundsSize: CGSize) -> CGRect {
-        let textFieldFrame = layoutTextField(bounds.size)
+        let textFieldFrame = layoutTextView(bounds.size)
         let x = textFieldFrame.origin.x
         let y: CGFloat = 0
         let origin = CGPoint(x: x, y: y)
@@ -126,7 +110,7 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
         return frame
     }
     private func layoutPlaceholderLabelCenter(_ boundsSize: CGSize) -> CGRect {
-        let textFieldFrame = layoutTextField(bounds.size)
+        let textFieldFrame = layoutTextView(bounds.size)
         let size = placeholderLabelSize(boundsSize)
         let x = textFieldFrame.origin.x
         let y = textFieldFrame.origin.y + (textFieldFrame.size.height - size.height) / 2
@@ -143,7 +127,7 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
     }
     
     func layoutUnderlineView(_ boundsSize: CGSize) -> CGRect {
-        var frame = layoutTextField(boundsSize)
+        var frame = layoutTextView(boundsSize)
         frame.origin.y = frame.origin.y + frame.size.height
         frame.size.height = 1
         return frame
@@ -189,68 +173,6 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
     func responsiveTextInputViewDidEndEditingNonempty(animated: Bool) {
         isActive = true
         updateState(animated: animated)
-    }
-    
-}
-
-class SignupPasswordTextFieldTextInputView: SignupTextFieldTextInputView {
-    
-    // MARK: Subviews
-    
-    let rightButton = IconButton()
-    
-    // MARK: Setup
-    
-    override func setup() {
-        super.setup()
-        addSubview(rightButton)
-        setupRightButton()
-    }
-    
-    private func setupRightButton() {
-        rightButton.tintColor = .black
-        rightButton.imageView?.contentMode = .scaleAspectFit
-    }
-    
-    // MARK: Layout
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        rightButton.frame = layoutRightButton(bounds.size)
-    }
-    
-    private func layoutRightButton(_ boundsSize: CGSize) -> CGRect {
-        let textFieldPossibleSize = CGSize(width: boundsSize.width, height: boundsSize.height)
-        let textFieldSize = textField.sizeThatFits(textFieldPossibleSize)
-        let y = placeholderLabelSize(boundsSize).height + 1
-        let width = textFieldSize.height + 8
-        let height = textFieldSize.height + 8
-        let x = bounds.width - width
-        let frame = CGRect(x: x, y: y, width: width, height: height)
-        return frame
-    }
-    
-    override func layoutTextField(_ boundsSize: CGSize) -> CGRect {
-        let x = layoutIconImageView(boundsSize).width + 8
-        let y = placeholderLabelSize(boundsSize).height + 1
-        let origin = CGPoint(x: x, y: y)
-        let secureButtonFrame = layoutRightButton(bounds.size)
-        let width = boundsSize.width - x - secureButtonFrame.size.width
-        let possibleSize = CGSize(width: width, height: boundsSize.height)
-        var size = textField.sizeThatFits(possibleSize)
-        size.width = width
-        size.height = size.height + 8
-        let frame = CGRect(origin: origin, size: size)
-        return frame
-    }
-    
-    override func layoutUnderlineView(_ boundsSize: CGSize) -> CGRect {
-        var frame = layoutTextField(boundsSize)
-        frame.origin.y = frame.origin.y + frame.size.height
-        let secureButtonFrame = layoutRightButton(bounds.size)
-        frame.size.width += secureButtonFrame.size.width
-        frame.size.height = 1
-        return frame
     }
     
 }

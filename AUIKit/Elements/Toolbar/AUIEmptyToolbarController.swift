@@ -10,11 +10,11 @@ import UIKit
 
 open class AUIEmptyToolbarController: AUIEmptyViewController, AUIToolbarController {
 
-  // MARK: Toolbar
+    // MARK: Toolbar
   
-  open var toolbar: UIToolbar? {
-    set { view = newValue }
-    get { return view as? UIToolbar }
-  }
+    open var toolbar: UIToolbar? {
+        set { view = newValue }
+        get { return view as? UIToolbar }
+    }
   
 }

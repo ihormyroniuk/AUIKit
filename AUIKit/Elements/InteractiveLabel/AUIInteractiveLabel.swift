@@ -8,7 +8,7 @@
 import UIKit
 
 public extension NSAttributedString.Key {
-    static let interaction: NSAttributedString.Key = NSAttributedString.Key("me.ihormyroniuk.AUIKit.interaction")
+    static let interaction: NSAttributedString.Key = NSAttributedString.Key("AUIKit.interaction")
 }
 
 open class AUIInteractiveLabel: AUIControl {
@@ -70,16 +70,25 @@ open class AUIInteractiveLabel: AUIControl {
     // MARK: Events
 
     @objc func buttonTouchUpInside(_ button: UIButton, _ event: UIEvent) {
-        guard let touches = event.allTouches else { return }
-        guard touches.count == 1 else { return }
-        guard let touchPoint = touches.first?.location(in: self) else { return }
+        if let interaction = findInteractionForEvent(event) {
+            let interactiveLabelEvent = AUIInteractiveLabelEvent(event: event, interaction: interaction)
+            sendAllActions(.touchUpInside, interactiveLabelEvent: interactiveLabelEvent)
+        }
+    }
+    
+    // MARK: Helpers
+    
+    private func findInteractionForEvent(_ event: UIEvent) -> Any? {
+        guard let touches = event.allTouches else { return nil }
+        guard touches.count == 1 else { return nil }
+        guard let touchPoint = touches.first?.location(in: self) else { return nil }
         let textContainer = NSTextContainer(size: bounds.size)
         textContainer.lineFragmentPadding = 0.0
         textContainer.lineBreakMode = label.lineBreakMode
         textContainer.maximumNumberOfLines = label.numberOfLines
         let layoutManager = NSLayoutManager()
         layoutManager.addTextContainer(textContainer)
-        guard let attributedText = label.attributedText else {return }
+        guard let attributedText = label.attributedText else { return nil }
         let textStorage = NSTextStorage(attributedString: attributedText)
         textStorage.addLayoutManager(layoutManager)
         let textBoundingBox = layoutManager.usedRect(for: textContainer)
@@ -103,17 +112,18 @@ open class AUIInteractiveLabel: AUIControl {
             let range = NSRange(location: characterIndex, length: 1)
             let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
             if rect.contains(touchPoint) {
-                sendAllActions(.touchUpInside, value: value)
+                return value
             }
         }
+        return nil
     }
     
-    private func sendAllActions(_ event: UIControl.Event, value: Any) {
+    private func sendAllActions(_ event: UIControl.Event, interactiveLabelEvent: AUIInteractiveLabelEvent) {
         for target in allTargets {
             guard let actions = actions(forTarget: target, forControlEvent: event) else { continue }
             for action in actions {
                 let selector = Selector(action)
-                (target as NSObjectProtocol).perform(selector, with: value)
+                (target as NSObjectProtocol).perform(selector, with: self, with: interactiveLabelEvent)
             }
         }
     }

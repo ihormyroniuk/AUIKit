@@ -12,21 +12,21 @@ open class AUIButton: UIButton {
 
     // MARK: Initializers
 
-     public override init(frame: CGRect = .zero) {
-         super.init(frame: frame)
-         setup()
-     }
+    public override init(frame: CGRect = .zero) {
+        super.init(frame: frame)
+        setup()
+    }
 
     @available(*, unavailable)
-     public required init?(coder aDecoder: NSCoder) {
-         super.init(coder: aDecoder)
-         setup()
-     }
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
 
-     // MARK: Setup
+    // MARK: Setup
 
-     open func setup() {
-
-     }
+    open func setup() {
+        
+    }
   
 }

@@ -36,13 +36,58 @@ open class AUIAttributedLabel: AUILabel {
             attributedText = attributedString
         }
     }
+    
+    open func resetText() {
+        if let text = text {
+            self.text = text
+        }
+    }
   
     // MARK: Attributes
+    
+    open override var font: UIFont! {
+        didSet {
+            didSetFont(oldValue: oldValue)
+        }
+    }
+    open func didSetFont(oldValue: UIFont!) {
+        resetText()
+    }
+    
+    open override var textColor: UIColor! {
+        didSet {
+            didSetTextColor(oldValue: oldValue)
+        }
+    }
+    open func didSetTextColor(oldValue: UIColor!) {
+        resetText()
+    }
   
-    open var kern: Float?
+    open var kern: Float? {
+        didSet {
+            didSetKern(oldValue: oldValue)
+        }
+    }
+    open func didSetKern(oldValue: Float?) {
+        resetText()
+    }
     
-    open var textBackgroundColor: UIColor?
+    open var textBackgroundColor: UIColor? {
+        didSet {
+            didSetTextBackgroundColor(oldValue: oldValue)
+        }
+    }
+    open func didSetTextBackgroundColor(oldValue: UIColor?) {
+        resetText()
+    }
     
-    open var underlineStyle: NSUnderlineStyle?
+    open var underlineStyle: NSUnderlineStyle? {
+        didSet {
+            didSetUnderlineStyle(oldValue: oldValue)
+        }
+    }
+    open func didSetUnderlineStyle(oldValue: NSUnderlineStyle?) {
+        resetText()
+    }
     
 }

@@ -18,8 +18,9 @@ class SignupScreenView: TitleLabelScreenView {
     let birthdayTextInputView = SignupTextFieldTextInputView()
     let passwordTextInputView = SignupPasswordTextFieldTextInputView()
     var securePasswordButton: UIButton {
-        return passwordTextInputView.secureButton
+        return passwordTextInputView.rightButton
     }
+    let aboutMeTextInputView = SignupTextViewTextInputView()
     let termsOfServiceInteractiveLabel = AUIInteractiveLabel()
     let signUpButton = ButtonFill()
     
@@ -37,6 +38,8 @@ class SignupScreenView: TitleLabelScreenView {
         setupBirthdayTextInputView()
         scrollView.addSubview(passwordTextInputView)
         setupPasswordTextInputView()
+        scrollView.addSubview(aboutMeTextInputView)
+        setupAboutMeTextInputView()
         scrollView.addSubview(termsOfServiceInteractiveLabel)
         setupTermsOfServiceInteractiveLabel()
         scrollView.addSubview(signUpButton)
@@ -72,6 +75,10 @@ class SignupScreenView: TitleLabelScreenView {
         }
     }
     
+    private func setupAboutMeTextInputView() {
+        
+    }
+    
     private func setupTermsOfServiceInteractiveLabel() {
         termsOfServiceInteractiveLabel.numberOfLines = 0
     }
@@ -85,6 +92,7 @@ class SignupScreenView: TitleLabelScreenView {
         layoutEmailTextInputView()
         layoutBirthdayTextInputView()
         layoutPasswordTextInputView()
+        layoutAboutMeTextInputView()
         layoutTermsOfServiceInteractiveLabel()
         layoutSignUpButton()
         setScrollViewContentSize()
@@ -147,9 +155,21 @@ class SignupScreenView: TitleLabelScreenView {
         passwordTextInputView.frame = frame
     }
     
-    private func layoutTermsOfServiceInteractiveLabel() {
+    private func layoutAboutMeTextInputView() {
         let x: CGFloat = 24
         let y = passwordTextInputView.frame.origin.y + passwordTextInputView.frame.size.height + 24
+        let origin = CGPoint(x: x, y: y)
+        let width = bounds.width - 2 * x
+        let possibleHeight = CGFloat.greatestFiniteMagnitude
+        let possibleSize = CGSize(width: width, height: possibleHeight)
+        let size = aboutMeTextInputView.sizeThatFits(possibleSize)
+        let frame = CGRect(origin: origin, size: size)
+        aboutMeTextInputView.frame = frame
+    }
+    
+    private func layoutTermsOfServiceInteractiveLabel() {
+        let x: CGFloat = 24
+        let y = aboutMeTextInputView.frame.origin.y + aboutMeTextInputView.frame.size.height + 24
         let origin = CGPoint(x: x, y: y)
         let width = bounds.width - 2 * x
         let possibleHeight = CGFloat.greatestFiniteMagnitude
@@ -183,9 +203,9 @@ class SignupScreenView: TitleLabelScreenView {
     func setPassword(secure: Bool) {
         if #available(iOS 13.0, *) {
             if secure {
-                passwordTextInputView.secureButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
+                passwordTextInputView.rightButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
             } else {
-                passwordTextInputView.secureButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
+                passwordTextInputView.rightButton.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
             }
         }
     }

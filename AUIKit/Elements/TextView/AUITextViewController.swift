@@ -8,48 +8,48 @@
 import UIKit
 
 public protocol AUITextViewControllerDidChangeTextObserver: class {
-  func textViewControllerDidChangeText(_ textViewController: AUITextViewController)
+    func textViewControllerDidChangeText(_ textViewController: AUITextViewController)
 }
 
 public protocol AUITextViewControllerDidBeginEditingObserver: class {
-  func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
+    func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
 }
 
 public protocol AUITextViewControllerDidEndEditingObserver: class {
-  func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
+    func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
 }
 
 public protocol AUITextViewController: AUIScrollViewController {
   
-  // MARK: Observers
+    // MARK: Observers
   
-  func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
-  func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+    func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
+    func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
   
-  func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
-  func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+    func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
+    func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
   
-  func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
-  func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+    func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+    func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
   
-  // MARK: Text Field
+    // MARK: Text Field
   
-  var textView: UITextView? { get set }
+    var textView: UITextView? { get set }
 
-  // MARK:
+    // MARK:
   
-  var text: String! { get set }
-  var keyboardType: UIKeyboardType { get set }
-  var returnKeyType: UIReturnKeyType { get set }
-  var autocorrectionType: UITextAutocorrectionType { get set }
-  var autocapitalizationType: UITextAutocapitalizationType { get set }
-  var isSecureTextEntry: Bool { get set }
+    var text: String! { get set }
+    var keyboardType: UIKeyboardType { get set }
+    var returnKeyType: UIReturnKeyType { get set }
+    var autocorrectionType: UITextAutocorrectionType { get set }
+    var autocapitalizationType: UITextAutocapitalizationType { get set }
+    var isSecureTextEntry: Bool { get set }
   
-  // MARK: Input Accessory View Controller
+    // MARK: Input Accessory View Controller
   
-  var inputAccessoryViewController: AUIViewController? { get set }
+    var inputAccessoryViewController: AUIViewController? { get set }
   
-  // MARK: Input View Controller
+    // MARK: Input View Controller
   
-  var inputViewController: AUIViewController? { get set }
+    var inputViewController: AUIViewController? { get set }
 }

@@ -20,7 +20,7 @@ class TextInputViewTextFieldScreenController: AUIEmptyScreenController, AUIContr
     
     private let stringTextFieldController = AUITextInputFilterValidatorFormatterTextFieldController()
     private let stringTextFieldTextInputView = AUIResponsiveTextFieldTextInputViewController()
-    private let dateDatePickerConroller = AUIEmptyDatePickerController()
+    private let dateDatePickerConroller = AUIEmptyDateTimePickerController()
     private let dateTextFieldController = AUIEmptyTextFieldController()
     private let dateTextFieldTextInputView = AUIResponsiveTextFieldTextInputViewController()
     private let countDownDurationDatePickerConroller = AUIEmptyCountDownDurationDatePickerController()

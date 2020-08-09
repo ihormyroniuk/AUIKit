@@ -16,7 +16,7 @@ open class AUIControl: UIControl {
         setup()
     }
 
-   @available(*, unavailable)
+    @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()

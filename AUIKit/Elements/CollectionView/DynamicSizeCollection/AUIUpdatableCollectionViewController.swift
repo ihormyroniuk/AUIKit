@@ -5,7 +5,7 @@
 
 import Foundation
 
-open class AUIUpdatableCollectionViewController: AUIDefaultScrollViewController {
+open class AUIUpdatableCollectionViewController: AUIEmptyScrollViewController {
   
   // MARK: - Proxies
   

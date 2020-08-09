@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver {
+class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
     
     // MARK: View
     
@@ -23,11 +23,13 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
     private let usernameTextFieldTextInputController = AUIResponsiveTextFieldTextInputViewController()
     private let emailTextFieldController = AUITextInputFilterValidatorFormatterTextFieldController()
     private let emailTextFieldTextInputController = AUIResponsiveTextFieldTextInputViewController()
-    private let birthdayDatePickerController = AUIEmptyDatePickerController()
+    private let birthdayDatePickerController = AUIEmptyDateTimePickerController()
     private let birthdayTextFieldController = AUITextInputFilterValidatorFormatterTextFieldController()
     private let birthdayTextFieldTextInputController = AUIResponsiveTextFieldTextInputViewController()
     private let passwordTextFieldController = AUITextInputFilterValidatorFormatterTextFieldController()
     private let passwordTextFieldTextInputController = AUIResponsiveTextFieldTextInputViewController()
+    private let aboutMeTextViewController = AUITextInputFilterValidatorFormatterTextViewController()
+    private let aboutMeTextViewTextInputController = AUIResponsiveTextViewTextInputViewController()
     
     // MARK: Setup
     
@@ -38,8 +40,12 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         setupEmailTextInputController()
         setupBirthdayTextInputController()
         setupPasswordTextInputController()
+        setupPasswordTextInputController()
+        setupAboutMeTextInputController()
+        setupTermsOfServiceInteractiveLabel()
         setupSignUpButton()
         setContent()
+        securePassword()
     }
     
     private func setupTapGestureRecognizer() {
@@ -85,7 +91,18 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         passwordTextFieldController.addDidTapReturnKeyObserver(self)
         passwordTextFieldTextInputController.textFieldController = passwordTextFieldController
         passwordTextFieldTextInputController.view = signupScreenView.passwordTextInputView
-        signupScreenView.securePasswordButton.addTarget(self, action: #selector(securePassword), for: .touchUpInside)
+        signupScreenView.securePasswordButton.addTarget(self, action: #selector(changeSecurePassword), for: .touchUpInside)
+    }
+    
+    private func setupAboutMeTextInputController() {
+        aboutMeTextViewController.isScrollEnabled = false
+        aboutMeTextViewController.addDidChangeTextObserver(self)
+        aboutMeTextViewTextInputController.textViewController = aboutMeTextViewController
+        aboutMeTextViewTextInputController.view = signupScreenView.aboutMeTextInputView
+    }
+    
+    private func setupTermsOfServiceInteractiveLabel() {
+        signupScreenView.termsOfServiceInteractiveLabel.addTarget(self, action: #selector(didInteractInteractiveLabel(_:_:)), for: .touchUpInside)
     }
     
     private func setupSignUpButton() {
@@ -120,6 +137,20 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         }
     }
     
+    func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
+        signupScreenView.setNeedsLayout()
+        signupScreenView.layoutIfNeeded()
+    }
+    
+    @objc private func didInteractInteractiveLabel(_ interactiveLabel: AUIInteractiveLabel, _ event: AUIInteractiveLabelEvent) {
+        let interaction = event.interaction
+        if signupScreenView.termsOfServiceInteractiveLabel == interactiveLabel {
+            if interaction as? String == termsOfServicesInteraction {
+                displayTermsOfServiceInteractiveLabel()
+            }
+        }
+    }
+    
     // MARK: Actions
     
     private func setBirthdayTextFieldControllerText() {
@@ -131,19 +162,27 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         view.endEditing(true)
     }
     
-    @objc private func securePassword() {
-        let secure = !passwordTextFieldController.isSecureTextEntry
-        passwordTextFieldController.isSecureTextEntry = secure
-        self.signupScreenView.setPassword(secure: secure)
+    @objc private func changeSecurePassword() {
+        passwordTextFieldController.isSecureTextEntry = !passwordTextFieldController.isSecureTextEntry
+        securePassword()
+    }
+    
+    private func securePassword() {
+        let secure = passwordTextFieldController.isSecureTextEntry
+        signupScreenView.setPassword(secure: secure)
+    }
+    
+    @objc private func displayTermsOfServiceInteractiveLabel() {
+        print("displayTermsOfServiceInteractiveLabel")
     }
     
     @objc private func signUp() {
         let username = usernameTextFieldController.text
         let email = emailTextFieldController.text
         let password = passwordTextFieldController.text
-        print("Username: \(username)")
-        print("Email: \(email)")
-        print("Password: \(password)")
+        print("Username: \(String(describing: username))")
+        print("Email: \(String(describing: email))")
+        print("Password: \(String(describing: password))")
     }
     
     // MARK: Content
@@ -154,13 +193,15 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         signupScreenView.emailTextInputView.placeholderLabel.text = "Email"
         signupScreenView.birthdayTextInputView.placeholderLabel.text = "Birthday"
         signupScreenView.passwordTextInputView.placeholderLabel.text = "Password"
+        signupScreenView.aboutMeTextInputView.placeholderLabel.text = "About Me"
         signupScreenView.signUpButton.setTitle("Sign Up", for: .normal)
         setTermsOfServiceInteractiveLabelText()
     }
 
+    private let termsOfServicesInteraction = "termsOfServicesInteraction"
     private func setTermsOfServiceInteractiveLabelText() {
         let interactiveText = "Terms of services"
         let text = String(format: "By creating an account, I agree to the %@ and to receive email offers at the email address I provided.", interactiveText)
-        signupScreenView.setTermsOfServiceInteractiveLabelText(agree: text, termsAndConditions: (interactiveText, "ffff"))
+        signupScreenView.setTermsOfServiceInteractiveLabelText(agree: text, termsAndConditions: (interactiveText, termsOfServicesInteraction))
     }
 }

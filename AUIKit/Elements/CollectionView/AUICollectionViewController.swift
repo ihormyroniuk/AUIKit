@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUICollectionViewController: AUIDefaultScrollViewController {
+open class AUICollectionViewController: AUIEmptyScrollViewController {
   
   // MARK: - Proxies
   

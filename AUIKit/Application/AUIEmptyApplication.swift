@@ -9,10 +9,6 @@ import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {
   
-    // MARK: Window
-  
-    open var window: UIWindow?
-  
     // MARK: Launching
   
     open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -176,5 +172,13 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     open func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return false
     }
+    
+    // MARK: Window
+    
+    open var window: UIWindow?
+    
+    // MARK:
+    
+    
     
 }

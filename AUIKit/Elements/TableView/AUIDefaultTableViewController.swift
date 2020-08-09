@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIDefaultTableViewController: AUIDefaultScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
+open class AUIDefaultTableViewController: AUIEmptyScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
 
   // MARK: Delegates
   

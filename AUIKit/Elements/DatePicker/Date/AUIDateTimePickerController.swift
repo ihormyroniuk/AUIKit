@@ -7,7 +7,7 @@
 
 import UIKit
 
-public enum AUIDatePickerControllerMode {
+public enum AUIDateTimePickerControllerMode {
     case time
     case date
     case dateAndTime
@@ -24,11 +24,11 @@ public enum AUIDatePickerControllerMode {
     }
 }
 
-public protocol AUIDatePickerController: AUIControlController {
+public protocol AUIDateTimePickerController: AUIControlController {
   
     // MARK: Mode
   
-    var mode: AUIDatePickerControllerMode { get set }
+    var mode: AUIDateTimePickerControllerMode { get set }
   
     // MARK: Date
   

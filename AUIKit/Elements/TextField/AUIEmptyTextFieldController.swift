@@ -206,11 +206,29 @@ KeyValueObserverProxyDelegate {
     open func didSetReturnKeyType(oldValue: UIReturnKeyType) {
         textField?.returnKeyType = returnKeyType
     }
+    
+    open var shouldBeginEditing: Bool = true {
+        didSet {
+            didSetShouldBeginEditing(oldValue: oldValue)
+        }
+    }
+    open func didSetShouldBeginEditing(oldValue: Bool) {
+        
+    }
+    
+    open var shouldEndEditing: Bool = true {
+        didSet {
+            didSetShouldEndEditing(oldValue: oldValue)
+        }
+    }
+    open func didSetShouldEndEditing(oldValue: Bool) {
+        
+    }
   
     // MARK: UITextFieldDelegate
   
     open func textFieldShouldBeginEditing() -> Bool {
-        return true
+        return shouldBeginEditing
     }
   
     open func textFieldDidBeginEditing() {
@@ -221,7 +239,7 @@ KeyValueObserverProxyDelegate {
     }
   
     open func textFieldShouldEndEditing() -> Bool {
-        return true
+        return shouldEndEditing
     }
   
     open func textFieldDidEndEditing() {
