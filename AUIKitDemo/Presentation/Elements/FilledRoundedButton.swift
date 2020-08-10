@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class ButtonFill: AUIButton {
+class FilledRoundedButton: AUIButton {
     
     // MARK: Setup
     
@@ -39,22 +39,6 @@ class ButtonFill: AUIButton {
         let height: CGFloat = 48
         let sizeThatFits = CGSize(width: size.width, height: height)
         return sizeThatFits
-    }
-    
-}
-
-class IconButton: AUIButton {
-    
-    // MARK: Highlighted
-    
-    override var isHighlighted: Bool {
-        willSet {
-            willSetIsHighlighted(newValue)
-        }
-    }
-    
-    func willSetIsHighlighted(_ isHighlighted: Bool) {
-        alpha = isHighlighted ? 0.6 : 1.0
     }
     
 }

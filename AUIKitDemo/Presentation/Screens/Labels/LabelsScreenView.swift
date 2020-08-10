@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class LabelsScreenView: AUIStatusBarScreenView {
+class LabelsScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     
@@ -38,11 +38,14 @@ class LabelsScreenView: AUIStatusBarScreenView {
     
     private func setupAttributedLabel() {
         attributedLabel.backgroundColor = .green
-        attributedLabel.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        attributedLabel.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         attributedLabel.numberOfLines = 0
         attributedLabel.lineBreakMode = .byTruncatingTail
         attributedLabel.underlineStyle = .single
+        attributedLabel.underlineColor = .blue
         attributedLabel.textBackgroundColor = .red
+        attributedLabel.strokeColor = .yellow
+        attributedLabel.strokeWidth = 2
     }
     
     // MARK: Layout
@@ -55,7 +58,7 @@ class LabelsScreenView: AUIStatusBarScreenView {
     
     private func layoutLabel() {
         let x: CGFloat = 24
-        let y: CGFloat = statusBarView.frame.origin.y + statusBarView.frame.size.height + 24
+        let y: CGFloat = navigationBarView.frame.origin.y + navigationBarView.frame.size.height + 24
         let width: CGFloat = bounds.width - x * 2
         let possibleSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height: CGFloat = label.sizeThatFits(possibleSize).height

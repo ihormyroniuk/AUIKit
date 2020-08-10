@@ -193,7 +193,7 @@ class SignupTextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIRespo
     
 }
 
-class SignupPasswordTextFieldTextInputView: SignupTextFieldTextInputView {
+class SignupRightButtonTextFieldTextInputView: SignupTextFieldTextInputView {
     
     // MARK: Subviews
     

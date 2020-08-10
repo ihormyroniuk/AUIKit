@@ -12,7 +12,7 @@ class Application: AUIEmptyApplication {
     
     override func didFinishLaunching() {
         super.didFinishLaunching()
-        presentation.show()
+        presentation.display()
     }
     
     // MARK: Presentation
@@ -21,7 +21,6 @@ class Application: AUIEmptyApplication {
         let window = self.window ?? UIWindow()
         self.window = window
         let presentation = Presentation(window: window)
-        presentation.window.makeKeyAndVisible()
         return presentation
     }()
     

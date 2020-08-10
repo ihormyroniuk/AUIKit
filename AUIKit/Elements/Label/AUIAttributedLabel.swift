@@ -32,6 +32,15 @@ open class AUIAttributedLabel: AUILabel {
             if let underlineStyle = underlineStyle {
                 attributes?[.underlineStyle] = NSNumber(value: underlineStyle.rawValue)
             }
+            if let underlineColor = underlineColor {
+                attributes?[.underlineColor] = underlineColor
+            }
+            if let strokeColor = strokeColor {
+                attributes?[.strokeColor] = strokeColor
+            }
+            if let strokeWidth = strokeWidth {
+                attributes?[.strokeWidth] = NSNumber(value: strokeWidth)
+            }
             let attributedString = NSAttributedString(string: newValue, attributes: attributes)
             attributedText = attributedString
         }
@@ -87,6 +96,33 @@ open class AUIAttributedLabel: AUILabel {
         }
     }
     open func didSetUnderlineStyle(oldValue: NSUnderlineStyle?) {
+        resetText()
+    }
+    
+    open var underlineColor: UIColor? {
+        didSet {
+            didSetUnderlineColor(oldValue: oldValue)
+        }
+    }
+    open func didSetUnderlineColor(oldValue: UIColor?) {
+        resetText()
+    }
+    
+    open var strokeColor: UIColor? {
+        didSet {
+            didSetStrokeColor(oldValue: oldValue)
+        }
+    }
+    open func didSetStrokeColor(oldValue: UIColor?) {
+        resetText()
+    }
+    
+    open var strokeWidth: Float? {
+        didSet {
+            didSetStrokeWidth(oldValue: oldValue)
+        }
+    }
+    open func didSetStrokeWidth(oldValue: Float?) {
         resetText()
     }
     

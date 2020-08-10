@@ -8,7 +8,15 @@
 import UIKit
 import AUIKit
 
+protocol SignupScreenControllerDelegate: class {
+    func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
+}
+
 class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
+    
+    // MARK: Delegate
+    
+    weak var delegate: SignupScreenControllerDelegate?
     
     // MARK: View
     
@@ -35,6 +43,7 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
     
     override func setup() {
         super.setup()
+        signupScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupTapGestureRecognizer()
         setupUsernameTextInputController()
         setupEmailTextInputController()
@@ -152,6 +161,10 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
     }
     
     // MARK: Actions
+    
+    @objc private func back() {
+        delegate?.signupScreenControllerBack(self)
+    }
     
     private func setBirthdayTextFieldControllerText() {
         let date = birthdayDatePickerController.date

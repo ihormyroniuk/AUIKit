@@ -31,9 +31,15 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
     // MARK: Setup
     
     open func setup() {
+        setNavigationBarHidden(true, animated: false)
+    }
+    
+    // MARK: Events
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
         interactivePopGestureRecognizer?.isEnabled = true
         interactivePopGestureRecognizer?.delegate = self
-        setNavigationBarHidden(true, animated: false)
     }
     
     // MARK: UIGestureRecognizerDelegate

@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class SignupScreenView: TitleLabelScreenView {
+class SignupScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     
@@ -16,13 +16,13 @@ class SignupScreenView: TitleLabelScreenView {
     let usernameTextInputView = SignupTextFieldTextInputView()
     let emailTextInputView = SignupTextFieldTextInputView()
     let birthdayTextInputView = SignupTextFieldTextInputView()
-    let passwordTextInputView = SignupPasswordTextFieldTextInputView()
+    let passwordTextInputView = SignupRightButtonTextFieldTextInputView()
     var securePasswordButton: UIButton {
         return passwordTextInputView.rightButton
     }
     let aboutMeTextInputView = SignupTextViewTextInputView()
     let termsOfServiceInteractiveLabel = AUIInteractiveLabel()
-    let signUpButton = ButtonFill()
+    let signUpButton = FilledRoundedButton()
     
     // MARK: Setup
     

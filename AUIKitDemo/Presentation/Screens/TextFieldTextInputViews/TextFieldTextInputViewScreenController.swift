@@ -8,12 +8,20 @@
 import UIKit
 import AUIKit
 
-class TextInputViewTextFieldScreenController: AUIEmptyScreenController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
+protocol TextFieldTextInputViewScreenControllerDelegate: class {
+    func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController)
+}
+
+class TextFieldTextInputViewScreenController: AUIEmptyScreenController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
+    
+    // MARK: Delegate
+    
+    weak var delegate: TextFieldTextInputViewScreenControllerDelegate?
     
     // MARK: View
     
-    private var textInputViewTextFieldScreenView: TextInputViewTextFieldScreenView! {
-        return view as? TextInputViewTextFieldScreenView
+    private var textInputViewTextFieldScreenView: TextFieldTextInputViewScreenView! {
+        return view as? TextFieldTextInputViewScreenView
     }
     
     // MARK: Subviews
@@ -31,6 +39,7 @@ class TextInputViewTextFieldScreenController: AUIEmptyScreenController, AUIContr
     
     override func setup() {
         super.setup()
+        textInputViewTextFieldScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
         setupStringTextFieldTextInputView()
         setupDateTextFieldTextInputView()
@@ -90,9 +99,16 @@ class TextInputViewTextFieldScreenController: AUIEmptyScreenController, AUIContr
         }
     }
     
+    // MARK: Actions
+    
+    @objc private func back() {
+        delegate?.textFieldTextInputViewScreenControllerBack(self)
+    }
+    
     // MARK: Content
     
     private func setContent() {
+        textInputViewTextFieldScreenView.titleLabel.text = "Text Field Text Input View"
         textInputViewTextFieldScreenView.stringTextFieldTextInputView.placeholderLabel.text = "String (maximum 10 symbols, only alphabet characters)"
         textInputViewTextFieldScreenView.dateTextFieldTextInputView.placeholderLabel.text = "Date (UIDatePicker)"
         textInputViewTextFieldScreenView.countDownDurationTextFieldTextInputView.placeholderLabel.text = "Count down duration (UIDatePicker)"

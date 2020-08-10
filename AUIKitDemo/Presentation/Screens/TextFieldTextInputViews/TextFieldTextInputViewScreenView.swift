@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class TextInputViewTextFieldScreenView: NavigationBarScreenView {
+class TextFieldTextInputViewScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     

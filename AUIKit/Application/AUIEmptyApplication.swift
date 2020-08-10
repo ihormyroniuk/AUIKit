@@ -177,8 +177,4 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     
     open var window: UIWindow?
     
-    // MARK:
-    
-    
-    
 }

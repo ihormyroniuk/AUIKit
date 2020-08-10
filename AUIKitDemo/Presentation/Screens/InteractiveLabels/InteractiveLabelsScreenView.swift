@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class InteractiveLabelScreenView: AUIStatusBarScreenView {
+class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     
@@ -37,7 +37,7 @@ class InteractiveLabelScreenView: AUIStatusBarScreenView {
     
     private func layoutInteractiveLabel() {
         let x: CGFloat = 24
-        let y: CGFloat = statusBarView.frame.origin.y + statusBarView.frame.size.height + 24
+        let y: CGFloat = navigationBarView.frame.origin.y + navigationBarView.frame.size.height + 24
         let width: CGFloat = bounds.width - x * 2
         let possibleSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height: CGFloat = interactiveLabel.sizeThatFits(possibleSize).height
@@ -50,11 +50,11 @@ class InteractiveLabelScreenView: AUIStatusBarScreenView {
     func setInteractiveLabelText(agree: String, termsAndConditions: (String, String)) {
         let termsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
-             .foregroundColor: UIColor(red8Bits: 204, green8Bits: 0, blue8Bits: 0),
+             .foregroundColor: UIColor.blue,
              .interaction: termsAndConditions.1]
         let agreeTermsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
-             .foregroundColor: UIColor(red8Bits: 102, green8Bits: 102, blue8Bits: 102)]
+             .foregroundColor: UIColor.black]
         let agreeTermsAndConditionsString = NSMutableAttributedString(string: agree, attributes: agreeTermsAndConditionsAttributes)
         if let range = agree.range(of: termsAndConditions.0) {
             let nsRange = NSRange(range, in: agreeTermsAndConditionsString.string)
