@@ -96,7 +96,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 40)
+        let width = view.frame.width - 20 * 2
+        return CGSize(width: width, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
