@@ -175,6 +175,7 @@
 		C5AC724924DD31A200559038 /* AUINavigationControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */; };
 		C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */; };
 		C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF085424E11CF80048DDD9 /* IconButton.swift */; };
+		C5E1C09B256B0A12000103AC /* AUICollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E1C09A256B0A12000103AC /* AUICollectionViewLayout.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
 		C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */; };
 		C5E8BFFA24D083240080E41B /* AUICountDownDurationDatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF924D083240080E41B /* AUICountDownDurationDatePickerController.swift */; };
@@ -394,6 +395,7 @@
 		C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentationUnitTesting.swift; sourceTree = "<group>"; };
 		C5DF085424E11CF80048DDD9 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
+		C5E1C09A256B0A12000103AC /* AUICollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICollectionViewLayout.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
 		C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C5E8BFF924D083240080E41B /* AUICountDownDurationDatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICountDownDurationDatePickerController.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				C55126932479AEC700CA7861 /* AUICollectionViewCell.swift */,
 				C55126952479B02700CA7861 /* AUICollectionReusableView.swift */,
 				30A7CD41219C144A006DAAA1 /* AUICollectionViewController.swift */,
+				C5E1C09A256B0A12000103AC /* AUICollectionViewLayout.swift */,
 				30A7CD36219C144A006DAAA1 /* Cells */,
 				30BB5E542206FA0C00F7DA0F /* DynamicSizeCollection */,
 				30A7CD42219C144A006DAAA1 /* CellControllers */,
@@ -1462,6 +1465,7 @@
 				C53AEB362195DD1B0087F0A2 /* AUIPickerItemController.swift in Sources */,
 				30A7CD49219C144A006DAAA1 /* AUICollectionViewCellAutoLayout.swift in Sources */,
 				C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */,
+				C5E1C09B256B0A12000103AC /* AUICollectionViewLayout.swift in Sources */,
 				C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */,
 				C53F8ED521FBB7DA0019C79E /* AUIEmptyTextFieldTextInputViewController.swift in Sources */,
 				30BB5E5B2206FA6A00F7DA0F /* AUIUpdatableWideCollectionViewLayout.swift in Sources */,
