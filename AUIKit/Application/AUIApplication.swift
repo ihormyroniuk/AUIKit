@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
+public protocol AUIApplication: UIApplicationDelegate, UISceneDelegate where Self: UIApplication {
     
     // MARK: Launching
   
