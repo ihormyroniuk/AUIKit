@@ -105,6 +105,18 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, Interac
         mainNavigationController?.popViewController(animated: true)
     }
     
+    // MARK: Present Animations Screen
+    
+    private let transitioning = PresentAnimationTransitioningDelegate()
+    
+    func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController) {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        vc.transitioningDelegate = transitioning
+        vc.modalPresentationStyle = .overCurrentContext
+        mainNavigationController?.present(vc, animated: true, completion: nil)
+    }
+    
     // MARK: Keyboard
     
     @objc private func keyboardWillChangeFrame(notification: NSNotification) {

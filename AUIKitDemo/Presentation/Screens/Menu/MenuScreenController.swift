@@ -12,6 +12,7 @@ protocol MenuScreenControllerDelegate: class {
     func menuScreenControllerDisplayInteractiveLabelsScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplaySignupScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayTextFieldTextInputViewScreen(_ menuScreenController: MenuScreenController)
+    func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController)
 }
 
 class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -27,6 +28,7 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
         case interactiveLabels
         case signup
         case textFieldTextInputView
+        case presentAnimations
     }
     
     // MARK: View
@@ -60,6 +62,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
             delegate?.menuScreenControllerDisplaySignupScreen(self)
         case .textFieldTextInputView:
             delegate?.menuScreenControllerDisplayTextFieldTextInputViewScreen(self)
+        case .presentAnimations:
+            delegate?.menuScreenControllerDisplayPresentAnimations(self)
         }
     }
     
@@ -79,6 +83,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
             return "Signup"
         case .textFieldTextInputView:
             return "Text Field Text Input View"
+        case .presentAnimations:
+            return "Animations"
         }
     }
     
