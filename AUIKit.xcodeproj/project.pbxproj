@@ -169,6 +169,8 @@
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */; };
 		C567F90124C9C575002DB6FD /* InteractiveLabelsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenController.swift */; };
+		C56B60EA25C0967B00D27732 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60E925C0967B00D27732 /* TransitionAnimator.swift */; };
+		C56B60F025C09B6F00D27732 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */; };
 		C57F0F7B24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */; };
 		C57F0F7D24D84EAA007C47B4 /* AUIViewUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */; };
 		C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */; };
@@ -392,6 +394,8 @@
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenView.swift; sourceTree = "<group>"; };
 		C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenController.swift; sourceTree = "<group>"; };
+		C56B60E925C0967B00D27732 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
 		C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyViewControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewUnitTesting.swift; sourceTree = "<group>"; };
 		C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScreenView.swift; sourceTree = "<group>"; };
@@ -1077,6 +1081,7 @@
 		C554CBB124C6BD9C002F2DF1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				C56B60E825C0966A00D27732 /* PushAnimations */,
 				C5278F5425BF6C67005C6A49 /* PresentAnimations */,
 				C554CBB224C6BDA8002F2DF1 /* Launch */,
 				C5841DB824D92CA70059D557 /* NavigationBar */,
@@ -1168,6 +1173,15 @@
 				3369BCC2243BE173004704C2 /* AUIApplicationMain.swift */,
 			);
 			path = ApplicationMain;
+			sourceTree = "<group>";
+		};
+		C56B60E825C0966A00D27732 /* PushAnimations */ = {
+			isa = PBXGroup;
+			children = (
+				C56B60E925C0967B00D27732 /* TransitionAnimator.swift */,
+				C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */,
+			);
+			path = PushAnimations;
 			sourceTree = "<group>";
 		};
 		C57F0F7824D84D7B007C47B4 /* Elements */ = {
@@ -1591,6 +1605,7 @@
 				C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */,
 				C54F9A8724DC34670082C5A4 /* FilledRoundedButton.swift in Sources */,
 				C53000A024CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift in Sources */,
+				C56B60F025C09B6F00D27732 /* TransitionCoordinator.swift in Sources */,
 				C530009E24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift in Sources */,
 				C5278F5625BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift in Sources */,
 				C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */,
@@ -1602,6 +1617,7 @@
 				C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */,
 				C54EAEB224E0539200A8A51E /* MenuScreenController.swift in Sources */,
 				C557C70E24CA1F7F004801AC /* LabelsScreenView.swift in Sources */,
+				C56B60EA25C0967B00D27732 /* TransitionAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

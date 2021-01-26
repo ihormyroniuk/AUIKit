@@ -73,6 +73,13 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, Interac
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
+    func menuScreenControllerDisplayPushAnimations(_ menuScreenController: MenuScreenController) {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        mainNavigationController?.addCustomTransitioning()
+        mainNavigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: Labels Screen
     
     private weak var labelsScreenController: LabelsScreenController?
