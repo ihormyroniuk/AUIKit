@@ -36,7 +36,7 @@ open class AUIInteractiveLabelEvent: UIEvent {
         return event.timestamp
     }
 
-     @available(iOS 13.4, *)
+    @available(iOS 13.4, *)
     open override var modifierFlags: UIKeyModifierFlags {
         return event.modifierFlags
     }
