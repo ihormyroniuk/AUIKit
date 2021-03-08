@@ -61,6 +61,9 @@ class SignupScreenView: BackButtonTitleLabelScreenView {
     
     private func setupBirthdayTextInputView() {
         let datePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         birthdayTextInputView.textField.inputView = datePicker
         if #available(iOS 13.0, *) {
             birthdayTextInputView.iconImageView.image = UIImage(systemName: "calendar.circle.fill")

@@ -33,6 +33,9 @@ class TextFieldTextInputViewScreenView: BackButtonTitleLabelScreenView {
     }
     
     private func setupDateTextFieldTextInputView() {
+        if #available(iOS 13.4, *) {
+            dateDatePicker.preferredDatePickerStyle = .wheels
+        }
         dateTextFieldTextInputView.textField.inputView = dateDatePicker
     }
     

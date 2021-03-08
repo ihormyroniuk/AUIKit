@@ -755,9 +755,9 @@
 		C5278F5425BF6C67005C6A49 /* PresentAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */,
 				C5278F5525BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift */,
 				C5278F5B25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift */,
-				C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */,
 			);
 			path = PresentAnimations;
 			sourceTree = "<group>";
@@ -1081,8 +1081,6 @@
 		C554CBB124C6BD9C002F2DF1 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				C56B60E825C0966A00D27732 /* PushAnimations */,
-				C5278F5425BF6C67005C6A49 /* PresentAnimations */,
 				C554CBB224C6BDA8002F2DF1 /* Launch */,
 				C5841DB824D92CA70059D557 /* NavigationBar */,
 				C54EAEAE24E0536900A8A51E /* Menu */,
@@ -1091,6 +1089,8 @@
 				C530009B24CE1EB400CA032A /* TextFieldTextInputViews */,
 				C567E5C724D20742005EC4CA /* TextViewTextInputViews */,
 				C5841DBB24D93A5A0059D557 /* Signup */,
+				C5278F5425BF6C67005C6A49 /* PresentAnimations */,
+				C56B60E825C0966A00D27732 /* PushAnimations */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
