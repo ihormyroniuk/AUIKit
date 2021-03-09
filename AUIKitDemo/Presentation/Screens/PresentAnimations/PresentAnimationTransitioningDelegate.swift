@@ -9,16 +9,67 @@ import UIKit
 
 class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
-    private let animator = BookingSelectTimeViewControllerAnimator()
+    let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
+        self.animator = BookingSelectTimeViewControllerAnimator(window: window)
+        super.init()
+    }
+    
+    private let animator: BookingSelectTimeViewControllerAnimator
     private let interactor = BookingSelectTimeSlotInteractor()
     
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
     private weak var vc: UIViewController?
+    private var backgroundView = UIView()
+    private let transitionDuration: TimeInterval = 0.6
     
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    
+    private class PresentAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+        
+        private let window: UIWindow
+        private let transitionDuration: TimeInterval
+        private var backgroundView: UIView
+        
+        init(window: UIWindow, transitionDuration: TimeInterval, backgroundView: UIView) {
+            self.window = window
+            self.transitionDuration = transitionDuration
+            self.backgroundView = backgroundView
+            super.init()
+        }
+        
+        func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+            return transitionDuration
+        }
+
+        func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+            guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+            guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
+            let screenHeightCoefficient: CGFloat = 0.85
+            backgroundView.frame = window.bounds
+            backgroundView.alpha = 0
+            fromVC.view.frame = window.bounds
+            transitionContext.containerView.insertSubview(backgroundView, aboveSubview: fromVC.view)
+            transitionContext.containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
+            var screenBounds = window.bounds
+            toVC.view.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
+            screenBounds.size.height = window.bounds.height * screenHeightCoefficient
+            let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height * (1 - screenHeightCoefficient))
+            let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
+            UIView.animate(withDuration: transitionDuration, animations: {
+                toVC.view.frame = finalFrame
+                self.backgroundView.alpha = 1
+                fromVC.view.frame = self.window.bounds
+            }, completion: { _ in
+                fromVC.view.frame = self.window.bounds
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
+        }
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         vc = presented
         vc?.view.addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.addTarget(self, action: #selector(handleGesture))

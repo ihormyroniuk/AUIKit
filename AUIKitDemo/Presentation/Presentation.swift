@@ -114,7 +114,9 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, Interac
     
     // MARK: Present Animations Screen
     
-    private let transitioning = PresentAnimationTransitioningDelegate()
+    private lazy var transitioning: PresentAnimationTransitioningDelegate = {
+        return PresentAnimationTransitioningDelegate(window: window)
+    }()
     
     func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController) {
         let vc = UIViewController()

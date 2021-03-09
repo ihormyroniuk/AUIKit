@@ -7,20 +7,23 @@
 
 import UIKit
 
-class BookingSelectTimeViewControllerAnimator : NSObject {
+class BookingSelectTimeViewControllerAnimator : NSObject, UIViewControllerAnimatedTransitioning {
     
     var isPresent = false
     var backgroundView = UIView()
     
-    override init() {
+    private let transitionDuration: TimeInterval = 0.6
+    
+    let window: UIWindow
+    
+    init(window: UIWindow) {
+        self.window = window
         super.init()
         backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
     }
-}
-
-extension BookingSelectTimeViewControllerAnimator : UIViewControllerAnimatedTransitioning {
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.6
+        return transitionDuration
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -28,51 +31,42 @@ extension BookingSelectTimeViewControllerAnimator : UIViewControllerAnimatedTran
         guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
         let screenHeightCoefficient: CGFloat = 0.85
         if isPresent {
-            backgroundView.frame = UIScreen.main.bounds
+            backgroundView.frame = window.bounds
             backgroundView.alpha = 0
-            fromVC.view.frame = UIScreen.main.bounds
+            fromVC.view.frame = window.bounds
             transitionContext.containerView.insertSubview(backgroundView, aboveSubview: fromVC.view)
             transitionContext.containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
-            var screenBounds = UIScreen.main.bounds
-            toVC.view.frame = CGRect(x: 0, y: UIScreen.main.bounds.height,
-                                     width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            screenBounds.size.height = UIScreen.main.bounds.height * screenHeightCoefficient
-            let bottomLeftCorner = CGPoint(x: 0, y: UIScreen.main.bounds.height * (1 - screenHeightCoefficient))
+            var screenBounds = window.bounds
+            toVC.view.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
+            screenBounds.size.height = window.bounds.height * screenHeightCoefficient
+            let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height * (1 - screenHeightCoefficient))
             let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
-            UIView.animate(
-                withDuration: transitionDuration(using: transitionContext),
-                animations: {
-                    toVC.view.frame = finalFrame
-                    self.backgroundView.alpha = 1
-                    fromVC.view.frame = UIScreen.main.bounds
-                },
-                completion: { _ in
-                    fromVC.view.frame = UIScreen.main.bounds
-                    transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-                }
-            )
+            UIView.animate(withDuration: transitionDuration, animations: {
+                toVC.view.frame = finalFrame
+                self.backgroundView.alpha = 1
+                fromVC.view.frame = self.window.bounds
+            }, completion: { _ in
+                fromVC.view.frame = self.window.bounds
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+            })
         } else {
-            backgroundView.frame = UIScreen.main.bounds
+            backgroundView.frame = window.bounds
             backgroundView.alpha = 1
-            var screenBounds = UIScreen.main.bounds
-            screenBounds.size.height = UIScreen.main.bounds.height * screenHeightCoefficient
-            let bottomLeftCorner = CGPoint(x: 0, y: UIScreen.main.bounds.height)
+            var screenBounds = window.bounds
+            screenBounds.size.height = window.bounds.height * screenHeightCoefficient
+            let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height)
             let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
-            UIView.animate(
-                withDuration: transitionDuration(using: transitionContext),
-                animations: {
-                    fromVC.view.frame = finalFrame
-                    self.backgroundView.alpha = 0
-                },
-                completion: { _ in
-                    if transitionContext.transitionWasCancelled {
-                        transitionContext.completeTransition(false)
-                    } else {
-                        self.backgroundView.removeFromSuperview()
-                        transitionContext.completeTransition(true)
-                    }
+            UIView.animate(withDuration: transitionDuration, animations: {
+                fromVC.view.frame = finalFrame
+                self.backgroundView.alpha = 0
+            }, completion: { _ in
+                if transitionContext.transitionWasCancelled {
+                    transitionContext.completeTransition(false)
+                } else {
+                    self.backgroundView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
                 }
-            )
+            })
         }
     }
 }
