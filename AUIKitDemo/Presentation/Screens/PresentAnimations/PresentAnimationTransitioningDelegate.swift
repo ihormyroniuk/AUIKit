@@ -107,9 +107,7 @@ class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitio
             interactor.cancel()
         case .ended:
             interactor.hasStarted = false
-            interactor.shouldFinish
-                ? interactor.finish()
-                : interactor.cancel()
+            interactor.shouldFinish ? interactor.finish() : interactor.cancel()
         default:
             break
         }
