@@ -8,6 +8,7 @@ import UIKit
 import AUIKit
 
 protocol MenuScreenControllerDelegate: class {
+    func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayLabelsScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayInteractiveLabelsScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplaySignupScreen(_ menuScreenController: MenuScreenController)
@@ -25,6 +26,7 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     // MARK: Data
     
     enum Item: Int, CaseIterable {
+        case intro
         case labels
         case interactiveLabels
         case signup
@@ -56,6 +58,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     
     private func displayItem(_ item: Item) {
         switch item {
+        case .intro:
+            delegate?.menuScreenControllerDisplayIntroScreen(self)
         case .labels:
             delegate?.menuScreenControllerDisplayLabelsScreen(self)
         case .interactiveLabels:
@@ -79,6 +83,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     
     private func itemTitle(_ item: Item) -> String {
         switch item {
+        case .intro:
+            return "Intro"
         case .labels:
             return "Labels"
         case .interactiveLabels:

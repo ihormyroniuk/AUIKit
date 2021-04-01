@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, InteractiveLabelsScreenControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroScreenControllerDelegate, InteractiveLabelsScreenControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate {
     
     // MARK: Setup
     
@@ -78,6 +78,22 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, Interac
         vc.view.backgroundColor = .green
         mainNavigationController?.addCustomTransitioning()
         mainNavigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController) {
+        let screenView = IntroScreenView()
+        let screenController = IntroScreenController(view: screenView)
+        screenController.delegate = self
+        introScreenController = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
+    }
+    
+    // MARK: Intro Screen
+    
+    private weak var introScreenController: IntroScreenController?
+    
+    func introScreenControllerBack(_ introScreenController: IntroScreenController) {
+        mainNavigationController?.popViewController(animated: true)
     }
     
     // MARK: Labels Screen

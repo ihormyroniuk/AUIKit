@@ -84,7 +84,7 @@ open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewContro
     pagesViewController = nil
   }
   
-  // MARK: Reloal
+  // MARK: Reload
   
   open func reload() {
     if pagesViewController?.spineLocation == .mid {

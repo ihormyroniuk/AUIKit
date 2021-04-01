@@ -164,6 +164,8 @@
 		C55EFF81224538980086A8CA /* AUIEmptySwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */; };
 		C5618C4224D9DEAA006F1847 /* AUIStatusBarScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenController.swift */; };
 		C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */; };
+		C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360AC261669CE0012C419 /* IntroScreenController.swift */; };
+		C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360B2261669E00012C419 /* IntroScreenView.swift */; };
 		C565376E24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */; };
 		C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */; };
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
@@ -191,7 +193,6 @@
 		C5FE62CC22CE3DDC0064F989 /* AUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAA02195B01C0087F0A2 /* AUIView.swift */; };
 		C5FE62CD22CE3DDC0064F989 /* AUIEmptyToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEAF42195D9710087F0A2 /* AUIEmptyToolbarController.swift */; };
 		C5FE62CE22CE3DDC0064F989 /* AUIDefaultTableViewSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8682199866D0057E69F /* AUIDefaultTableViewSectionController.swift */; };
-		C5FEB1F722EEF591001EC21D /* AUIViewControllerPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +390,8 @@
 		C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptySwitchController.swift; sourceTree = "<group>"; };
 		C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIStatusBarScreenController.swift; sourceTree = "<group>"; };
 		C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldTextInputView.swift; sourceTree = "<group>"; };
+		C56360AC261669CE0012C419 /* IntroScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenController.swift; sourceTree = "<group>"; };
+		C56360B2261669E00012C419 /* IntroScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenView.swift; sourceTree = "<group>"; };
 		C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabelEvent.swift; sourceTree = "<group>"; };
 		C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextInputView.swift; sourceTree = "<group>"; };
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
@@ -413,7 +416,6 @@
 		C5EC0D3E228AD830005E7447 /* AUITextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputValidator.swift; sourceTree = "<group>"; };
 		C5EC0D41228AD957005E7447 /* AUITextInputFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFormatter.swift; sourceTree = "<group>"; };
 		C5FE2EC4232CDD83000546F4 /* AUITextInputFilterValidatorFormatterTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilterValidatorFormatterTextFieldController.swift; sourceTree = "<group>"; };
-		C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerPageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -767,7 +769,6 @@
 			children = (
 				C525D835219972770057E69F /* AUIPageViewController.swift */,
 				C525D834219972770057E69F /* AUIDefaultPageController.swift */,
-				C5FEB1F622EEF591001EC21D /* AUIViewControllerPageController.swift */,
 			);
 			path = Page;
 			sourceTree = "<group>";
@@ -1091,6 +1092,7 @@
 				C5841DBB24D93A5A0059D557 /* Signup */,
 				C5278F5425BF6C67005C6A49 /* PresentAnimations */,
 				C56B60E825C0966A00D27732 /* PushAnimations */,
+				C56360AB261669860012C419 /* Intro */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1139,6 +1141,15 @@
 				C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */,
 			);
 			path = Switch;
+			sourceTree = "<group>";
+		};
+		C56360AB261669860012C419 /* Intro */ = {
+			isa = PBXGroup;
+			children = (
+				C56360AC261669CE0012C419 /* IntroScreenController.swift */,
+				C56360B2261669E00012C419 /* IntroScreenView.swift */,
+			);
+			path = Intro;
 			sourceTree = "<group>";
 		};
 		C563738021EA5551008FAF87 /* Stories */ = {
@@ -1465,7 +1476,6 @@
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
 				C53AEB312195DD1A0087F0A2 /* AUIDefaultTitlePickerComponentController.swift in Sources */,
 				30BB5E5C2206FA6A00F7DA0F /* AUIUpdatableCollectionViewController.swift in Sources */,
-				C5FEB1F722EEF591001EC21D /* AUIViewControllerPageController.swift in Sources */,
 				C50295E82332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift in Sources */,
 				30A7CD4F219C144A006DAAA1 /* AUICollectionViewDataSourcePrefetchingProxy.swift in Sources */,
 				3333F9F6235F00BE007215AB /* UIColor+RGB.swift in Sources */,
@@ -1598,6 +1608,7 @@
 				C53DDB8824DAE889001CA320 /* TitleLabelScreenView.swift in Sources */,
 				C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */,
 				C54EAEB424E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift in Sources */,
+				C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */,
 				C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */,
 				C567F90124C9C575002DB6FD /* InteractiveLabelsScreenController.swift in Sources */,
 				C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */,
@@ -1613,6 +1624,7 @@
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
 				C5278F5C25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift in Sources */,
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
+				C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
 				C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */,
 				C54EAEB224E0539200A8A51E /* MenuScreenController.swift in Sources */,
