@@ -1085,6 +1085,7 @@
 				C554CBB224C6BDA8002F2DF1 /* Launch */,
 				C5841DB824D92CA70059D557 /* NavigationBar */,
 				C54EAEAE24E0536900A8A51E /* Menu */,
+				C56360AB261669860012C419 /* Intro */,
 				C557C70B24CA1EBB004801AC /* Labels */,
 				C567F8FD24C9C575002DB6FD /* InteractiveLabels */,
 				C530009B24CE1EB400CA032A /* TextFieldTextInputViews */,
@@ -1092,7 +1093,6 @@
 				C5841DBB24D93A5A0059D557 /* Signup */,
 				C5278F5425BF6C67005C6A49 /* PresentAnimations */,
 				C56B60E825C0966A00D27732 /* PushAnimations */,
-				C56360AB261669860012C419 /* Intro */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
