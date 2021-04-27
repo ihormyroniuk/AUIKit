@@ -144,7 +144,7 @@
 		C54C730D22C3CE580070AAC8 /* AUIStatusBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */; };
 		C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEAF24E0538300A8A51E /* MenuScreenView.swift */; };
 		C54EAEB224E0539200A8A51E /* MenuScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB124E0539200A8A51E /* MenuScreenController.swift */; };
-		C54EAEB424E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB324E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift */; };
+		C54EAEB424E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB324E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift */; };
 		C54F9A8224DBFEE00082C5A4 /* AUIControlUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9A8124DBFEE00082C5A4 /* AUIControlUnitTesting.swift */; };
 		C54F9A8424DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9A8324DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift */; };
 		C54F9A8724DC34670082C5A4 /* FilledRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9A8624DC34670082C5A4 /* FilledRoundedButton.swift */; };
@@ -370,7 +370,7 @@
 		C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIStatusBarScreenView.swift; sourceTree = "<group>"; };
 		C54EAEAF24E0538300A8A51E /* MenuScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenView.swift; sourceTree = "<group>"; };
 		C54EAEB124E0539200A8A51E /* MenuScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenController.swift; sourceTree = "<group>"; };
-		C54EAEB324E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " BackButtonTitleLabelScreenView.swift"; sourceTree = "<group>"; };
+		C54EAEB324E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonTitleLabelScreenView.swift; sourceTree = "<group>"; };
 		C54F9A8124DBFEE00082C5A4 /* AUIControlUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIControlUnitTesting.swift; sourceTree = "<group>"; };
 		C54F9A8324DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyControlControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C54F9A8624DC34670082C5A4 /* FilledRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledRoundedButton.swift; sourceTree = "<group>"; };
@@ -1218,7 +1218,7 @@
 			children = (
 				C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */,
 				C53DDB8724DAE889001CA320 /* TitleLabelScreenView.swift */,
-				C54EAEB324E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift */,
+				C54EAEB324E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift */,
 			);
 			path = NavigationBar;
 			sourceTree = "<group>";
@@ -1607,7 +1607,7 @@
 				C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */,
 				C53DDB8824DAE889001CA320 /* TitleLabelScreenView.swift in Sources */,
 				C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */,
-				C54EAEB424E0979B00A8A51E /*  BackButtonTitleLabelScreenView.swift in Sources */,
+				C54EAEB424E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift in Sources */,
 				C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */,
 				C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */,
 				C567F90124C9C575002DB6FD /* InteractiveLabelsScreenController.swift in Sources */,
