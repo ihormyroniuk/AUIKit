@@ -10,6 +10,8 @@ import AUIKit
 
 class Application: AUIEmptyApplication {
     
+    // MARK: Launching
+    
     override func didFinishLaunching() {
         super.didFinishLaunching()
         presentation.display()

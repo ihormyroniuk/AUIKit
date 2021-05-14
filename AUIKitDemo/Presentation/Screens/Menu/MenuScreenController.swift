@@ -25,7 +25,7 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     
     // MARK: Data
     
-    enum Item: Int, CaseIterable {
+    private enum Item: Int, CaseIterable {
         case intro
         case labels
         case interactiveLabels

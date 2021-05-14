@@ -41,6 +41,14 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
     
     private weak var menuScreenController: MenuScreenController?
     
+    func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController) {
+        let screenView = IntroScreenView()
+        let screenController = IntroScreenController(view: screenView)
+        screenController.delegate = self
+        introScreenController = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
+    }
+    
     func menuScreenControllerDisplayLabelsScreen(_ menuScreenController: MenuScreenController) {
         let screenView = LabelsScreenView()
         let screenController = LabelsScreenController(view: screenView)
@@ -73,19 +81,22 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
+    private lazy var transitioning: PresentAnimationTransitioningDelegate = {
+        return PresentAnimationTransitioningDelegate(window: window)
+    }()
+    func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController) {
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        vc.transitioningDelegate = transitioning
+        vc.modalPresentationStyle = .overCurrentContext
+        mainNavigationController?.present(vc, animated: true, completion: nil)
+    }
+    
     func menuScreenControllerDisplayPushAnimations(_ menuScreenController: MenuScreenController) {
         let vc = UIViewController()
         vc.view.backgroundColor = .green
         mainNavigationController?.addCustomTransitioning()
         mainNavigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController) {
-        let screenView = IntroScreenView()
-        let screenController = IntroScreenController(view: screenView)
-        screenController.delegate = self
-        introScreenController = screenController
-        mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     // MARK: Intro Screen
@@ -126,20 +137,6 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
     
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController) {
         mainNavigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: Present Animations Screen
-    
-    private lazy var transitioning: PresentAnimationTransitioningDelegate = {
-        return PresentAnimationTransitioningDelegate(window: window)
-    }()
-    
-    func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController) {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
-        vc.transitioningDelegate = transitioning
-        vc.modalPresentationStyle = .overCurrentContext
-        mainNavigationController?.present(vc, animated: true, completion: nil)
     }
     
     // MARK: Keyboard
