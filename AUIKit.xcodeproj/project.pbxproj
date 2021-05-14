@@ -74,8 +74,6 @@
 		C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */; };
 		C525D88A2199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */; };
 		C525D88D219998AA0057E69F /* AUIEmptyScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */; };
-		C5278F5625BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5278F5525BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift */; };
-		C5278F5C25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5278F5B25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift */; };
 		C5278F6025BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */; };
 		C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4121BC3EC500FFCE53 /* AUITableView.swift */; };
 		C528BA4421BC410200FFCE53 /* AUIPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4321BC410200FFCE53 /* AUIPagesViewController.swift */; };
@@ -296,8 +294,6 @@
 		C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterController.swift; sourceTree = "<group>"; };
 		C525D8792199866D0057E69F /* AUIGenericContainerTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIGenericContainerTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
 		C525D88C219998AA0057E69F /* AUIEmptyScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyScreenController.swift; sourceTree = "<group>"; };
-		C5278F5525BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSelectTimeSlotInteractor.swift; sourceTree = "<group>"; };
-		C5278F5B25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingSelectTimeViewControllerAnimator.swift; sourceTree = "<group>"; };
 		C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C528BA4121BC3EC500FFCE53 /* AUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITableView.swift; sourceTree = "<group>"; };
 		C528BA4321BC410200FFCE53 /* AUIPagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIPagesViewController.swift; sourceTree = "<group>"; };
@@ -758,8 +754,6 @@
 			isa = PBXGroup;
 			children = (
 				C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */,
-				C5278F5525BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift */,
-				C5278F5B25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift */,
 			);
 			path = PresentAnimations;
 			sourceTree = "<group>";
@@ -1618,11 +1612,9 @@
 				C53000A024CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift in Sources */,
 				C56B60F025C09B6F00D27732 /* TransitionCoordinator.swift in Sources */,
 				C530009E24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift in Sources */,
-				C5278F5625BF6D16005C6A49 /* BookingSelectTimeSlotInteractor.swift in Sources */,
 				C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */,
 				C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
-				C5278F5C25BF6D32005C6A49 /* BookingSelectTimeViewControllerAnimator.swift in Sources */,
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
 				C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,

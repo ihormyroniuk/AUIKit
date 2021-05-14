@@ -9,35 +9,32 @@ import UIKit
 
 class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
-    let window: UIWindow
+    private let window: UIWindow
+    private let transitionDuration: TimeInterval = 0.6
+    private let backgroundView = UIView()
     
     init(window: UIWindow) {
         self.window = window
-        self.animator = BookingSelectTimeViewControllerAnimator(window: window)
         super.init()
     }
-    
-    private let animator: BookingSelectTimeViewControllerAnimator
-    private let interactor = BookingSelectTimeSlotInteractor()
     
     private let panGestureRecognizer = UIPanGestureRecognizer()
     
     private weak var vc: UIViewController?
-    private var backgroundView = UIView()
-    private let transitionDuration: TimeInterval = 0.6
     
+    // MARK: UIViewControllerTransitioningDelegate
     
-    private class PresentAnimatedTransitioning: NSObject, UIViewControllerAnimatedTransitioning {
+    private class PresentAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransitioning {
         
         private let window: UIWindow
-        private let transitionDuration: TimeInterval
-        private var backgroundView: UIView
+        private let backgroundView: UIView
+        private let transitionDuration: TimeInterval = 0.6
         
-        init(window: UIWindow, transitionDuration: TimeInterval, backgroundView: UIView) {
+        init(window: UIWindow, backgroundView: UIView) {
             self.window = window
-            self.transitionDuration = transitionDuration
             self.backgroundView = backgroundView
             super.init()
+            backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         }
         
         func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
@@ -68,22 +65,69 @@ class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitio
             })
         }
     }
-    
+    private lazy var presentAnimatedTransitioning: PresentAnimatedTransitioning = {
+        return PresentAnimatedTransitioning(window: window, backgroundView: backgroundView)
+    }()
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         vc = presented
         vc?.view.addGestureRecognizer(panGestureRecognizer)
         panGestureRecognizer.addTarget(self, action: #selector(handleGesture))
-        animator.isPresent = true
-        return animator
+        return presentAnimatedTransitioning
     }
     
+    class DismissAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransitioning {
+        
+        private let window: UIWindow
+        private let backgroundView: UIView
+        private let transitionDuration: TimeInterval = 0.6
+        
+        init(window: UIWindow, backgroundView: UIView) {
+            self.window = window
+            self.backgroundView = backgroundView
+            super.init()
+            backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        }
+        
+        func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+            return transitionDuration
+        }
+
+        func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+            guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+            let screenHeightCoefficient: CGFloat = 0.85
+            backgroundView.frame = window.bounds
+            backgroundView.alpha = 1
+            var screenBounds = window.bounds
+            screenBounds.size.height = window.bounds.height * screenHeightCoefficient
+            let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height)
+            let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
+            UIView.animate(withDuration: transitionDuration, animations: {
+                fromVC.view.frame = finalFrame
+                self.backgroundView.alpha = 0
+            }, completion: { _ in
+                if transitionContext.transitionWasCancelled {
+                    transitionContext.completeTransition(false)
+                } else {
+                    self.backgroundView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+                }
+            })
+        }
+    }
+    private lazy var dismissAnimatedTransitioning: DismissAnimatedTransitioning = {
+        return DismissAnimatedTransitioning(window: window, backgroundView: backgroundView)
+    }()
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        animator.isPresent = false
-        return animator
+        return dismissAnimatedTransitioning
     }
     
+    class BookingSelectTimeSlotInteractor: UIPercentDrivenInteractiveTransition {
+        var hasStarted = false
+        var shouldFinish = false
+    }
+    private lazy var interactor = BookingSelectTimeSlotInteractor()
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return interactor.hasStarted ? interactor : nil
+        return interactor
     }
     
     @objc
@@ -97,16 +141,13 @@ class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitio
         let progress = CGFloat(downwardMovementPercent)
         switch sender.state {
         case .began:
-            interactor.hasStarted = true
             vc.dismiss(animated: true, completion: nil)
         case .changed:
             interactor.shouldFinish = progress > percentThreshold
             interactor.update(progress)
         case .cancelled:
-            interactor.hasStarted = false
             interactor.cancel()
         case .ended:
-            interactor.hasStarted = false
             interactor.shouldFinish ? interactor.finish() : interactor.cancel()
         default:
             break
