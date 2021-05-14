@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AUICollectionViewDelegateProxyDelegate
 
-public protocol AUICollectionViewDelegateProxyDelegate: class {
+public protocol AUICollectionViewDelegateProxyDelegate: AnyObject {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
   func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool
   func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool
@@ -20,13 +20,13 @@ public protocol AUICollectionViewDelegateProxyDelegate: class {
 
 // MARK: - AUIScrollViewDelegateProxyDelegate
 
-public protocol AUIScrollViewDelegate: class {
+public protocol AUIScrollViewDelegate: AnyObject {
   func scrollViewDidScroll(_ scrollView: UIScrollView)
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView)
 }
 
-public protocol AUIScrollWillBeginDraggingDelegate: class {
+public protocol AUIScrollWillBeginDraggingDelegate: AnyObject {
   func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
 }
 

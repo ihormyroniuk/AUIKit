@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUIBarButtonItemControllerDidSelectObserver: class {
+public protocol AUIBarButtonItemControllerDidSelectObserver: AnyObject {
   func barButtonItemControllerDidSelect(_ barButtonItemController: AUIBarButtonItemController)
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AUICollectionViewDataSourceProxyDelegate
 
-public protocol AUICollectionViewDataSourceProxyDelegate: class {
+public protocol AUICollectionViewDataSourceProxyDelegate: AnyObject {
   func numberOfItems(_ collectionView: UICollectionView) -> Int
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
 }

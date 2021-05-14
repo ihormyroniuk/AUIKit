@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol AUITextFieldCanPerformActionDelegate: class {
+public protocol AUITextFieldCanPerformActionDelegate: AnyObject {
     func textField(_ textField: AUITextField, canPerformAction action: Selector, withSender sender: Any?) -> Bool
 }
 

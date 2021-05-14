@@ -71,7 +71,7 @@ open class AUIDefaultTitlePickerController: AUIDefaultPickerController, AUITitle
   }
 }
 
-private protocol  UIPickerViewDelegateProxyDelegate: class {
+private protocol  UIPickerViewDelegateProxyDelegate: AnyObject {
   func titleForItem(_ item: Int, inComponent component: Int) -> String?
   func attributedTitleForItem(_ item: Int, inComponent component: Int) -> NSAttributedString?
   func didSelectItem(_ item: Int, inComponent component: Int)

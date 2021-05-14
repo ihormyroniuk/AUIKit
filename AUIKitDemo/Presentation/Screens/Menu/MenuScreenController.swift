@@ -7,7 +7,7 @@
 import UIKit
 import AUIKit
 
-protocol MenuScreenControllerDelegate: class {
+protocol MenuScreenControllerDelegate: AnyObject {
     func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayLabelsScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayInteractiveLabelsScreen(_ menuScreenController: MenuScreenController)

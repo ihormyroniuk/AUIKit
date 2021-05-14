@@ -66,7 +66,7 @@ open class AUIDefaultViewPickerController: AUIDefaultPickerController, AUIViewPi
   }
 }
 
-private protocol  UIPickerViewDelegateProxyDelegate: class {
+private protocol  UIPickerViewDelegateProxyDelegate: AnyObject {
   func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView
   func didSelectItem(_ item: Int, inComponent component: Int)
 }

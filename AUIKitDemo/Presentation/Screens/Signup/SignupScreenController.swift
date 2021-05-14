@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-protocol SignupScreenControllerDelegate: class {
+protocol SignupScreenControllerDelegate: AnyObject {
     func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
 }
 

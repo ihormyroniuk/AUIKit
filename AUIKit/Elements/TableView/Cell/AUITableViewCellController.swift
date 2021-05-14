@@ -8,15 +8,15 @@
 
 import UIKit
 
-public protocol AUITableViewCellControllerDidSelectDelegate: class {
+public protocol AUITableViewCellControllerDidSelectDelegate: AnyObject {
   func didSelectTableViewCellController(_ cellController: AUITableViewCellController)
 }
 
-public protocol AUITableViewCellControllerWillDisplayDelegate: class {
+public protocol AUITableViewCellControllerWillDisplayDelegate: AnyObject {
   func willDisplayTableViewCellController(_ cellController: AUITableViewCellController, indexPath: IndexPath)
 }
 
-public protocol AUITableViewCellController: class {
+public protocol AUITableViewCellController: AnyObject {
   func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
   var willDisplayDelegate: AUITableViewCellControllerWillDisplayDelegate? { get set }
   func willDisplayCell(_ cell: UITableViewCell, indexPath: IndexPath)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUIPickerComponentController: class {
+public protocol AUIPickerComponentController: AnyObject {
   
   // MARK: ItemControllers
   

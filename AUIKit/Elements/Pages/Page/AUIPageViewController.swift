@@ -8,6 +8,6 @@
 
 import UIKit
 
-public protocol AUIPageViewController: class {
+public protocol AUIPageViewController: AnyObject {
   var viewController: UIViewController { get }
 }

@@ -76,7 +76,7 @@ open class AUIDefaultBarItemController: AUIBarItemController {
   }
   
   open var largeContentSizeImage: UIImage? {
-    didSet { if #available(iOS 11.0, *) { didSetLargeContentSizeImage(oldValue: oldValue) } }
+    didSet { if #available(iOS 11.0, *) {  } }
   }
   @available(iOS 11.0, *)
   open func didSetLargeContentSizeImage(oldValue: UIImage?) {

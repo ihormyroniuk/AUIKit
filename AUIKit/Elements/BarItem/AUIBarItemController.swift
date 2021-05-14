@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol AUIBarItemController: class {
+public protocol AUIBarItemController: AnyObject {
   
   // MARK: Bar Item
   

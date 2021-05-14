@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-protocol LabelsScreenControllerDelegate: class {
+protocol LabelsScreenControllerDelegate: AnyObject {
     func labelsScreenControllerBack(_ labelsScreenController: LabelsScreenController)
 }
 

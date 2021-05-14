@@ -5,13 +5,13 @@
 
 import UIKit
 
-public protocol AUIUpdatableCollectionViewLayoutDelegate: class {
+public protocol AUIUpdatableCollectionViewLayoutDelegate: AnyObject {
   func getCellControllers() -> [AUICollectionViewCellController]
   func getIndexPath(for cellController: AUICollectionViewCellController) -> IndexPath?
   func getCellController(for indexPath: IndexPath) -> AUICollectionViewCellController?
 }
 
-public protocol AUIUpdatableCollectionViewLayout: class {
+public protocol AUIUpdatableCollectionViewLayout: AnyObject {
   var delegate: AUIUpdatableCollectionViewLayoutDelegate? { get set }
   func prepareForInsert(at indexPaths: [IndexPath])
   func prepareForDelete(at indexPaths: [IndexPath])

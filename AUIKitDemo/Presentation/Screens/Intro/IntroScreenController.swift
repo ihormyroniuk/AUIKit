@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-protocol IntroScreenControllerDelegate: class {
+protocol IntroScreenControllerDelegate: AnyObject {
     func introScreenControllerBack(_ introScreenController: IntroScreenController)
 }
 

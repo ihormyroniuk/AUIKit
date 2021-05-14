@@ -8,23 +8,23 @@
 
 import UIKit
 
-public protocol AUIControlControllerDidTouchDownObserver: class {
+public protocol AUIControlControllerDidTouchDownObserver: AnyObject {
     func controlControllerDidTouchDown(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidTouchUpInsideObserver: class {
+public protocol AUIControlControllerDidTouchUpInsideObserver: AnyObject {
     func controlControllerDidTouchUpInside(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidTouchUpOutsideObserver: class {
+public protocol AUIControlControllerDidTouchUpOutsideObserver: AnyObject {
     func controlControllerDidTouchUpOutside(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidEditingChangedObserver: class {
+public protocol AUIControlControllerDidEditingChangedObserver: AnyObject {
     func controlControllerDidEditingChanged(_ controlController: AUIControlController)
 }
 
-public protocol AUIControlControllerDidValueChangedObserver: class {
+public protocol AUIControlControllerDidValueChangedObserver: AnyObject {
     func controlControllerDidValueChanged(_ controlController: AUIControlController)
 }
 

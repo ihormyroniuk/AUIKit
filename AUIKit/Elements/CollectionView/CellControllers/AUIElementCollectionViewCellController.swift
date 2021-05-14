@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol AUICollectionCellWillDisplayDelegate: class {
+public protocol AUICollectionCellWillDisplayDelegate: AnyObject {
   func willDisplayCell(with controller: AUIElementCollectionViewCellController, indexPath: IndexPath)
 }
 

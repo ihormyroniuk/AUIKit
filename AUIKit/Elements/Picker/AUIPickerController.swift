@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol AUIPickerControllerDidSelectItemControllerObserver: class {
+public protocol AUIPickerControllerDidSelectItemControllerObserver: AnyObject {
   func pickerController(_ pickerController: AUIPickerController, didSelectItemController itemController: AUIPickerItemController, atComponentController componentController: AUIPickerComponentController)
 }
 

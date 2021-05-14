@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AUIViewController: class {
+public protocol AUIViewController: AnyObject {
   
     // MARK: View
   

@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol AUICollectionViewCellControllerDelegate: class {
+public protocol AUICollectionViewCellControllerDelegate: AnyObject {
   func didSelectCollectionViewCellController(_ cellController: AUICollectionViewCellController)
 }
 
-public protocol AUICollectionViewCellController: class {
+public protocol AUICollectionViewCellController: AnyObject {
   
   var didSelectDelegate: AUICollectionViewCellControllerDelegate? { get set }
   

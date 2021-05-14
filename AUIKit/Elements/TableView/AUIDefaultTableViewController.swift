@@ -261,7 +261,7 @@ open class AUIDefaultTableViewController: AUIEmptyScrollViewController, AUITable
   }
 }
 
-private protocol AUITableViewDelegateProxyDelegate: class {
+private protocol AUITableViewDelegateProxyDelegate: AnyObject {
   
   func numberOfSections() -> Int
   func numberOfRowsInSection(_ section: Int) -> Int

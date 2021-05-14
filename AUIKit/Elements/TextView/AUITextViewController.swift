@@ -7,15 +7,15 @@
 
 import UIKit
 
-public protocol AUITextViewControllerDidChangeTextObserver: class {
+public protocol AUITextViewControllerDidChangeTextObserver: AnyObject {
     func textViewControllerDidChangeText(_ textViewController: AUITextViewController)
 }
 
-public protocol AUITextViewControllerDidBeginEditingObserver: class {
+public protocol AUITextViewControllerDidBeginEditingObserver: AnyObject {
     func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
 }
 
-public protocol AUITextViewControllerDidEndEditingObserver: class {
+public protocol AUITextViewControllerDidEndEditingObserver: AnyObject {
     func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
 }
 

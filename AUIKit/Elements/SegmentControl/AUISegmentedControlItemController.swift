@@ -8,11 +8,11 @@
 
 import UIKit
 
-public protocol AUISegmentedControlItemControllerDidSelectDelegate: class {
+public protocol AUISegmentedControlItemControllerDidSelectDelegate: AnyObject {
     func didSelectSegmentedControlItemController(_ itemController: AUISegmentedControlItemController)
 }
 
-public protocol AUISegmentedControlItemController: class {
+public protocol AUISegmentedControlItemController: AnyObject {
     
     // MARK: Title
     

@@ -330,7 +330,7 @@ private class UITextFieldDelegateProxy: NSObject, UITextFieldDelegate {
     }
 }
 
-private protocol KeyValueObserverProxyDelegate: class {
+private protocol KeyValueObserverProxyDelegate: AnyObject {
     func textFieldDidChangeText(_ textField: UITextField)
 }
 

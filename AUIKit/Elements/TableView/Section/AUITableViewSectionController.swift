@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AUITableViewSectionController: class {
+public protocol AUITableViewSectionController: AnyObject {
   
   var numberOfRows: Int { get }
   

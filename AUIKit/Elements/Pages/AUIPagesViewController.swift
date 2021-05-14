@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol AUIPagesViewControllerDidTransitToPageObserver: class {
+public protocol AUIPagesViewControllerDidTransitToPageObserver: AnyObject {
   func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageViewController])
 }
 

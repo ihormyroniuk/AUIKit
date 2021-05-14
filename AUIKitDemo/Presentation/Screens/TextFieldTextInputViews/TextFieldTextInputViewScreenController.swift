@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-protocol TextFieldTextInputViewScreenControllerDelegate: class {
+protocol TextFieldTextInputViewScreenControllerDelegate: AnyObject {
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController)
 }
 

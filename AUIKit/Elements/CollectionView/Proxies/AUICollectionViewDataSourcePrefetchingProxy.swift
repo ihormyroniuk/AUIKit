@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - AUICollectionViewDataSourcePrefetchingProxyDelegate
 
-public protocol AUICollectionViewDataSourcePrefetchingProxyDelegate: class {
+public protocol AUICollectionViewDataSourcePrefetchingProxyDelegate: AnyObject {
   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath])
 }
 
