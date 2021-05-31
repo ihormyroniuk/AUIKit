@@ -10,7 +10,6 @@ import UIKit
 class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
     private let window: UIWindow
-    private let transitionDuration: TimeInterval = 0.6
     private let backgroundView = UIView()
     
     init(window: UIWindow) {
@@ -132,12 +131,14 @@ class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitio
         return dismissAnimatedTransitioning
     }
     
-    private lazy var interactor = UIPercentDrivenInteractiveTransition()
+    private lazy var interactor: UIPercentDrivenInteractiveTransition = {
+        let percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
+        return percentDrivenInteractiveTransition
+    }()
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return hasStarted ? interactor : nil
     }
     
-    var shouldFinish = false
     var hasStarted = false
     
     @objc
@@ -154,14 +155,13 @@ class PresentAnimationTransitioningDelegate: NSObject, UIViewControllerTransitio
             hasStarted = true
             vc.dismiss(animated: true, completion: nil)
         case .changed:
-            shouldFinish = progress > percentThreshold
             interactor.update(progress)
         case .cancelled:
             hasStarted = false
             interactor.cancel()
         case .ended:
             hasStarted = false
-            shouldFinish ? interactor.finish() : interactor.cancel()
+            progress > percentThreshold ? interactor.finish() : interactor.cancel()
         default:
             break
         }

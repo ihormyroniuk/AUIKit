@@ -165,6 +165,7 @@
 		C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360AC261669CE0012C419 /* IntroScreenController.swift */; };
 		C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360B2261669E00012C419 /* IntroScreenView.swift */; };
 		C565376E24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */; };
+		C566FF952665842500F81769 /* AUIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */; };
 		C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */; };
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */; };
@@ -389,6 +390,7 @@
 		C56360AC261669CE0012C419 /* IntroScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenController.swift; sourceTree = "<group>"; };
 		C56360B2261669E00012C419 /* IntroScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenView.swift; sourceTree = "<group>"; };
 		C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabelEvent.swift; sourceTree = "<group>"; };
+		C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextInputView.swift; sourceTree = "<group>"; };
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenView.swift; sourceTree = "<group>"; };
@@ -800,6 +802,7 @@
 		C53AEA4A2195AF690087F0A2 /* AUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C566FF93266583F000F81769 /* Transitioning */,
 				C567F90324C9C65C002DB6FD /* ApplicationMain */,
 				C548387422983C7F000254B0 /* Application */,
 				C54B11AD22B12554003EBBA0 /* Presentation */,
@@ -1155,6 +1158,14 @@
 			path = Stories;
 			sourceTree = "<group>";
 		};
+		C566FF93266583F000F81769 /* Transitioning */ = {
+			isa = PBXGroup;
+			children = (
+				C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */,
+			);
+			path = Transitioning;
+			sourceTree = "<group>";
+		};
 		C567E5C724D20742005EC4CA /* TextViewTextInputViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1448,6 +1459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */,
+				C566FF952665842500F81769 /* AUIViewControllerTransitioningDelegate.swift in Sources */,
 				C53E7C7B22187747006CB0D9 /* AUIEmptyTextViewTextInputViewController.swift in Sources */,
 				C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */,
 				3310353F23A13B8B000C4FFF /* UIFont+CGFont.swift in Sources */,
