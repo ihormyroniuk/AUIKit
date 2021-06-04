@@ -802,11 +802,11 @@
 		C53AEA4A2195AF690087F0A2 /* AUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				C566FF93266583F000F81769 /* Transitioning */,
 				C567F90324C9C65C002DB6FD /* ApplicationMain */,
 				C548387422983C7F000254B0 /* Application */,
 				C54B11AD22B12554003EBBA0 /* Presentation */,
 				C563738021EA5551008FAF87 /* Stories */,
+				C566FF93266583F000F81769 /* Transitioning */,
 				C525D88B2199989D0057E69F /* Screens */,
 				C53AEA532195B01C0087F0A2 /* Elements */,
 				33A708FA2358BCC50063DF41 /* Components */,
