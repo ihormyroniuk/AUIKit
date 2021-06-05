@@ -59,18 +59,12 @@ open class DismissAnimatedTransitioning : NSObject, UIViewControllerAnimatedTran
 
 open class AUIViewControllerTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate, PresentAnimatedTransitioningDelegate, DismissAnimatedTransitioningDelegate {
     
+    // MARK: UIViewControllerTransitioningDelegate
+    
     open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         let presentAnimatedTransitioning = PresentAnimatedTransitioning(presentedViewController: presented, presentingViewController: presenting, sourceViewController: source)
         presentAnimatedTransitioning.delegate = self
         return presentAnimatedTransitioning
-    }
-    
-    open func presentTransitionDuration(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0
-    }
-    
-    open func presentAnimateTransition(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
-        
     }
     
     open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -79,14 +73,6 @@ open class AUIViewControllerTransitioningDelegate: NSObject, UIViewControllerTra
         return dismissAnimatedTransitioning
     }
     
-    open func dismissTransitionDuration(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0
-    }
-    
-    open func dismissAnimateTransition(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
-        
-    }
-
     open func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return nil
     }
@@ -98,6 +84,26 @@ open class AUIViewControllerTransitioningDelegate: NSObject, UIViewControllerTra
 
     open func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return nil
+    }
+    
+    // MARK: PresentAnimatedTransitioningDelegate
+    
+    open func presentTransitionDuration(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0
+    }
+    
+    open func presentAnimateTransition(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
+        
+    }
+    
+    // MARK: DismissAnimatedTransitioningDelegate
+    
+    open func dismissTransitionDuration(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return 0
+    }
+    
+    open func dismissAnimateTransition(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
+        
     }
     
 }
