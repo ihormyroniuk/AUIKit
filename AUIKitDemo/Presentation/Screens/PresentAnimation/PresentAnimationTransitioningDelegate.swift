@@ -33,7 +33,7 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         presentedViewController = presented
         presentedViewController?.view.addGestureRecognizer(panGestureRecognizer)
-        panGestureRecognizer.addTarget(self, action: #selector(handleGesture))
+        panGestureRecognizer.addTarget(self, action: #selector(panGestureRecognizerAction))
         return super.animationController(forPresented: presented, presenting: presenting, source: source)
     }
     
@@ -101,20 +101,19 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     
     var hasStarted = false
     
-    @objc
-    func handleGesture(_ sender: UIPanGestureRecognizer) {
-        guard let view = presentedViewController?.view, let vc = presentedViewController else { return }
-        let percentThreshold:CGFloat = 0.3
-        let translation = sender.translation(in: view)
-        let verticalMovement = translation.y / view.bounds.height
+    @objc private func panGestureRecognizerAction(_ panGestureRecognizer: UIPanGestureRecognizer) {
+        guard let presentedViewController = presentedViewController, let presentedViewControllerView = presentedViewController.view else { return }
+        let percentThreshold: CGFloat = 0.3
+        let translation = panGestureRecognizer.translation(in: presentedViewControllerView)
+        let verticalMovement = translation.y / presentedViewControllerView.bounds.height
         let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
         let progress = CGFloat(downwardMovementPercent)
         print(progress)
-        switch sender.state {
+        switch panGestureRecognizer.state {
         case .began:
             hasStarted = true
-            vc.dismiss(animated: true, completion: nil)
+            presentedViewController.dismiss(animated: true, completion: nil)
         case .changed:
             interactor.update(progress)
         case .cancelled:
@@ -123,8 +122,36 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         case .ended:
             hasStarted = false
             progress > percentThreshold ? interactor.finish() : interactor.cancel()
-        default:
-            break
+        case .possible:
+            interactor.cancel()
+        case .failed:
+            interactor.cancel()
+        @unknown default:
+            interactor.cancel()
         }
+        
+//        guard let view = presentedViewController?.view, let vc = presentedViewController else { return }
+//        let percentThreshold: CGFloat = 0.3
+//        let translation = panGestureRecognizer.translation(in: view)
+//        let verticalMovement = translation.y / view.bounds.height
+//        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
+//        let downwardMovementPercent = fminf(downwardMovement, 1.0)
+//        let progress = CGFloat(downwardMovementPercent)
+//        print(progress)
+//        switch panGestureRecognizer.state {
+//        case .began:
+//            hasStarted = true
+//            vc.dismiss(animated: true, completion: nil)
+//        case .changed:
+//            interactor.update(progress)
+//        case .cancelled:
+//            hasStarted = false
+//            interactor.cancel()
+//        case .ended:
+//            hasStarted = false
+//            progress > percentThreshold ? interactor.finish() : interactor.cancel()
+//        default:
+//            break
+//        }
     }
 }
