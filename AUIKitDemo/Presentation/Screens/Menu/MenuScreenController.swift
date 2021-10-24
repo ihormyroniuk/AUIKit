@@ -15,6 +15,7 @@ protocol MenuScreenControllerDelegate: AnyObject {
     func menuScreenControllerDisplayTextFieldTextInputViewScreen(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController)
     func menuScreenControllerDisplayPushAnimations(_ menuScreenController: MenuScreenController)
+    func menuScreenControllerDisplayStringsdict(_ menuScreenController: MenuScreenController)
 }
 
 class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -33,6 +34,7 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
         case textFieldTextInputView
         case presentAnimations
         case pushAnimations
+        case stringsdict
     }
     
     // MARK: View
@@ -72,6 +74,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
             delegate?.menuScreenControllerDisplayPresentAnimations(self)
         case .pushAnimations:
             delegate?.menuScreenControllerDisplayPushAnimations(self)
+        case .stringsdict:
+            delegate?.menuScreenControllerDisplayStringsdict(self)
         }
     }
     
@@ -97,6 +101,8 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
             return "Present Animations"
         case .pushAnimations:
             return "Push Animations"
+        case .stringsdict:
+            return "Stringsdict"
         }
     }
     

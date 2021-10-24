@@ -8,7 +8,7 @@
 import UIKit
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroScreenControllerDelegate, InteractiveLabelsScreenControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroScreenControllerDelegate, InteractiveLabelsScreenControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate {
     
     // MARK: Setup
     
@@ -85,11 +85,11 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
         return PresentAnimationTransitioningDelegate(window: window)
     }()
     func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController) {
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
-        vc.transitioningDelegate = transitioning
-        vc.modalPresentationStyle = .overCurrentContext
-        mainNavigationController?.present(vc, animated: true, completion: nil)
+        let screenView = PresentAnimationScreenView()
+        let screenController = PresentAnimationScreenViewController(view: screenView)
+        screenController.transitioningDelegate = transitioning
+        screenController.modalPresentationStyle = .overCurrentContext
+        mainNavigationController?.present(screenController, animated: true, completion: nil)
     }
     
     func menuScreenControllerDisplayPushAnimations(_ menuScreenController: MenuScreenController) {
@@ -97,6 +97,14 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
         vc.view.backgroundColor = .green
         mainNavigationController?.addCustomTransitioning()
         mainNavigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func menuScreenControllerDisplayStringsdict(_ menuScreenController: MenuScreenController) {
+        let screenView = StringsdictScreenView()
+        let screenController = StringsdictScreenViewController(view: screenView)
+        screenController.delegate = self
+        stringsdictScreenViewController = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     // MARK: Intro Screen
@@ -136,6 +144,14 @@ class Presentation: AUIWindowPresentation, MenuScreenControllerDelegate, IntroSc
     private weak var textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController?
     
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: Stringsdict Screen
+    
+    private weak var stringsdictScreenViewController: StringsdictScreenViewController?
+    
+    func stringsdictScreenViewControllerBack(_ stringsdictScreenViewController: StringsdictScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

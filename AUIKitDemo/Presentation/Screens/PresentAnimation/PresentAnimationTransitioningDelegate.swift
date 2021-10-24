@@ -42,25 +42,22 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     }
     
     override func presentAnimateTransition(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
-        guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
-        let screenHeightCoefficient: CGFloat = 0.85
+        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+        guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
+        transitionContext.containerView.insertSubview(backgroundView, aboveSubview: fromViewController.view)
         backgroundView.frame = window.bounds
         backgroundView.alpha = 0
-        fromVC.view.frame = window.bounds
-        transitionContext.containerView.insertSubview(backgroundView, aboveSubview: fromVC.view)
-        transitionContext.containerView.insertSubview(toVC.view, aboveSubview: fromVC.view)
-        var screenBounds = window.bounds
-        toVC.view.frame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
-        screenBounds.size.height = window.bounds.height * screenHeightCoefficient
-        let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height * (1 - screenHeightCoefficient))
-        let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
-        UIView.animate(withDuration: transitionDuration, animations: {
-            toVC.view.frame = finalFrame
+        transitionContext.containerView.insertSubview(toViewController.view, aboveSubview: backgroundView)
+        let toViewControllerInitialFrame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
+        let toViewControllerViewSizeThatFits = toViewController.view.sizeThatFits(window.bounds.size)
+        toViewController.view.frame = toViewControllerInitialFrame
+        let toViewControllerViewOrigin = CGPoint(x: 0, y: window.bounds.height - toViewControllerViewSizeThatFits.height)
+        let toViewControllerFinalFrame = CGRect(origin: toViewControllerViewOrigin, size: toViewControllerViewSizeThatFits)
+        UIView.animate(withDuration: transitionDuration, animations: { [weak self] in
+            guard let self = self else { return }
+            toViewController.view.frame = toViewControllerFinalFrame
             self.backgroundView.alpha = 1
-            fromVC.view.frame = self.window.bounds
         }, completion: { _ in
-            fromVC.view.frame = self.window.bounds
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }
@@ -70,24 +67,15 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     }
     
     override func dismissAnimateTransition(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
-        guard let toVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
-        let screenHeightCoefficient: CGFloat = 0.85
-        backgroundView.frame = window.bounds
-        backgroundView.alpha = 1
-        var screenBounds = window.bounds
-        screenBounds.size.height = window.bounds.height * screenHeightCoefficient
-        let bottomLeftCorner = CGPoint(x: 0, y: window.bounds.height)
-        let finalFrame = CGRect(origin: bottomLeftCorner, size: screenBounds.size)
+        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
+        let fromViewControllerFinalFrame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
         UIView.animate(withDuration: transitionDuration, animations: {
-            fromVC.view.frame = finalFrame
+            fromViewController.view.frame = fromViewControllerFinalFrame
             self.backgroundView.alpha = 0
-            toVC.view.frame = self.window.bounds
         }, completion: { _ in
             if transitionContext.transitionWasCancelled {
                 transitionContext.completeTransition(false)
             } else {
-                self.backgroundView.removeFromSuperview()
                 transitionContext.completeTransition(true)
             }
         })
@@ -122,6 +110,7 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
         let progress = CGFloat(downwardMovementPercent)
+        print(progress)
         switch sender.state {
         case .began:
             hasStarted = true
