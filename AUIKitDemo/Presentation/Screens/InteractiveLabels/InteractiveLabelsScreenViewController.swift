@@ -8,15 +8,15 @@
 import UIKit
 import AUIKit
 
-protocol InteractiveLabelsScreenControllerDelegate: AnyObject {
-    func interactiveLabelScreenControllerBack(_ interactiveLabelScreenController: InteractiveLabelsScreenController)
+protocol InteractiveLabelsScreenViewControllerDelegate: AnyObject {
+    func interactiveLabelScreenViewControllerBack(_ interactiveLabelScreenViewController: InteractiveLabelsScreenViewController)
 }
 
-class InteractiveLabelsScreenController: AUIEmptyScreenController {
+class InteractiveLabelsScreenViewController: AUIEmptyScreenController {
     
     // MARK: Delegate
     
-    weak var delegate: InteractiveLabelsScreenControllerDelegate?
+    weak var delegate: InteractiveLabelsScreenViewControllerDelegate?
     
     // MARK: View
     
@@ -36,13 +36,13 @@ class InteractiveLabelsScreenController: AUIEmptyScreenController {
     // MARK: Actions
     
     @objc private func back() {
-        delegate?.interactiveLabelScreenControllerBack(self)
+        delegate?.interactiveLabelScreenViewControllerBack(self)
     }
     
     // MARK: Events
     
     @objc private func interactiveLabelTouchUpInsideEventAction(_ interactiveLabel: AUIInteractiveLabel, _ key: AUIInteractiveLabelEvent) {
-        print(key)
+        print(key.interaction)
     }
     
     // MARK: Content

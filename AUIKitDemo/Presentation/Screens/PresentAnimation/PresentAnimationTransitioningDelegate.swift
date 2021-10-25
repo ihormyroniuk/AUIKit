@@ -12,22 +12,17 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     private let window: UIWindow
     private let backgroundView = UIView()
     private let transitionDuration: TimeInterval = 0.6
+    private let backgroundViewTapGestureRecognizer = UITapGestureRecognizer()
+    private let panGestureRecognizer = UIPanGestureRecognizer()
+    private var panGestureRecognizerBeganLocation: CGPoint?
+    private weak var presentedViewController: UIViewController?
 
     init(window: UIWindow) {
         self.window = window
         super.init()
         backgroundView.addGestureRecognizer(backgroundViewTapGestureRecognizer)
         backgroundViewTapGestureRecognizer.addTarget(self, action: #selector(tapAction))
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-    }
-    
-    private let backgroundViewTapGestureRecognizer = UITapGestureRecognizer()
-    private let panGestureRecognizer = UIPanGestureRecognizer()
-    
-    private weak var presentedViewController: UIViewController?
-    
-    @objc func tapAction() {
-        presentedViewController?.dismiss(animated: true, completion: nil)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
     override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -68,7 +63,7 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     
     override func dismissAnimateTransition(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
-        let fromViewControllerFinalFrame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
+        let fromViewControllerFinalFrame = CGRect(x: 0, y: window.bounds.height, width: fromViewController.view.bounds.width, height: fromViewController.view.bounds.height)
         UIView.animate(withDuration: transitionDuration, animations: {
             fromViewController.view.frame = fromViewControllerFinalFrame
             self.backgroundView.alpha = 0
@@ -92,66 +87,43 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
 
     
     override func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        return hasStarted ? interactor : nil
+        return panGestureRecognizerBeganLocation != nil ? interactor : nil
     }
 
     override func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return nil
     }
     
-    var hasStarted = false
+    // MARK: Events
+    
+    @objc func tapAction() {
+        presentedViewController?.dismiss(animated: true, completion: nil)
+    }
     
     @objc private func panGestureRecognizerAction(_ panGestureRecognizer: UIPanGestureRecognizer) {
         guard let presentedViewController = presentedViewController, let presentedViewControllerView = presentedViewController.view else { return }
-        let percentThreshold: CGFloat = 0.3
-        let translation = panGestureRecognizer.translation(in: presentedViewControllerView)
-        let verticalMovement = translation.y / presentedViewControllerView.bounds.height
-        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
-        let downwardMovementPercent = fminf(downwardMovement, 1.0)
-        let progress = CGFloat(downwardMovementPercent)
-        print(progress)
         switch panGestureRecognizer.state {
         case .began:
-            hasStarted = true
+            panGestureRecognizerBeganLocation = panGestureRecognizer.location(in: window)
             presentedViewController.dismiss(animated: true, completion: nil)
         case .changed:
+            guard let panGestureRecognizerBeganLocation = panGestureRecognizerBeganLocation else { return }
+            let panGestureRecognizerLocation = panGestureRecognizer.location(in: window)
+            let progress = (panGestureRecognizerLocation.y - panGestureRecognizerBeganLocation.y) / presentedViewControllerView.bounds.height
             interactor.update(progress)
         case .cancelled:
-            hasStarted = false
+            panGestureRecognizerBeganLocation = nil
             interactor.cancel()
         case .ended:
-            hasStarted = false
-            progress > percentThreshold ? interactor.finish() : interactor.cancel()
-        case .possible:
+            guard let panGestureRecognizerBeganLocation = panGestureRecognizerBeganLocation else { return }
+            let panGestureRecognizerLocation = panGestureRecognizer.location(in: window)
+            let progress = (panGestureRecognizerLocation.y - panGestureRecognizerBeganLocation.y) / presentedViewControllerView.bounds.height
+            progress > 0.3 ? interactor.finish() : interactor.cancel()
+            self.panGestureRecognizerBeganLocation = nil
+        default:
             interactor.cancel()
-        case .failed:
-            interactor.cancel()
-        @unknown default:
-            interactor.cancel()
+            self.panGestureRecognizerBeganLocation = nil
+            break
         }
-        
-//        guard let view = presentedViewController?.view, let vc = presentedViewController else { return }
-//        let percentThreshold: CGFloat = 0.3
-//        let translation = panGestureRecognizer.translation(in: view)
-//        let verticalMovement = translation.y / view.bounds.height
-//        let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
-//        let downwardMovementPercent = fminf(downwardMovement, 1.0)
-//        let progress = CGFloat(downwardMovementPercent)
-//        print(progress)
-//        switch panGestureRecognizer.state {
-//        case .began:
-//            hasStarted = true
-//            vc.dismiss(animated: true, completion: nil)
-//        case .changed:
-//            interactor.update(progress)
-//        case .cancelled:
-//            hasStarted = false
-//            interactor.cancel()
-//        case .ended:
-//            hasStarted = false
-//            progress > percentThreshold ? interactor.finish() : interactor.cancel()
-//        default:
-//            break
-//        }
     }
 }

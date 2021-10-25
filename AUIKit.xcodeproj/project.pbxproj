@@ -144,7 +144,7 @@
 		C54C730422C3B5260070AAC8 /* AUIWindowPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */; };
 		C54C730D22C3CE580070AAC8 /* AUIStatusBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */; };
 		C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEAF24E0538300A8A51E /* MenuScreenView.swift */; };
-		C54EAEB224E0539200A8A51E /* MenuScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB124E0539200A8A51E /* MenuScreenController.swift */; };
+		C54EAEB224E0539200A8A51E /* MenuScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB124E0539200A8A51E /* MenuScreenViewController.swift */; };
 		C54EAEB424E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54EAEB324E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift */; };
 		C54F9A8224DBFEE00082C5A4 /* AUIControlUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9A8124DBFEE00082C5A4 /* AUIControlUnitTesting.swift */; };
 		C54F9A8424DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54F9A8324DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift */; };
@@ -165,14 +165,14 @@
 		C55EFF81224538980086A8CA /* AUIEmptySwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */; };
 		C5618C4224D9DEAA006F1847 /* AUIStatusBarScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenController.swift */; };
 		C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */; };
-		C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360AC261669CE0012C419 /* IntroScreenController.swift */; };
+		C56360AD261669CE0012C419 /* IntroScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360AC261669CE0012C419 /* IntroScreenViewController.swift */; };
 		C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360B2261669E00012C419 /* IntroScreenView.swift */; };
 		C565376E24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */; };
 		C566FF952665842500F81769 /* AUIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */; };
 		C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */; };
 		C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FB24C9C56A002DB6FD /* Presentation.swift */; };
 		C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */; };
-		C567F90124C9C575002DB6FD /* InteractiveLabelsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenController.swift */; };
+		C567F90124C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift */; };
 		C56B60EA25C0967B00D27732 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60E925C0967B00D27732 /* TransitionAnimator.swift */; };
 		C56B60F025C09B6F00D27732 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */; };
 		C57F0F7B24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */; };
@@ -374,7 +374,7 @@
 		C54C730322C3B5260070AAC8 /* AUIWindowPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentation.swift; sourceTree = "<group>"; };
 		C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIStatusBarScreenView.swift; sourceTree = "<group>"; };
 		C54EAEAF24E0538300A8A51E /* MenuScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenView.swift; sourceTree = "<group>"; };
-		C54EAEB124E0539200A8A51E /* MenuScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenController.swift; sourceTree = "<group>"; };
+		C54EAEB124E0539200A8A51E /* MenuScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScreenViewController.swift; sourceTree = "<group>"; };
 		C54EAEB324E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonTitleLabelScreenView.swift; sourceTree = "<group>"; };
 		C54F9A8124DBFEE00082C5A4 /* AUIControlUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIControlUnitTesting.swift; sourceTree = "<group>"; };
 		C54F9A8324DBFF6D0082C5A4 /* AUIEmptyControlControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyControlControllerUnitTesting.swift; sourceTree = "<group>"; };
@@ -395,14 +395,14 @@
 		C55EFF80224538980086A8CA /* AUIEmptySwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptySwitchController.swift; sourceTree = "<group>"; };
 		C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIStatusBarScreenController.swift; sourceTree = "<group>"; };
 		C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldTextInputView.swift; sourceTree = "<group>"; };
-		C56360AC261669CE0012C419 /* IntroScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenController.swift; sourceTree = "<group>"; };
+		C56360AC261669CE0012C419 /* IntroScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenViewController.swift; sourceTree = "<group>"; };
 		C56360B2261669E00012C419 /* IntroScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroScreenView.swift; sourceTree = "<group>"; };
 		C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabelEvent.swift; sourceTree = "<group>"; };
 		C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C567E5C824D20761005EC4CA /* TextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTextInputView.swift; sourceTree = "<group>"; };
 		C567F8FB24C9C56A002DB6FD /* Presentation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
 		C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenView.swift; sourceTree = "<group>"; };
-		C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenController.swift; sourceTree = "<group>"; };
+		C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenViewController.swift; sourceTree = "<group>"; };
 		C56B60E925C0967B00D27732 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
 		C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyViewControllerUnitTesting.swift; sourceTree = "<group>"; };
@@ -1054,7 +1054,7 @@
 		C54EAEAE24E0536900A8A51E /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C54EAEB124E0539200A8A51E /* MenuScreenController.swift */,
+				C54EAEB124E0539200A8A51E /* MenuScreenViewController.swift */,
 				C54EAEAF24E0538300A8A51E /* MenuScreenView.swift */,
 			);
 			path = Menu;
@@ -1156,7 +1156,7 @@
 		C56360AB261669860012C419 /* Intro */ = {
 			isa = PBXGroup;
 			children = (
-				C56360AC261669CE0012C419 /* IntroScreenController.swift */,
+				C56360AC261669CE0012C419 /* IntroScreenViewController.swift */,
 				C56360B2261669E00012C419 /* IntroScreenView.swift */,
 			);
 			path = Intro;
@@ -1190,7 +1190,7 @@
 		C567F8FD24C9C575002DB6FD /* InteractiveLabels */ = {
 			isa = PBXGroup;
 			children = (
-				C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenController.swift */,
+				C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift */,
 				C567F8FE24C9C575002DB6FD /* InteractiveLabelsScreenView.swift */,
 			);
 			path = InteractiveLabels;
@@ -1642,7 +1642,7 @@
 				C54EAEB424E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift in Sources */,
 				C56360B3261669E00012C419 /* IntroScreenView.swift in Sources */,
 				C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */,
-				C567F90124C9C575002DB6FD /* InteractiveLabelsScreenController.swift in Sources */,
+				C567F90124C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift in Sources */,
 				C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */,
 				C541D53F24C4E31A0036FC7A /* Application.swift in Sources */,
 				C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */,
@@ -1655,11 +1655,11 @@
 				C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
-				C56360AD261669CE0012C419 /* IntroScreenController.swift in Sources */,
+				C56360AD261669CE0012C419 /* IntroScreenViewController.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
 				C5319BA82725FCA1002C3B74 /* PresentAnimationScreenViewController.swift in Sources */,
 				C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */,
-				C54EAEB224E0539200A8A51E /* MenuScreenController.swift in Sources */,
+				C54EAEB224E0539200A8A51E /* MenuScreenViewController.swift in Sources */,
 				C557C70E24CA1F7F004801AC /* LabelsScreenView.swift in Sources */,
 				C56B60EA25C0967B00D27732 /* TransitionAnimator.swift in Sources */,
 			);

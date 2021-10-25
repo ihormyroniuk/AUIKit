@@ -8,15 +8,15 @@
 import UIKit
 import AUIKit
 
-protocol IntroScreenControllerDelegate: AnyObject {
-    func introScreenControllerBack(_ introScreenController: IntroScreenController)
+protocol IntroScreenViewControllerDelegate: AnyObject {
+    func introScreenViewControllerBack(_ introScreenViewController: IntroScreenViewController)
 }
 
-class IntroScreenController: AUIEmptyScreenController, AUIPagesViewControllerDidTransitToPageObserver {
+class IntroScreenViewController: AUIEmptyScreenController, AUIPagesViewControllerDidTransitToPageObserver {
     
     // MARK: Delegate
     
-    weak var delegate: IntroScreenControllerDelegate?
+    weak var delegate: IntroScreenViewControllerDelegate?
     
     // MARK: View
     
@@ -66,7 +66,7 @@ class IntroScreenController: AUIEmptyScreenController, AUIPagesViewControllerDid
     // MARK: Actions
     
     @objc private func back() {
-        delegate?.introScreenControllerBack(self)
+        delegate?.introScreenViewControllerBack(self)
     }
     
     // MARK: AUIPagesViewControllerDidTransitToPageObserver

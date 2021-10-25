@@ -47,7 +47,7 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Setters
     
-    func setInteractiveLabelText(agree: String, termsAndConditions: (String, String)) {
+    func setInteractiveLabelText(agree: String, termsAndConditions: (String, Any)) {
         let termsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
              .foregroundColor: UIColor.blue,

@@ -7,22 +7,22 @@
 import UIKit
 import AUIKit
 
-protocol MenuScreenControllerDelegate: AnyObject {
-    func menuScreenControllerDisplayIntroScreen(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayLabelsScreen(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayInteractiveLabelsScreen(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplaySignupScreen(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayTextFieldTextInputViewScreen(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayPushAnimations(_ menuScreenController: MenuScreenController)
-    func menuScreenControllerDisplayStringsdict(_ menuScreenController: MenuScreenController)
+protocol MenuScreenViewControllerDelegate: AnyObject {
+    func menuScreenViewControllerDisplayIntroScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayLabelsScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayInteractiveLabelsScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplaySignupScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayTextFieldTextInputViewScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayPushAnimations(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayStringsdict(_ menuScreenViewController: MenuScreenViewController)
 }
 
-class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MenuScreenViewController: AUIEmptyScreenController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: Delegate
     
-    weak var delegate: MenuScreenControllerDelegate?
+    weak var delegate: MenuScreenViewControllerDelegate?
     
     // MARK: Data
     
@@ -61,21 +61,21 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
     private func displayItem(_ item: Item) {
         switch item {
         case .intro:
-            delegate?.menuScreenControllerDisplayIntroScreen(self)
+            delegate?.menuScreenViewControllerDisplayIntroScreen(self)
         case .labels:
-            delegate?.menuScreenControllerDisplayLabelsScreen(self)
+            delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
         case .interactiveLabels:
-            delegate?.menuScreenControllerDisplayInteractiveLabelsScreen(self)
+            delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
         case .signup:
-            delegate?.menuScreenControllerDisplaySignupScreen(self)
+            delegate?.menuScreenViewControllerDisplaySignupScreen(self)
         case .textFieldTextInputView:
-            delegate?.menuScreenControllerDisplayTextFieldTextInputViewScreen(self)
+            delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
         case .presentAnimations:
-            delegate?.menuScreenControllerDisplayPresentAnimations(self)
+            delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
         case .pushAnimations:
-            delegate?.menuScreenControllerDisplayPushAnimations(self)
+            delegate?.menuScreenViewControllerDisplayPushAnimations(self)
         case .stringsdict:
-            delegate?.menuScreenControllerDisplayStringsdict(self)
+            delegate?.menuScreenViewControllerDisplayStringsdict(self)
         }
     }
     
@@ -98,9 +98,9 @@ class MenuScreenController: AUIEmptyScreenController, UICollectionViewDataSource
         case .textFieldTextInputView:
             return "Text Field Text Input View"
         case .presentAnimations:
-            return "Present Animations"
+            return "PresentAnimation"
         case .pushAnimations:
-            return "Push Animations"
+            return "PushAnimation"
         case .stringsdict:
             return "Stringsdict"
         }
