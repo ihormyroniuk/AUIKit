@@ -11,7 +11,7 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     
     private let window: UIWindow
     private let backgroundView = UIView()
-    private let transitionDuration: TimeInterval = 0.6
+    private let transitionDuration: TimeInterval = 0.3
     private let backgroundViewTapGestureRecognizer = UITapGestureRecognizer()
     private let panGestureRecognizer = UIPanGestureRecognizer()
     private var panGestureRecognizerBeganLocation: CGPoint?
@@ -44,7 +44,10 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         backgroundView.alpha = 0
         transitionContext.containerView.insertSubview(toViewController.view, aboveSubview: backgroundView)
         let toViewControllerInitialFrame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
-        let toViewControllerViewSizeThatFits = toViewController.view.sizeThatFits(window.bounds.size)
+        var toViewControllerViewSizeThatFits = toViewController.view.sizeThatFits(window.bounds.size)
+        if #available(iOS 11.0, *) {
+            toViewControllerViewSizeThatFits.height += window.safeAreaInsets.bottom
+        }
         toViewController.view.frame = toViewControllerInitialFrame
         let toViewControllerViewOrigin = CGPoint(x: 0, y: window.bounds.height - toViewControllerViewSizeThatFits.height)
         let toViewControllerFinalFrame = CGRect(origin: toViewControllerViewOrigin, size: toViewControllerViewSizeThatFits)
@@ -118,7 +121,11 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
             guard let panGestureRecognizerBeganLocation = panGestureRecognizerBeganLocation else { return }
             let panGestureRecognizerLocation = panGestureRecognizer.location(in: window)
             let progress = (panGestureRecognizerLocation.y - panGestureRecognizerBeganLocation.y) / presentedViewControllerView.bounds.height
-            progress > 0.3 ? interactor.finish() : interactor.cancel()
+            if progress > 0.3 {
+                interactor.finish()
+            } else {
+                interactor.cancel()
+            }
             self.panGestureRecognizerBeganLocation = nil
         default:
             interactor.cancel()
