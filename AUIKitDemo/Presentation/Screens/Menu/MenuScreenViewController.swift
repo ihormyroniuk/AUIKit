@@ -4,7 +4,6 @@
 //
 //  Created by Ihor Myroniuk on 09.08.2020.
 //
-import UIKit
 import AUIKit
 
 protocol MenuScreenViewControllerDelegate: AnyObject {
@@ -18,7 +17,7 @@ protocol MenuScreenViewControllerDelegate: AnyObject {
     func menuScreenViewControllerDisplayStringsdict(_ menuScreenViewController: MenuScreenViewController)
 }
 
-class MenuScreenViewController: AUIEmptyScreenController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: Delegate
     
@@ -39,18 +38,22 @@ class MenuScreenViewController: AUIEmptyScreenController, UICollectionViewDataSo
     
     // MARK: View
     
+    override func loadView() {
+        view = MenuScreenView()
+    }
+    
     private var menuScreenView: MenuScreenView! {
         return view as? MenuScreenView
     }
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupCollectionView()
         setContent()
     }
-    
+
     private func setupCollectionView() {
         menuScreenView.collectionView.dataSource = self
         menuScreenView.collectionView.delegate = self

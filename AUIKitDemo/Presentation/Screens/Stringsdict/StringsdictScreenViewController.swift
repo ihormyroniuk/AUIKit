@@ -20,6 +20,10 @@ class StringsdictScreenViewController: AUIEmptyScreenController {
     
     // MARK: View
     
+    override func loadView() {
+        view = StringsdictScreenView()
+    }
+    
     private var stringsdictScreenView: StringsdictScreenView! {
         return view as? StringsdictScreenView
     }

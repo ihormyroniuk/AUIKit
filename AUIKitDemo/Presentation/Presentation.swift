@@ -5,33 +5,24 @@
 //  Created by Ihor Myroniuk on 21.07.2020.
 //
 
-import UIKit
 import AUIKit
 
 class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, IntroScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate {
     
-    // MARK: Setup
-    
-    public override func setup() {
-        super.setup()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
-    }
-    
     // MARK: Display
     
     func display() {
-            let screenView = MenuScreenView()
-            let screenController = MenuScreenViewController(view: screenView)
-            screenController.delegate = self
+        let screenController = MenuScreenViewController()
+        screenController.delegate = self
+        menuScreenController = screenController
             
-            let navigationController = AUINavigationController()
-            navigationController.viewControllers = [screenController]
+        let navigationController = AUINavigationController()
+        navigationController.viewControllers = [screenController]
+        mainNavigationController = navigationController
         
-            mainNavigationController = navigationController
-            menuScreenController = screenController
-            window.rootViewController = mainNavigationController
-            window.makeKeyAndVisible()
-        }
+        window.rootViewController = mainNavigationController
+        window.makeKeyAndVisible()
+    }
     
     // MARK: Main Navigation Controller
     
@@ -42,40 +33,35 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
     private weak var menuScreenController: MenuScreenViewController?
     
     func menuScreenViewControllerDisplayIntroScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenView = IntroScreenView()
-        let screenController = IntroScreenViewController(view: screenView)
+        let screenController = IntroScreenViewController()
         screenController.delegate = self
         introScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     func menuScreenViewControllerDisplayLabelsScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenView = LabelsScreenView()
-        let screenController = LabelsScreenController(view: screenView)
+        let screenController = LabelsScreenController()
         screenController.delegate = self
         labelsScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     func menuScreenViewControllerDisplayInteractiveLabelsScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenView = InteractiveLabelsScreenView()
-        let screenController = InteractiveLabelsScreenViewController(view: screenView)
+        let screenController = InteractiveLabelsScreenViewController()
         screenController.delegate = self
         interactiveLabelScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     func menuScreenViewControllerDisplaySignupScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenView = SignupScreenView()
-        let screenController = SignupScreenController(view: screenView)
+        let screenController = SignupScreenController()
         screenController.delegate = self
         signupScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
     func menuScreenViewControllerDisplayTextFieldTextInputViewScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenView = TextFieldTextInputViewScreenView()
-        let screenController = TextFieldTextInputViewScreenController(view: screenView)
+        let screenController = TextFieldTextInputViewScreenController()
         screenController.delegate = self
         textFieldTextInputViewScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
@@ -85,8 +71,7 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
         return PresentAnimationTransitioningDelegate(window: window)
     }()
     func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenViewController) {
-        let screenView = PresentAnimationScreenView()
-        let screenController = PresentAnimationScreenViewController(view: screenView)
+        let screenController = PresentAnimationScreenViewController()
         screenController.transitioningDelegate = transitioning
         screenController.modalPresentationStyle = .overCurrentContext
         mainNavigationController?.present(screenController, animated: true, completion: nil)
@@ -153,16 +138,6 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
     
     func stringsdictScreenViewControllerBack(_ stringsdictScreenViewController: StringsdictScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: Keyboard
-    
-    @objc private func keyboardWillChangeFrame(notification: NSNotification) {
-        let height = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.origin.y
-        guard let view = window.rootViewController?.view else { return }
-        view.frame.size.height = height
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
     }
     
 }

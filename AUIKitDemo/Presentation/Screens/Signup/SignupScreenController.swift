@@ -12,13 +12,17 @@ protocol SignupScreenControllerDelegate: AnyObject {
     func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
 }
 
-class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
+class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
     
     // MARK: Delegate
     
     weak var delegate: SignupScreenControllerDelegate?
     
     // MARK: View
+    
+    override func loadView() {
+        view = SignupScreenView()
+    }
     
     private var signupScreenView: SignupScreenView! {
         return view as? SignupScreenView
@@ -41,8 +45,8 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         signupScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupTapGestureRecognizer()
         setupUsernameTextInputController()
@@ -55,6 +59,7 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         setupSignUpButton()
         setContent()
         securePassword()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object:nil)
     }
     
     private func setupTapGestureRecognizer() {
@@ -196,6 +201,14 @@ class SignupScreenController: AUIEmptyScreenController, AUITextFieldControllerDi
         print("Username: \(String(describing: username))")
         print("Email: \(String(describing: email))")
         print("Password: \(String(describing: password))")
+    }
+    
+    @objc private func keyboardWillChangeFrame(notification: NSNotification) {
+        guard let height = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.origin.y else { return }
+        guard let view = view else { return }
+        view.frame.size.height = height
+        view.setNeedsLayout()
+        view.layoutIfNeeded()
     }
     
     // MARK: Content

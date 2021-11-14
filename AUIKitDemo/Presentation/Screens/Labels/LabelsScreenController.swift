@@ -5,14 +5,13 @@
 //  Created by Ihor Myroniuk on 23.07.2020.
 //
 
-import UIKit
 import AUIKit
 
 protocol LabelsScreenControllerDelegate: AnyObject {
     func labelsScreenControllerBack(_ labelsScreenController: LabelsScreenController)
 }
 
-class LabelsScreenController: AUIEmptyScreenController {
+class LabelsScreenController: UIViewController {
     
     // MARK: Delegate
     
@@ -20,14 +19,18 @@ class LabelsScreenController: AUIEmptyScreenController {
     
     // MARK: View
     
+    override func loadView() {
+        view = LabelsScreenView()
+    }
+    
     private var labelsScreenView: LabelsScreenView! {
         return view as? LabelsScreenView
     }
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         labelsScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
     }

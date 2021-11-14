@@ -12,13 +12,17 @@ protocol TextFieldTextInputViewScreenControllerDelegate: AnyObject {
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController)
 }
 
-class TextFieldTextInputViewScreenController: AUIEmptyScreenController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
+class TextFieldTextInputViewScreenController: UIViewController, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidBeginEditingObserver {
     
     // MARK: Delegate
     
     weak var delegate: TextFieldTextInputViewScreenControllerDelegate?
     
     // MARK: View
+    
+    override func loadView() {
+        view = TextFieldTextInputViewScreenView()
+    }
     
     private var textInputViewTextFieldScreenView: TextFieldTextInputViewScreenView! {
         return view as? TextFieldTextInputViewScreenView
@@ -37,8 +41,8 @@ class TextFieldTextInputViewScreenController: AUIEmptyScreenController, AUIContr
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         textInputViewTextFieldScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
         setupStringTextFieldTextInputView()

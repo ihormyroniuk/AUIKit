@@ -5,7 +5,6 @@
 //  Created by Ihor Myroniuk on 19.07.2020.
 //
 
-import UIKit
 import AUIKit
 
 class Application: AUIEmptyApplication {

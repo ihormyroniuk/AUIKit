@@ -5,20 +5,23 @@
 //  Created by Ihor Myroniuk on 01.04.2021.
 //
 
-import UIKit
 import AUIKit
 
 protocol IntroScreenViewControllerDelegate: AnyObject {
     func introScreenViewControllerBack(_ introScreenViewController: IntroScreenViewController)
 }
 
-class IntroScreenViewController: AUIEmptyScreenController, AUIPagesViewControllerDidTransitToPageObserver {
+class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTransitToPageObserver {
     
     // MARK: Delegate
     
     weak var delegate: IntroScreenViewControllerDelegate?
     
     // MARK: View
+    
+    override func loadView() {
+        view = IntroScreenView()
+    }
     
     private var introScreenView: IntroScreenView! {
         return view as? IntroScreenView
@@ -30,8 +33,8 @@ class IntroScreenViewController: AUIEmptyScreenController, AUIPagesViewControlle
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         introScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupPagesViewController()
     }

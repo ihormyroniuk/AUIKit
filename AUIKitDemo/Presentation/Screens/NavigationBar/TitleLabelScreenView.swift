@@ -5,7 +5,6 @@
 //  Created by Ihor Myroniuk on 05.08.2020.
 //
 
-import UIKit
 import AUIKit
 
 class TitleLabelScreenView: NavigationBarScreenView {

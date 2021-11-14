@@ -12,7 +12,7 @@ protocol InteractiveLabelsScreenViewControllerDelegate: AnyObject {
     func interactiveLabelScreenViewControllerBack(_ interactiveLabelScreenViewController: InteractiveLabelsScreenViewController)
 }
 
-class InteractiveLabelsScreenViewController: AUIEmptyScreenController {
+class InteractiveLabelsScreenViewController: UIViewController {
     
     // MARK: Delegate
     
@@ -20,19 +20,23 @@ class InteractiveLabelsScreenViewController: AUIEmptyScreenController {
     
     // MARK: View
     
+    override func loadView() {
+        view = InteractiveLabelsScreenView()
+    }
+    
     private var interactiveLabelScreenView: InteractiveLabelsScreenView! {
         return view as? InteractiveLabelsScreenView
     }
     
     // MARK: Setup
     
-    override func setup() {
-        super.setup()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         interactiveLabelScreenView.interactiveLabel.addTarget(self, action: #selector(interactiveLabelTouchUpInsideEventAction(_:_:)), for: .touchUpInside)
         interactiveLabelScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
     }
-
+    
     // MARK: Actions
     
     @objc private func back() {

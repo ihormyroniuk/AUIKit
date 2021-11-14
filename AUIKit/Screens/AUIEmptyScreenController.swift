@@ -12,7 +12,6 @@ open class AUIEmptyScreenController: UIViewController {
     // MARK: Initializers
   
     public init(view: UIView) {
-        screenView = view
         super.init(nibName: nil, bundle: nil)
         setup()
     }
@@ -28,12 +27,6 @@ open class AUIEmptyScreenController: UIViewController {
     
     }
   
-    // MARK: Life Cycle
-  
-    private let screenView: UIView
-    open override func loadView() {
-        self.view = screenView
-    }
   
 }
 
