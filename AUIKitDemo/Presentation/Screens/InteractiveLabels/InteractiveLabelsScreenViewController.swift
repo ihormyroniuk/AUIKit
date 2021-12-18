@@ -12,7 +12,7 @@ protocol InteractiveLabelsScreenViewControllerDelegate: AnyObject {
     func interactiveLabelScreenViewControllerBack(_ interactiveLabelScreenViewController: InteractiveLabelsScreenViewController)
 }
 
-class InteractiveLabelsScreenViewController: UIViewController {
+class InteractiveLabelsScreenViewController: UIViewController, UITextViewDelegate {
     
     // MARK: Delegate
     
@@ -60,6 +60,13 @@ class InteractiveLabelsScreenViewController: UIViewController {
         let interactiveText = "Terms & Conditions"
         let text = String(format: "By creating an account, I agree to the %@ and to receive email offers at the email address I provided.", interactiveText)
         interactiveLabelScreenView.setInteractiveLabelText(agree: text, termsAndConditions: (interactiveText, "ffff"))
+        interactiveLabelScreenView.setTextViewText(agree: text, termsAndConditions: (interactiveText, "ffff"))
+        interactiveLabelScreenView.textView.delegate = self
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith url: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        print(url)
+        return true
     }
     
 }

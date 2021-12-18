@@ -8,6 +8,18 @@
 import UIKit
 
 open class AUIDefaultViewPickerComponentController: AUIViewPickerComponentController {
+    
+    // MARK: Initializer
+    
+    public init() {
+      setup()
+    }
+    
+    // MARK: Setup
+    
+    open func setup() {
+      
+    }
   
   public var itemControllers: [AUIPickerItemController] {
     return viewItemControllers
