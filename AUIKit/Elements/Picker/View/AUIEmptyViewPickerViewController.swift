@@ -51,9 +51,9 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     // MARK: UIPickerViewDelegateProxyDelegate
   
     open func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
-        guard component >= 0, componentControllers.count < component else { return UIView() }
+        guard component >= 0, component < componentControllers.count else { return UIView() }
         let componentController = viewComponentControllers[component]
-        guard item > 0, componentController.itemControllers.count < item else { return UIView() }
+        guard item >= 0, componentController.itemControllers.count < item else { return UIView() }
         let itemController = componentController.viewItemControllers[item]
         return itemController.view(reusingView: view)
     }
@@ -69,9 +69,9 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     }
   
     open func didSelectItem(_ item: Int, inComponent component: Int) {
-        guard component >= 0, componentControllers.count < component else { return }
+        guard component >= 0, component < viewComponentControllers.count else { return }
         let componentController = componentControllers[component]
-        guard item > 0, componentController.itemControllers.count < item else { return }
+        guard item >= 0, item < componentController.itemControllers.count else { return }
         let itemController = componentController.itemControllers[item]
         for object in didSelectItemControllerObservers.allObjects {
             guard let observer = object as? AUIPickerViewControllerDidSelectItemControllerObserver else { continue }
