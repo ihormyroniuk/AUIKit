@@ -53,7 +53,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     open func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
         guard component >= 0, component < componentControllers.count else { return UIView() }
         let componentController = viewComponentControllers[component]
-        guard item >= 0, componentController.itemControllers.count < item else { return UIView() }
+        guard item >= 0, item < componentController.itemControllers.count else { return UIView() }
         let itemController = componentController.viewItemControllers[item]
         return itemController.view(reusingView: view)
     }
