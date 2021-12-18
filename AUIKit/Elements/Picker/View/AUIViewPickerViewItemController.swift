@@ -7,10 +7,10 @@
 
 import Foundation
 
-public protocol AUIViewPickerItemController: AUIPickerItemController {
+public protocol AUIViewPickerViewItemController: AUIPickerViewItemController {
   
   // MARK: View
   
-  var view: UIView { get }
+  func view(reusingView view: UIView?) -> UIView
   
 }

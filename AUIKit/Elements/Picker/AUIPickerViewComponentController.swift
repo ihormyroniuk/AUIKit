@@ -8,9 +8,10 @@
 
 import Foundation
 
-public protocol AUIPickerComponentController: AnyObject {
+public protocol AUIPickerViewComponentController: AnyObject {
   
-  // MARK: ItemControllers
+    // MARK: ItemControllers
   
-  var itemControllers: [AUIPickerItemController] { get }
+    var itemControllers: [AUIPickerViewItemController] { get }
+    
 }

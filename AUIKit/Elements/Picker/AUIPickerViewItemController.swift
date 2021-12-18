@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol AUIPickerItemController: AnyObject {
+public protocol AUIPickerViewItemController: AnyObject {
   
 }
