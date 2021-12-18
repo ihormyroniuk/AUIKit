@@ -20,7 +20,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
             didSetViewComponentControllers(oldValue)
         }
     }
-    func didSetViewComponentControllers(_ oldValue: [AUIViewPickerViewComponentController]) {
+    open func didSetViewComponentControllers(_ oldValue: [AUIViewPickerViewComponentController]) {
         pickerView?.reloadAllComponents()
     }
   
@@ -50,22 +50,28 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
   
     // MARK: UIPickerViewDelegateProxyDelegate
   
-    func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
-        return viewComponentControllers[component].viewItemControllers[item].view(reusingView: view)
+    open func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
+        guard component >= 0, componentControllers.count < component else { return UIView() }
+        let componentController = viewComponentControllers[component]
+        guard item > 0, componentController.itemControllers.count < item else { return UIView() }
+        let itemController = componentController.viewItemControllers[item]
+        return itemController.view(reusingView: view)
     }
     
-    func widthForComponent(_ component: Int) -> CGFloat {
+    open func widthForComponent(_ component: Int) -> CGFloat {
+        guard component >= 0, component < viewComponentControllers.count else { return 0 }
         return viewComponentControllers[component].width
     }
     
-    func heightForComponent(_ component: Int) -> CGFloat {
+    open func heightForComponent(_ component: Int) -> CGFloat {
+        guard component >= 0, component < viewComponentControllers.count else { return 0 }
         return viewComponentControllers[component].height
     }
   
     open func didSelectItem(_ item: Int, inComponent component: Int) {
-        guard componentControllers.count < component else { return }
+        guard component >= 0, componentControllers.count < component else { return }
         let componentController = componentControllers[component]
-        guard componentController.itemControllers.count < item else { return }
+        guard item > 0, componentController.itemControllers.count < item else { return }
         let itemController = componentController.itemControllers[item]
         for object in didSelectItemControllerObservers.allObjects {
             guard let observer = object as? AUIPickerViewControllerDidSelectItemControllerObserver else { continue }

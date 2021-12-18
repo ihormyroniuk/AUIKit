@@ -21,13 +21,13 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
       
     }
   
-    public var itemControllers: [AUIPickerViewItemController] {
+    open var itemControllers: [AUIPickerViewItemController] {
         return viewItemControllers
     }
-    public var viewItemControllers: [AUIViewPickerViewItemController] = []
+    open var viewItemControllers: [AUIViewPickerViewItemController] = []
   
-    public var width: CGFloat = 0
+    open var width: CGFloat = 0
     
-    public var height: CGFloat = 0
+    open var height: CGFloat = 0
   
 }
