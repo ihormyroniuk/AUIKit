@@ -97,7 +97,7 @@ open class AUIInteractiveLabel: AUIControl {
         case .left, .natural, .justified:
             alignmentOffset = 0.0
         case .center:
-            alignmentOffset = 0.5
+            alignmentOffset = 0.0//0.5
         case .right:
             alignmentOffset = 1.0
         @unknown default:
