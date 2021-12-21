@@ -21,7 +21,7 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
             didSetTitleComponentControllers(oldValue)
         }
     }
-    func didSetTitleComponentControllers(_ oldValue: [AUITitlePickerViewComponentController]) {
+    open func didSetTitleComponentControllers(_ oldValue: [AUITitlePickerViewComponentController]) {
         pickerView?.reloadAllComponents()
     }
   
@@ -73,11 +73,9 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
 }
 
 private protocol  UIPickerViewDelegateProxyDelegate: AnyObject {
-    
     func titleForItem(_ item: Int, inComponent component: Int) -> String?
     func attributedTitleForItem(_ item: Int, inComponent component: Int) -> NSAttributedString?
     func didSelectItem(_ item: Int, inComponent component: Int)
-    
 }
 
 private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {

@@ -26,8 +26,26 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     }
     open var viewItemControllers: [AUIViewPickerViewItemController] = []
   
-    open var width: CGFloat = 0
+    open var width: CGFloat {
+        return 0
+    }
     
-    open var height: CGFloat = 0
+    open var height: CGFloat {
+        return 0
+    }
+  
+}
+
+open class AUILazyViewPickerViewComponentController: AUIEmptyViewPickerViewComponentController {
+    
+    open var lazyWidth: (() -> CGFloat)?
+    open override var width: CGFloat {
+        return lazyWidth?() ?? 0
+    }
+    
+    open var lazyHeight: (() -> CGFloat)?
+    open override var height: CGFloat {
+        return lazyHeight?() ?? 0
+    }
   
 }

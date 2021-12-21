@@ -38,7 +38,6 @@ open class AUILazyViewPickerViewItemController: AUIEmptyViewPickerViewItemContro
     }
     
     open var lazyView: ((UIView?) -> UIView)?
-    
     open override func view(reusingView view: UIView?) -> UIView {
         return lazyView?(view) ?? UIView()
     }

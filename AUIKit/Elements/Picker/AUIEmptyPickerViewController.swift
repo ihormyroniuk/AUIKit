@@ -83,10 +83,8 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
 }
 
 private protocol  UIPickerViewDataSourceProxyDelegate: AnyObject {
-    
     func numberOfComponents() -> Int
     func numberOfItemsInComponent(_ component: Int) -> Int
-    
 }
 
 private class UIPickerViewDataSourceProxy: NSObject, UIPickerViewDataSource {
