@@ -182,6 +182,7 @@
 		C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DBE24D93CB30059D557 /* SignupScreenController.swift */; };
 		C58E150E2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */; };
 		C58E15102773D6F3002984DD /* AUIClosuresTitlePickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E150F2773D6F3002984DD /* AUIClosuresTitlePickerViewItemController.swift */; };
+		C58E15122773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */; };
 		C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */; };
 		C5AC724924DD31A200559038 /* AUINavigationControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */; };
 		C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */; };
@@ -414,6 +415,7 @@
 		C5841DBE24D93CB30059D557 /* SignupScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenController.swift; sourceTree = "<group>"; };
 		C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresViewPickerViewItemController.swift; sourceTree = "<group>"; };
 		C58E150F2773D6F3002984DD /* AUIClosuresTitlePickerViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresTitlePickerViewItemController.swift; sourceTree = "<group>"; };
+		C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresViewPickerViewComponentController.swift; sourceTree = "<group>"; };
 		C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextViewTextInputView.swift; sourceTree = "<group>"; };
 		C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentationUnitTesting.swift; sourceTree = "<group>"; };
@@ -1015,6 +1017,7 @@
 				C544E64A2295600B00DE9156 /* AUIEmptyViewPickerViewController.swift */,
 				C544E64622955B0600DE9156 /* AUIViewPickerViewComponentController.swift */,
 				C544E64C2295685E00DE9156 /* AUIEmptyViewPickerViewComponentController.swift */,
+				C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */,
 				C544E64822955B2A00DE9156 /* AUIViewPickerViewItemController.swift */,
 				C544E64E229569A400DE9156 /* AUIEmptyViewPickerViewItemController.swift */,
 				C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */,
@@ -1576,6 +1579,7 @@
 				C53AEB0D2195D9710087F0A2 /* AUIEmptyLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */,
+				C58E15122773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift in Sources */,
 				30A7CD54219C144A006DAAA1 /* AUIElementCollectionViewCellController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */,

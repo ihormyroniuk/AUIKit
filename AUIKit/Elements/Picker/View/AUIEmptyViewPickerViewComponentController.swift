@@ -35,17 +35,3 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     }
   
 }
-
-open class AUILazyViewPickerViewComponentController: AUIEmptyViewPickerViewComponentController {
-    
-    open var lazyWidth: (() -> CGFloat)?
-    open override var width: CGFloat {
-        return lazyWidth?() ?? 0
-    }
-    
-    open var lazyHeight: (() -> CGFloat)?
-    open override var height: CGFloat {
-        return lazyHeight?() ?? 0
-    }
-  
-}
