@@ -60,14 +60,11 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
     }
   
     open func didSelectItem(_ item: Int, inComponent component: Int) {
-        guard componentControllers.count > component else { return }
+        guard component >= 0, component < titleComponentControllers.count else { return }
         let componentController = componentControllers[component]
-        guard componentController.itemControllers.count > item else { return }
+        guard item >= 0, item < componentController.itemControllers.count else { return }
         let itemController = componentController.itemControllers[item]
-        for object in didSelectItemControllerObservers.allObjects {
-            guard let observer = object as? AUIPickerViewControllerDidSelectItemControllerObserver else { continue }
-            observer.pickerViewController(self, didSelectItemController: itemController, atComponentController: componentController)
-        }
+        itemController.didSelect()
     }
     
 }

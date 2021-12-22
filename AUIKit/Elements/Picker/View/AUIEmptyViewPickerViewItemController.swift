@@ -26,20 +26,11 @@ open class AUIEmptyViewPickerViewItemController: AUIViewPickerViewItemController
     open func setup() {
     
     }
-  
-}
-
-open class AUILazyViewPickerViewItemController: AUIEmptyViewPickerViewItemController {
     
-    // MARK: Initializer
-  
-    public override init() {
-        super.init()
-    }
+    // MARK: Select
     
-    open var lazyView: ((UIView?) -> UIView)?
-    open override func view(reusingView view: UIView?) -> UIView {
-        return lazyView?(view) ?? UIView()
+    public func didSelect() {
+        
     }
   
 }

@@ -73,10 +73,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         let componentController = componentControllers[component]
         guard item >= 0, item < componentController.itemControllers.count else { return }
         let itemController = componentController.itemControllers[item]
-        for object in didSelectItemControllerObservers.allObjects {
-            guard let observer = object as? AUIPickerViewControllerDidSelectItemControllerObserver else { continue }
-            observer.pickerViewController(self, didSelectItemController: itemController, atComponentController: componentController)
-        }
+        itemController.didSelect()
     }
 }
 

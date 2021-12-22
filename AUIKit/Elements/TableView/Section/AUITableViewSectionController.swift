@@ -9,31 +9,32 @@ import Foundation
 
 public protocol AUITableViewSectionController: AnyObject {
   
-  var numberOfRows: Int { get }
+    var numberOfRows: Int { get }
   
-  // MARK: Header
+    // MARK: Header
   
-  func header(tableView: UITableView) -> UIView?
-  var headerEstimatedHeight: CGFloat { get }
-  var headerHeight: CGFloat { get }
-  func willDisplayHeader(_ view: UIView)
-  func didEndDisplayingHeader()
+    func header(tableView: UITableView) -> UIView?
+    var headerEstimatedHeight: CGFloat { get }
+    var headerHeight: CGFloat { get }
+    func willDisplayHeader(_ view: UIView)
+    func didEndDisplayingHeader()
 
-  // MARK: Cells
+    // MARK: Cells
 
-  var cellControllers: [AUITableViewCellController] { get set }
-  func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
-  func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
-  func heightForCellAtIndex(_ index: Int) -> CGFloat
-  func willDisplayCell(_ cell: UITableViewCell, index: IndexPath)
-  func didSelectCellAtIndex(_ index: Int)
-  func didEndDisplayingCellAtIndex(index: Int)
+    var cellControllers: [AUITableViewCellController] { get set }
+    func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
+    func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
+    func heightForCellAtIndex(_ index: Int) -> CGFloat
+    func willDisplayCell(_ cell: UITableViewCell, index: IndexPath)
+    func didSelectCellAtIndex(_ index: Int)
+    func didEndDisplayingCellAtIndex(index: Int)
 
-  // MARK: Footer
+    // MARK: Footer
   
-  func footer(tableView: UITableView) -> UIView?
-  var footerEstimatedHeight: CGFloat { get }
-  var footerHeight: CGFloat { get }
-  func willDisplayFooter(_ view: UIView)
-  func didEndDisplayingFooter()
+    func footer(tableView: UITableView) -> UIView?
+    var footerEstimatedHeight: CGFloat { get }
+    var footerHeight: CGFloat { get }
+    func willDisplayFooter(_ view: UIView)
+    func didEndDisplayingFooter()
+    
 }

@@ -5,42 +5,36 @@
 //  Created by Ihor Myroniuk on 8/17/18.
 //  Copyright © 2018 Brander. All rights reserved.
 //
+
 import UIKit
 
 open class AUITableView: UITableView {
   
-  // MARK: Initializer
+    // MARK: Initializer
   
-  public override init(frame: CGRect, style: UITableView.Style) {
-    super.init(frame: frame, style: style)
-    setup()
-    autoLayout()
-  }
+    public override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
+        setup()
+    }
   
-  @available(*, unavailable)
-  public required init?(coder aDecoder: NSCoder) { return nil }
+    @available(*, unavailable)
+    public required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open func setup() {
+    open func setup() {
 
-  }
+    }
   
-  // MARK: AutoLayout
+    // Layout
   
-  open func autoLayout() {
-    
-  }
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
   
-  // Layout
-  
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    layout()
-  }
-  
-  open func layout() {
-    
-  }
+    open func layout() {
+        
+    }
   
 }

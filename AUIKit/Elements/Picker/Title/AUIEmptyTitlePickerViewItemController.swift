@@ -26,5 +26,11 @@ open class AUIEmptyTitlePickerViewItemController: AUITitlePickerViewItemControll
     open func setup() {
     
     }
+    
+    // MARK: Select
+    
+    open func didSelect() {
+        
+    }
   
 }

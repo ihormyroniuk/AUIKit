@@ -15,18 +15,6 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     open var componentControllers: [AUIPickerViewComponentController] {
         return []
     }
-  
-    // MARK: Ovservers
-  
-    open var didSelectItemControllerObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidSelectItemControllerObserver(_ observer: AUIPickerViewControllerDidSelectItemControllerObserver) {
-        didSelectItemControllerObservers.add(observer)
-    }
-  
-    open func removeDidSelectItemControllerObserver(_ observer: AUIPickerViewControllerDidSelectItemControllerObserver) {
-        didSelectItemControllerObservers.remove(observer)
-    }
 
     // MARK: Delegates
   

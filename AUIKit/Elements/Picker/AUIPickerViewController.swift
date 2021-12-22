@@ -8,20 +8,11 @@
 
 import UIKit
 
-public protocol AUIPickerViewControllerDidSelectItemControllerObserver: AnyObject {
-  func pickerViewController(_ pickerViewController: AUIPickerViewController, didSelectItemController itemController: AUIPickerViewItemController, atComponentController componentController: AUIPickerViewComponentController)
-}
-
 public protocol AUIPickerViewController: AUIViewController {
 
     // MARK: Components
   
     var componentControllers: [AUIPickerViewComponentController] { get }
-  
-    // MARK: Observers
-  
-    func addDidSelectItemControllerObserver(_ observer: AUIPickerViewControllerDidSelectItemControllerObserver)
-    func removeDidSelectItemControllerObserver(_ observer: AUIPickerViewControllerDidSelectItemControllerObserver)
   
     // MARK: Select
   
