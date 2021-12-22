@@ -9,14 +9,14 @@ import Foundation
 
 open class AUIClosuresViewPickerViewComponentController: AUIEmptyViewPickerViewComponentController {
     
-    open var lazyWidth: (() -> CGFloat)?
+    open var widthClosure: (() -> CGFloat)?
     open override var width: CGFloat {
-        return lazyWidth?() ?? 0
+        return widthClosure?() ?? 0
     }
     
-    open var lazyHeight: (() -> CGFloat)?
+    open var heightClosure: (() -> CGFloat)?
     open override var height: CGFloat {
-        return lazyHeight?() ?? 0
+        return heightClosure?() ?? 0
     }
   
 }
