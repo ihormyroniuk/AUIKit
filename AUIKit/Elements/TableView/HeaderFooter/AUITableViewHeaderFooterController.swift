@@ -9,8 +9,9 @@
 import UIKit
 
 public protocol AUITableViewHeaderFooterController: AnyObject {
-  func view(tableView: UITableView) -> UITableViewHeaderFooterView?
-  var estimatedHeight: CGFloat { get }
-  var height: CGFloat { get }
-  func didEndDisplaying()
+    func view(tableView: UITableView) -> UITableViewHeaderFooterView?
+    var estimatedHeight: CGFloat { get }
+    var height: CGFloat { get }
+    func didEndDisplaying()
+    func willDisplay()
 }

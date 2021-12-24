@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUITableViewCellView: UITableViewCell {
+open class AUITableViewCell: UITableViewCell {
   
   // MARK: Initializer
 

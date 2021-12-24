@@ -26,15 +26,4 @@ open class AUITableView: UITableView {
 
     }
   
-    // Layout
-  
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-        layout()
-    }
-  
-    open func layout() {
-        
-    }
-  
 }

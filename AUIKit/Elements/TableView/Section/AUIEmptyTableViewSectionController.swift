@@ -9,6 +9,8 @@
 import UIKit
 
 open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
+    
+    // MARK: Initializer
 
     public init() {
     
@@ -30,7 +32,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     }
   
     open func willDisplayHeader(_ view: UIView) {
-    
+        headerController?.willDisplay()
     }
   
     open func didEndDisplayingHeader() {
@@ -41,7 +43,9 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open var cellControllers: [AUITableViewCellController] = []
   
-    open var numberOfRows: Int { return cellControllers.count }
+    open var numberOfRows: Int {
+        return cellControllers.count
+    }
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         let index = indexPath.row
@@ -87,7 +91,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     }
   
     open func willDisplayFooter(_ view: UIView) {
-    
+        footerController?.willDisplay()
     }
   
     open func didEndDisplayingFooter() {

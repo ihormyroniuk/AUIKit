@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, IntroScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, IntroScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TestTableViewScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -15,6 +15,9 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
         let screenController = MenuScreenViewController()
         screenController.delegate = self
         menuScreenController = screenController
+        
+//        let screenController = TestTableViewScreenViewController()
+//        screenController.delegate = self
             
         let navigationController = AUINavigationController()
         navigationController.viewControllers = [screenController]
@@ -92,6 +95,13 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
+    func menuScreenViewControllerDisplayTestTableView(_ menuScreenViewController: MenuScreenViewController) {
+        let viewController = TestTableViewScreenViewController()
+        testTableViewScreenViewController = viewController
+        testTableViewScreenViewController?.delegate = self
+        mainNavigationController?.pushViewController(viewController, animated: true)
+    }
+    
     // MARK: Intro Screen
     
     private weak var introScreenController: IntroScreenViewController?
@@ -137,6 +147,14 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
     private weak var stringsdictScreenViewController: StringsdictScreenViewController?
     
     func stringsdictScreenViewControllerBack(_ stringsdictScreenViewController: StringsdictScreenViewController) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    // Test TableView Screen
+    
+    private weak var testTableViewScreenViewController: TestTableViewScreenViewController?
+    
+    func testTableViewScreenViewControllerBack(_ testTableViewScreenViewController: TestTableViewScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

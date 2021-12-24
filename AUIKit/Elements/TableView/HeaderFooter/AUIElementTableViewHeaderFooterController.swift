@@ -42,5 +42,9 @@ open class AUIElementTableViewHeaderFooterController: AUITableViewHeaderFooterCo
     controller.view = nil
     view = nil
   }
+    
+    public func willDisplay() {
+        
+    }
   
 }

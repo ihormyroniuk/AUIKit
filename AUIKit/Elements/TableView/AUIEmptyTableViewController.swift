@@ -9,14 +9,21 @@
 import UIKit
 
 open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
-
+    
     // MARK: Delegates
   
     private let tableViewDelegateProxy = UITableViewDelegateProxy()
   
     // MARK: Controllers
   
-    open var sectionControllers: [AUITableViewSectionController] = []
+    open var sectionControllers: [AUITableViewSectionController] = [] {
+        didSet {
+            didSetDectionControllers(oldValue)
+        }
+    }
+    open func didSetDectionControllers(_ oldValue: [AUITableViewSectionController]) {
+        reload()
+    }
   
     // MARK: Setup
   
@@ -145,7 +152,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     open func willDisplayHeaderView(_ view: UIView, forSection section: Int) {
-    
+        guard section < sectionControllers.count else { return }
+        sectionControllers[section].willDisplayHeader(view)
     }
   
     open func didEndDisplayingHeaderInSection(_ section: Int) {
@@ -168,7 +176,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     open func willDisplayFooterView(_ view: UIView, forSection section: Int) {
-    
+        guard section < sectionControllers.count else { return }
+        sectionControllers[section].willDisplayFooter(view)
     }
   
     open func didEndDisplayingFooterInSection(_ section: Int) {
@@ -179,7 +188,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Cells
   
     open func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
-    
+        
     }
   
     open func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
@@ -290,7 +299,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        
+        delegate?.willDisplayHeaderView(view, forSection: section)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
@@ -312,7 +321,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        
+        delegate?.willDisplayFooterView(view, forSection: section)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
