@@ -9,6 +9,10 @@
 import UIKit
 
 open class AUIViewPageViewController: AUIPageViewController {
+    public func didSelect() {
+        
+    }
+    
     
     // MARK: Components
     
@@ -34,6 +38,10 @@ open class AUIViewPageViewController: AUIPageViewController {
 }
 
 open class AUIDefaultPageController: AUIPageViewController {
+    public func didSelect() {
+        
+    }
+    
   
   public let viewController2: AUIViewController
   public let view: () -> UIView
@@ -79,3 +87,34 @@ private class AUIContainerPageViewController: UIViewController {
   }
 }
 
+
+
+open class AUIEmptyPageController: AUIPageViewController {
+  
+    public init() {
+        
+    }
+    
+    public var viewController: UIViewController {
+        return UIViewController()
+    }
+    
+    open func didSelect() {
+
+    }
+    
+}
+
+open class AUIClosuresPageController: AUIEmptyPageController {
+  
+    open var viewControllerClosure: (() -> UIViewController)?
+    public override var viewController: UIViewController {
+        return viewControllerClosure?() ?? UIViewController()
+    }
+    
+    open var didSelectClosure: (() -> Void)?
+    open override func didSelect() {
+        didSelectClosure?()
+    }
+    
+}

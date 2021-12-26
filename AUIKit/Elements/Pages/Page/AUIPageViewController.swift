@@ -9,5 +9,9 @@
 import UIKit
 
 public protocol AUIPageViewController: AnyObject {
-  var viewController: UIViewController { get }
+    
+    var viewController: UIViewController { get }
+    
+    func didSelect()
+    
 }
