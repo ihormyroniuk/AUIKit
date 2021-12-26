@@ -29,6 +29,12 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         })
     }
   
+    open var pagesCount: Int { return pageControllers.count }
+    open var currentPageNumber: Int? {
+        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
+        let currentPageNumber: Int = containerPageViewController.number
+        return currentPageNumber
+    }
     open var selectedPageController: AUIPageController? {
         guard let currentPageNumber = self.currentPageNumber else { return nil }
         return pageControllers[currentPageNumber]
@@ -70,13 +76,6 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     open func didSetIsInfiniteScroll(_ oldValue: Bool?) {
         guard let selectedPageController = selectedPageController else { return }
         selectPageController(selectedPageController)
-    }
-  
-    open var pagesCount: Int { return pageControllers.count }
-    open var currentPageNumber: Int? {
-        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
-        let currentPageNumber: Int = containerPageViewController.number
-        return currentPageNumber
     }
   
     // MARK: Setup
@@ -206,7 +205,6 @@ private class NumberedContainerViewController: UIViewController {
         self.number = number
         self.viewController = viewController
         super.init(nibName: nil, bundle: nil)
-        //viewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(viewController.view)
         addChild(viewController)
         viewController.didMove(toParent: viewController)
