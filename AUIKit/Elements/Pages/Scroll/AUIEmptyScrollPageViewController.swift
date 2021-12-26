@@ -149,6 +149,7 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     }
   
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        selectedPageController?.didSelect()
 //    for object in didTransitToPageObservers.allObjects {
 //      guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
 //      observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
