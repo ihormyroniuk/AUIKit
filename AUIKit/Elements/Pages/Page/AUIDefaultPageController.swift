@@ -8,6 +8,31 @@
 
 import UIKit
 
+open class AUIViewPageViewController: AUIPageViewController {
+    
+    // MARK: Components
+    
+    private let view: UIView
+  
+    // MARK: Initializer
+  
+    public init(view: UIView) {
+        self.view = view
+    }
+  
+    public var viewController: UIViewController {
+        class ViewController: UIViewController {
+            init(view: UIView) {
+                super.init(nibName: nil, bundle: nil)
+                self.view = view
+            }
+            
+            required init?(coder: NSCoder) { return nil }
+        }
+        return ViewController(view: view)
+    }
+}
+
 open class AUIDefaultPageController: AUIPageViewController {
   
   public let viewController2: AUIViewController

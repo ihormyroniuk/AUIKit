@@ -13,9 +13,15 @@ public protocol AUIPagesViewControllerDidTransitToPageObserver: AnyObject {
 
 public protocol AUIPagesViewController {
   
-  // MARK: Observers
+    // MARK: Observers
   
-  func addDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
-  func removeDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
+    func addDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
+    func removeDidTransitToPageObserver(_ observer: AUIPagesViewControllerDidTransitToPageObserver)
+    
+    // MARK: Select
+  
+    func selectPageController(_ pageController: AUIPageViewController)
+  
+    func selectedPageController() -> AUIPageViewController?
   
 }

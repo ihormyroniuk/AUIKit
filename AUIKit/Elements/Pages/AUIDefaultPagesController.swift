@@ -23,6 +23,16 @@ open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewContro
   }
   
   private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
+    
+    // MARK: Select
+  
+    open func selectPageController(_ pageController: AUIPageViewController) {
+        
+    }
+  
+    open func selectedPageController() -> AUIPageViewController? {
+        return nil
+    }
   
   // MARK: Controllers
   
@@ -88,7 +98,14 @@ open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewContro
   
   open func reload() {
     if pagesViewController?.spineLocation == .mid {
-      //if pagesViewController
+        guard let pageViewController = pageControllers.first else { return }
+        let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
+        let containerPageViewController2 = NumberedContainerViewController(number: 1, viewController: pageControllers[1].viewController)
+        pagesViewController?.setViewControllers([containerPageViewController, containerPageViewController2], direction: .forward, animated: false, completion: nil)
+        for object in didTransitToPageObservers.allObjects {
+          guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
+          observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
+        }
     } else {
       guard let pageViewController = pageControllers.first else { return }
       let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
@@ -147,6 +164,10 @@ private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageView
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     delegate?.pageViewController(pageViewController, didFinishAnimating: finished, previousViewControllers: previousViewControllers, transitionCompleted: completed)
   }
+    
+//    func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
+//        return .mid
+//    }
   
 }
 

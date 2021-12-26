@@ -175,6 +175,8 @@
 		C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */; };
 		C5841DBD24D93C980059D557 /* SignupScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DBC24D93C980059D557 /* SignupScreenView.swift */; };
 		C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DBE24D93CB30059D557 /* SignupScreenController.swift */; };
+		C58D3D9B27787323006823B8 /* AUIScrollPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D3D9A27787323006823B8 /* AUIScrollPageViewController.swift */; };
+		C58D3D9D27787388006823B8 /* AUIEmptyScrollPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D3D9C27787388006823B8 /* AUIEmptyScrollPageViewController.swift */; };
 		C58D6D5C277521650069520F /* TestTableViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D6D5B277521650069520F /* TestTableViewScreenViewController.swift */; };
 		C58D6D5E277521760069520F /* TestTableViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D6D5D277521760069520F /* TestTableViewScreenView.swift */; };
 		C58E150E2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */; };
@@ -405,6 +407,8 @@
 		C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScreenView.swift; sourceTree = "<group>"; };
 		C5841DBC24D93C980059D557 /* SignupScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenView.swift; sourceTree = "<group>"; };
 		C5841DBE24D93CB30059D557 /* SignupScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenController.swift; sourceTree = "<group>"; };
+		C58D3D9A27787323006823B8 /* AUIScrollPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScrollPageViewController.swift; sourceTree = "<group>"; };
+		C58D3D9C27787388006823B8 /* AUIEmptyScrollPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyScrollPageViewController.swift; sourceTree = "<group>"; };
 		C58D6D5B277521650069520F /* TestTableViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewScreenViewController.swift; sourceTree = "<group>"; };
 		C58D6D5D277521760069520F /* TestTableViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewScreenView.swift; sourceTree = "<group>"; };
 		C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresViewPickerViewItemController.swift; sourceTree = "<group>"; };
@@ -695,6 +699,7 @@
 		C525D833219972770057E69F /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				C590D07E2776803100B3BBA6 /* Scroll */,
 				C528BA4321BC410200FFCE53 /* AUIPagesViewController.swift */,
 				C525D836219972770057E69F /* AUIDefaultPagesController.swift */,
 				C528BA4521BC42EF00FFCE53 /* Page */,
@@ -1260,6 +1265,15 @@
 			path = TestTableView;
 			sourceTree = "<group>";
 		};
+		C590D07E2776803100B3BBA6 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				C58D3D9A27787323006823B8 /* AUIScrollPageViewController.swift */,
+				C58D3D9C27787388006823B8 /* AUIEmptyScrollPageViewController.swift */,
+			);
+			path = Scroll;
+			sourceTree = "<group>";
+		};
 		C5AC724724DD318500559038 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
@@ -1541,6 +1555,7 @@
 				C565376E24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift in Sources */,
 				C53AEB362195DD1B0087F0A2 /* AUIPickerViewItemController.swift in Sources */,
 				30A7CD49219C144A006DAAA1 /* AUICollectionViewCellAutoLayout.swift in Sources */,
+				C58D3D9B27787323006823B8 /* AUIScrollPageViewController.swift in Sources */,
 				C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */,
 				C5E1C09B256B0A12000103AC /* AUICollectionViewLayout.swift in Sources */,
 				C548387622983CAB000254B0 /* AUIEmptyApplication.swift in Sources */,
@@ -1557,6 +1572,7 @@
 				3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */,
 				C5FE62CE22CE3DDC0064F989 /* AUIEmptyTableViewSectionController.swift in Sources */,
 				30BB5E5A2206FA6A00F7DA0F /* AUIDeletingCellControllers.swift in Sources */,
+				C58D3D9D27787388006823B8 /* AUIEmptyScrollPageViewController.swift in Sources */,
 				C53BB79A228EFC3700003495 /* AUIResponsiveTextFieldTextInputViewController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
