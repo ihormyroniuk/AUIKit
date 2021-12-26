@@ -54,7 +54,6 @@
 		C525D82621996AF20057E69F /* AUIEmptyControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D81F21996AF20057E69F /* AUIEmptyControlController.swift */; };
 		C525D831219971F70057E69F /* AUITextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D82F219971F70057E69F /* AUITextFieldController.swift */; };
 		C525D832219971F70057E69F /* AUIEmptyTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D830219971F70057E69F /* AUIEmptyTextFieldController.swift */; };
-		C525D838219972770057E69F /* AUIDefaultPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D834219972770057E69F /* AUIDefaultPageController.swift */; };
 		C525D839219972770057E69F /* AUIPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D835219972770057E69F /* AUIPageController.swift */; };
 		C525D83A219972770057E69F /* AUIDefaultPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D836219972770057E69F /* AUIDefaultPagesController.swift */; };
 		C525D83B219972770057E69F /* UIPageControl+PreferredSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D837219972770057E69F /* UIPageControl+PreferredSize.swift */; };
@@ -283,7 +282,6 @@
 		C525D81F21996AF20057E69F /* AUIEmptyControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyControlController.swift; sourceTree = "<group>"; };
 		C525D82F219971F70057E69F /* AUITextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITextFieldController.swift; sourceTree = "<group>"; };
 		C525D830219971F70057E69F /* AUIEmptyTextFieldController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyTextFieldController.swift; sourceTree = "<group>"; };
-		C525D834219972770057E69F /* AUIDefaultPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultPageController.swift; sourceTree = "<group>"; };
 		C525D835219972770057E69F /* AUIPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPageController.swift; sourceTree = "<group>"; };
 		C525D836219972770057E69F /* AUIDefaultPagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultPagesController.swift; sourceTree = "<group>"; };
 		C525D837219972770057E69F /* UIPageControl+PreferredSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageControl+PreferredSize.swift"; sourceTree = "<group>"; };
@@ -779,7 +777,6 @@
 			isa = PBXGroup;
 			children = (
 				C525D835219972770057E69F /* AUIPageController.swift */,
-				C525D834219972770057E69F /* AUIDefaultPageController.swift */,
 				C591CFA02778F4EF000D2763 /* AUIEmptyPageController.swift */,
 				C591CFA22778F50A000D2763 /* AUIClosuresPageController.swift */,
 			);
@@ -1642,7 +1639,6 @@
 				C528BA4421BC410200FFCE53 /* AUIPagesViewController.swift in Sources */,
 				C5060C2B2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift in Sources */,
 				C525D82321996AF20057E69F /* AUIButton.swift in Sources */,
-				C525D838219972770057E69F /* AUIDefaultPageController.swift in Sources */,
 				30BB5E602206FC0500F7DA0F /* AUIReusableCollectionCell.swift in Sources */,
 				C525D82421996AF20057E69F /* AUIEmptyButtonController.swift in Sources */,
 				C5060C2D2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift in Sources */,

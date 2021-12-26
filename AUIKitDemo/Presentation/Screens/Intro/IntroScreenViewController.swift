@@ -42,30 +42,32 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     private func setupPagesViewController() {
         pagesViewController.navigationOrientation = .horizontal
         pagesViewController.isInfiniteScroll = true
-        let pageViewController1 = AUIDefaultPageController(viewController: AUIEmptyViewController()) { () -> UIView in
-            let view = UIView()
-            view.backgroundColor = .green
-            return view
+        let pageViewController1 = AUIClosuresPageController()
+        pageViewController1.viewControllerClosure = {
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .green
+            return viewController
         }
-        let pageViewController2 = AUIDefaultPageController(viewController: AUIEmptyViewController()) { () -> UIView in
-            let view = UIView()
-            view.backgroundColor = .red
-            return view
+        let pageViewController2 = AUIClosuresPageController()
+        pageViewController2.viewControllerClosure = {
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .red
+            return viewController
         }
-        let pageViewController3 = AUIDefaultPageController(viewController: AUIEmptyViewController()) { () -> UIView in
-            let view = UIView()
-            view.backgroundColor = .blue
-            return view
+        let pageViewController3 = AUIClosuresPageController()
+        pageViewController3.viewControllerClosure = {
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .blue
+            return viewController
         }
-        let pageViewController4 = AUIDefaultPageController(viewController: AUIEmptyViewController()) { () -> UIView in
-            let view = UIView()
-            view.backgroundColor = .yellow
-            return view
+        let pageViewController4 = AUIClosuresPageController()
+        pageViewController4.viewControllerClosure = {
+            let viewController = UIViewController()
+            viewController.view.backgroundColor = .yellow
+            return viewController
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
         pagesViewController.view = introScreenView.pagesView
-        //pagesViewController.addDidTransitToPageObserver(self)
-        //pagesViewController.reload()
         pagesViewController.selectPageController(pageViewController1)
     }
     
