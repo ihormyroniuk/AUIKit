@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPageViewController {
+open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPagesController {
 
     private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
     
@@ -162,7 +162,7 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
 
 private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
   
-    weak var delegate: AUIEmptyScrollPageViewController?
+    weak var delegate: AUIEmptyScrollPagesController?
   
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return delegate?.pageViewController(pageViewController, viewControllerBefore: viewController)

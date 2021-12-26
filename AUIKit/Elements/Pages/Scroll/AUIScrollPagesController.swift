@@ -7,7 +7,7 @@
 
 import UIKit
 
-public protocol AUIScrollPageViewController {
+public protocol AUIScrollPagesController {
     
     var navigationOrientation: UIPageViewController.NavigationOrientation { get set }
     

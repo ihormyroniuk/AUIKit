@@ -29,7 +29,7 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     
     // MARK: Childs
     
-    private var pagesViewController = AUIEmptyScrollPageViewController()
+    private var pagesViewController = AUIEmptyScrollPagesController()
     
     // MARK: Setup
     
