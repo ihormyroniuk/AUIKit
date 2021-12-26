@@ -95,7 +95,13 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     open override func setupView() {
         super.setupView()
         guard let view = view else { return }
-        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(value: interPageSpacing ?? 0)])
+        let options: [UIPageViewController.OptionsKey : Any]?
+        if let interPageSpacing = interPageSpacing {
+            options = [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(value: interPageSpacing)]
+        } else {
+            options = nil
+        }
+        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
         self.pagesViewController = pagesViewController
         setupPageViewController()
     }
