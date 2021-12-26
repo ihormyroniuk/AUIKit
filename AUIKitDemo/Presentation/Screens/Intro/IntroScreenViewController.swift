@@ -29,12 +29,7 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     
     // MARK: Childs
     
-    private var pagesViewController: AUIEmptyScrollPageViewController = {
-        let pagesViewController = AUIEmptyScrollPageViewController(
-            navigationOrientation: .horizontal,
-            interPageSpacing: 200)
-        return pagesViewController
-    }()
+    private var pagesViewController = AUIEmptyScrollPageViewController()
     
     // MARK: Setup
     
@@ -45,6 +40,8 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     }
     
     private func setupPagesViewController() {
+        pagesViewController.navigationOrientation = .horizontal
+        pagesViewController.isInfiniteScroll = true
         let pageViewController1 = AUIDefaultPageController(viewController: AUIEmptyViewController()) { () -> UIView in
             let view = UIView()
             view.backgroundColor = .green
@@ -68,7 +65,8 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
         pagesViewController.view = introScreenView.pagesView
         //pagesViewController.addDidTransitToPageObserver(self)
-        pagesViewController.reload()
+        //pagesViewController.reload()
+        pagesViewController.selectPageController(pageViewController1)
     }
     
     // MARK: Actions

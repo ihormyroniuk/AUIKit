@@ -9,9 +9,11 @@ import UIKit
 
 public protocol AUIScrollPageViewController {
     
-    var navigationOrientation: UIPageViewController.NavigationOrientation { get }
+    var navigationOrientation: UIPageViewController.NavigationOrientation { get set }
     
-    var interPageSpacing: CGFloat? { get }
+    var interPageSpacing: CGFloat? { get set }
+    
+    var isInfiniteScroll: Bool? { get set }
     
     // MARK: Select
     
@@ -19,6 +21,6 @@ public protocol AUIScrollPageViewController {
   
     func selectPageControllerAnimated(_ pageController: AUIPageViewController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
   
-    func selectedPageController() -> AUIPageViewController?
+    var selectedPageController: AUIPageViewController? { get }
   
 }
