@@ -12,6 +12,6 @@ public protocol AUITitlePickerViewComponentController: AUIPickerViewComponentCon
   
     // MARK: Items Controllers
   
-    var titleItemControllers: [AUITitlePickerViewItemController] { get }
+    var titleItemControllers: [AUITitlePickerViewItemController] { get set }
     
 }

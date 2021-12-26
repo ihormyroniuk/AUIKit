@@ -30,15 +30,17 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     }
   
     open var selectedPageController: AUIPageViewController? {
-        return currentPageController
+        guard let currentPageNumber = self.currentPageNumber else { return nil }
+        return pageControllers[currentPageNumber]
     }
   
     // MARK: Controllers
   
     private var pagesViewController: AUISelfLayoutPageViewController?
-    open var pageControllers: [AUIPageViewController] = []
   
     // MARK: State
+    
+    open var pageControllers: [AUIPageViewController] = []
   
     public var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
         didSet {
@@ -75,10 +77,6 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
         let currentPageNumber: Int = containerPageViewController.number
         return currentPageNumber
-    }
-    open var currentPageController: AUIPageViewController? {
-        guard let currentPageNumber = self.currentPageNumber else { return nil }
-        return pageControllers[currentPageNumber]
     }
   
     // MARK: Setup

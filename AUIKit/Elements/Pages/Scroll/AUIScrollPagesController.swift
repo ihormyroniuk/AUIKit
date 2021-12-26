@@ -15,6 +15,8 @@ public protocol AUIScrollPagesController {
     
     var isInfiniteScroll: Bool? { get set }
     
+    var pageControllers: [AUIPageViewController] { get set }
+    
     // MARK: Select
     
     func selectPageController(_ pageController: AUIPageViewController)

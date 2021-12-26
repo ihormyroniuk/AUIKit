@@ -11,6 +11,6 @@ public protocol AUIViewPickerViewController: AUIPickerViewController {
   
     // MARK: Component Controllers
   
-    var viewComponentControllers: [AUIViewPickerViewComponentController] { set get }
+    var viewComponentControllers: [AUIViewPickerViewComponentController] { get set }
     
 }

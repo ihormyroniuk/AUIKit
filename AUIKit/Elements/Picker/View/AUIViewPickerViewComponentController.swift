@@ -11,7 +11,7 @@ public protocol AUIViewPickerViewComponentController: AUIPickerViewComponentCont
   
     // MARK: Items Controllers
   
-    var viewItemControllers: [AUIViewPickerViewItemController] { get }
+    var viewItemControllers: [AUIViewPickerViewItemController] { get set }
     
     var width: CGFloat { get }
     
