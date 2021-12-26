@@ -13,13 +13,13 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     
     // MARK: Select
     
-    open func selectPageController(_ pageController: AUIPageViewController) {
+    open func selectPageController(_ pageController: AUIPageController) {
         guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
         let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
         pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
     }
   
-    open func selectPageControllerAnimated(_ pageController: AUIPageViewController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
+    open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
         guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
         let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
         pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
@@ -29,7 +29,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         })
     }
   
-    open var selectedPageController: AUIPageViewController? {
+    open var selectedPageController: AUIPageController? {
         guard let currentPageNumber = self.currentPageNumber else { return nil }
         return pageControllers[currentPageNumber]
     }
@@ -40,7 +40,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
   
     // MARK: State
     
-    open var pageControllers: [AUIPageViewController] = []
+    open var pageControllers: [AUIPageController] = []
   
     public var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
         didSet {
@@ -150,10 +150,6 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
   
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         selectedPageController?.didSelect()
-//    for object in didTransitToPageObservers.allObjects {
-//      guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
-//      observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
-//    }
     }
   
 }

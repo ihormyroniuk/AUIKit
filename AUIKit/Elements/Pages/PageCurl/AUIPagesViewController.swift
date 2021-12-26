@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol AUIPagesViewControllerDidTransitToPageObserver: AnyObject {
-  func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageViewController])
+  func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageController])
 }
 
 public protocol AUIPagesViewController {
@@ -20,8 +20,8 @@ public protocol AUIPagesViewController {
     
     // MARK: Select
   
-    func selectPageController(_ pageController: AUIPageViewController)
+    func selectPageController(_ pageController: AUIPageController)
   
-    func selectedPageController() -> AUIPageViewController?
+    func selectedPageController() -> AUIPageController?
   
 }

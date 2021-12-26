@@ -77,7 +77,7 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     
     // MARK: AUIPagesViewControllerDidTransitToPageObserver
     
-    func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageViewController]) {
+    func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageController]) {
         print(pageViewControllers)
     }
     

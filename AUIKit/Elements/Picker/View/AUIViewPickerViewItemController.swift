@@ -9,8 +9,8 @@ import Foundation
 
 public protocol AUIViewPickerViewItemController: AUIPickerViewItemController {
   
-  // MARK: View
+    // MARK: View
   
-  func view(reusingView view: UIView?) -> UIView
+    func view(reusingView view: UIView?) -> UIView
   
 }

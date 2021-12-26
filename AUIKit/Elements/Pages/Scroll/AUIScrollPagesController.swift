@@ -15,14 +15,14 @@ public protocol AUIScrollPagesController {
     
     var isInfiniteScroll: Bool? { get set }
     
-    var pageControllers: [AUIPageViewController] { get set }
+    var pageControllers: [AUIPageController] { get set }
     
     // MARK: Select
     
-    func selectPageController(_ pageController: AUIPageViewController)
+    func selectPageController(_ pageController: AUIPageController)
   
-    func selectPageControllerAnimated(_ pageController: AUIPageViewController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
+    func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
   
-    var selectedPageController: AUIPageViewController? { get }
+    var selectedPageController: AUIPageController? { get }
   
 }

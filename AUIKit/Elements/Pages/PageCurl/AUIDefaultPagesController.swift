@@ -26,18 +26,18 @@ open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewContro
     
     // MARK: Select
   
-    open func selectPageController(_ pageController: AUIPageViewController) {
+    open func selectPageController(_ pageController: AUIPageController) {
         
     }
   
-    open func selectedPageController() -> AUIPageViewController? {
+    open func selectedPageController() -> AUIPageController? {
         return nil
     }
   
   // MARK: Controllers
   
   private var pagesViewController: AUISelfLayoutPageViewController?
-  open var pageControllers: [AUIPageViewController] = []
+  open var pageControllers: [AUIPageController] = []
   
   // MARK: Initializer
   
@@ -61,7 +61,7 @@ open class AUIDefaultPagesController: AUIEmptyViewController, AUIPagesViewContro
     let currentPageNumbers: [Int] = containerPageViewControllers.map({ Int($0.number) })
     return currentPageNumbers
   }
-  open var currentPageControllers: [AUIPageViewController] {
+  open var currentPageControllers: [AUIPageController] {
     let currentPageNumbers = self.currentPageNumbers
     return pageControllers.enumerated().filter({ currentPageNumbers.contains($0.offset) }).map({$1})
   }

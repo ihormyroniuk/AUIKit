@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIViewPageViewController: AUIPageViewController {
+open class AUIViewPageViewController: AUIPageController {
     public func didSelect() {
         
     }
@@ -37,7 +37,7 @@ open class AUIViewPageViewController: AUIPageViewController {
     }
 }
 
-open class AUIDefaultPageController: AUIPageViewController {
+open class AUIDefaultPageController: AUIPageController {
     public func didSelect() {
         
     }
@@ -87,34 +87,3 @@ private class AUIContainerPageViewController: UIViewController {
   }
 }
 
-
-
-open class AUIEmptyPageController: AUIPageViewController {
-  
-    public init() {
-        
-    }
-    
-    public var viewController: UIViewController {
-        return UIViewController()
-    }
-    
-    open func didSelect() {
-
-    }
-    
-}
-
-open class AUIClosuresPageController: AUIEmptyPageController {
-  
-    open var viewControllerClosure: (() -> UIViewController)?
-    public override var viewController: UIViewController {
-        return viewControllerClosure?() ?? UIViewController()
-    }
-    
-    open var didSelectClosure: (() -> Void)?
-    open override func didSelect() {
-        didSelectClosure?()
-    }
-    
-}
