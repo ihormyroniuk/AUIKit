@@ -22,7 +22,9 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     open func selectPageControllerAnimated(_ pageController: AUIPageViewController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
         guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
         let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { finished in
+        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
+            guard let self = self else { return }
+            self.selectedPageController?.didSelect()
             completion?(finished)
         })
     }
