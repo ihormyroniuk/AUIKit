@@ -7,7 +7,8 @@
 import AUIKit
 
 protocol MenuScreenViewControllerDelegate: AnyObject {
-    func menuScreenViewControllerDisplayIntroScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayScrollPagesScreen(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayCurlPagesScreen(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayLabelsScreen(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayInteractiveLabelsScreen(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplaySignupScreen(_ menuScreenViewController: MenuScreenViewController)
@@ -27,7 +28,8 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
     // MARK: Data
     
     private enum Item: Int, CaseIterable {
-        case intro
+        case scrollPages
+        case curlPages
         case labels
         case interactiveLabels
         case signup
@@ -65,8 +67,10 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     private func displayItem(_ item: Item) {
         switch item {
-        case .intro:
-            delegate?.menuScreenViewControllerDisplayIntroScreen(self)
+        case .scrollPages:
+            delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
+        case .curlPages:
+            delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
         case .labels:
             delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
         case .interactiveLabels:
@@ -94,8 +98,10 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
     
     private func itemTitle(_ item: Item) -> String {
         switch item {
-        case .intro:
-            return "Intro"
+        case .scrollPages:
+            return "Scroll Pages"
+        case .curlPages:
+            return "Curl Pages"
         case .labels:
             return "Labels"
         case .interactiveLabels:

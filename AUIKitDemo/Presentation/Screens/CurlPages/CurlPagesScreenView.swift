@@ -1,13 +1,13 @@
 //
-//  IntroScreenView.swift
+//  CurlPagesScreenView.swift
 //  AUIKitDemo
 //
-//  Created by Ihor Myroniuk on 01.04.2021.
+//  Created by Ihor Myroniuk on 27.12.2021.
 //
 
 import AUIKit
 
-class IntroScreenView: BackButtonTitleLabelScreenView {
+class CurlPagesScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     

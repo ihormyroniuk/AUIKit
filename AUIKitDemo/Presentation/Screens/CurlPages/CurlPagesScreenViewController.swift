@@ -1,47 +1,46 @@
 //
-//  IntroScreenController.swift
+//  CurlPagesScreenViewController.swift
 //  AUIKitDemo
 //
-//  Created by Ihor Myroniuk on 01.04.2021.
+//  Created by Ihor Myroniuk on 27.12.2021.
 //
 
 import AUIKit
 
-protocol IntroScreenViewControllerDelegate: AnyObject {
-    func introScreenViewControllerBack(_ introScreenViewController: IntroScreenViewController)
+protocol CurlPagesScreenViewControllerDelegate: AnyObject {
+    func curlPagesScreenViewControllerBack(_ curlPagesScreenViewController: CurlPagesScreenViewController)
 }
 
-class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTransitToPageObserver {
+class CurlPagesScreenViewController: UIViewController {
     
     // MARK: Delegate
     
-    weak var delegate: IntroScreenViewControllerDelegate?
+    weak var delegate: CurlPagesScreenViewControllerDelegate?
     
     // MARK: View
     
     override func loadView() {
-        view = IntroScreenView()
+        view = CurlPagesScreenView()
     }
     
-    private var introScreenView: IntroScreenView! {
-        return view as? IntroScreenView
+    private var curlPagesScreenView: CurlPagesScreenView! {
+        return view as? CurlPagesScreenView
     }
     
     // MARK: Childs
     
-    private var pagesViewController = AUIEmptyScrollPagesController()
+    private var pagesViewController = AUIEmptyCurlPagesController()
     
     // MARK: Setup
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        introScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        curlPagesScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupPagesViewController()
     }
     
     private func setupPagesViewController() {
         pagesViewController.navigationOrientation = .horizontal
-        pagesViewController.isInfiniteScroll = true
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
             let viewController = UIViewController()
@@ -67,21 +66,14 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
             return viewController
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
-        pagesViewController.view = introScreenView.pagesView
+        pagesViewController.view = curlPagesScreenView.pagesView
         pagesViewController.selectPageController(pageViewController1)
     }
     
     // MARK: Actions
     
     @objc private func back() {
-        delegate?.introScreenViewControllerBack(self)
-    }
-    
-    // MARK: AUIPagesViewControllerDidTransitToPageObserver
-    
-    func pagesViewController(_ pagesViewController: AUIPagesViewController, didTransitToPageViewControllers pageViewControllers: [AUIPageController]) {
-        print(pageViewControllers)
+        delegate?.curlPagesScreenViewControllerBack(self)
     }
     
 }
-

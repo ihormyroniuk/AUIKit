@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, IntroScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TestTableViewScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TestTableViewScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -35,10 +35,17 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
     
     private weak var menuScreenController: MenuScreenViewController?
     
-    func menuScreenViewControllerDisplayIntroScreen(_ menuScreenController: MenuScreenViewController) {
-        let screenController = IntroScreenViewController()
+    func menuScreenViewControllerDisplayScrollPagesScreen(_ menuScreenController: MenuScreenViewController) {
+        let screenController = ScrollPagesScreenViewController()
         screenController.delegate = self
-        introScreenController = screenController
+        scrollPagesScreenController = screenController
+        mainNavigationController?.pushViewController(screenController, animated: true)
+    }
+    
+    func menuScreenViewControllerDisplayCurlPagesScreen(_ menuScreenViewController: MenuScreenViewController) {
+        let screenController = CurlPagesScreenViewController()
+        screenController.delegate = self
+        curlPagesScreenController = screenController
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
@@ -102,11 +109,19 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Int
         mainNavigationController?.pushViewController(viewController, animated: true)
     }
     
-    // MARK: Intro Screen
+    // MARK: Scroll Pages Screen
     
-    private weak var introScreenController: IntroScreenViewController?
+    private weak var scrollPagesScreenController: ScrollPagesScreenViewController?
     
-    func introScreenViewControllerBack(_ introScreenController: IntroScreenViewController) {
+    func scrollPagesScreenViewControllerBack(_ scrollPagesScreenController: ScrollPagesScreenViewController) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: Curl Pages Screen
+    
+    private weak var curlPagesScreenController: CurlPagesScreenViewController?
+    
+    func curlPagesScreenViewControllerBack(_ curlPagesScreenController: CurlPagesScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     
