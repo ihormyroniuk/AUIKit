@@ -32,8 +32,7 @@ class IntroScreenViewController: UIViewController, AUIPagesViewControllerDidTran
     private var pagesViewController: AUIEmptyScrollPageViewController = {
         let pagesViewController = AUIEmptyScrollPageViewController(
             navigationOrientation: .horizontal,
-            options: [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(24),
-                      .spineLocation: NSNumber(value: UIPageViewController.SpineLocation.mid.rawValue)])
+            interPageSpacing: 200)
         return pagesViewController
     }()
     

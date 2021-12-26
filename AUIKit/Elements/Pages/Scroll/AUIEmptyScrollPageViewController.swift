@@ -8,17 +8,27 @@
 import UIKit
 
 open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPageViewController {
-  
+
     private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
     
     // MARK: Select
-  
+    
     open func selectPageController(_ pageController: AUIPageViewController) {
-        
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+    }
+  
+    open func selectPageControllerAnimated(_ pageController: AUIPageViewController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { finished in
+            completion?(finished)
+        })
     }
   
     open func selectedPageController() -> AUIPageViewController? {
-        return nil
+        return currentPageController
     }
   
     // MARK: Controllers
@@ -29,15 +39,15 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     // MARK: Initializer
   
     public init(navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal,
-                options: [UIPageViewController.OptionsKey : Any] = [:]) {
+                interPageSpacing: CGFloat?) {
         self.navigationOrientation = navigationOrientation
-        self.options = options
+        self.interPageSpacing = interPageSpacing
     }
   
     // MARK: State
   
-    private var navigationOrientation: UIPageViewController.NavigationOrientation
-    private var options: [UIPageViewController.OptionsKey : Any]
+    public let navigationOrientation: UIPageViewController.NavigationOrientation
+    public let interPageSpacing: CGFloat?
   
     open var pagesCount: Int { return pageControllers.count }
     open var currentPageNumber: Int? {
@@ -45,7 +55,7 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
         let currentPageNumber: Int = containerPageViewController.number
         return currentPageNumber
     }
-    open var currentPageControllers: AUIPageViewController? {
+    open var currentPageController: AUIPageViewController? {
         guard let currentPageNumber = self.currentPageNumber else { return nil }
         return pageControllers[currentPageNumber]
     }
@@ -66,7 +76,7 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     open override func setupView() {
         super.setupView()
         guard let view = view else { return }
-        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
+        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(value: interPageSpacing ?? 0)])
         self.pagesViewController = pagesViewController
         setupPageViewController()
         reload()
@@ -81,26 +91,14 @@ open class AUIEmptyScrollPageViewController: AUIEmptyViewController, AUIScrollPa
     // MARK: Reload
   
     open func reload() {
-        if pagesViewController?.spineLocation == .mid {
-            guard let pageViewController = pageControllers.first else { return }
-            let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
-            let containerPageViewController2 = NumberedContainerViewController(number: 1, viewController: pageControllers[1].viewController)
-            pagesViewController?.setViewControllers([containerPageViewController, containerPageViewController2], direction: .forward, animated: false, completion: nil)
+        guard let pageViewController = pageControllers.first else { return }
+        let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
+        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false, completion: nil)
 //        for object in didTransitToPageObservers.allObjects {
-//          guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
-//          observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
+//            guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
+//            observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
 //        }
-        } else {
-            guard let pageViewController = pageControllers.first else { return }
-            let containerPageViewController = NumberedContainerViewController(number: 0, viewController: pageViewController.viewController)
-            pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false, completion: nil)
-//      for object in didTransitToPageObservers.allObjects {
-//        guard let observer = object as? AUIPagesViewControllerDidTransitToPageObserver else { continue }
-//        observer.pagesViewController(self, didTransitToPageViewControllers: currentPageControllers)
-//      }
     }
-    
-  }
   
     // MARK: Events
 
