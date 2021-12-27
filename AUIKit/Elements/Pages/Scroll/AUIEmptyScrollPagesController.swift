@@ -41,7 +41,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         selectPageController(selectedPageController)
     }
     
-    // MARK: Content
+    // MARK: Pages
   
     open var pageControllers: [AUIPageController] = []
     
@@ -63,7 +63,6 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         })
     }
   
-    open var pagesCount: Int { return pageControllers.count }
     open var currentPageNumber: Int? {
         guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
         let currentPageNumber: Int = containerPageViewController.number

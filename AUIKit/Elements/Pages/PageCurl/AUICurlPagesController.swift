@@ -9,6 +9,12 @@ import UIKit
 
 public protocol AUICurlPagesController {
     
+    // MARK: Settings
+    
+    var spineLocation: AUICurlPagesControllerSpineLocation? { get set }
+    
+    // MARK: Pages
+    
     var pageControllers: [AUIPageController] { get set }
     
     // MARK: Select
@@ -19,4 +25,12 @@ public protocol AUICurlPagesController {
   
     var selectedPageController: AUIPageController? { get }
   
+}
+
+public struct AUICurlPagesControllerSpineLocation {
+    let unknown: UIPageViewController.SpineLocation
+    let portrait: UIPageViewController.SpineLocation
+    let portraitUpsideDown: UIPageViewController.SpineLocation
+    let landscapeLeft: UIPageViewController.SpineLocation
+    let landscapeRight: UIPageViewController.SpineLocation
 }

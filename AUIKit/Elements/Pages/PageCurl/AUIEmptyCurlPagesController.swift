@@ -8,8 +8,14 @@
 import UIKit
 
 open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesController {
-
-    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
+    
+    // MARK: Settings
+    
+    public var spineLocation: AUICurlPagesControllerSpineLocation?
+    
+    // MARK: Pages
+    
+    open var pageControllers: [AUIPageController] = []
     
     // MARK: Select
     
@@ -28,25 +34,23 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
             completion?(finished)
         })
     }
-  
-    open var pagesCount: Int { return pageControllers.count }
-    open var currentPageNumber: Int? {
-        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
-        let currentPageNumber: Int = containerPageViewController.number
-        return currentPageNumber
-    }
+    
     open var selectedPageController: AUIPageController? {
         guard let currentPageNumber = self.currentPageNumber else { return nil }
         return pageControllers[currentPageNumber]
     }
   
+    open var currentPageNumber: Int? {
+        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
+        let currentPageNumber: Int = containerPageViewController.number
+        return currentPageNumber
+    }
+  
     // MARK: Controllers
   
     private var pagesViewController: AUISelfLayoutPageViewController?
-  
-    // MARK: State
     
-    open var pageControllers: [AUIPageController] = []
+    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
     
     // MARK: Setup
   
@@ -106,6 +110,10 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         selectedPageController?.didSelect()
     }
+    
+    open func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
+        return orientation == .landscapeLeft ? .mid : .min
+    }
   
 }
 
@@ -126,7 +134,7 @@ private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageView
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
-        return orientation == .landscapeLeft ? .mid : .min
+        return delegate?.pageViewController(pageViewController, spineLocationFor: orientation) ?? .min
     }
     
 }
