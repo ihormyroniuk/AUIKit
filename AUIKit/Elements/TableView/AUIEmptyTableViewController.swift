@@ -140,7 +140,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Headers
   
     open func headerInSection(_ section: Int, tableView: UITableView) -> UIView? {
-        return sectionControllers[section].header(tableView: tableView)
+        return sectionControllers[section].header()
     }
   
     open func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat {
@@ -153,7 +153,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open func willDisplayHeaderView(_ view: UIView, forSection section: Int) {
         guard section < sectionControllers.count else { return }
-        sectionControllers[section].willDisplayHeader(view)
+        sectionControllers[section].willDisplayHeader()
     }
   
     open func didEndDisplayingHeaderInSection(_ section: Int) {
@@ -164,7 +164,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Footers
   
     open func footerInSection(_ section: Int, tableView: UITableView) -> UIView? {
-        return sectionControllers[section].footer(tableView: tableView)
+        return sectionControllers[section].footer()
     }
   
     open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
@@ -177,7 +177,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open func willDisplayFooterView(_ view: UIView, forSection section: Int) {
         guard section < sectionControllers.count else { return }
-        sectionControllers[section].willDisplayFooter(view)
+        sectionControllers[section].willDisplayFooter()
     }
   
     open func didEndDisplayingFooterInSection(_ section: Int) {

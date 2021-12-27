@@ -11,10 +11,10 @@ public protocol AUITableViewSectionController: AnyObject {
   
     // MARK: Header
   
-    func header(tableView: UITableView) -> UIView?
+    func header() -> UIView?
     var headerEstimatedHeight: CGFloat { get }
     var headerHeight: CGFloat { get }
-    func willDisplayHeader(_ view: UIView)
+    func willDisplayHeader()
     func didEndDisplayingHeader()
 
     // MARK: Cells
@@ -30,10 +30,10 @@ public protocol AUITableViewSectionController: AnyObject {
 
     // MARK: Footer
   
-    func footer(tableView: UITableView) -> UIView?
+    func footer() -> UIView?
     var footerEstimatedHeight: CGFloat { get }
     var footerHeight: CGFloat { get }
-    func willDisplayFooter(_ view: UIView)
+    func willDisplayFooter()
     func didEndDisplayingFooter()
     
 }

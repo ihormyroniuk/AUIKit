@@ -17,7 +17,6 @@ open class AUITableViewCell: UITableViewCell {
         setup()
     }
   
-    @available(*, unavailable)
     public convenience required init?(coder aDecoder: NSCoder) { return nil }
   
     // MARK: Setup

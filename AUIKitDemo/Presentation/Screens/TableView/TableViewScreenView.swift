@@ -23,7 +23,7 @@ class TableViewScreenView: BackButtonTitleLabelScreenView {
     }
     
     private func setupTableView() {
-        
+
     }
     
     // MARK: Layout

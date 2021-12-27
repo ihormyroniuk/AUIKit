@@ -51,14 +51,18 @@ final class TableViewScreenViewController: UIViewController {
                 cell.detailTextLabel?.text = "detail #\(i)"
                 return cell
             }
+            cellConroller.estimatedHeightClosure = {
+                return 64
+            }
             cellConroller.heightClosure = {
                 return 64
             }
             cellConroller.willDisplayCellClosure = {
                 print("will display text #\(i)")
             }
-            cellConroller.didSelectClosure = {
-                print("did select text #\(i)")
+            cellConroller.didSelectClosure = { [weak self] in
+                guard let self = self else { return }
+                self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade)
             }
             cellConroller.didEndDisplayingCellClosure = {
                 print("did end displaying text #\(i)")

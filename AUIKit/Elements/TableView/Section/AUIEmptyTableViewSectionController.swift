@@ -20,8 +20,8 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open var headerController: AUITableViewHeaderFooterController?
   
-    open func header(tableView: UITableView) -> UIView? {
-        return headerController?.view(tableView: tableView)
+    open func header() -> UIView? {
+        return headerController?.view()
     }
   
     open var headerEstimatedHeight: CGFloat {
@@ -31,7 +31,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
         return headerController?.height ?? 0
     }
   
-    open func willDisplayHeader(_ view: UIView) {
+    open func willDisplayHeader() {
         headerController?.willDisplay()
     }
   
@@ -61,9 +61,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     }
   
     open func didEndDisplayingCellAtIndex(index: Int) {
-        if cellControllers.count > index {
-            cellControllers[index].didEndDisplayingCell()
-        }
+        cellControllers[index].didEndDisplayingCell()
     }
   
     open func willDisplayCell(_ cell: UITableViewCell, index: IndexPath) {
@@ -78,8 +76,8 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open var footerController: AUITableViewHeaderFooterController?
   
-    open func footer(tableView: UITableView) -> UIView? {
-        return footerController?.view(tableView: tableView)
+    open func footer() -> UIView? {
+        return footerController?.view()
     }
   
     open var footerHeight: CGFloat {
@@ -90,7 +88,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
         return footerController?.estimatedHeight ?? 0
     }
   
-    open func willDisplayFooter(_ view: UIView) {
+    open func willDisplayFooter() {
         footerController?.willDisplay()
     }
   

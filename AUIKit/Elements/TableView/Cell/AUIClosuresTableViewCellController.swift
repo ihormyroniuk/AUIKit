@@ -8,44 +8,38 @@
 
 import UIKit
 
-open class AUIClosuresTableViewCellController: AUITableViewCellController {
-  
-    // MARK: Initializer
-  
-    public init() {
-        
-    }
+open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
   
     // MARK: TableViewCellController
     
     open var cellForRowAtIndexPathClosure: ((IndexPath) -> UITableViewCell)?
-    open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
+    open override func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = cellForRowAtIndexPathClosure?(indexPath)
         return cell ?? UITableViewCell()
     }
   
     open var estimatedHeightClosure: (() -> CGFloat)?
-    open var estimatedHeight: CGFloat {
+    open override var estimatedHeight: CGFloat {
         return estimatedHeightClosure?() ?? 0
     }
   
     open var heightClosure: (() -> CGFloat)?
-    open var height: CGFloat {
+    open override var height: CGFloat {
         return heightClosure?() ?? 0
     }
   
     open var willDisplayCellClosure: (() -> Void)?
-    open func willDisplayCell() {
+    open override func willDisplayCell() {
         willDisplayCellClosure?()
     }
     
     open var didSelectClosure: (() -> Void)?
-    open func didSelectCell() {
+    open override func didSelectCell() {
         didSelectClosure?()
     }
     
     open var didEndDisplayingCellClosure: (() -> Void)?
-    open func didEndDisplayingCell() {
+    open override func didEndDisplayingCell() {
         didEndDisplayingCellClosure?()
     }
   
