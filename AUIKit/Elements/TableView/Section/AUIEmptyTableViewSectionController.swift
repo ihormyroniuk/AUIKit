@@ -49,7 +49,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         let index = indexPath.row
-        return cellControllers[index].cellForRowAtIndexPath(indexPath, tableView: tableView)
+        return cellControllers[index].cellForRowAtIndexPath(indexPath)
     }
   
     open func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat {
@@ -67,7 +67,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     }
   
     open func willDisplayCell(_ cell: UITableViewCell, index: IndexPath) {
-        cellControllers[index.row].willDisplayCell(cell, indexPath: index)
+        cellControllers[index.row].willDisplayCell()
     }
   
     open func didSelectCellAtIndex(_ index: Int) {

@@ -7,24 +7,24 @@
 
 import AUIKit
 
-protocol TestTableViewScreenViewControllerDelegate: AnyObject {
-    func testTableViewScreenViewControllerBack(_ testTableViewScreenViewController: TestTableViewScreenViewController)
+protocol TableViewScreenViewControllerDelegate: AnyObject {
+    func tableViewScreenViewControllerBack(_ testTableViewScreenViewController: TableViewScreenViewController)
 }
 
-final class TestTableViewScreenViewController: UIViewController {
+final class TableViewScreenViewController: UIViewController {
     
     // MARK: Delegate
     
-    weak var delegate: TestTableViewScreenViewControllerDelegate?
+    weak var delegate: TableViewScreenViewControllerDelegate?
     
     // MARK: View
     
     override func loadView() {
-        view = TestTableViewScreenView()
+        view = TableViewScreenView()
     }
     
-    private var testTableViewScreenView: TestTableViewScreenView! {
-        return view as? TestTableViewScreenView
+    private var tableViewScreenView: TableViewScreenView! {
+        return view as? TableViewScreenView
     }
     
     // MARK: Components
@@ -35,17 +35,17 @@ final class TestTableViewScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        testTableViewScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        tableViewScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
         setupTableViewController()
     }
     
     private func setupTableViewController() {
-        tableViewController.tableView = testTableViewScreenView.tableView
+        tableViewController.tableView = tableViewScreenView.tableView
         var cellControllers: [AUITableViewCellController] = []
         for i in 1...100 {
             let cellConroller = AUIClosuresTableViewCellController()
-            cellConroller.cellForRowAtIndexPathClosure = { tableView, indexPath in
+            cellConroller.cellForRowAtIndexPathClosure = { indexPath in
                 let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
                 cell.textLabel?.text = "text #\(i)"
                 cell.detailTextLabel?.text = "detail #\(i)"
@@ -54,8 +54,14 @@ final class TestTableViewScreenViewController: UIViewController {
             cellConroller.heightClosure = {
                 return 64
             }
+            cellConroller.willDisplayCellClosure = {
+                print("will display text #\(i)")
+            }
             cellConroller.didSelectClosure = {
-                print("text #\(i)")
+                print("did select text #\(i)")
+            }
+            cellConroller.didEndDisplayingCellClosure = {
+                print("did end displaying text #\(i)")
             }
             cellControllers.append(cellConroller)
         }
@@ -67,13 +73,13 @@ final class TestTableViewScreenViewController: UIViewController {
     // MARK: Actions
     
     @objc private func back() {
-        delegate?.testTableViewScreenViewControllerBack(self)
+        delegate?.tableViewScreenViewControllerBack(self)
     }
     
     // MARK: Content
     
     private func setContent() {
-        testTableViewScreenView.titleLabel.text = "Test TableView"
+        tableViewScreenView.titleLabel.text = "TableView"
     }
     
 }

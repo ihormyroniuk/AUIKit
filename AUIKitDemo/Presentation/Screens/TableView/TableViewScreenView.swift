@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class TestTableViewScreenView: BackButtonTitleLabelScreenView {
+class TableViewScreenView: BackButtonTitleLabelScreenView {
     
     // MARK: Subviews
     

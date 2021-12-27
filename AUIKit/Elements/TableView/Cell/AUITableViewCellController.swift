@@ -9,10 +9,10 @@
 import UIKit
 
 public protocol AUITableViewCellController: AnyObject {
-    func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
-    func willDisplayCell(_ cell: UITableViewCell, indexPath: IndexPath)
-    func didEndDisplayingCell()
-    func didSelectCell()
+    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     var estimatedHeight: CGFloat { get }
     var height: CGFloat { get }
+    func willDisplayCell()
+    func didSelectCell()
+    func didEndDisplayingCell()
 }

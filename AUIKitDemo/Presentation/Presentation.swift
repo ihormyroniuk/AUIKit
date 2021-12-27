@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TestTableViewScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TableViewScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -102,8 +102,8 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
-    func menuScreenViewControllerDisplayTestTableView(_ menuScreenViewController: MenuScreenViewController) {
-        let viewController = TestTableViewScreenViewController()
+    func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController) {
+        let viewController = TableViewScreenViewController()
         testTableViewScreenViewController = viewController
         testTableViewScreenViewController?.delegate = self
         mainNavigationController?.pushViewController(viewController, animated: true)
@@ -167,9 +167,9 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     
     // Test TableView Screen
     
-    private weak var testTableViewScreenViewController: TestTableViewScreenViewController?
+    private weak var testTableViewScreenViewController: TableViewScreenViewController?
     
-    func testTableViewScreenViewControllerBack(_ testTableViewScreenViewController: TestTableViewScreenViewController) {
+    func tableViewScreenViewControllerBack(_ testTableViewScreenViewController: TableViewScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

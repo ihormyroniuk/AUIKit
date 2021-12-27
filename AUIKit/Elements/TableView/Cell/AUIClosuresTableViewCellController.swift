@@ -16,16 +16,11 @@ open class AUIClosuresTableViewCellController: AUITableViewCellController {
         
     }
   
-    open var didSelectClosure: (() -> Void)?
-    open func didSelectCell() {
-        didSelectClosure?()
-    }
-  
     // MARK: TableViewCellController
     
-    public var cellForRowAtIndexPathClosure: ((UITableView, IndexPath) -> UITableViewCell)?
-    open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
-        let cell = cellForRowAtIndexPathClosure?(tableView, indexPath)
+    open var cellForRowAtIndexPathClosure: ((IndexPath) -> UITableViewCell)?
+    open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
+        let cell = cellForRowAtIndexPathClosure?(indexPath)
         return cell ?? UITableViewCell()
     }
   
@@ -39,12 +34,19 @@ open class AUIClosuresTableViewCellController: AUITableViewCellController {
         return heightClosure?() ?? 0
     }
   
-    open func willDisplayCell(_ cell: UITableViewCell, indexPath: IndexPath) {
-
+    open var willDisplayCellClosure: (() -> Void)?
+    open func willDisplayCell() {
+        willDisplayCellClosure?()
     }
-  
+    
+    open var didSelectClosure: (() -> Void)?
+    open func didSelectCell() {
+        didSelectClosure?()
+    }
+    
+    open var didEndDisplayingCellClosure: (() -> Void)?
     open func didEndDisplayingCell() {
-        
+        didEndDisplayingCellClosure?()
     }
   
 }

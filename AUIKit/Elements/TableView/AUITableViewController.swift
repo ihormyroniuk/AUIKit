@@ -9,6 +9,8 @@
 import UIKit
 
 public protocol AUITableViewController: AUIScrollViewController {
+    
+    var sectionControllers: [AUITableViewSectionController] { get set }
   
     func deleteCellController(_ cellController: AUITableViewCellController)
     func deleteCellControllers(_ cellControllers: [AUITableViewCellController])

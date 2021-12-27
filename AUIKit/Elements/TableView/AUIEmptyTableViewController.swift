@@ -18,10 +18,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open var sectionControllers: [AUITableViewSectionController] = [] {
         didSet {
-            didSetDectionControllers(oldValue)
+            didSetSectionControllers(oldValue)
         }
     }
-    open func didSetDectionControllers(_ oldValue: [AUITableViewSectionController]) {
+    open func didSetSectionControllers(_ oldValue: [AUITableViewSectionController]) {
         reload()
     }
   
@@ -60,35 +60,35 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableView?.reloadData()
     }
   
-  open func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
-    let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-    for (section, indexPaths) in indexPathsBySections {
-      let rows = indexPaths.map({ $0.row })
-      sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+    open func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        reload()
     }
-    reload()
-  }
-  open func deleteCellController(_ cellController: AUITableViewCellController) {
-    deleteCellControllers([cellController])
-  }
+    open func deleteCellController(_ cellController: AUITableViewCellController) {
+        deleteCellControllers([cellController])
+    }
   
-  open var deletedIndexPaths: [IndexPath] = []
-  open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation) {
-    let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-    let indexPaths = indexPathsBySections.reduce([]) { $1.value }
-    deletedIndexPaths = indexPaths
-    deletedIndexPaths = indexPaths + indexPaths
-    for (section, indexPaths) in indexPathsBySections {
-      let rows = indexPaths.map({ $0.row })
-      sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+    open var deletedIndexPaths: [IndexPath] = []
+    open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        deletedIndexPaths = indexPaths
+        deletedIndexPaths = indexPaths + indexPaths
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        tableView?.beginUpdates()
+        tableView?.deleteRows(at: indexPaths, with: animation)
+        tableView?.endUpdates()
     }
-    tableView?.beginUpdates()
-    tableView?.deleteRows(at: indexPaths, with: animation)
-    tableView?.endUpdates()
-  }
-  open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
-    deleteCellControllersAnimated([cellController], animation)
-  }
+    open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
+        deleteCellControllersAnimated([cellController], animation)
+    }
   
   open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
     /*guard let sectionIndex = self.sectionControllers.firstIndex(where: { $0 === section }) else { return }

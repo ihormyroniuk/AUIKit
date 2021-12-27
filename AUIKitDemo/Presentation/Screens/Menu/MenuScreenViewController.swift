@@ -16,7 +16,7 @@ protocol MenuScreenViewControllerDelegate: AnyObject {
     func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayPushAnimations(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayStringsdict(_ menuScreenViewController: MenuScreenViewController)
-    func menuScreenViewControllerDisplayTestTableView(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController)
 }
 
 class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -37,7 +37,7 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
         case presentAnimations
         case pushAnimations
         case stringsdict
-        case testTableView
+        case tableView
     }
     
     // MARK: View
@@ -85,8 +85,8 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
             delegate?.menuScreenViewControllerDisplayPushAnimations(self)
         case .stringsdict:
             delegate?.menuScreenViewControllerDisplayStringsdict(self)
-        case .testTableView:
-            delegate?.menuScreenViewControllerDisplayTestTableView(self)
+        case .tableView:
+            delegate?.menuScreenViewControllerDisplayTableView(self)
         }
     }
     
@@ -116,8 +116,8 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
             return "PushAnimation"
         case .stringsdict:
             return "Stringsdict"
-        case .testTableView:
-            return "Test TableView"
+        case .tableView:
+            return "TableView"
         }
     }
     

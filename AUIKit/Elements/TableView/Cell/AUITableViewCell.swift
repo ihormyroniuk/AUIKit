@@ -10,41 +10,31 @@ import UIKit
 
 open class AUITableViewCell: UITableViewCell {
   
-  // MARK: Initializer
+    // MARK: Initializer
 
-  public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    setup()
-    autoLayout()
-  }
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setup()
+    }
   
-  @available(*, unavailable)
-  public convenience required init?(coder aDecoder: NSCoder) { return nil }
+    @available(*, unavailable)
+    public convenience required init?(coder aDecoder: NSCoder) { return nil }
   
-  // MARK: Setup
+    // MARK: Setup
   
-  open func setup() {
-    selectionStyle = .none
-    contentView.frame = self.bounds
-    autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-  }
+    open func setup() {
+        
+    }
   
-  // MARK: AutoLayout
+    // MARK: Layout
   
-  open func autoLayout() {
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutContentView()
+    }
     
-  }
-  
-  // MARK: Layout
-  
-  open override func layoutSubviews() {
-    super.layoutSubviews()
-    layout()
-  }
-  
-  open func layout() {
+    open func layoutContentView() {
+        contentView.frame = self.bounds
+    }
     
-  }
-  
 }
