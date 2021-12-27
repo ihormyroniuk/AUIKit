@@ -9,8 +9,6 @@ import UIKit
 
 public protocol AUICurlPagesController {
     
-    var navigationOrientation: UIPageViewController.NavigationOrientation { get set }
-    
     var pageControllers: [AUIPageController] { get set }
     
     // MARK: Select

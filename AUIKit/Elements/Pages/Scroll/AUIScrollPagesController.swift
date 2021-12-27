@@ -9,11 +9,15 @@ import UIKit
 
 public protocol AUIScrollPagesController {
     
+    // MARK: Settings
+    
     var navigationOrientation: UIPageViewController.NavigationOrientation { get set }
     
     var interPageSpacing: CGFloat? { get set }
     
     var isInfiniteScroll: Bool? { get set }
+    
+    // MARK: Pages
     
     var pageControllers: [AUIPageController] { get set }
     

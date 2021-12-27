@@ -8,45 +8,8 @@
 import UIKit
 
 open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPagesController {
-
-    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
     
-    // MARK: Select
-    
-    open func selectPageController(_ pageController: AUIPageController) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
-    }
-  
-    open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
-            guard let self = self else { return }
-            self.selectedPageController?.didSelect()
-            completion?(finished)
-        })
-    }
-  
-    open var pagesCount: Int { return pageControllers.count }
-    open var currentPageNumber: Int? {
-        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
-        let currentPageNumber: Int = containerPageViewController.number
-        return currentPageNumber
-    }
-    open var selectedPageController: AUIPageController? {
-        guard let currentPageNumber = self.currentPageNumber else { return nil }
-        return pageControllers[currentPageNumber]
-    }
-  
-    // MARK: Controllers
-  
-    private var pagesViewController: AUISelfLayoutPageViewController?
-  
-    // MARK: State
-    
-    open var pageControllers: [AUIPageController] = []
+    // MARK: Settings
   
     public var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
         didSet {
@@ -77,6 +40,45 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         guard let selectedPageController = selectedPageController else { return }
         selectPageController(selectedPageController)
     }
+    
+    // MARK: Content
+  
+    open var pageControllers: [AUIPageController] = []
+    
+    // MARK: Select
+    
+    open func selectPageController(_ pageController: AUIPageController) {
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+    }
+  
+    open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
+            guard let self = self else { return }
+            self.selectedPageController?.didSelect()
+            completion?(finished)
+        })
+    }
+  
+    open var pagesCount: Int { return pageControllers.count }
+    open var currentPageNumber: Int? {
+        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
+        let currentPageNumber: Int = containerPageViewController.number
+        return currentPageNumber
+    }
+    open var selectedPageController: AUIPageController? {
+        guard let currentPageNumber = self.currentPageNumber else { return nil }
+        return pageControllers[currentPageNumber]
+    }
+    
+    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
+  
+    // MARK: State
+    
+    private var pagesViewController: AUISelfLayoutPageViewController?
   
     // MARK: Setup
   
@@ -207,7 +209,7 @@ private class NumberedContainerViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.addSubview(viewController.view)
         addChild(viewController)
-        viewController.didMove(toParent: viewController)
+        viewController.didMove(toParent: self)
     }
   
     @available(*, unavailable)

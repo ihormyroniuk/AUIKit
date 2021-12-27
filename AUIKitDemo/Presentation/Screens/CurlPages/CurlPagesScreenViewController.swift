@@ -40,7 +40,6 @@ class CurlPagesScreenViewController: UIViewController {
     }
     
     private func setupPagesViewController() {
-        pagesViewController.navigationOrientation = .horizontal
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
             let viewController = UIViewController()

@@ -47,37 +47,7 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     // MARK: State
     
     open var pageControllers: [AUIPageController] = []
-  
-    public var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
-        didSet {
-            didSetNavigationOrientation(oldValue)
-        }
-    }
-    open func didSetNavigationOrientation(_ oldValue: UIPageViewController.NavigationOrientation) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
-    }
     
-    public var interPageSpacing: CGFloat? {
-        didSet {
-            didSetInterPageSpacing(oldValue)
-        }
-    }
-    open func didSetInterPageSpacing(_ oldValue: CGFloat?) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
-    }
-    
-    open var isInfiniteScroll: Bool? {
-        didSet {
-            didSetIsInfiniteScroll(oldValue)
-        }
-    }
-    open func didSetIsInfiniteScroll(_ oldValue: Bool?) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
-    }
-  
     // MARK: Setup
   
     open override func setup() {
@@ -95,12 +65,8 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
         super.setupView()
         guard let view = view else { return }
         let options: [UIPageViewController.OptionsKey : Any]?
-        if let interPageSpacing = interPageSpacing {
-            options = [UIPageViewController.OptionsKey.interPageSpacing : NSNumber(value: interPageSpacing)]
-        } else {
-            options = nil
-        }
-        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .pageCurl, navigationOrientation: navigationOrientation, options: options)
+        options = [UIPageViewController.OptionsKey.spineLocation : NSNumber(value: UIPageViewController.SpineLocation.min.rawValue)]
+        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: options)
         self.pagesViewController = pagesViewController
         setupPageViewController()
     }
@@ -121,13 +87,8 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
             let beforePageController = pageControllers[beforeNumber]
             let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
             return beforeNumberedContainerViewController
-        } else {
-            guard isInfiniteScroll ?? false, pageControllers.count > 1 else { return nil }
-            let beforeNumber = pageControllers.count - 1
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
         }
+        return nil
   }
   
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -138,13 +99,8 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
             let afterPageController = pageControllers[afterNumber]
             let afterNumberedContainerViewController = NumberedContainerViewController(number: afterNumber, viewController: afterPageController.viewController)
             return afterNumberedContainerViewController
-        } else {
-            guard isInfiniteScroll ?? false, pageControllers.count > 1 else { return nil }
-            let beforeNumber = 0
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
         }
+        return nil
     }
   
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -169,6 +125,10 @@ private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageView
         delegate?.pageViewController(pageViewController, didFinishAnimating: finished, previousViewControllers: previousViewControllers, transitionCompleted: completed)
     }
     
+    func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
+        return orientation == .landscapeLeft ? .mid : .min
+    }
+    
 }
 
 private class AUISelfLayoutPageViewController: UIPageViewController {
@@ -182,6 +142,8 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
     init(containerView: UIView, transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
         self.containerView = containerView
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
+        let parentViewController = containerView.parentViewController
+        parentViewController?.addChild(self)
         containerView.addSubview(view)
     }
   
@@ -207,7 +169,7 @@ private class NumberedContainerViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         view.addSubview(viewController.view)
         addChild(viewController)
-        viewController.didMove(toParent: viewController)
+        viewController.didMove(toParent: self)
     }
   
     @available(*, unavailable)
@@ -216,5 +178,19 @@ private class NumberedContainerViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         viewController.view.frame = view?.bounds ?? .zero
+    }
+}
+
+private extension UIView {
+    var parentViewController: UIViewController? {
+        // Starts from next (As we know self is not a UIViewController).
+        var parentResponder: UIResponder? = self.next
+        while parentResponder != nil {
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+            parentResponder = parentResponder?.next
+        }
+        return nil
     }
 }
