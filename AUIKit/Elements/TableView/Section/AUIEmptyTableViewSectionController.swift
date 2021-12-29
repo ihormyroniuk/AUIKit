@@ -47,7 +47,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
         return cellControllers.count
     }
   
-    open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+    open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         return cellControllers[index].cellForRowAtIndexPath(indexPath)
     }
@@ -64,7 +64,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
         cellControllers[index].didEndDisplayingCell()
     }
   
-    open func willDisplayCell(_ cell: UITableViewCell, index: IndexPath) {
+    open func willDisplayCell(index: IndexPath) {
         cellControllers[index.row].willDisplayCell()
     }
   

@@ -41,6 +41,8 @@ class ScrollPagesScreenViewController: UIViewController {
     
     private func setupPagesViewController() {
         pagesViewController.navigationOrientation = .horizontal
+        pagesViewController.isLooping = true
+        pagesViewController.interPageSpacing = 20
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
             let viewController = UIViewController()
@@ -73,7 +75,8 @@ class ScrollPagesScreenViewController: UIViewController {
     // MARK: Actions
     
     @objc private func back() {
-        delegate?.scrollPagesScreenViewControllerBack(self)
+        pagesViewController.interPageSpacing = 0
+        //delegate?.scrollPagesScreenViewControllerBack(self)
     }
     
 }

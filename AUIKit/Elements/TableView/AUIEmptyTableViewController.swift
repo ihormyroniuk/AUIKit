@@ -82,9 +82,18 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             let rows = indexPaths.map({ $0.row })
             sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
         }
-        tableView?.beginUpdates()
-        tableView?.deleteRows(at: indexPaths, with: animation)
-        tableView?.endUpdates()
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.deleteRows(at: indexPaths, with: animation)
+            }, completion: { finished in
+                print("performBatchUpdates completion \(finished)")
+            })
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+
+        }
     }
     open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
         deleteCellControllersAnimated([cellController], animation)
@@ -197,7 +206,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
         let section = indexPath.section
-        return sectionControllers[section].cellForRowAtIndexPath(indexPath, tableView: tableView)
+        return sectionControllers[section].cellForRowAtIndexPath(indexPath)
     }
   
     open func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
@@ -217,7 +226,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
         }
         let section = indexPath.section
-        return sectionControllers[section].willDisplayCell(cell, index: indexPath)
+        return sectionControllers[section].willDisplayCell(index: indexPath)
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {

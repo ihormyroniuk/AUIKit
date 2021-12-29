@@ -17,8 +17,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         }
     }
     open func didSetNavigationOrientation(_ oldValue: UIPageViewController.NavigationOrientation) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
+        resetupPagesViewController()
     }
     
     public var interPageSpacing: CGFloat? {
@@ -27,35 +26,38 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         }
     }
     open func didSetInterPageSpacing(_ oldValue: CGFloat?) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
+        resetupPagesViewController()
     }
     
-    open var isInfiniteScroll: Bool? {
+    open var isLooping: Bool? {
         didSet {
-            didSetIsInfiniteScroll(oldValue)
+            didSetIsLooping(oldValue)
         }
     }
-    open func didSetIsInfiniteScroll(_ oldValue: Bool?) {
+    open func didSetIsLooping(_ oldValue: Bool?) {
         guard let selectedPageController = selectedPageController else { return }
         selectPageController(selectedPageController)
     }
     
     // MARK: Pages
   
-    open var pageControllers: [AUIPageController] = []
-    
-    // MARK: Select
+    open var pageControllers: [AUIPageController]? = [] {
+        didSet {
+            didSetPageControllers(oldValue)
+        }
+    }
+    open func didSetPageControllers(_ oldValue: [AUIPageController]?) {
+        guard let firstPageController = pageControllers?.first else { return }
+        selectPageController(firstPageController)
+    }
     
     open func selectPageController(_ pageController: AUIPageController) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        let containerPageViewController = PageViewController(pageController: pageController)
         pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
     }
   
     open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+        let containerPageViewController = PageViewController(pageController: pageController)
         pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
             guard let self = self else { return }
             self.selectedPageController?.didSelect()
@@ -63,20 +65,14 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         })
     }
   
-    open var currentPageNumber: Int? {
-        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
-        let currentPageNumber: Int = containerPageViewController.number
-        return currentPageNumber
-    }
     open var selectedPageController: AUIPageController? {
-        guard let currentPageNumber = self.currentPageNumber else { return nil }
-        return pageControllers[currentPageNumber]
+        let pageViewController = pagesViewController?.viewControllers?.first as? PageViewController
+        return pageViewController?.pageController
     }
+  
+    // MARK: Components
     
     private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
-  
-    // MARK: State
-    
     private var pagesViewController: AUISelfLayoutPageViewController?
   
     // MARK: Setup
@@ -84,12 +80,6 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     open override func setup() {
         super.setup()
         pageViewControllerDataSourceDelegate.delegate = self
-        setupPageViewController()
-    }
-  
-    open func setupPageViewController() {
-        pagesViewController?.dataSource = pageViewControllerDataSourceDelegate
-        pagesViewController?.delegate = pageViewControllerDataSourceDelegate
     }
   
     open override func setupView() {
@@ -102,8 +92,9 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
             options = nil
         }
         let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
+        pagesViewController.dataSource = pageViewControllerDataSourceDelegate
+        pagesViewController.delegate = pageViewControllerDataSourceDelegate
         self.pagesViewController = pagesViewController
-        setupPageViewController()
     }
   
     open override func unsetupView() {
@@ -111,40 +102,66 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         pagesViewController?.view.removeFromSuperview()
         pagesViewController = nil
     }
+    
+    private func resetupPagesViewController() {
+        guard let view = view else { return }
+        let selectedPageController = self.selectedPageController
+        pagesViewController?.view.removeFromSuperview()
+        pagesViewController = nil
+        let options: [UIPageViewController.OptionsKey : Any]?
+        if let interPageSpacing = interPageSpacing {
+            options = [.interPageSpacing : NSNumber(value: interPageSpacing)]
+        } else {
+            options = nil
+        }
+        let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
+        pagesViewController.dataSource = pageViewControllerDataSourceDelegate
+        pagesViewController.delegate = pageViewControllerDataSourceDelegate
+        self.pagesViewController = pagesViewController
+        if let selectedPageController = selectedPageController {
+            selectPageController(selectedPageController)
+        }
+    }
   
     // MARK: Events
 
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
-        let number = numberedContainerViewController.number
-        if number > 0 {
-            let beforeNumber = number - 1
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
+        guard let pageControllers = pageControllers else { return nil }
+        guard let pageViewController = viewController as? PageViewController else { return nil }
+        let pageController = pageViewController.pageController
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return nil }
+        if index > 0 {
+            let beforeIndex = index - 1
+            let beforePageController = pageControllers[beforeIndex]
+            let pageViewController = PageViewController(pageController: beforePageController)
+            return pageViewController
+        } else if isLooping == true {
+            let beforeIndex = pageControllers.count - 1
+            let beforePageController = pageControllers[beforeIndex]
+            let pageViewController = PageViewController(pageController: beforePageController)
+            return pageViewController
         } else {
-            guard isInfiniteScroll ?? false, pageControllers.count > 1 else { return nil }
-            let beforeNumber = pageControllers.count - 1
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
+            return nil
         }
   }
   
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
-        let number = numberedContainerViewController.number
-        if number < (pageControllers.count - 1) {
-            let afterNumber = number + 1
-            let afterPageController = pageControllers[afterNumber]
-            let afterNumberedContainerViewController = NumberedContainerViewController(number: afterNumber, viewController: afterPageController.viewController)
-            return afterNumberedContainerViewController
+        guard let pageControllers = pageControllers else { return nil }
+        guard let pageViewController = viewController as? PageViewController else { return nil }
+        let pageController = pageViewController.pageController
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return nil }
+        if index < (pageControllers.count - 1) {
+            let afterIndex = index + 1
+            let afterPageController = pageControllers[afterIndex]
+            let pageViewController = PageViewController(pageController: afterPageController)
+            return pageViewController
+        } else if isLooping == true {
+            let beforeIndex = 0
+            let beforePageController = pageControllers[beforeIndex]
+            let pageViewController = PageViewController(pageController: beforePageController)
+            return pageViewController
         } else {
-            guard isInfiniteScroll ?? false, pageControllers.count > 1 else { return nil }
-            let beforeNumber = 0
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
+            return nil
         }
     }
   
@@ -184,6 +201,7 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
         self.containerView = containerView
         super.init(transitionStyle: style, navigationOrientation: navigationOrientation, options: options)
         containerView.addSubview(view)
+        view.frame = containerView.bounds
     }
   
     required init?(coder: NSCoder) { return nil }
@@ -197,21 +215,20 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
   
 }
 
-private class NumberedContainerViewController: UIViewController {
+private class PageViewController: UIViewController {
   
-    let number: Int
+    let pageController: AUIPageController
     private let viewController: UIViewController
   
-    init(number: Int, viewController: UIViewController) {
-        self.number = number
-        self.viewController = viewController
+    init(pageController: AUIPageController) {
+        self.pageController = pageController
+        self.viewController = pageController.viewController
         super.init(nibName: nil, bundle: nil)
         view.addSubview(viewController.view)
         addChild(viewController)
         viewController.didMove(toParent: self)
     }
   
-    @available(*, unavailable)
     convenience required init?(coder aDecoder: NSCoder) { return nil }
   
     override func viewWillLayoutSubviews() {

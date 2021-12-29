@@ -21,10 +21,10 @@ public protocol AUITableViewSectionController: AnyObject {
 
     var cellControllers: [AUITableViewCellController] { get set }
     var numberOfRows: Int { get }
-    func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
+    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
     func heightForCellAtIndex(_ index: Int) -> CGFloat
-    func willDisplayCell(_ cell: UITableViewCell, index: IndexPath)
+    func willDisplayCell(index: IndexPath)
     func didSelectCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(index: Int)
 

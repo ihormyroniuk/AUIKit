@@ -11,7 +11,11 @@ public protocol AUICurlPagesController {
     
     // MARK: Settings
     
-    var spineLocation: AUICurlPagesControllerSpineLocation? { get set }
+    var orientationSpineLocation: AUICurlPagesControllerOrientationSpineLocation? { get set }
+    
+    var spineLocation: UIPageViewController.SpineLocation { get }
+    
+    //var spineLocation: UIPageViewController.SpineLocation? { get }
     
     // MARK: Pages
     
@@ -27,10 +31,18 @@ public protocol AUICurlPagesController {
   
 }
 
-public struct AUICurlPagesControllerSpineLocation {
-    let unknown: UIPageViewController.SpineLocation
+public struct AUICurlPagesControllerOrientationSpineLocation {
     let portrait: UIPageViewController.SpineLocation
     let portraitUpsideDown: UIPageViewController.SpineLocation
     let landscapeLeft: UIPageViewController.SpineLocation
     let landscapeRight: UIPageViewController.SpineLocation
+    let unknown: UIPageViewController.SpineLocation
+    
+    public init(portrait: UIPageViewController.SpineLocation, portraitUpsideDown: UIPageViewController.SpineLocation, landscapeLeft: UIPageViewController.SpineLocation, landscapeRight: UIPageViewController.SpineLocation, unknown: UIPageViewController.SpineLocation) {
+        self.unknown = unknown
+        self.portrait = portrait
+        self.portraitUpsideDown = portraitUpsideDown
+        self.landscapeLeft = landscapeLeft
+        self.landscapeRight = landscapeRight
+    }
 }

@@ -15,18 +15,16 @@ public protocol AUIScrollPagesController {
     
     var interPageSpacing: CGFloat? { get set }
     
-    var isInfiniteScroll: Bool? { get set }
+    var isLooping: Bool? { get set }
     
     // MARK: Pages
     
-    var pageControllers: [AUIPageController] { get set }
+    var pageControllers: [AUIPageController]? { get set }
     
-    // MARK: Select
+    var selectedPageController: AUIPageController? { get }
     
     func selectPageController(_ pageController: AUIPageController)
   
     func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
-  
-    var selectedPageController: AUIPageController? { get }
   
 }

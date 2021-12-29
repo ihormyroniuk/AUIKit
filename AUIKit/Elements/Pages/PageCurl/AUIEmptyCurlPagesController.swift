@@ -11,7 +11,9 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     
     // MARK: Settings
     
-    public var spineLocation: AUICurlPagesControllerSpineLocation?
+    open var orientationSpineLocation: AUICurlPagesControllerOrientationSpineLocation?
+    
+    open var spineLocation: UIPageViewController.SpineLocation = .min
     
     // MARK: Pages
     
@@ -20,9 +22,22 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     // MARK: Select
     
     open func selectPageController(_ pageController: AUIPageController) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+        if spineLocation == .mid {
+            guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+            if index % 2 == 0 {
+                let leftContainerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+                let rightContainerPageViewController = NumberedContainerViewController(number: index + 1, viewController: pageControllers[index + 1].viewController)
+                pagesViewController?.setViewControllers([leftContainerPageViewController, rightContainerPageViewController], direction: .forward, animated: false)
+            } else {
+                let rightContainerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+                let leftContainerPageViewController = NumberedContainerViewController(number: index - 1, viewController: pageControllers[index - 1].viewController)
+                pagesViewController?.setViewControllers([leftContainerPageViewController, rightContainerPageViewController], direction: .forward, animated: false)
+            }
+        } else {
+            guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
+            let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
+            pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+        }
     }
   
     open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
@@ -68,8 +83,7 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     open override func setupView() {
         super.setupView()
         guard let view = view else { return }
-        let options: [UIPageViewController.OptionsKey : Any]?
-        options = [UIPageViewController.OptionsKey.spineLocation : NSNumber(value: UIPageViewController.SpineLocation.min.rawValue)]
+        let options = [UIPageViewController.OptionsKey.spineLocation : NSNumber(value: spineLocation.rawValue)]
         let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: options)
         self.pagesViewController = pagesViewController
         setupPageViewController()
@@ -112,7 +126,32 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     }
     
     open func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
-        return orientation == .landscapeLeft ? .mid : .min
+        let spineLocation: UIPageViewController.SpineLocation
+        if let orientationSpineLocation = orientationSpineLocation {
+            if orientation == .portrait {
+                spineLocation = orientationSpineLocation.portrait
+            } else if orientation == .portraitUpsideDown {
+                spineLocation = orientationSpineLocation.portraitUpsideDown
+            } else if orientation == .landscapeLeft {
+                spineLocation = orientationSpineLocation.landscapeLeft
+            } else if orientation == .landscapeRight {
+                spineLocation = orientationSpineLocation.landscapeRight
+            } else {
+                spineLocation = orientationSpineLocation.unknown
+            }
+        } else {
+            spineLocation = .min
+        }
+        self.spineLocation = spineLocation
+        if spineLocation == .mid {
+            pagesViewController?.isDoubleSided = true
+        } else {
+            pagesViewController?.isDoubleSided = false
+        }
+        if let selectedPageController = selectedPageController {
+            selectPageController(selectedPageController)
+        }
+        return spineLocation
     }
   
 }
