@@ -23,7 +23,7 @@ class ScrollPagesScreenViewController: UIViewController {
         view = ScrollPagesScreenView()
     }
     
-    private var introScreenView: ScrollPagesScreenView! {
+    private var scrollPagesScreenView: ScrollPagesScreenView! {
         return view as? ScrollPagesScreenView
     }
     
@@ -35,14 +35,16 @@ class ScrollPagesScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        introScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
+        scrollPagesScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupPagesViewController()
+        setContent()
     }
     
     private func setupPagesViewController() {
         pagesViewController.navigationOrientation = .horizontal
         pagesViewController.isLooping = true
         pagesViewController.interPageSpacing = 20
+        pagesViewController.view = scrollPagesScreenView.pagesView
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
             let viewController = UIViewController()
@@ -68,15 +70,19 @@ class ScrollPagesScreenViewController: UIViewController {
             return viewController
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
-        pagesViewController.view = introScreenView.pagesView
         pagesViewController.selectPageController(pageViewController1)
     }
     
     // MARK: Actions
     
     @objc private func back() {
-        pagesViewController.interPageSpacing = 0
-        //delegate?.scrollPagesScreenViewControllerBack(self)
+        delegate?.scrollPagesScreenViewControllerBack(self)
+    }
+    
+    // MARK: Content
+    
+    private func setContent() {
+        scrollPagesScreenView.titleLabel.text = "Scroll Pages"
     }
     
 }
