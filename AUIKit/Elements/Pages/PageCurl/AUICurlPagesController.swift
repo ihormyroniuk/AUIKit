@@ -10,39 +10,22 @@ import UIKit
 public protocol AUICurlPagesController {
     
     // MARK: Settings
-    
-    var orientationSpineLocation: AUICurlPagesControllerOrientationSpineLocation? { get set }
-    
+        
+    var portraitSpineLocation: UIPageViewController.SpineLocation? { get set }
+    var portraitUpsideDownSpineLocation: UIPageViewController.SpineLocation? { get set }
+    var landscapeLeftSpineLocation: UIPageViewController.SpineLocation? { get set }
+    var landscapeRightSpineLocation: UIPageViewController.SpineLocation? { get set }
+    var unknownSpineLocation: UIPageViewController.SpineLocation? { get set }
     var spineLocation: UIPageViewController.SpineLocation { get }
-    
-    //var spineLocation: UIPageViewController.SpineLocation? { get }
-    
+        
     // MARK: Pages
     
-    var pageControllers: [AUIPageController] { get set }
+    var pageControllers: [AUIPageController]? { get set }
     
-    // MARK: Select
+    var displayedPageController: AUIPageController? { get }
     
-    func selectPageController(_ pageController: AUIPageController)
+    func displayPageController(_ pageController: AUIPageController)
   
-    func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
+    func displayPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
   
-    var selectedPageController: AUIPageController? { get }
-  
-}
-
-public struct AUICurlPagesControllerOrientationSpineLocation {
-    let portrait: UIPageViewController.SpineLocation
-    let portraitUpsideDown: UIPageViewController.SpineLocation
-    let landscapeLeft: UIPageViewController.SpineLocation
-    let landscapeRight: UIPageViewController.SpineLocation
-    let unknown: UIPageViewController.SpineLocation
-    
-    public init(portrait: UIPageViewController.SpineLocation, portraitUpsideDown: UIPageViewController.SpineLocation, landscapeLeft: UIPageViewController.SpineLocation, landscapeRight: UIPageViewController.SpineLocation, unknown: UIPageViewController.SpineLocation) {
-        self.unknown = unknown
-        self.portrait = portrait
-        self.portraitUpsideDown = portraitUpsideDown
-        self.landscapeLeft = landscapeLeft
-        self.landscapeRight = landscapeRight
-    }
 }

@@ -17,7 +17,11 @@ open class AUIEmptyPageController: AUIPageController {
         return UIViewController()
     }
     
-    open func didSelect() {
+    open func willDisplay() {
+        
+    }
+    
+    open func didDisplay() {
 
     }
     

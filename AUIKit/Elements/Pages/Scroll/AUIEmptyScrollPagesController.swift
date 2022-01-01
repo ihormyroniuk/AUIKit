@@ -11,7 +11,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     
     // MARK: Settings
   
-    public var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
+    open var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
         didSet {
             didSetNavigationOrientation(oldValue)
         }
@@ -20,7 +20,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         resetupPagesViewController()
     }
     
-    public var interPageSpacing: CGFloat? {
+    open var interPageSpacing: CGFloat? {
         didSet {
             didSetInterPageSpacing(oldValue)
         }
@@ -35,51 +35,54 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         }
     }
     open func didSetIsLooping(_ oldValue: Bool?) {
-        guard let selectedPageController = selectedPageController else { return }
-        selectPageController(selectedPageController)
+        guard let selectedPageController = displayedPageController else { return }
+        displayPageController(selectedPageController)
     }
     
     // MARK: Pages
   
-    open var pageControllers: [AUIPageController]? = [] {
+    open var pageControllers: [AUIPageController]? {
         didSet {
             didSetPageControllers(oldValue)
         }
     }
     open func didSetPageControllers(_ oldValue: [AUIPageController]?) {
         guard let firstPageController = pageControllers?.first else { return }
-        selectPageController(firstPageController)
+        displayPageController(firstPageController)
     }
     
-    open func selectPageController(_ pageController: AUIPageController) {
-        let containerPageViewController = PageViewController(pageController: pageController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+    open var displayedPageController: AUIPageController? {
+        let pageViewController = pagesViewController?.viewControllers?.first as? PageViewController
+        return pageViewController?.pageController
+    }
+    
+    open func displayPageController(_ pageController: AUIPageController) {
+        guard pageControllers?.contains(where: { $0 === pageController }) ?? false else { return }
+        let pageViewController = PageViewController(pageController: pageController)
+        pagesViewController?.setViewControllers([pageViewController], direction: .forward, animated: false)
+        displayedPageController?.didDisplay()
     }
   
-    open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
-        let containerPageViewController = PageViewController(pageController: pageController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
+    open func displayPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
+        guard pageControllers?.contains(where: { $0 === pageController }) ?? false else { return }
+        let pageViewController = PageViewController(pageController: pageController)
+        pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
             guard let self = self else { return }
-            self.selectedPageController?.didSelect()
+            self.displayedPageController?.didDisplay()
             completion?(finished)
         })
     }
   
-    open var selectedPageController: AUIPageController? {
-        let pageViewController = pagesViewController?.viewControllers?.first as? PageViewController
-        return pageViewController?.pageController
-    }
-  
     // MARK: Components
     
-    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
+    private let pagesViewControllerDataSourceDelegate = AUIPagesViewControllerDataSourceDelegateProxy()
     private var pagesViewController: AUISelfLayoutPageViewController?
   
     // MARK: Setup
   
     open override func setup() {
         super.setup()
-        pageViewControllerDataSourceDelegate.delegate = self
+        pagesViewControllerDataSourceDelegate.delegate = self
     }
   
     open override func setupView() {
@@ -92,8 +95,8 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
             options = nil
         }
         let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
-        pagesViewController.dataSource = pageViewControllerDataSourceDelegate
-        pagesViewController.delegate = pageViewControllerDataSourceDelegate
+        pagesViewController.dataSource = pagesViewControllerDataSourceDelegate
+        pagesViewController.delegate = pagesViewControllerDataSourceDelegate
         self.pagesViewController = pagesViewController
     }
   
@@ -105,7 +108,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     
     private func resetupPagesViewController() {
         guard let view = view else { return }
-        let selectedPageController = self.selectedPageController
+        let selectedPageController = self.displayedPageController
         pagesViewController?.view.removeFromSuperview()
         pagesViewController = nil
         let options: [UIPageViewController.OptionsKey : Any]?
@@ -115,11 +118,11 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
             options = nil
         }
         let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .scroll, navigationOrientation: navigationOrientation, options: options)
-        pagesViewController.dataSource = pageViewControllerDataSourceDelegate
-        pagesViewController.delegate = pageViewControllerDataSourceDelegate
+        pagesViewController.dataSource = pagesViewControllerDataSourceDelegate
+        pagesViewController.delegate = pagesViewControllerDataSourceDelegate
         self.pagesViewController = pagesViewController
         if let selectedPageController = selectedPageController {
-            selectPageController(selectedPageController)
+            displayPageController(selectedPageController)
         }
     }
   
@@ -164,14 +167,21 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
             return nil
         }
     }
+    
+    open func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        guard let viewController = pendingViewControllers.first else { return }
+        guard let pageViewController = viewController as? PageViewController else { return }
+        let pageController = pageViewController.pageController
+        pageController.willDisplay()
+    }
   
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        selectedPageController?.didSelect()
+        displayedPageController?.didDisplay()
     }
   
 }
 
-private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+private class AUIPagesViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
   
     weak var delegate: AUIEmptyScrollPagesController?
   
@@ -181,6 +191,10 @@ private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageView
   
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return delegate?.pageViewController(pageViewController, viewControllerAfter: viewController)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        delegate?.pageViewController(pageViewController, willTransitionTo: pendingViewControllers)
     }
   
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {

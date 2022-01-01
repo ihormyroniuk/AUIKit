@@ -12,6 +12,8 @@ public protocol AUIPageController: AnyObject {
     
     var viewController: UIViewController { get }
     
-    func didSelect()
+    func willDisplay()
+    
+    func didDisplay()
     
 }

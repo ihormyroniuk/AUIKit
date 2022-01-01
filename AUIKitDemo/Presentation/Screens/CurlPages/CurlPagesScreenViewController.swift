@@ -40,12 +40,18 @@ class CurlPagesScreenViewController: UIViewController {
     }
     
     private func setupPagesViewController() {
-        pagesViewController.orientationSpineLocation = AUICurlPagesControllerOrientationSpineLocation(portrait: .min, portraitUpsideDown: .max, landscapeLeft: .mid, landscapeRight: .mid, unknown: .min)
+        pagesViewController.portraitSpineLocation = .max
+        pagesViewController.landscapeLeftSpineLocation = .mid
+        pagesViewController.landscapeRightSpineLocation = .mid
+        pagesViewController.view = curlPagesScreenView.pagesView
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
             let viewController = UIViewController()
             viewController.view.backgroundColor = .green
             return viewController
+        }
+        pageViewController1.didDisplayClosure = {
+            print("pageViewController1")
         }
         let pageViewController2 = AUIClosuresPageController()
         pageViewController2.viewControllerClosure = {
@@ -53,11 +59,17 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .red
             return viewController
         }
+        pageViewController2.didDisplayClosure = {
+            print("pageViewController2")
+        }
         let pageViewController3 = AUIClosuresPageController()
         pageViewController3.viewControllerClosure = {
             let viewController = UIViewController()
             viewController.view.backgroundColor = .blue
             return viewController
+        }
+        pageViewController3.didDisplayClosure = {
+            print("pageViewController3")
         }
         let pageViewController4 = AUIClosuresPageController()
         pageViewController4.viewControllerClosure = {
@@ -65,9 +77,10 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .yellow
             return viewController
         }
+        pageViewController4.didDisplayClosure = {
+            print("pageViewController4")
+        }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
-        pagesViewController.view = curlPagesScreenView.pagesView
-        pagesViewController.selectPageController(pageViewController1)
     }
     
     // MARK: Actions

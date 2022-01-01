@@ -14,9 +14,14 @@ open class AUIClosuresPageController: AUIEmptyPageController {
         return viewControllerClosure?() ?? UIViewController()
     }
     
-    open var didSelectClosure: (() -> Void)?
-    open override func didSelect() {
-        didSelectClosure?()
+    open var willDisplayClosure: (() -> Void)?
+    open override func willDisplay() {
+        willDisplayClosure?()
+    }
+    
+    open var didDisplayClosure: (() -> Void)?
+    open override func didDisplay() {
+        didDisplayClosure?()
     }
     
 }

@@ -21,10 +21,10 @@ public protocol AUIScrollPagesController {
     
     var pageControllers: [AUIPageController]? { get set }
     
-    var selectedPageController: AUIPageController? { get }
+    var displayedPageController: AUIPageController? { get }
     
-    func selectPageController(_ pageController: AUIPageController)
+    func displayPageController(_ pageController: AUIPageController)
   
-    func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
+    func displayPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?)
   
 }

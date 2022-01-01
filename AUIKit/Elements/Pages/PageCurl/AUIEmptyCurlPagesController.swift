@@ -11,82 +11,91 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     
     // MARK: Settings
     
-    open var orientationSpineLocation: AUICurlPagesControllerOrientationSpineLocation?
-    
-    open var spineLocation: UIPageViewController.SpineLocation = .min
+    open var portraitSpineLocation: UIPageViewController.SpineLocation?
+    open var portraitUpsideDownSpineLocation: UIPageViewController.SpineLocation?
+    open var landscapeLeftSpineLocation: UIPageViewController.SpineLocation?
+    open var landscapeRightSpineLocation: UIPageViewController.SpineLocation?
+    open var unknownSpineLocation: UIPageViewController.SpineLocation?
+    private static let defaultSpineLocation: UIPageViewController.SpineLocation = .min
+    open var spineLocation: UIPageViewController.SpineLocation = defaultSpineLocation
     
     // MARK: Pages
     
-    open var pageControllers: [AUIPageController] = []
+    open var pageControllers: [AUIPageController]? {
+        didSet {
+            didSetPageControllers(oldValue)
+        }
+    }
+    open func didSetPageControllers(_ oldValue: [AUIPageController]?) {
+        guard let firstPageController = pageControllers?.first else { return }
+        displayPageController(firstPageController)
+    }
     
-    // MARK: Select
+    open var displayedPageController: AUIPageController? {
+        let pageViewController = pagesViewController?.viewControllers?.first as? PageViewController
+        return pageViewController?.pageController
+    }
     
-    open func selectPageController(_ pageController: AUIPageController) {
+    open func displayPageController(_ pageController: AUIPageController) {
+        guard let pageControllers = pageControllers else { return }
+        guard pageControllers.contains(where: { $0 === pageController }) else { return }
         if spineLocation == .mid {
             guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
             if index % 2 == 0 {
-                let leftContainerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-                let rightContainerPageViewController = NumberedContainerViewController(number: index + 1, viewController: pageControllers[index + 1].viewController)
+                let leftContainerPageViewController = PageViewController(pageController: pageController)
+                let rightContainerPageViewController = PageViewController(pageController: pageControllers[index + 1])
                 pagesViewController?.setViewControllers([leftContainerPageViewController, rightContainerPageViewController], direction: .forward, animated: false)
             } else {
-                let rightContainerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-                let leftContainerPageViewController = NumberedContainerViewController(number: index - 1, viewController: pageControllers[index - 1].viewController)
+                let rightContainerPageViewController = PageViewController(pageController: pageController)
+                let leftContainerPageViewController = PageViewController(pageController: pageControllers[index - 1])
                 pagesViewController?.setViewControllers([leftContainerPageViewController, rightContainerPageViewController], direction: .forward, animated: false)
             }
         } else {
-            guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-            let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-            pagesViewController?.setViewControllers([containerPageViewController], direction: .forward, animated: false)
+            let pageViewController = PageViewController(pageController: pageController)
+            pagesViewController?.setViewControllers([pageViewController], direction: .forward, animated: false)
         }
     }
   
-    open func selectPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
-        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return }
-        let containerPageViewController = NumberedContainerViewController(number: index, viewController: pageController.viewController)
-        pagesViewController?.setViewControllers([containerPageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
-            guard let self = self else { return }
-            self.selectedPageController?.didSelect()
-            completion?(finished)
-        })
+    open func displayPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
+        guard let pageControllers = pageControllers else { return }
+        guard pageControllers.contains(where: { $0 === pageController }) else { return }
+        if spineLocation == .mid {
+            let pageViewController = PageViewController(pageController: pageController)
+            pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
+                guard let self = self else { return }
+                self.displayedPageController?.didDisplay()
+                completion?(finished)
+            })
+        } else {
+            let pageViewController = PageViewController(pageController: pageController)
+            pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
+                guard let self = self else { return }
+                self.displayedPageController?.didDisplay()
+                completion?(finished)
+            })
+        }
     }
+  
+    // MARK: Components
     
-    open var selectedPageController: AUIPageController? {
-        guard let currentPageNumber = self.currentPageNumber else { return nil }
-        return pageControllers[currentPageNumber]
-    }
-  
-    open var currentPageNumber: Int? {
-        guard let containerPageViewController = pagesViewController?.viewControllers?.first as? NumberedContainerViewController else { return nil }
-        let currentPageNumber: Int = containerPageViewController.number
-        return currentPageNumber
-    }
-  
-    // MARK: Controllers
-  
+    private let pagesViewControllerDataSourceDelegate = AUIPagesViewControllerDataSourceDelegateProxy()
     private var pagesViewController: AUISelfLayoutPageViewController?
-    
-    private let pageViewControllerDataSourceDelegate = AUIPageViewControllerDataSourceDelegateProxy()
     
     // MARK: Setup
   
     open override func setup() {
         super.setup()
-        pageViewControllerDataSourceDelegate.delegate = self
-        setupPageViewController()
+        pagesViewControllerDataSourceDelegate.delegate = self
     }
-  
-    open func setupPageViewController() {
-        pagesViewController?.dataSource = pageViewControllerDataSourceDelegate
-        pagesViewController?.delegate = pageViewControllerDataSourceDelegate
-    }
-  
+    
     open override func setupView() {
         super.setupView()
         guard let view = view else { return }
         let options = [UIPageViewController.OptionsKey.spineLocation : NSNumber(value: spineLocation.rawValue)]
         let pagesViewController = AUISelfLayoutPageViewController(containerView: view, transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: options)
+        pagesViewController.dataSource = pagesViewControllerDataSourceDelegate
+        pagesViewController.delegate = pagesViewControllerDataSourceDelegate
         self.pagesViewController = pagesViewController
-        setupPageViewController()
     }
   
     open override func unsetupView() {
@@ -98,47 +107,59 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     // MARK: Events
 
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
-        let number = numberedContainerViewController.number
-        if number > 0 {
-            let beforeNumber = number - 1
-            let beforePageController = pageControllers[beforeNumber]
-            let beforeNumberedContainerViewController = NumberedContainerViewController(number: beforeNumber, viewController: beforePageController.viewController)
-            return beforeNumberedContainerViewController
+        guard let pageControllers = pageControllers else { return nil }
+        guard let pageViewController = viewController as? PageViewController else { return nil }
+        let pageController = pageViewController.pageController
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return nil }
+        if index > 0 {
+            let beforeIndex = index - 1
+            let beforePageController = pageControllers[beforeIndex]
+            let pageViewController = PageViewController(pageController: beforePageController)
+            return pageViewController
+        } else {
+            return nil
         }
-        return nil
   }
   
     open func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let numberedContainerViewController = viewController as? NumberedContainerViewController else { return nil }
-        let number = numberedContainerViewController.number
-        if number < (pageControllers.count - 1) {
-            let afterNumber = number + 1
-            let afterPageController = pageControllers[afterNumber]
-            let afterNumberedContainerViewController = NumberedContainerViewController(number: afterNumber, viewController: afterPageController.viewController)
-            return afterNumberedContainerViewController
+        guard let pageControllers = pageControllers else { return nil }
+        guard let pageViewController = viewController as? PageViewController else { return nil }
+        let pageController = pageViewController.pageController
+        guard let index = pageControllers.firstIndex(where: { $0 === pageController }) else { return nil }
+        if index < (pageControllers.count - 1) {
+            let afterIndex = index + 1
+            let afterPageController = pageControllers[afterIndex]
+            let pageViewController = PageViewController(pageController: afterPageController)
+            return pageViewController
+        } else {
+            return nil
         }
-        return nil
     }
-  
+    
+    open func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        for viewController in pendingViewControllers {
+            guard let pageViewController = viewController as? PageViewController else { return }
+            let pageController = pageViewController.pageController
+            pageController.willDisplay()
+        }
+    }
+    
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        selectedPageController?.didSelect()
+        displayedPageController?.didDisplay()
     }
     
     open func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {
         let spineLocation: UIPageViewController.SpineLocation
-        if let orientationSpineLocation = orientationSpineLocation {
-            if orientation == .portrait {
-                spineLocation = orientationSpineLocation.portrait
-            } else if orientation == .portraitUpsideDown {
-                spineLocation = orientationSpineLocation.portraitUpsideDown
-            } else if orientation == .landscapeLeft {
-                spineLocation = orientationSpineLocation.landscapeLeft
-            } else if orientation == .landscapeRight {
-                spineLocation = orientationSpineLocation.landscapeRight
-            } else {
-                spineLocation = orientationSpineLocation.unknown
-            }
+        if orientation == .portrait, let portraitSpineLocation = portraitSpineLocation {
+            spineLocation = portraitSpineLocation
+        } else if orientation == .portraitUpsideDown, let portraitUpsideDownSpineLocation = portraitUpsideDownSpineLocation {
+            spineLocation = portraitUpsideDownSpineLocation
+        } else if orientation == .landscapeLeft, let landscapeLeftSpineLocation = landscapeLeftSpineLocation {
+            spineLocation = landscapeLeftSpineLocation
+        } else if orientation == .landscapeRight, let landscapeRightSpineLocation = landscapeRightSpineLocation {
+            spineLocation = landscapeRightSpineLocation
+        } else if let unknownSpineLocation = unknownSpineLocation {
+            spineLocation = unknownSpineLocation
         } else {
             spineLocation = .min
         }
@@ -148,15 +169,15 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
         } else {
             pagesViewController?.isDoubleSided = false
         }
-        if let selectedPageController = selectedPageController {
-            selectPageController(selectedPageController)
+        if let selectedPageController = displayedPageController {
+            displayPageController(selectedPageController)
         }
         return spineLocation
     }
   
 }
 
-private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+private class AUIPagesViewControllerDataSourceDelegateProxy: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
   
     weak var delegate: AUIEmptyCurlPagesController?
   
@@ -166,6 +187,10 @@ private class AUIPageViewControllerDataSourceDelegateProxy: NSObject, UIPageView
   
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return delegate?.pageViewController(pageViewController, viewControllerAfter: viewController)
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        delegate?.pageViewController(pageViewController, willTransitionTo: pendingViewControllers)
     }
   
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
@@ -205,21 +230,20 @@ private class AUISelfLayoutPageViewController: UIPageViewController {
   
 }
 
-private class NumberedContainerViewController: UIViewController {
+private class PageViewController: UIViewController {
   
-    let number: Int
+    let pageController: AUIPageController
     private let viewController: UIViewController
   
-    init(number: Int, viewController: UIViewController) {
-        self.number = number
-        self.viewController = viewController
+    init(pageController: AUIPageController) {
+        self.pageController = pageController
+        self.viewController = pageController.viewController
         super.init(nibName: nil, bundle: nil)
         view.addSubview(viewController.view)
         addChild(viewController)
         viewController.didMove(toParent: self)
     }
   
-    @available(*, unavailable)
     convenience required init?(coder aDecoder: NSCoder) { return nil }
   
     override func viewWillLayoutSubviews() {

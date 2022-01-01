@@ -51,11 +51,23 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .green
             return viewController
         }
+        pageViewController1.willDisplayClosure = {
+            print("willSelectClosure pageViewController1")
+        }
+        pageViewController1.didDisplayClosure = {
+            print("pageViewController1")
+        }
         let pageViewController2 = AUIClosuresPageController()
         pageViewController2.viewControllerClosure = {
             let viewController = UIViewController()
             viewController.view.backgroundColor = .red
             return viewController
+        }
+        pageViewController2.willDisplayClosure = {
+            print("willSelectClosure pageViewController2")
+        }
+        pageViewController2.didDisplayClosure = {
+            print("pageViewController2")
         }
         let pageViewController3 = AUIClosuresPageController()
         pageViewController3.viewControllerClosure = {
@@ -63,14 +75,25 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .blue
             return viewController
         }
+        pageViewController3.willDisplayClosure = {
+            print("willSelectClosure pageViewController3")
+        }
+        pageViewController3.didDisplayClosure = {
+            print("pageViewController3")
+        }
         let pageViewController4 = AUIClosuresPageController()
         pageViewController4.viewControllerClosure = {
             let viewController = UIViewController()
             viewController.view.backgroundColor = .yellow
             return viewController
         }
+        pageViewController4.willDisplayClosure = {
+            print("willSelectClosure pageViewController4")
+        }
+        pageViewController4.didDisplayClosure = {
+            print("pageViewController4")
+        }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
-        pagesViewController.selectPageController(pageViewController1)
     }
     
     // MARK: Actions
