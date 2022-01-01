@@ -29,6 +29,7 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     private func setupInteractiveLabel() {
         interactiveLabel.lineBreakMode = .byTruncatingTail
         interactiveLabel.numberOfLines = 0
+        interactiveLabel.textAlignment = .center
     }
     
     private func setupTextView() {
