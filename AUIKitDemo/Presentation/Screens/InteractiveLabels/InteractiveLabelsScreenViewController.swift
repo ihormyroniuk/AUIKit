@@ -57,8 +57,8 @@ class InteractiveLabelsScreenViewController: UIViewController, UITextViewDelegat
     }
     
     private func setInteractiveLabelText() {
-        let interactiveText = "Terms & Conditions"
-        let text = String(format: "By creating an account, I agree to the %@ and to receive email offers at the email address I provided.", interactiveText)
+        let interactiveText = "пользовательским соглашением"
+        let text = String(format: "Нажимая «Далее», Вы соглашаетесь с пользовательским соглашением.", interactiveText)
         interactiveLabelScreenView.setInteractiveLabelText(agree: text, termsAndConditions: (interactiveText, "ffff"))
         interactiveLabelScreenView.setTextViewText(agree: text, termsAndConditions: (interactiveText, "ffff"))
         interactiveLabelScreenView.textView.delegate = self

@@ -1,17 +1,17 @@
 //
-//  AUIScreenController.swift
+//  AUIAlertController.swift
 //  AUIKit
 //
-//  Created by Ihor Myroniuk on 11/12/18.
+//  Created by Ihor Myroniuk on 03.01.2022.
 //
 
 import UIKit
 
-open class AUIEmptyScreenController: UIViewController {
+open class AUIAlertController: UIAlertController {
   
     // MARK: Initializers
   
-    public init(view: UIView) {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         setup()
     }
