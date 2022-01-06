@@ -16,8 +16,11 @@ open class AUITableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setup()
     }
-  
-    public convenience required init?(coder aDecoder: NSCoder) { return nil }
+    
+    @available(*, unavailable)
+    public convenience required init?(coder aDecoder: NSCoder) {
+        return nil
+    }
   
     // MARK: Setup
   
