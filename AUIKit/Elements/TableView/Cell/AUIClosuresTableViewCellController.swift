@@ -42,5 +42,15 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open override func didEndDisplayingCell() {
         didEndDisplayingCellClosure?()
     }
+    
+    open var prefetchCellClosure: (() -> Void)?
+    open override func prefetchCell() {
+        prefetchCellClosure?()
+    }
+    
+    open var cancelPrefetchingForCellClosure: (() -> Void)?
+    open override func cancelPrefetchingForCell() {
+        cancelPrefetchingForCellClosure?()
+    }
   
 }

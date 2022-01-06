@@ -58,14 +58,20 @@ final class TableViewScreenViewController: UIViewController {
                 return 64
             }
             cellConroller.willDisplayCellClosure = {
-                print("will display text #\(i)")
+                print("willDisplayCellClosure #\(i)")
             }
             cellConroller.didSelectClosure = { [weak self] in
                 guard let self = self else { return }
                 self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade)
             }
             cellConroller.didEndDisplayingCellClosure = {
-                print("did end displaying text #\(i)")
+                print("didEndDisplayingCellClosure #\(i)")
+            }
+            cellConroller.prefetchCellClosure = {
+                print("prefetchCellClosure #\(i)")
+            }
+            cellConroller.cancelPrefetchingForCellClosure = {
+                print("cancelPrefetchingForCellClosure #\(i)")
             }
             cellControllers.append(cellConroller)
         }

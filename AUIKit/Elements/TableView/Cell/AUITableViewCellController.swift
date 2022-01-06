@@ -15,4 +15,6 @@ public protocol AUITableViewCellController: AnyObject {
     func willDisplayCell()
     func didSelectCell()
     func didEndDisplayingCell()
+    func prefetchCell()
+    func cancelPrefetchingForCell()
 }

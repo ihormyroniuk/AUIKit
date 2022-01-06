@@ -71,6 +71,14 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     open func didSelectCellAtIndex(_ index: Int) {
         cellControllers[index].didSelectCell()
     }
+    
+    open func prefetchCellAtIndex(_ index: Int) {
+        cellControllers[index].prefetchCell()
+    }
+    
+    open func cancelPrefetchingForCellAtIndex(_ index: Int) {
+        cellControllers[index].cancelPrefetchingForCell()
+    }
   
     // MARK: Footer
   

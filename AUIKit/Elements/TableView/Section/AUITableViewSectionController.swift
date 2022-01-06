@@ -27,7 +27,9 @@ public protocol AUITableViewSectionController: AnyObject {
     func willDisplayCell(index: IndexPath)
     func didSelectCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(index: Int)
-
+    func prefetchCellAtIndex(_ index: Int)
+    func cancelPrefetchingForCellAtIndex(_ index: Int)
+    
     // MARK: Footer
   
     func footer() -> UIView?

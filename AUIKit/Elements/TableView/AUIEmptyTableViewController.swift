@@ -99,12 +99,12 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         deleteCellControllersAnimated([cellController], animation)
     }
   
-  open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
-    /*guard let sectionIndex = self.sectionControllers.firstIndex(where: { $0 === section }) else { return }
-    let itemIndex = section.cellControllers.count*/
-    section.cellControllers.append(cellController)
-    reload()
-  }
+    open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
+        /*guard let sectionIndex = self.sectionControllers.firstIndex(where: { $0 === section }) else { return }
+         let itemIndex = section.cellControllers.count*/
+        section.cellControllers.append(cellController)
+        reload()
+    }
   
   open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
     if section.cellControllers.isEmpty {
@@ -197,11 +197,19 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Cells
   
     open func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
-        
+        for indexPath in indexPaths {
+            let section = indexPath.section
+            let index = indexPath.row
+            sectionControllers[section].prefetchCellAtIndex(index)
+        }
     }
   
     open func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
-    
+        for indexPath in indexPaths {
+            let section = indexPath.section
+            let index = indexPath.row
+            sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
+        }
     }
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {

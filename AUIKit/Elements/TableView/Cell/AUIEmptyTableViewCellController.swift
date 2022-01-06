@@ -38,5 +38,13 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
     open func didEndDisplayingCell() {
 
     }
+    
+    open func prefetchCell() {
+        
+    }
+    
+    open func cancelPrefetchingForCell() {
+        
+    }
   
 }
