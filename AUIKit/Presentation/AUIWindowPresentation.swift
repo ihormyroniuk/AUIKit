@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIWindowPresentation: AUIPresentation {
+open class AUIWindowPresentation: AUIEmptyPresentation {
   
     // MARK: Elements
   
@@ -17,13 +17,7 @@ open class AUIWindowPresentation: AUIPresentation {
   
     public init(window: UIWindow) {
         self.window = window
-        setup()
-    }
-  
-    // MARK: Setup
-  
-    open func setup() {
-    
+        super.init()
     }
   
 }
