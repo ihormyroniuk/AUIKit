@@ -2,7 +2,7 @@
 //  AUICollectionViewCell.swift
 //  AUIKit
 //
-//  Created by Ihor Myroniuk on 23.05.2020.
+//  Created by Ihor Myroniuk on 06.01.2022.
 //
 
 import UIKit
@@ -18,13 +18,23 @@ open class AUICollectionViewCell: UICollectionViewCell {
   
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        return nil
     }
     // MARK: - Setup
     
     open func setup() {
+        
+    }
     
+    // MARK: Layout
+  
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        layoutContentView()
+    }
+    
+    open func layoutContentView() {
+        contentView.frame = self.bounds
     }
     
 }
