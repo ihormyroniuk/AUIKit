@@ -68,7 +68,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     open func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let section = indexPath.section
-            let index = indexPath.row
+            let index = indexPath.item
             sectionControllers[section].prefetchCellAtIndex(index)
         }
     }
@@ -76,7 +76,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     open func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let section = indexPath.section
-            let index = indexPath.row
+            let index = indexPath.item
             sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
         }
     }
@@ -87,7 +87,9 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
-        
+        let section = indexPath.section
+        let index = indexPath.item
+        sectionControllers[section].didSelectCellAtIndex(index)
     }
     
 }

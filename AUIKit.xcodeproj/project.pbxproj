@@ -53,7 +53,6 @@
 		C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4121BC3EC500FFCE53 /* AUITableView.swift */; };
 		C530009E24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530009D24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift */; };
 		C53000A024CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C530009F24CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift */; };
-		C5319BA22725F084002C3B74 /* StringsdictScreen.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = C5319BA42725F084002C3B74 /* StringsdictScreen.stringsdict */; };
 		C5319BA62725FBDB002C3B74 /* PresentAnimationScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5319BA52725FBDB002C3B74 /* PresentAnimationScreenView.swift */; };
 		C5319BA82725FCA1002C3B74 /* PresentAnimationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5319BA72725FCA1002C3B74 /* PresentAnimationScreenViewController.swift */; };
 		C53AEA4D2195AF690087F0A2 /* AUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C53AEA4B2195AF690087F0A2 /* AUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -180,8 +179,6 @@
 		C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */; };
 		C5BB419627792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */; };
 		C5C30F7F277A6402006B8CAA /* AUIEmptyTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */; };
-		C5D945072724AEAF0079F3DC /* StringsdictScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D945062724AEAF0079F3DC /* StringsdictScreenViewController.swift */; };
-		C5D945092724AEC20079F3DC /* StringsdictScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D945082724AEC20079F3DC /* StringsdictScreenView.swift */; };
 		C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF085424E11CF80048DDD9 /* IconButton.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
 		C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */; };
@@ -275,7 +272,6 @@
 		C528BA4121BC3EC500FFCE53 /* AUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITableView.swift; sourceTree = "<group>"; };
 		C530009D24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTextInputViewScreenController.swift; sourceTree = "<group>"; };
 		C530009F24CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTextInputViewScreenView.swift; sourceTree = "<group>"; };
-		C5319BA32725F084002C3B74 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/StringsdictScreen.stringsdict; sourceTree = "<group>"; };
 		C5319BA52725FBDB002C3B74 /* PresentAnimationScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationScreenView.swift; sourceTree = "<group>"; };
 		C5319BA72725FCA1002C3B74 /* PresentAnimationScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationScreenViewController.swift; sourceTree = "<group>"; };
 		C53AEA482195AF690087F0A2 /* AUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -406,8 +402,6 @@
 		C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlPagesScreenView.swift; sourceTree = "<group>"; };
 		C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCurlPagesController.swift; sourceTree = "<group>"; };
 		C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewCellController.swift; sourceTree = "<group>"; };
-		C5D945062724AEAF0079F3DC /* StringsdictScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsdictScreenViewController.swift; sourceTree = "<group>"; };
-		C5D945082724AEC20079F3DC /* StringsdictScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringsdictScreenView.swift; sourceTree = "<group>"; };
 		C5DF085424E11CF80048DDD9 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
 		C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
@@ -1031,7 +1025,6 @@
 				C567E5C724D20742005EC4CA /* TextViewTextInputViews */,
 				C5278F5425BF6C67005C6A49 /* PresentAnimation */,
 				C56B60E825C0966A00D27732 /* PushAnimations */,
-				C5D945052724AE280079F3DC /* Stringsdict */,
 				C58D6D5A2775212C0069520F /* TableView */,
 			);
 			path = Screens;
@@ -1272,16 +1265,6 @@
 			path = CurlPages;
 			sourceTree = "<group>";
 		};
-		C5D945052724AE280079F3DC /* Stringsdict */ = {
-			isa = PBXGroup;
-			children = (
-				C5D945062724AEAF0079F3DC /* StringsdictScreenViewController.swift */,
-				C5D945082724AEC20079F3DC /* StringsdictScreenView.swift */,
-				C5319BA42725F084002C3B74 /* StringsdictScreen.stringsdict */,
-			);
-			path = Stringsdict;
-			sourceTree = "<group>";
-		};
 		C5DF085324E11CDE0048DDD9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1458,7 +1441,6 @@
 			files = (
 				C541D53324C4E2AB0036FC7A /* LaunchScreen.storyboard in Resources */,
 				C541D53024C4E2AB0036FC7A /* Assets.xcassets in Resources */,
-				C5319BA22725F084002C3B74 /* StringsdictScreen.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,11 +1612,9 @@
 				C5278F6025BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift in Sources */,
 				C58D6D5E277521760069520F /* TableViewScreenView.swift in Sources */,
 				C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */,
-				C5D945072724AEAF0079F3DC /* StringsdictScreenViewController.swift in Sources */,
 				C520EC7724CF310A00BF26D6 /* TextFieldTextInputView.swift in Sources */,
 				C5841DBD24D93C980059D557 /* SignupScreenView.swift in Sources */,
 				C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */,
-				C5D945092724AEC20079F3DC /* StringsdictScreenView.swift in Sources */,
 				C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */,
 				C53DDB8824DAE889001CA320 /* TitleLabelScreenView.swift in Sources */,
 				C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */,
@@ -1681,14 +1661,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C5319BA42725F084002C3B74 /* StringsdictScreen.stringsdict */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5319BA32725F084002C3B74 /* en */,
-			);
-			name = StringsdictScreen.stringsdict;
-			sourceTree = "<group>";
-		};
 		C541D53124C4E2AB0036FC7A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

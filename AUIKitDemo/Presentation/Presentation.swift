@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, StringsdictScreenViewControllerDelegate, TableViewScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -94,14 +94,6 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.pushViewController(vc, animated: true)
     }
     
-    func menuScreenViewControllerDisplayStringsdict(_ menuScreenController: MenuScreenViewController) {
-        let screenView = StringsdictScreenView()
-        let screenController = StringsdictScreenViewController(view: screenView)
-        screenController.delegate = self
-        stringsdictScreenViewController = screenController
-        mainNavigationController?.pushViewController(screenController, animated: true)
-    }
-    
     func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController) {
         let viewController = TableViewScreenViewController()
         testTableViewScreenViewController = viewController
@@ -154,14 +146,6 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     private weak var textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController?
     
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController) {
-        mainNavigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: Stringsdict Screen
-    
-    private weak var stringsdictScreenViewController: StringsdictScreenViewController?
-    
-    func stringsdictScreenViewControllerBack(_ stringsdictScreenViewController: StringsdictScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

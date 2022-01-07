@@ -15,30 +15,14 @@ protocol MenuScreenViewControllerDelegate: AnyObject {
     func menuScreenViewControllerDisplayTextFieldTextInputViewScreen(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayPushAnimations(_ menuScreenViewController: MenuScreenViewController)
-    func menuScreenViewControllerDisplayStringsdict(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController)
 }
 
-class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MenuScreenViewController: UIViewController {
     
     // MARK: Delegate
     
     weak var delegate: MenuScreenViewControllerDelegate?
-    
-    // MARK: Data
-    
-    private enum Item: Int, CaseIterable {
-        case scrollPages
-        case curlPages
-        case labels
-        case interactiveLabels
-        case signup
-        case textFieldTextInputView
-        case presentAnimations
-        case pushAnimations
-        case stringsdict
-        case tableView
-    }
     
     // MARK: View
     
@@ -50,6 +34,10 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
         return view as? MenuScreenView
     }
     
+    // MARK: Componets
+    
+    let collectionViewController = AUIEmptyCollectionViewController()
+    
     // MARK: Setup
     
     override func viewDidLoad() {
@@ -59,89 +47,134 @@ class MenuScreenViewController: UIViewController, UICollectionViewDataSource, UI
     }
 
     private func setupCollectionView() {
-        menuScreenView.collectionView.dataSource = self
-        menuScreenView.collectionView.delegate = self
-    }
-    
-    // MARK: Actions
-    
-    private func displayItem(_ item: Item) {
-        switch item {
-        case .scrollPages:
-            delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
-        case .curlPages:
-            delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
-        case .labels:
-            delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
-        case .interactiveLabels:
-            delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
-        case .signup:
-            delegate?.menuScreenViewControllerDisplaySignupScreen(self)
-        case .textFieldTextInputView:
-            delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
-        case .presentAnimations:
-            delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
-        case .pushAnimations:
-            delegate?.menuScreenViewControllerDisplayPushAnimations(self)
-        case .stringsdict:
-            delegate?.menuScreenViewControllerDisplayStringsdict(self)
-        case .tableView:
-            delegate?.menuScreenViewControllerDisplayTableView(self)
+        collectionViewController.collectionView = menuScreenView.collectionView
+        let sectionController = AUIEmptyCollectionViewSectionController()
+        var cellControllers: [AUICollectionViewCellController] = []
+        // Scroll Pages
+        let scrollPagesCellController = AUIClosuresCollectionViewCellController()
+        scrollPagesCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Scroll Pages"
+            return cell
         }
+        scrollPagesCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
+        }
+        cellControllers.append(scrollPagesCellController)
+        // Curl Pages
+        let curlPagesCellController = AUIClosuresCollectionViewCellController()
+        curlPagesCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Curl Pages"
+            return cell
+        }
+        curlPagesCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
+        }
+        cellControllers.append(curlPagesCellController)
+        // Labels
+        let labelsCellController = AUIClosuresCollectionViewCellController()
+        labelsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Labels"
+            return cell
+        }
+        labelsCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
+        }
+        cellControllers.append(labelsCellController)
+        // Interactive Labels
+        let interactiveLabelsCellController = AUIClosuresCollectionViewCellController()
+        interactiveLabelsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Interactive Labels"
+            return cell
+        }
+        interactiveLabelsCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
+        }
+        cellControllers.append(interactiveLabelsCellController)
+        // Signup
+        let signupCellController = AUIClosuresCollectionViewCellController()
+        signupCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Signup"
+            return cell
+        }
+        signupCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplaySignupScreen(self)
+        }
+        cellControllers.append(signupCellController)
+        // Text Field Text Input View
+        let textFieldTextInputViewCellController = AUIClosuresCollectionViewCellController()
+        textFieldTextInputViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Text Field Text Input View"
+            return cell
+        }
+        textFieldTextInputViewCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
+        }
+        cellControllers.append(textFieldTextInputViewCellController)
+        // Present Animations
+        let presentAnimationsCellController = AUIClosuresCollectionViewCellController()
+        presentAnimationsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Present Animations"
+            return cell
+        }
+        presentAnimationsCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
+        }
+        cellControllers.append(presentAnimationsCellController)
+        // Push Animations
+        let pushAnimationsCellController = AUIClosuresCollectionViewCellController()
+        pushAnimationsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Push Animations"
+            return cell
+        }
+        pushAnimationsCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayPushAnimations(self)
+        }
+        cellControllers.append(pushAnimationsCellController)
+        // Table View
+        let tableViewCellController = AUIClosuresCollectionViewCellController()
+        tableViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Table View"
+            return cell
+        }
+        tableViewCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayTableView(self)
+        }
+        cellControllers.append(tableViewCellController)
+        sectionController.cellControllers = cellControllers
+        collectionViewController.sectionControllers = [sectionController]
     }
-    
+
     // MARK: Content
     
     private func setContent() {
         menuScreenView.titleLabel.text = "Menu"
-    }
-    
-    private func itemTitle(_ item: Item) -> String {
-        switch item {
-        case .scrollPages:
-            return "Scroll Pages"
-        case .curlPages:
-            return "Curl Pages"
-        case .labels:
-            return "Labels"
-        case .interactiveLabels:
-            return "Interactive Labels"
-        case .signup:
-            return "Signup"
-        case .textFieldTextInputView:
-            return "Text Field Text Input View"
-        case .presentAnimations:
-            return "PresentAnimation"
-        case .pushAnimations:
-            return "PushAnimation"
-        case .stringsdict:
-            return "Stringsdict"
-        case .tableView:
-            return "TableView"
-        }
-    }
-    
-    // MARK: UICollectionViewDataSource
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Item.allCases.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let item = Item(rawValue: indexPath.item)!
-        let cell = menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-        cell.titleLabel.text = itemTitle(item)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = view.frame.width - 20 * 2
-        return CGSize(width: width, height: 40)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = Item(rawValue: indexPath.item)!
-        displayItem(item)
     }
     
 }

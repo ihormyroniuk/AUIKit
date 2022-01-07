@@ -50,6 +50,7 @@ class MenuScreenView: TitleLabelScreenView {
         let height = bounds.height - y
         let frame = CGRect(x: x, y: y, width: width, height: height)
         collectionView.frame = frame
+        collectionViewLayout.itemSize = CGSize(width: bounds.size.width - 20 * 2, height: 40)
     }
     
     // MARK: Cells
