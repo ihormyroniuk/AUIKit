@@ -13,12 +13,8 @@ open class AUIEmptyLabelController: AUIEmptyViewController, AUILabelController {
     // MARK: Label
   
     open var label: UILabel? {
-        set {
-            view = newValue
-        }
-        get {
-            return view as? UILabel
-        }
+        set { view = newValue }
+        get { return view as? UILabel }
     }
   
     open override func setupView() {

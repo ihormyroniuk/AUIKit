@@ -16,7 +16,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetMode(oldValue)
         }
     }
-  
     open func didSetMode(_ oldValue: AUIDateTimePickerControllerMode) {
         datePicker?.datePickerMode = mode.datePickerMode
     }
@@ -33,7 +32,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
         _date = date
         didSetDate(oldValue, animated: animated)
     }
-  
     open func didSetDate(_ oldValue: Date, animated: Bool) {
         if oldValue != date {
             datePicker?.setDate(date, animated: animated)
@@ -51,7 +49,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetMinimumDate(oldValue)
         }
     }
-  
     open func didSetMinimumDate(_ oldValue: Date?) {
         datePicker?.minimumDate = minimumDate
         if let minimumDate = minimumDate, minimumDate > date {
@@ -66,7 +63,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetMaximumDate(oldValue)
         }
     }
-  
     open func didSetMaximumDate(_ oldValue: Date?) {
         datePicker?.maximumDate = maximumDate
         if let maximumDate = maximumDate, maximumDate < date {
@@ -81,7 +77,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetLocale(oldValue)
         }
     }
-  
     open func didSetLocale(_ oldValue: Locale?) {
         datePicker?.locale = locale
     }
@@ -93,7 +88,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetCalendar(oldValue)
         }
     }
-  
     open func didSetCalendar(_ oldValue: Calendar) {
         datePicker?.calendar = calendar
     }
@@ -105,7 +99,6 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
             didSetTimeZone(oldValue)
         }
     }
-  
     open func didSetTimeZone(_ oldValue: TimeZone?) {
         datePicker?.timeZone = timeZone
     }
