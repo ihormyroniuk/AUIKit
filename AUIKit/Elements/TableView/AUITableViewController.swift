@@ -10,16 +10,23 @@ import UIKit
 
 public protocol AUITableViewController: AUIScrollViewController {
     
+    // MARK: Sections
+    
     var sectionControllers: [AUITableViewSectionController] { get set }
-  
+    
     func deleteCellController(_ cellController: AUITableViewCellController)
     func deleteCellControllers(_ cellControllers: [AUITableViewCellController])
   
-    func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation)
-    func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation)
+    func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
   
     func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController)
     func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController)
   
     func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController)
+    
+    // MARK: UIPickerView
+  
+    var tableView: UITableView? { get set }
+  
 }

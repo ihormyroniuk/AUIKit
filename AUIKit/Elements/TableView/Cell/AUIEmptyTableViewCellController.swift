@@ -15,6 +15,14 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
         
     }
     
+    open func prefetchCell() {
+        
+    }
+    
+    open func cancelPrefetchingForCell() {
+        
+    }
+    
     open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
@@ -37,14 +45,6 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
     
     open func didEndDisplayingCell() {
 
-    }
-    
-    open func prefetchCell() {
-        
-    }
-    
-    open func cancelPrefetchingForCell() {
-        
     }
   
 }

@@ -9,12 +9,12 @@
 import UIKit
 
 public protocol AUITableViewCellController: AnyObject {
+    func prefetchCell()
+    func cancelPrefetchingForCell()
     func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     var estimatedHeight: CGFloat { get }
     var height: CGFloat { get }
     func willDisplayCell()
     func didSelectCell()
     func didEndDisplayingCell()
-    func prefetchCell()
-    func cancelPrefetchingForCell()
 }

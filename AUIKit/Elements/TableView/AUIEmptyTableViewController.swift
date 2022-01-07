@@ -73,7 +73,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     open var deletedIndexPaths: [IndexPath] = []
-    open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation) {
+    open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.reduce([]) { $1.value }
         deletedIndexPaths = indexPaths
@@ -85,9 +85,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         if #available(iOS 11.0, *) {
             tableView?.performBatchUpdates({
                 self.tableView?.deleteRows(at: indexPaths, with: animation)
-            }, completion: { finished in
-                print("performBatchUpdates completion \(finished)")
-            })
+            }, completion: completion)
         } else {
             tableView?.beginUpdates()
             tableView?.deleteRows(at: indexPaths, with: animation)
@@ -95,8 +93,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
 
         }
     }
-    open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation) {
-        deleteCellControllersAnimated([cellController], animation)
+    open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        deleteCellControllersAnimated([cellController], animation, completion: completion)
     }
   
     open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
@@ -148,7 +146,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     // MARK: Headers
   
-    open func headerInSection(_ section: Int, tableView: UITableView) -> UIView? {
+    open func headerInSection(_ section: Int) -> UIView? {
         return sectionControllers[section].header()
     }
   
@@ -160,7 +158,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         return sectionControllers[section].headerHeight
     }
   
-    open func willDisplayHeaderView(_ view: UIView, forSection section: Int) {
+    open func willDisplayHeaderViewForSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
         sectionControllers[section].willDisplayHeader()
     }
@@ -168,30 +166,6 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func didEndDisplayingHeaderInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
         sectionControllers[section].didEndDisplayingHeader()
-    }
-  
-    // MARK: Footers
-  
-    open func footerInSection(_ section: Int, tableView: UITableView) -> UIView? {
-        return sectionControllers[section].footer()
-    }
-  
-    open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].footerEstimatedHeight
-    }
-  
-    open func heightForFooterInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].footerHeight
-    }
-  
-    open func willDisplayFooterView(_ view: UIView, forSection section: Int) {
-        guard section < sectionControllers.count else { return }
-        sectionControllers[section].willDisplayFooter()
-    }
-  
-    open func didEndDisplayingFooterInSection(_ section: Int) {
-        guard section < sectionControllers.count else { return }
-        sectionControllers[section].didEndDisplayingFooter()
     }
   
     // MARK: Cells
@@ -212,7 +186,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
   
-    open func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell {
+    open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
         return sectionControllers[section].cellForRowAtIndexPath(indexPath)
     }
@@ -229,7 +203,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         return sectionControllers[section].heightForCellAtIndex(index)
     }
   
-    open func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
+    open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
         if deletedIndexPaths.contains(indexPath) {
             deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
         }
@@ -253,6 +227,30 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let index = indexPath.row
         return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
     }
+    
+    // MARK: Footers
+  
+    open func footerInSection(_ section: Int) -> UIView? {
+        return sectionControllers[section].footer()
+    }
+  
+    open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
+        return sectionControllers[section].footerEstimatedHeight
+    }
+  
+    open func heightForFooterInSection(_ section: Int) -> CGFloat {
+        return sectionControllers[section].footerHeight
+    }
+  
+    open func willDisplayFooterViewForSection(_ section: Int) {
+        guard section < sectionControllers.count else { return }
+        sectionControllers[section].willDisplayFooter()
+    }
+  
+    open func didEndDisplayingFooterInSection(_ section: Int) {
+        guard section < sectionControllers.count else { return }
+        sectionControllers[section].didEndDisplayingFooter()
+    }
 }
 
 private protocol AUITableViewDelegateProxyDelegate: AnyObject {
@@ -262,29 +260,29 @@ private protocol AUITableViewDelegateProxyDelegate: AnyObject {
   
     // MARK: Headers
 
-    func headerInSection(_ section: Int, tableView: UITableView) -> UIView?
+    func headerInSection(_ section: Int) -> UIView?
     func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat
     func heightForHeaderInSection(_ section: Int) -> CGFloat
-    func willDisplayHeaderView(_ view: UIView, forSection section: Int)
+    func willDisplayHeaderViewForSection(_ section: Int)
     func didEndDisplayingHeaderInSection(_ section: Int)
   
     // MARK: Cells
   
-    func cellForRowAtIndexPath(_ indexPath: IndexPath, tableView: UITableView) -> UITableViewCell
-    func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
-    func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
-    func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath)
-    func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
-    func didSelectCellAtIndexPath(_ indexPath: IndexPath)
     func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath])
     func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath])
+    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
+    func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
+    func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
+    func willDisplayCellAtIndexPath(_ indexPath: IndexPath)
+    func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
+    func didSelectCellAtIndexPath(_ indexPath: IndexPath)
   
     // MARK: Footers
   
-    func footerInSection(_ section: Int, tableView: UITableView) -> UIView?
+    func footerInSection(_ section: Int) -> UIView?
     func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat
     func heightForFooterInSection(_ section: Int) -> CGFloat
-    func willDisplayFooterView(_ view: UIView, forSection section: Int)
+    func willDisplayFooterViewForSection(_ section: Int)
     func didEndDisplayingFooterInSection(_ section: Int)
     
 }
@@ -304,7 +302,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     // MARK: Headers
       
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return delegate?.headerInSection(section, tableView: tableView)
+        return delegate?.headerInSection(section)
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
@@ -316,33 +314,11 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        delegate?.willDisplayHeaderView(view, forSection: section)
+        delegate?.willDisplayHeaderViewForSection(section)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
         delegate?.didEndDisplayingHeaderInSection(section)
-    }
-      
-    // MARK: Footers
-      
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return delegate?.footerInSection(section, tableView: tableView)
-    }
-      
-    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return delegate?.estimatedHeightForFooterInSection(section) ?? 0
-    }
-      
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return delegate?.heightForFooterInSection(section) ?? 0
-    }
-      
-    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        delegate?.willDisplayFooterView(view, forSection: section)
-    }
-      
-    func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-        delegate?.didEndDisplayingFooterInSection(section)
     }
       
     // MARK: Cells
@@ -356,7 +332,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return delegate?.cellForRowAtIndexPath(indexPath, tableView: tableView) ?? UITableViewCell()
+        return delegate?.cellForRowAtIndexPath(indexPath) ?? UITableViewCell()
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -368,7 +344,7 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        delegate?.willDisplayCell(cell, atIndexPath: indexPath)
+        delegate?.willDisplayCellAtIndexPath(indexPath)
     }
       
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -377,6 +353,28 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
       
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         delegate?.didEndDisplayingCellAtIndexPath(indexPath)
+    }
+    
+    // MARK: Footers
+      
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return delegate?.footerInSection(section)
+    }
+      
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return delegate?.estimatedHeightForFooterInSection(section) ?? 0
+    }
+      
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return delegate?.heightForFooterInSection(section) ?? 0
+    }
+      
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        delegate?.willDisplayFooterViewForSection(section)
+    }
+      
+    func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
+        delegate?.didEndDisplayingFooterInSection(section)
     }
   
 }

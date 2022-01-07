@@ -12,6 +12,16 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
   
     // MARK: TableViewCellController
     
+    open var prefetchCellClosure: (() -> Void)?
+    open override func prefetchCell() {
+        prefetchCellClosure?()
+    }
+    
+    open var cancelPrefetchingForCellClosure: (() -> Void)?
+    open override func cancelPrefetchingForCell() {
+        cancelPrefetchingForCellClosure?()
+    }
+    
     open var cellForRowAtIndexPathClosure: ((IndexPath) -> UITableViewCell)?
     open override func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let cell = cellForRowAtIndexPathClosure?(indexPath)
@@ -41,16 +51,6 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open var didEndDisplayingCellClosure: (() -> Void)?
     open override func didEndDisplayingCell() {
         didEndDisplayingCellClosure?()
-    }
-    
-    open var prefetchCellClosure: (() -> Void)?
-    open override func prefetchCell() {
-        prefetchCellClosure?()
-    }
-    
-    open var cancelPrefetchingForCellClosure: (() -> Void)?
-    open override func cancelPrefetchingForCell() {
-        cancelPrefetchingForCellClosure?()
     }
   
 }

@@ -62,7 +62,9 @@ final class TableViewScreenViewController: UIViewController {
             }
             cellConroller.didSelectClosure = { [weak self] in
                 guard let self = self else { return }
-                self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade)
+                self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
+                    print("deleteCellControllerAnimated finished")
+                })
             }
             cellConroller.didEndDisplayingCellClosure = {
                 print("didEndDisplayingCellClosure #\(i)")
