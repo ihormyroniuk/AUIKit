@@ -26,5 +26,10 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
         let cell = cellForItemAtIndexPathClosure?(indexPath)
         return cell ?? UICollectionViewCell()
     }
+    
+    open var didSelectClosure: (() -> Void)?
+    open override func didSelectCell() {
+        didSelectClosure?()
+    }
 
 }

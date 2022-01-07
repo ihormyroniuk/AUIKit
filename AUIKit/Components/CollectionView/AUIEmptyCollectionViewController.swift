@@ -86,6 +86,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].cellForItemAtIndexPath(indexPath)
     }
     
+    open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
+        
+    }
+    
 }
 
 private protocol AUICollectionViewDelegateProxyDelegate: AnyObject {
@@ -98,6 +102,7 @@ private protocol AUICollectionViewDelegateProxyDelegate: AnyObject {
     func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath])
     func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath])
     func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
+    func didSelectCellAtIndexPath(_ indexPath: IndexPath)
     
 }
 
@@ -125,6 +130,10 @@ private class UICollectionViewDelegateProxy: NSObject, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return delegate?.cellForItemAtIndexPath(indexPath) ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectCellAtIndexPath(indexPath)
     }
   
 }

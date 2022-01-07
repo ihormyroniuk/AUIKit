@@ -35,5 +35,9 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
         let index = indexPath.row
         return cellControllers[index].cellForItemAtIndexPath(indexPath)
     }
+    
+    open func didSelectCellAtIndex(_ index: Int) {
+        cellControllers[index].didSelectCell()
+    }
   
 }

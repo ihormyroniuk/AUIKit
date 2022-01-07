@@ -23,8 +23,12 @@ open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController
         
     }
     
-    public func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
+    open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
+    }
+    
+    open func didSelectCell() {
+        
     }
   
 }
