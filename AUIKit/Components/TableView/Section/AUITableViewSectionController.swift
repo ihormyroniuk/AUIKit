@@ -24,7 +24,7 @@ public protocol AUITableViewSectionController: AnyObject {
     func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
     func heightForCellAtIndex(_ index: Int) -> CGFloat
-    func willDisplayCell(index: IndexPath)
+    func willDisplayCellAtIndex(_ index: Int)
     func didSelectCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(index: Int)
     func prefetchCellAtIndex(_ index: Int)

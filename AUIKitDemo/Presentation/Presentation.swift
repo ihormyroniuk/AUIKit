@@ -11,18 +11,13 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     
     // MARK: Display
     
-    func display() {
+    func startDisplay() {
         let screenController = MenuScreenViewController()
         screenController.delegate = self
         menuScreenController = screenController
-        
-//        let screenController = TestTableViewScreenViewController()
-//        screenController.delegate = self
-            
         let navigationController = AUINavigationController()
         navigationController.viewControllers = [screenController]
         mainNavigationController = navigationController
-        
         window.rootViewController = mainNavigationController
         window.makeKeyAndVisible()
     }
@@ -96,8 +91,8 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     
     func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController) {
         let viewController = TableViewScreenViewController()
-        testTableViewScreenViewController = viewController
-        testTableViewScreenViewController?.delegate = self
+        tableViewScreenViewController = viewController
+        tableViewScreenViewController?.delegate = self
         mainNavigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -151,7 +146,7 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     
     // Test TableView Screen
     
-    private weak var testTableViewScreenViewController: TableViewScreenViewController?
+    private weak var tableViewScreenViewController: TableViewScreenViewController?
     
     func tableViewScreenViewControllerBack(_ testTableViewScreenViewController: TableViewScreenViewController) {
         mainNavigationController?.popViewController(animated: true)

@@ -13,7 +13,7 @@ class Application: AUIEmptyApplication {
     
     override func didFinishLaunching() {
         super.didFinishLaunching()
-        presentation.display()
+        presentation.startDisplay()
     }
     
     // MARK: Presentation

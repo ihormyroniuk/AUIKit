@@ -208,7 +208,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
         }
         let section = indexPath.section
-        return sectionControllers[section].willDisplayCell(index: indexPath)
+        let index = indexPath.row
+        return sectionControllers[section].willDisplayCellAtIndex(index)
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {

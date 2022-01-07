@@ -86,6 +86,18 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].cellForItemAtIndexPath(indexPath)
     }
     
+    open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
+        let section = indexPath.section
+        let index = indexPath.item
+        sectionControllers[section].willDisplayCellAtIndex(index)
+    }
+    
+    open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+        let section = indexPath.section
+        let index = indexPath.item
+        sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
+    }
+    
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
         let section = indexPath.section
         let index = indexPath.item
@@ -104,6 +116,8 @@ private protocol AUICollectionViewDelegateProxyDelegate: AnyObject {
     func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath])
     func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath])
     func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
+    func willDisplayCellAtIndexPath(_ indexPath: IndexPath)
+    func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
     func didSelectCellAtIndexPath(_ indexPath: IndexPath)
     
 }
@@ -132,6 +146,14 @@ private class UICollectionViewDelegateProxy: NSObject, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return delegate?.cellForItemAtIndexPath(indexPath) ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        delegate?.willDisplayCellAtIndexPath(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        delegate?.didEndDisplayingCellAtIndexPath(indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

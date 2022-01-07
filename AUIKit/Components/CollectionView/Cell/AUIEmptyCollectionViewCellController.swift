@@ -30,5 +30,13 @@ open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController
     open func didSelectCell() {
         
     }
+    
+    open func willDisplayCell() {
+        
+    }
+    
+    open func didEndDisplayingCell() {
+        
+    }
   
 }

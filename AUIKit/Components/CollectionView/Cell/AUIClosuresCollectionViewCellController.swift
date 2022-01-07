@@ -31,5 +31,15 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
     open override func didSelectCell() {
         didSelectClosure?()
     }
+    
+    open var willDisplayCellClosure: (() -> Void)?
+    open override func willDisplayCell() {
+        willDisplayCellClosure?()
+    }
+    
+    open var didEndDisplayingCellClosure: (() -> Void)?
+    open override func didEndDisplayingCell() {
+        didEndDisplayingCellClosure?()
+    }
 
 }
