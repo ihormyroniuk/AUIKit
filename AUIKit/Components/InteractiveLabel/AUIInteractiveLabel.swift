@@ -31,15 +31,6 @@ open class AUIInteractiveLabel: AUIControl {
         button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
     }
 
-    open var textAlignment: NSTextAlignment {
-        get {
-            return label.textAlignment
-        }
-        set {
-            label.textAlignment = newValue
-        }
-    }
-
     open var lineBreakMode: NSLineBreakMode {
         get {
             return label.lineBreakMode
