@@ -109,7 +109,11 @@ open class AUIInteractiveLabel: AUIControl {
         let characterIndex = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         let attributeValue = self.label.attributedText?.attribute(.interaction, at: characterIndex, effectiveRange: nil)
         if let value = attributeValue {
-            return value
+            let range = NSRange(location: characterIndex, length: 1)
+            let rect = layoutManager.boundingRect(forGlyphRange: range, in: textContainer)
+            if rect.contains(touchPoint) {
+                return value
+            }
         }
         return nil
     }
