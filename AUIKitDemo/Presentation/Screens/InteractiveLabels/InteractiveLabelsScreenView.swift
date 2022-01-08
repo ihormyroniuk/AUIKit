@@ -27,9 +27,10 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     }
     
     private func setupInteractiveLabel() {
+        interactiveLabel.backgroundColor = .yellow
         interactiveLabel.lineBreakMode = .byTruncatingTail
         interactiveLabel.numberOfLines = 0
-        interactiveLabel.textAlignment = .center
+        //interactiveLabel.textAlignment = .center
     }
     
     private func setupTextView() {
@@ -52,7 +53,7 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
         let width: CGFloat = bounds.width - x * 2
         let possibleSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         let height: CGFloat = interactiveLabel.sizeThatFits(possibleSize).height
-        let frame = CGRect(x: x, y: y, width: width, height: height)
+        let frame = CGRect(x: x, y: y, width: possibleSize.width, height: height)
         interactiveLabel.frame = frame
     }
     
@@ -73,13 +74,17 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     // MARK: Setters
     
     func setInteractiveLabelText(agree: String, termsAndConditions: (String, Any)) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
         let termsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
              .foregroundColor: UIColor.blue,
-             .interaction: termsAndConditions.1]
+             .interaction: termsAndConditions.1,
+             .paragraphStyle: paragraphStyle]
         let agreeTermsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
-             .foregroundColor: UIColor.black]
+             .foregroundColor: UIColor.black,
+             .paragraphStyle: paragraphStyle]
         let agreeTermsAndConditionsString = NSMutableAttributedString(string: agree, attributes: agreeTermsAndConditionsAttributes)
         if let range = agree.range(of: termsAndConditions.0) {
             let nsRange = NSRange(range, in: agreeTermsAndConditionsString.string)
@@ -89,13 +94,17 @@ class InteractiveLabelsScreenView: BackButtonTitleLabelScreenView {
     }
     
     func setTextViewText(agree: String, termsAndConditions: (String, Any)) {
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
         let termsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
              .foregroundColor: UIColor.blue,
-             .interaction: termsAndConditions.1]
+             .interaction: termsAndConditions.1,
+             .paragraphStyle: paragraphStyle]
         let agreeTermsAndConditionsAttributes: [NSAttributedString.Key: Any] =
             [.font: UIFont.systemFont(ofSize: 18),
-             .foregroundColor: UIColor.black]
+             .foregroundColor: UIColor.black,
+             .paragraphStyle: paragraphStyle]
         let agreeTermsAndConditionsString = NSMutableAttributedString(string: agree, attributes: agreeTermsAndConditionsAttributes)
         if let range = agree.range(of: termsAndConditions.0) {
             let nsRange = NSRange(range, in: agreeTermsAndConditionsString.string)

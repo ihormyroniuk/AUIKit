@@ -9,7 +9,7 @@ import Foundation
 
 public protocol AUISwitchController: AUIControlController {
 
-    // MARK: Button
+    // MARK: Switch
   
     var `switch`: UISwitch? { get set }
   

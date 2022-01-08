@@ -92,7 +92,7 @@ open class AUIInteractiveLabel: AUIControl {
         let textStorage = NSTextStorage(attributedString: attributedText)
         textStorage.addLayoutManager(layoutManager)
         let textBoundingBox = layoutManager.usedRect(for: textContainer)
-        var alignmentOffset: CGFloat!
+        let alignmentOffset: CGFloat
         switch label.textAlignment {
         case .left, .natural, .justified:
             alignmentOffset = 0.0
