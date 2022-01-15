@@ -9,6 +9,10 @@
 import UIKit
 
 public protocol AUIPickerViewController: AUIViewController {
+    
+    // MARK: UIPickerView
+  
+    var pickerView: UIPickerView? { get set }
 
     // MARK: Components
   
@@ -19,9 +23,5 @@ public protocol AUIPickerViewController: AUIViewController {
     func selectItemController(_ itemController: AUIPickerViewItemController, atComponentController componentController: AUIPickerViewComponentController, animated: Bool)
   
     func selectedItemController(atComponentController componentController: AUIPickerViewComponentController) -> AUIPickerViewItemController?
-  
-    // MARK: UIPickerView
-  
-    var pickerView: UIPickerView? { get set }
     
 }

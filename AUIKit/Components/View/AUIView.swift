@@ -19,8 +19,7 @@ open class AUIView: UIView {
   
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        return nil
     }
   
     // MARK: Setup

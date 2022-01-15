@@ -37,6 +37,7 @@ class CurlPagesScreenViewController: UIViewController {
         super.viewDidLoad()
         curlPagesScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setupPagesViewController()
+        setContent()
     }
     
     private func setupPagesViewController() {
@@ -87,6 +88,12 @@ class CurlPagesScreenViewController: UIViewController {
     
     @objc private func back() {
         delegate?.curlPagesScreenViewControllerBack(self)
+    }
+    
+    // MARK: Content
+    
+    private func setContent() {
+        curlPagesScreenView.titleLabel.text = "Curl Pages"
     }
     
 }

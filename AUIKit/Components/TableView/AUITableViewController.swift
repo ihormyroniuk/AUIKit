@@ -10,6 +10,10 @@ import UIKit
 
 public protocol AUITableViewController: AUIScrollViewController {
     
+    // MARK: UIPickerView
+  
+    var tableView: UITableView? { get set }
+    
     // MARK: Sections
     
     var sectionControllers: [AUITableViewSectionController] { get set }
@@ -24,9 +28,5 @@ public protocol AUITableViewController: AUIScrollViewController {
     func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController)
   
     func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController)
-    
-    // MARK: UIPickerView
-  
-    var tableView: UITableView? { get set }
   
 }

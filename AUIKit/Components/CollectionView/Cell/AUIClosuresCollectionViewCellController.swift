@@ -9,7 +9,7 @@ import UIKit
 
 open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellController {
   
-    // MARK: TableViewCellController
+    // MARK: AUICollectionViewCellController
     
     open var prefetchCellClosure: (() -> Void)?
     open override func prefetchCell() {

@@ -9,11 +9,12 @@ import UIKit
 
 public protocol AUICollectionViewController: AUIScrollViewController {
     
+    // MARK: UIPickerView
+  
+    var collectionView: UICollectionView? { get set }
+    
     // MARK: Sections
     
     var sectionControllers: [AUICollectionViewSectionController] { get set }
     
-    // MARK: UIPickerView
-  
-    var collectionView: UICollectionView? { get set }
 }

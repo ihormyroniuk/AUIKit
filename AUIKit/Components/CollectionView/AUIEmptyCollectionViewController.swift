@@ -9,28 +9,6 @@ import UIKit
 
 open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICollectionViewController, AUICollectionViewDelegateProxyDelegate {
     
-    // MARK: Delegates
-  
-    private let tableViewDelegateProxy = UICollectionViewDelegateProxy()
-  
-    // MARK: Controllers
-  
-    open var sectionControllers: [AUICollectionViewSectionController] = [] {
-        didSet {
-            didSetSectionControllers(oldValue)
-        }
-    }
-    open func didSetSectionControllers(_ oldValue: [AUICollectionViewSectionController]) {
-        reload()
-    }
-  
-    // MARK: Setup
-  
-    open override func setup() {
-        super.setup()
-        tableViewDelegateProxy.delegate = self
-    }
-  
     // MARK: View
   
     open var collectionView: UICollectionView? {
@@ -51,6 +29,28 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.dataSource = nil
         collectionView?.delegate = nil
         collectionView?.prefetchDataSource = nil
+    }
+    
+    // MARK: Delegates
+  
+    private let tableViewDelegateProxy = UICollectionViewDelegateProxy()
+  
+    // MARK: Controllers
+  
+    open var sectionControllers: [AUICollectionViewSectionController] = [] {
+        didSet {
+            didSetSectionControllers(oldValue)
+        }
+    }
+    open func didSetSectionControllers(_ oldValue: [AUICollectionViewSectionController]) {
+        reload()
+    }
+  
+    // MARK: Setup
+  
+    open override func setup() {
+        super.setup()
+        tableViewDelegateProxy.delegate = self
     }
     
     open func reload() {

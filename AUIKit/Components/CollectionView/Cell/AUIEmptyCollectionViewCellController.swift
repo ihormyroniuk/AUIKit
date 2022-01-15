@@ -15,6 +15,8 @@ open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController
         
     }
     
+    // MARK: AUICollectionViewCellController
+    
     open func prefetchCell() {
         
     }

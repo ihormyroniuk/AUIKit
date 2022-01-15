@@ -46,6 +46,14 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     open var numberOfRows: Int {
         return cellControllers.count
     }
+    
+    open func prefetchCellAtIndex(_ index: Int) {
+        cellControllers[index].prefetchCell()
+    }
+    
+    open func cancelPrefetchingForCellAtIndex(_ index: Int) {
+        cellControllers[index].cancelPrefetchingForCell()
+    }
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
@@ -70,14 +78,6 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open func didSelectCellAtIndex(_ index: Int) {
         cellControllers[index].didSelectCell()
-    }
-    
-    open func prefetchCellAtIndex(_ index: Int) {
-        cellControllers[index].prefetchCell()
-    }
-    
-    open func cancelPrefetchingForCellAtIndex(_ index: Int) {
-        cellControllers[index].cancelPrefetchingForCell()
     }
   
     // MARK: Footer

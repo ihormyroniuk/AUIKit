@@ -8,30 +8,19 @@
 
 import UIKit
 
-open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableViewController, AUITableViewDelegateProxyDelegate {
+open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableViewController {
     
-    // MARK: Delegates
+    // MARK: Proxy
   
     private let tableViewDelegateProxy = UITableViewDelegateProxy()
-  
-    // MARK: Controllers
-  
-    open var sectionControllers: [AUITableViewSectionController] = [] {
-        didSet {
-            didSetSectionControllers(oldValue)
-        }
-    }
-    open func didSetSectionControllers(_ oldValue: [AUITableViewSectionController]) {
-        reload()
-    }
-  
+    
     // MARK: Setup
   
     open override func setup() {
         super.setup()
         tableViewDelegateProxy.delegate = self
     }
-  
+    
     // MARK: View
   
     open var tableView: UITableView? {
@@ -54,94 +43,17 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableView?.prefetchDataSource = nil
     }
   
-    // MARK: Reload
+    // MARK: Sections
   
-    open func reload() {
-        tableView?.reloadData()
+    open var sectionControllers: [AUITableViewSectionController] = [] {
+        didSet { didSetSectionControllers(oldValue) }
     }
-  
-    open func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
-        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        for (section, indexPaths) in indexPathsBySections {
-            let rows = indexPaths.map({ $0.row })
-            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
-        }
+    open func didSetSectionControllers(_ oldValue: [AUITableViewSectionController]) {
         reload()
     }
-    open func deleteCellController(_ cellController: AUITableViewCellController) {
-        deleteCellControllers([cellController])
-    }
-  
-    open var deletedIndexPaths: [IndexPath] = []
-    open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
-        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
-        deletedIndexPaths = indexPaths
-        deletedIndexPaths = indexPaths + indexPaths
-        for (section, indexPaths) in indexPathsBySections {
-            let rows = indexPaths.map({ $0.row })
-            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
-        }
-        if #available(iOS 11.0, *) {
-            tableView?.performBatchUpdates({
-                self.tableView?.deleteRows(at: indexPaths, with: animation)
-            }, completion: completion)
-        } else {
-            tableView?.beginUpdates()
-            tableView?.deleteRows(at: indexPaths, with: animation)
-            tableView?.endUpdates()
-
-        }
-    }
-    open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
-        deleteCellControllersAnimated([cellController], animation, completion: completion)
-    }
-  
-    open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
-        /*guard let sectionIndex = self.sectionControllers.firstIndex(where: { $0 === section }) else { return }
-         let itemIndex = section.cellControllers.count*/
-        section.cellControllers.append(cellController)
-        reload()
-    }
-  
-  open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
-    if section.cellControllers.isEmpty {
-      section.cellControllers.append(cellController)
-    } else {
-      section.cellControllers.insert(cellController, at: 0)
-    }
-    reload()
-  }
-  
-  public func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
-    guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
-    section.cellControllers.insert(contentsOf: cellControllers, at: index + 1)
-    reload()
-  }
-  
-  private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUITableViewCellController]) -> [Int: [IndexPath]] {
-    var indexPathsBySections: [Int: [IndexPath]] = [:]
-    for (section, sectionController) in sectionControllers.enumerated() {
-      var indexPaths: [IndexPath] = []
-      for (row, cellController) in sectionController.cellControllers.enumerated() {
-        if cellControllers.contains(where: { $0 === cellController }) {
-          let indexPath = IndexPath(row: row, section: section)
-          indexPaths.append(indexPath)
-        }
-      }
-      indexPathsBySections[section] = indexPaths
-    }
-    return indexPathsBySections
-  }
-  
-  
   
     open func numberOfSections() -> Int {
         return sectionControllers.count
-    }
-  
-    open func numberOfRowsInSection(_ section: Int) -> Int {
-        return sectionControllers[section].numberOfRows
     }
   
     // MARK: Headers
@@ -169,6 +81,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     // MARK: Cells
+    
+    open func numberOfRowsInSection(_ section: Int) -> Int {
+        return sectionControllers[section].numberOfRows
+    }
   
     open func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
@@ -252,52 +168,93 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         guard section < sectionControllers.count else { return }
         sectionControllers[section].didEndDisplayingFooter()
     }
-}
+    
+    // MARK: Reload
+  
+    open func reload() {
+        tableView?.reloadData()
+    }
+  
+    open func deleteCellControllers(_ cellControllers: [AUITableViewCellController]) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        reload()
+    }
+    open func deleteCellController(_ cellController: AUITableViewCellController) {
+        deleteCellControllers([cellController])
+    }
+  
+    open var deletedIndexPaths: [IndexPath] = []
+    open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        deletedIndexPaths = indexPaths
+        deletedIndexPaths = indexPaths + indexPaths
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.deleteRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
 
-private protocol AUITableViewDelegateProxyDelegate: AnyObject {
+        }
+    }
+    open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        deleteCellControllersAnimated([cellController], animation, completion: completion)
+    }
   
-    func numberOfSections() -> Int
-    func numberOfRowsInSection(_ section: Int) -> Int
+    open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
+        section.cellControllers.append(cellController)
+        reload()
+    }
   
-    // MARK: Headers
-
-    func headerInSection(_ section: Int) -> UIView?
-    func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat
-    func heightForHeaderInSection(_ section: Int) -> CGFloat
-    func willDisplayHeaderViewForSection(_ section: Int)
-    func didEndDisplayingHeaderInSection(_ section: Int)
+    open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
+        if section.cellControllers.isEmpty {
+            section.cellControllers.append(cellController)
+        } else {
+            section.cellControllers.insert(cellController, at: 0)
+        }
+        reload()
+    }
   
-    // MARK: Cells
+    public func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
+        guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
+        section.cellControllers.insert(contentsOf: cellControllers, at: index + 1)
+        reload()
+    }
   
-    func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath])
-    func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath])
-    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
-    func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
-    func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat
-    func willDisplayCellAtIndexPath(_ indexPath: IndexPath)
-    func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
-    func didSelectCellAtIndexPath(_ indexPath: IndexPath)
-  
-    // MARK: Footers
-  
-    func footerInSection(_ section: Int) -> UIView?
-    func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat
-    func heightForFooterInSection(_ section: Int) -> CGFloat
-    func willDisplayFooterViewForSection(_ section: Int)
-    func didEndDisplayingFooterInSection(_ section: Int)
+    private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUITableViewCellController]) -> [Int: [IndexPath]] {
+        var indexPathsBySections: [Int: [IndexPath]] = [:]
+        for (section, sectionController) in sectionControllers.enumerated() {
+            var indexPaths: [IndexPath] = []
+            for (row, cellController) in sectionController.cellControllers.enumerated() {
+                if cellControllers.contains(where: { $0 === cellController }) {
+                    let indexPath = IndexPath(row: row, section: section)
+                    indexPaths.append(indexPath)
+                }
+            }
+            indexPathsBySections[section] = indexPaths
+        }
+        return indexPathsBySections
+    }
     
 }
 
 private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
       
-    weak var delegate: AUITableViewDelegateProxyDelegate?
+    weak var delegate: AUIEmptyTableViewController?
       
     func numberOfSections(in tableView: UITableView) -> Int {
         return delegate?.numberOfSections() ?? 0
-    }
-      
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return delegate?.numberOfRowsInSection(section) ?? 0
     }
       
     // MARK: Headers
@@ -323,6 +280,10 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     }
       
     // MARK: Cells
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return delegate?.numberOfRowsInSection(section) ?? 0
+    }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         delegate?.prefetchRowsAtIndexPaths(indexPaths)

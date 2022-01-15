@@ -9,24 +9,7 @@
 import UIKit
 
 open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewController, UIPickerViewDataSourceProxyDelegate {
-  
-    // MARK: Components
-  
-    open var componentControllers: [AUIPickerViewComponentController] {
-        return []
-    }
-
-    // MARK: Delegates
-  
-    private let pickerViewDataSourceProxy = UIPickerViewDataSourceProxy()
-  
-    // MAKR: Setup
-  
-    open override func setup() {
-        super.setup()
-        pickerViewDataSourceProxy.delegate = self
-    }
-  
+    
     // MARK: UIPickerView
   
     open var pickerView: UIPickerView? {
@@ -42,6 +25,23 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     open override func unsetupView() {
         super.unsetupView()
         pickerView?.dataSource = nil
+    }
+
+    // MARK: Delegates
+  
+    private let pickerViewDataSourceProxy = UIPickerViewDataSourceProxy()
+  
+    // MARK: Setup
+  
+    open override func setup() {
+        super.setup()
+        pickerViewDataSourceProxy.delegate = self
+    }
+    
+    // MARK: Components
+  
+    open var componentControllers: [AUIPickerViewComponentController] {
+        return []
     }
   
     // MARK: UIPickerViewDataSourceProxyDelegate

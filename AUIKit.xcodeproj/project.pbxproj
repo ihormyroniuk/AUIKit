@@ -67,8 +67,8 @@
 		C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */; };
 		C53AEB162195DBE30087F0A2 /* AUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB132195DBE30087F0A2 /* AUIImageView.swift */; };
 		C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */; };
-		C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */; };
-		C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */; };
+		C53AEB1E2195DC470087F0A2 /* AUIEmptyBarItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB192195DC470087F0A2 /* AUIEmptyBarItemController.swift */; };
+		C53AEB1F2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB1B2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift */; };
 		C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */; };
 		C53AEB2D2195DD1A0087F0A2 /* AUIPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB222195DD1A0087F0A2 /* AUIPickerViewController.swift */; };
 		C53AEB2E2195DD1A0087F0A2 /* AUIEmptyTitlePickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C53AEB242195DD1A0087F0A2 /* AUIEmptyTitlePickerViewItemController.swift */; };
@@ -290,8 +290,8 @@
 		C53AEB122195DBE30087F0A2 /* AUIImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIImageViewController.swift; sourceTree = "<group>"; };
 		C53AEB132195DBE30087F0A2 /* AUIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIImageView.swift; sourceTree = "<group>"; };
 		C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarItemController.swift; sourceTree = "<group>"; };
-		C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultBarItemController.swift; sourceTree = "<group>"; };
-		C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultBarButtonItemController.swift; sourceTree = "<group>"; };
+		C53AEB192195DC470087F0A2 /* AUIEmptyBarItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyBarItemController.swift; sourceTree = "<group>"; };
+		C53AEB1B2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyBarButtonItemController.swift; sourceTree = "<group>"; };
 		C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIBarButtonItemController.swift; sourceTree = "<group>"; };
 		C53AEB222195DD1A0087F0A2 /* AUIPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIPickerViewController.swift; sourceTree = "<group>"; };
 		C53AEB242195DD1A0087F0A2 /* AUIEmptyTitlePickerViewItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyTitlePickerViewItemController.swift; sourceTree = "<group>"; };
@@ -825,7 +825,7 @@
 			isa = PBXGroup;
 			children = (
 				C53AEB182195DC470087F0A2 /* AUIBarItemController.swift */,
-				C53AEB192195DC470087F0A2 /* AUIDefaultBarItemController.swift */,
+				C53AEB192195DC470087F0A2 /* AUIEmptyBarItemController.swift */,
 			);
 			path = BarItem;
 			sourceTree = "<group>";
@@ -834,7 +834,7 @@
 			isa = PBXGroup;
 			children = (
 				C53AEB1C2195DC470087F0A2 /* AUIBarButtonItemController.swift */,
-				C53AEB1B2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift */,
+				C53AEB1B2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift */,
 			);
 			path = BarButtonItem;
 			sourceTree = "<group>";
@@ -1525,7 +1525,7 @@
 				C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */,
 				C591DAE62788A64A00741F54 /* AUICollectionView.swift in Sources */,
 				C525D82021996AF20057E69F /* AUIRefreshControlController.swift in Sources */,
-				C53AEB1E2195DC470087F0A2 /* AUIDefaultBarItemController.swift in Sources */,
+				C53AEB1E2195DC470087F0A2 /* AUIEmptyBarItemController.swift in Sources */,
 				C544E64722955B0600DE9156 /* AUIViewPickerViewComponentController.swift in Sources */,
 				C591DAE82788BEAB00741F54 /* AUICollectionViewSectionController.swift in Sources */,
 				C53E7C7922187739006CB0D9 /* AUITextViewInputTextViewController.swift in Sources */,
@@ -1550,7 +1550,7 @@
 				33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */,
 				C5E8BFFC24D0835D0080E41B /* AUIEmptyCountDownDurationDatePickerController.swift in Sources */,
 				C58E668127879C6800D0E5AD /* AUICollectionViewCell.swift in Sources */,
-				C53AEB1F2195DC470087F0A2 /* AUIDefaultBarButtonItemController.swift in Sources */,
+				C53AEB1F2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift in Sources */,
 				C53AEB0D2195D9710087F0A2 /* AUIEmptyLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */,

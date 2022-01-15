@@ -11,9 +11,8 @@ open class AUIEmptyScreenController: UIViewController {
   
     // MARK: Initializers
   
-    public init(view: UIView) {
+    public init() {
         super.init(nibName: nil, bundle: nil)
-        setup()
     }
   
     @available(*, unavailable)

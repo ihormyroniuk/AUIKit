@@ -15,6 +15,8 @@ open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterCont
     public init() {
       
     }
+    
+    // MARK: AUITableViewHeaderFooterController
   
     open func view() -> UITableViewHeaderFooterView? {
         return UITableViewHeaderFooterView()

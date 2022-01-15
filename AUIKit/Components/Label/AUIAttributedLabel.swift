@@ -46,7 +46,7 @@ open class AUIAttributedLabel: AUILabel {
         }
     }
     
-    open func resetText() {
+    private func resetText() {
         if let text = text {
             self.text = text
         }

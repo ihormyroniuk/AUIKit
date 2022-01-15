@@ -13,9 +13,9 @@ public protocol AUICollectionViewSectionController: AnyObject {
 
     var cellControllers: [AUICollectionViewCellController] { get set }
     var numberOfItems: Int { get }
-    func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
     func prefetchCellAtIndex(_ index: Int)
     func cancelPrefetchingForCellAtIndex(_ index: Int)
+    func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
     func willDisplayCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(_ index: Int)
     func didSelectCellAtIndex(_ index: Int)

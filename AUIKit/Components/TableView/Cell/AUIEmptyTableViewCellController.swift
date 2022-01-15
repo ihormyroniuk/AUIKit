@@ -15,6 +15,8 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
         
     }
     
+    // MARK: AUITableViewCellController
+    
     open func prefetchCell() {
         
     }

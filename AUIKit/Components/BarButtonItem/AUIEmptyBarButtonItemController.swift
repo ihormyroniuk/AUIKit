@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class AUIDefaultBarButtonItemController: AUIDefaultBarItemController, AUIBarButtonItemController {
+open class AUIEmptyBarButtonItemController: AUIEmptyBarItemController, AUIBarButtonItemController {
  
   // MARK: Observers
   

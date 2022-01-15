@@ -13,12 +13,8 @@ open class AUIEmptyImageViewController: AUIEmptyViewController, AUIImageViewCont
     // MARK: ImageView
   
     open var imageView: UIImageView? {
-        set {
-            view = newValue
-        }
-        get {
-            return view as? UIImageView
-        }
+        set { view = newValue }
+        get { return view as? UIImageView }
     }
   
     open override func setupView() {
