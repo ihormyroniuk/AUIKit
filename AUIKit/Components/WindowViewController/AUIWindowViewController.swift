@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyScreenController: UIViewController {
+open class AUIWindowViewController: UIViewController {
   
     // MARK: Initializers
   
@@ -25,6 +25,5 @@ open class AUIEmptyScreenController: UIViewController {
     open func setup() {
     
     }
-  
-  
+    
 }

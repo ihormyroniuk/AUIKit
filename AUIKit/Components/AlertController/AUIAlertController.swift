@@ -26,6 +26,5 @@ open class AUIAlertController: UIAlertController {
     open func setup() {
     
     }
-  
-  
+    
 }

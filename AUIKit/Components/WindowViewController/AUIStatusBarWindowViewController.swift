@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIStatusBarScreenController: AUIEmptyScreenController {
+open class AUIStatusBarWindowViewController: AUIWindowViewController {
   
     open var isAppeared = false
     open override func viewDidAppear(_ animated: Bool) {

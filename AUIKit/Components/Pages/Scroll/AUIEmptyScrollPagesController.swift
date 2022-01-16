@@ -12,27 +12,21 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     // MARK: Settings
   
     open var navigationOrientation: UIPageViewController.NavigationOrientation = .horizontal {
-        didSet {
-            didSetNavigationOrientation(oldValue)
-        }
+        didSet { didSetNavigationOrientation(oldValue) }
     }
     open func didSetNavigationOrientation(_ oldValue: UIPageViewController.NavigationOrientation) {
         resetupPagesViewController()
     }
     
     open var interPageSpacing: CGFloat? {
-        didSet {
-            didSetInterPageSpacing(oldValue)
-        }
+        didSet { didSetInterPageSpacing(oldValue) }
     }
     open func didSetInterPageSpacing(_ oldValue: CGFloat?) {
         resetupPagesViewController()
     }
     
     open var isLooping: Bool? {
-        didSet {
-            didSetIsLooping(oldValue)
-        }
+        didSet { didSetIsLooping(oldValue) }
     }
     open func didSetIsLooping(_ oldValue: Bool?) {
         guard let selectedPageController = displayedPageController else { return }
@@ -42,9 +36,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
     // MARK: Pages
   
     open var pageControllers: [AUIPageController]? {
-        didSet {
-            didSetPageControllers(oldValue)
-        }
+        didSet { didSetPageControllers(oldValue) }
     }
     open func didSetPageControllers(_ oldValue: [AUIPageController]?) {
         guard let firstPageController = pageControllers?.first else { return }

@@ -43,7 +43,7 @@ class ScrollPagesScreenViewController: UIViewController {
     private func setupPagesViewController() {
         pagesViewController.navigationOrientation = .horizontal
         pagesViewController.isLooping = true
-        pagesViewController.interPageSpacing = 20
+        pagesViewController.interPageSpacing = nil
         pagesViewController.view = scrollPagesScreenView.pagesView
         let pageViewController1 = AUIClosuresPageController()
         pageViewController1.viewControllerClosure = {
@@ -52,10 +52,10 @@ class ScrollPagesScreenViewController: UIViewController {
             return viewController
         }
         pageViewController1.willDisplayClosure = {
-            print("willSelectClosure pageViewController1")
+            print("willDisplayClosure pageViewController1")
         }
         pageViewController1.didDisplayClosure = {
-            print("pageViewController1")
+            print("didDisplayClosure pageViewController1")
         }
         let pageViewController2 = AUIClosuresPageController()
         pageViewController2.viewControllerClosure = {
@@ -64,10 +64,10 @@ class ScrollPagesScreenViewController: UIViewController {
             return viewController
         }
         pageViewController2.willDisplayClosure = {
-            print("willSelectClosure pageViewController2")
+            print("willDisplayClosure pageViewController2")
         }
         pageViewController2.didDisplayClosure = {
-            print("pageViewController2")
+            print("didDisplayClosure pageViewController2")
         }
         let pageViewController3 = AUIClosuresPageController()
         pageViewController3.viewControllerClosure = {
@@ -76,10 +76,10 @@ class ScrollPagesScreenViewController: UIViewController {
             return viewController
         }
         pageViewController3.willDisplayClosure = {
-            print("willSelectClosure pageViewController3")
+            print("willDisplayClosure pageViewController3")
         }
         pageViewController3.didDisplayClosure = {
-            print("pageViewController3")
+            print("didDisplayClosure pageViewController3")
         }
         let pageViewController4 = AUIClosuresPageController()
         pageViewController4.viewControllerClosure = {
@@ -88,10 +88,10 @@ class ScrollPagesScreenViewController: UIViewController {
             return viewController
         }
         pageViewController4.willDisplayClosure = {
-            print("willSelectClosure pageViewController4")
+            print("willDisplayClosure pageViewController4")
         }
         pageViewController4.didDisplayClosure = {
-            print("pageViewController4")
+            print("didDisplayClosure pageViewController4")
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]
     }
