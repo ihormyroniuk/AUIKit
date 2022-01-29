@@ -24,7 +24,8 @@ open class AUITabBarController: UITabBarController {
     
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        return nil
+        super.init(coder: aDecoder)
+        setup()
     }
     
     // MARK: Setup

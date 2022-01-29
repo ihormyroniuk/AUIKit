@@ -7,17 +7,19 @@
 
 import UIKit
 
-open class AUIWindowViewController: UIViewController {
+open class AUIScreenViewController: UIViewController {
   
     // MARK: Initializers
   
     public init() {
         super.init(nibName: nil, bundle: nil)
+        setup()
     }
   
     @available(*, unavailable)
-    public convenience required init?(coder aDecoder: NSCoder) {
-        return nil
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
     }
   
     // MARK: Setup

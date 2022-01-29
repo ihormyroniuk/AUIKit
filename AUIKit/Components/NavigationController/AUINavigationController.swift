@@ -31,7 +31,7 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
     // MARK: Setup
     
     open func setup() {
-        setNavigationBarHidden(true, animated: false)
+        
     }
     
     // MARK: Events

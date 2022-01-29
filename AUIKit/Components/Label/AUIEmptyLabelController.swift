@@ -38,9 +38,7 @@ open class AUIEmptyLabelController: AUIEmptyViewController, AUILabelController {
     // MARK: State
   
     open var text: String? {
-        didSet {
-            didSetText(oldValue: oldValue)
-        }
+        didSet { didSetText(oldValue: oldValue) }
     }
     open func didSetText(oldValue: String?) {
         label?.text = text

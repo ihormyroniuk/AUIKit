@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class NavigationBarScreenView: AUIStatusBarWindowView {
+class NavigationBarScreenView: AUIStatusBarScreenView {
     
     // MARK: Elements
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIStatusBarWindowView: AUIView {
+open class AUIStatusBarScreenView: AUIView {
   
     // MARK: Elements
   
@@ -29,7 +29,7 @@ open class AUIStatusBarWindowView: AUIView {
     }
   
     open func setupStatusBarView() {
-    
+        
     }
   
     // MARK: Layout
