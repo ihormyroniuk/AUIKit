@@ -41,5 +41,10 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
     open override func didEndDisplayingCell() {
         didEndDisplayingCellClosure?()
     }
+    
+    open var sizeForCellClosure: (() -> CGSize)?
+    public override var sizeForCell: CGSize {
+        return sizeForCellClosure?() ?? .zero
+    }
 
 }

@@ -50,7 +50,6 @@ class MenuScreenView: TitleLabelScreenView {
         let height = bounds.height - y
         let frame = CGRect(x: x, y: y, width: width, height: height)
         collectionView.frame = frame
-        collectionViewLayout.itemSize = CGSize(width: bounds.size.width - 20 * 2, height: 40)
     }
     
     // MARK: Cells
@@ -59,6 +58,11 @@ class MenuScreenView: TitleLabelScreenView {
         let cell: MenuItemCollectionViewCell! = collectionView.dequeueReusableCell(withReuseIdentifier: menuItemCollectionViewCellIdentifier, for: indexPath) as? MenuItemCollectionViewCell
         return cell
     }
+    
+    func menuItemCollectionViewCellSize() -> CGSize {
+        return CGSize(width: bounds.size.width - 20 * 2, height: 40)
+    }
+    
     
 }
 

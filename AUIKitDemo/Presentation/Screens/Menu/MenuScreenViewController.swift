@@ -62,6 +62,10 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
         }
+        scrollPagesCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
         cellControllers.append(scrollPagesCellController)
         // Curl Pages
         let curlPagesCellController = AUIClosuresCollectionViewCellController()
@@ -74,6 +78,10 @@ class MenuScreenViewController: UIViewController {
         curlPagesCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
+        }
+        curlPagesCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
         }
         cellControllers.append(curlPagesCellController)
         // Labels
@@ -88,6 +96,10 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
         }
+        labelsCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
         cellControllers.append(labelsCellController)
         // Interactive Labels
         let interactiveLabelsCellController = AUIClosuresCollectionViewCellController()
@@ -100,6 +112,10 @@ class MenuScreenViewController: UIViewController {
         interactiveLabelsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
+        }
+        interactiveLabelsCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
         }
         cellControllers.append(interactiveLabelsCellController)
         // Signup
@@ -114,6 +130,10 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplaySignupScreen(self)
         }
+        signupCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
         cellControllers.append(signupCellController)
         // Text Field Text Input View
         let textFieldTextInputViewCellController = AUIClosuresCollectionViewCellController()
@@ -126,6 +146,10 @@ class MenuScreenViewController: UIViewController {
         textFieldTextInputViewCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
+        }
+        textFieldTextInputViewCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
         }
         cellControllers.append(textFieldTextInputViewCellController)
         // Present Animations
@@ -140,6 +164,10 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
         }
+        presentAnimationsCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
         cellControllers.append(presentAnimationsCellController)
         // Push Animations
         let pushAnimationsCellController = AUIClosuresCollectionViewCellController()
@@ -153,6 +181,10 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPushAnimations(self)
         }
+        pushAnimationsCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
         cellControllers.append(pushAnimationsCellController)
         // Table View
         let tableViewCellController = AUIClosuresCollectionViewCellController()
@@ -165,6 +197,10 @@ class MenuScreenViewController: UIViewController {
         tableViewCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTableView(self)
+        }
+        tableViewCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
         }
         cellControllers.append(tableViewCellController)
         sectionController.cellControllers = cellControllers

@@ -48,4 +48,8 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
         cellControllers[index].didSelectCell()
     }
   
+    public func sizeForCellAtIndex(_ index: Int) -> CGSize {
+        cellControllers[index].sizeForCell
+    }
+    
 }

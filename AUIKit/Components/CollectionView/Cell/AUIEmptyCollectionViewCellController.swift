@@ -40,5 +40,9 @@ open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController
     open func didEndDisplayingCell() {
         
     }
+    
+    public var sizeForCell: CGSize {
+        return .zero
+    }
   
 }

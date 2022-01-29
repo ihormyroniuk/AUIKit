@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICollectionViewController, AUICollectionViewDelegateProxyDelegate {
+open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICollectionViewController {
     
     // MARK: View
   
@@ -18,9 +18,9 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
   
     open override func setupView() {
         super.setupView()
-        collectionView?.dataSource = tableViewDelegateProxy
-        collectionView?.delegate = tableViewDelegateProxy
-        collectionView?.prefetchDataSource = tableViewDelegateProxy
+        collectionView?.dataSource = collectionViewProxyDelegate
+        collectionView?.delegate = collectionViewProxyDelegate
+        collectionView?.prefetchDataSource = collectionViewProxyDelegate
         collectionView?.reloadData()
     }
 
@@ -33,7 +33,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     // MARK: Delegates
   
-    private let tableViewDelegateProxy = UICollectionViewDelegateProxy()
+    private let collectionViewProxyDelegate = UICollectionViewProxyDelegate()
   
     // MARK: Controllers
   
@@ -50,7 +50,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
   
     open override func setup() {
         super.setup()
-        tableViewDelegateProxy.delegate = self
+        collectionViewProxyDelegate.delegate = self
     }
     
     open func reload() {
@@ -104,27 +104,17 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         sectionControllers[section].didSelectCellAtIndex(index)
     }
     
-}
-
-private protocol AUICollectionViewDelegateProxyDelegate: AnyObject {
-  
-    func numberOfSections() -> Int
-    func numberOfItemsInSection(_ section: Int) -> Int
-  
-    // MARK: Cells
-  
-    func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath])
-    func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath])
-    func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
-    func willDisplayCellAtIndexPath(_ indexPath: IndexPath)
-    func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath)
-    func didSelectCellAtIndexPath(_ indexPath: IndexPath)
+    open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+        let section = indexPath.section
+        let index = indexPath.item
+        return sectionControllers[section].sizeForCellAtIndex(index)
+    }
     
 }
 
-private class UICollectionViewDelegateProxy: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching {
+private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
       
-    weak var delegate: AUICollectionViewDelegateProxyDelegate?
+    weak var delegate: AUIEmptyCollectionViewController?
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return delegate?.numberOfSections() ?? 0
@@ -158,6 +148,10 @@ private class UICollectionViewDelegateProxy: NSObject, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectCellAtIndexPath(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
     }
   
 }

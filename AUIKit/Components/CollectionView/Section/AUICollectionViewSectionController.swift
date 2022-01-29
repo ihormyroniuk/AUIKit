@@ -19,5 +19,6 @@ public protocol AUICollectionViewSectionController: AnyObject {
     func willDisplayCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(_ index: Int)
     func didSelectCellAtIndex(_ index: Int)
+    func sizeForCellAtIndex(_ index: Int) -> CGSize
     
 }

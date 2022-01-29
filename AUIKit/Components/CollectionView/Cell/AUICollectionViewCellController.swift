@@ -14,4 +14,5 @@ public protocol AUICollectionViewCellController: AnyObject {
     func willDisplayCell()
     func didEndDisplayingCell()
     func didSelectCell()
+    var sizeForCell: CGSize { get }
 }

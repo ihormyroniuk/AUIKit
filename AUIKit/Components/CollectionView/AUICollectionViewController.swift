@@ -9,7 +9,7 @@ import UIKit
 
 public protocol AUICollectionViewController: AUIScrollViewController {
     
-    // MARK: UIPickerView
+    // MARK: UICollectionView
   
     var collectionView: UICollectionView? { get set }
     
