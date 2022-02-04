@@ -179,6 +179,7 @@
 		C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */; };
 		C5BB419627792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */; };
 		C5C30F7F277A6402006B8CAA /* AUIEmptyTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */; };
+		C5C597C827ADDD51005279E4 /* AUIClosuresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */; };
 		C5C5D49C27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C5D49B27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift */; };
 		C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF085424E11CF80048DDD9 /* IconButton.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
@@ -403,6 +404,7 @@
 		C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlPagesScreenView.swift; sourceTree = "<group>"; };
 		C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCurlPagesController.swift; sourceTree = "<group>"; };
 		C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewCellController.swift; sourceTree = "<group>"; };
+		C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresTableViewController.swift; sourceTree = "<group>"; };
 		C5C5D49B27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationBarHiddenNavigationController.swift; sourceTree = "<group>"; };
 		C5DF085424E11CF80048DDD9 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			children = (
 				C525D8722199866D0057E69F /* AUITableViewController.swift */,
 				C525D8732199866D0057E69F /* AUIEmptyTableViewController.swift */,
+				C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */,
 				C528BA4121BC3EC500FFCE53 /* AUITableView.swift */,
 				C525D8662199866D0057E69F /* Section */,
 				C525D8742199866D0057E69F /* HeaderFooter */,
@@ -1572,6 +1575,7 @@
 				C53AEB2D2195DD1A0087F0A2 /* AUIPickerViewController.swift in Sources */,
 				C53FB4A321C68A9B0067C46C /* AUIPickerViewComponentController.swift in Sources */,
 				C53E7C7D22187C31006CB0D9 /* AUITableViewSectionController.swift in Sources */,
+				C5C597C827ADDD51005279E4 /* AUIClosuresTableViewController.swift in Sources */,
 				C5443BCD22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift in Sources */,
 				C544E64D2295685E00DE9156 /* AUIEmptyViewPickerViewComponentController.swift in Sources */,
 				C53AEB502195FA280087F0A2 /* AUIEmptyScrollViewController.swift in Sources */,

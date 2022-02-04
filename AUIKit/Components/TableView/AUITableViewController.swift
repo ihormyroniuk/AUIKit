@@ -32,4 +32,8 @@ public protocol AUITableViewController: AUIScrollViewController {
     // MARK:
     
     var dragInteractionEnabled: Bool { get }
+    
+    // MARK:
+    
+    var isPrefetchingEnabled: Bool { get }
 }

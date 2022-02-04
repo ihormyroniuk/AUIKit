@@ -79,8 +79,8 @@ final class TableViewScreenViewController: UIViewController {
             cellConroller.trailingSwipeActionsConfigurationForCellClosure = {
                 let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] contextualAction, view, completion in
                     guard let self = self else { return }
-                    self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
-                        completion(true)
+                    self.tableViewController.deleteCellControllerAnimated(cellConroller, .right, completion: { finished in
+                        completion(false)
                     })
                 }
                 let configuration = UISwipeActionsConfiguration(actions: [deleteContextualAction])
