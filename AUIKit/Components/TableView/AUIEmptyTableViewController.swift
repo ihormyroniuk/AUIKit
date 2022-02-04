@@ -64,7 +64,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
-    // MARK:
+    // MARK: Prefetching
     
     open var isPrefetchingEnabled: Bool = true {
         didSet { didSetIsPrefetchingEnabled(oldValue) }
