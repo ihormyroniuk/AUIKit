@@ -28,5 +28,8 @@ public protocol AUITableViewController: AUIScrollViewController {
     func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController)
   
     func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController)
-  
+    
+    // MARK:
+    
+    var dragInteractionEnabled: Bool { get }
 }

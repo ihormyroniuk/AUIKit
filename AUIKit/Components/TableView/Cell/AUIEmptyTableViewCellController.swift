@@ -48,5 +48,24 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
     open func didEndDisplayingCell() {
 
     }
+    
+    @available(iOS 11.0, *)
+    open var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+        return nil
+    }
+    
+    @available(iOS 11.0, *)
+    open var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+        return nil
+    }
+    
+    @available(iOS 11.0, *)
+    open func itemsForBeginning(session: UIDragSession) -> [UIDragItem] {
+        return []
+    }
+    
+    open var canMoveCell: Bool {
+        return false
+    }
   
 }

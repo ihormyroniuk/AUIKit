@@ -79,6 +79,25 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     open func didSelectCellAtIndex(_ index: Int) {
         cellControllers[index].didSelectCell()
     }
+    
+    @available(iOS 11.0, *)
+    open func leadingSwipeActionsConfigurationForRowAtIndexPath(_ index: Int) -> UISwipeActionsConfiguration? {
+        return cellControllers[index].leadingSwipeActionsConfigurationForCell
+    }
+    
+    @available(iOS 11.0, *)
+    open func trailingSwipeActionsConfigurationForRowAtIndexPath(_ index: Int) -> UISwipeActionsConfiguration? {
+        return cellControllers[index].trailingSwipeActionsConfigurationForCell
+    }
+    
+    @available(iOS 11.0, *)
+    open func itemsForBeginning(session: UIDragSession, at index: Int) -> [UIDragItem] {
+        return cellControllers[index].itemsForBeginning(session: session)
+    }
+    
+    open func canMoveRowAtIndex(_ index: Int) -> Bool {
+        return cellControllers[index].canMoveCell
+    }
   
     // MARK: Footer
   

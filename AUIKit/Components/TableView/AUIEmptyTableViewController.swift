@@ -33,6 +33,9 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableView?.dataSource = tableViewDelegateProxy
         tableView?.delegate = tableViewDelegateProxy
         tableView?.prefetchDataSource = tableViewDelegateProxy
+        if #available(iOS 11.0, *) {
+            tableView?.dragDelegate = tableViewDelegateProxy
+        }
         tableView?.reloadData()
     }
 
@@ -41,6 +44,20 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableView?.dataSource = nil
         tableView?.delegate = nil
         tableView?.prefetchDataSource = nil
+        if #available(iOS 11.0, *) {
+            tableView?.dragDelegate = nil
+        }
+    }
+    
+    // MARK:
+    
+    open var dragInteractionEnabled: Bool = false {
+        didSet { didSetDragInteractionEnabled(oldValue) }
+    }
+    open func didSetDragInteractionEnabled(_ oldValue: Bool) {
+        if #available(iOS 11.0, *) {
+            tableView?.dragInteractionEnabled = dragInteractionEnabled
+        }
     }
   
     // MARK: Sections
@@ -145,6 +162,20 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
     }
     
+    @available(iOS 11.0, *)
+    open func leadingSwipeActionsConfigurationForRowAtIndexPath(_ indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let section = indexPath.section
+        let index = indexPath.row
+        return sectionControllers[section].leadingSwipeActionsConfigurationForRowAtIndexPath(index)
+    }
+    
+    @available(iOS 11.0, *)
+    open func trailingSwipeActionsConfigurationForRowAtIndexPath(_ indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let section = indexPath.section
+        let index = indexPath.row
+        return sectionControllers[section].trailingSwipeActionsConfigurationForRowAtIndexPath(index)
+    }
+    
     // MARK: Footers
   
     open func footerInSection(_ section: Int) -> UIView? {
@@ -167,6 +198,34 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func didEndDisplayingFooterInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
         sectionControllers[section].didEndDisplayingFooter()
+    }
+    
+    @available(iOS 11.0, *)
+    open func itemsForBeginning(session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let section = indexPath.section
+        let index = indexPath.row
+        return sectionControllers[section].itemsForBeginning(session: session, at: index)
+    }
+    
+    open func moveRowAt(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let sourceSection = sourceIndexPath.section
+        let sourceSectionController = sectionControllers[sourceSection]
+        let sourceItem = sourceIndexPath.item
+        let movedCellController = sourceSectionController.cellControllers.remove(at: sourceItem)
+        let destinationSection = destinationIndexPath.section
+        let destinationSectionController = sectionControllers[destinationSection]
+        let destinationItem = destinationIndexPath.item
+        destinationSectionController.cellControllers.insert(movedCellController, at: destinationItem)
+    }
+    
+    open func targetIndexPathForMoveFromRowAt(sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        return proposedDestinationIndexPath
+    }
+    
+    func canMoveRowAtIndexPath(_ indexPath: IndexPath) -> Bool {
+        let section = indexPath.section
+        let index = indexPath.row
+        return sectionControllers[section].canMoveRowAtIndex(index)
     }
     
     // MARK: Reload
@@ -249,7 +308,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     
 }
 
-private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
+private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
       
     weak var delegate: AUIEmptyTableViewController?
       
@@ -317,6 +376,16 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
         delegate?.didEndDisplayingCellAtIndexPath(indexPath)
     }
     
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return delegate?.leadingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        return delegate?.trailingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
+    }
+    
     // MARK: Footers
       
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -338,5 +407,21 @@ private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
         delegate?.didEndDisplayingFooterInSection(section)
     }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        return delegate?.itemsForBeginning(session: session, at: indexPath) ?? []
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        delegate?.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        return delegate?.targetIndexPathForMoveFromRowAt(sourceIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) ?? sourceIndexPath
+    }
   
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return delegate?.canMoveRowAtIndexPath(indexPath) ?? false
+    }
 }

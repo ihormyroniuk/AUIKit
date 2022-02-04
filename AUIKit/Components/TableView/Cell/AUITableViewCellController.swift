@@ -17,4 +17,11 @@ public protocol AUITableViewCellController: AnyObject {
     func willDisplayCell()
     func didSelectCell()
     func didEndDisplayingCell()
+    @available(iOS 11.0, *)
+    var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    @available(iOS 11.0, *)
+    var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    @available(iOS 11.0, *)
+    func itemsForBeginning(session: UIDragSession) -> [UIDragItem]
+    var canMoveCell: Bool { get }
 }

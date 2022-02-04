@@ -15,7 +15,7 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         let screenController = MenuScreenViewController()
         screenController.delegate = self
         menuScreenController = screenController
-        let navigationController = AUINavigationController()
+        let navigationController = AUINavigationBarHiddenNavigationController()
         navigationController.viewControllers = [screenController]
         mainNavigationController = navigationController
         window.rootViewController = mainNavigationController

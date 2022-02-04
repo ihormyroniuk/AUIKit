@@ -42,6 +42,7 @@ final class TableViewScreenViewController: UIViewController {
     
     private func setupTableViewController() {
         tableViewController.tableView = tableViewScreenView.tableView
+        tableViewController.dragInteractionEnabled = true
         var cellControllers: [AUITableViewCellController] = []
         for i in 1...100 {
             let cellConroller = AUIClosuresTableViewCellController()
@@ -74,6 +75,20 @@ final class TableViewScreenViewController: UIViewController {
             }
             cellConroller.cancelPrefetchingForCellClosure = {
                 print("cancelPrefetchingForCellClosure #\(i)")
+            }
+            cellConroller.trailingSwipeActionsConfigurationForCellClosure = {
+                let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] contextualAction, view, completion in
+                    guard let self = self else { return }
+                    self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
+                        completion(true)
+                    })
+                }
+                let configuration = UISwipeActionsConfiguration(actions: [deleteContextualAction])
+                configuration.performsFirstActionWithFullSwipe = true
+                return configuration
+            }
+            cellConroller.canMoveCellClosure = {
+                return true
             }
             cellControllers.append(cellConroller)
         }

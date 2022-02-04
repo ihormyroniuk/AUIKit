@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 11.0, *)
 open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
   
     // MARK: TableViewCellController
@@ -51,6 +52,29 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open var didEndDisplayingCellClosure: (() -> Void)?
     open override func didEndDisplayingCell() {
         didEndDisplayingCellClosure?()
+    }
+    
+    open var leadingSwipeActionsConfigurationForCellClosure: (() -> UISwipeActionsConfiguration?)?
+    @available(iOS 11.0, *)
+    open override var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+        return leadingSwipeActionsConfigurationForCellClosure?()
+    }
+    
+    open var trailingSwipeActionsConfigurationForCellClosure: (() -> UISwipeActionsConfiguration?)?
+    @available(iOS 11.0, *)
+    open override var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+        return trailingSwipeActionsConfigurationForCellClosure?()
+    }
+    
+    open var itemsForBeginningSessionClosure: ((UIDragSession) -> [UIDragItem])?
+    @available(iOS 11.0, *)
+    open override func itemsForBeginning(session: UIDragSession) -> [UIDragItem] {
+        return itemsForBeginningSessionClosure?(session) ?? []
+    }
+    
+    open var canMoveCellClosure: (() -> Bool)?
+    open override var canMoveCell: Bool {
+        return canMoveCellClosure?() ?? false
     }
   
 }

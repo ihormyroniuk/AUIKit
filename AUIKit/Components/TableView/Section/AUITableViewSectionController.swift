@@ -29,6 +29,13 @@ public protocol AUITableViewSectionController: AnyObject {
     func willDisplayCellAtIndex(_ index: Int)
     func didSelectCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(index: Int)
+    @available(iOS 11.0, *)
+    func leadingSwipeActionsConfigurationForRowAtIndexPath(_ index: Int) -> UISwipeActionsConfiguration?
+    @available(iOS 11.0, *)
+    func trailingSwipeActionsConfigurationForRowAtIndexPath(_ index: Int) -> UISwipeActionsConfiguration?
+    @available(iOS 11.0, *)
+    func itemsForBeginning(session: UIDragSession, at index: Int) -> [UIDragItem]
+    func canMoveRowAtIndex(_ index: Int) -> Bool
     
     // MARK: Footer
   
