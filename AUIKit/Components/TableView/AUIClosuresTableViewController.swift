@@ -43,13 +43,13 @@ open class AUIClosuresTableViewController: AUIEmptyTableViewController {
     
     open var moveCellControllerClosure: ((AUITableViewCellController, AUITableViewCellController) -> Void)?
     open override func moveRowAt(sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        super.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
         let sourceSection = sourceIndexPath.section
         let sourceRow = sourceIndexPath.row
         let sourceCellController = sectionControllers[sourceSection].cellControllers[sourceRow]
         let destinationSection = destinationIndexPath.section
         let destinationRow = destinationIndexPath.row
         let destinationCellController = sectionControllers[destinationSection].cellControllers[destinationRow]
+        super.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
         moveCellControllerClosure?(sourceCellController, destinationCellController)
     }
     
