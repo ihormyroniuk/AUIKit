@@ -24,4 +24,8 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
     func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
     
+    // MARK: Prefetching
+    
+    var isPrefetchingEnabled: Bool { get }
+    
 }

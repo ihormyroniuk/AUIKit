@@ -16,6 +16,7 @@ protocol MenuScreenViewControllerDelegate: AnyObject {
     func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayPushAnimations(_ menuScreenViewController: MenuScreenViewController)
     func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController)
+    func menuScreenViewControllerDisplayCollectionView(_ menuScreenViewController: MenuScreenViewController)
 }
 
 class MenuScreenViewController: UIViewController {
@@ -203,6 +204,23 @@ class MenuScreenViewController: UIViewController {
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
         cellControllers.append(tableViewCellController)
+        // Collection View
+        let collectionViewCellController = AUIClosuresCollectionViewCellController()
+        collectionViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
+            guard let self = self else { return UICollectionViewCell() }
+            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
+            cell.titleLabel.text = "Collection View"
+            return cell
+        }
+        collectionViewCellController.didSelectClosure = { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.menuScreenViewControllerDisplayCollectionView(self)
+        }
+        collectionViewCellController.sizeForCellClosure = { [weak self] in
+            guard let self = self else { return .zero }
+            return self.menuScreenView.menuItemCollectionViewCellSize()
+        }
+        cellControllers.append(collectionViewCellController)
         sectionController.cellControllers = cellControllers
         collectionViewController.sectionControllers = [sectionController]
     }

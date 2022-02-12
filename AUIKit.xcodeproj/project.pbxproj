@@ -172,6 +172,8 @@
 		C591DAEE2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */; };
 		C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */; };
 		C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */; };
+		C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */; };
+		C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */; };
 		C5AC724924DD31A200559038 /* AUINavigationControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */; };
 		C5AC902624D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */; };
 		C5BB418F2779279300F6DA1B /* AUICurlPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB418E2779279300F6DA1B /* AUICurlPagesController.swift */; };
@@ -397,6 +399,8 @@
 		C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextViewTextInputView.swift; sourceTree = "<group>"; };
+		C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenViewController.swift; sourceTree = "<group>"; };
+		C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenView.swift; sourceTree = "<group>"; };
 		C5AC724824DD31A200559038 /* AUINavigationControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C5AC902524D417EF009E2DE7 /* AUIWindowPresentationUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIWindowPresentationUnitTesting.swift; sourceTree = "<group>"; };
 		C5BB418E2779279300F6DA1B /* AUICurlPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICurlPagesController.swift; sourceTree = "<group>"; };
@@ -1032,6 +1036,7 @@
 				C5278F5425BF6C67005C6A49 /* PresentAnimation */,
 				C56B60E825C0966A00D27732 /* PushAnimations */,
 				C58D6D5A2775212C0069520F /* TableView */,
+				C5A7F8F427B83AD100F71286 /* CollectionView */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1225,6 +1230,15 @@
 				C591DAE92788C09600741F54 /* AUIEmptyCollectionViewSectionController.swift */,
 			);
 			path = Section;
+			sourceTree = "<group>";
+		};
+		C5A7F8F427B83AD100F71286 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */,
+				C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		C5AC724724DD318500559038 /* Stories */ = {
@@ -1620,6 +1634,7 @@
 				C5278F6025BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift in Sources */,
 				C58D6D5E277521760069520F /* TableViewScreenView.swift in Sources */,
 				C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */,
+				C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */,
 				C520EC7724CF310A00BF26D6 /* TextFieldTextInputView.swift in Sources */,
 				C5841DBD24D93C980059D557 /* SignupScreenView.swift in Sources */,
 				C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */,
@@ -1640,6 +1655,7 @@
 				C530009E24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift in Sources */,
 				C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */,
 				C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */,
+				C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
 				C56360AD261669CE0012C419 /* ScrollPagesScreenViewController.swift in Sources */,

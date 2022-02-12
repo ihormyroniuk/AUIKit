@@ -7,7 +7,7 @@
 
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate, CollectionViewScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -96,6 +96,13 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.pushViewController(viewController, animated: true)
     }
     
+    func menuScreenViewControllerDisplayCollectionView(_ menuScreenViewController: MenuScreenViewController) {
+        let viewController = CollectionViewScreenViewController()
+        collectionViewScreenViewController = viewController
+        collectionViewScreenViewController?.delegate = self
+        mainNavigationController?.pushViewController(viewController, animated: true)
+    }
+    
     // MARK: Scroll Pages Screen
     
     private weak var scrollPagesScreenController: ScrollPagesScreenViewController?
@@ -144,11 +151,19 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.popViewController(animated: true)
     }
     
-    // Test TableView Screen
+    // TableView Screen
     
     private weak var tableViewScreenViewController: TableViewScreenViewController?
     
     func tableViewScreenViewControllerBack(_ testTableViewScreenViewController: TableViewScreenViewController) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    // CollectionView Screen
+    
+    private weak var collectionViewScreenViewController: CollectionViewScreenViewController?
+    
+    func collectionViewScreenViewControllerBack(_ testTableViewScreenViewController: CollectionViewScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

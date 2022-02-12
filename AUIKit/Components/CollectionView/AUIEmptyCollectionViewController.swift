@@ -9,37 +9,56 @@ import UIKit
 
 open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICollectionViewController {
     
-    // MARK: View
+    // MARK: UICollectionView
   
     open var collectionView: UICollectionView? {
         set { view = newValue }
         get { return view as? UICollectionView }
     }
-  
-    open override func setupView() {
-        super.setupView()
+    
+    open override func setupScrollView() {
+        super.setupScrollView()
+        setupCollectionView()
+    }
+    
+    open func setupCollectionView() {
         collectionView?.dataSource = collectionViewProxyDelegate
         collectionView?.delegate = collectionViewProxyDelegate
         collectionView?.prefetchDataSource = collectionViewProxyDelegate
+        collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
         if #available(iOS 11.0, *) {
             collectionView?.dragDelegate = collectionViewProxyDelegate
             collectionView?.dropDelegate = collectionViewProxyDelegate
         }
         collectionView?.reloadData()
     }
-
-    open override func unsetupView() {
-        super.unsetupView()
+    
+    open override func unsetupScrollView() {
+        super.unsetupScrollView()
+        unsetupCollectionView()
+    }
+    
+    open func unsetupCollectionView() {
         collectionView?.dataSource = nil
         collectionView?.delegate = nil
         collectionView?.prefetchDataSource = nil
+        collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
         if #available(iOS 11.0, *) {
             collectionView?.dragDelegate = nil
             collectionView?.dropDelegate = nil
         }
     }
     
-    // MARK: Delegates
+    // MARK: Prefetching
+    
+    open var isPrefetchingEnabled: Bool = true {
+        didSet { didSetIsPrefetchingEnabled(oldValue) }
+    }
+    open func didSetIsPrefetchingEnabled(_ oldValue: Bool) {
+        collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
+    }
+    
+    // MARK: Proxy Delegate
   
     private let collectionViewProxyDelegate = UICollectionViewProxyDelegate()
   
@@ -65,9 +84,13 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.reloadData()
     }
     
+    // MARK: Sections
+    
     open func numberOfSections() -> Int {
         return sectionControllers.count
     }
+    
+    // MARK: Cells
     
     open func numberOfItemsInSection(_ section: Int) -> Int {
         return sectionControllers[section].numberOfItems
@@ -103,6 +126,12 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].cellForItemAtIndexPath(indexPath)
     }
     
+    open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+        let section = indexPath.section
+        let index = indexPath.item
+        return sectionControllers[section].sizeForCellAtIndex(index)
+    }
+    
     open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
         if let cellController = deletedIndexPaths[indexPath] {
             cellController.willDisplayCell()
@@ -115,6 +144,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
         if let cellController = deletedIndexPaths[indexPath] {
+            deletedIndexPaths[indexPath] = nil
             cellController.didEndDisplayingCell()
             return
         }
@@ -129,11 +159,9 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         sectionControllers[section].didSelectCellAtIndex(index)
     }
     
-    open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
-        let section = indexPath.section
-        let index = indexPath.item
-        return sectionControllers[section].sizeForCellAtIndex(index)
-    }
+//    func canMoveItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
+//        return false
+//    }
     
     // MARK:
     
@@ -154,7 +182,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     open func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.reduce([]) { $1.value }
-        deletedIndexPaths = [:]
         for indexPath in indexPaths {
             let section = indexPath.section
             let sectionController = sectionControllers[section]
@@ -217,6 +244,10 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
         return delegate?.cellForItemAtIndexPath(indexPath) ?? UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         delegate?.willDisplayCellAtIndexPath(indexPath)
     }
@@ -229,17 +260,9 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
         delegate?.didSelectCellAtIndexPath(indexPath)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+//        return delegate?.canMoveItemAtIndexPath(indexPath) ?? false
+//    }
     
     @available(iOS 11.0, *)
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
@@ -256,5 +279,10 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
     @available(iOS 11.0, *)
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
         
+    }
+    
+    @available(iOS 11.0, *)
+    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
+        return true
     }
 }
