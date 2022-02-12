@@ -75,6 +75,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
+            if let cellController = deletedIndexPaths[indexPath] {
+                cellController.prefetchCell()
+                return
+            }
             let section = indexPath.section
             let index = indexPath.item
             sectionControllers[section].prefetchCellAtIndex(index)
@@ -83,6 +87,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
+            if let cellController = deletedIndexPaths[indexPath] {
+                cellController.cancelPrefetchingForCell()
+                return
+            }
             let section = indexPath.section
             let index = indexPath.item
             sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
@@ -90,20 +98,29 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
+        deletedIndexPaths[indexPath] = nil
         let section = indexPath.section
         return sectionControllers[section].cellForItemAtIndexPath(indexPath)
     }
     
     open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
+        if let cellController = deletedIndexPaths[indexPath] {
+            cellController.willDisplayCell()
+            return
+        }
         let section = indexPath.section
         let index = indexPath.item
         sectionControllers[section].willDisplayCellAtIndex(index)
     }
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+        if let cellController = deletedIndexPaths[indexPath] {
+            cellController.didEndDisplayingCell()
+            return
+        }
         let section = indexPath.section
         let index = indexPath.item
-        sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
+        sectionControllers[section].didEndDisplayingCellAtIndex(index)
     }
     
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
@@ -133,12 +150,18 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         reload()
     }
   
-    open var deletedIndexPaths: [IndexPath] = []
+    open var deletedIndexPaths: [IndexPath: AUICollectionViewCellController] = [:]
     open func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.reduce([]) { $1.value }
-        deletedIndexPaths = indexPaths
-        deletedIndexPaths = indexPaths + indexPaths
+        deletedIndexPaths = [:]
+        for indexPath in indexPaths {
+            let section = indexPath.section
+            let sectionController = sectionControllers[section]
+            let item = indexPath.item
+            let cellController = sectionController.cellControllers[item]
+            deletedIndexPaths[indexPath] = cellController
+        }
         for (section, indexPaths) in indexPathsBySections {
             let rows = indexPaths.map({ $0.row })
             sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
