@@ -34,6 +34,7 @@ class MenuScreenView: TitleLabelScreenView {
     private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.register(MenuItemCollectionViewCell.self, forCellWithReuseIdentifier: menuItemCollectionViewCellIdentifier)
+        collectionView.alwaysBounceVertical = true
     }
     
     // MARK: Layout

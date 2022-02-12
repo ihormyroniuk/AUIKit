@@ -25,32 +25,36 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     
     open var cellForRowAtIndexPathClosure: ((IndexPath) -> UITableViewCell)?
     open override func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
-        let cell = cellForRowAtIndexPathClosure?(indexPath)
-        return cell ?? UITableViewCell()
+        let tableViewCell = cellForRowAtIndexPathClosure?(indexPath)
+        self.tableViewCell = tableViewCell
+        return tableViewCell ?? super.cellForRowAtIndexPath(indexPath)
     }
   
     open var estimatedHeightClosure: (() -> CGFloat)?
     open override var estimatedHeight: CGFloat {
-        return estimatedHeightClosure?() ?? 0
+        return estimatedHeightClosure?() ?? super.estimatedHeight
     }
   
     open var heightClosure: (() -> CGFloat)?
     open override var height: CGFloat {
-        return heightClosure?() ?? 0
+        return heightClosure?() ?? super.height
     }
   
     open var willDisplayCellClosure: (() -> Void)?
     open override func willDisplayCell() {
+        super.willDisplayCell()
         willDisplayCellClosure?()
     }
     
     open var didSelectClosure: (() -> Void)?
     open override func didSelectCell() {
+        super.didSelectCell()
         didSelectClosure?()
     }
     
     open var didEndDisplayingCellClosure: (() -> Void)?
     open override func didEndDisplayingCell() {
+        super.didEndDisplayingCell()
         didEndDisplayingCellClosure?()
     }
     
@@ -69,12 +73,12 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open var itemsForBeginningSessionClosure: ((UIDragSession) -> [UIDragItem])?
     @available(iOS 11.0, *)
     open override func itemsForBeginning(session: UIDragSession) -> [UIDragItem] {
-        return itemsForBeginningSessionClosure?(session) ?? []
+        return itemsForBeginningSessionClosure?(session) ?? super.itemsForBeginning(session: session)
     }
     
     open var canMoveCellClosure: (() -> Bool)?
     open override var canMoveCell: Bool {
-        return canMoveCellClosure?() ?? false
+        return canMoveCellClosure?() ?? super.canMoveCell
     }
   
 }

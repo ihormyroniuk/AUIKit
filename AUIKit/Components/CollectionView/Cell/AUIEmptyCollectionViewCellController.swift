@@ -7,12 +7,32 @@
 
 import UIKit
 
-open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController {
+open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUICollectionViewCellController {
   
-    // MARK: Initializer
+
+    // MARK: CollectionViewCell
   
-    public init() {
+    open var collectionViewCell: UICollectionViewCell? {
+        set { view = newValue }
+        get { return view as? UICollectionViewCell }
+    }
+  
+    open override func setupView() {
+        super.setupView()
+        setupCollectionViewCell()
+    }
+  
+    open func setupCollectionViewCell() {
         
+    }
+  
+    open override func unsetupView() {
+        super.unsetupView()
+        unsetupCollectionViewCell()
+    }
+  
+    open func unsetupCollectionViewCell() {
+    
     }
     
     // MARK: AUICollectionViewCellController
@@ -38,7 +58,7 @@ open class AUIEmptyCollectionViewCellController: AUICollectionViewCellController
     }
     
     open func didEndDisplayingCell() {
-        
+        collectionViewCell = nil
     }
     
     public var sizeForCell: CGSize {

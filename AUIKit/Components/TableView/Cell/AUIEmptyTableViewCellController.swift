@@ -7,12 +7,31 @@
 
 import UIKit
 
-open class AUIEmptyTableViewCellController: AUITableViewCellController {
+open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableViewCellController {
+    
+    // MARK: CollectionViewCell
   
-    // MARK: Initializer
+    open var tableViewCell: UITableViewCell? {
+        set { view = newValue }
+        get { return view as? UITableViewCell }
+    }
   
-    public init() {
+    open override func setupView() {
+        super.setupView()
+        setupTableViewCell()
+    }
+  
+    open func setupTableViewCell() {
         
+    }
+  
+    open override func unsetupView() {
+        super.unsetupView()
+        unsetupTableViewCell()
+    }
+  
+    open func unsetupTableViewCell() {
+    
     }
     
     // MARK: AUITableViewCellController
@@ -46,7 +65,7 @@ open class AUIEmptyTableViewCellController: AUITableViewCellController {
     }
     
     open func didEndDisplayingCell() {
-
+        tableViewCell = nil
     }
     
     @available(iOS 11.0, *)

@@ -21,6 +21,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.dataSource = collectionViewProxyDelegate
         collectionView?.delegate = collectionViewProxyDelegate
         collectionView?.prefetchDataSource = collectionViewProxyDelegate
+        if #available(iOS 11.0, *) {
+            collectionView?.dragDelegate = collectionViewProxyDelegate
+            collectionView?.dropDelegate = collectionViewProxyDelegate
+        }
         collectionView?.reloadData()
     }
 
@@ -29,6 +33,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.dataSource = nil
         collectionView?.delegate = nil
         collectionView?.prefetchDataSource = nil
+        if #available(iOS 11.0, *) {
+            collectionView?.dragDelegate = nil
+            collectionView?.dropDelegate = nil
+        }
     }
     
     // MARK: Delegates
@@ -110,9 +118,57 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].sizeForCellAtIndex(index)
     }
     
+    // MARK:
+    
+    open func deleteCellController(_ cellController: AUICollectionViewCellController) {
+        deleteCellControllers([cellController])
+    }
+    
+    open func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController]) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        reload()
+    }
+  
+    open var deletedIndexPaths: [IndexPath] = []
+    open func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        deletedIndexPaths = indexPaths
+        deletedIndexPaths = indexPaths + indexPaths
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        collectionView?.performBatchUpdates({
+            self.collectionView?.deleteItems(at: indexPaths)
+        }, completion: completion)
+    }
+    
+    open func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
+        deleteCellControllersAnimated([cellController], completion: completion)
+    }
+    
+    private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUICollectionViewCellController]) -> [Int: [IndexPath]] {
+        var indexPathsBySections: [Int: [IndexPath]] = [:]
+        for (section, sectionController) in sectionControllers.enumerated() {
+            var indexPaths: [IndexPath] = []
+            for (row, cellController) in sectionController.cellControllers.enumerated() {
+                if cellControllers.contains(where: { $0 === cellController }) {
+                    let indexPath = IndexPath(row: row, section: section)
+                    indexPaths.append(indexPath)
+                }
+            }
+            indexPathsBySections[section] = indexPaths
+        }
+        return indexPathsBySections
+    }
 }
 
-private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
+private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate {
       
     weak var delegate: AUIEmptyCollectionViewController?
     
@@ -153,5 +209,29 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
     }
+    
+    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+    }
+    
+    @available(iOS 11.0, *)
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        let itemProvider = NSItemProvider(object: "\(indexPath)" as NSString)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        return [dragItem]
+    }
   
+    @available(iOS 11.0, *)
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
+    }
+    
+    @available(iOS 11.0, *)
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        
+    }
 }

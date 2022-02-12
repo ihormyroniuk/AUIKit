@@ -17,4 +17,11 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     var sectionControllers: [AUICollectionViewSectionController] { get set }
     
+    // MARK:
+    
+    func deleteCellController(_ cellController: AUICollectionViewCellController)
+    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController])
+    func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
+    func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    
 }
