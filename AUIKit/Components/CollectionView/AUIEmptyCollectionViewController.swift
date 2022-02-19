@@ -26,10 +26,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.delegate = collectionViewProxyDelegate
         collectionView?.prefetchDataSource = collectionViewProxyDelegate
         collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
-        if #available(iOS 11.0, *) {
-            collectionView?.dragDelegate = collectionViewProxyDelegate
-            collectionView?.dropDelegate = collectionViewProxyDelegate
-        }
         collectionView?.reloadData()
     }
     
@@ -43,10 +39,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.delegate = nil
         collectionView?.prefetchDataSource = nil
         collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
-        if #available(iOS 11.0, *) {
-            collectionView?.dragDelegate = nil
-            collectionView?.dropDelegate = nil
-        }
     }
     
     // MARK: Prefetching
@@ -159,9 +151,9 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         sectionControllers[section].didSelectCellAtIndex(index)
     }
     
-//    func canMoveItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
-//        return false
-//    }
+    func canMoveItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
+        return false
+    }
     
     // MARK:
     
@@ -216,9 +208,19 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         }
         return indexPathsBySections
     }
+    
+    open func indexPathForCellController(_ cellController: AUICollectionViewCellController) -> IndexPath? {
+        let gg = indexPathsBySectionsForCellControllers([cellController])
+        return gg.values.first?.first
+    }
+    
+    open func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController {
+        return sectionControllers[indexPath.section].cellControllers[indexPath.item]
+    }
+    
 }
 
-private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate {
+private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
       
     weak var delegate: AUIEmptyCollectionViewController?
     
@@ -260,29 +262,4 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
         delegate?.didSelectCellAtIndexPath(indexPath)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
-//        return delegate?.canMoveItemAtIndexPath(indexPath) ?? false
-//    }
-    
-    @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        let itemProvider = NSItemProvider(object: "\(indexPath)" as NSString)
-        let dragItem = UIDragItem(itemProvider: itemProvider)
-        return [dragItem]
-    }
-  
-    @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-        return UICollectionViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-    }
-    
-    @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        
-    }
-    
-    @available(iOS 11.0, *)
-    func collectionView(_ collectionView: UICollectionView, canHandle session: UIDropSession) -> Bool {
-        return true
-    }
 }

@@ -76,6 +76,8 @@ class CollectionViewCell: AUICollectionViewCell {
     
     override func setup() {
         super.setup()
+        backgroundColor = .cyan
+        layer.cornerRadius = 10
         contentView.addSubview(textLabel)
         backgroundColor = .green
     }
