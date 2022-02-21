@@ -61,7 +61,7 @@ final class CollectionViewScreenViewController: UIViewController {
             }
             cellController.didSelectClosure = { [weak self] in
                 guard let self = self else { return }
-                self.collectionViewController.deleteCellControllerAnimated(cellController) { finished in
+                self.collectionViewController.deleteCellController(cellController) { finished in
                     print("deleteCellControllerAnimated finished")
                 }
             }
@@ -78,7 +78,8 @@ final class CollectionViewScreenViewController: UIViewController {
         }
         let sectionController = AUIEmptyCollectionViewSectionController()
         sectionController.cellControllers = cellControllers
-        collectionViewController.sectionControllers = [sectionController]
+        //collectionViewController.sectionControllers = [sectionController]
+        collectionViewController.appendSectionController(sectionController, completion: nil)
     }
 
     // MARK: Actions

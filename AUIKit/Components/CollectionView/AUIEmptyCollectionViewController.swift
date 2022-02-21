@@ -39,6 +39,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.delegate = nil
         collectionView?.prefetchDataSource = nil
         collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
+        collectionView?.reloadData()
     }
     
     // MARK: Prefetching
@@ -62,7 +63,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         }
     }
     open func didSetSectionControllers(_ oldValue: [AUICollectionViewSectionController]) {
-        reload()
+        
     }
   
     // MARK: Setup
@@ -151,47 +152,111 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         sectionControllers[section].didSelectCellAtIndex(index)
     }
     
-    func canMoveItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
-        return false
+    // MARK: Modification
+    
+    open var deletedIndexPaths: [IndexPath: AUICollectionViewCellController] = [:]
+    
+    open func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
+        collectionView?.performBatchUpdates({ [weak self] in
+            guard let self = self else { return }
+            let indexPaths = indexPathsForCellControllers(cellControllers)
+            for indexPath in indexPaths {
+                let section = indexPath.section
+                let sectionController = sectionControllers[section]
+                let item = indexPath.item
+                let cellController = sectionController.cellControllers[item]
+                sectionController.cellControllers.remove(at: item)
+                deletedIndexPaths[indexPath] = cellController
+            }
+            self.collectionView?.deleteItems(at: indexPaths)
+        }, completion: { finished in
+            completion?(finished)
+        })
     }
     
-    // MARK:
-    
-    open func deleteCellController(_ cellController: AUICollectionViewCellController) {
-        deleteCellControllers([cellController])
+    open func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
+        deleteCellControllers([cellController], completion: completion)
     }
     
-    open func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController]) {
+    open func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?) {
+        collectionView?.performBatchUpdates({ [weak self] in
+            guard let self = self else { return }
+            let sectionControllersCount = self.sectionControllers.count
+            let appendedSectionControllersCount = sectionControllersCount + sectionControllers.count
+            let sections: IndexSet = IndexSet(Array(sectionControllersCount..<appendedSectionControllersCount))
+            self.sectionControllers.append(contentsOf: sectionControllers)
+            self.collectionView?.insertSections(sections)
+        }, completion: { finished in
+            completion?(finished)
+        })
+    }
+    
+    open func appendSectionController(_ sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        appendSectionControllers([sectionController], completion: completion)
+    }
+    
+    open func appendCellControllers(_ cellControllers: [AUICollectionViewCellController], toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        collectionView?.performBatchUpdates({ [weak self] in
+            guard let self = self else { return }
+            guard let section = sectionControllers.firstIndex(where: { $0 === sectionController }) else { return }
+            let cellControllersCount = sectionController.cellControllers.count
+            let appendedCellControllersCount = cellControllersCount + cellControllers.count
+            let indexPaths: [IndexPath] = Array(cellControllersCount..<appendedCellControllersCount).map({ IndexPath(item: $0, section: section) })
+            sectionController.cellControllers.append(contentsOf: cellControllers)
+            self.collectionView?.insertItems(at: indexPaths)
+        }, completion: { finished in
+            completion?(finished)
+        })
+    }
+    
+    open func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        appendCellControllers([cellController], toSectionController: sectionController, completion: completion)
+    }
+    
+    // MARK: IndexPath
+    
+    open func indexPathForCellController(_ cellController: AUICollectionViewCellController) -> IndexPath? {
+        for (section, sectionController) in sectionControllers.enumerated() {
+            for (item, _cellController) in sectionController.cellControllers.enumerated() {
+                if _cellController === cellController {
+                    let indexPath = IndexPath(item: item, section: section)
+                    return indexPath
+                }
+            }
+        }
+        return nil
+    }
+    
+    open func indexPathsForCellControllers(_ cellControllers: [AUICollectionViewCellController]) -> [IndexPath] {
+        var indexPaths: [IndexPath] = []
+        for (section, sectionController) in sectionControllers.enumerated() {
+            for (item, cellController) in sectionController.cellControllers.enumerated() {
+                if cellControllers.contains(where: { $0 === cellController }) {
+                    let indexPath = IndexPath(item: item, section: section)
+                    indexPaths.append(indexPath)
+                }
+            }
+        }
+        return indexPaths
+    }
+    
+    open func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController {
+        return sectionControllers[indexPath.section].cellControllers[indexPath.item]
+    }
+    
+    // MARK: Relaod
+    
+    open func deleteCellControllerReload(_ cellController: AUICollectionViewCellController) {
+        deleteCellControllersReload([cellController])
+    }
+    
+    open func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController]) {
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         for (section, indexPaths) in indexPathsBySections {
             let rows = indexPaths.map({ $0.row })
             sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
         }
         reload()
-    }
-  
-    open var deletedIndexPaths: [IndexPath: AUICollectionViewCellController] = [:]
-    open func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
-        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
-        for indexPath in indexPaths {
-            let section = indexPath.section
-            let sectionController = sectionControllers[section]
-            let item = indexPath.item
-            let cellController = sectionController.cellControllers[item]
-            deletedIndexPaths[indexPath] = cellController
-        }
-        for (section, indexPaths) in indexPathsBySections {
-            let rows = indexPaths.map({ $0.row })
-            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
-        }
-        collectionView?.performBatchUpdates({
-            self.collectionView?.deleteItems(at: indexPaths)
-        }, completion: completion)
-    }
-    
-    open func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
-        deleteCellControllersAnimated([cellController], completion: completion)
     }
     
     private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUICollectionViewCellController]) -> [Int: [IndexPath]] {
@@ -207,15 +272,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             indexPathsBySections[section] = indexPaths
         }
         return indexPathsBySections
-    }
-    
-    open func indexPathForCellController(_ cellController: AUICollectionViewCellController) -> IndexPath? {
-        let gg = indexPathsBySectionsForCellControllers([cellController])
-        return gg.values.first?.first
-    }
-    
-    open func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController {
-        return sectionControllers[indexPath.section].cellControllers[indexPath.item]
     }
     
 }

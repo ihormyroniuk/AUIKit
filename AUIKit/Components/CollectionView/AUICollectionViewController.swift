@@ -17,12 +17,21 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     var sectionControllers: [AUICollectionViewSectionController] { get set }
     
-    // MARK:
+    // MARK: Modification
     
-    func deleteCellController(_ cellController: AUICollectionViewCellController)
-    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController])
-    func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
-    func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
+    func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    
+    func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?)
+    func appendSectionController(_ sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
+    func appendCellControllers(_ cellControllers: [AUICollectionViewCellController], toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
+    // MARK: Reloading
+    
+    func deleteCellControllerReload(_ cellController: AUICollectionViewCellController)
+    func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController])
     
     // MARK: Prefetching
     
