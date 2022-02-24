@@ -13,6 +13,7 @@ public protocol AUICollectionViewCellController: AnyObject {
     func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
     func willDisplayCell()
     func didEndDisplayingCell()
+    var shouldSelectCell: Bool { get }
     func didSelectCell()
     var sizeForCell: CGSize { get }
 }

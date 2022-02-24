@@ -18,6 +18,7 @@ public protocol AUICollectionViewSectionController: AnyObject {
     func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
     func willDisplayCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(_ index: Int)
+    func shouldSelectItemAtIndex(_ index: Int) -> Bool
     func didSelectCellAtIndex(_ index: Int)
     func sizeForCellAtIndex(_ index: Int) -> CGSize
     

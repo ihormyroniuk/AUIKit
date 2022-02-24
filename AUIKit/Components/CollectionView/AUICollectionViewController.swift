@@ -28,6 +28,8 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     func appendCellControllers(_ cellControllers: [AUICollectionViewCellController], toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     
+    func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?)
+    
     // MARK: Reloading
     
     func deleteCellControllerReload(_ cellController: AUICollectionViewCellController)

@@ -44,12 +44,16 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
         cellControllers[index].didEndDisplayingCell()
     }
     
+    open func shouldSelectItemAtIndex(_ index: Int) -> Bool {
+        return cellControllers[index].shouldSelectCell
+    }
+    
     open func didSelectCellAtIndex(_ index: Int) {
         cellControllers[index].didSelectCell()
     }
   
     public func sizeForCellAtIndex(_ index: Int) -> CGSize {
-        cellControllers[index].sizeForCell
+        return cellControllers[index].sizeForCell
     }
     
 }

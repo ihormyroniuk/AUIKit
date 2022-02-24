@@ -49,8 +49,8 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
         return UICollectionViewCell()
     }
     
-    open func didSelectCell() {
-        
+    open var sizeForCell: CGSize {
+        return .zero
     }
     
     open func willDisplayCell() {
@@ -60,9 +60,13 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     open func didEndDisplayingCell() {
         collectionViewCell = nil
     }
-    
-    public var sizeForCell: CGSize {
-        return .zero
-    }
   
+    open var shouldSelectCell: Bool {
+        return true
+    }
+    
+    open func didSelectCell() {
+        
+    }
+    
 }

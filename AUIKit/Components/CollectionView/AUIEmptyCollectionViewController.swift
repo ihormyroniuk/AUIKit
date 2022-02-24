@@ -136,6 +136,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+        if movedIndexPath == indexPath {
+            movedIndexPath = nil
+            return
+        }
         if let cellController = deletedIndexPaths[indexPath] {
             deletedIndexPaths[indexPath] = nil
             cellController.didEndDisplayingCell()
@@ -144,6 +148,12 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         let section = indexPath.section
         let index = indexPath.item
         sectionControllers[section].didEndDisplayingCellAtIndex(index)
+    }
+    
+    open func shouldSelectItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
+        let section = indexPath.section
+        let index = indexPath.item
+        return sectionControllers[section].shouldSelectItemAtIndex(index)
     }
     
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
@@ -211,6 +221,17 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
         appendCellControllers([cellController], toSectionController: sectionController, completion: completion)
+    }
+    
+    open var movedIndexPath: IndexPath?
+    
+    open func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?) {
+        collectionView?.performBatchUpdates({ [weak self] in
+            guard let self = self else { return }
+            self.collectionView?.moveItem(at: atIndexPath, to: toIndexPath)
+        }, completion: { finished in
+            completion?(finished)
+        })
     }
     
     // MARK: IndexPath
@@ -316,6 +337,10 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectCellAtIndexPath(indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return delegate?.shouldSelectItemAtIndexPath(indexPath) ?? false
     }
     
 }
