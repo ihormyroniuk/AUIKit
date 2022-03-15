@@ -53,7 +53,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
-    // MARK:
+    // MARK: Drag Interaction
     
     open var dragInteractionEnabled: Bool = false {
         didSet { didSetDragInteractionEnabled(oldValue) }
@@ -281,7 +281,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             tableView?.beginUpdates()
             tableView?.deleteRows(at: indexPaths, with: animation)
             tableView?.endUpdates()
-
+            completion?(true)
         }
     }
     open func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
@@ -300,6 +300,26 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             section.cellControllers.insert(cellController, at: 0)
         }
         reload()
+    }
+    
+    open func insertCellControllerAtSectionBeginningAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        if section.cellControllers.isEmpty {
+            section.cellControllers.append(cellController)
+        } else {
+            section.cellControllers.insert(cellController, at: 0)
+        }
+        let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
+        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
     }
   
     public func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
