@@ -292,6 +292,22 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         section.cellControllers.append(cellController)
         reload()
     }
+    
+    open func insertCellControllerAtSectionEndAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        section.cellControllers.append(cellController)
+        let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
+        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
   
     open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
         if section.cellControllers.isEmpty {
