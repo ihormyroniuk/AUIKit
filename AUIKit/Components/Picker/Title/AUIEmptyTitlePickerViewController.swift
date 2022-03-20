@@ -8,7 +8,7 @@
 
 import UIKit
 
-open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUITitlePickerViewController, UIPickerViewDelegateProxyDelegate {
+open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUITitlePickerViewController {
 
     // MARK: Delegates
   
@@ -22,7 +22,7 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
         }
     }
     open func didSetTitleComponentControllers(_ oldValue: [AUITitlePickerViewComponentController]) {
-        pickerView?.reloadAllComponents()
+        didSetComponentControllers(oldValue)
     }
   
     open override var componentControllers: [AUIPickerViewComponentController] {
@@ -38,13 +38,13 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
   
     // MARK: UIPickerView
   
-    open override func setupView() {
+    open override func setupPickerView() {
         super.setupView()
         pickerView?.delegate = pickerViewDelegateProxy
         pickerView?.reloadAllComponents()
     }
   
-    open override func unsetupView() {
+    open override func unsetupPickerView() {
         super.unsetupView()
         pickerView?.delegate = nil
     }
@@ -64,20 +64,14 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
         let componentController = componentControllers[component]
         guard item >= 0, item < componentController.itemControllers.count else { return }
         let itemController = componentController.itemControllers[item]
-        itemController.didSelect()
+        didSelectItemController(itemController, inComponentController: componentController)
     }
     
 }
 
-private protocol  UIPickerViewDelegateProxyDelegate: AnyObject {
-    func titleForItem(_ item: Int, inComponent component: Int) -> String?
-    func attributedTitleForItem(_ item: Int, inComponent component: Int) -> NSAttributedString?
-    func didSelectItem(_ item: Int, inComponent component: Int)
-}
-
 private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
     
-    weak var delegate: UIPickerViewDelegateProxyDelegate?
+    weak var delegate: AUIEmptyTitlePickerViewController?
   
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return delegate?.titleForItem(row, inComponent: component) ?? nil

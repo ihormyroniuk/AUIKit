@@ -7,7 +7,7 @@
 
 import UIKit
 
-open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIViewPickerViewController, UIPickerViewDelegateProxyDelegate {
+open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIViewPickerViewController {
   
     // MARK: Delegates
   
@@ -21,7 +21,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         }
     }
     open func didSetViewComponentControllers(_ oldValue: [AUIViewPickerViewComponentController]) {
-        pickerView?.reloadAllComponents()
+        didSetComponentControllers(oldValue)
     }
   
     open override var componentControllers: [AUIPickerViewComponentController] {
@@ -37,13 +37,13 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
   
     // MARK: UIPickerView
   
-    open override func setupView() {
+    open override func setupPickerView() {
         super.setupView()
         pickerView?.delegate = pickerViewDelegateProxy
         pickerView?.reloadAllComponents()
     }
   
-    open override func unsetupView() {
+    open override func unsetupPickerView() {
         super.unsetupView()
         pickerView?.delegate = nil
     }
@@ -73,22 +73,13 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         let componentController = componentControllers[component]
         guard item >= 0, item < componentController.itemControllers.count else { return }
         let itemController = componentController.itemControllers[item]
-        itemController.didSelect()
+        didSelectItemController(itemController, inComponentController: componentController)
     }
-}
-
-private protocol  UIPickerViewDelegateProxyDelegate: AnyObject {
-    
-    func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView
-    func widthForComponent(_ component: Int) -> CGFloat
-    func heightForComponent(_ component: Int) -> CGFloat
-    func didSelectItem(_ item: Int, inComponent component: Int)
-    
 }
 
 private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
     
-    weak var delegate: UIPickerViewDelegateProxyDelegate?
+    weak var delegate: AUIEmptyViewPickerViewController?
   
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         return delegate?.viewForItem(row, inComponent: component, reusingView: view) ?? UIView()
