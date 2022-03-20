@@ -38,13 +38,13 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     // MARK: UIPickerView
   
     open override func setupPickerView() {
-        super.setupView()
+        super.setupPickerView()
         pickerView?.delegate = pickerViewDelegateProxy
         pickerView?.reloadAllComponents()
     }
   
     open override func unsetupPickerView() {
-        super.unsetupView()
+        super.unsetupPickerView()
         pickerView?.delegate = nil
     }
   
