@@ -81,6 +81,8 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     private var selectedItemControllers: [AUIPickerViewComponentControllerHashableContainer: AUIPickerViewItemController] = [:]
     
     open func selectItemController(_ itemController: AUIPickerViewItemController, atComponentController componentController: AUIPickerViewComponentController, animated: Bool) {
+        let componentControllerHashableContainer = AUIPickerViewComponentControllerHashableContainer(componentController)
+        selectedItemControllers[componentControllerHashableContainer] = itemController
         guard let component = componentControllers.firstIndex(where: { $0 === componentController }) else { return }
         guard let item = componentController.itemControllers.firstIndex(where: { $0 === itemController }) else { return }
         pickerView?.selectRow(item, inComponent: component, animated: animated)
