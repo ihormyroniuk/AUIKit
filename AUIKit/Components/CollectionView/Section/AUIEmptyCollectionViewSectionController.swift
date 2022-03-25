@@ -36,8 +36,8 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
         return cellControllers[index].cellForItemAtIndexPath(indexPath)
     }
     
-    open func willDisplayCellAtIndex(_ index: Int) {
-        cellControllers[index].willDisplayCell()
+    open func willDisplayCell(_ cell: UICollectionViewCell, atIndex index: Int) {
+        cellControllers[index].willDisplayCell(cell)
     }
     
     open func didEndDisplayingCellAtIndex(_ index: Int) {

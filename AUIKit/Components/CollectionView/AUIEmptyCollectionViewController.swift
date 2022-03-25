@@ -125,14 +125,14 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].sizeForCellAtIndex(index)
     }
     
-    open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
+    open func willDisplayCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath) {
         if let cellController = deletedIndexPaths[indexPath] {
-            cellController.willDisplayCell()
+            cellController.willDisplayCell(cell)
             return
         }
         let section = indexPath.section
         let index = indexPath.item
-        sectionControllers[section].willDisplayCellAtIndex(index)
+        sectionControllers[section].willDisplayCell(cell, atIndex: index)
     }
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
@@ -328,7 +328,7 @@ private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSourc
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        delegate?.willDisplayCellAtIndexPath(indexPath)
+        delegate?.willDisplayCell(cell, atIndexPath: indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

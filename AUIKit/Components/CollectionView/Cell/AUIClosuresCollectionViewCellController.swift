@@ -36,8 +36,8 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
     }
     
     open var willDisplayCellClosure: (() -> Void)?
-    open override func willDisplayCell() {
-        super.willDisplayCell()
+    open override func willDisplayCell(_ cell: UICollectionViewCell) {
+        super.willDisplayCell(cell)
         willDisplayCellClosure?()
     }
     

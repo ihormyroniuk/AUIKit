@@ -53,8 +53,10 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
         return .zero
     }
     
-    open func willDisplayCell() {
-        
+    open func willDisplayCell(_ cell: UICollectionViewCell) {
+        if collectionViewCell != cell {
+            collectionViewCell = cell
+        }
     }
     
     open func didEndDisplayingCell() {
