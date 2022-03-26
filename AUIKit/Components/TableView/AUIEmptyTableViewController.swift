@@ -248,6 +248,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Reload
   
     open func reload() {
+        deletedIndexPaths = tableView?.indexPathsForVisibleRows ?? []
         tableView?.reloadData()
     }
   
