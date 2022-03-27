@@ -267,7 +267,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open var deletedIndexPaths: [IndexPath] = []
     open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        let indexPaths = indexPathsBySections.values.reduce([], +)
         deletedIndexPaths = indexPaths
         deletedIndexPaths = indexPaths + indexPaths
         for (section, indexPaths) in indexPathsBySections {
@@ -297,7 +297,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func insertCellControllerAtSectionEndAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
         section.cellControllers.append(cellController)
         let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
-        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        let indexPaths = indexPathsBySections.values.reduce([], +)
         if #available(iOS 11.0, *) {
             tableView?.performBatchUpdates({
                 self.tableView?.insertRows(at: indexPaths, with: animation)
@@ -326,7 +326,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             section.cellControllers.insert(cellController, at: 0)
         }
         let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
-        let indexPaths = indexPathsBySections.reduce([]) { $1.value }
+        let indexPaths = indexPathsBySections.values.reduce([], +)
         if #available(iOS 11.0, *) {
             tableView?.performBatchUpdates({
                 self.tableView?.insertRows(at: indexPaths, with: animation)
