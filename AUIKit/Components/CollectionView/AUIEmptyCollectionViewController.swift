@@ -74,6 +74,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func reload() {
+        let indexPaths = collectionView?.indexPathsForVisibleItems ?? []
+        self.deletedIndexPaths = indexPaths.reduce(into: [IndexPath: AUICollectionViewCellController](), {
+            $0[$1] = cellControllerForIndexPath($1)
+        })
         collectionView?.reloadData()
     }
     
