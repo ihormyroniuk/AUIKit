@@ -83,7 +83,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         didSet { didSetSectionControllers(oldValue) }
     }
     open func didSetSectionControllers(_ oldValue: [AUITableViewSectionController]) {
-        reload()
+        
     }
   
     open func numberOfSections() -> Int {
@@ -304,7 +304,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             }, completion: completion)
         } else {
             tableView?.beginUpdates()
-            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.insertRows(at: indexPaths, with: animation)
             tableView?.endUpdates()
             completion?(true)
         }
@@ -333,7 +333,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             }, completion: completion)
         } else {
             tableView?.beginUpdates()
-            tableView?.deleteRows(at: indexPaths, with: animation)
+            tableView?.insertRows(at: indexPaths, with: animation)
             tableView?.endUpdates()
             completion?(true)
         }
