@@ -52,6 +52,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     }
     
     open func cancelPrefetchingForCellAtIndex(_ index: Int) {
+        guard index < cellControllers.count else { return }
         cellControllers[index].cancelPrefetchingForCell()
     }
   
