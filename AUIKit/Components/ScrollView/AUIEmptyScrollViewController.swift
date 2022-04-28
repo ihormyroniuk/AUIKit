@@ -64,7 +64,7 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     open var scrollViewDidScrollClosure: (() -> Void)?
     open var scrollViewDidEndScrollingAnimationClosure: (() -> Void)?
     
-    open var scrollViewDidEndDraggingClosure: (() -> Void)?
+    open var scrollViewDidEndDraggingClosure: ((Bool) -> Void)?
     open var scrollViewDidEndDeceleratingClosure: (() -> Void)?
   
 }
@@ -82,7 +82,7 @@ class AUIEmptyScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        emptyScrollViewController?.scrollViewDidEndDraggingClosure?()
+        emptyScrollViewController?.scrollViewDidEndDraggingClosure?(decelerate)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
