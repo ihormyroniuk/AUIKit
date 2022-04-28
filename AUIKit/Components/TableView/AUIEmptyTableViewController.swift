@@ -373,6 +373,10 @@ class UITableViewDelegateProxy: AUIEmptyScrollViewDelegateProxy, UITableViewData
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidScrollClosure?()
     }
+    
+    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidEndScrollingAnimationClosure?()
+    }
       
     // MARK: Headers
       

@@ -62,6 +62,7 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     }
     
     open var scrollViewDidScrollClosure: (() -> Void)?
+    open var scrollViewDidEndScrollingAnimationClosure: (() -> Void)?
   
 }
 
@@ -71,6 +72,10 @@ class AUIEmptyScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         emptyScrollViewController?.scrollViewDidScrollClosure?()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        emptyScrollViewController?.scrollViewDidEndScrollingAnimationClosure?()
     }
     
 }

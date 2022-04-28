@@ -306,6 +306,10 @@ private class UICollectionViewProxyDelegate: AUIEmptyScrollViewDelegateProxy, UI
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         delegate?.scrollViewDidScrollClosure?()
     }
+    
+    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidEndScrollingAnimationClosure?()
+    }
       
     weak var delegate: AUIEmptyCollectionViewController?
     
