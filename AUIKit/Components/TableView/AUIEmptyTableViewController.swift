@@ -362,12 +362,16 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     
 }
 
-private class UITableViewDelegateProxy: NSObject, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
+class UITableViewDelegateProxy: AUIEmptyScrollViewDelegateProxy, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
       
     weak var delegate: AUIEmptyTableViewController?
       
     func numberOfSections(in tableView: UITableView) -> Int {
         return delegate?.numberOfSections() ?? 0
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidScrollClosure?()
     }
       
     // MARK: Headers

@@ -38,6 +38,9 @@ final class TableViewScreenViewController: UIViewController {
         tableViewScreenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
         setupTableViewController()
+        tableViewController.scrollViewDidScrollClosure = {
+            print("fffff")
+        }
     }
     
     private func setupTableViewController() {

@@ -301,7 +301,11 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
 }
 
-private class UICollectionViewProxyDelegate: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
+private class UICollectionViewProxyDelegate: AUIEmptyScrollViewDelegateProxy, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidScrollClosure?()
+    }
       
     weak var delegate: AUIEmptyCollectionViewController?
     

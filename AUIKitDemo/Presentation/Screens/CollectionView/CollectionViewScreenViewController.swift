@@ -41,6 +41,9 @@ final class CollectionViewScreenViewController: UIViewController {
     }
     
     private func setupTableViewController() {
+        collectionViewController.scrollViewDidScrollClosure = {
+            print("ggggg")
+        }
         collectionViewController.collectionView = collectionViewScreenView.collectionView
         collectionViewController.isPrefetchingEnabled = true
         var cellControllers: [AUICollectionViewCellController] = []

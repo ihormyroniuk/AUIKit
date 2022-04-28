@@ -9,6 +9,17 @@
 import UIKit
 
 open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewController {
+    
+    // MARK: Proxy
+  
+    private let emptyScrollViewDelegateProxy = AUIEmptyScrollViewDelegateProxy()
+    
+    // MARK: Setup
+  
+    open override func setup() {
+        super.setup()
+        emptyScrollViewDelegateProxy.emptyScrollViewController = self
+    }
 
     // MARK: View
   
@@ -25,6 +36,7 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     open func setupScrollView() {
         scrollView?.keyboardDismissMode = keyboardDismissMode
         scrollView?.isScrollEnabled = isScrollEnabled
+        scrollView?.delegate = emptyScrollViewDelegateProxy
     }
   
     open override func unsetupView() {
@@ -33,7 +45,7 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     }
   
     open func unsetupScrollView() {
-    
+        scrollView?.delegate = nil
     }
   
     // MARK: States
@@ -48,5 +60,17 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     open var isScrollEnabled: Bool = true {
         didSet { scrollView?.isScrollEnabled = isScrollEnabled }
     }
+    
+    open var scrollViewDidScrollClosure: (() -> Void)?
   
+}
+
+class AUIEmptyScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
+      
+    weak var emptyScrollViewController: AUIEmptyScrollViewController?
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        emptyScrollViewController?.scrollViewDidScrollClosure?()
+    }
+    
 }
