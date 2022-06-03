@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 open class AUIEmptySwitchController: AUIEmptyControlController, AUISwitchController {
 

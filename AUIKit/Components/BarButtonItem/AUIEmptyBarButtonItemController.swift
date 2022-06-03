@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 open class AUIEmptyBarButtonItemController: AUIEmptyBarItemController, AUIBarButtonItemController {
  

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidChangeTextObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextFieldControllerDidBeginEditingObserver, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
     
