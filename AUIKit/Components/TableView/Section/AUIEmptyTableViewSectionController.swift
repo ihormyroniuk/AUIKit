@@ -73,8 +73,8 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
         cellControllers[index].didEndDisplayingCell()
     }
   
-    open func willDisplayCellAtIndex(_ index: Int) {
-        cellControllers[index].willDisplayCell()
+    open func willDisplayCell(_ cell: UITableViewCell, atIndex index: Int) {
+        cellControllers[index].willDisplayCell(cell)
     }
   
     open func didSelectCellAtIndex(_ index: Int) {

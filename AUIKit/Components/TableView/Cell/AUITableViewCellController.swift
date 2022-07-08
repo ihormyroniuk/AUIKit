@@ -14,7 +14,7 @@ public protocol AUITableViewCellController: AnyObject {
     func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     var estimatedHeight: CGFloat { get }
     var height: CGFloat { get }
-    func willDisplayCell()
+    func willDisplayCell(_ cell: UITableViewCell)
     func didSelectCell()
     func didEndDisplayingCell()
     @available(iOS 11.0, *)

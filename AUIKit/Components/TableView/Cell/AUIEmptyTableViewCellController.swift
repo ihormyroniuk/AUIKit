@@ -56,8 +56,10 @@ open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableView
         return 0
     }
   
-    open func willDisplayCell() {
-
+    open func willDisplayCell(_ cell: UITableViewCell) {
+        if tableViewCell != cell {
+            tableViewCell = cell
+        }
     }
     
     open func didSelectCell() {

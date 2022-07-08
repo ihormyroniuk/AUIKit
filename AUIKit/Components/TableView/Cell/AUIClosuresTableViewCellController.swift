@@ -40,10 +40,10 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
         return heightClosure?() ?? super.height
     }
   
-    open var willDisplayCellClosure: (() -> Void)?
-    open override func willDisplayCell() {
-        super.willDisplayCell()
-        willDisplayCellClosure?()
+    open var willDisplayCellClosure: ((UITableViewCell) -> Void)?
+    open override func willDisplayCell(_ cell: UITableViewCell) {
+        super.willDisplayCell(cell)
+        willDisplayCellClosure?(cell)
     }
     
     open var didSelectClosure: (() -> Void)?

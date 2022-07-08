@@ -16,7 +16,7 @@ public protocol AUICollectionViewSectionController: AnyObject {
     func prefetchCellAtIndex(_ index: Int)
     func cancelPrefetchingForCellAtIndex(_ index: Int)
     func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
-    func willDisplayCell(_ cell: UICollectionViewCell,atIndex index: Int)
+    func willDisplayCell(_ cell: UICollectionViewCell, atIndex index: Int)
     func didEndDisplayingCellAtIndex(_ index: Int)
     func shouldSelectItemAtIndex(_ index: Int) -> Bool
     func didSelectCellAtIndex(_ index: Int)

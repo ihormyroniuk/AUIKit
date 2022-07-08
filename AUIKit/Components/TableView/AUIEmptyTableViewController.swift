@@ -153,13 +153,13 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         return sectionControllers[section].heightForCellAtIndex(index)
     }
   
-    open func willDisplayCellAtIndexPath(_ indexPath: IndexPath) {
+    open func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
         if deletedIndexPaths.contains(indexPath) {
             deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
         }
         let section = indexPath.section
         let index = indexPath.row
-        return sectionControllers[section].willDisplayCellAtIndex(index)
+        return sectionControllers[section].willDisplayCell(cell, atIndex: index)
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
@@ -435,7 +435,7 @@ class UITableViewDelegateProxy: AUIEmptyScrollViewDelegateProxy, UITableViewData
     }
       
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        delegate?.willDisplayCellAtIndexPath(indexPath)
+        delegate?.willDisplayCell(cell, atIndexPath: indexPath)
     }
       
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
