@@ -378,6 +378,10 @@ class UITableViewDelegateProxy: AUIEmptyScrollViewDelegateProxy, UITableViewData
         delegate?.scrollViewDidEndScrollingAnimationClosure?()
     }
     
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        delegate?.scrollViewWillBeginDraggingClosure?()
+    }
+    
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         delegate?.scrollViewDidEndDraggingClosure?(decelerate)
     }
