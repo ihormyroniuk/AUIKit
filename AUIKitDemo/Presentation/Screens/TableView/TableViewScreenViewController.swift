@@ -44,6 +44,9 @@ final class TableViewScreenViewController: UIViewController {
         tableViewController.scrollViewDidEndScrollingAnimationClosure = {
             print("scrollViewDidEndScrollingAnimationClosure")
         }
+        tableViewController.scrollViewWillBeginDraggingClosure = {
+            print("scrollViewWillBeginDraggingClosure")
+        }
     }
     
     private func setupTableViewController() {
@@ -64,7 +67,7 @@ final class TableViewScreenViewController: UIViewController {
             cellConroller.heightClosure = {
                 return 64
             }
-            cellConroller.willDisplayCellClosure = {
+            cellConroller.willDisplayCellClosure = { cell in
                 print("willDisplayCellClosure #\(i)")
             }
             cellConroller.didSelectClosure = { [weak self] in
