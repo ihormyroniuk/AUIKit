@@ -14,16 +14,24 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     private let transitionDuration: TimeInterval = 0.3
     private let backgroundViewTapGestureRecognizer = UITapGestureRecognizer()
     private let panGestureRecognizer = UIPanGestureRecognizer()
-    private var panGestureRecognizerBeganLocation: CGPoint?
     private weak var presentedViewController: UIViewController?
+    
+    // MARK: - Initialization
 
     init(window: UIWindow) {
         self.window = window
         super.init()
         backgroundView.addGestureRecognizer(backgroundViewTapGestureRecognizer)
-        backgroundViewTapGestureRecognizer.addTarget(self, action: #selector(tapAction))
-        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        backgroundViewTapGestureRecognizer.addTarget(self, action: #selector(backgroundViewTapGestureRecognizerAction))
     }
+    
+    // MARK: - Events
+    
+    @objc func backgroundViewTapGestureRecognizerAction() {
+        presentedViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - Presentation
     
     override func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         presentedViewController = presented
@@ -37,12 +45,12 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
     }
     
     override func presentAnimateTransition(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController, using transitionContext: UIViewControllerContextTransitioning) {
-        guard let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) else { return }
         guard let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to) else { return }
-        transitionContext.containerView.insertSubview(backgroundView, aboveSubview: fromViewController.view)
+        transitionContext.containerView.addSubview(backgroundView)
+        backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         backgroundView.frame = window.bounds
         backgroundView.alpha = 0
-        transitionContext.containerView.insertSubview(toViewController.view, aboveSubview: backgroundView)
+        transitionContext.containerView.addSubview(toViewController.view)
         let toViewControllerInitialFrame = CGRect(x: 0, y: window.bounds.height, width: window.bounds.width, height: window.bounds.height)
         var toViewControllerViewSizeThatFits = toViewController.view.sizeThatFits(window.bounds.size)
         if #available(iOS 11.0, *) {
@@ -59,6 +67,8 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         })
     }
+    
+    // MARK: - Presentation
     
     override func dismissTransitionDuration(forDismissed dismissed: UIViewController, using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return transitionDuration
@@ -79,6 +89,8 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         })
     }
     
+    // MARK: - Interaction
+    
     private lazy var interactor: UIPercentDrivenInteractiveTransition = {
         let percentDrivenInteractiveTransition = UIPercentDrivenInteractiveTransition()
         return percentDrivenInteractiveTransition
@@ -88,7 +100,6 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         return nil
     }
 
-    
     override func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return panGestureRecognizerBeganLocation != nil ? interactor : nil
     }
@@ -97,14 +108,11 @@ class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDeleg
         return nil
     }
     
-    // MARK: Events
-    
-    @objc func tapAction() {
-        presentedViewController?.dismiss(animated: true, completion: nil)
-    }
+    private var panGestureRecognizerBeganLocation: CGPoint?
     
     @objc private func panGestureRecognizerAction(_ panGestureRecognizer: UIPanGestureRecognizer) {
-        guard let presentedViewController = presentedViewController, let presentedViewControllerView = presentedViewController.view else { return }
+        guard let presentedViewController = presentedViewController else { return }
+        guard let presentedViewControllerView = presentedViewController.view else { return }
         switch panGestureRecognizer.state {
         case .began:
             panGestureRecognizerBeganLocation = panGestureRecognizer.location(in: window)
