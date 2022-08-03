@@ -72,7 +72,8 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.pushViewController(screenController, animated: true)
     }
     
-    private lazy var transitioning: PresentAnimationTransitioningDelegate = {
+    private lazy var transitioning: UIViewControllerTransitioningDelegate = {
+        //return TopAlertViewControllerTransitioningDelegate(window: window)
         return PresentAnimationTransitioningDelegate(window: window)
     }()
     func menuScreenViewControllerDisplayPresentAnimations(_ menuScreenController: MenuScreenViewController) {
