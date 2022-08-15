@@ -22,6 +22,7 @@
 		C5041C2522F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */; };
 		C5060C2B2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */; };
 		C5060C2D2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5060C2C2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift */; };
+		C50E37DD28AACDC600A31C50 /* AUIClosuresSegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50E37DC28AACDC600A31C50 /* AUIClosuresSegmentedControlItemController.swift */; };
 		C50FCE2A2336CB5D0018A8DD /* AUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50FCE292336CB5D0018A8DD /* AUINavigationController.swift */; };
 		C51A43C124D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A43C024D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift */; };
 		C51A43C324D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51A43C224D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift */; };
@@ -128,8 +129,8 @@
 		C557C70E24CA1F7F004801AC /* LabelsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C70D24CA1F7F004801AC /* LabelsScreenView.swift */; };
 		C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C557C70F24CA1F91004801AC /* LabelsScreenController.swift */; };
 		C55A85B421EE234200A30B42 /* AUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55A85B321EE234200A30B42 /* AUITextField.swift */; };
-		C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */; };
-		C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */; };
+		C55B80AB221D83AC003D84C1 /* AUIEmptySegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A7221D83AC003D84C1 /* AUIEmptySegmentedControlItemController.swift */; };
+		C55B80AC221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A8221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift */; };
 		C55B80AD221D83AC003D84C1 /* AUISegmentedControlItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */; };
 		C55B80AE221D83AC003D84C1 /* AUISegmentedControlController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */; };
 		C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EFF7E224537C80086A8CA /* AUISwitchController.swift */; };
@@ -245,6 +246,7 @@
 		C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveTextViewTextInputViewController.swift; sourceTree = "<group>"; };
 		C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
 		C5060C2C2476B29000CEE4AD /* AUINotAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINotAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
+		C50E37DC28AACDC600A31C50 /* AUIClosuresSegmentedControlItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresSegmentedControlItemController.swift; sourceTree = "<group>"; };
 		C50FCE292336CB5D0018A8DD /* AUINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationController.swift; sourceTree = "<group>"; };
 		C51A43C024D1591600FE8F7B /* AUIAllowedCharactersTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAllowedCharactersTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
 		C51A43C224D1612C00FE8F7B /* AUINotAllowedCharactersTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINotAllowedCharactersTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
@@ -356,8 +358,8 @@
 		C557C70D24CA1F7F004801AC /* LabelsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsScreenView.swift; sourceTree = "<group>"; };
 		C557C70F24CA1F91004801AC /* LabelsScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsScreenController.swift; sourceTree = "<group>"; };
 		C55A85B321EE234200A30B42 /* AUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextField.swift; sourceTree = "<group>"; };
-		C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultSegmentedControlItemController.swift; sourceTree = "<group>"; };
-		C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIDefaultSegmentedControlController.swift; sourceTree = "<group>"; };
+		C55B80A7221D83AC003D84C1 /* AUIEmptySegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptySegmentedControlItemController.swift; sourceTree = "<group>"; };
+		C55B80A8221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptySegmentedControlController.swift; sourceTree = "<group>"; };
 		C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlItemController.swift; sourceTree = "<group>"; };
 		C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUISegmentedControlController.swift; sourceTree = "<group>"; };
 		C55EFF7E224537C80086A8CA /* AUISwitchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUISwitchController.swift; sourceTree = "<group>"; };
@@ -1074,9 +1076,10 @@
 			isa = PBXGroup;
 			children = (
 				C55B80AA221D83AC003D84C1 /* AUISegmentedControlController.swift */,
-				C55B80A8221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift */,
+				C55B80A8221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift */,
 				C55B80A9221D83AC003D84C1 /* AUISegmentedControlItemController.swift */,
-				C55B80A7221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift */,
+				C55B80A7221D83AC003D84C1 /* AUIEmptySegmentedControlItemController.swift */,
+				C50E37DC28AACDC600A31C50 /* AUIClosuresSegmentedControlItemController.swift */,
 			);
 			path = SegmentControl;
 			sourceTree = "<group>";
@@ -1561,7 +1564,7 @@
 				C53BB79A228EFC3700003495 /* AUIResponsiveTextFieldTextInputViewController.swift in Sources */,
 				C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
-				C55B80AC221D83AC003D84C1 /* AUIDefaultSegmentedControlController.swift in Sources */,
+				C55B80AC221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift in Sources */,
 				C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */,
 				3384096B239166570094A920 /* AUICompositeTextInputValidator.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerViewComponentController.swift in Sources */,
@@ -1571,6 +1574,7 @@
 				C525D839219972770057E69F /* AUIPageController.swift in Sources */,
 				C525D8802199866D0057E69F /* AUITableViewCell.swift in Sources */,
 				33107F5023912D3900789467 /* AUIInteractiveLabel.swift in Sources */,
+				C50E37DD28AACDC600A31C50 /* AUIClosuresSegmentedControlItemController.swift in Sources */,
 				C5E8BFFC24D0835D0080E41B /* AUIEmptyCountDownDurationDatePickerController.swift in Sources */,
 				C58E668127879C6800D0E5AD /* AUICollectionViewCell.swift in Sources */,
 				C53AEB1F2195DC470087F0A2 /* AUIEmptyBarButtonItemController.swift in Sources */,
@@ -1621,7 +1625,7 @@
 				C58E150E2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift in Sources */,
 				C53AEB552195FA280087F0A2 /* AUIScrollView.swift in Sources */,
 				C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */,
-				C55B80AB221D83AC003D84C1 /* AUIDefaultSegmentedControlItemController.swift in Sources */,
+				C55B80AB221D83AC003D84C1 /* AUIEmptySegmentedControlItemController.swift in Sources */,
 				C55EFF81224538980086A8CA /* AUIEmptySwitchController.swift in Sources */,
 				C525D82521996AF20057E69F /* AUIControlController.swift in Sources */,
 				C544E64522955AD800DE9156 /* AUIViewPickerViewController.swift in Sources */,

@@ -8,17 +8,12 @@
 
 import UIKit
 
-public protocol AUISegmentedControlItemControllerDidSelectDelegate: AnyObject {
-    func didSelectSegmentedControlItemController(_ itemController: AUISegmentedControlItemController)
-}
-
 public protocol AUISegmentedControlItemController: AnyObject {
     
     // MARK: Title
     
     var title: String? { get }
     
-    var didSelectDelegate: AUISegmentedControlItemControllerDidSelectDelegate? { get set }
     func didSelect()
     
 }
