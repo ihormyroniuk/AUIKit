@@ -10,11 +10,11 @@ import UIKit
 
 open class AUIEmptySegmentedControlItemController: AUISegmentedControlItemController {
     
-    public init() {
-    
+    public init(title: String?) {
+        self.title = title
     }
      
-    open var title: String?
+    public let title: String?
       
     open func didSelect() {
         
