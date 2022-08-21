@@ -126,32 +126,6 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     open func didReceiveMemoryWarning() {
     
     }
-  
-    // MARK: Remote Notifications
-  
-    open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        didRegisterForRemoteNotificationsWithDeviceToken(deviceToken)
-    }
-  
-    open func didRegisterForRemoteNotificationsWithDeviceToken(_ deviceToken: Data) {
-        
-    }
-  
-    open func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        didFailToRegisterForRemoteNotificationsWithError(error)
-    }
-  
-    open func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
-        
-    }
-  
-    open func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        didReceiveRemoteNotification(userInfo: userInfo, fetchCompletionHandler: completionHandler)
-    }
-  
-    open func didReceiveRemoteNotification(userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        
-    }
     
     // MARK: Time
     
