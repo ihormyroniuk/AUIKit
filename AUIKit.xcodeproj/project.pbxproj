@@ -139,7 +139,7 @@
 		C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */; };
 		C56360AD261669CE0012C419 /* ScrollPagesScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360AC261669CE0012C419 /* ScrollPagesScreenViewController.swift */; };
 		C56360B3261669E00012C419 /* ScrollPagesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56360B2261669E00012C419 /* ScrollPagesScreenView.swift */; };
-		C563EC9B28B2CE67001C7CFD /* AUIEmptyApplicationWithRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationWithRemoteNotifications.swift */; };
+		C563EC9B28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift */; };
 		C563EC9D28B2CF76001C7CFD /* AUIApplicationSupportingRemoteNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563EC9C28B2CF76001C7CFD /* AUIApplicationSupportingRemoteNotifications.swift */; };
 		C565376E24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */; };
 		C566FF952665842500F81769 /* AUIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */; };
@@ -370,7 +370,7 @@
 		C5618C4424D9FA1D006F1847 /* SignupTextFieldTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextFieldTextInputView.swift; sourceTree = "<group>"; };
 		C56360AC261669CE0012C419 /* ScrollPagesScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPagesScreenViewController.swift; sourceTree = "<group>"; };
 		C56360B2261669E00012C419 /* ScrollPagesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollPagesScreenView.swift; sourceTree = "<group>"; };
-		C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationWithRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplicationWithRemoteNotifications.swift; sourceTree = "<group>"; };
+		C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyApplicationSupportingRemoteNotifications.swift; sourceTree = "<group>"; };
 		C563EC9C28B2CF76001C7CFD /* AUIApplicationSupportingRemoteNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplicationSupportingRemoteNotifications.swift; sourceTree = "<group>"; };
 		C565376D24DDFF4D000CF208 /* AUIInteractiveLabelEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIInteractiveLabelEvent.swift; sourceTree = "<group>"; };
 		C566FF942665842500F81769 /* AUIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewControllerTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -971,7 +971,7 @@
 				C5443BB022A91B75003DE568 /* AUIApplication.swift */,
 				C548387522983CAB000254B0 /* AUIEmptyApplication.swift */,
 				C563EC9C28B2CF76001C7CFD /* AUIApplicationSupportingRemoteNotifications.swift */,
-				C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationWithRemoteNotifications.swift */,
+				C563EC9A28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -1517,7 +1517,7 @@
 				C525D8812199866D0057E69F /* AUITableViewCellController.swift in Sources */,
 				330C5942239E558800C39DC0 /* UIImage+TintColor.swift in Sources */,
 				C5522B5E22BA357200CD6365 /* AUIAttributedLabel.swift in Sources */,
-				C563EC9B28B2CE67001C7CFD /* AUIEmptyApplicationWithRemoteNotifications.swift in Sources */,
+				C563EC9B28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift in Sources */,
 				C5527C7E21F073280098D498 /* AUIDateTimePickerController.swift in Sources */,
 				C53AEB142195DBE30087F0A2 /* AUIEmptyImageViewController.swift in Sources */,
 				C53F8ED321FBB7CB0019C79E /* AUITextFieldTextInputViewController.swift in Sources */,
