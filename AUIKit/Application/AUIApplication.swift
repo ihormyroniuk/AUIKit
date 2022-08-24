@@ -9,7 +9,7 @@ import UIKit
 
 public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication {
     
-    // MARK: Launching
+    // MARK: - Launching
   
     func willFinishLaunching()
     func willFinishLaunchingNotification(payload: [AnyHashable: Any])
@@ -20,7 +20,7 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
     func didFinishLaunchingLocation()
     func didFinishLaunchingShortcutItem(_ shortcutItem: UIApplicationShortcutItem)
   
-    // MARK: States
+    // MARK: - State
   
     func willEnterForeground()
     func didBecomeActive()
@@ -28,15 +28,15 @@ public protocol AUIApplication: UIApplicationDelegate where Self: UIApplication 
     func didEnterBackground()
     func willTerminate()
   
-    // MARK: Memory
+    // MARK: - Memory
   
     func didReceiveMemoryWarning()
     
-    // MARK: Time
+    // MARK: - Time
     
     func significantTimeChange()
     
-    // MARK: URL
+    // MARK: - URL
     
     func open(url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool
   

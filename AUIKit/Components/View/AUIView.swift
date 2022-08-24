@@ -10,7 +10,7 @@ import UIKit
 
 open class AUIView: UIView {
 
-    // MARK: Initializers
+    // MARK: - Initialization
   
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -22,7 +22,7 @@ open class AUIView: UIView {
         return nil
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
     

@@ -9,7 +9,7 @@ import UIKit
 
 open class AUITabBarController: UITabBarController {
     
-    // MARK: Initializer
+    // MARK: - Initialization
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,7 +28,7 @@ open class AUITabBarController: UITabBarController {
         setup()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     open func setup() {
         

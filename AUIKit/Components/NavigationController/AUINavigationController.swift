@@ -9,7 +9,7 @@ import UIKit
 
 open class AUINavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
-    // MARK: Initializer
+    // MARK: - Initialization
     
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,13 +28,13 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
         setup()
     }
     
-    // MARK: Setup
+    // MARK: - Setup
     
     open func setup() {
         
     }
     
-    // MARK: Events
+    // MARK: - View
     
     open override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ open class AUINavigationController: UINavigationController, UIGestureRecognizerD
         interactivePopGestureRecognizer?.delegate = self
     }
     
-    // MARK: UIGestureRecognizerDelegate
+    // MARK: - UIGestureRecognizerDelegate
     
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if interactivePopGestureRecognizer == gestureRecognizer {

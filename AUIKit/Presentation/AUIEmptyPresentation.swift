@@ -9,13 +9,13 @@ import Foundation
 
 open class AUIEmptyPresentation: AUIPresentation {
   
-    // MARK: Initializer
+    // MARK: - Initialization
   
     public init() {
         setup()
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
     

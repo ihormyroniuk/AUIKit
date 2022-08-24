@@ -11,7 +11,7 @@ import UIKit
 
 open class AUIEmptyApplicationSupportingRemoteNotifications: AUIEmptyApplication, AUIApplicationSupportingRemoteNotifications {
  
-    // MARK: Remote Notifications
+    // MARK: - Remote Notifications
   
     open func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         didRegisterForRemoteNotificationsWithDeviceToken(deviceToken)

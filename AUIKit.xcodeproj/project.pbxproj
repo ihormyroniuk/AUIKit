@@ -185,7 +185,7 @@
 		C5BB419627792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */; };
 		C5C30F7F277A6402006B8CAA /* AUIEmptyTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */; };
 		C5C597C827ADDD51005279E4 /* AUIClosuresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */; };
-		C5C5D49C27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C5D49B27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift */; };
+		C5C5D49C27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C5D49B27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift */; };
 		C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF085424E11CF80048DDD9 /* IconButton.swift */; };
 		C5E729ED22A6645F0094EAD9 /* AUITextInputFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */; };
 		C5E8BFF624D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */; };
@@ -415,7 +415,7 @@
 		C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCurlPagesController.swift; sourceTree = "<group>"; };
 		C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewCellController.swift; sourceTree = "<group>"; };
 		C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresTableViewController.swift; sourceTree = "<group>"; };
-		C5C5D49B27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUINavigationBarHiddenNavigationController.swift; sourceTree = "<group>"; };
+		C5C5D49B27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIHiddenNavigationBarNavigationController.swift; sourceTree = "<group>"; };
 		C5DF085424E11CF80048DDD9 /* IconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconButton.swift; sourceTree = "<group>"; };
 		C5E729EC22A6645F0094EAD9 /* AUITextInputFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITextInputFilter.swift; sourceTree = "<group>"; };
 		C5E8BFF524D057320080E41B /* AUIMaximumLenghtTextInputValidatorUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidatorUnitTesting.swift; sourceTree = "<group>"; };
@@ -926,7 +926,7 @@
 			isa = PBXGroup;
 			children = (
 				C50FCE292336CB5D0018A8DD /* AUINavigationController.swift */,
-				C5C5D49B27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift */,
+				C5C5D49B27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -1586,7 +1586,7 @@
 				C53AEB0D2195D9710087F0A2 /* AUIEmptyLabelController.swift in Sources */,
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */,
-				C5C5D49C27A52C300047FDA0 /* AUINavigationBarHiddenNavigationController.swift in Sources */,
+				C5C5D49C27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift in Sources */,
 				C58E15122773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */,

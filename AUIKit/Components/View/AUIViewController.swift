@@ -11,15 +11,15 @@ import UIKit
 
 public protocol AUIViewController: AnyObject {
   
-    // MARK: View
+    // MARK: - View
   
     var view: UIView? { get set }
   
-    // MARK: User Interaction
+    // MARK: - User Interaction
   
     var isUserInteractionEnabled: Bool { get set }
   
-    // MARK: First Responder
+    // MARK: - First Responder
   
     var isFirstResponder: Bool { get }
   

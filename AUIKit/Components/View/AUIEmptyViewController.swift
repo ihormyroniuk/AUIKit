@@ -10,19 +10,19 @@ import UIKit
 
 open class AUIEmptyViewController: AUIViewController {
 
-    // MARK: Initializer
+    // MARK: - Initialization
   
     public init() {
         setup()
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
         
     }
   
-    // MARK: View
+    // MARK: - View
   
     private var _view: UIView?
     open var view: UIView? {
@@ -46,7 +46,7 @@ open class AUIEmptyViewController: AUIViewController {
         
     }
   
-    // MARK: User Interaction
+    // MARK: - User Interaction
   
     open var isUserInteractionEnabled = true {
         didSet {
@@ -57,7 +57,7 @@ open class AUIEmptyViewController: AUIViewController {
         view?.isUserInteractionEnabled = isUserInteractionEnabled
     }
   
-    // MARK: First Responder
+    // MARK: - First Responder
   
     open var isFirstResponder: Bool {
         return view?.isFirstResponder ?? false

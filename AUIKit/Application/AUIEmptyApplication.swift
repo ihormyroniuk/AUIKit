@@ -9,7 +9,7 @@ import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {
   
-    // MARK: Launching
+    // MARK: - Launching
   
     open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         if launchOptions?[UIApplication.LaunchOptionsKey.location] != nil {
@@ -75,7 +75,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         
     }
 
-    // MARK: States
+    // MARK: - State
   
     open func applicationWillEnterForeground(_ application: UIApplication) {
         willEnterForeground()
@@ -117,7 +117,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         
     }
   
-    // MARK: Memory
+    // MARK: - Memory
   
     open func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
         didReceiveMemoryWarning()
@@ -127,7 +127,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
     
     }
     
-    // MARK: Time
+    // MARK: - Time
     
     open func applicationSignificantTimeChange(_ application: UIApplication) {
         significantTimeChange()
@@ -137,7 +137,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         
     }
     
-    // MARK: URL
+    // MARK: - URL
     
     open func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return open(url: url, options: options)
@@ -147,7 +147,7 @@ open class AUIEmptyApplication: UIApplication, AUIApplication {
         return false
     }
     
-    // MARK: Window
+    // MARK: - Window
     
     open var window: UIWindow?
     

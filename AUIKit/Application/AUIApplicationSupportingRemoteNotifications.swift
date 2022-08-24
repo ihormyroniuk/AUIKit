@@ -12,7 +12,7 @@ import UIKit
 
 public protocol AUIApplicationSupportingRemoteNotifications: AUIApplication {
     
-    // MARK: Remote Notifications
+    // MARK: - Remote Notifications
 
     func didRegisterForRemoteNotificationsWithDeviceToken(_ deviceToken: Data)
     func didFailToRegisterForRemoteNotificationsWithError(_ error: Error)

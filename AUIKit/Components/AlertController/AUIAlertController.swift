@@ -9,7 +9,7 @@ import UIKit
 
 open class AUIAlertController: UIAlertController {
   
-    // MARK: Initializers
+    // MARK: - Initialization
   
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,7 +22,7 @@ open class AUIAlertController: UIAlertController {
         setup()
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
     

@@ -7,9 +7,9 @@
 
 import UIKit
 
-open class AUINavigationBarHiddenNavigationController: AUINavigationController {
+open class AUIHiddenNavigationBarNavigationController: AUINavigationController {
     
-    // MARK: Setup
+    // MARK: - Setup
     
     open override func setup() {
         super.setup()
