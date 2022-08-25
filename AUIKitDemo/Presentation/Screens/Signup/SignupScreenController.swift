@@ -73,7 +73,7 @@ class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEd
         let allowedCharacters = CharacterSet.lowercaseLetters
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: allowedCharacters)
         let textInputValidators: [AUITextInputValidator] = [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator]
-        let compositeTextInputValidator = AUICompositeTextInputValidator(textInputValidators: textInputValidators)
+        let compositeTextInputValidator = AUIMultipleTextInputValidator(textInputValidators: textInputValidators)
         usernameTextFieldController.textInputValidator = compositeTextInputValidator
         usernameTextFieldController.keyboardType = .asciiCapable
         usernameTextFieldController.returnKeyType = .next

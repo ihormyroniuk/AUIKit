@@ -9,18 +9,22 @@
 import UIKit
 
 open class AUIEmptyControlController: AUIEmptyViewController, AUIControlController {
+    
+    // MARK: - Actions
+    
+    open var touchDown: (() -> Void)?
   
     // MARK: Observers
 
-    open var didTouchDownObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver) {
-        didTouchDownObservers.add(observer)
-    }
-  
-    open func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver) {
-        didTouchDownObservers.remove(observer)
-    }
+//    open var didTouchDownObservers = NSHashTable<AnyObject>.weakObjects()
+//
+//    open func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver) {
+//        didTouchDownObservers.add(observer)
+//    }
+//
+//    open func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver) {
+//        didTouchDownObservers.remove(observer)
+//    }
   
     open var didTouchUpInsideObservers = NSHashTable<AnyObject>.weakObjects()
   
@@ -80,9 +84,9 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
   
     open func setupControl() {
         control?.isEnabled = isEnabled
+        control?.addTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
         control?.addTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
         control?.addTarget(self, action: #selector(touchUpOutsideEventAction), for: .touchUpOutside)
-        control?.addTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
         control?.addTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
         control?.addTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
     }
@@ -95,7 +99,7 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
     open func unsetupControl() {
         control?.removeTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
         control?.removeTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
-        control?.removeTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpOutside)
+        control?.removeTarget(self, action: #selector(touchUpOutsideEventAction), for: .touchUpOutside)
         control?.removeTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
         control?.removeTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
     }
@@ -114,10 +118,12 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
     // MARK: Events
   
     @objc open func touchDownEventAction() {
-        for object in didTouchDownObservers.allObjects {
-            guard let observer = object as? AUIControlControllerDidTouchDownObserver else { continue }
-            observer.controlControllerDidTouchDown(self)
-        }
+        guard let touchDown = touchDown else { return }
+        touchDown()
+//        for object in didTouchDownObservers.allObjects {
+//            guard let observer = object as? AUIControlControllerDidTouchDownObserver else { continue }
+//            observer.controlControllerDidTouchDown(self)
+//        }
     }
   
     @objc open func touchUpInsideEventAction() {

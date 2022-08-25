@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class AUICompositeTextInputValidator: AUITextInputValidator {
+open class AUIMultipleTextInputValidator: AUITextInputValidator {
 
     // MARK: Text Input Validators
 

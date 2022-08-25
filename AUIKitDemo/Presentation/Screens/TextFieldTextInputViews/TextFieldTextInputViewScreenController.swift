@@ -53,7 +53,7 @@ class TextFieldTextInputViewScreenController: UIViewController, AUIControlContro
     private func setupStringTextFieldTextInputView() {
         let maximumLenghtTextInputValidator = AUIMaximumLenghtTextInputValidator(maximumLength: 10)
         let allowedCharactersTextInputValidator = AUIAllowedCharactersTextInputValidator(allowedCharacters: .letters)
-        let inputTextValidator = AUICompositeTextInputValidator(textInputValidators: [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator])
+        let inputTextValidator = AUIMultipleTextInputValidator(textInputValidators: [maximumLenghtTextInputValidator, allowedCharactersTextInputValidator])
         stringTextFieldController.textInputValidator = inputTextValidator
         stringTextFieldTextInputView.view = textInputViewTextFieldScreenView.stringTextFieldTextInputView
         stringTextFieldTextInputView.textFieldController = stringTextFieldController

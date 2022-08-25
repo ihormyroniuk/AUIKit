@@ -10,8 +10,7 @@ import UIKit
 
 private let UITextFieldTextPropertyKey = "text"
 
-open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController,
-KeyValueObserverProxyDelegate {
+open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController, KeyValueObserverProxyDelegate {
   
     // MARK: Delegates
   

@@ -87,7 +87,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         
         viewController.control = control
         viewController.addDidTouchUpInsideObserver(observer)
-        viewController.touchUpInsideEventAction()
+        viewController.controlTouchUpInsideEventAction()
         let isMethodControlControllerDidTouchUpInsideCalled = observer.isMethodControlControllerDidTouchUpInsideCalled
         
         XCTAssert(isMethodControlControllerDidTouchUpInsideCalled, "AUIControlControllerDidTouchUpInsideObserver is not notified after subscribe.")
@@ -101,7 +101,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         viewController.control = control
         viewController.addDidTouchUpInsideObserver(observer)
         viewController.removeDidTouchUpInsideObserver(observer)
-        viewController.touchUpInsideEventAction()
+        viewController.controlTouchUpInsideEventAction()
         let isMethodControlControllerDidTouchUpInsideCalled = observer.isMethodControlControllerDidTouchUpInsideCalled
         
         XCTAssert(!isMethodControlControllerDidTouchUpInsideCalled, "AUIControlControllerDidTouchUpInsideObserver is notified after unsubscribe.")

@@ -8,9 +8,9 @@
 
 import UIKit
 
-public protocol AUIControlControllerDidTouchDownObserver: AnyObject {
-    func controlControllerDidTouchDown(_ controlController: AUIControlController)
-}
+//public protocol AUIControlControllerDidTouchDownObserver: AnyObject {
+//    func controlControllerDidTouchDown(_ controlController: AUIControlController)
+//}
 
 public protocol AUIControlControllerDidTouchUpInsideObserver: AnyObject {
     func controlControllerDidTouchUpInside(_ controlController: AUIControlController)
@@ -29,11 +29,13 @@ public protocol AUIControlControllerDidValueChangedObserver: AnyObject {
 }
 
 public protocol AUIControlController: AUIViewController {
+    
+    var touchDown: (() -> Void)? { get set }
   
     // MARK: Observers
   
-    func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
-    func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
+//    func addDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
+//    func removeDidTouchDownObserver(_ observer: AUIControlControllerDidTouchDownObserver)
   
     func addDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideObserver)
     func removeDidTouchUpInsideObserver(_ observer: AUIControlControllerDidTouchUpInsideObserver)
