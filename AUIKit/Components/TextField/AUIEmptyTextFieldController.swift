@@ -12,32 +12,16 @@ private let UITextFieldTextPropertyKey = "text"
 
 open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController, KeyValueObserverProxyDelegate {
   
-    // MARK: Delegates
+    // MARK: - Delegates
   
     private let keyValueObserverProxy = KeyValueObserverProxy()
     private let textFieldDelegate = UITextFieldDelegateProxy()
   
-    // MARK: Observers
+    // MARK: - Observers
   
-    open var didChangeTextObservers = NSHashTable<AnyObject>.weakObjects()
+    open var didChangeText: (() -> Void)?
   
-    open func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver) {
-        didChangeTextObservers.add(observer)
-    }
-  
-    open func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver) {
-        didChangeTextObservers.remove(observer)
-    }
-  
-    open var didTapReturnKeyObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver) {
-    didTapReturnKeyObservers.add(observer)
-    }
-  
-    open func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver) {
-        didTapReturnKeyObservers.remove(observer)
-    }
+    open var didTapReturnKey: (() -> Bool)?
   
     open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
   
@@ -145,9 +129,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     open func didSetText(oldValue: String?) {
         if oldValue != text {
             textField?.text = text
-            for object in didChangeTextObservers.allObjects {
-                guard let observer = object as? AUITextFieldControllerDidChangeTextObserver else { continue }
-                observer.textFieldControllerDidChangeText(self)
+            if let changeText = didChangeText {
+                changeText()
             }
         }
     }
@@ -264,14 +247,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
   
     open func textFieldShouldReturn() -> Bool {
-        if !didTapReturnKeyObservers.allObjects.isEmpty {
-            for object in didTapReturnKeyObservers.allObjects {
-                guard let observer = object as? AUITextFieldControllerDidTapReturnKeyObserver else { continue }
-                observer.textFieldControllerDidTapReturnKey(self)
-            }
-            return false
-        }
-        return true
+        guard let didTapReturnKey = didTapReturnKey else { return true }
+        return didTapReturnKey()
     }
   
     // MARK: KeyValueObserverProxyDelegate

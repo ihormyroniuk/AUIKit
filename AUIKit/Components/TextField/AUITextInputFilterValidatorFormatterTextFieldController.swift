@@ -19,9 +19,8 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
     private func didSetFormattedText(oldValue: String?) {
         if oldValue != formattedText {
             textField?.text = formattedText
-            for object in didChangeTextObservers.allObjects {
-                guard let observer = object as? AUITextFieldControllerDidChangeTextObserver else { continue }
-                observer.textFieldControllerDidChangeText(self)
+            if let changeText = didChangeText {
+                changeText()
             }
         }
     }

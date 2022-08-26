@@ -18,8 +18,8 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
   
     // MARK: Events
   
-    open override func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController) {
-        super.textFieldControllerDidChangeText(textFieldController)
+    open override func textFieldControllerDidChangeText() {
+        guard let textFieldController = textFieldController else { return }
         if textFieldController.text?.isEmpty == false {
             responsiveTextInputView?.responsiveTextInputViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
         } else {

@@ -8,14 +8,6 @@
 
 import UIKit
 
-public protocol AUITextFieldControllerDidChangeTextObserver: AnyObject {
-    func textFieldControllerDidChangeText(_ textFieldController: AUITextFieldController)
-}
-
-public protocol AUITextFieldControllerDidTapReturnKeyObserver: AnyObject {
-    func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController)
-}
-
 public protocol AUITextFieldControllerDidBeginEditingObserver: AnyObject {
     func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController)
 }
@@ -32,11 +24,9 @@ public protocol AUITextFieldController: AUIControlController {
   
     // MARK: Observers
   
-    func addDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
-    func removeDidChangeTextObserver(_ observer: AUITextFieldControllerDidChangeTextObserver)
+    var didChangeText: (() -> Void)? { get set }
 
-    func addDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
-    func removeDidTapReturnKeyObserver(_ observer: AUITextFieldControllerDidTapReturnKeyObserver)
+    var didTapReturnKey: (() -> Bool)? { get set }
   
     func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
     func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver)
