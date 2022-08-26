@@ -35,10 +35,7 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
     open func didSetDate(_ oldValue: Date, animated: Bool) {
         if oldValue != date {
             datePicker?.setDate(date, animated: animated)
-            for object in didValueChangedObservers.allObjects {
-                guard let observer = object as? AUIControlControllerDidValueChangedObserver else { continue }
-                observer.controlControllerDidValueChanged(self)
-            }
+            valueChangedEventAction()
         }
     }
   

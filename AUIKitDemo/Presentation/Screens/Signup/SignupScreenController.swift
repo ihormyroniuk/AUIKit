@@ -12,7 +12,7 @@ protocol SignupScreenControllerDelegate: AnyObject {
     func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
 }
 
-class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEditingObserver, AUIControlControllerDidValueChangedObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
+class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEditingObserver, AUITextFieldControllerDidTapReturnKeyObserver, AUITextViewControllerDidChangeTextObserver {
     
     // MARK: Delegate
     
@@ -92,7 +92,10 @@ class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEd
     
     private func setupBirthdayTextInputController() {
         birthdayDatePickerController.mode = .date
-        birthdayDatePickerController.addDidValueChangedObserver(self)
+        birthdayDatePickerController.valueChanged = { [weak self] in
+            guard let self = self else { return }
+            self.setBirthdayTextFieldControllerText()
+        }
         birthdayTextFieldController.inputViewController = birthdayDatePickerController
         birthdayTextFieldController.addDidBeginEditingObserver(self)
         birthdayTextFieldTextInputController.textFieldController = birthdayTextFieldController
@@ -133,12 +136,6 @@ class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEd
     
     private func birthdayTextFieldControllerDidBeginEditing() {
         setBirthdayTextFieldControllerText()
-    }
-    
-    func controlControllerDidValueChanged(_ controlController: AUIControlController) {
-        if birthdayDatePickerController === controlController {
-            setBirthdayTextFieldControllerText()
-        }
     }
     
     func textFieldControllerDidTapReturnKey(_ textFieldController: AUITextFieldController) {

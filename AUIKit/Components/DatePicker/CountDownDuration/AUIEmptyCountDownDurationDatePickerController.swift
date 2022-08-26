@@ -20,10 +20,7 @@ open class AUIEmptyCountDownDurationDatePickerController: AUIEmptyControlControl
     open func didSetCountDownDuration(_ oldValue: TimeInterval) {
         if oldValue != countDownDuration {
             datePicker?.countDownDuration = countDownDuration
-            for object in didValueChangedObservers.allObjects {
-                guard let observer = object as? AUIControlControllerDidValueChangedObserver else { continue }
-                observer.controlControllerDidValueChanged(self)
-            }
+            valueChangedEventAction()
         }
     }
   
