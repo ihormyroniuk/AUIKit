@@ -12,7 +12,7 @@ protocol SignupScreenControllerDelegate: AnyObject {
     func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
 }
 
-class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEditingObserver, AUITextViewControllerDidChangeTextObserver {
+class SignupScreenController: UIViewController, AUITextViewControllerDidChangeTextObserver {
     
     // MARK: Delegate
     
@@ -105,9 +105,12 @@ class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEd
             self.setBirthdayTextFieldControllerText()
         }
         birthdayTextFieldController.inputViewController = birthdayDatePickerController
-        birthdayTextFieldController.addDidBeginEditingObserver(self)
         birthdayTextFieldTextInputController.textFieldController = birthdayTextFieldController
         birthdayTextFieldTextInputController.view = signupScreenView.birthdayTextInputView
+        birthdayTextFieldTextInputController.didBeginEditing = { [weak self] in
+            guard let self = self else { return }
+            self.setBirthdayTextFieldControllerText()
+        }
     }
     
     private func setupPasswordTextInputController() {
@@ -134,16 +137,6 @@ class SignupScreenController: UIViewController, AUITextFieldControllerDidBeginEd
     }
     
     // MARK: Events
-    
-    func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
-        if birthdayTextFieldController === textFieldController {
-            birthdayTextFieldControllerDidBeginEditing()
-        }
-    }
-    
-    private func birthdayTextFieldControllerDidBeginEditing() {
-        setBirthdayTextFieldControllerText()
-    }
     
     func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
         signupScreenView.setNeedsLayout()

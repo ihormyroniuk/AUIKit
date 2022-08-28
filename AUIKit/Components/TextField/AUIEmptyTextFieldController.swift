@@ -23,15 +23,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
   
     open var didTapReturnKey: (() -> Bool)?
   
-    open var didBeginEditingObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver) {
-        didBeginEditingObservers.add(observer)
-    }
-  
-    open func removeDidBeginEditingObserver(_ observer: AUITextFieldControllerDidBeginEditingObserver) {
-        didBeginEditingObservers.remove(observer)
-    }
+    open var didBeginEditing: (() -> Void)?
   
     open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
   
@@ -214,10 +206,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
   
     open func textFieldDidBeginEditing() {
-        for object in didBeginEditingObservers.allObjects {
-            guard let observer = object as? AUITextFieldControllerDidBeginEditingObserver else { continue }
-            observer.textFieldControllerDidBeginEditing(self)
-        }
+        guard let didBeginEditing = didBeginEditing else { return }
+        didBeginEditing()
     }
   
     open func textFieldShouldEndEditing() -> Bool {

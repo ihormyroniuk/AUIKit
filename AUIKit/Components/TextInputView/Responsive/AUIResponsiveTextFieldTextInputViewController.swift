@@ -19,6 +19,7 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
     // MARK: Events
   
     open override func textFieldControllerDidChangeText() {
+        super.textFieldControllerDidChangeText()
         guard let textFieldController = textFieldController else { return }
         if textFieldController.text?.isEmpty == false {
             responsiveTextInputView?.responsiveTextInputViewDidBecomeNonEmpty(animated: textFieldController.isFirstResponder)
@@ -26,7 +27,7 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
             responsiveTextInputView?.responsiveTextInputViewDidBecomeEmpty(animated: textFieldController.isFirstResponder)
         }
         if !textFieldController.isFirstResponder {
-            if self.textFieldController?.text?.isEmpty == false {
+            if textFieldController.text?.isEmpty == false {
                 responsiveTextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: false)
             } else {
                 responsiveTextInputView?.responsiveTextInputViewDidEndEditingEmpty(animated: false)
@@ -34,9 +35,10 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
         }
     }
   
-    open override func textFieldControllerDidBeginEditing(_ controller: AUITextFieldController) {
-        super.textFieldControllerDidBeginEditing(controller)
-        if self.textFieldController?.text?.isEmpty == false {
+    open override func textFieldControllerDidBeginEditing() {
+        super.textFieldControllerDidBeginEditing()
+        guard let textFieldController = textFieldController else { return }
+        if textFieldController.text?.isEmpty == false {
             responsiveTextInputView?.responsiveTextInputViewDidBeginEditingNonempty(animated: true)
         } else {
             responsiveTextInputView?.responsiveTextInputViewDidBeginEditingEmpty(animated: true)

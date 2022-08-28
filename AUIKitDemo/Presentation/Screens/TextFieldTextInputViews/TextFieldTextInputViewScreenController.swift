@@ -12,7 +12,7 @@ protocol TextFieldTextInputViewScreenControllerDelegate: AnyObject {
     func textFieldTextInputViewScreenControllerBack(_ textFieldTextInputViewScreenController: TextFieldTextInputViewScreenController)
 }
 
-class TextFieldTextInputViewScreenController: UIViewController, AUITextFieldControllerDidBeginEditingObserver {
+class TextFieldTextInputViewScreenController: UIViewController {
     
     // MARK: Delegate
     
@@ -69,7 +69,6 @@ class TextFieldTextInputViewScreenController: UIViewController, AUITextFieldCont
             self.dateTextFieldController.text = "\(date)"
         }
         dateTextFieldController.inputViewController = dateDatePickerConroller
-        dateTextFieldController.addDidBeginEditingObserver(self)
         dateTextFieldTextInputView.view = textInputViewTextFieldScreenView.dateTextFieldTextInputView
         dateTextFieldTextInputView.textFieldController = dateTextFieldController
     }
@@ -83,18 +82,14 @@ class TextFieldTextInputViewScreenController: UIViewController, AUITextFieldCont
             self.countDownDurationTextFieldController.text = "\(countDownDuration)"
         }
         countDownDurationDatePickerConroller.minuteInterval = 1
-        countDownDurationTextFieldController.addDidBeginEditingObserver(self)
         countDownDurationTextFieldController.inputViewController = countDownDurationDatePickerConroller
         countDownDurationTextFieldTextInputView.view = textInputViewTextFieldScreenView.countDownDurationTextFieldTextInputView
         countDownDurationTextFieldTextInputView.textFieldController = countDownDurationTextFieldController
-    }
-    
-    // MARK: Events
-    
-    func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
-        if countDownDurationTextFieldController === textFieldController {
+        countDownDurationTextFieldTextInputView.didBeginEditing = { [weak self, weak countDownDurationDatePickerConroller] in
+            guard let self = self else { return }
+            guard let countDownDurationDatePickerConroller = countDownDurationDatePickerConroller else { return }
             let countDownDuration = countDownDurationDatePickerConroller.countDownDuration
-            countDownDurationTextFieldController.text = "\(countDownDuration)"
+            self.countDownDurationTextFieldController.text = "\(countDownDuration)"
         }
     }
     

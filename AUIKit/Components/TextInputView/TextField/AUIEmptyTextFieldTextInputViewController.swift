@@ -8,11 +8,13 @@
 import Foundation
 import UIKit
 
-open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidBeginEditingObserver, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
+open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
     
     open var didChangeText: (() -> Void)?
 
     open var didTapReturnKey: (() -> Bool)?
+    
+    open var didBeginEditing: (() -> Void)?
     
     // MARK: AUITextFieldInputView
     
@@ -50,7 +52,7 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
         guard textFieldController !== oldValue else { return }
         oldValue?.didChangeText = nil
         oldValue?.didTapReturnKey = nil
-        oldValue?.removeDidBeginEditingObserver(self)
+        oldValue?.didBeginEditing = nil
         oldValue?.removeDidEndEditingObserver(self)
         oldValue?.removeDidEndEditingReasonObserver(self)
         oldValue?.textField = nil
@@ -62,7 +64,10 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
             guard let self = self else { return true }
             return self.textFieldControllerDidTapReturnKey()
         }
-        textFieldController?.addDidBeginEditingObserver(self)
+        textFieldController?.didBeginEditing = { [weak self] in
+            guard let self = self else { return }
+            self.textFieldControllerDidBeginEditing()
+        }
         textFieldController?.addDidEndEditingObserver(self)
         textFieldController?.addDidEndEditingReasonObserver(self)
         textFieldController?.textField = textFieldInputView?.textField
@@ -80,8 +85,9 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
         return didTapReturnKey()
     }
   
-    open func textFieldControllerDidBeginEditing(_ textFieldController: AUITextFieldController) {
-        
+    open func textFieldControllerDidBeginEditing() {
+        guard let didBeginEditing = didBeginEditing else { return }
+        didBeginEditing()
     }
   
     open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
