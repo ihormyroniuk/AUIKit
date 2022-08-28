@@ -7,30 +7,15 @@
 
 import UIKit
 
-public protocol AUITextViewControllerDidChangeTextObserver: AnyObject {
-    func textViewControllerDidChangeText(_ textViewController: AUITextViewController)
-}
-
-public protocol AUITextViewControllerDidBeginEditingObserver: AnyObject {
-    func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController)
-}
-
-public protocol AUITextViewControllerDidEndEditingObserver: AnyObject {
-    func textViewControllerDidEndEditing(_ textViewController: AUITextViewController)
-}
-
 public protocol AUITextViewController: AUIScrollViewController {
   
     // MARK: Observers
   
-    func addDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
-    func removeDidChangeTextObserver(_ observer: AUITextViewControllerDidChangeTextObserver)
-  
-    func addDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
-    func removeDidBeginEditingObserver(_ observer: AUITextViewControllerDidBeginEditingObserver)
-  
-    func addDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
-    func removeDidEndEditingObserver(_ observer: AUITextViewControllerDidEndEditingObserver)
+    var didChangeText: (() -> Void)? { get set }
+    
+    var didBeginEditing: (() -> Void)? { get set }
+    
+    var didEndEditing: (() -> Void)? { get set }
   
     // MARK: Text Field
   

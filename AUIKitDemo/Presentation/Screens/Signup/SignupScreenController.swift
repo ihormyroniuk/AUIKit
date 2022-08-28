@@ -12,7 +12,7 @@ protocol SignupScreenControllerDelegate: AnyObject {
     func signupScreenControllerBack(_ signupScreenController: SignupScreenController)
 }
 
-class SignupScreenController: UIViewController, AUITextViewControllerDidChangeTextObserver {
+class SignupScreenController: UIViewController {
     
     // MARK: Delegate
     
@@ -123,9 +123,13 @@ class SignupScreenController: UIViewController, AUITextViewControllerDidChangeTe
     
     private func setupAboutMeTextInputController() {
         aboutMeTextViewController.isScrollEnabled = false
-        aboutMeTextViewController.addDidChangeTextObserver(self)
         aboutMeTextViewTextInputController.textViewController = aboutMeTextViewController
         aboutMeTextViewTextInputController.view = signupScreenView.aboutMeTextInputView
+        aboutMeTextViewTextInputController.didChangeText = { [weak self] in
+            guard let self = self else { return }
+            self.signupScreenView.setNeedsLayout()
+            self.signupScreenView.layoutIfNeeded()
+        }
     }
     
     private func setupTermsOfServiceInteractiveLabel() {
@@ -137,11 +141,6 @@ class SignupScreenController: UIViewController, AUITextViewControllerDidChangeTe
     }
     
     // MARK: Events
-    
-    func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
-        signupScreenView.setNeedsLayout()
-        signupScreenView.layoutIfNeeded()
-    }
     
     @objc private func didInteractInteractiveLabel(_ interactiveLabel: AUIInteractiveLabel, _ event: AUIInteractiveLabelEvent) {
         let interaction = event.interaction

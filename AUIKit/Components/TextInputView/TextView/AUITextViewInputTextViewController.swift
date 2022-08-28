@@ -8,6 +8,12 @@
 import Foundation
 
 public protocol AUITextViewInputTextViewController: AUIViewController {
+    
+    var didChangeText: (() -> Void)? { get set }
+    
+    var didBeginEditing: (() -> Void)? { get set }
+    
+    var didEndEditing: (() -> Void)? { get set }
 
     // MARK: TextFieldInputView
     

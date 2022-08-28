@@ -7,7 +7,13 @@
 
 import Foundation
 
-open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUITextViewInputTextViewController, AUITextViewControllerDidChangeTextObserver, AUITextViewControllerDidBeginEditingObserver, AUITextViewControllerDidEndEditingObserver {
+open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUITextViewInputTextViewController  {
+    
+    open var didChangeText: (() -> Void)?
+    
+    open var didBeginEditing: (() -> Void)?
+    
+    open var didEndEditing: (() -> Void)?
   
     // MARK: TextFieldInputView
     
@@ -43,28 +49,40 @@ open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUIT
     
     open func didSetTextViewController(_ oldValue: AUITextViewController?) {
         guard textViewController !== oldValue else { return }
-        oldValue?.removeDidChangeTextObserver(self)
-        oldValue?.removeDidBeginEditingObserver(self)
-        oldValue?.removeDidEndEditingObserver(self)
+        oldValue?.didChangeText = nil
+        oldValue?.didBeginEditing = nil
+        oldValue?.didEndEditing = nil
         oldValue?.textView = nil
-        textViewController?.addDidChangeTextObserver(self)
-        textViewController?.addDidBeginEditingObserver(self)
-        textViewController?.addDidEndEditingObserver(self)
+        textViewController?.didChangeText = { [weak self] in
+            guard let self = self else { return }
+            self.textViewControllerDidChangeText()
+        }
+        textViewController?.didBeginEditing = { [weak self] in
+            guard let self = self else { return }
+            self.textViewControllerDidBeginEditing()
+        }
+        textViewController?.didEndEditing = { [weak self] in
+            guard let self = self else { return }
+            self.textViewControllerDidEndEditing()
+        }
         textViewController?.textView = textViewInputView?.textView
     }
   
     // MARK: Events
   
-    open func textViewControllerDidEndEditing(_ textViewController: AUITextViewController) {
-        
+    open func textViewControllerDidEndEditing() {
+        guard let didEndEditing = didEndEditing else { return }
+        didEndEditing()
     }
 
-    open func textViewControllerDidChangeText(_ textViewController: AUITextViewController) {
-        
+    open func textViewControllerDidChangeText() {
+        guard let didChangeText = didChangeText else { return }
+        didChangeText()
     }
   
-    open func textViewControllerDidBeginEditing(_ textViewController: AUITextViewController) {
-        
+    open func textViewControllerDidBeginEditing() {
+        guard let didBeginEditing = didBeginEditing else { return }
+        didBeginEditing()
     }
     
 }
