@@ -45,8 +45,8 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
         }
     }
   
-    open override func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
-        super.textFieldControllerDidEndEditing(textFieldController)
+    open override func textFieldControllerDidEndEditing() {
+        super.textFieldControllerDidEndEditing()
         if self.textFieldController?.text?.isEmpty == false {
             responsiveTextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: true)
         } else {
@@ -54,8 +54,8 @@ open class AUIResponsiveTextFieldTextInputViewController: AUIEmptyTextFieldTextI
         }
     }
   
-    open override func textFieldControllerDidEndEditingReason(_ controller: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
-        super.textFieldControllerDidEndEditingReason(controller, reason: reason)
+    open override func textFieldControllerDidEndEditingReason(_ reason: UITextField.DidEndEditingReason) {
+        super.textFieldControllerDidEndEditingReason(reason)
         if self.textFieldController?.text?.isEmpty == false {
             responsiveTextInputView?.responsiveTextInputViewDidEndEditingNonempty(animated: true)
         } else {

@@ -8,14 +8,6 @@
 
 import UIKit
 
-public protocol AUITextFieldControllerDidEndEditingObserver: AnyObject {
-    func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController)
-}
-
-public protocol AUITextFieldControllerDidEndEditingReasonObserver: AnyObject {
-    func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason)
-}
-
 public protocol AUITextFieldController: AUIControlController {
   
     // MARK: Observers
@@ -25,13 +17,11 @@ public protocol AUITextFieldController: AUIControlController {
     var didTapReturnKey: (() -> Bool)? { get set }
     
     var didBeginEditing: (() -> Void)? { get set }
-  
-    func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
-    func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver)
-  
-    func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
-    func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver)
-  
+    
+    var didEndEditing: (() -> Void)? { get set }
+    
+    var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)? { get set }
+
     // MARK: State
   
     var text: String? { get set }

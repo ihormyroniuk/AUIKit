@@ -24,26 +24,10 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     open var didTapReturnKey: (() -> Bool)?
   
     open var didBeginEditing: (() -> Void)?
-  
-    open var didEndEditingObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver) {
-        didEndEditingObservers.add(observer)
-    }
-  
-    open func removeDidEndEditingObserver(_ observer: AUITextFieldControllerDidEndEditingObserver) {
-        didEndEditingObservers.remove(observer)
-    }
-
-    open var didEndEditingReasonObservers = NSHashTable<AnyObject>.weakObjects()
-  
-    open func addDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver) {
-        didEndEditingReasonObservers.add(observer)
-    }
-  
-    open func removeDidEndEditingReasonObserver(_ observer: AUITextFieldControllerDidEndEditingReasonObserver) {
-        didEndEditingReasonObservers.remove(observer)
-    }
+    
+    open var didEndEditing: (() -> Void)?
+    
+    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
   
     // MARK: Input Accessory View Controller
   
@@ -215,17 +199,13 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
   
     open func textFieldDidEndEditing() {
-        for object in didEndEditingObservers.allObjects {
-            guard let observer = object as? AUITextFieldControllerDidEndEditingObserver else { continue }
-            observer.textFieldControllerDidEndEditing(self)
-        }
+        guard let didEndEditing = didEndEditing else { return }
+        didEndEditing()
     }
   
     open func textFieldDidEndEditing(reason: UITextField.DidEndEditingReason) {
-        for object in didEndEditingReasonObservers.allObjects {
-            guard let observer = object as? AUITextFieldControllerDidEndEditingReasonObserver else { continue }
-            observer.textFieldControllerDidEndEditingReason(self, reason: reason)
-        }
+        guard let didEndEditingReason = didEndEditingReason else { return }
+        didEndEditingReason(reason)
     }
   
     open func textField(shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -8,13 +8,17 @@
 import Foundation
 import UIKit
 
-open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController, AUITextFieldControllerDidEndEditingObserver, AUITextFieldControllerDidEndEditingReasonObserver {
+open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController {
     
     open var didChangeText: (() -> Void)?
 
     open var didTapReturnKey: (() -> Bool)?
     
     open var didBeginEditing: (() -> Void)?
+    
+    open var didEndEditing: (() -> Void)?
+    
+    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
     
     // MARK: AUITextFieldInputView
     
@@ -53,8 +57,8 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
         oldValue?.didChangeText = nil
         oldValue?.didTapReturnKey = nil
         oldValue?.didBeginEditing = nil
-        oldValue?.removeDidEndEditingObserver(self)
-        oldValue?.removeDidEndEditingReasonObserver(self)
+        oldValue?.didEndEditing = nil
+        oldValue?.didEndEditingReason = nil
         oldValue?.textField = nil
         textFieldController?.didChangeText = { [weak self] in
             guard let self = self else { return }
@@ -68,8 +72,14 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
             guard let self = self else { return }
             self.textFieldControllerDidBeginEditing()
         }
-        textFieldController?.addDidEndEditingObserver(self)
-        textFieldController?.addDidEndEditingReasonObserver(self)
+        textFieldController?.didEndEditing = { [weak self] in
+            guard let self = self else { return }
+            self.textFieldControllerDidEndEditing()
+        }
+        textFieldController?.didEndEditingReason = { [weak self] reason in
+            guard let self = self else { return }
+            self.textFieldControllerDidEndEditingReason(reason)
+        }
         textFieldController?.textField = textFieldInputView?.textField
     }
     
@@ -90,11 +100,11 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
         didBeginEditing()
     }
   
-    open func textFieldControllerDidEndEditing(_ textFieldController: AUITextFieldController) {
+    open func textFieldControllerDidEndEditing() {
         
     }
   
-    open func textFieldControllerDidEndEditingReason(_ textFieldController: AUITextFieldController, reason: UITextField.DidEndEditingReason) {
+    open func textFieldControllerDidEndEditingReason(_ reason: UITextField.DidEndEditingReason) {
         
     }
     
