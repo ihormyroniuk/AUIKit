@@ -101,11 +101,13 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
     }
   
     open func textFieldControllerDidEndEditing() {
-        
+        guard let didEndEditing = didEndEditing else { return }
+        didEndEditing()
     }
   
     open func textFieldControllerDidEndEditingReason(_ reason: UITextField.DidEndEditingReason) {
-        
+        guard let didEndEditingReason = didEndEditingReason else { return }
+        didEndEditingReason(reason)
     }
     
 }
