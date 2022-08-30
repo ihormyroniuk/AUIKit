@@ -40,11 +40,11 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
   
     open func setupControl() {
         control?.isEnabled = isEnabled
-        control?.addTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
-        control?.addTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
-        control?.addTarget(self, action: #selector(touchUpOutsideEventAction), for: .touchUpOutside)
-        control?.addTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
-        control?.addTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
+        control?.addTarget(self, action: #selector(controlTouchDownEventAction), for: .touchDown)
+        control?.addTarget(self, action: #selector(controlTouchUpInsideEventAction), for: .touchUpInside)
+        control?.addTarget(self, action: #selector(controlTouchUpOutsideEventAction), for: .touchUpOutside)
+        control?.addTarget(self, action: #selector(controlValueChangedEventAction), for: .valueChanged)
+        control?.addTarget(self, action: #selector(controlEditingChangedEventAction), for: .editingChanged)
     }
   
     open override func unsetupView() {
@@ -53,11 +53,11 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
     }
   
     open func unsetupControl() {
-        control?.removeTarget(self, action: #selector(touchDownEventAction), for: .touchDown)
-        control?.removeTarget(self, action: #selector(touchUpInsideEventAction), for: .touchUpInside)
-        control?.removeTarget(self, action: #selector(touchUpOutsideEventAction), for: .touchUpOutside)
-        control?.removeTarget(self, action: #selector(valueChangedEventAction), for: .valueChanged)
-        control?.removeTarget(self, action: #selector(editingChangedEventAction), for: .editingChanged)
+        control?.removeTarget(self, action: #selector(controlTouchDownEventAction), for: .touchDown)
+        control?.removeTarget(self, action: #selector(controlTouchUpInsideEventAction), for: .touchUpInside)
+        control?.removeTarget(self, action: #selector(controlTouchUpOutsideEventAction), for: .touchUpOutside)
+        control?.removeTarget(self, action: #selector(controlValueChangedEventAction), for: .valueChanged)
+        control?.removeTarget(self, action: #selector(controlEditingChangedEventAction), for: .editingChanged)
     }
   
     // MARK: - State
@@ -73,27 +73,27 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
   
     // MARK: - Events
   
-    @objc open func touchDownEventAction() {
+    @objc open func controlTouchDownEventAction() {
         guard let touchDown = touchDown else { return }
         touchDown()
     }
   
-    @objc open func touchUpInsideEventAction() {
+    @objc open func controlTouchUpInsideEventAction() {
         guard let touchUpInside = touchUpInside else { return }
         touchUpInside()
     }
   
-    @objc open func touchUpOutsideEventAction() {
+    @objc open func controlTouchUpOutsideEventAction() {
         guard let touchUpOutside = touchUpOutside else { return }
         touchUpOutside()
     }
   
-    @objc open func valueChangedEventAction() {
+    @objc open func controlValueChangedEventAction() {
         guard let valueChanged = valueChanged else { return }
         valueChanged()
     }
 
-    @objc open func editingChangedEventAction() {
+    @objc open func controlEditingChangedEventAction() {
         guard let editingChanged = editingChanged else { return }
         editingChanged()
     }

@@ -35,7 +35,7 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
     open func didSetDate(_ oldValue: Date, animated: Bool) {
         if oldValue != date {
             datePicker?.setDate(date, animated: animated)
-            valueChangedEventAction()
+            controlValueChangedEventAction()
         }
     }
   
@@ -120,8 +120,8 @@ open class AUIEmptyDateTimePickerController: AUIEmptyControlController, AUIDateT
   
     // MARK: Events
   
-    open override func valueChangedEventAction() {
-        super.valueChangedEventAction()
+    open override func controlValueChangedEventAction() {
+        super.controlValueChangedEventAction()
         if let date = datePicker?.date {
             setDate(date, animated: true)
         }

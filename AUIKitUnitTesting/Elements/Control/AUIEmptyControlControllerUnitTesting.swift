@@ -53,7 +53,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         
         viewController.control = control
         viewController.addDidTouchDownObserver(observer)
-        viewController.touchDownEventAction()
+        viewController.controlTouchDownEventAction()
         let isMethodControlControllerDidTouchDownCalled = observer.isMethodControlControllerDidTouchDownCalled
         
         XCTAssert(isMethodControlControllerDidTouchDownCalled, "AUIControlControllerDidTouchDownObserver is not notified after subscribe.")
@@ -67,7 +67,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         viewController.control = control
         viewController.addDidTouchDownObserver(observer)
         viewController.removeDidTouchDownObserver(observer)
-        viewController.touchDownEventAction()
+        viewController.controlTouchDownEventAction()
         let isMethodControlControllerDidTouchDownCalled = observer.isMethodControlControllerDidTouchDownCalled
         
         XCTAssert(!isMethodControlControllerDidTouchDownCalled, "AUIControlControllerDidTouchDownObserver is notified after unsubscribe.")
@@ -121,7 +121,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         
         viewController.control = control
         viewController.addDidTouchUpOutsideObserver(observer)
-        viewController.touchUpOutsideEventAction()
+        viewController.controlTouchUpOutsideEventAction()
         let isMethodControlControllerDidTouchUpOutsideCalled = observer.isMethodControlControllerDidTouchUpOutsideCalled
         
         XCTAssert(isMethodControlControllerDidTouchUpOutsideCalled, "AUIControlControllerDidTouchUpOutsideObserver is not notified after subscribe.")
@@ -135,7 +135,7 @@ class AUIEmptyControlControllerUnitTesting: XCTestCase {
         viewController.control = control
         viewController.addDidTouchUpOutsideObserver(observer)
         viewController.removeDidTouchUpOutsideObserver(observer)
-        viewController.touchUpOutsideEventAction()
+        viewController.controlTouchUpOutsideEventAction()
         let isMethodControlControllerDidTouchUpOutsideCalled = observer.isMethodControlControllerDidTouchUpOutsideCalled
         
         XCTAssert(!isMethodControlControllerDidTouchUpOutsideCalled, "AUIControlControllerDidTouchUpOutsideObserver is notified after unsubscribe.")

@@ -20,7 +20,7 @@ open class AUIEmptyCountDownDurationDatePickerController: AUIEmptyControlControl
     open func didSetCountDownDuration(_ oldValue: TimeInterval) {
         if oldValue != countDownDuration {
             datePicker?.countDownDuration = countDownDuration
-            valueChangedEventAction()
+            controlValueChangedEventAction()
         }
     }
   
@@ -52,8 +52,8 @@ open class AUIEmptyCountDownDurationDatePickerController: AUIEmptyControlControl
   
     // MARK: Events
   
-    open override func valueChangedEventAction() {
-        super.valueChangedEventAction()
+    open override func controlValueChangedEventAction() {
+        super.controlValueChangedEventAction()
         if let countDownDuration = datePicker?.countDownDuration {
             self.countDownDuration = countDownDuration
         }

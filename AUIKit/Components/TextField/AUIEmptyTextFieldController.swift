@@ -229,7 +229,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
   
     // MARK: Actions
   
-    open override func editingChangedEventAction() {
+    open override func controlEditingChangedEventAction() {
         text = textField?.text
     }
   

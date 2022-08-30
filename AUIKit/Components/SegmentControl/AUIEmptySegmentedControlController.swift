@@ -63,13 +63,13 @@ open class AUIEmptySegmentedControlController: AUIEmptyControlController, AUISeg
         }
     }
     
-    open override func valueChangedEventAction() {
+    open override func controlValueChangedEventAction() {
         if let selectedSegmentIndex = segmentedControl?.selectedSegmentIndex {
             let selectedItemController = itemControllers[selectedSegmentIndex]
             self.selectedItemController = selectedItemController
             selectedItemController.didSelect()
         }
-        super.valueChangedEventAction()
+        super.controlValueChangedEventAction()
     }
     
 }
