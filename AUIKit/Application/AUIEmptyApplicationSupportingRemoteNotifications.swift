@@ -1,12 +1,3 @@
-//
-//  AUIEmptyApplicationWithRemoteNotifications.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 21.08.2022.
-//
-
-import Foundation
-
 import UIKit
 
 open class AUIEmptyApplicationSupportingRemoteNotifications: AUIEmptyApplication, AUIApplicationSupportingRemoteNotifications {

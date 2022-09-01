@@ -1,16 +1,8 @@
-//
-//  ButtonController.swift
-//  agroportex-ios
-//
-//  Created by Ihor Myroniuk on 1/26/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyButtonController: AUIEmptyControlController, AUIButtonController {
   
-    // MARK: Button
+    // MARK: - Button
   
     open var button: UIButton? {
         set { view = newValue }
@@ -35,7 +27,7 @@ open class AUIEmptyButtonController: AUIEmptyControlController, AUIButtonControl
     
     }
   
-    // MARK: State
+    // MARK: - Title
   
     open var title: String? {
         didSet { didSetTitle(oldValue: oldValue) }

@@ -1,10 +1,3 @@
-//
-//  AUIApplicationMain.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 4/7/20.
-//
-
 import UIKit
 
 @discardableResult

@@ -1,15 +1,8 @@
-//
-//  AUIAttributedLabel.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 6/19/19.
-//
-
 import UIKit
 
 open class AUIAttributedLabel: AUILabel {
   
-    // MARK: Text
+    // MARK: - Text
   
     open override var text: String? {
         get {
@@ -52,7 +45,7 @@ open class AUIAttributedLabel: AUILabel {
         }
     }
   
-    // MARK: Attributes
+    // MARK: - Attributes
     
     open override var font: UIFont! {
         didSet {

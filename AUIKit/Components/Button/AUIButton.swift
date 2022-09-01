@@ -1,16 +1,8 @@
-//
-//  Button.swift
-//  Smaug
-//
-//  Created by Ihor Myroniuk on 11/23/17.
-//  Copyright © 2017 Ihor Myroniuk. All rights reserved.
-//
-
 import UIKit
 
 open class AUIButton: UIButton {
 
-    // MARK: Initializers
+    // MARK: - Initialization
 
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -23,7 +15,7 @@ open class AUIButton: UIButton {
         setup()
     }
 
-    // MARK: Setup
+    // MARK: - Setup
 
     open func setup() {
         

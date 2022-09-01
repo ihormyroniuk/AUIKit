@@ -502,9 +502,9 @@
 		3333F9FE235F2D12007215AB /* Responsive */ = {
 			isa = PBXGroup;
 			children = (
-				C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */,
 				C53BB799228EFC3700003495 /* AUIResponsiveTextFieldTextInputViewController.swift */,
 				C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */,
+				C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */,
 			);
 			path = Responsive;
 			sourceTree = "<group>";
@@ -749,6 +749,7 @@
 				C567F90324C9C65C002DB6FD /* ApplicationMain */,
 				C548387422983C7F000254B0 /* Application */,
 				C54B11AD22B12554003EBBA0 /* Presentation */,
+				C58FD48B2786507600213D53 /* Screen */,
 				C53AEA532195B01C0087F0A2 /* Components */,
 				3333F9F7235F0F00007215AB /* TextInput */,
 				C566FF93266583F000F81769 /* Transitioning */,
@@ -764,10 +765,6 @@
 		C53AEA532195B01C0087F0A2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				C5447771225CCA02002BE89F /* TabBarController */,
-				C5447770225CC9F0002BE89F /* NavigationController */,
-				C58E667A27878DF300D0E5AD /* AlertController */,
-				C58FD48B2786507600213D53 /* ScreenViewController */,
 				C53AEA9E2195B01C0087F0A2 /* View */,
 				C53AEAFB2195D9710087F0A2 /* Label */,
 				C53AEB102195DBE30087F0A2 /* ImageView */,
@@ -1204,14 +1201,17 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C58FD48B2786507600213D53 /* ScreenViewController */ = {
+		C58FD48B2786507600213D53 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				C58E667A27878DF300D0E5AD /* AlertController */,
+				C5447770225CC9F0002BE89F /* NavigationController */,
+				C5447771225CCA02002BE89F /* TabBarController */,
 				C525D88C219998AA0057E69F /* AUIScreenViewController.swift */,
 				C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenViewController.swift */,
 				C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */,
 			);
-			path = ScreenViewController;
+			path = Screen;
 			sourceTree = "<group>";
 		};
 		C590D07E2776803100B3BBA6 /* Scroll */ = {

@@ -1,16 +1,8 @@
-//
-//  ImageViewController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 8/14/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyImageViewController: AUIEmptyViewController, AUIImageViewController {
   
-    // MARK: ImageView
+    // MARK: - ImageView
   
     open var imageView: UIImageView? {
         set { view = newValue }
@@ -35,7 +27,7 @@ open class AUIEmptyImageViewController: AUIEmptyViewController, AUIImageViewCont
         imageView?.image = image
     }
   
-    // MARK: State
+    // MARK: - Image
   
     open var image: UIImage? {
         didSet {

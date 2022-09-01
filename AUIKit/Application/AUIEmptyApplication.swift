@@ -1,10 +1,3 @@
-//
-//  AUIApplication.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 5/24/19.
-//
-
 import UIKit
 
 open class AUIEmptyApplication: UIApplication, AUIApplication {

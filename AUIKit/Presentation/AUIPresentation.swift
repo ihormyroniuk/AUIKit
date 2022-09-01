@@ -1,11 +1,4 @@
-//
-//  AUIPresentation.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 6/12/19.
-//
-
-import Foundation
+import UIKit
 
 public protocol AUIPresentation {
     

@@ -1,11 +1,4 @@
-//
-//  AUIEmptyPresentation.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 06.01.2022.
-//
-
-import Foundation
+import UIKit
 
 open class AUIEmptyPresentation: AUIPresentation {
   

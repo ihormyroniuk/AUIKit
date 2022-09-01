@@ -1,36 +1,12 @@
-//
-//  ControlController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 8/14/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyControlController: AUIEmptyViewController, AUIControlController {
-    
-    // MARK: - Actions
-    
-    open var touchDown: (() -> Void)?
-    
-    open var touchUpInside: (() -> Void)?
-    
-    open var touchUpOutside: (() -> Void)?
-    
-    open var valueChanged: (() -> Void)?
-    
-    open var editingChanged: (() -> Void)?
   
     // MARK: - Control
   
     open var control: UIControl? {
-        set {
-            view = newValue
-        }
-        get {
-            return view as? UIControl
-        }
+        set { view = newValue }
+        get { return view as? UIControl }
     }
   
     open override func setupView() {
@@ -60,7 +36,7 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
         control?.removeTarget(self, action: #selector(controlEditingChangedEventAction), for: .editingChanged)
     }
   
-    // MARK: - State
+    // MARK: - Enabled
   
     open var isEnabled: Bool = true {
         didSet {
@@ -70,6 +46,18 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
     open func didSetIsEnabled(oldValue: Bool) {
         control?.isEnabled = isEnabled
     }
+    
+    // MARK: - Actions
+    
+    open var touchDown: (() -> Void)?
+    
+    open var touchUpInside: (() -> Void)?
+    
+    open var touchUpOutside: (() -> Void)?
+    
+    open var valueChanged: (() -> Void)?
+    
+    open var editingChanged: (() -> Void)?
   
     // MARK: - Events
   

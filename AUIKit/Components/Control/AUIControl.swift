@@ -1,15 +1,8 @@
-//
-//  AUIControl.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 2/5/20.
-//
-
 import UIKit
 
 open class AUIControl: UIControl {
 
-    // MARK: Initializers
+    // MARK: - Initialization
 
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -22,7 +15,7 @@ open class AUIControl: UIControl {
         setup()
     }
 
-    // MARK: Setup
+    // MARK: - Setup
 
     open func setup() {
 

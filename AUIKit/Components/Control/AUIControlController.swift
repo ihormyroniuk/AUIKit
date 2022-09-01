@@ -1,14 +1,14 @@
-//
-//  AUIElementControlController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 11/2/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 public protocol AUIControlController: AUIViewController {
+  
+    // MARK: - Control
+  
+    var control: UIControl? { get set }
+  
+    // MARK: - Enabled
+  
+    var isEnabled: Bool { get set }
     
     // MARK: - Actions
     
@@ -21,13 +21,5 @@ public protocol AUIControlController: AUIViewController {
     var valueChanged: (() -> Void)? { get set }
     
     var editingChanged: (() -> Void)? { get set }
-  
-    // MARK: - Control
-  
-    var control: UIControl? { get set }
-  
-    // MARK: - Enabled
-  
-    var isEnabled: Bool { get set }
   
 }

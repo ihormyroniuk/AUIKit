@@ -12,44 +12,7 @@ private let UITextFieldTextPropertyKey = "text"
 
 open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController, KeyValueObserverProxyDelegate {
   
-    // MARK: - Delegates
-  
-    private let keyValueObserverProxy = KeyValueObserverProxy()
-    private let textFieldDelegate = UITextFieldDelegateProxy()
-  
-    // MARK: - Observers
-  
-    open var didChangeText: (() -> Void)?
-  
-    open var didTapReturnKey: (() -> Bool)?
-  
-    open var didBeginEditing: (() -> Void)?
-    
-    open var didEndEditing: (() -> Void)?
-    
-    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
-  
-    // MARK: Input Accessory View Controller
-  
-    open var inputAccessoryViewController: AUIViewController? {
-        didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
-    }
-    open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
-        oldValue?.view = nil
-        inputAccessoryViewController?.view = textField?.inputAccessoryView
-    }
-  
-    // MARK: Input View Controller
-  
-    open var inputViewController: AUIViewController? {
-        didSet { didSetInputViewController(oldValue: oldValue) }
-    }
-    open func didSetInputViewController(oldValue: AUIViewController?) {
-        oldValue?.view = nil
-        inputViewController?.view = textField?.inputView
-    }
-  
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
@@ -57,7 +20,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textFieldDelegate.delegate = self
     }
   
-    // MARK: TextField
+    // MARK: - TextField
   
     open var textField: UITextField? {
         set { view = newValue }
@@ -94,8 +57,28 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.delegate = nil
         textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
     }
+    
+    // MARK: Input Accessory View Controller
   
-    // MARK: States
+    open var inputAccessoryViewController: AUIViewController? {
+        didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
+    }
+    open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputAccessoryViewController?.view = textField?.inputAccessoryView
+    }
+  
+    // MARK: Input View Controller
+  
+    open var inputViewController: AUIViewController? {
+        didSet { didSetInputViewController(oldValue: oldValue) }
+    }
+    open func didSetInputViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputViewController?.view = textField?.inputView
+    }
+  
+    // MARK: - Text
 
     open var text: String? {
         didSet {
@@ -110,6 +93,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
             }
         }
     }
+    
+    // MARK: - Placeholder
   
     open var placeholder: String? {
         didSet {
@@ -119,6 +104,19 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     open func didSetPlaceholder(oldValue: String?) {
         textField?.placeholder = placeholder
     }
+    
+    // MARK: - Security
+    
+    open var isSecureTextEntry: Bool = false {
+        didSet {
+            didSetIsSecureTextEntry(oldValue: oldValue)
+        }
+    }
+    open func didSetIsSecureTextEntry(oldValue: Bool) {
+        textField?.isSecureTextEntry = isSecureTextEntry
+    }
+    
+    // MARK: - Keyboard
   
     open var keyboardType: UIKeyboardType = .default {
         didSet {
@@ -127,15 +125,6 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
     open func didSetKeyboardType(oldValue: UIKeyboardType) {
         textField?.keyboardType = keyboardType
-    }
-  
-    open var isSecureTextEntry: Bool = false {
-        didSet {
-            didSetIsSecureTextEntry(oldValue: oldValue)
-        }
-    }
-    open func didSetIsSecureTextEntry(oldValue: Bool) {
-        textField?.isSecureTextEntry = isSecureTextEntry
     }
   
     open var autocorrectionType: UITextAutocorrectionType = .default {
@@ -165,6 +154,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.returnKeyType = returnKeyType
     }
     
+    // MARK: - Editing
+    
     open var shouldBeginEditing: Bool = true {
         didSet {
             didSetShouldBeginEditing(oldValue: oldValue)
@@ -182,8 +173,29 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     open func didSetShouldEndEditing(oldValue: Bool) {
         
     }
+    
+    // MARK: - Actions
+  
+    open var didChangeText: (() -> Void)?
+  
+    open var didTapReturnKey: (() -> Bool)?
+  
+    open var didBeginEditing: (() -> Void)?
+    
+    open var didEndEditing: (() -> Void)?
+    
+    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
+    
+    // MARK: - Events
+  
+    open override func controlEditingChangedEventAction() {
+        text = textField?.text
+    }
   
     // MARK: UITextFieldDelegate
+    
+    private let keyValueObserverProxy = KeyValueObserverProxy()
+    private let textFieldDelegate = UITextFieldDelegateProxy()
   
     open func textFieldShouldBeginEditing() -> Bool {
         return shouldBeginEditing
@@ -225,12 +237,6 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
   
     open func textFieldDidChangeText(_ textField: UITextField) {
         text = textField.text
-    }
-  
-    // MARK: Actions
-  
-    open override func controlEditingChangedEventAction() {
-        text = textField?.text
     }
   
     // MARK:

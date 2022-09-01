@@ -1,16 +1,8 @@
-//
-//  Label.swift
-//  agroportex-ios
-//
-//  Created by Ihor Myroniuk on 1/25/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUILabel: UILabel {
 
-    // MARK: Initializers
+    // MARK: - Initialization
   
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -22,7 +14,7 @@ open class AUILabel: UILabel {
         return nil
     }
   
-    // MARK: Setup
+    // MARK: - Setup
  
     open func setup() {
     

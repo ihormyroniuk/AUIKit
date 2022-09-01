@@ -1,16 +1,8 @@
-//
-//  HeaderController.swift
-//  agroportex-ios
-//
-//  Created by Ihor Myroniuk on 1/25/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyLabelController: AUIEmptyViewController, AUILabelController {
   
-    // MARK: Label
+    // MARK: - Label
   
     open var label: UILabel? {
         set { view = newValue }
@@ -35,7 +27,7 @@ open class AUIEmptyLabelController: AUIEmptyViewController, AUILabelController {
     
     }
   
-    // MARK: State
+    // MARK: - Text
   
     open var text: String? {
         didSet { didSetText(oldValue: oldValue) }

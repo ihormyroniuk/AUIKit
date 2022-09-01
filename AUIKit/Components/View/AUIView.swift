@@ -1,11 +1,3 @@
-//
-//  View.swift
-//  agroportex-ios
-//
-//  Created by Ihor Myroniuk on 12/7/17.
-//  Copyright © 2017 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIView: UIView {
