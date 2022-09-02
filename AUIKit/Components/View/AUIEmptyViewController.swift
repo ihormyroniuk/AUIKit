@@ -14,7 +14,7 @@ open class AUIEmptyViewController: AUIViewController {
         
     }
   
-    // MARK: - View
+    // MARK: - UIView
   
     private var _view: UIView?
     open var view: UIView? {

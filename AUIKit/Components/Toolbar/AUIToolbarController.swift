@@ -1,17 +1,8 @@
-//
-//  AUIToolbarController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 11/6/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
-import Foundation
 import UIKit
 
 public protocol AUIToolbarController: AUIViewController {
   
-    // MARK: Toolbar
+    // MARK: - UIToolbar
     
     var toolbar: UIToolbar? { get set }
   

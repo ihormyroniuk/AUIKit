@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUISwitchController: AUIControlController {
 
-    // MARK: Switch
+    // MARK: - Switch
   
     var `switch`: UISwitch? { get set }
   

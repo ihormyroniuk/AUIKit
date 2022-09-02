@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyButtonController: AUIEmptyControlController, AUIButtonController {
   
-    // MARK: - Button
+    // MARK: - UIButton
   
     open var button: UIButton? {
         set { view = newValue }

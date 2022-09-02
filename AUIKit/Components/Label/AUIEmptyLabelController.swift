@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyLabelController: AUIEmptyViewController, AUILabelController {
   
-    // MARK: - Label
+    // MARK: - UILabel
   
     open var label: UILabel? {
         set { view = newValue }

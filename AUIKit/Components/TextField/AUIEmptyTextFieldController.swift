@@ -1,11 +1,3 @@
-//
-//  TextFieldController.swift
-//  Scenery
-//
-//  Created by Ihor Myroniuk on 8/2/18.
-//  Copyright © 2018 Ihor Myroniuk. All rights reserved.
-//
-
 import UIKit
 
 private let UITextFieldTextPropertyKey = "text"
@@ -20,7 +12,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textFieldDelegate.delegate = self
     }
   
-    // MARK: - TextField
+    // MARK: - UITextField
   
     open var textField: UITextField? {
         set { view = newValue }
@@ -58,7 +50,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
     }
     
-    // MARK: Input Accessory View Controller
+    // MARK: - Input Accessory View Controller
   
     open var inputAccessoryViewController: AUIViewController? {
         didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
@@ -68,7 +60,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         inputAccessoryViewController?.view = textField?.inputAccessoryView
     }
   
-    // MARK: Input View Controller
+    // MARK: - Input View Controller
   
     open var inputViewController: AUIViewController? {
         didSet { didSetInputViewController(oldValue: oldValue) }

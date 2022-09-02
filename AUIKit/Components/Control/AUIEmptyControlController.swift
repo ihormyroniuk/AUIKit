@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyControlController: AUIEmptyViewController, AUIControlController {
   
-    // MARK: - Control
+    // MARK: - UIControl
   
     open var control: UIControl? {
         set { view = newValue }

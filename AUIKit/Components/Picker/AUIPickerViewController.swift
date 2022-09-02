@@ -1,24 +1,16 @@
-//
-//  AUIPickerController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 11/7/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 public protocol AUIPickerViewController: AUIViewController {
     
-    // MARK: UIPickerView
+    // MARK: - UIPickerView
   
     var pickerView: UIPickerView? { get set }
 
-    // MARK: Components
+    // MARK: - Components
   
     var componentControllers: [AUIPickerViewComponentController] { get }
   
-    // MARK: Select
+    // MARK: - Select
   
     func selectItemController(_ itemController: AUIPickerViewItemController, atComponentController componentController: AUIPickerViewComponentController, animated: Bool)
   

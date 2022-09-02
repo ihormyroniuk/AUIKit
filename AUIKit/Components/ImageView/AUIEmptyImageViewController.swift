@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyImageViewController: AUIEmptyViewController, AUIImageViewController {
   
-    // MARK: - ImageView
+    // MARK: - UIImageView
   
     open var imageView: UIImageView? {
         set { view = newValue }

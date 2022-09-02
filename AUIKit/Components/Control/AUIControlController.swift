@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUIControlController: AUIViewController {
   
-    // MARK: - Control
+    // MARK: - UIControl
   
     var control: UIControl? { get set }
   

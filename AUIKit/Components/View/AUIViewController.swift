@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUIViewController: AnyObject {
   
-    // MARK: - View
+    // MARK: - UIView
   
     var view: UIView? { get set }
   

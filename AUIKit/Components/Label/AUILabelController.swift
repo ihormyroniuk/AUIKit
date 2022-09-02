@@ -3,7 +3,7 @@ import UIKit
 
 public protocol AUILabelController: AUIViewController {
   
-    // MARK: - Label
+    // MARK: - UILabel
     
     var label: UILabel? { get set }
   
