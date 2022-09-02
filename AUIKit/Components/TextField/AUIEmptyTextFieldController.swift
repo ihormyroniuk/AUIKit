@@ -174,7 +174,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         
     }
     
-    // MARK: - Actions
+    // MARK: - Events
   
     open var didChangeText: (() -> Void)?
   
@@ -186,7 +186,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     
     open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
     
-    // MARK: - Events
+    // MARK: - Actions
   
     open override func controlEditingChangedEventAction() {
         text = textField?.text

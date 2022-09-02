@@ -52,7 +52,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         guard pageControllers?.contains(where: { $0 === pageController }) ?? false else { return }
         let pageViewController = PageViewController(pageController: pageController)
         pagesViewController?.setViewControllers([pageViewController], direction: .forward, animated: false)
-        displayedPageController?.didDisplay()
+        displayedPageController?.didDisplayPage()
     }
   
     open func displayPageControllerAnimated(_ pageController: AUIPageController, navigationDirection: UIPageViewController.NavigationDirection, completion: ((Bool) -> Void)?) {
@@ -60,7 +60,7 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         let pageViewController = PageViewController(pageController: pageController)
         pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
             guard let self = self else { return }
-            self.displayedPageController?.didDisplay()
+            self.displayedPageController?.didDisplayPage()
             completion?(finished)
         })
     }
@@ -164,11 +164,11 @@ open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPages
         guard let viewController = pendingViewControllers.first else { return }
         guard let pageViewController = viewController as? PageViewController else { return }
         let pageController = pageViewController.pageController
-        pageController.willDisplay()
+        pageController.willDisplayPage()
     }
   
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        displayedPageController?.didDisplay()
+        displayedPageController?.didDisplayPage()
     }
   
 }

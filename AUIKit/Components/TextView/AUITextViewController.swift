@@ -29,7 +29,7 @@ public protocol AUITextViewController: AUIScrollViewController {
     
     var isSecureTextEntry: Bool { get set }
     
-    // MARK: - Actions
+    // MARK: - Events
   
     var didChangeText: (() -> Void)? { get set }
     

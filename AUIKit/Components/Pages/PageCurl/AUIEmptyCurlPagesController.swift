@@ -63,14 +63,14 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
             let pageViewController = PageViewController(pageController: pageController)
             pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
                 guard let self = self else { return }
-                self.displayedPageController?.didDisplay()
+                self.displayedPageController?.didDisplayPage()
                 completion?(finished)
             })
         } else {
             let pageViewController = PageViewController(pageController: pageController)
             pagesViewController?.setViewControllers([pageViewController], direction: navigationDirection, animated: true, completion: { [weak self] finished in
                 guard let self = self else { return }
-                self.displayedPageController?.didDisplay()
+                self.displayedPageController?.didDisplayPage()
                 completion?(finished)
             })
         }
@@ -140,12 +140,12 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
         for viewController in pendingViewControllers {
             guard let pageViewController = viewController as? PageViewController else { return }
             let pageController = pageViewController.pageController
-            pageController.willDisplay()
+            pageController.willDisplayPage()
         }
     }
     
     open func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        displayedPageController?.didDisplay()
+        displayedPageController?.didDisplayPage()
     }
     
     open func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation) -> UIPageViewController.SpineLocation {

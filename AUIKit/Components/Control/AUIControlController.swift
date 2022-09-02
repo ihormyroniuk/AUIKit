@@ -10,7 +10,7 @@ public protocol AUIControlController: AUIViewController {
   
     var isEnabled: Bool { get set }
     
-    // MARK: - Actions
+    // MARK: - Events
     
     var touchDown: (() -> Void)? { get set }
     

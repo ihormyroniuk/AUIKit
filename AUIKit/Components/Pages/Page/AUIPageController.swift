@@ -12,8 +12,10 @@ public protocol AUIPageController: AnyObject {
     
     var viewController: UIViewController { get }
     
-    func willDisplay()
+    // MARK: - Actions
     
-    func didDisplay()
+    func willDisplayPage()
+    
+    func didDisplayPage()
     
 }

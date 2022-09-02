@@ -10,7 +10,7 @@ import UIKit
 
 open class AUITableViewCell: UITableViewCell {
   
-    // MARK: Initializer
+    // MARK: - Initialization
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,13 +22,13 @@ open class AUITableViewCell: UITableViewCell {
         return nil
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
         
     }
   
-    // MARK: Layout
+    // MARK: - Layout
   
     open override func layoutSubviews() {
         super.layoutSubviews()

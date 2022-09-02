@@ -47,7 +47,7 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
         control?.isEnabled = isEnabled
     }
     
-    // MARK: - Actions
+    // MARK: - Events
     
     open var touchDown: (() -> Void)?
     
@@ -59,7 +59,7 @@ open class AUIEmptyControlController: AUIEmptyViewController, AUIControlControll
     
     open var editingChanged: (() -> Void)?
   
-    // MARK: - Events
+    // MARK: - Actions
   
     @objc open func controlTouchDownEventAction() {
         guard let touchDown = touchDown else { return }

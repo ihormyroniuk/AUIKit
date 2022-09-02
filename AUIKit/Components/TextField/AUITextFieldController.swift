@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUITextFieldController: AUIControlController {
     
-    // MARK: - TextField
+    // MARK: - UITextField
   
     var textField: UITextField? { get set }
     
@@ -42,7 +42,7 @@ public protocol AUITextFieldController: AUIControlController {
     
     var shouldEndEditing: Bool { get set }
     
-    // MARK: - Actions
+    // MARK: - Events
   
     var didChangeText: (() -> Void)? { get set }
 

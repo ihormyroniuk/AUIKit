@@ -17,11 +17,11 @@ open class AUIEmptyPageController: AUIPageController {
         return UIViewController()
     }
     
-    open func willDisplay() {
+    open func willDisplayPage() {
         
     }
     
-    open func didDisplay() {
+    open func didDisplayPage() {
 
     }
     

@@ -118,7 +118,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
         textView?.isSecureTextEntry = isSecureTextEntry
     }
     
-    // MARK: - Actions
+    // MARK: - Events
     
     open var didChangeText: (() -> Void)?
       
@@ -126,7 +126,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
       
     open var didEndEditing: (() -> Void)?
   
-    // MARK: UITextFieldDelegateProxyDelegate
+    // MARK: - UITextFieldDelegateProxyDelegate
     
     private let textFieldDelegate = UITextViewDelegateProxy()
   

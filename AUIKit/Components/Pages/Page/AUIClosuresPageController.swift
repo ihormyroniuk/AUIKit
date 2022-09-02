@@ -15,12 +15,12 @@ open class AUIClosuresPageController: AUIEmptyPageController {
     }
     
     open var willDisplayClosure: (() -> Void)?
-    open override func willDisplay() {
+    open override func willDisplayPage() {
         willDisplayClosure?()
     }
     
     open var didDisplayClosure: (() -> Void)?
-    open override func didDisplay() {
+    open override func didDisplayPage() {
         didDisplayClosure?()
     }
     
