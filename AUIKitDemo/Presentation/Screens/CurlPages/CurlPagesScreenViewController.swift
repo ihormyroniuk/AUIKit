@@ -51,7 +51,7 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .green
             return viewController
         }
-        pageViewController1.didDisplayClosure = {
+        pageViewController1.didDisplay = {
             print("pageViewController1")
         }
         let pageViewController2 = AUIClosuresPageController()
@@ -60,7 +60,7 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .red
             return viewController
         }
-        pageViewController2.didDisplayClosure = {
+        pageViewController2.didDisplay = {
             print("pageViewController2")
         }
         let pageViewController3 = AUIClosuresPageController()
@@ -69,7 +69,7 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .blue
             return viewController
         }
-        pageViewController3.didDisplayClosure = {
+        pageViewController3.didDisplay = {
             print("pageViewController3")
         }
         let pageViewController4 = AUIClosuresPageController()
@@ -78,7 +78,7 @@ class CurlPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .yellow
             return viewController
         }
-        pageViewController4.didDisplayClosure = {
+        pageViewController4.didDisplay = {
             print("pageViewController4")
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]

@@ -51,10 +51,10 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .green
             return viewController
         }
-        pageViewController1.willDisplayClosure = {
+        pageViewController1.willDisplay = {
             print("willDisplayClosure pageViewController1")
         }
-        pageViewController1.didDisplayClosure = {
+        pageViewController1.didDisplay = {
             print("didDisplayClosure pageViewController1")
         }
         let pageViewController2 = AUIClosuresPageController()
@@ -63,10 +63,10 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .red
             return viewController
         }
-        pageViewController2.willDisplayClosure = {
+        pageViewController2.willDisplay = {
             print("willDisplayClosure pageViewController2")
         }
-        pageViewController2.didDisplayClosure = {
+        pageViewController2.didDisplay = {
             print("didDisplayClosure pageViewController2")
         }
         let pageViewController3 = AUIClosuresPageController()
@@ -75,10 +75,10 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .blue
             return viewController
         }
-        pageViewController3.willDisplayClosure = {
+        pageViewController3.willDisplay = {
             print("willDisplayClosure pageViewController3")
         }
-        pageViewController3.didDisplayClosure = {
+        pageViewController3.didDisplay = {
             print("didDisplayClosure pageViewController3")
         }
         let pageViewController4 = AUIClosuresPageController()
@@ -87,10 +87,10 @@ class ScrollPagesScreenViewController: UIViewController {
             viewController.view.backgroundColor = .yellow
             return viewController
         }
-        pageViewController4.willDisplayClosure = {
+        pageViewController4.willDisplay = {
             print("willDisplayClosure pageViewController4")
         }
-        pageViewController4.didDisplayClosure = {
+        pageViewController4.didDisplay = {
             print("didDisplayClosure pageViewController4")
         }
         pagesViewController.pageControllers = [pageViewController1, pageViewController2, pageViewController3, pageViewController4]

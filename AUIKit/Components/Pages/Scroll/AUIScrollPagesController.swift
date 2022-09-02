@@ -17,7 +17,7 @@ public protocol AUIScrollPagesController {
     
     var isLooping: Bool? { get set }
     
-    // MARK: Pages
+    // MARK: - Pages
     
     var pageControllers: [AUIPageController]? { get set }
     
