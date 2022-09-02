@@ -1,10 +1,3 @@
-//
-//  AUITextView.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 2/15/19.
-//
-
 import UIKit
 
 open class AUITextView: UITextView {

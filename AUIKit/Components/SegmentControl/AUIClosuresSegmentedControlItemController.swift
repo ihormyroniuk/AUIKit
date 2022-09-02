@@ -1,10 +1,3 @@
-//
-//  AUIClosuresSegmentedControlItemController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 15.08.2022.
-//
-
 import UIKit
 
 open class AUIClosuresSegmentedControlItemController: AUIEmptySegmentedControlItemController {

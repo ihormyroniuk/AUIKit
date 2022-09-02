@@ -1,10 +1,3 @@
-//
-//  AUIEmptyTableViewCellController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 27.12.2021.
-//
-
 import UIKit
 
 open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableViewCellController {

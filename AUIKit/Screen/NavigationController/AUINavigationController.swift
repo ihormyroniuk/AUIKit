@@ -1,10 +1,3 @@
-//
-//  AUINavigationController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 9/22/19.
-//
-
 import UIKit
 
 open class AUINavigationController: UINavigationController, UIGestureRecognizerDelegate {

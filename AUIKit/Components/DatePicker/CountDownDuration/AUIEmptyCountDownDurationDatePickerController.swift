@@ -36,7 +36,6 @@ open class AUIEmptyCountDownDurationDatePickerController: AUIEmptyControlControl
             didSetCountDownDuration(oldValue)
         }
     }
-  
     open func didSetCountDownDuration(_ oldValue: TimeInterval) {
         if oldValue != countDownDuration {
             datePicker?.countDownDuration = countDownDuration

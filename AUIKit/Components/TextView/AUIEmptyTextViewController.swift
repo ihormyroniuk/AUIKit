@@ -1,57 +1,15 @@
-//
-//  AUIDefaultTextViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 2/15/19.
-//
-
-import Foundation
 import UIKit
 
-private let UITextViewTextPropertyKey = "text"
-
 open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextViewController {
-
-    // MARK: Delegates
   
-    private let textFieldDelegate = UITextViewDelegateProxy()
-  
-    // MARK: - Actions
-    
-    open var didChangeText: (() -> Void)?
-      
-    open var didBeginEditing: (() -> Void)?
-      
-    open var didEndEditing: (() -> Void)?
-  
-    // MARK: Input Accessory View Controller
-  
-    open var inputAccessoryViewController: AUIViewController? {
-        didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
-    }
-    open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
-        oldValue?.view = nil
-        inputAccessoryViewController?.view = textView?.inputAccessoryView
-    }
-  
-    // MARK: Input View Controller
-  
-    open var inputViewController: AUIViewController? {
-        didSet { didSetInputViewController(oldValue: oldValue) }
-    }
-    open func didSetInputViewController(oldValue: AUIViewController?) {
-        oldValue?.view = nil
-        inputViewController?.view = textView?.inputView
-    }
-  
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
         textFieldDelegate.delegate = self
     }
   
-    // MARK: TextView
+    // MARK: - TextView
   
     open var textView: UITextView? {
         set { view = newValue }
@@ -84,8 +42,28 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
         inputAccessoryViewController?.view = nil
         inputViewController?.view = nil
     }
+    
+    // MARK: Input Accessory View Controller
+  
+    open var inputAccessoryViewController: AUIViewController? {
+        didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
+    }
+    open func didSetInputAccessoryViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputAccessoryViewController?.view = textView?.inputAccessoryView
+    }
+  
+    // MARK: Input View Controller
+  
+    open var inputViewController: AUIViewController? {
+        didSet { didSetInputViewController(oldValue: oldValue) }
+    }
+    open func didSetInputViewController(oldValue: AUIViewController?) {
+        oldValue?.view = nil
+        inputViewController?.view = textView?.inputView
+    }
 
-    // MARK: States
+    // MARK: - Text
   
     open var text: String! {
         didSet {
@@ -100,6 +78,8 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
             }
         }
     }
+    
+    // MARK: - Keyboard
   
     open var keyboardType: UIKeyboardType = .default {
         didSet { didSetKeyboardType(oldValue: oldValue) }
@@ -128,6 +108,8 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
         textView?.autocapitalizationType = autocapitalizationType
     }
+    
+    // MARK: - Security
   
     open var isSecureTextEntry: Bool = false {
         didSet { didSetIsSecureTextEntry(oldValue: oldValue) }
@@ -135,8 +117,18 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     open func didSetIsSecureTextEntry(oldValue: Bool) {
         textView?.isSecureTextEntry = isSecureTextEntry
     }
+    
+    // MARK: - Actions
+    
+    open var didChangeText: (() -> Void)?
+      
+    open var didBeginEditing: (() -> Void)?
+      
+    open var didEndEditing: (() -> Void)?
   
     // MARK: UITextFieldDelegateProxyDelegate
+    
+    private let textFieldDelegate = UITextViewDelegateProxy()
   
     open func textViewShouldBeginEditing() -> Bool {
         return true

@@ -1,10 +1,3 @@
-//
-//  AUIStatusBarScreenView.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 6/26/19.
-//
-
 import UIKit
 
 open class AUIStatusBarScreenView: AUIView {

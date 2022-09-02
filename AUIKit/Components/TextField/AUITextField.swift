@@ -1,10 +1,3 @@
-//
-//  AUITextField.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 1/15/19.
-//
-
 import UIKit
 
 public protocol AUITextFieldCanPerformActionDelegate: AnyObject {

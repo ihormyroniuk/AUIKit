@@ -1,11 +1,3 @@
-//
-//  AUIClosuresViewPickerViewItemController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 22.12.2021.
-//
-
-import Foundation
 import UIKit
 
 open class AUIClosuresViewPickerViewItemController: AUIEmptyViewPickerViewItemController {

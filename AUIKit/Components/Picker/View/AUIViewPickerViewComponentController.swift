@@ -1,11 +1,3 @@
-//
-//  AUIViewPickerComponentController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 5/22/19.
-//
-
-import Foundation
 import UIKit
 
 public protocol AUIViewPickerViewComponentController: AUIPickerViewComponentController {

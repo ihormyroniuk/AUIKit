@@ -1,10 +1,3 @@
-//
-//  AUITabBarController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 4/9/19.
-//
-
 import UIKit
 
 open class AUITabBarController: UITabBarController {

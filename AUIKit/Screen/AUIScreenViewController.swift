@@ -1,10 +1,3 @@
-//
-//  AUIScreenController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 11/12/18.
-//
-
 import UIKit
 
 open class AUIScreenViewController: UIViewController {

@@ -1,11 +1,3 @@
-//
-//  AUIDefaultSwitchController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 3/22/19.
-//
-
-import Foundation
 import UIKit
 
 open class AUIEmptySwitchController: AUIEmptyControlController, AUISwitchController {

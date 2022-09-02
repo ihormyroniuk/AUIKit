@@ -1,10 +1,3 @@
-//
-//  InteractiveLinkLabel.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 11/29/19.
-//
-
 import UIKit
 
 public extension NSAttributedString.Key {

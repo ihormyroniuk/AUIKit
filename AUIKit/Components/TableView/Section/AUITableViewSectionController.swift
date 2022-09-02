@@ -1,10 +1,3 @@
-//
-//  AUITableViewSectionController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 2/16/19.
-//
-
 import UIKit
 
 public protocol AUITableViewSectionController: AnyObject {

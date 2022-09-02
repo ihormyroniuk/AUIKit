@@ -1,10 +1,3 @@
-//
-//  AUIAutoLayoutBottomAlignedContentViewScrollView.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 6/14/19.
-//
-
 import UIKit
 
 open class AUIAutoLayoutBottomAlignedContentViewScrollView: AUIAutoLayoutAlignedContentViewScrollView {

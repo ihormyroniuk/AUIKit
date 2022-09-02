@@ -1,10 +1,3 @@
-//
-//  AUIClosuresTitlePickerViewItemController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 22.12.2021.
-//
-
 import Foundation
 
 open class AUIClosuresTitlePickerViewItemController: AUITitlePickerViewItemController {

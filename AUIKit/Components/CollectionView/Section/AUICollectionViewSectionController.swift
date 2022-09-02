@@ -1,10 +1,3 @@
-//
-//  AUICollectionViewSectionController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 07.01.2022.
-//
-
 import UIKit
 
 public protocol AUICollectionViewSectionController: AnyObject {

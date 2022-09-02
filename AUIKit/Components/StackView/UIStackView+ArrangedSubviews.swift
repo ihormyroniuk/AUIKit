@@ -1,10 +1,3 @@
-//
-//  UIStackView+ArrangedSubviews.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 4/23/19.
-//
-
 import UIKit
 
 public extension UIStackView {

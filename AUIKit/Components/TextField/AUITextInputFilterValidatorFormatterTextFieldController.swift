@@ -1,10 +1,3 @@
-//
-//  AUIDefaultInputTextFilterValidatorFormatterTextFieldController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 9/14/19.
-//
-
 import Foundation
 
 open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyTextFieldController {

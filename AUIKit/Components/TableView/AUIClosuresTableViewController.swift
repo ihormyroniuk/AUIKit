@@ -1,12 +1,3 @@
-//
-//  AUIClosuresTableViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 05.02.2022.
-//
-
-import Foundation
-
 import UIKit
 
 open class AUIClosuresTableViewController: AUIEmptyTableViewController {

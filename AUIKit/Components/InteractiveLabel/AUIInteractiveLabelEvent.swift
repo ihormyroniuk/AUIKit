@@ -1,10 +1,3 @@
-//
-//  AUIInteractiveLabelUIEvent.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 08.08.2020.
-//
-
 import UIKit
 
 open class AUIInteractiveLabelEvent: UIEvent {
