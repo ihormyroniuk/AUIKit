@@ -9,7 +9,7 @@ import UIKit
 
 open class AUICollectionViewCell: UICollectionViewCell {
   
-    // MARK: - Initializer
+    // MARK: - Initialization
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,8 +18,7 @@ open class AUICollectionViewCell: UICollectionViewCell {
   
     @available(*, unavailable)
     public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setup()
+        return nil
     }
     // MARK: - Setup
     
@@ -27,7 +26,7 @@ open class AUICollectionViewCell: UICollectionViewCell {
         
     }
     
-    // MARK: Layout
+    // MARK: - Layout
   
     open override func layoutSubviews() {
         super.layoutSubviews()
