@@ -1,10 +1,3 @@
-//
-//  AUIEmptyCurlPagesController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 27.12.2021.
-//
-
 import UIKit
 
 open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesController {

@@ -1,10 +1,3 @@
-//
-//  AUIScrollPageViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 26.12.2021.
-//
-
 import UIKit
 
 public protocol AUIScrollPagesController {

@@ -1,27 +1,15 @@
-//
-//  ScrollViewController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 9/7/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewController {
     
-    // MARK: Proxy
-  
-    private let emptyScrollViewDelegateProxy = AUIEmptyScrollViewDelegateProxy()
-    
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
         emptyScrollViewDelegateProxy.emptyScrollViewController = self
     }
 
-    // MARK: View
+    // MARK: - UIScrollView
   
     open var scrollView: UIScrollView? {
         set { view = newValue }
@@ -47,19 +35,28 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     open func unsetupScrollView() {
         scrollView?.delegate = nil
     }
+    
+    // MARK: - Scroll
+    
+    open var isScrollEnabled: Bool = true {
+        didSet { didSetIsScrollEnabled(oldValue: oldValue) }
+    }
+    open func didSetIsScrollEnabled(oldValue: Bool) {
+        scrollView?.isScrollEnabled = isScrollEnabled
+    }
   
-    // MARK: States
+    // MARK: - Keyboard
   
     open var keyboardDismissMode: UIScrollView.KeyboardDismissMode = .none {
-        didSet { didSetKeyboardDismissMode() }
+        didSet { didSetKeyboardDismissMode(oldValue: oldValue) }
     }
-    open func didSetKeyboardDismissMode() {
+    open func didSetKeyboardDismissMode(oldValue: UIScrollView.KeyboardDismissMode) {
         scrollView?.keyboardDismissMode = keyboardDismissMode
     }
     
-    open var isScrollEnabled: Bool = true {
-        didSet { scrollView?.isScrollEnabled = isScrollEnabled }
-    }
+    // MARK: - UIScrollViewDelegate
+  
+    private let emptyScrollViewDelegateProxy = AUIScrollViewDelegateProxy()
     
     open var scrollViewDidScrollClosure: (() -> Void)?
     open var scrollViewDidEndScrollingAnimationClosure: (() -> Void)?
@@ -70,7 +67,7 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
   
 }
 
-class AUIEmptyScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
+class AUIScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
       
     weak var emptyScrollViewController: AUIEmptyScrollViewController?
     

@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIToolbar: UIToolbar {
 
-    // MARK: Initializers
+    // MARK: - Initialization
 
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -14,7 +14,7 @@ open class AUIToolbar: UIToolbar {
         return nil
     }
 
-    // MARK: Setup
+    // MARK: - Setup
 
     open func setup() {
 

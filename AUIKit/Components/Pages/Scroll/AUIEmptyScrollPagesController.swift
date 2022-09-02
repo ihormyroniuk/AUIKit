@@ -1,10 +1,3 @@
-//
-//  AUIEmptyScrollPageViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 26.12.2021.
-//
-
 import UIKit
 
 open class AUIEmptyScrollPagesController: AUIEmptyViewController, AUIScrollPagesController {

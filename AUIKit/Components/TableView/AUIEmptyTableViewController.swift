@@ -362,7 +362,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     
 }
 
-class UITableViewDelegateProxy: AUIEmptyScrollViewDelegateProxy, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
+class UITableViewDelegateProxy: AUIScrollViewDelegateProxy, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
       
     weak var delegate: AUIEmptyTableViewController?
       

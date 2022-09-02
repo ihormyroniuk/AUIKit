@@ -11,13 +11,16 @@ import UIKit
 
 public protocol AUIScrollViewController: AUIViewController {
   
-    // MARK: Scroll View
+    // MARK: - UIScrollView
   
     var scrollView: UIScrollView? { get set }
+    
+    // MARK: - Scroll
+    
+    var isScrollEnabled: Bool { get set }
   
-    // MARK: Keyboard
+    // MARK: - Keyboard
   
     var keyboardDismissMode: UIScrollView.KeyboardDismissMode { get set }
-    var isScrollEnabled: Bool { get set }
   
 }
