@@ -9,7 +9,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
         textFieldDelegate.delegate = self
     }
   
-    // MARK: - TextView
+    // MARK: - UITextView
   
     open var textView: UITextView? {
         set { view = newValue }

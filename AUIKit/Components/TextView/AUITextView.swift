@@ -2,7 +2,7 @@ import UIKit
 
 open class AUITextView: UITextView {
   
-  // MARK: Initializers
+  // MARK: - Initialization
 
    public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
        super.init(frame: frame, textContainer: textContainer)
@@ -15,7 +15,7 @@ open class AUITextView: UITextView {
        setup()
    }
 
-   // MARK: Setup
+   // MARK: - Setup
 
    open func setup() {
 
