@@ -1,6 +1,10 @@
 import UIKit
 
 public protocol AUIDateTimePickerController: AUIControlController {
+    
+    // MARK: - UIDatePicker
+  
+    var datePicker: UIDatePicker? { get set }
   
     // MARK: - Mode
   

@@ -2,37 +2,40 @@ import UIKit
 
 open class AUIDefaultRefreshControlController: AUIEmptyControlController, AUIRefreshControlController {
   
-  // MARK: View
+    // MARK: - UIRefreshControl
   
-  open var refreshControl: UIRefreshControl? {
-    set { view = newValue }
-    get { return view as? UIRefreshControl }
-  }
+    open var refreshControl: UIRefreshControl? {
+        set { view = newValue }
+        get { return view as? UIRefreshControl }
+    }
   
-  // MARK: View
+    // MARK: - View
   
-  open override func setupView() {
-    super.setupView()
-    setupRefreshing()
-  }
+    open override func setupView() {
+        super.setupView()
+        setupRefreshing()
+    }
+    
+    open func setupRefreshing() {
+        if isRefreshing {
+            beginRefreshing()
+        } else {
+            endRefreshing()
+        }
+    }
   
-  // MARK: Refreshing
+    // MARK: - Refreshing
   
-  open var isRefreshing: Bool = false
+    open var isRefreshing: Bool = false
   
-  open func setupRefreshing() {
-    if isRefreshing { beginRefreshing()
-    } else{ endRefreshing() }
-  }
+    open func beginRefreshing() {
+        isRefreshing = true
+        refreshControl?.beginRefreshing()
+    }
   
-  open func beginRefreshing() {
-    isRefreshing = true
-    refreshControl?.beginRefreshing()
-  }
-  
-  open func endRefreshing() {
-    isRefreshing = false
-    refreshControl?.endRefreshing()
-  }
-  
+    open func endRefreshing() {
+        isRefreshing = false
+        refreshControl?.endRefreshing()
+    }
+    
 }

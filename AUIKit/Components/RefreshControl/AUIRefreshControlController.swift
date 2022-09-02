@@ -2,13 +2,14 @@ import UIKit
 
 public protocol AUIRefreshControlController: AUIControlController {
   
-  // MARK: Refresh Control
+    // MARK: - UIRefreshControl
   
-  var refreshControl: UIRefreshControl? { get set }
+    var refreshControl: UIRefreshControl? { get set }
   
-  // MARK: Refreshing
+    // MARK: - Refreshing
   
-  func beginRefreshing()
+    func beginRefreshing()
   
-  func endRefreshing()
+    func endRefreshing()
+    
 }
