@@ -10,7 +10,7 @@ import UIKit
 
 private let UITextFieldTextPropertyKey = "text"
 
-open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController, KeyValueObserverProxyDelegate {
+open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldController {
   
     // MARK: - Setup
   
@@ -194,7 +194,6 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
   
     // MARK: UITextFieldDelegate
     
-    private let keyValueObserverProxy = KeyValueObserverProxy()
     private let textFieldDelegate = UITextFieldDelegateProxy()
   
     open func textFieldShouldBeginEditing() -> Bool {
@@ -234,6 +233,8 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
   
     // MARK: KeyValueObserverProxyDelegate
+    
+    private let keyValueObserverProxy = KeyValueObserverProxy()
   
     open func textFieldDidChangeText(_ textField: UITextField) {
         text = textField.text
@@ -282,13 +283,9 @@ private class UITextFieldDelegateProxy: NSObject, UITextFieldDelegate {
     }
 }
 
-private protocol KeyValueObserverProxyDelegate: AnyObject {
-    func textFieldDidChangeText(_ textField: UITextField)
-}
-
 private class KeyValueObserverProxy: NSObject {
   
-    weak var delegate: KeyValueObserverProxyDelegate?
+    weak var delegate: AUIEmptyTextFieldController?
   
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == UITextFieldTextPropertyKey, let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
