@@ -2,19 +2,19 @@ import UIKit
 
 open class AUIEmptyBarItemController: AUIBarItemController {
   
-    // MARK: Initializer
+    // MARK: - Initialization
   
     public init() {
         setup()
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
     
     }
   
-    // MARK: View
+    // MARK: - UIBarItem
   
     private var _barItem: UIBarItem?
     open var barItem: UIBarItem? {
@@ -42,7 +42,7 @@ open class AUIEmptyBarItemController: AUIBarItemController {
         
     }
   
-    // MARK: Title
+    // MARK: - Title
   
     open var title: String? {
         didSet { didSetTitle(oldValue: oldValue) }
@@ -51,7 +51,7 @@ open class AUIEmptyBarItemController: AUIBarItemController {
         barItem?.title = title
     }
   
-    // MARK: Image
+    // MARK: - Image
   
     open var image: UIImage? {
         didSet { didSetImage(oldValue: oldValue) }
@@ -66,16 +66,25 @@ open class AUIEmptyBarItemController: AUIBarItemController {
     open func didSetLandscapeImagePhone(oldValue: UIImage?) {
         barItem?.landscapeImagePhone = landscapeImagePhone
     }
-  
+    
+    private var _largeContentSizeImage: UIImage?
+    @available(iOS 11.0, *)
     open var largeContentSizeImage: UIImage? {
-        didSet { if #available(iOS 11.0, *) {  } }
+        get {
+             return _largeContentSizeImage
+        }
+        set {
+            let oldValue = _largeContentSizeImage
+            _largeContentSizeImage = newValue
+            didSetLargeContentSizeImage(oldValue: oldValue)
+        }
     }
     @available(iOS 11.0, *)
     open func didSetLargeContentSizeImage(oldValue: UIImage?) {
         barItem?.largeContentSizeImage = largeContentSizeImage
     }
   
-    // MARK: State
+    // MARK: - Enabled
   
     open var isEnabled: Bool = true {
         didSet { didSetIsEnabled() }

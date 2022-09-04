@@ -5,10 +5,15 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
     // MARK: Settings
     
     open var portraitSpineLocation: UIPageViewController.SpineLocation?
+    
     open var portraitUpsideDownSpineLocation: UIPageViewController.SpineLocation?
+    
     open var landscapeLeftSpineLocation: UIPageViewController.SpineLocation?
+    
     open var landscapeRightSpineLocation: UIPageViewController.SpineLocation?
+    
     open var unknownSpineLocation: UIPageViewController.SpineLocation?
+    
     private static let defaultSpineLocation: UIPageViewController.SpineLocation = .min
     open var spineLocation: UIPageViewController.SpineLocation = defaultSpineLocation
     

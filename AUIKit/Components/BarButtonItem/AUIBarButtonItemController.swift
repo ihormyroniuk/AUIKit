@@ -1,18 +1,13 @@
 import UIKit
 
-public protocol AUIBarButtonItemControllerDidSelectObserver: AnyObject {
-  func barButtonItemControllerDidSelect(_ barButtonItemController: AUIBarButtonItemController)
-}
-
 public protocol AUIBarButtonItemController: AUIBarItemController {
+    
+    // MARK: - UIBarButtonItem
+    
+    var barButtonItem: UIBarButtonItem? { get set }
   
-  // MARK: Observers
-  
-  func addDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver)
-  func removeDidSelectObserver(_ observer: AUIBarButtonItemControllerDidSelectObserver)
-  
-  // MARK: Bar Button Item
-  
-  var barButtonItem: UIBarButtonItem? { get set }
+    // MARK: - Events
+    
+    var action: (() -> Void)? { get set }
   
 }
