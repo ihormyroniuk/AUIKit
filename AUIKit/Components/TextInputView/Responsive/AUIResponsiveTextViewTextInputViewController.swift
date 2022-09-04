@@ -2,14 +2,14 @@ import UIKit
 
 open class AUIResponsiveTextViewTextInputViewController: AUIEmptyTextViewTextInputViewController {
 
-    // MARK: ResponsiveSubtextViewView
+    // MARK: - AUIResponsiveTextInputView
   
     open var responsiveTextInputView: AUIResponsiveTextInputView? {
         get { return view as? AUIResponsiveTextInputView }
         set { view = newValue }
     }
   
-    // MARK: Events
+    // MARK: - Actions
   
     open override func textViewControllerDidChangeText() {
         super.textViewControllerDidChangeText()

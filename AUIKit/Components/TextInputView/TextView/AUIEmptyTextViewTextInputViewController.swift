@@ -1,16 +1,10 @@
 import UIKit
 
 open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUITextViewInputTextViewController  {
-    
-    open var didChangeText: (() -> Void)?
-    
-    open var didBeginEditing: (() -> Void)?
-    
-    open var didEndEditing: (() -> Void)?
   
-    // MARK: TextFieldInputView
+    // MARK: - AUITextViewTextInputView
     
-    open var textViewInputView: AUITextViewTextInputView? {
+    open var textViewTextInputView: AUITextViewTextInputView? {
         set { view = newValue }
         get { return view as? AUITextViewTextInputView }
     }
@@ -21,7 +15,7 @@ open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUIT
     }
     
     open func setupTextViewInputView() {
-        textViewController?.textView = textViewInputView?.textView
+        textViewController?.textView = textViewTextInputView?.textView
     }
     
     open override func unsetupView() {
@@ -32,14 +26,13 @@ open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUIT
         textViewController?.textView = nil
     }
     
-    // MARK: TextViewController
+    // MARK: - AUITextViewController
   
     open var textViewController: AUITextViewController? {
         didSet {
             didSetTextViewController(oldValue)
         }
     }
-    
     open func didSetTextViewController(_ oldValue: AUITextViewController?) {
         guard textViewController !== oldValue else { return }
         oldValue?.didChangeText = nil
@@ -58,10 +51,18 @@ open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUIT
             guard let self = self else { return }
             self.textViewControllerDidEndEditing()
         }
-        textViewController?.textView = textViewInputView?.textView
+        textViewController?.textView = textViewTextInputView?.textView
     }
+    
+    // MARK: - Events
+    
+    open var didChangeText: (() -> Void)?
+    
+    open var didBeginEditing: (() -> Void)?
+    
+    open var didEndEditing: (() -> Void)?
   
-    // MARK: Events
+    // MARK: - Actions
   
     open func textViewControllerDidEndEditing() {
         guard let didEndEditing = didEndEditing else { return }

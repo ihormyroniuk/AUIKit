@@ -2,19 +2,9 @@ import UIKit
 
 open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUITextFieldTextInputViewController {
     
-    open var didChangeText: (() -> Void)?
-
-    open var didTapReturnKey: (() -> Bool)?
+    // MARK: - AUITextFieldTextInputView
     
-    open var didBeginEditing: (() -> Void)?
-    
-    open var didEndEditing: (() -> Void)?
-    
-    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
-    
-    // MARK: AUITextFieldInputView
-    
-    public var textFieldInputView: AUITextFieldTextInputView? {
+    public var textFieldTextInputView: AUITextFieldTextInputView? {
         set { view = newValue }
         get { return view as? AUITextFieldTextInputView }
     }
@@ -25,25 +15,25 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
     }
     
     open func setupTextFieldInputView() {
-        textFieldController?.textField = textFieldInputView?.textField
+        textFieldController?.textField = textFieldTextInputView?.textField
     }
     
     open override func unsetupView() {
         super.unsetupView()
-        unsetupTextFieldInputView()    }
+        unsetupTextFieldInputView()
+    }
     
     open func unsetupTextFieldInputView() {
         textFieldController?.textField = nil
     }
     
-    // MARK: TextFieldController
+    // MARK: - AUITextFieldController
   
     open var textFieldController: AUITextFieldController? {
         didSet {
             didSetTextFieldController(oldValue)
         }
     }
-    
     open func didSetTextFieldController(_ oldValue: AUITextFieldController?) {
         guard textFieldController !== oldValue else { return }
         oldValue?.didChangeText = nil
@@ -72,10 +62,22 @@ open class AUIEmptyTextFieldTextInputViewController: AUIEmptyViewController, AUI
             guard let self = self else { return }
             self.textFieldControllerDidEndEditingReason(reason)
         }
-        textFieldController?.textField = textFieldInputView?.textField
+        textFieldController?.textField = textFieldTextInputView?.textField
     }
     
-    // MARK: Events
+    // MARK: - Events
+    
+    open var didChangeText: (() -> Void)?
+
+    open var didTapReturnKey: (() -> Bool)?
+    
+    open var didBeginEditing: (() -> Void)?
+    
+    open var didEndEditing: (() -> Void)?
+    
+    open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
+    
+    // MARK: - Actions
   
     open func textFieldControllerDidChangeText() {
         guard let didChangeText = didChangeText else { return }

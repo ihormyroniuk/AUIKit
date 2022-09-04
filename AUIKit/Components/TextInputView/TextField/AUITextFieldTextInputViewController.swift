@@ -2,6 +2,16 @@ import UIKit
 
 public protocol AUITextFieldTextInputViewController: AUIViewController {
     
+    // MARK: - AUITextFieldTextInputView
+    
+    var textFieldTextInputView: AUITextFieldTextInputView? { get set }
+    
+    // MARK: - AUITextFieldController
+  
+    var textFieldController: AUITextFieldController? { get set }
+    
+    // MARK: - Events
+    
     var didChangeText: (() -> Void)? { get set }
 
     var didTapReturnKey: (() -> Bool)? { get set }
@@ -11,13 +21,5 @@ public protocol AUITextFieldTextInputViewController: AUIViewController {
     var didEndEditing: (() -> Void)? { get set }
     
     var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)? { get set }
-
-    // MARK: TextFieldInputView
-    
-    var textFieldInputView: AUITextFieldTextInputView? { get set }
-    
-    // MARK: TextFieldController
-  
-    var textFieldController: AUITextFieldController? { get set }
   
 }
