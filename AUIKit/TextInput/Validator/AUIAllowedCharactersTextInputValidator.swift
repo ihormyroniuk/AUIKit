@@ -1,10 +1,3 @@
-//
-//  AUICharacterSetTextInputValidator.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 21.05.2020.
-//
-
 import Foundation
 
 open class AUIAllowedCharactersTextInputValidator: AUITextInputValidator {

@@ -1,10 +1,3 @@
-//
-//  AUINavigationControllerUnitTesting.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 07.08.2020.
-//
-
 import XCTest
 import AUIKit
 
@@ -25,15 +18,6 @@ class AUINavigationControllerUnitTesting: XCTestCase {
         let isMethodSetupCalled = navigationController.isMethodSetupCalled
         
         XCTAssert(isMethodSetupCalled, "Method `setup()` is not called during initialization.")
-    }
-    
-    // MARK: Navigation Bar
-    
-    func testNavigationBarHidden() {
-        let navigationController = TestAUINavigationController()
-        let isNavigationBarHidden = navigationController.isNavigationBarHidden
-        
-        XCTAssert(isNavigationBarHidden, "AUINavigationController should hide navigation bar.")
     }
     
 }

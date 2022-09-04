@@ -1,10 +1,3 @@
-//
-//  AUIWindowPresentationUnitTesting.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 31.07.2020.
-//
-
 import XCTest
 import AUIKit
 

@@ -1,10 +1,3 @@
-//
-//  AUICollectionViewCell.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 06.01.2022.
-//
-
 import UIKit
 
 open class AUICollectionViewCell: UICollectionViewCell {

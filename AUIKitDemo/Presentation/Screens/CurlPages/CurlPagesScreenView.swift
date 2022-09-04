@@ -1,10 +1,3 @@
-//
-//  CurlPagesScreenView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 27.12.2021.
-//
-
 import AUIKit
 
 class CurlPagesScreenView: BackButtonTitleLabelScreenView {

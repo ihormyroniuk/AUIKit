@@ -1,11 +1,3 @@
-//
-//  SignupTextViewTextInputView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 07.08.2020.
-//
-
-import UIKit
 import AUIKit
 
 class SignupTextViewTextInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextInputView {

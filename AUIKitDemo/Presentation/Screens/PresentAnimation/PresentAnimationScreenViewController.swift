@@ -1,11 +1,3 @@
-//
-//  PresentAnimationScreenViewController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 24.10.2021.
-//
-
-import UIKit
 import AUIKit
 
 class PresentAnimationScreenViewController: UIViewController {

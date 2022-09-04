@@ -1,10 +1,3 @@
-//
-//  UIImage+TintColor.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 12/9/19.
-//
-
 import UIKit
 
 public extension UIImage {

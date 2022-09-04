@@ -1,10 +1,3 @@
-//
-//  IntroScreenController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 01.04.2021.
-//
-
 import AUIKit
 
 protocol ScrollPagesScreenViewControllerDelegate: AnyObject {

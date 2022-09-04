@@ -1,11 +1,3 @@
-//
-//  ScrollView.swift
-//  Scenery
-//
-//  Created by Ihor Myroniuk on 8/2/18.
-//  Copyright © 2018 Ihor Myroniuk. All rights reserved.
-//
-
 import UIKit
 
 open class AUIScrollView: UIScrollView {

@@ -1,10 +1,3 @@
-//
-//  AUICompositeTextInputValidator.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 11/29/19.
-//
-
 import Foundation
 
 open class AUIMultipleTextInputValidator: AUITextInputValidator {

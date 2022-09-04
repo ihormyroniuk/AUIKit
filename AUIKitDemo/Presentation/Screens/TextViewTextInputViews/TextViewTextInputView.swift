@@ -1,11 +1,3 @@
-//
-//  TextViewTextInputView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 29.07.2020.
-//
-
-import UIKit
 import AUIKit
 
 class TextViewTextInputView: AUIView, AUITextViewTextInputView, AUIResponsiveTextInputView {

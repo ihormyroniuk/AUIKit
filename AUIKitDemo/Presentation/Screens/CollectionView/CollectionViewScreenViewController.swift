@@ -1,10 +1,3 @@
-//
-//  CollectionViewScreenViewController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 12.02.2022.
-//
-
 import AUIKit
 
 protocol CollectionViewScreenViewControllerDelegate: AnyObject {

@@ -1,10 +1,3 @@
-//
-//  LabelsScreenViewController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 23.07.2020.
-//
-
 import AUIKit
 
 protocol LabelsScreenControllerDelegate: AnyObject {

@@ -1,11 +1,3 @@
-//
-//  ButtonFill.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 06.08.2020.
-//
-
-import UIKit
 import AUIKit
 
 class FilledRoundedButton: AUIButton {

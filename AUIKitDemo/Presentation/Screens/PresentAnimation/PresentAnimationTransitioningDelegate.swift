@@ -1,10 +1,3 @@
-//
-//  PresentAnimationTransitioningDelegate.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 25.01.2021.
-//
-
 import AUIKit
 
 class PresentAnimationTransitioningDelegate: AUIViewControllerTransitioningDelegate {

@@ -1,11 +1,3 @@
-//
-//  AUIDefaultBarItemController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 11/8/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyBarItemController: AUIBarItemController {

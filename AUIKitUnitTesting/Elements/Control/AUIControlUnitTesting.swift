@@ -1,13 +1,5 @@
-//
-//  AUIControlUnitTesting.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 06.08.2020.
-//
-
 import XCTest
 import AUIKit
-import UIKit
 
 class AUIControlUnitTesting: XCTestCase {
     

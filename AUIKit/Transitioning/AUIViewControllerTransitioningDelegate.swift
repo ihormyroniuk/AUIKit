@@ -1,10 +1,3 @@
-//
-//  AUIViewControllerTransitioningDelegate.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 31.05.2021.
-//
-
 import UIKit
 
 protocol PresentAnimatedTransitioningDelegate: AnyObject {

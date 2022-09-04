@@ -1,10 +1,3 @@
-//
-//  AUIMaximumLenghtTextInputValidatorUnitTesting.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 28.07.2020.
-//
-
 import XCTest
 import AUIKit
 

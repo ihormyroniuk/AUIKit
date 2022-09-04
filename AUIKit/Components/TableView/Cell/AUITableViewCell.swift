@@ -1,11 +1,3 @@
-//
-//  CollectionCellView.swift
-//  Smaug
-//
-//  Created by Ihor Myroniuk on 10/18/17.
-//  Copyright © 2017 Ihor Myroniuk. All rights reserved.
-//
-
 import UIKit
 
 open class AUITableViewCell: UITableViewCell {

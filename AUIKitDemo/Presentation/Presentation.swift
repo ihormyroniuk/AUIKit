@@ -1,10 +1,3 @@
-//
-//  Presentation.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 21.07.2020.
-//
-
 import AUIKit
 
 class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate, CollectionViewScreenViewControllerDelegate {

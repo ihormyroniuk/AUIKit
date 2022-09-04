@@ -1,11 +1,3 @@
-//
-//  TableViewSectionController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 8/17/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 open class AUIEmptyTableViewSectionController: AUITableViewSectionController {

@@ -1,10 +1,3 @@
-//
-//  AUIKit.h
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 11/9/18.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for AUIKit.

@@ -1,11 +1,3 @@
-//
-//  TableViewController.swift
-//  Level
-//
-//  Created by Ihor Myroniuk on 8/14/18.
-//  Copyright © 2018 Brander. All rights reserved.
-//
-
 import UIKit
 
 public protocol AUITableViewController: AUIScrollViewController {

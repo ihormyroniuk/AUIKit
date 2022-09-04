@@ -1,10 +1,3 @@
-//
-//  TitledScreenView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 05.08.2020.
-//
-
 import AUIKit
 
 class TitleLabelScreenView: NavigationBarScreenView {

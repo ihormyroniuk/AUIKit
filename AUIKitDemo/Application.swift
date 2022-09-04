@@ -1,10 +1,3 @@
-//
-//  Application.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 19.07.2020.
-//
-
 import AUIKit
 
 class Application: AUIEmptyApplication {

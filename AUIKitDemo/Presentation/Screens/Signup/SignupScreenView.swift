@@ -1,11 +1,3 @@
-//
-//  SignupScreenView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 04.08.2020.
-//
-
-import UIKit
 import AUIKit
 
 class SignupScreenView: BackButtonTitleLabelScreenView {

@@ -1,13 +1,5 @@
-//
-//  AUIViewUnitTesting.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 30.07.2020.
-//
-
 import XCTest
 import AUIKit
-import UIKit
 
 class AUIEmptyViewControllerUnitTesting: XCTestCase {
     

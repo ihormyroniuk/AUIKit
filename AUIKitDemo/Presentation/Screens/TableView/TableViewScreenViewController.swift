@@ -1,10 +1,3 @@
-//
-//  TestTableViewScreenViewController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 23.12.2021.
-//
-
 import AUIKit
 
 protocol TableViewScreenViewControllerDelegate: AnyObject {

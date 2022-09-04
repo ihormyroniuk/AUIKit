@@ -1,10 +1,3 @@
-//
-//  CollectionViewScreenView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 12.02.2022.
-//
-
 import AUIKit
 
 class CollectionViewScreenView: BackButtonTitleLabelScreenView {

@@ -1,11 +1,3 @@
-//
-//  AUISubtextFieldViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 1/25/19.
-//
-
-import Foundation
 import UIKit
 
 public protocol AUITextFieldTextInputViewController: AUIViewController {

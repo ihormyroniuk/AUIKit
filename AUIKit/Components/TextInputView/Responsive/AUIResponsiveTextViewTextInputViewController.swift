@@ -1,12 +1,3 @@
-//
-//  AUIDefaultResponsiveSubtextInputViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 8/2/19.
-//
-
-import Foundation
-
 import UIKit
 
 open class AUIResponsiveTextViewTextInputViewController: AUIEmptyTextViewTextInputViewController {

@@ -1,11 +1,3 @@
-//
-//  TextInputViewTextFieldScreenController.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 26.07.2020.
-//
-
-import UIKit
 import AUIKit
 
 protocol TextFieldTextInputViewScreenControllerDelegate: AnyObject {

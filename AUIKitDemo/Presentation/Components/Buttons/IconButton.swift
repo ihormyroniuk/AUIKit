@@ -1,11 +1,3 @@
-//
-//  IconButton.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 10.08.2020.
-//
-
-import UIKit
 import AUIKit
 
 class IconButton: AUIButton {

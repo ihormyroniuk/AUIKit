@@ -1,10 +1,3 @@
-//
-//  AUINotAllowedCharactersTextInputValidator.swift
-//  AUIKitUnitTesting
-//
-//  Created by Ihor Myroniuk on 29.07.2020.
-//
-
 import XCTest
 import AUIKit
 

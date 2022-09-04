@@ -1,11 +1,4 @@
-//
-//  AUIDefaultSubtextViewViewController.swift
-//  AUIKit
-//
-//  Created by Ihor Myroniuk on 2/16/19.
-//
-
-import Foundation
+import UIKit
 
 open class AUIEmptyTextViewTextInputViewController: AUIEmptyViewController, AUITextViewInputTextViewController  {
     

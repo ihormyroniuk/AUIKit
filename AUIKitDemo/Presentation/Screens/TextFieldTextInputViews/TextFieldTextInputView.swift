@@ -1,11 +1,3 @@
-//
-//  TextFieldTextInputView.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 27.07.2020.
-//
-
-import UIKit
 import AUIKit
 
 class TextFieldTextInputView: AUIView, AUITextFieldTextInputView, AUIResponsiveTextInputView {

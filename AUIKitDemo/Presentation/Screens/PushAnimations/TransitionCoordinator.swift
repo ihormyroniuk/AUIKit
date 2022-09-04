@@ -1,10 +1,3 @@
-//
-//  TransitionCoordinator.swift
-//  AUIKitDemo
-//
-//  Created by Ihor Myroniuk on 26.01.2021.
-//
-
 import UIKit
 
 extension UINavigationController {
