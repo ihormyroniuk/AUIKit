@@ -8,6 +8,8 @@ open class AUIEmptyPageController: AUIPageController {
         
     }
     
+    // MARK: - UIViewController
+    
     public var viewController: UIViewController {
         return UIViewController()
     }

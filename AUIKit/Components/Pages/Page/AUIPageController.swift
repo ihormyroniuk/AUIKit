@@ -2,6 +2,8 @@ import UIKit
 
 public protocol AUIPageController: AnyObject {
     
+    // MARK: - UIViewController
+    
     var viewController: UIViewController { get }
     
     // MARK: - Events
