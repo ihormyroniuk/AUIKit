@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUISegmentedControlController: AUIControlController {
     
-    // MARK: UISegmentedControl
+    // MARK: - UISegmentedControl
     
     var segmentedControl: UISegmentedControl? { get set }
     

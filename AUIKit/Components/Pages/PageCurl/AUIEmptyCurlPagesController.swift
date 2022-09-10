@@ -86,6 +86,8 @@ open class AUIEmptyCurlPagesController: AUIEmptyViewController, AUICurlPagesCont
         pagesViewControllerDataSourceDelegate.delegate = self
     }
     
+    // MARK: - UIView
+    
     open override func setupView() {
         super.setupView()
         guard let view = view else { return }
