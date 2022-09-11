@@ -8,7 +8,7 @@ open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterCont
       
     }
     
-    // MARK: AUITableViewHeaderFooterController
+    // MARK: - UITableViewHeaderFooterView
   
     open func headerFooter() -> UITableViewHeaderFooterView? {
         return UITableViewHeaderFooterView()

@@ -140,9 +140,9 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let section = indexPath.section
         let row = indexPath.row
         let cellController = sectionControllers[section].cellControllers[row]
+        guard let tableView = tableView else { return UITableViewCell() }
         let cellType = cellController.cellType
         let cellIdentifier = cellController.cellIdentifier
-        guard let tableView = tableView else { return UITableViewCell() }
         tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         cellController.cell = cell

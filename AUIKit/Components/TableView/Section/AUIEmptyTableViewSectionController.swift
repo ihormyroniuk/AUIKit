@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     
-    // MARK: Initializer
+    // MARK: Initialization
 
     public init() {
     
@@ -12,7 +12,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open var headerController: AUITableViewHeaderFooterController?
   
-    open func header() -> UIView? {
+    open func header() -> UITableViewHeaderFooterView? {
         return headerController?.headerFooter()
     }
   
@@ -91,7 +91,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     open var footerController: AUITableViewHeaderFooterController?
   
-    open func footer() -> UIView? {
+    open func footer() -> UITableViewHeaderFooterView? {
         return footerController?.headerFooter()
     }
   

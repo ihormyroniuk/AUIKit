@@ -2,17 +2,22 @@ import UIKit
 
 public protocol AUITableViewSectionController: AnyObject {
   
+    var headerController: AUITableViewHeaderFooterController? { get set }
+
+    var cellControllers: [AUITableViewCellController] { get set }
+    
+    var footerController: AUITableViewHeaderFooterController? { get set }
+    
     // MARK: Header
   
-    func header() -> UIView?
+    func header() -> UITableViewHeaderFooterView?
     var headerEstimatedHeight: CGFloat { get }
     var headerHeight: CGFloat { get }
     func willDisplayHeader()
     func didEndDisplayingHeader()
 
     // MARK: Cells
-
-    var cellControllers: [AUITableViewCellController] { get set }
+    
     var numberOfRows: Int { get }
     func prefetchCellAtIndex(_ index: Int)
     func cancelPrefetchingForCellAtIndex(_ index: Int)
@@ -31,7 +36,7 @@ public protocol AUITableViewSectionController: AnyObject {
     
     // MARK: Footer
   
-    func footer() -> UIView?
+    func footer() -> UITableViewHeaderFooterView?
     var footerEstimatedHeight: CGFloat { get }
     var footerHeight: CGFloat { get }
     func willDisplayFooter()

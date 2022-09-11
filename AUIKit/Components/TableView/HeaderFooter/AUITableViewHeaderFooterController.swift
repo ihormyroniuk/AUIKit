@@ -2,6 +2,8 @@ import UIKit
 
 public protocol AUITableViewHeaderFooterController: AnyObject {
     
+    // MARK: - UITableViewHeaderFooterView
+    
     func headerFooter() -> UITableViewHeaderFooterView?
     
     // MARK: - Height
