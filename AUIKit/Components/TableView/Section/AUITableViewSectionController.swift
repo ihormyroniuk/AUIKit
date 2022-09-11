@@ -2,12 +2,6 @@ import UIKit
 
 public protocol AUITableViewSectionController: AnyObject {
   
-    var headerController: AUITableViewHeaderFooterController? { get set }
-
-    var cellControllers: [AUITableViewCellController] { get set }
-    
-    var footerController: AUITableViewHeaderFooterController? { get set }
-    
     // MARK: Header
   
     func header() -> UITableViewHeaderFooterView?
@@ -17,7 +11,8 @@ public protocol AUITableViewSectionController: AnyObject {
     func didEndDisplayingHeader()
 
     // MARK: Cells
-    
+
+    var cellControllers: [AUITableViewCellController] { get set }
     var numberOfRows: Int { get }
     func prefetchCellAtIndex(_ index: Int)
     func cancelPrefetchingForCellAtIndex(_ index: Int)
