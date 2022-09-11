@@ -13,7 +13,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableViewDelegateProxy.delegate = self
     }
     
-    // MARK: View
+    // MARK: - UITableView
   
     open var tableView: UITableView? {
         set { view = newValue }
@@ -22,6 +22,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open override func setupView() {
         super.setupView()
+        setupTableView()
+    }
+    
+    open func setupTableView() {
         tableView?.dataSource = tableViewDelegateProxy
         tableView?.delegate = tableViewDelegateProxy
         tableView?.prefetchDataSource = tableViewDelegateProxy
@@ -37,6 +41,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
 
     open override func unsetupView() {
         super.unsetupView()
+        unsetupTableView()
+    }
+    
+    open func unsetupTableView() {
         tableView?.dataSource = nil
         tableView?.delegate = nil
         tableView?.prefetchDataSource = nil
@@ -473,6 +481,8 @@ class UITableViewDelegateProxy: AUIScrollViewDelegateProxy, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
         delegate?.didEndDisplayingFooterInSection(section)
     }
+    
+    // MARK: - Drag and Drop Interaction
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return delegate?.canMoveRowAtIndexPath(indexPath) ?? false

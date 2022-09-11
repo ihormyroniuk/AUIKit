@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUITableViewController: AUIScrollViewController {
     
-    // MARK: UIPickerView
+    // MARK: - UITableView
   
     var tableView: UITableView? { get set }
     
@@ -23,11 +23,12 @@ public protocol AUITableViewController: AUIScrollViewController {
   
     func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController)
     
-    // MARK:
-    
-    var dragInteractionEnabled: Bool { get }
-    
     // MARK: Prefetching
     
     var isPrefetchingEnabled: Bool { get }
+    
+    // MARK: - Drag and Drop Interaction
+    
+    var dragInteractionEnabled: Bool { get }
+    
 }
