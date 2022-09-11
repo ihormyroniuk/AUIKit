@@ -47,29 +47,39 @@ final class TableViewScreenViewController: UIViewController {
         tableViewController.dragInteractionEnabled = true
         var cellControllers: [AUITableViewCellController] = []
         for i in 1...100 {
-            let cellConroller = AUIClosuresTableViewCellController()
-            cellConroller.cellForRowAtIndexPathClosure = { indexPath in
-                let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-                cell.textLabel?.text = "text #\(i)"
-                cell.detailTextLabel?.text = "detail #\(i)"
-                return cell
+            class CellController: AUIClosuresTableViewCellController {
+                
+                let i: Int
+                
+                init(i: Int) {
+                    self.i = i
+                    super.init()
+                }
+                
+                override func setupCell() {
+                    super.setupCell()
+                    cell?.textLabel?.text = "text #\(i)"
+                    cell?.detailTextLabel?.text = "detail #\(i)"
+                }
+                
             }
+            let cellConroller = CellController(i: i)
             cellConroller.estimatedHeightClosure = {
                 return 64
             }
             cellConroller.heightClosure = {
                 return 64
             }
-            cellConroller.willDisplayCellClosure = { cell in
+            cellConroller.willDisplay = {
                 print("willDisplayCellClosure #\(i)")
             }
-            cellConroller.didSelectClosure = { [weak self] in
+            cellConroller.didSelect = { [weak self] in
                 guard let self = self else { return }
                 self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
                     print("deleteCellControllerAnimated finished")
                 })
             }
-            cellConroller.didEndDisplayingCellClosure = {
+            cellConroller.didEndDisplaying = {
                 print("didEndDisplayingCellClosure #\(i)")
             }
             cellConroller.prefetchCellClosure = {

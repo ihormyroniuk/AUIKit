@@ -16,10 +16,9 @@ public protocol AUITableViewSectionController: AnyObject {
     var numberOfRows: Int { get }
     func prefetchCellAtIndex(_ index: Int)
     func cancelPrefetchingForCellAtIndex(_ index: Int)
-    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
     func estimatedHeightForCellAtIndex(_ index: Int) -> CGFloat
     func heightForCellAtIndex(_ index: Int) -> CGFloat
-    func willDisplayCell(_ cell: UITableViewCell, atIndex index: Int)
+    func willDisplayCell(atIndex index: Int)
     func didSelectCellAtIndex(_ index: Int)
     func didEndDisplayingCellAtIndex(index: Int)
     @available(iOS 11.0, *)

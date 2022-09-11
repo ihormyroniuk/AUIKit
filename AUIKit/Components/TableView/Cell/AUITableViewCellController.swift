@@ -1,19 +1,53 @@
 import UIKit
 
-public protocol AUITableViewCellController: AnyObject {
+public protocol AUITableViewCellController: AUIViewController {
+    
+    // MARK: - Prefetching
+    
     func prefetchCell()
+    
     func cancelPrefetchingForCell()
-    func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell
+    
+    // MARK: - Cell
+    
+    var cellType: UITableViewCell.Type { get }
+    
+    var cellIdentifier: String { get }
+    
+    var cell: UITableViewCell? { get set }
+    
+    // MARK: - Height
+    
     var estimatedHeight: CGFloat { get }
+    
     var height: CGFloat { get }
-    func willDisplayCell(_ cell: UITableViewCell)
+    
+    // MARK: - Events
+    
+    var willDisplay: (() -> Void)? { get set }
+    
+    func willDisplayCell()
+    
+    var didSelect: (() -> Void)? { get set }
+    
     func didSelectCell()
+    
+    var didEndDisplaying: (() -> Void)? { get set }
+    
     func didEndDisplayingCell()
+    
+    // MARK: - Swiping
+    
     @available(iOS 11.0, *)
     var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    
     @available(iOS 11.0, *)
     var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    
+    // MARK: - Moving
+    
     @available(iOS 11.0, *)
     func itemsForBeginning(session: UIDragSession) -> [UIDragItem]
+    
     var canMoveCell: Bool { get }
 }

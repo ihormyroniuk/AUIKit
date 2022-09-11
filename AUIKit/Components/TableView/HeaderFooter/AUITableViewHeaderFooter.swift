@@ -2,7 +2,7 @@ import UIKit
 
 open class AUITableViewHeaderFooter: UITableViewHeaderFooterView {
 
-    // MARK: Initializers
+    // MARK: - Initialization
   
     public override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -14,7 +14,7 @@ open class AUITableViewHeaderFooter: UITableViewHeaderFooterView {
         return nil
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
       

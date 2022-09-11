@@ -2,7 +2,7 @@ import UIKit
 
 open class AUITableView: UITableView {
   
-    // MARK: Initializer
+    // MARK: - Initialization
   
     public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -15,7 +15,7 @@ open class AUITableView: UITableView {
         setup()
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
 

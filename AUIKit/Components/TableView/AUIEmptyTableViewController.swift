@@ -138,7 +138,15 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
-        return sectionControllers[section].cellForRowAtIndexPath(indexPath)
+        let row = indexPath.row
+        let cellController = sectionControllers[section].cellControllers[row]
+        let cellType = cellController.cellType
+        let cellIdentifier = cellController.cellIdentifier
+        guard let tableView = tableView else { return UITableViewCell() }
+        tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        cellController.cell = cell
+        return cell
     }
   
     open func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
@@ -159,7 +167,11 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
         let section = indexPath.section
         let index = indexPath.row
-        return sectionControllers[section].willDisplayCell(cell, atIndex: index)
+        let cellController = sectionControllers[section].cellControllers[index]
+        if cellController.cell != cell {
+            cellController.cell = cell
+        }
+        return sectionControllers[section].willDisplayCell(atIndex: index)
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
@@ -176,6 +188,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
         let section = indexPath.section
         let index = indexPath.row
+        let cellController = sectionControllers[section].cellControllers[index]
+        cellController.cell = nil
         return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
     }
     

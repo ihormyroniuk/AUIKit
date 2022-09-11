@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterController {
   
-    // MARK: Initializer
+    // MARK: - Initialization
   
     public init() {
       
@@ -10,9 +10,11 @@ open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterCont
     
     // MARK: AUITableViewHeaderFooterController
   
-    open func view() -> UITableViewHeaderFooterView? {
+    open func headerFooter() -> UITableViewHeaderFooterView? {
         return UITableViewHeaderFooterView()
     }
+    
+    // MARK: - Height
   
     open var estimatedHeight: CGFloat {
         return 0
@@ -22,11 +24,17 @@ open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterCont
         return 0
     }
     
-    public func willDisplay() {
+    // MARK: - Events
+    
+    open var willDisplay: (() -> Void)?
+    
+    public func willDisplayHeaderFooter() {
         
     }
     
-    open func didEndDisplaying() {
+    open var didEndDisplaying: (() -> Void)?
+    
+    open func didEndDisplayingHeaderFooter() {
         
     }
   
