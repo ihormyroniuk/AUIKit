@@ -1,11 +1,15 @@
 import UIKit
 
-public protocol AUITableViewHeaderFooterController: AnyObject {
+public protocol AUITableViewHeaderFooterController: AUIViewController {
     
     // MARK: - UITableViewHeaderFooterView
     
-    func headerFooter() -> UITableViewHeaderFooterView?
+    var headerFooterType: UITableViewHeaderFooterView.Type { get }
     
+    var headerFooterIdentifier: String { get }
+    
+    var headerFooter: UITableViewHeaderFooterView? { get set }
+        
     // MARK: - Height
     
     var estimatedHeight: CGFloat { get }

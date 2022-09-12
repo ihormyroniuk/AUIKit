@@ -87,59 +87,86 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     open func numberOfSections() -> Int {
-        return sectionControllers.count
+        let numberOfSections = sectionControllers.count
+        return numberOfSections
     }
   
     // MARK: Headers
   
     open func headerInSection(_ section: Int) -> UIView? {
-        return sectionControllers[section].header()
+        let sectionController = sectionControllers[section]
+        guard let headerController = sectionController.headerController else { return nil }
+        guard let tableView = tableView else { return UITableViewCell() }
+        let headerType = headerController.headerFooterType
+        let headerIdentifier = headerController.headerFooterIdentifier
+        tableView.register(headerType, forHeaderFooterViewReuseIdentifier: headerIdentifier)
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier)
+        headerController.headerFooter = header
+        return header
     }
   
     open func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].headerEstimatedHeight
+        let sectionController = sectionControllers[section]
+        let headerController = sectionController.headerController
+        guard let estimatedHeight = headerController?.estimatedHeight else { return 0 }
+        return estimatedHeight
     }
   
     open func heightForHeaderInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].headerHeight
+        let sectionController = sectionControllers[section]
+        let headerController = sectionController.headerController
+        guard let height = headerController?.estimatedHeight else { return 0 }
+        return height
     }
   
     open func willDisplayHeaderViewForSection(_ section: Int) {
-        guard section < sectionControllers.count else { return }
-        sectionControllers[section].willDisplayHeader()
+        let sectionController = sectionControllers[section]
+        let headerController = sectionController.headerController
+        headerController?.willDisplayHeaderFooter()
     }
   
     open func didEndDisplayingHeaderInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
-        sectionControllers[section].didEndDisplayingHeader()
+        let sectionController = sectionControllers[section]
+        let headerController = sectionController.headerController
+        headerController?.didEndDisplayingHeaderFooter()
     }
   
     // MARK: Cells
     
     open func numberOfRowsInSection(_ section: Int) -> Int {
-        return sectionControllers[section].numberOfRows
+        let sectionController = sectionControllers[section]
+        let cellControllers = sectionController.cellControllers
+        let numberOfRows = cellControllers.count
+        return numberOfRows
     }
   
     open func prefetchRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let section = indexPath.section
-            let index = indexPath.row
-            sectionControllers[section].prefetchCellAtIndex(index)
+            let sectionController = sectionControllers[section]
+            let row = indexPath.row
+            let cellController = sectionController.cellControllers[row]
+            cellController.prefetchCell()
         }
     }
   
     open func cancelPrefetchingForRowsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
             let section = indexPath.section
-            let index = indexPath.row
-            sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
+            let sectionController = sectionControllers[section]
+            let row = indexPath.row
+            guard row < sectionController.cellControllers.count else { return }
+            let cellController = sectionController.cellControllers[row]
+            cellController.cancelPrefetchingForCell()
         }
     }
   
     open func cellForRowAtIndexPath(_ indexPath: IndexPath) -> UITableViewCell {
         let section = indexPath.section
+        let sectionController = sectionControllers[section]
         let row = indexPath.row
-        let cellController = sectionControllers[section].cellControllers[row]
+        let cellController = sectionController.cellControllers[row]
         guard let tableView = tableView else { return UITableViewCell() }
         let cellType = cellController.cellType
         let cellIdentifier = cellController.cellIdentifier
@@ -151,14 +178,20 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].estimatedHeightForCellAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        let estimatedHeight = cellController.estimatedHeight
+        return estimatedHeight
     }
   
     open func heightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].heightForCellAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        let height = cellController.estimatedHeight
+        return height
     }
   
     open func willDisplayCell(_ cell: UITableViewCell, atIndexPath indexPath: IndexPath) {
@@ -166,18 +199,21 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             deletedIndexPaths = deletedIndexPaths.filter({ $0 != indexPath })
         }
         let section = indexPath.section
-        let index = indexPath.row
-        let cellController = sectionControllers[section].cellControllers[index]
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
         if cellController.cell != cell {
             cellController.cell = cell
         }
-        return sectionControllers[section].willDisplayCell(atIndex: index)
+        return cellController.willDisplayCell()
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
         let section = indexPath.section
-        let index = indexPath.row
-        sectionControllers[section].didSelectCellAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        cellController.didSelectCell()
     }
   
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
@@ -187,37 +223,46 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             return
         }
         let section = indexPath.section
-        let index = indexPath.row
-        let cellController = sectionControllers[section].cellControllers[index]
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
         cellController.cell = nil
-        return sectionControllers[section].didEndDisplayingCellAtIndex(index: index)
+        cellController.didEndDisplayingCell()
     }
     
     @available(iOS 11.0, *)
     open func leadingSwipeActionsConfigurationForRowAtIndexPath(_ indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].leadingSwipeActionsConfigurationForRowAtIndexPath(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        return cellController.leadingSwipeActionsConfigurationForCell
     }
     
     @available(iOS 11.0, *)
     open func trailingSwipeActionsConfigurationForRowAtIndexPath(_ indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].trailingSwipeActionsConfigurationForRowAtIndexPath(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        return cellController.trailingSwipeActionsConfigurationForCell
     }
     
     func canMoveRowAtIndexPath(_ indexPath: IndexPath) -> Bool {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].canMoveRowAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        return cellController.canMoveCell
     }
     
     @available(iOS 11.0, *)
     open func itemsForBeginning(session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let section = indexPath.section
-        let index = indexPath.row
-        return sectionControllers[section].itemsForBeginning(session: session, at: index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        return cellController.itemsForBeginning(session: session)
     }
     
     open func targetIndexPathForMoveFromRowAt(sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
@@ -238,25 +283,43 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     // MARK: Footers
   
     open func footerInSection(_ section: Int) -> UIView? {
-        return sectionControllers[section].footer()
+        let sectionController = sectionControllers[section]
+        guard let footerController = sectionController.footerController else { return nil }
+        guard let tableView = tableView else { return UITableViewCell() }
+        let footerType = footerController.headerFooterType
+        let footerIdentifier = footerController.headerFooterIdentifier
+        tableView.register(footerType, forHeaderFooterViewReuseIdentifier: footerIdentifier)
+        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerIdentifier)
+        footerController.headerFooter = footer
+        return footer
     }
   
     open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].footerEstimatedHeight
+        let sectionController = sectionControllers[section]
+        let footerController = sectionController.footerController
+        guard let estimatedHeight = footerController?.estimatedHeight else { return 0 }
+        return estimatedHeight
     }
   
     open func heightForFooterInSection(_ section: Int) -> CGFloat {
-        return sectionControllers[section].footerHeight
+        let sectionController = sectionControllers[section]
+        let footerController = sectionController.footerController
+        guard let height = footerController?.height else { return 0 }
+        return height
     }
   
     open func willDisplayFooterViewForSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
-        sectionControllers[section].willDisplayFooter()
+        let sectionController = sectionControllers[section]
+        let footerController = sectionController.footerController
+        footerController?.willDisplayHeaderFooter()
     }
   
     open func didEndDisplayingFooterInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
-        sectionControllers[section].didEndDisplayingFooter()
+        let sectionController = sectionControllers[section]
+        let footerController = sectionController.footerController
+        footerController?.didEndDisplayingHeaderFooter()
     }
     
     // MARK: Reload
@@ -306,6 +369,26 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
         section.cellControllers.append(cellController)
         reload()
+    }
+    
+    open func insertSectionAtBeginning(_ sectionController: AUITableViewSectionController) {
+        sectionControllers.insert(sectionController, at: 0)
+        reload()
+    }
+    
+    open func insertSectionAtBeginningAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        sectionControllers.insert(sectionController, at: 0)
+        let sections: IndexSet = [0]
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertSections(sections, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
     }
     
     open func insertCellControllerAtSectionEndAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {

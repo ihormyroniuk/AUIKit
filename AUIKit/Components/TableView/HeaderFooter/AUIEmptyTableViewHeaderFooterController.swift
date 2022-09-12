@@ -1,17 +1,16 @@
 import UIKit
 
-open class AUIEmptyTableViewHeaderFooterController: AUITableViewHeaderFooterController {
+open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController {
   
-    // MARK: - Initialization
-  
-    public init() {
-      
-    }
-    
     // MARK: - UITableViewHeaderFooterView
   
-    open func headerFooter() -> UITableViewHeaderFooterView? {
-        return UITableViewHeaderFooterView()
+    open var headerFooterType: UITableViewHeaderFooterView.Type { return UITableViewHeaderFooterView.self }
+    
+    open var headerFooterIdentifier: String { return String(describing: headerFooterType.self) }
+    
+    open var headerFooter: UITableViewHeaderFooterView? {
+        set { view = newValue }
+        get { return view as? UITableViewHeaderFooterView }
     }
     
     // MARK: - Height
