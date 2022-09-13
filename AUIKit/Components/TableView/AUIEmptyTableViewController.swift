@@ -108,14 +108,18 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func estimatedHeightForHeaderInSection(_ section: Int) -> CGFloat {
         let sectionController = sectionControllers[section]
         let headerController = sectionController.headerController
-        guard let estimatedHeight = headerController?.estimatedHeight else { return 0 }
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        guard let estimatedHeight = headerController?.headerFooterEstimatedHeight(width) else { return .zero }
         return estimatedHeight
     }
   
     open func heightForHeaderInSection(_ section: Int) -> CGFloat {
         let sectionController = sectionControllers[section]
         let headerController = sectionController.headerController
-        guard let height = headerController?.estimatedHeight else { return 0 }
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        guard let height = headerController?.headerFooterHeight(width) else { return .zero }
         return height
     }
   
@@ -181,7 +185,9 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        let estimatedHeight = cellController.estimatedHeight
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        let estimatedHeight = cellController.cellEstimatedHeight(width)
         return estimatedHeight
     }
   
@@ -190,7 +196,9 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        let height = cellController.estimatedHeight
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        let height = cellController.cellHeight(width)
         return height
     }
   
@@ -297,14 +305,18 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     open func estimatedHeightForFooterInSection(_ section: Int) -> CGFloat {
         let sectionController = sectionControllers[section]
         let footerController = sectionController.footerController
-        guard let estimatedHeight = footerController?.estimatedHeight else { return 0 }
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        guard let estimatedHeight = footerController?.headerFooterEstimatedHeight(width) else { return 0 }
         return estimatedHeight
     }
   
     open func heightForFooterInSection(_ section: Int) -> CGFloat {
         let sectionController = sectionControllers[section]
         let footerController = sectionController.footerController
-        guard let height = footerController?.height else { return 0 }
+        guard let tableView = tableView else { return .zero }
+        let width = tableView.bounds.width
+        guard let height = footerController?.headerFooterHeight(width) else { return 0 }
         return height
     }
   

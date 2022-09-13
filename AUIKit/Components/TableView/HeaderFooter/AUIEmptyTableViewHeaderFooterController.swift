@@ -15,19 +15,19 @@ open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController {
     
     // MARK: - Height
   
-    open var estimatedHeight: CGFloat {
-        return 0
+    open func headerFooterEstimatedHeight(_ width: CGFloat) -> CGFloat {
+        return .zero
     }
-  
-    open var height: CGFloat {
-        return 0
+    
+    open func headerFooterHeight(_ width: CGFloat) -> CGFloat {
+        return .zero
     }
     
     // MARK: - Events
     
     open var willDisplay: (() -> Void)?
     
-    public func willDisplayHeaderFooter() {
+    open func willDisplayHeaderFooter() {
         
     }
     

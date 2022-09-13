@@ -43,11 +43,11 @@ open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableView
     
     // MARK: - Height
   
-    open var estimatedHeight: CGFloat {
+    open func cellEstimatedHeight(_ width: CGFloat) -> CGFloat {
         return 0
     }
-  
-    open var height: CGFloat {
+    
+    open func cellHeight(_ width: CGFloat) -> CGFloat {
         return 0
     }
     

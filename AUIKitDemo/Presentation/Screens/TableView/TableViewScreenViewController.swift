@@ -62,14 +62,16 @@ final class TableViewScreenViewController: UIViewController {
                     cell?.detailTextLabel?.text = "detail #\(i)"
                 }
                 
+                override func cellEstimatedHeight(_ width: CGFloat) -> CGFloat {
+                    return 64
+                }
+                
+                override func cellHeight(_ width: CGFloat) -> CGFloat {
+                    return 64
+                }
+                
             }
             let cellConroller = CellController(i: i)
-            cellConroller.estimatedHeightClosure = {
-                return 64
-            }
-            cellConroller.heightClosure = {
-                return 64
-            }
             cellConroller.willDisplay = {
                 print("willDisplayCellClosure #\(i)")
             }

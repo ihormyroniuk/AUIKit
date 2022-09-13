@@ -18,9 +18,9 @@ public protocol AUITableViewCellController: AUIViewController {
     
     // MARK: - Height
     
-    var estimatedHeight: CGFloat { get }
+    func cellEstimatedHeight(_ width: CGFloat) -> CGFloat
     
-    var height: CGFloat { get }
+    func cellHeight(_ width: CGFloat) -> CGFloat
     
     // MARK: - Events
     

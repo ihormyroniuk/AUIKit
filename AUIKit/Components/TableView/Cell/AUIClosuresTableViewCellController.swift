@@ -16,20 +16,6 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open override func cancelPrefetchingForCell() {
         cancelPrefetchingForCellClosure?()
     }
-  
-    // MARK: - Height
-  
-    open var estimatedHeightClosure: (() -> CGFloat)?
-    
-    open override var estimatedHeight: CGFloat {
-        return estimatedHeightClosure?() ?? super.estimatedHeight
-    }
-  
-    open var heightClosure: (() -> CGFloat)?
-    
-    open override var height: CGFloat {
-        return heightClosure?() ?? super.height
-    }
     
     // MARK: - Swiping
     

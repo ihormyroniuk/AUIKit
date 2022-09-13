@@ -12,9 +12,9 @@ public protocol AUITableViewHeaderFooterController: AUIViewController {
         
     // MARK: - Height
     
-    var estimatedHeight: CGFloat { get }
+    func headerFooterEstimatedHeight(_ width: CGFloat) -> CGFloat
     
-    var height: CGFloat { get }
+    func headerFooterHeight(_ width: CGFloat) -> CGFloat
     
     // MARK: - Events
     
