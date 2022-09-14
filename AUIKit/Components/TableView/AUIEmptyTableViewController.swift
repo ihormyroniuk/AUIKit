@@ -6,7 +6,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     private let tableViewDelegateProxy = UITableViewDelegateProxy()
     
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
