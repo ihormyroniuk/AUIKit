@@ -6,7 +6,7 @@ public protocol AUITextFieldCanPerformActionDelegate: AnyObject {
 
 open class AUITextField: UITextField {
   
-    // MARK: Initializers
+    // MARK: - Initialization
 
     public override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -18,7 +18,7 @@ open class AUITextField: UITextField {
         return nil
     }
 
-    // MARK: Setup
+    // MARK: - Setup
 
     open func setup() {
 
