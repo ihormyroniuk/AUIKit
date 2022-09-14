@@ -109,13 +109,6 @@ final class TableViewScreenViewController: UIViewController {
         let sectionController = AUIEmptyTableViewSectionController()
         sectionController.cellControllers = cellControllers
         tableViewController.insertSectionAtBeginning(sectionController)
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//            self.tableViewController.insertSectionAtBeginningAnimated(sectionController, .automatic) { success in
-//                print(success)
-//            }
-//        }
-        
-        //tableViewController.sectionControllers = [sectionController]
     }
 
     // MARK: Actions

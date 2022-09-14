@@ -7,9 +7,7 @@ public protocol AUITableViewController: AUIScrollViewController {
     var tableView: UITableView? { get set }
     
     // MARK: Sections
-    
-    var sectionControllers: [AUITableViewSectionController] { get set }
-    
+        
     func insertSectionAtBeginning(_ sectionController: AUITableViewSectionController)
     func insertSectionAtBeginningAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
     

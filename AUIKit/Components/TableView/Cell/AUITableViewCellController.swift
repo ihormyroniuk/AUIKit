@@ -39,10 +39,10 @@ public protocol AUITableViewCellController: AUIViewController {
     // MARK: - Swiping
     
     @available(iOS 11.0, *)
-    var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    var cellLeadingSwipeActionsConfiguration: UISwipeActionsConfiguration? { get }
     
     @available(iOS 11.0, *)
-    var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? { get }
+    var cellTrailingSwipeActionsConfiguration: UISwipeActionsConfiguration? { get }
     
     // MARK: - Moving
     

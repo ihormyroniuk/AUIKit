@@ -77,12 +77,12 @@ open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableView
     // MARK: - Swiping
     
     @available(iOS 11.0, *)
-    open var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+    open var cellLeadingSwipeActionsConfiguration: UISwipeActionsConfiguration? {
         return nil
     }
     
     @available(iOS 11.0, *)
-    open var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+    open var cellTrailingSwipeActionsConfiguration: UISwipeActionsConfiguration? {
         return nil
     }
     

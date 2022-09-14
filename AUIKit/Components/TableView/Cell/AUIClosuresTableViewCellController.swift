@@ -22,14 +22,14 @@ open class AUIClosuresTableViewCellController: AUIEmptyTableViewCellController {
     open var leadingSwipeActionsConfigurationForCellClosure: (() -> UISwipeActionsConfiguration?)?
     
     @available(iOS 11.0, *)
-    open override var leadingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+    open override var cellLeadingSwipeActionsConfiguration: UISwipeActionsConfiguration? {
         return leadingSwipeActionsConfigurationForCellClosure?()
     }
     
     open var trailingSwipeActionsConfigurationForCellClosure: (() -> UISwipeActionsConfiguration?)?
     
     @available(iOS 11.0, *)
-    open override var trailingSwipeActionsConfigurationForCell: UISwipeActionsConfiguration? {
+    open override var cellTrailingSwipeActionsConfiguration: UISwipeActionsConfiguration? {
         return trailingSwipeActionsConfigurationForCellClosure?()
     }
     

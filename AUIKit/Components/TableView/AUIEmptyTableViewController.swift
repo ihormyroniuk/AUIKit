@@ -244,7 +244,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        return cellController.leadingSwipeActionsConfigurationForCell
+        let cellLeadingSwipeActionsConfiguration = cellController.cellLeadingSwipeActionsConfiguration
+        return cellLeadingSwipeActionsConfiguration
     }
     
     @available(iOS 11.0, *)
@@ -253,7 +254,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        return cellController.trailingSwipeActionsConfigurationForCell
+        let cellTrailingSwipeActionsConfiguration = cellController.cellTrailingSwipeActionsConfiguration
+        return cellTrailingSwipeActionsConfiguration
     }
     
     func canMoveRowAtIndexPath(_ indexPath: IndexPath) -> Bool {
@@ -261,7 +263,8 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        return cellController.canMoveCell
+        let canMoveCell = cellController.canMoveCell
+        return canMoveCell
     }
     
     @available(iOS 11.0, *)
