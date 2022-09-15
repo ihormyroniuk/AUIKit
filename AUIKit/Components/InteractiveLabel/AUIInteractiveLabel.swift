@@ -6,12 +6,12 @@ public extension NSAttributedString.Key {
 
 open class AUIInteractiveLabel: AUIControl {
     
-    // MARK: Subviews
+    // MARK: - Subviews
 
     private let button: UIButton = UIButton()
     private let label: UILabel = UILabel()
 
-    // MARK: Setup
+    // MARK: - Setup
 
     open override func setup() {
         super.setup()

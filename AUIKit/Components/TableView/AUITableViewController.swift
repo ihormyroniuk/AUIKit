@@ -34,10 +34,10 @@ public protocol AUITableViewController: AUIScrollViewController {
     
     func deleteCellController(_ cellController: AUITableViewCellController)
     
+    func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
     func deleteCellControllers(_ cellControllers: [AUITableViewCellController])
   
     func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
-    
-    func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
     
 }

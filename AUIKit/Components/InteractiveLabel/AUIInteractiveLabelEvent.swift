@@ -5,7 +5,7 @@ open class AUIInteractiveLabelEvent: UIEvent {
     public let event: UIEvent
     public let interaction: Any
     
-    // MARK: Initialzer
+    // MARK: Initialization
     
     public init(event: UIEvent, interaction: Any) {
         self.event = event
@@ -13,7 +13,7 @@ open class AUIInteractiveLabelEvent: UIEvent {
         super.init()
     }
     
-    // MARK: UIEvent
+    // MARK: - UIEvent
     
     @available(iOS 3.0, *)
     open override var type: UIEvent.EventType {

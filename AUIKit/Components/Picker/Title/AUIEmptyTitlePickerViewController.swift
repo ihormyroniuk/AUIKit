@@ -21,7 +21,7 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
         return titleComponentControllers
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
