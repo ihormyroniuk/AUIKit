@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIScreenViewController: UIViewController {
   
-    // MARK: Initializers
+    // MARK: - Initialization
   
     public init() {
         super.init(nibName: nil, bundle: nil)
@@ -14,7 +14,7 @@ open class AUIScreenViewController: UIViewController {
         return nil
     }
   
-    // MARK: Setup
+    // MARK: - Setup
   
     open func setup() {
     

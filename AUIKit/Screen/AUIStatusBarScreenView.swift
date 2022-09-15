@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIStatusBarScreenView: AUIView {
   
-    // MARK: Elements
+    // MARK: - Subviews
   
     public let statusBarView: UIView
   
@@ -13,7 +13,7 @@ open class AUIStatusBarScreenView: AUIView {
         super.init(frame: frame)
     }
 
-    // MARK: Setup
+    // MARK: - Setup
   
     open override func setup() {
         super.setup()
@@ -25,7 +25,7 @@ open class AUIStatusBarScreenView: AUIView {
         
     }
   
-    // MARK: Layout
+    // MARK: - Layout
   
     open override func layoutSubviews() {
         super.layoutSubviews()
