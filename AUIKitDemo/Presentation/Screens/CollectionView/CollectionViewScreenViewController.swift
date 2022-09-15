@@ -34,7 +34,7 @@ final class CollectionViewScreenViewController: UIViewController {
     }
     
     private func setupTableViewController() {
-        collectionViewController.scrollViewDidScrollClosure = {
+        collectionViewController.didScroll = {
             print("ggggg")
         }
         collectionViewController.collectionView = collectionViewScreenView.collectionView

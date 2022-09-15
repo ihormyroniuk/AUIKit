@@ -21,15 +21,18 @@ public protocol AUITextViewController: AUIScrollViewController {
     // MARK: - Keyboard
     
     var keyboardType: UIKeyboardType { get set }
+    
     var returnKeyType: UIReturnKeyType { get set }
+    
     var autocorrectionType: UITextAutocorrectionType { get set }
+    
     var autocapitalizationType: UITextAutocapitalizationType { get set }
     
     // MARK: - Security
     
     var isSecureTextEntry: Bool { get set }
     
-    // MARK: - Events
+    // MARK: - Editing
   
     var didChangeText: (() -> Void)? { get set }
     

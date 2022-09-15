@@ -294,22 +294,22 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
 }
 
-private class UICollectionViewProxyDelegate: AUIScrollViewDelegateProxy, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
+private class UICollectionViewProxyDelegate: NSObject, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidScrollClosure?()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidScroll()
     }
     
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidEndScrollingAnimationClosure?()
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidEndScrollingAnimation()
     }
     
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        delegate?.scrollViewDidEndDraggingClosure?(decelerate)
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        delegate?.scrollViewDidEndDragging(decelerate: decelerate)
     }
     
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidEndDeceleratingClosure?()
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        delegate?.scrollViewDidEndDecelerating()
     }
       
     weak var delegate: AUIEmptyCollectionViewController?

@@ -6,7 +6,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open override func setup() {
         super.setup()
-        tableViewDelegateProxy.delegate = self
+        tableViewDelegateProxy.emptyTableViewController = self
     }
     
     // MARK: - UITableView
@@ -352,20 +352,12 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
-        if section.cellControllers.isEmpty {
-            section.cellControllers.append(cellController)
-        } else {
-            section.cellControllers.insert(cellController, at: 0)
-        }
+        section.cellControllers.insert(cellController, at: 0)
         reload()
     }
     
     open func insertCellControllerAtSectionBeginningAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
-        if section.cellControllers.isEmpty {
-            section.cellControllers.append(cellController)
-        } else {
-            section.cellControllers.insert(cellController, at: 0)
-        }
+        section.cellControllers.insert(cellController, at: 0)
         let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
         let indexPaths = indexPathsBySections.values.reduce([], +)
         if #available(iOS 11.0, *) {
@@ -467,143 +459,145 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     
 }
 
-class UITableViewDelegateProxy: AUIScrollViewDelegateProxy, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
+private class UITableViewDelegateProxy: NSObject, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching, UITableViewDragDelegate {
       
-    weak var delegate: AUIEmptyTableViewController?
-      
+    weak var emptyTableViewController: AUIEmptyTableViewController?
+    
+    // MARK: - UIScrollViewDelegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        emptyTableViewController?.scrollViewDidScroll()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        emptyTableViewController?.scrollViewDidEndScrollingAnimation()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        emptyTableViewController?.scrollViewWillBeginDragging()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        emptyTableViewController?.scrollViewDidEndDragging(decelerate: decelerate)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        emptyTableViewController?.scrollViewDidEndDecelerating()
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return delegate?.numberOfSections() ?? 0
-    }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidScrollClosure?()
-    }
-    
-    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidEndScrollingAnimationClosure?()
-    }
-    
-    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        delegate?.scrollViewWillBeginDraggingClosure?()
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        delegate?.scrollViewDidEndDraggingClosure?(decelerate)
-    }
-    
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidEndDeceleratingClosure?()
+        return emptyTableViewController?.numberOfSections() ?? 0
     }
       
     // MARK: Headers
       
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return delegate?.headerInSection(section)
+        return emptyTableViewController?.headerInSection(section)
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return delegate?.estimatedHeightForHeaderInSection(section) ?? 0
+        return emptyTableViewController?.estimatedHeightForHeaderInSection(section) ?? 0
     }
       
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return delegate?.heightForHeaderInSection(section) ?? 0
+        return emptyTableViewController?.heightForHeaderInSection(section) ?? 0
     }
       
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        delegate?.willDisplayHeaderViewForSection(section)
+        emptyTableViewController?.willDisplayHeaderViewForSection(section)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        delegate?.didEndDisplayingHeaderInSection(section)
+        emptyTableViewController?.didEndDisplayingHeaderInSection(section)
     }
       
     // MARK: Cells
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return delegate?.numberOfRowsInSection(section) ?? 0
+        return emptyTableViewController?.numberOfRowsInSection(section) ?? 0
     }
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        delegate?.prefetchRowsAtIndexPaths(indexPaths)
+        emptyTableViewController?.prefetchRowsAtIndexPaths(indexPaths)
     }
       
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        delegate?.cancelPrefetchingForRowsAtIndexPaths(indexPaths)
+        emptyTableViewController?.cancelPrefetchingForRowsAtIndexPaths(indexPaths)
     }
       
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return delegate?.cellForRowAtIndexPath(indexPath) ?? UITableViewCell()
+        return emptyTableViewController?.cellForRowAtIndexPath(indexPath) ?? UITableViewCell()
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return delegate?.estimatedHeightForCellAtIndexPath(indexPath) ?? 44
+        return emptyTableViewController?.estimatedHeightForCellAtIndexPath(indexPath) ?? 44
     }
       
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return delegate?.heightForCellAtIndexPath(indexPath) ?? UITableView.automaticDimension
+        return emptyTableViewController?.heightForCellAtIndexPath(indexPath) ?? UITableView.automaticDimension
     }
       
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        delegate?.willDisplayCell(cell, atIndexPath: indexPath)
+        emptyTableViewController?.willDisplayCell(cell, atIndexPath: indexPath)
     }
       
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectCellAtIndexPath(indexPath)
+        emptyTableViewController?.didSelectCellAtIndexPath(indexPath)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        delegate?.didEndDisplayingCellAtIndexPath(indexPath)
+        emptyTableViewController?.didEndDisplayingCellAtIndexPath(indexPath)
     }
     
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return delegate?.leadingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
+        return emptyTableViewController?.leadingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
     }
     
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        return delegate?.trailingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
+        return emptyTableViewController?.trailingSwipeActionsConfigurationForRowAtIndexPath(indexPath)
     }
     
     // MARK: Footers
       
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return delegate?.footerInSection(section)
+        return emptyTableViewController?.footerInSection(section)
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return delegate?.estimatedHeightForFooterInSection(section) ?? 0
+        return emptyTableViewController?.estimatedHeightForFooterInSection(section) ?? 0
     }
       
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return delegate?.heightForFooterInSection(section) ?? 0
+        return emptyTableViewController?.heightForFooterInSection(section) ?? 0
     }
       
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        delegate?.willDisplayFooterViewForSection(section)
+        emptyTableViewController?.willDisplayFooterViewForSection(section)
     }
       
     func tableView(_ tableView: UITableView, didEndDisplayingFooterView view: UIView, forSection section: Int) {
-        delegate?.didEndDisplayingFooterInSection(section)
+        emptyTableViewController?.didEndDisplayingFooterInSection(section)
     }
     
-    // MARK: - Drag and Drop Interaction
+    // MARK: - UITableViewDragDelegate
     
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        return delegate?.canMoveRowAtIndexPath(indexPath) ?? false
+        return emptyTableViewController?.canMoveRowAtIndexPath(indexPath) ?? false
     }
     
     @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        return delegate?.itemsForBeginning(session: session, at: indexPath) ?? []
+        return emptyTableViewController?.itemsForBeginning(session: session, at: indexPath) ?? []
     }
     
     func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
-        return delegate?.targetIndexPathForMoveFromRowAt(sourceIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) ?? sourceIndexPath
+        return emptyTableViewController?.targetIndexPathForMoveFromRowAt(sourceIndexPath: sourceIndexPath, toProposedIndexPath: proposedDestinationIndexPath) ?? sourceIndexPath
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        delegate?.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
+        emptyTableViewController?.moveRowAt(sourceIndexPath: sourceIndexPath, to: destinationIndexPath)
     }
     
 }

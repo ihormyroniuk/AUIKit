@@ -34,10 +34,10 @@ final class TableViewScreenViewController: UIViewController {
 //        tableViewController.scrollViewDidScrollClosure = {
 //            print("fffff")
 //        }
-        tableViewController.scrollViewDidEndScrollingAnimationClosure = {
+        tableViewController.didEndScrollingAnimation = {
             print("scrollViewDidEndScrollingAnimationClosure")
         }
-        tableViewController.scrollViewWillBeginDraggingClosure = {
+        tableViewController.didEndDecelerating = {
             print("scrollViewWillBeginDraggingClosure")
         }
     }
