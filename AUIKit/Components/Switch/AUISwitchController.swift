@@ -2,12 +2,14 @@ import UIKit
 
 public protocol AUISwitchController: AUIControlController {
 
-    // MARK: - Switch
+    // MARK: - UISwitch
   
     var `switch`: UISwitch? { get set }
   
-    // MARK: State
+    // MARK: - State
   
-    var state: Bool { get set }
+    var state: Bool { get }
+    
+    func setState(_ state: Bool, animated: Bool)
   
 }

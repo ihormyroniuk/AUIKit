@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptySwitchController: AUIEmptyControlController, AUISwitchController {
 
-    // MARK: View
+    // MARK: - UISwitch
   
     open var `switch`: UISwitch? {
         set { view = newValue }
@@ -15,11 +15,22 @@ open class AUIEmptySwitchController: AUIEmptyControlController, AUISwitchControl
     }
   
     // MARK: State
-  
-    open var state: Bool = false {
-        didSet { didSetState(oldValue: oldValue) }
+    
+    private var _state: Bool = false
+    public var state: Bool {
+        return _state
     }
-    open func didSetState(oldValue: Bool?) {
-        `switch`?.setOn(state, animated: true)
+    
+    public func setState(_ state: Bool, animated: Bool) {
+        let oldValue = _state
+        _state = state
+        didSetState(oldValue, animated: animated)
+    }
+    
+    open func didSetState(_ oldValue: Bool, animated: Bool) {
+        if oldValue != state {
+            `switch`?.setOn(state, animated: animated)
+            controlValueChangedEventAction()
+        }
     }
 }
