@@ -102,7 +102,6 @@
 		C541D54124C4E3230036FC7A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C541D54024C4E3230036FC7A /* main.swift */; };
 		C543BB93228D7C58003BDED3 /* AUIResponsiveTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */; };
 		C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BB022A91B75003DE568 /* AUIApplication.swift */; };
-		C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */; };
 		C5443BCD22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */; };
 		C5443BCF22A9624D003DE568 /* UIColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5443BCE22A9624D003DE568 /* UIColor+RGBA.swift */; };
 		C544776F225CC962002BE89F /* AUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C544776E225CC962002BE89F /* AUITabBarController.swift */; };
@@ -174,6 +173,7 @@
 		C591DAEC2788C13F00741F54 /* AUICollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEB2788C13F00741F54 /* AUICollectionViewCellController.swift */; };
 		C591DAEE2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */; };
 		C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */; };
+		C593A82128D46E7900FA6400 /* AUIAutoLayoutScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */; };
 		C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */; };
 		C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */; };
 		C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */; };
@@ -332,7 +332,6 @@
 		C541D54024C4E3230036FC7A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C543BB92228D7C58003BDED3 /* AUIResponsiveTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveTextInputView.swift; sourceTree = "<group>"; };
 		C5443BB022A91B75003DE568 /* AUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIApplication.swift; sourceTree = "<group>"; };
-		C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
 		C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutTopAlignedContentViewScrollView.swift; sourceTree = "<group>"; };
 		C5443BCE22A9624D003DE568 /* UIColor+RGBA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGBA.swift"; sourceTree = "<group>"; };
 		C544776E225CC962002BE89F /* AUITabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITabBarController.swift; sourceTree = "<group>"; };
@@ -404,6 +403,7 @@
 		C591DAEB2788C13F00741F54 /* AUICollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresCollectionViewCellController.swift; sourceTree = "<group>"; };
+		C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutScrollView.swift; sourceTree = "<group>"; };
 		C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextViewTextInputView.swift; sourceTree = "<group>"; };
 		C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenViewController.swift; sourceTree = "<group>"; };
 		C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenView.swift; sourceTree = "<group>"; };
@@ -884,7 +884,7 @@
 				C53AEB4E2195FA280087F0A2 /* AUIScrollViewController.swift */,
 				C53AEB4A2195FA280087F0A2 /* AUIEmptyScrollViewController.swift */,
 				C53AEB4F2195FA280087F0A2 /* AUIScrollView.swift */,
-				C5443BC722A955C7003DE568 /* AutoLayoutAlignedContentView */,
+				C593A82228D470C900FA6400 /* AutoLayout */,
 			);
 			path = ScrollView;
 			sourceTree = "<group>";
@@ -912,7 +912,6 @@
 		C5443BC722A955C7003DE568 /* AutoLayoutAlignedContentView */ = {
 			isa = PBXGroup;
 			children = (
-				C5443BCA22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift */,
 				C5443BCC22A956F7003DE568 /* AUIAutoLayoutTopAlignedContentViewScrollView.swift */,
 				C540178022B403D500381918 /* AUIAutoLayoutBottomAlignedContentViewScrollView.swift */,
 			);
@@ -1241,6 +1240,15 @@
 			path = Section;
 			sourceTree = "<group>";
 		};
+		C593A82228D470C900FA6400 /* AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */,
+				C5443BC722A955C7003DE568 /* AutoLayoutAlignedContentView */,
+			);
+			path = AutoLayout;
+			sourceTree = "<group>";
+		};
 		C5A7F8F427B83AD100F71286 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1517,6 +1525,7 @@
 				C563EC9B28B2CE67001C7CFD /* AUIEmptyApplicationSupportingRemoteNotifications.swift in Sources */,
 				C5527C7E21F073280098D498 /* AUIDateTimePickerController.swift in Sources */,
 				C53AEB142195DBE30087F0A2 /* AUIEmptyImageViewController.swift in Sources */,
+				C593A82128D46E7900FA6400 /* AUIAutoLayoutScrollView.swift in Sources */,
 				C53F8ED321FBB7CB0019C79E /* AUITextFieldTextInputViewController.swift in Sources */,
 				C525D82621996AF20057E69F /* AUIEmptyControlController.swift in Sources */,
 				C53AEAE62195B01C0087F0A2 /* AUIViewController.swift in Sources */,
@@ -1570,7 +1579,6 @@
 				C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */,
 				C53AEB062195D9710087F0A2 /* AUIToolbar.swift in Sources */,
 				C55B80AC221D83AC003D84C1 /* AUIEmptySegmentedControlController.swift in Sources */,
-				C5443BCB22A9568A003DE568 /* AUIAutoLayoutAlignedContentViewScrollView.swift in Sources */,
 				3384096B239166570094A920 /* AUIMultipleTextInputValidator.swift in Sources */,
 				C53AEB332195DD1B0087F0A2 /* AUITitlePickerViewComponentController.swift in Sources */,
 				C55EFF7F224537C80086A8CA /* AUISwitchController.swift in Sources */,
@@ -1712,7 +1720,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4U9YFW795;
+				DEVELOPMENT_TEAM = 9R8XNB4KQ9;
 				INFOPLIST_FILE = AUIKitUnitTesting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1731,7 +1739,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M4U9YFW795;
+				DEVELOPMENT_TEAM = 9R8XNB4KQ9;
 				INFOPLIST_FILE = AUIKitUnitTesting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1874,9 +1882,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = M4U9YFW795;
+				DEVELOPMENT_TEAM = 9R8XNB4KQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1900,9 +1909,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = M4U9YFW795;
+				DEVELOPMENT_TEAM = 9R8XNB4KQ9;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

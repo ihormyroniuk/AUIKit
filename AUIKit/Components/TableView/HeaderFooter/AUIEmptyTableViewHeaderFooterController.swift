@@ -1,6 +1,6 @@
 import UIKit
 
-open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController {
+open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController, AUITableViewHeaderFooterController {
   
     // MARK: - UITableViewHeaderFooterView
   
@@ -11,6 +11,24 @@ open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController {
     open var headerFooter: UITableViewHeaderFooterView? {
         set { view = newValue }
         get { return view as? UITableViewHeaderFooterView }
+    }
+    
+    open override func setupView() {
+        super.setupView()
+        setupHeaderFooterView()
+    }
+  
+    open func setupHeaderFooterView() {
+        
+    }
+  
+    open override func unsetupView() {
+        super.unsetupView()
+        unsetupHeaderFooterView()
+    }
+  
+    open func unsetupHeaderFooterView() {
+    
     }
     
     // MARK: - Height

@@ -351,6 +351,26 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
+    open func insertSectionsAtBeginning(_ sectionControllers: [AUITableViewSectionController]) {
+        self.sectionControllers.insert(contentsOf: sectionControllers, at: 0)
+        reload()
+    }
+    
+    open func insertSectionsAtBeginningAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        self.sectionControllers.insert(contentsOf: sectionControllers, at: 0)
+        let sections: IndexSet = IndexSet(integersIn: 0..<sectionControllers.count)
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertSections(sections, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
     open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
         section.cellControllers.insert(cellController, at: 0)
         reload()

@@ -45,70 +45,53 @@ final class TableViewScreenViewController: UIViewController {
     private func setupTableViewController() {
         tableViewController.tableView = tableViewScreenView.tableView
         tableViewController.dragInteractionEnabled = true
-        var cellControllers: [AUITableViewCellController] = []
-        for i in 1...100 {
-            class CellController: AUIClosuresTableViewCellController {
-                
-                let i: Int
-                
-                init(i: Int) {
-                    self.i = i
-                    super.init()
+        var sectionControllers: [AUITableViewSectionController] = []
+        for section in 1...10 {
+            let sectionController = AUIEmptyTableViewSectionController()
+            var cellControllers: [AUITableViewCellController] = []
+            for row in 1...10 {
+                let cellConroller = CellController(i: row)
+                cellConroller.willDisplay = {
+                    print("willDisplayCellClosure #\(row)")
                 }
-                
-                override func setupCell() {
-                    super.setupCell()
-                    cell?.textLabel?.text = "text #\(i)"
-                    cell?.detailTextLabel?.text = "detail #\(i)"
-                }
-                
-                override func cellEstimatedHeight(_ width: CGFloat) -> CGFloat {
-                    return 64
-                }
-                
-                override func cellHeight(_ width: CGFloat) -> CGFloat {
-                    return 64
-                }
-                
-            }
-            let cellConroller = CellController(i: i)
-            cellConroller.willDisplay = {
-                print("willDisplayCellClosure #\(i)")
-            }
-            cellConroller.didSelect = { [weak self] in
-                guard let self = self else { return }
-                self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
-                    print("deleteCellControllerAnimated finished")
-                })
-            }
-            cellConroller.didEndDisplaying = {
-                print("didEndDisplayingCellClosure #\(i)")
-            }
-            cellConroller.prefetchCellClosure = {
-                print("prefetchCellClosure #\(i)")
-            }
-            cellConroller.cancelPrefetchingForCellClosure = {
-                print("cancelPrefetchingForCellClosure #\(i)")
-            }
-            cellConroller.trailingSwipeActionsConfigurationForCellClosure = {
-                let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] contextualAction, view, completion in
+                cellConroller.didSelect = { [weak self] in
                     guard let self = self else { return }
-                    self.tableViewController.deleteCellControllerAnimated(cellConroller, .right, completion: { finished in
-                        completion(false)
+                    self.tableViewController.deleteCellControllerAnimated(cellConroller, .fade, completion: { finished in
+                        print("deleteCellControllerAnimated finished")
                     })
                 }
-                let configuration = UISwipeActionsConfiguration(actions: [deleteContextualAction])
-                configuration.performsFirstActionWithFullSwipe = true
-                return configuration
+                cellConroller.didEndDisplaying = {
+                    print("didEndDisplayingCellClosure #\(row)")
+                }
+                cellConroller.prefetchCellClosure = {
+                    print("prefetchCellClosure #\(row)")
+                }
+                cellConroller.cancelPrefetchingForCellClosure = {
+                    print("cancelPrefetchingForCellClosure #\(row)")
+                }
+                cellConroller.trailingSwipeActionsConfigurationForCellClosure = {
+                    let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] contextualAction, view, completion in
+                        guard let self = self else { return }
+                        self.tableViewController.deleteCellControllerAnimated(cellConroller, .right, completion: { finished in
+                            completion(false)
+                        })
+                    }
+                    let configuration = UISwipeActionsConfiguration(actions: [deleteContextualAction])
+                    configuration.performsFirstActionWithFullSwipe = true
+                    return configuration
+                }
+                cellConroller.canMoveCellClosure = {
+                    return true
+                }
+                cellControllers.append(cellConroller)
             }
-            cellConroller.canMoveCellClosure = {
-                return true
-            }
-            cellControllers.append(cellConroller)
+            let headerController = TableViewSectionHeaderController(i: section)
+            sectionController.headerController = headerController
+            sectionController.cellControllers = cellControllers
+            sectionControllers.append(sectionController)
         }
-        let sectionController = AUIEmptyTableViewSectionController()
-        sectionController.cellControllers = cellControllers
-        tableViewController.insertSectionAtBeginning(sectionController)
+        
+        tableViewController.insertSectionsAtBeginning(sectionControllers)
     }
 
     // MARK: Actions
@@ -123,4 +106,79 @@ final class TableViewScreenViewController: UIViewController {
         tableViewScreenView.titleLabel.text = "TableView"
     }
     
+}
+
+class TableViewSectionHeaderController: AUIEmptyTableViewHeaderFooterController {
+    
+    let i: Int
+    
+    init(i: Int) {
+        self.i = i
+        super.init()
+    }
+    
+    override var headerFooterType: UITableViewHeaderFooterView.Type { return Header.self }
+    
+    override func setupHeaderFooterView() {
+        super.setupHeaderFooterView()
+        
+    }
+    
+    override func headerFooterEstimatedHeight(_ width: CGFloat) -> CGFloat {
+        return 120
+    }
+    
+    override func headerFooterHeight(_ width: CGFloat) -> CGFloat {
+        return 120
+    }
+    
+}
+
+extension TableViewSectionHeaderController {
+class Header: AUITableViewHeaderFooter {
+    
+    // MARK: - Subviews
+    
+    // MARK: - Setup
+    
+    override func setup() {
+        super.setup()
+        contentView.backgroundColor = .lightGray
+        backgroundColor = .lightGray
+    }
+    
+}
+}
+
+extension TableViewScreenViewController {
+class CellController: AUIClosuresTableViewCellController {
+    
+    let i: Int
+    
+    init(i: Int) {
+        self.i = i
+        super.init()
+    }
+    
+    override func setupCell() {
+        super.setupCell()
+        cell?.textLabel?.text = "text #\(i)"
+        cell?.detailTextLabel?.text = "detail #\(i)"
+    }
+    
+    override func cellEstimatedHeight(_ width: CGFloat) -> CGFloat {
+        return 64
+    }
+    
+    override func cellHeight(_ width: CGFloat) -> CGFloat {
+        return 64
+    }
+    
+}
+}
+
+extension TableViewScreenViewController.CellController {
+class Cell: AUITableViewCell {
+    
+}
 }

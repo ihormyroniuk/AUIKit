@@ -19,6 +19,10 @@ public protocol AUITableViewController: AUIScrollViewController {
     func insertSectionAtBeginning(_ sectionController: AUITableViewSectionController)
     
     func insertSectionAtBeginningAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
+    func insertSectionsAtBeginning(_ sectionControllers: [AUITableViewSectionController])
+    
+    func insertSectionsAtBeginningAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
 
     func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController)
     
