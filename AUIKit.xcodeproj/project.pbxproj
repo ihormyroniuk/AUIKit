@@ -174,6 +174,8 @@
 		C591DAEE2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */; };
 		C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */; };
 		C593A82128D46E7900FA6400 /* AUIAutoLayoutScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */; };
+		C59E0A0228D4CFC100AE70C6 /* TableViewScreenCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E0A0128D4CFC100AE70C6 /* TableViewScreenCellController.swift */; };
+		C59E0A0428D4CFF800AE70C6 /* TableViewScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E0A0328D4CFF800AE70C6 /* TableViewScreenCell.swift */; };
 		C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */; };
 		C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */; };
 		C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */; };
@@ -404,6 +406,8 @@
 		C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutScrollView.swift; sourceTree = "<group>"; };
+		C59E0A0128D4CFC100AE70C6 /* TableViewScreenCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenCellController.swift; sourceTree = "<group>"; };
+		C59E0A0328D4CFF800AE70C6 /* TableViewScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenCell.swift; sourceTree = "<group>"; };
 		C59E4C4524DD52CE000FCA59 /* SignupTextViewTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupTextViewTextInputView.swift; sourceTree = "<group>"; };
 		C5A7F8F527B83B0800F71286 /* CollectionViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenViewController.swift; sourceTree = "<group>"; };
 		C5A7F8F727B83B1800F71286 /* CollectionViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewScreenView.swift; sourceTree = "<group>"; };
@@ -1177,6 +1181,7 @@
 			children = (
 				C58D6D5B277521650069520F /* TableViewScreenViewController.swift */,
 				C58D6D5D277521760069520F /* TableViewScreenView.swift */,
+				C59E0A0028D4CFA000AE70C6 /* Cell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -1247,6 +1252,15 @@
 				C5443BC722A955C7003DE568 /* AutoLayoutAlignedContentView */,
 			);
 			path = AutoLayout;
+			sourceTree = "<group>";
+		};
+		C59E0A0028D4CFA000AE70C6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C59E0A0128D4CFC100AE70C6 /* TableViewScreenCellController.swift */,
+				C59E0A0328D4CFF800AE70C6 /* TableViewScreenCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C5A7F8F427B83AD100F71286 /* CollectionView */ = {
@@ -1656,6 +1670,7 @@
 				C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */,
 				C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */,
 				C520EC7724CF310A00BF26D6 /* TextFieldTextInputView.swift in Sources */,
+				C59E0A0228D4CFC100AE70C6 /* TableViewScreenCellController.swift in Sources */,
 				C5841DBD24D93C980059D557 /* SignupScreenView.swift in Sources */,
 				C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */,
 				C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */,
@@ -1677,6 +1692,7 @@
 				C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */,
 				C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,
+				C59E0A0428D4CFF800AE70C6 /* TableViewScreenCell.swift in Sources */,
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
 				C56360AD261669CE0012C419 /* ScrollPagesScreenViewController.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
