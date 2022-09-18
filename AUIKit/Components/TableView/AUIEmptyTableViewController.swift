@@ -323,10 +323,15 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     // MARK: - Reloading
-  
+    
     open func reload() {
         deletedIndexPaths = tableView?.indexPathsForVisibleRows ?? []
         tableView?.reloadData()
+    }
+    
+    open func reloadSection(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController]) {
+        sectionController.cellControllers = cellControllers
+        reload()
     }
     
     // MARK: - Inserting
