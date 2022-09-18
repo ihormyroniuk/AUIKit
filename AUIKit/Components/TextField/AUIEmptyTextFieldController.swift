@@ -50,7 +50,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.removeObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, context: nil)
     }
     
-    // MARK: - Input Accessory View Controller
+    // MARK: - InputAccessoryViewController
   
     open var inputAccessoryViewController: AUIViewController? {
         didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
@@ -60,7 +60,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         inputAccessoryViewController?.view = textField?.inputAccessoryView
     }
   
-    // MARK: - Input View Controller
+    // MARK: - InputViewController
   
     open var inputViewController: AUIViewController? {
         didSet { didSetInputViewController(oldValue: oldValue) }
@@ -165,9 +165,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     open func didSetShouldEndEditing(oldValue: Bool) {
         
     }
-    
-    // MARK: - Events
-  
+      
     open var didChangeText: (() -> Void)?
   
     open var didTapReturnKey: (() -> Bool)?
@@ -178,13 +176,53 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     
     open var didEndEditingReason: ((UITextField.DidEndEditingReason) -> Void)?
     
+    open func clean() {
+        textField?.text = nil
+    }
+    
     // MARK: - Actions
   
     open override func controlEditingChangedEventAction() {
         text = textField?.text
     }
   
-    // MARK: UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
+    
+    private class UITextFieldDelegateProxy: NSObject, UITextFieldDelegate {
+        weak var delegate: AUIEmptyTextFieldController?
+              
+        func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+            return delegate?.textFieldShouldBeginEditing() ?? false
+        }
+      
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            delegate?.textFieldDidBeginEditing()
+        }
+      
+        func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+            return delegate?.textFieldShouldEndEditing() ?? true
+        }
+      
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            delegate?.textFieldDidEndEditing()
+        }
+      
+        func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+            delegate?.textFieldDidEndEditing(reason: reason)
+        }
+      
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            return delegate?.textField(shouldChangeCharactersIn: range, replacementString: string) ?? false
+        }
+      
+        func textFieldShouldClear(_ textField: UITextField) -> Bool {
+            return delegate?.textFieldShouldClear() ?? true
+        }
+      
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            return delegate?.textFieldShouldReturn() ?? true
+        }
+    }
     
     private let textFieldDelegate = UITextFieldDelegateProxy()
   
@@ -224,63 +262,22 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         return didTapReturnKey()
     }
   
-    // MARK: KeyValueObserverProxyDelegate
+    // MARK: - KeyValueObserverProxyDelegate
+    
+    private class KeyValueObserverProxy: NSObject {
+        
+        weak var delegate: AUIEmptyTextFieldController?
+      
+        override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            if keyPath == UITextFieldTextPropertyKey, let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
+        }
+      
+    }
     
     private let keyValueObserverProxy = KeyValueObserverProxy()
   
     open func textFieldDidChangeText(_ textField: UITextField) {
         text = textField.text
     }
-  
-    // MARK:
-  
-    open func clean() {
-        textField?.text = nil
-    }
-}
 
-private class UITextFieldDelegateProxy: NSObject, UITextFieldDelegate {
-    weak var delegate: AUIEmptyTextFieldController?
-  
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldBeginEditing() ?? false
-    }
-  
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        delegate?.textFieldDidBeginEditing()
-    }
-  
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldEndEditing() ?? true
-    }
-  
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.textFieldDidEndEditing()
-    }
-  
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        delegate?.textFieldDidEndEditing(reason: reason)
-    }
-  
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return delegate?.textField(shouldChangeCharactersIn: range, replacementString: string) ?? false
-    }
-  
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldClear() ?? true
-    }
-  
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return delegate?.textFieldShouldReturn() ?? true
-    }
-}
-
-private class KeyValueObserverProxy: NSObject {
-  
-    weak var delegate: AUIEmptyTextFieldController?
-  
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == UITextFieldTextPropertyKey, let textField = object as? UITextField { delegate?.textFieldDidChangeText(textField) }
-    }
-  
 }

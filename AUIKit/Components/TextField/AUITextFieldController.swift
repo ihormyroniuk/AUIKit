@@ -6,11 +6,11 @@ public protocol AUITextFieldController: AUIControlController {
   
     var textField: UITextField? { get set }
     
-    // MARK: - Input View Controller
+    // MARK: - InputViewController
   
     var inputViewController: AUIViewController? { get set }
     
-    // MARK: - Input Accessory View Controller
+    // MARK: - InputAccessoryViewController
   
     var inputAccessoryViewController: AUIViewController? { get set }
 
@@ -41,9 +41,7 @@ public protocol AUITextFieldController: AUIControlController {
     var shouldBeginEditing: Bool { get set }
     
     var shouldEndEditing: Bool { get set }
-    
-    // MARK: - Events
-  
+      
     var didChangeText: (() -> Void)? { get set }
 
     var didTapReturnKey: (() -> Bool)? { get set }

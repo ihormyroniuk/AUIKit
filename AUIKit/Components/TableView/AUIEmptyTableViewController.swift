@@ -75,7 +75,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     private let tableViewDelegateProxy = UITableViewDelegateProxy()
     
-    var sectionControllers: [AUITableViewSectionController] = []
+    open var sectionControllers: [AUITableViewSectionController] = []
   
     open func numberOfSections() -> Int {
         let numberOfSections = sectionControllers.count
@@ -322,7 +322,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         footerController?.didEndDisplayingHeaderFooter()
     }
     
-    // MARK: Reload
+    // MARK: - Reloading
   
     open func reload() {
         deletedIndexPaths = tableView?.indexPathsForVisibleRows ?? []

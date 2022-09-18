@@ -66,6 +66,32 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     
     // MARK: - AUIScrollViewDelegateProxy
     
+    private class AUIScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
+          
+        weak var emptyScrollViewController: AUIEmptyScrollViewController?
+        
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            emptyScrollViewController?.scrollViewDidScroll()
+        }
+        
+        func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+            emptyScrollViewController?.scrollViewDidEndScrollingAnimation()
+        }
+        
+        func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            emptyScrollViewController?.scrollViewWillBeginDragging()
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            emptyScrollViewController?.scrollViewDidEndDragging(decelerate: decelerate)
+        }
+        
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            emptyScrollViewController?.scrollViewDidEndDecelerating()
+        }
+        
+    }
+    
     private let scrollViewDelegateProxy = AUIScrollViewDelegateProxy()
       
     open func scrollViewDidScroll() {
@@ -91,32 +117,6 @@ open class AUIEmptyScrollViewController: AUIEmptyViewController, AUIScrollViewCo
     open func scrollViewDidEndDecelerating() {
         guard let didEndDecelerating = didEndDecelerating else { return }
         didEndDecelerating()
-    }
-    
-}
-
-private class AUIScrollViewDelegateProxy: NSObject, UIScrollViewDelegate {
-      
-    weak var emptyScrollViewController: AUIEmptyScrollViewController?
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        emptyScrollViewController?.scrollViewDidScroll()
-    }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        emptyScrollViewController?.scrollViewDidEndScrollingAnimation()
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        emptyScrollViewController?.scrollViewWillBeginDragging()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        emptyScrollViewController?.scrollViewDidEndDragging(decelerate: decelerate)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        emptyScrollViewController?.scrollViewDidEndDecelerating()
     }
     
 }

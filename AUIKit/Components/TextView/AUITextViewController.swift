@@ -6,11 +6,11 @@ public protocol AUITextViewController: AUIScrollViewController {
   
     var textView: UITextView? { get set }
     
-    // MARK: Input Accessory View Controller
+    // MARK: - InputAccessoryViewController
   
     var inputAccessoryViewController: AUIViewController? { get set }
   
-    // MARK: Input View Controller
+    // MARK: - InputViewController
   
     var inputViewController: AUIViewController? { get set }
 

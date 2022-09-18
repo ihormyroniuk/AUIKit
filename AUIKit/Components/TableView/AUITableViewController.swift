@@ -14,6 +14,10 @@ public protocol AUITableViewController: AUIScrollViewController {
     
     var dragInteractionEnabled: Bool { get }
     
+    // MARK: - Reloading
+    
+    
+    
     // MARK: - Inserting
         
     func insertSectionAtBeginning(_ sectionController: AUITableViewSectionController)

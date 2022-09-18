@@ -43,7 +43,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
         inputViewController?.view = nil
     }
     
-    // MARK: Input Accessory View Controller
+    // MARK: - InputAccessoryViewController
   
     open var inputAccessoryViewController: AUIViewController? {
         didSet { didSetInputAccessoryViewController(oldValue: oldValue) }
@@ -53,7 +53,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
         inputAccessoryViewController?.view = textView?.inputAccessoryView
     }
   
-    // MARK: Input View Controller
+    // MARK: - InputViewController
   
     open var inputViewController: AUIViewController? {
         didSet { didSetInputViewController(oldValue: oldValue) }
@@ -128,6 +128,67 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
   
     // MARK: - UITextFieldDelegateProxyDelegate
     
+    private class UITextViewDelegateProxy: NSObject, UIScrollViewDelegate, UITextViewDelegate {
+        weak var emptyTextViewController: AUIEmptyTextViewController?
+                
+        func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            emptyTextViewController?.scrollViewDidScroll()
+        }
+        
+        func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+            emptyTextViewController?.scrollViewDidEndScrollingAnimation()
+        }
+        
+        func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            emptyTextViewController?.scrollViewWillBeginDragging()
+        }
+        
+        func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            emptyTextViewController?.scrollViewDidEndDragging(decelerate: decelerate)
+        }
+        
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+            emptyTextViewController?.scrollViewDidEndDecelerating()
+        }
+              
+        func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+            return emptyTextViewController?.textViewShouldBeginEditing() ?? true
+        }
+      
+        func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+            return emptyTextViewController?.textViewShouldEndEditing() ?? true
+        }
+      
+        func textViewDidBeginEditing(_ textView: UITextView) {
+            emptyTextViewController?.textViewDidBeginEditing()
+        }
+      
+        func textViewDidEndEditing(_ textView: UITextView) {
+            emptyTextViewController?.textViewDidEndEditing()
+        }
+      
+        func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            return emptyTextViewController?.textView(shouldChangeTextIn: range, replacementText: text) ?? true
+        }
+      
+        func textViewDidChange(_ textView: UITextView) {
+            emptyTextViewController?.textViewDidChange()
+        }
+      
+        func textViewDidChangeSelection(_ textView: UITextView) {
+            emptyTextViewController?.textViewDidChangeSelection()
+        }
+      
+        func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+            return emptyTextViewController?.textView(shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true
+        }
+      
+        func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+            return emptyTextViewController?.textView(shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
+        }
+      
+    }
+
     private let textFieldDelegate = UITextViewDelegateProxy()
   
     open func textViewShouldBeginEditing() -> Bool {
@@ -168,67 +229,6 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
   
     open func textView(shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         return true
-    }
-  
-}
-
-private class UITextViewDelegateProxy: NSObject, UIScrollViewDelegate, UITextViewDelegate {
-    weak var emptyTextViewController: AUIEmptyTextViewController?
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        emptyTextViewController?.scrollViewDidScroll()
-    }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        emptyTextViewController?.scrollViewDidEndScrollingAnimation()
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        emptyTextViewController?.scrollViewWillBeginDragging()
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        emptyTextViewController?.scrollViewDidEndDragging(decelerate: decelerate)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        emptyTextViewController?.scrollViewDidEndDecelerating()
-    }
-  
-    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        return emptyTextViewController?.textViewShouldBeginEditing() ?? true
-    }
-  
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        return emptyTextViewController?.textViewShouldEndEditing() ?? true
-    }
-  
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        emptyTextViewController?.textViewDidBeginEditing()
-    }
-  
-    func textViewDidEndEditing(_ textView: UITextView) {
-        emptyTextViewController?.textViewDidEndEditing()
-    }
-  
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return emptyTextViewController?.textView(shouldChangeTextIn: range, replacementText: text) ?? true
-    }
-  
-    func textViewDidChange(_ textView: UITextView) {
-        emptyTextViewController?.textViewDidChange()
-    }
-  
-    func textViewDidChangeSelection(_ textView: UITextView) {
-        emptyTextViewController?.textViewDidChangeSelection()
-    }
-  
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        return emptyTextViewController?.textView(shouldInteractWith: URL, in: characterRange, interaction: interaction) ?? true
-    }
-  
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        return emptyTextViewController?.textView(shouldInteractWith: textAttachment, in: characterRange, interaction: interaction) ?? true
     }
   
 }
