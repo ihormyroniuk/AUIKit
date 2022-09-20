@@ -48,7 +48,7 @@
 		C525D8852199866D0057E69F /* AUIEmptyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8732199866D0057E69F /* AUIEmptyTableViewController.swift */; };
 		C525D8872199866D0057E69F /* AUIEmptyTableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8762199866D0057E69F /* AUIEmptyTableViewHeaderFooterController.swift */; };
 		C525D8882199866D0057E69F /* AUITableViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8772199866D0057E69F /* AUITableViewHeaderFooter.swift */; };
-		C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */; };
+		C525D8892199866D0057E69F /* AUITableViewHeaderFooterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D8782199866D0057E69F /* AUITableViewHeaderFooterViewController.swift */; };
 		C525D88D219998AA0057E69F /* AUIScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C525D88C219998AA0057E69F /* AUIScreenViewController.swift */; };
 		C5278F6025BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */; };
 		C528BA4221BC3EC500FFCE53 /* AUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C528BA4121BC3EC500FFCE53 /* AUITableView.swift */; };
@@ -278,7 +278,7 @@
 		C525D8732199866D0057E69F /* AUIEmptyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewController.swift; sourceTree = "<group>"; };
 		C525D8762199866D0057E69F /* AUIEmptyTableViewHeaderFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewHeaderFooterController.swift; sourceTree = "<group>"; };
 		C525D8772199866D0057E69F /* AUITableViewHeaderFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooter.swift; sourceTree = "<group>"; };
-		C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterController.swift; sourceTree = "<group>"; };
+		C525D8782199866D0057E69F /* AUITableViewHeaderFooterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUITableViewHeaderFooterViewController.swift; sourceTree = "<group>"; };
 		C525D88C219998AA0057E69F /* AUIScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScreenViewController.swift; sourceTree = "<group>"; };
 		C5278F5F25BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAnimationTransitioningDelegate.swift; sourceTree = "<group>"; };
 		C528BA4121BC3EC500FFCE53 /* AUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUITableView.swift; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 				C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */,
 				C528BA4121BC3EC500FFCE53 /* AUITableView.swift */,
 				C525D8662199866D0057E69F /* Section */,
-				C525D8742199866D0057E69F /* HeaderFooter */,
+				C525D8742199866D0057E69F /* HeaderFooterView */,
 				C525D86C2199866D0057E69F /* Cell */,
 			);
 			path = TableView;
@@ -691,14 +691,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C525D8742199866D0057E69F /* HeaderFooter */ = {
+		C525D8742199866D0057E69F /* HeaderFooterView */ = {
 			isa = PBXGroup;
 			children = (
-				C525D8782199866D0057E69F /* AUITableViewHeaderFooterController.swift */,
+				C525D8782199866D0057E69F /* AUITableViewHeaderFooterViewController.swift */,
 				C525D8762199866D0057E69F /* AUIEmptyTableViewHeaderFooterController.swift */,
 				C525D8772199866D0057E69F /* AUITableViewHeaderFooter.swift */,
 			);
-			path = HeaderFooter;
+			path = HeaderFooterView;
 			sourceTree = "<group>";
 		};
 		C5278F5425BF6C67005C6A49 /* PresentAnimation */ = {
@@ -1536,7 +1536,7 @@
 				C53AEB072195D9710087F0A2 /* AUIToolbarController.swift in Sources */,
 				C566FF952665842500F81769 /* AUIViewControllerTransitioningDelegate.swift in Sources */,
 				C53E7C7B22187747006CB0D9 /* AUIEmptyTextViewTextInputViewController.swift in Sources */,
-				C525D8892199866D0057E69F /* AUITableViewHeaderFooterController.swift in Sources */,
+				C525D8892199866D0057E69F /* AUITableViewHeaderFooterViewController.swift in Sources */,
 				3310353F23A13B8B000C4FFF /* UIFont+CGFont.swift in Sources */,
 				C591DAEE2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift in Sources */,
 				C5443BCF22A9624D003DE568 /* UIColor+RGBA.swift in Sources */,

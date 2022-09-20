@@ -11,7 +11,7 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     // MARK: - Header
   
-    open var headerController: AUITableViewHeaderFooterController?
+    open var headerController: AUITableViewHeaderFooterViewController?
   
     // MARK: - Cells
   
@@ -19,6 +19,6 @@ open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
   
     // MARK: - Footer
   
-    open var footerController: AUITableViewHeaderFooterController?
+    open var footerController: AUITableViewHeaderFooterViewController?
   
 }

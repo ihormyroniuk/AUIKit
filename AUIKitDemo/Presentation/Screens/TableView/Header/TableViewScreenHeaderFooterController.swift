@@ -1,7 +1,7 @@
 import UIKit
 import AUIKit
 
-class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterController {
+class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterViewController {
     
     // MARK: - Data
     
@@ -20,10 +20,10 @@ class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterController {
     
     // MARK: - Header
     
-    override var headerFooterType: UITableViewHeaderFooterView.Type { return Header.self }
+    override var headerFooterViewType: UITableViewHeaderFooterView.Type { return Header.self }
     
     var header: Header? {
-        return headerFooter as? Header
+        return headerFooterView as? Header
     }
     
     override func setupHeaderFooterView() {
@@ -43,11 +43,11 @@ class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterController {
     
     // MARK: - Height
     
-    override func headerFooterEstimatedHeight(_ width: CGFloat) -> CGFloat {
+    override func headerFooterViewEstimatedHeight(_ width: CGFloat) -> CGFloat {
         return 120
     }
     
-    override func headerFooterHeight(_ width: CGFloat) -> CGFloat {
+    override func headerFooterViewHeight(_ width: CGFloat) -> CGFloat {
         return 120
     }
     

@@ -1,14 +1,14 @@
 import UIKit
 
-open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController, AUITableViewHeaderFooterController {
+open class AUIEmptyTableViewHeaderFooterViewController: AUIEmptyViewController, AUITableViewHeaderFooterViewController {
   
     // MARK: - UITableViewHeaderFooterView
   
-    open var headerFooterType: UITableViewHeaderFooterView.Type { return UITableViewHeaderFooterView.self }
+    open var headerFooterViewType: UITableViewHeaderFooterView.Type { return UITableViewHeaderFooterView.self }
     
-    open var headerFooterIdentifier: String { return String(describing: headerFooterType.self) }
+    open var headerFooterViewIdentifier: String { return String(describing: headerFooterViewType.self) }
     
-    open var headerFooter: UITableViewHeaderFooterView? {
+    open var headerFooterView: UITableViewHeaderFooterView? {
         set { view = newValue }
         get { return view as? UITableViewHeaderFooterView }
     }
@@ -33,11 +33,11 @@ open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController, AUIT
     
     // MARK: - Height
   
-    open func headerFooterEstimatedHeight(_ width: CGFloat) -> CGFloat {
+    open func headerFooterViewEstimatedHeight(_ width: CGFloat) -> CGFloat {
         return .zero
     }
     
-    open func headerFooterHeight(_ width: CGFloat) -> CGFloat {
+    open func headerFooterViewHeight(_ width: CGFloat) -> CGFloat {
         return .zero
     }
     
@@ -45,13 +45,13 @@ open class AUIEmptyTableViewHeaderFooterController: AUIEmptyViewController, AUIT
     
     open var willDisplay: (() -> Void)?
     
-    open func willDisplayHeaderFooter() {
+    open func willDisplayHeaderFooterView() {
         
     }
     
     open var didEndDisplaying: (() -> Void)?
     
-    open func didEndDisplayingHeaderFooter() {
+    open func didEndDisplayingHeaderFooterView() {
         
     }
   

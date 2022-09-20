@@ -4,7 +4,7 @@ public protocol AUITableViewSectionController: AnyObject {
     
     // MARK: - Header
     
-    var headerController: AUITableViewHeaderFooterController? { get set }
+    var headerController: AUITableViewHeaderFooterViewController? { get set }
     
     // MARK: - Cells
 
@@ -12,6 +12,6 @@ public protocol AUITableViewSectionController: AnyObject {
     
     // MARK: - Footer
     
-    var footerController: AUITableViewHeaderFooterController? { get set }
+    var footerController: AUITableViewHeaderFooterViewController? { get set }
     
 }

@@ -2,7 +2,7 @@ import UIKit
 import AUIKit
 
 extension TableViewHeaderFooterController {
-class Header: AUITableViewHeaderFooter {
+class Header: AUITableViewHeaderFooterView {
     
     // MARK: - Subviews
     

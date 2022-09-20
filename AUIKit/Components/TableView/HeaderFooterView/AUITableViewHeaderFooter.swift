@@ -1,6 +1,6 @@
 import UIKit
 
-open class AUITableViewHeaderFooter: UITableViewHeaderFooterView {
+open class AUITableViewHeaderFooterView: UITableViewHeaderFooterView {
 
     // MARK: - Initialization
   

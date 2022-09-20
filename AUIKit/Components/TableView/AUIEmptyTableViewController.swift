@@ -86,11 +86,11 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         guard let headerController = sectionController.headerController else { return nil }
         guard let tableView = tableView else { return UITableViewCell() }
-        let headerType = headerController.headerFooterType
-        let headerIdentifier = headerController.headerFooterIdentifier
+        let headerType = headerController.headerFooterViewType
+        let headerIdentifier = headerController.headerFooterViewIdentifier
         tableView.register(headerType, forHeaderFooterViewReuseIdentifier: headerIdentifier)
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerIdentifier)
-        headerController.headerFooter = header
+        headerController.headerFooterView = header
         return header
     }
   
@@ -99,7 +99,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let headerController = sectionController.headerController
         guard let tableView = tableView else { return .zero }
         let width = tableView.bounds.width
-        guard let estimatedHeight = headerController?.headerFooterEstimatedHeight(width) else { return .zero }
+        guard let estimatedHeight = headerController?.headerFooterViewEstimatedHeight(width) else { return .zero }
         return estimatedHeight
     }
   
@@ -108,22 +108,22 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let headerController = sectionController.headerController
         guard let tableView = tableView else { return .zero }
         let width = tableView.bounds.width
-        guard let height = headerController?.headerFooterHeight(width) else { return .zero }
+        guard let height = headerController?.headerFooterViewHeight(width) else { return .zero }
         return height
     }
   
     open func willDisplayHeaderViewForSection(_ section: Int) {
         let sectionController = sectionControllers[section]
         let headerController = sectionController.headerController
-        headerController?.willDisplayHeaderFooter()
+        headerController?.willDisplayHeaderFooterView()
     }
   
     open func didEndDisplayingHeaderInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
         let sectionController = sectionControllers[section]
         let headerController = sectionController.headerController
-        headerController?.headerFooter = nil
-        headerController?.didEndDisplayingHeaderFooter()
+        headerController?.headerFooterView = nil
+        headerController?.didEndDisplayingHeaderFooterView()
     }
       
     open func numberOfRowsInSection(_ section: Int) -> Int {
@@ -283,11 +283,11 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         guard let footerController = sectionController.footerController else { return nil }
         guard let tableView = tableView else { return UITableViewCell() }
-        let footerType = footerController.headerFooterType
-        let footerIdentifier = footerController.headerFooterIdentifier
+        let footerType = footerController.headerFooterViewType
+        let footerIdentifier = footerController.headerFooterViewIdentifier
         tableView.register(footerType, forHeaderFooterViewReuseIdentifier: footerIdentifier)
         let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: footerIdentifier)
-        footerController.headerFooter = footer
+        footerController.headerFooterView = footer
         return footer
     }
   
@@ -296,7 +296,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let footerController = sectionController.footerController
         guard let tableView = tableView else { return .zero }
         let width = tableView.bounds.width
-        guard let estimatedHeight = footerController?.headerFooterEstimatedHeight(width) else { return 0 }
+        guard let estimatedHeight = footerController?.headerFooterViewEstimatedHeight(width) else { return 0 }
         return estimatedHeight
     }
   
@@ -305,7 +305,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let footerController = sectionController.footerController
         guard let tableView = tableView else { return .zero }
         let width = tableView.bounds.width
-        guard let height = footerController?.headerFooterHeight(width) else { return 0 }
+        guard let height = footerController?.headerFooterViewHeight(width) else { return 0 }
         return height
     }
   
@@ -313,15 +313,15 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         guard section < sectionControllers.count else { return }
         let sectionController = sectionControllers[section]
         let footerController = sectionController.footerController
-        footerController?.willDisplayHeaderFooter()
+        footerController?.willDisplayHeaderFooterView()
     }
   
     open func didEndDisplayingFooterInSection(_ section: Int) {
         guard section < sectionControllers.count else { return }
         let sectionController = sectionControllers[section]
         let footerController = sectionController.footerController
-        footerController?.headerFooter = nil
-        footerController?.didEndDisplayingHeaderFooter()
+        footerController?.headerFooterView = nil
+        footerController?.didEndDisplayingHeaderFooterView()
     }
     
     // MARK: - Reloading
