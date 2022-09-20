@@ -153,6 +153,8 @@
 		C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */; };
 		C5841DBD24D93C980059D557 /* SignupScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DBC24D93C980059D557 /* SignupScreenView.swift */; };
 		C5841DBF24D93CB30059D557 /* SignupScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DBE24D93CB30059D557 /* SignupScreenController.swift */; };
+		C58CB82128DA506200BF121D /* TableViewScreenHeaderFooterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CB82028DA506200BF121D /* TableViewScreenHeaderFooterController.swift */; };
+		C58CB82328DA508F00BF121D /* TableViewScreenHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58CB82228DA508F00BF121D /* TableViewScreenHeaderFooter.swift */; };
 		C58D3D9B27787323006823B8 /* AUIScrollPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D3D9A27787323006823B8 /* AUIScrollPagesController.swift */; };
 		C58D3D9D27787388006823B8 /* AUIEmptyScrollPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D3D9C27787388006823B8 /* AUIEmptyScrollPagesController.swift */; };
 		C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D6D5B277521650069520F /* TableViewScreenViewController.swift */; };
@@ -385,6 +387,8 @@
 		C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScreenView.swift; sourceTree = "<group>"; };
 		C5841DBC24D93C980059D557 /* SignupScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenView.swift; sourceTree = "<group>"; };
 		C5841DBE24D93CB30059D557 /* SignupScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenController.swift; sourceTree = "<group>"; };
+		C58CB82028DA506200BF121D /* TableViewScreenHeaderFooterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenHeaderFooterController.swift; sourceTree = "<group>"; };
+		C58CB82228DA508F00BF121D /* TableViewScreenHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenHeaderFooter.swift; sourceTree = "<group>"; };
 		C58D3D9A27787323006823B8 /* AUIScrollPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIScrollPagesController.swift; sourceTree = "<group>"; };
 		C58D3D9C27787388006823B8 /* AUIEmptyScrollPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyScrollPagesController.swift; sourceTree = "<group>"; };
 		C58D6D5B277521650069520F /* TableViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenViewController.swift; sourceTree = "<group>"; };
@@ -1176,11 +1180,21 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		C58CB81F28DA501B00BF121D /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				C58CB82028DA506200BF121D /* TableViewScreenHeaderFooterController.swift */,
+				C58CB82228DA508F00BF121D /* TableViewScreenHeaderFooter.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
 		C58D6D5A2775212C0069520F /* TableView */ = {
 			isa = PBXGroup;
 			children = (
 				C58D6D5B277521650069520F /* TableViewScreenViewController.swift */,
 				C58D6D5D277521760069520F /* TableViewScreenView.swift */,
+				C58CB81F28DA501B00BF121D /* Header */,
 				C59E0A0028D4CFA000AE70C6 /* Cell */,
 			);
 			path = TableView;
@@ -1682,6 +1696,7 @@
 				C567F90124C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift in Sources */,
 				C5DF085524E11CF80048DDD9 /* IconButton.swift in Sources */,
 				C541D53F24C4E31A0036FC7A /* Application.swift in Sources */,
+				C58CB82328DA508F00BF121D /* TableViewScreenHeaderFooter.swift in Sources */,
 				C567F8FC24C9C56A002DB6FD /* Presentation.swift in Sources */,
 				C54F9A8724DC34670082C5A4 /* FilledRoundedButton.swift in Sources */,
 				C53000A024CE1F2C00CA032A /* TextFieldTextInputViewScreenView.swift in Sources */,
@@ -1696,6 +1711,7 @@
 				C5618C4524D9FA1D006F1847 /* SignupTextFieldTextInputView.swift in Sources */,
 				C56360AD261669CE0012C419 /* ScrollPagesScreenViewController.swift in Sources */,
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
+				C58CB82128DA506200BF121D /* TableViewScreenHeaderFooterController.swift in Sources */,
 				C5319BA82725FCA1002C3B74 /* PresentAnimationScreenViewController.swift in Sources */,
 				C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */,
 				C54EAEB224E0539200A8A51E /* MenuScreenViewController.swift in Sources */,

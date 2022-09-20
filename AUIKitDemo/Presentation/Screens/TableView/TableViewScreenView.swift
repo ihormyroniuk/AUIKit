@@ -16,6 +16,9 @@ class TableViewScreenView: BackButtonTitleLabelScreenView {
     }
     
     private func setupTableView() {
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
         tableView.separatorStyle = .none
     }
     

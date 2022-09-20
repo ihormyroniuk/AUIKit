@@ -122,6 +122,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         guard section < sectionControllers.count else { return }
         let sectionController = sectionControllers[section]
         let headerController = sectionController.headerController
+        headerController?.headerFooter = nil
         headerController?.didEndDisplayingHeaderFooter()
     }
       
@@ -319,6 +320,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         guard section < sectionControllers.count else { return }
         let sectionController = sectionControllers[section]
         let footerController = sectionController.footerController
+        footerController?.headerFooter = nil
         footerController?.didEndDisplayingHeaderFooter()
     }
     
