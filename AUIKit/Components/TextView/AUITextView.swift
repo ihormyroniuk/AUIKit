@@ -2,23 +2,23 @@ import UIKit
 
 open class AUITextView: UITextView {
   
-  // MARK: - Initialization
+    // MARK: - Initialization
 
-   public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
-       super.init(frame: frame, textContainer: textContainer)
-       setup()
-   }
+    public override init(frame: CGRect = .zero, textContainer: NSTextContainer? = nil) {
+        super.init(frame: frame, textContainer: textContainer)
+        setup()
+    }
 
-  @available(*, unavailable)
-   public required init?(coder aDecoder: NSCoder) {
-       super.init(coder: aDecoder)
-       setup()
-   }
+    @available(*, unavailable)
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
 
-   // MARK: - Setup
+    // MARK: - Setup
 
-   open func setup() {
-
-   }
-  
+    open func setup() {
+        
+    }
+    
 }

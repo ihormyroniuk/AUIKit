@@ -120,6 +120,24 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     
     // MARK: - Editing
     
+    open var shouldBeginEditing: Bool = true {
+        didSet {
+            didSetShouldBeginEditing(oldValue: oldValue)
+        }
+    }
+    open func didSetShouldBeginEditing(oldValue: Bool) {
+        
+    }
+    
+    open var shouldEndEditing: Bool = true {
+        didSet {
+            didSetShouldEndEditing(oldValue: oldValue)
+        }
+    }
+    open func didSetShouldEndEditing(oldValue: Bool) {
+        
+    }
+    
     open var didChangeText: (() -> Void)?
       
     open var didBeginEditing: (() -> Void)?
@@ -129,6 +147,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     // MARK: - UITextFieldDelegateProxyDelegate
     
     private class UITextViewDelegateProxy: NSObject, UIScrollViewDelegate, UITextViewDelegate {
+        
         weak var emptyTextViewController: AUIEmptyTextViewController?
                 
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -192,7 +211,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     private let textFieldDelegate = UITextViewDelegateProxy()
   
     open func textViewShouldBeginEditing() -> Bool {
-        return true
+        return shouldBeginEditing
     }
   
     open func textViewDidBeginEditing() {
@@ -201,7 +220,7 @@ open class AUIEmptyTextViewController: AUIEmptyScrollViewController, AUITextView
     }
   
     open func textViewShouldEndEditing() -> Bool {
-        return true
+        return shouldEndEditing
     }
   
     open func textViewDidEndEditing() {

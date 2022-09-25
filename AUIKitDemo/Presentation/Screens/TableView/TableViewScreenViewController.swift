@@ -53,7 +53,7 @@ final class TableViewScreenViewController: UIViewController {
                 let cellConroller = initializeCellController()
                 cellControllers.append(cellConroller)
             }
-            let headerController = TableViewHeaderFooterController(id: section)
+            let headerController = TableViewHeaderFooterViewController(id: section)
             headerController.insertAtSectionBegining = { [weak self, weak sectionController] in
                 guard let self = self else { return }
                 guard let sectionController = sectionController else { return }

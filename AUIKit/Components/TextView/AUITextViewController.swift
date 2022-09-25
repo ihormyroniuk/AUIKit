@@ -33,6 +33,10 @@ public protocol AUITextViewController: AUIScrollViewController {
     var isSecureTextEntry: Bool { get set }
     
     // MARK: - Editing
+    
+    var shouldBeginEditing: Bool { get set }
+    
+    var shouldEndEditing: Bool { get set }
   
     var didChangeText: (() -> Void)? { get set }
     

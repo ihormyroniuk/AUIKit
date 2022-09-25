@@ -1,7 +1,7 @@
 import UIKit
 import AUIKit
 
-class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterViewController {
+class TableViewHeaderFooterViewController: AUIEmptyTableViewHeaderFooterViewController {
     
     // MARK: - Data
     
@@ -54,7 +54,7 @@ class TableViewHeaderFooterController: AUIEmptyTableViewHeaderFooterViewControll
     // MARK: - Actions
     
     @objc private func debugButtonTouchUpInsideAction() {
-        print(id)
+        print("Section \(id)")
     }
     
     @objc private func insertAtSectionBeginingButtonTouchUpInsideAction() {

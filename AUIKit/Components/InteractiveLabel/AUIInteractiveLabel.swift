@@ -21,7 +21,7 @@ open class AUIInteractiveLabel: AUIControl {
     }
 
     func setupButton() {
-        button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonTouchUpInsideEventAction), for: .touchUpInside)
     }
 
     open var lineBreakMode: NSLineBreakMode {
@@ -53,7 +53,7 @@ open class AUIInteractiveLabel: AUIControl {
 
     // MARK: Events
 
-    @objc func buttonTouchUpInside(_ button: UIButton, _ event: UIEvent) {
+    @objc func buttonTouchUpInsideEventAction(_ button: UIButton, _ event: UIEvent) {
         if let interaction = findInteractionForEvent(event) {
             let interactiveLabelEvent = AUIInteractiveLabelEvent(event: event, interaction: interaction)
             sendAllActions(.touchUpInside, interactiveLabelEvent: interactiveLabelEvent)
@@ -112,7 +112,7 @@ open class AUIInteractiveLabel: AUIControl {
         }
     }
 
-    // MARK: Layout
+    // MARK: - Layout
 
     open override func layoutSubviews() {
         super.layoutSubviews()
@@ -120,7 +120,7 @@ open class AUIInteractiveLabel: AUIControl {
         button.frame = bounds
     }
 
-    // MARK: Size
+    // MARK: - Size
 
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         return label.sizeThatFits(size)
