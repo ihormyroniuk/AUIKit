@@ -2,6 +2,32 @@ import UIKit
 
 open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewController {
     
+    // MARK: - Components
+  
+    open var componentControllers: [AUIPickerViewComponentController] {
+        return []
+    }
+    open func didSetComponentControllers(_ oldValue: [AUIPickerViewComponentController]) {
+        pickerView?.reloadAllComponents()
+        let oldSelectedItemControllers = selectedItemControllers
+        selectedItemControllers = [:]
+        for componentController in componentControllers {
+            let componentControllerHashableContainer = AUIPickerViewComponentControllerHashableContainer(componentController)
+            if let selectedItemController = oldSelectedItemControllers[componentControllerHashableContainer] {
+                selectItemController(selectedItemController, atComponentController: componentController, animated: false)
+            } else if let firstItemController = componentController.itemControllers.first {
+                selectItemController(firstItemController, atComponentController: componentController, animated: false)
+            }
+        }
+    }
+    
+    // MARK: - Setup
+  
+    open override func setup() {
+        super.setup()
+        pickerViewDataSourceProxy.delegate = self
+    }
+    
     // MARK: - UIPickerView
   
     open var pickerView: UIPickerView? {
@@ -27,46 +53,6 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
         super.unsetupView()
         pickerView?.dataSource = nil
     }
-
-    // MARK: Delegates
-  
-    private let pickerViewDataSourceProxy = UIPickerViewDataSourceProxy()
-  
-    // MARK: Setup
-  
-    open override func setup() {
-        super.setup()
-        pickerViewDataSourceProxy.delegate = self
-    }
-    
-    // MARK: Components
-  
-    open var componentControllers: [AUIPickerViewComponentController] {
-        return []
-    }
-    open func didSetComponentControllers(_ oldValue: [AUIPickerViewComponentController]) {
-        pickerView?.reloadAllComponents()
-        let oldSelectedItemControllers = selectedItemControllers
-        selectedItemControllers = [:]
-        for componentController in componentControllers {
-            let componentControllerHashableContainer = AUIPickerViewComponentControllerHashableContainer(componentController)
-            if let selectedItemController = oldSelectedItemControllers[componentControllerHashableContainer] {
-                selectItemController(selectedItemController, atComponentController: componentController, animated: false)
-            } else if let firstItemController = componentController.itemControllers.first {
-                selectItemController(firstItemController, atComponentController: componentController, animated: false)
-            }
-        }
-    }
-  
-    // MARK: UIPickerViewDataSourceProxyDelegate
-  
-    open func numberOfComponents() -> Int {
-        return componentControllers.count
-    }
-  
-    open func numberOfItemsInComponent(_ component: Int) -> Int {
-        return componentControllers[component].itemControllers.count
-    }
   
     // MARK: Select ItemController
     
@@ -91,6 +77,33 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
         selectedItemControllers[componentControllerHashableContainer] = itemController
         itemController.didSelect()
     }
+    
+    // MARK: - UIPickerViewDataSourceProxy
+    
+    private class UIPickerViewDataSourceProxy: NSObject, UIPickerViewDataSource {
+        
+        weak var delegate: AUIEmptyPickerViewController?
+      
+        func numberOfComponents(in pickerView: UIPickerView) -> Int {
+            return delegate?.numberOfComponents() ?? 0
+        }
+      
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return delegate?.numberOfItemsInComponent(component) ?? 0
+        }
+        
+    }
+  
+    private let pickerViewDataSourceProxy = UIPickerViewDataSourceProxy()
+    
+    open func numberOfComponents() -> Int {
+        return componentControllers.count
+    }
+  
+    open func numberOfItemsInComponent(_ component: Int) -> Int {
+        return componentControllers[component].itemControllers.count
+    }
+    
 }
             
 private class AUIPickerViewComponentControllerHashableContainer: Hashable {
@@ -109,20 +122,6 @@ private class AUIPickerViewComponentControllerHashableContainer: Hashable {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(objectIdentifier)
-    }
-    
-}
-
-private class UIPickerViewDataSourceProxy: NSObject, UIPickerViewDataSource {
-    
-    weak var delegate: AUIEmptyPickerViewController?
-  
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return delegate?.numberOfComponents() ?? 0
-    }
-  
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return delegate?.numberOfItemsInComponent(component) ?? 0
     }
     
 }

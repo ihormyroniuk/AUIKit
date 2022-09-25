@@ -9,16 +9,11 @@ open class AUIEmptyTitlePickerViewItemController: AUITitlePickerViewItemControll
   
     // MARK: Initializer
   
-    public init() {
-        setup()
+    public init(title: String?, attributedTitle: NSAttributedString?) {
+        self.title = title
+        self.attributedTitle = attributedTitle
     }
   
-    // MARK: Setup
-  
-    open func setup() {
-    
-    }
-    
     // MARK: Select
     
     open func didSelect() {
