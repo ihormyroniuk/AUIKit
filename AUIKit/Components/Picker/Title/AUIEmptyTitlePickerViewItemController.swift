@@ -1,23 +1,32 @@
 import Foundation
 
 open class AUIEmptyTitlePickerViewItemController: AUITitlePickerViewItemController {
-
-    // MARK: Title
+    
+    // MARK: - Initialization
   
-    open var title: String?
-    open var attributedTitle: NSAttributedString?
-  
-    // MARK: Initializer
-  
-    public init(title: String?, attributedTitle: NSAttributedString?) {
+    public init(title: String?) {
         self.title = title
+        self.attributedTitle = nil
+    }
+    
+    public init(attributedTitle: NSAttributedString?) {
+        self.title = nil
         self.attributedTitle = attributedTitle
     }
+
+    // MARK: - Title
   
-    // MARK: Select
+    public let title: String?
     
-    open func didSelect() {
-        
+    public let attributedTitle: NSAttributedString?
+  
+    // MARK: - Selection
+    
+    open var didSelect: (() -> Void)?
+    
+    open func didSelectItem() {
+        guard let didSelect = didSelect else { return }
+        didSelect()
     }
   
 }

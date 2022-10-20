@@ -54,7 +54,27 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
         pickerView?.dataSource = nil
     }
   
-    // MARK: Select ItemController
+    // MARK: - Selection
+    
+    private class AUIPickerViewComponentControllerHashableContainer: Hashable {
+        
+        private let componentController: AUIPickerViewComponentController
+        private let objectIdentifier: ObjectIdentifier
+        
+        init(_ componentController: AUIPickerViewComponentController) {
+            self.componentController = componentController
+            self.objectIdentifier = ObjectIdentifier(componentController)
+        }
+        
+        static func == (lhs: AUIPickerViewComponentControllerHashableContainer, rhs: AUIPickerViewComponentControllerHashableContainer) -> Bool {
+            return lhs.objectIdentifier == rhs.objectIdentifier
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(objectIdentifier)
+        }
+        
+    }
     
     private var selectedItemControllers: [AUIPickerViewComponentControllerHashableContainer: AUIPickerViewItemController] = [:]
     
@@ -75,7 +95,7 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     open func didSelectItemController(_ itemController: AUIPickerViewItemController, inComponentController componentController: AUIPickerViewComponentController) {
         let componentControllerHashableContainer = AUIPickerViewComponentControllerHashableContainer(componentController)
         selectedItemControllers[componentControllerHashableContainer] = itemController
-        itemController.didSelect()
+        itemController.didSelectItem()
     }
     
     // MARK: - UIPickerViewDataSourceProxy
@@ -101,27 +121,8 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     }
   
     open func numberOfItemsInComponent(_ component: Int) -> Int {
-        return componentControllers[component].itemControllers.count
-    }
-    
-}
-            
-private class AUIPickerViewComponentControllerHashableContainer: Hashable {
-    
-    private let componentController: AUIPickerViewComponentController
-    private let objectIdentifier: ObjectIdentifier
-    
-    init(_ componentController: AUIPickerViewComponentController) {
-        self.componentController = componentController
-        self.objectIdentifier = ObjectIdentifier(componentController)
-    }
-    
-    static func == (lhs: AUIPickerViewComponentControllerHashableContainer, rhs: AUIPickerViewComponentControllerHashableContainer) -> Bool {
-        return lhs.objectIdentifier == rhs.objectIdentifier
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(objectIdentifier)
+        let itemControllers = componentControllers[component].itemControllers
+        return itemControllers.count
     }
     
 }

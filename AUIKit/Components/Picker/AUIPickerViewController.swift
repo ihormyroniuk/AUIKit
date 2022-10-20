@@ -10,7 +10,7 @@ public protocol AUIPickerViewController: AUIViewController {
   
     var componentControllers: [AUIPickerViewComponentController] { get }
   
-    // MARK: - Select
+    // MARK: - Selection
   
     func selectItemController(_ itemController: AUIPickerViewItemController, atComponentController componentController: AUIPickerViewComponentController, animated: Bool)
   

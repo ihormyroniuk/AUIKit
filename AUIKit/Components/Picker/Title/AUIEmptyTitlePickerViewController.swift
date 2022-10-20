@@ -1,6 +1,10 @@
 import UIKit
 
 open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUITitlePickerViewController {
+    public func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController]) {
+        
+    }
+    
 
     // MARK: Delegates
   

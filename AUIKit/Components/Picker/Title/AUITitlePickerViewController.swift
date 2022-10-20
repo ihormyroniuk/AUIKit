@@ -6,4 +6,8 @@ public protocol AUITitlePickerViewController: AUIPickerViewController {
   
     var titleComponentControllers: [AUITitlePickerViewComponentController] { set get }
     
+    // MARK: - Loading
+    
+    func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController])
+    
 }

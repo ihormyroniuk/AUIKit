@@ -1,5 +1,11 @@
 import Foundation
 
 public protocol AUIPickerViewItemController: AnyObject {
-    func didSelect()
+    
+    // MARK: - Selection
+    
+    var didSelect: (() -> Void)? { get set }
+    
+    func didSelectItem()
+    
 }

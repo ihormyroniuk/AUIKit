@@ -12,10 +12,5 @@ open class AUIClosuresViewPickerViewItemController: AUIEmptyViewPickerViewItemCo
     open override func view(reusingView view: UIView?) -> UIView {
         return viewReusingViewClosure?(view) ?? UIView()
     }
-    
-    open var didSelectClosure: (() -> Void)?
-    open override func didSelect() {
-        didSelectClosure?()
-    }
   
 }

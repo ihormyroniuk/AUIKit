@@ -51,20 +51,22 @@ open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableView
         return 0
     }
     
-    // MARK: - Events
-  
-    open var willDisplay: (() -> Void)?
-    
-    open func willDisplayCell() {
-        guard let willDisplay = willDisplay else { return }
-        willDisplay()
-    }
+    // MARK: - Selection
     
     open var didSelect: (() -> Void)?
     
     open func didSelectCell() {
         guard let didSelect = didSelect else { return }
         didSelect()
+    }
+    
+    // MARK: - Displaying
+  
+    open var willDisplay: (() -> Void)?
+    
+    open func willDisplayCell() {
+        guard let willDisplay = willDisplay else { return }
+        willDisplay()
     }
     
     open var didEndDisplaying: (() -> Void)?

@@ -20,10 +20,13 @@ open class AUIEmptyViewPickerViewItemController: AUIViewPickerViewItemController
     
     }
     
-    // MARK: Select
+    // MARK: - Selection
     
-    public func didSelect() {
-        
+    open var didSelect: (() -> Void)?
+    
+    public func didSelectItem() {
+        guard let didSelect = didSelect else { return }
+        didSelect()
     }
   
 }

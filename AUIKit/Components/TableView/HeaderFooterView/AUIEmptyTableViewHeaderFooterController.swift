@@ -41,18 +41,20 @@ open class AUIEmptyTableViewHeaderFooterViewController: AUIEmptyViewController, 
         return .zero
     }
     
-    // MARK: - Events
+    // MARK: - Displaying
     
     open var willDisplay: (() -> Void)?
     
     open func willDisplayHeaderFooterView() {
-        
+        guard let willDisplay = willDisplay else { return }
+        willDisplay()
     }
     
     open var didEndDisplaying: (() -> Void)?
     
     open func didEndDisplayingHeaderFooterView() {
-        
+        guard let didEndDisplaying = didEndDisplaying else { return }
+        didEndDisplaying()
     }
   
 }

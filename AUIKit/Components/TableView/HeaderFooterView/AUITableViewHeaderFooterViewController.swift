@@ -16,7 +16,7 @@ public protocol AUITableViewHeaderFooterViewController: AUIViewController {
     
     func headerFooterViewHeight(_ width: CGFloat) -> CGFloat
     
-    // MARK: - Events
+    // MARK: - Displaying
     
     var willDisplay: (() -> Void)? { get set }
     

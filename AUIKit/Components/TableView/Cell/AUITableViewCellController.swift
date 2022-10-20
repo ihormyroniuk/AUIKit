@@ -22,15 +22,17 @@ public protocol AUITableViewCellController: AUIViewController {
     
     func cellHeight(_ width: CGFloat) -> CGFloat
     
-    // MARK: - Events
-    
-    var willDisplay: (() -> Void)? { get set }
-    
-    func willDisplayCell()
+    // MARK: - Selection
     
     var didSelect: (() -> Void)? { get set }
     
     func didSelectCell()
+    
+    // MARK: - Displaying
+    
+    var willDisplay: (() -> Void)? { get set }
+    
+    func willDisplayCell()
     
     var didEndDisplaying: (() -> Void)? { get set }
     
