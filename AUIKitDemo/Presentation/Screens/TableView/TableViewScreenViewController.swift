@@ -50,8 +50,10 @@ final class TableViewScreenViewController: UIViewController {
             let sectionController = AUIEmptyTableViewSectionController()
             var cellControllers: [AUITableViewCellController] = []
             for _ in 1...10 {
-                let cellConroller = initializeCellController()
-                cellControllers.append(cellConroller)
+                if #available(iOS 11.0, *) {
+                    let cellConroller = initializeCellController()
+                    cellControllers.append(cellConroller)
+                }
             }
             let headerController = TableViewHeaderFooterViewController(id: section)
             headerController.insertAtSectionBegining = { [weak self, weak sectionController] in
@@ -68,6 +70,7 @@ final class TableViewScreenViewController: UIViewController {
     }
     
     private var cellId: Int = 1
+    @available(iOS 11.0, *)
     private func initializeCellController() -> CellController {
         let id = cellId
         cellId += 1
@@ -114,9 +117,11 @@ final class TableViewScreenViewController: UIViewController {
     }
     
     private func insertAtSectionBegining(_ sectionController: AUITableViewSectionController) {
-        let cellController = initializeCellController()
-        tableViewController.insertCellControllerAtSectionBeginningAnimated(sectionController, cellController: cellController, .automatic) { success in
-            print("insertAtSectionBegining success: \(success)")
+        if #available(iOS 11.0, *) {
+            let cellController = initializeCellController()
+            tableViewController.insertCellControllerAtSectionBeginningAnimated(sectionController, cellController: cellController, .automatic) { success in
+                print("insertAtSectionBegining success: \(success)")
+            }
         }
     }
     

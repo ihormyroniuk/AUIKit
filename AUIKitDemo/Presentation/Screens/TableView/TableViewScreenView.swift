@@ -36,7 +36,9 @@ class TableViewScreenView: BackButtonTitleLabelScreenView {
         let height: CGFloat = bounds.height - y
         let frame = CGRect(x: x, y: y, width: width, height: height)
         tableView.frame = frame
-        tableView.contentInsetAdjustmentBehavior = .never
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        }
     }
     
 }
