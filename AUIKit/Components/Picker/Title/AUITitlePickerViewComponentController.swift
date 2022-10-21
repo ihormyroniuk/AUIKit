@@ -2,7 +2,7 @@ import Foundation
 
 public protocol AUITitlePickerViewComponentController: AUIPickerViewComponentController {
   
-    // MARK: Items Controllers
+    // MARK: - TitleItemControllers
   
     var titleItemControllers: [AUITitlePickerViewItemController] { get set }
     

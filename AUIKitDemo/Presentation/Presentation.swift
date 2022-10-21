@@ -1,6 +1,6 @@
 import AUIKit
 
-class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate, CollectionViewScreenViewControllerDelegate {
+class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, ScrollPagesScreenViewControllerDelegate, CurlPagesScreenViewControllerDelegate, InteractiveLabelsScreenViewControllerDelegate, LabelsScreenControllerDelegate, SignupScreenControllerDelegate, TextFieldTextInputViewScreenControllerDelegate, TableViewScreenViewControllerDelegate, CollectionViewScreenViewControllerDelegate, PickerViewsScreenViewControllerDelegate {
     
     // MARK: Display
     
@@ -96,6 +96,13 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
         mainNavigationController?.pushViewController(viewController, animated: true)
     }
     
+    func menuScreenViewControllerDisplayPickerViews(_ menuScreenViewController: MenuScreenViewController) {
+        let viewController = PickerViewsScreenViewController()
+        pickerViewsScreenViewController = viewController
+        pickerViewsScreenViewController?.delegate = self
+        mainNavigationController?.pushViewController(viewController, animated: true)
+    }
+    
     // MARK: Scroll Pages Screen
     
     private weak var scrollPagesScreenController: ScrollPagesScreenViewController?
@@ -157,6 +164,14 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     private weak var collectionViewScreenViewController: CollectionViewScreenViewController?
     
     func collectionViewScreenViewControllerBack(_ testTableViewScreenViewController: CollectionViewScreenViewController) {
+        mainNavigationController?.popViewController(animated: true)
+    }
+    
+    // PickerViews Screen
+    
+    private weak var pickerViewsScreenViewController: PickerViewsScreenViewController?
+    
+    func pickerViewsScreenViewControllerBack(_ pickerViewsScreenViewController: PickerViewsScreenViewController) {
         mainNavigationController?.popViewController(animated: true)
     }
     

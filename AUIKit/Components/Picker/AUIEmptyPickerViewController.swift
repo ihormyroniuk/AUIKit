@@ -2,24 +2,9 @@ import UIKit
 
 open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewController {
     
-    // MARK: - Components
+    // MARK: - ComponentControllers
   
-    open var componentControllers: [AUIPickerViewComponentController] {
-        return []
-    }
-    open func didSetComponentControllers(_ oldValue: [AUIPickerViewComponentController]) {
-        pickerView?.reloadAllComponents()
-        let oldSelectedItemControllers = selectedItemControllers
-        selectedItemControllers = [:]
-        for componentController in componentControllers {
-            let componentControllerHashableContainer = AUIPickerViewComponentControllerHashableContainer(componentController)
-            if let selectedItemController = oldSelectedItemControllers[componentControllerHashableContainer] {
-                selectItemController(selectedItemController, atComponentController: componentController, animated: false)
-            } else if let firstItemController = componentController.itemControllers.first {
-                selectItemController(firstItemController, atComponentController: componentController, animated: false)
-            }
-        }
-    }
+    open var componentControllers: [AUIPickerViewComponentController] { return [] }
     
     // MARK: - Setup
   

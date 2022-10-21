@@ -1,25 +1,10 @@
 import UIKit
 
 open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUITitlePickerViewController {
-    public func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController]) {
-        
-    }
-    
-
-    // MARK: Delegates
   
-    private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
+    // MARK: - TitleComponentControllers
   
-    // MARK: Component Controllers
-  
-    open var titleComponentControllers: [AUITitlePickerViewComponentController] = [] {
-        didSet {
-            didSetTitleComponentControllers(oldValue)
-        }
-    }
-    open func didSetTitleComponentControllers(_ oldValue: [AUITitlePickerViewComponentController]) {
-        didSetComponentControllers(oldValue)
-    }
+    open var titleComponentControllers: [AUITitlePickerViewComponentController] = []
   
     open override var componentControllers: [AUIPickerViewComponentController] {
         return titleComponentControllers
@@ -29,10 +14,10 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
   
     open override func setup() {
         super.setup()
-        pickerViewDelegateProxy.delegate = self
+        pickerViewDelegateProxy.emptyTitlePickerViewController = self
     }
   
-    // MARK: UIPickerView
+    // MARK: - UIPickerView
   
     open override func setupPickerView() {
         super.setupPickerView()
@@ -44,8 +29,42 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
         super.unsetupPickerView()
         pickerView?.delegate = nil
     }
+    
+    // MARK: - Loading
+    
+    public func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController]) {
+        titleComponentControllers = componentControllers
+        pickerView?.reloadAllComponents()
+    }
+    
+    // MARK: - Reloading
+    
+    public func reloadComponent(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController]) {
+        guard let component = titleComponentControllers.firstIndex(where: { $0 === titleComponentController }) else { return }
+        titleComponentController.titleItemControllers = titleItemControllers
+        pickerView?.reloadComponent(component)
+    }
   
-    // MARK: UIPickerViewDelegateProxyDelegate
+    // MARK: - UIPickerViewDelegateProxyDelegate
+    
+    private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
+        
+        weak var emptyTitlePickerViewController: AUIEmptyTitlePickerViewController?
+      
+        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+            return emptyTitlePickerViewController?.titleForItem(row, inComponent: component) ?? nil
+        }
+      
+        func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+            return emptyTitlePickerViewController?.attributedTitleForItem(row, inComponent: component) ?? nil
+        }
+      
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            emptyTitlePickerViewController?.didSelectItem(row, inComponent: component)
+        }
+        
+    }
+    private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
   
     open func titleForItem(_ item: Int, inComponent component: Int) -> String? {
         return titleComponentControllers[component].titleItemControllers[item].title
@@ -57,28 +76,10 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
   
     open func didSelectItem(_ item: Int, inComponent component: Int) {
         guard component >= 0, component < titleComponentControllers.count else { return }
-        let componentController = componentControllers[component]
-        guard item >= 0, item < componentController.itemControllers.count else { return }
-        let itemController = componentController.itemControllers[item]
-        didSelectItemController(itemController, inComponentController: componentController)
-    }
-    
-}
-
-private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
-    
-    weak var delegate: AUIEmptyTitlePickerViewController?
-  
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return delegate?.titleForItem(row, inComponent: component) ?? nil
-    }
-  
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        return delegate?.attributedTitleForItem(row, inComponent: component) ?? nil
-    }
-  
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate?.didSelectItem(row, inComponent: component)
+        let titleComponentController = titleComponentControllers[component]
+        guard item >= 0, item < titleComponentController.titleItemControllers.count else { return }
+        let titleItemController = titleComponentController.titleItemControllers[item]
+        didSelectItemController(titleItemController, inComponentController: titleComponentController)
     }
     
 }

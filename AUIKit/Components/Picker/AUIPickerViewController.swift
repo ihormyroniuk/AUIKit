@@ -6,7 +6,7 @@ public protocol AUIPickerViewController: AUIViewController {
   
     var pickerView: UIPickerView? { get set }
 
-    // MARK: - Components
+    // MARK: - ComponentControllers
   
     var componentControllers: [AUIPickerViewComponentController] { get }
   

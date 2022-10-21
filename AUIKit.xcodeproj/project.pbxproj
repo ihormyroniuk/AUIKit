@@ -148,6 +148,8 @@
 		C567F90124C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift */; };
 		C56B60EA25C0967B00D27732 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60E925C0967B00D27732 /* TransitionAnimator.swift */; };
 		C56B60F025C09B6F00D27732 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */; };
+		C56E06122901ECCF00B0FD78 /* PickerViewsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E06112901ECCF00B0FD78 /* PickerViewsScreenViewController.swift */; };
+		C56E06142901ED1C00B0FD78 /* PickerViewsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56E06132901ED1C00B0FD78 /* PickerViewsScreenView.swift */; };
 		C57F0F7B24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */; };
 		C57F0F7D24D84EAA007C47B4 /* AUIViewUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */; };
 		C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */; };
@@ -381,6 +383,8 @@
 		C567F8FF24C9C575002DB6FD /* InteractiveLabelsScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveLabelsScreenViewController.swift; sourceTree = "<group>"; };
 		C56B60E925C0967B00D27732 /* TransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
+		C56E06112901ECCF00B0FD78 /* PickerViewsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewsScreenViewController.swift; sourceTree = "<group>"; };
+		C56E06132901ED1C00B0FD78 /* PickerViewsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewsScreenView.swift; sourceTree = "<group>"; };
 		C57F0F7A24D84DAE007C47B4 /* AUIEmptyViewControllerUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyViewControllerUnitTesting.swift; sourceTree = "<group>"; };
 		C57F0F7C24D84EAA007C47B4 /* AUIViewUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIViewUnitTesting.swift; sourceTree = "<group>"; };
 		C5841DB924D92CE90059D557 /* NavigationBarScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarScreenView.swift; sourceTree = "<group>"; };
@@ -1046,6 +1050,7 @@
 				C56B60E825C0966A00D27732 /* PushAnimations */,
 				C58D6D5A2775212C0069520F /* TableView */,
 				C5A7F8F427B83AD100F71286 /* CollectionView */,
+				C56E06102901EBC300B0FD78 /* Pickers */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1146,6 +1151,15 @@
 				C56B60EF25C09B6F00D27732 /* TransitionCoordinator.swift */,
 			);
 			path = PushAnimations;
+			sourceTree = "<group>";
+		};
+		C56E06102901EBC300B0FD78 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				C56E06112901ECCF00B0FD78 /* PickerViewsScreenViewController.swift */,
+				C56E06132901ED1C00B0FD78 /* PickerViewsScreenView.swift */,
+			);
+			path = Pickers;
 			sourceTree = "<group>";
 		};
 		C57F0F7824D84D7B007C47B4 /* Elements */ = {
@@ -1678,6 +1692,7 @@
 				C5278F6025BF6E23005C6A49 /* PresentAnimationTransitioningDelegate.swift in Sources */,
 				C58D6D5E277521760069520F /* TableViewScreenView.swift in Sources */,
 				C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */,
+				C56E06122901ECCF00B0FD78 /* PickerViewsScreenViewController.swift in Sources */,
 				C5A7F8F827B83B1800F71286 /* CollectionViewScreenView.swift in Sources */,
 				C520EC7724CF310A00BF26D6 /* TextFieldTextInputView.swift in Sources */,
 				C59E0A0228D4CFC100AE70C6 /* TableViewScreenCellController.swift in Sources */,
@@ -1700,6 +1715,7 @@
 				C5319BA62725FBDB002C3B74 /* PresentAnimationScreenView.swift in Sources */,
 				C530009E24CE1F1F00CA032A /* TextFieldTextInputViewScreenController.swift in Sources */,
 				C567E5C924D20761005EC4CA /* TextViewTextInputView.swift in Sources */,
+				C56E06142901ED1C00B0FD78 /* PickerViewsScreenView.swift in Sources */,
 				C5841DBA24D92CE90059D557 /* NavigationBarScreenView.swift in Sources */,
 				C5A7F8F627B83B0800F71286 /* CollectionViewScreenViewController.swift in Sources */,
 				C541D54124C4E3230036FC7A /* main.swift in Sources */,

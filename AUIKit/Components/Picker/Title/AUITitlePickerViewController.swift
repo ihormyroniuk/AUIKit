@@ -2,12 +2,16 @@ import Foundation
 
 public protocol AUITitlePickerViewController: AUIPickerViewController {
   
-    // MARK: Component Controllers
+    // MARK: - TitleComponentControllers
   
-    var titleComponentControllers: [AUITitlePickerViewComponentController] { set get }
+    var titleComponentControllers: [AUITitlePickerViewComponentController] { get set }
     
     // MARK: - Loading
     
     func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController])
+    
+    // MARK: - Reloading
+    
+    func reloadComponent(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController])
     
 }

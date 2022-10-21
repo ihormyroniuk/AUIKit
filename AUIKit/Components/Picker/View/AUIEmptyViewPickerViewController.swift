@@ -14,7 +14,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         }
     }
     open func didSetViewComponentControllers(_ oldValue: [AUIViewPickerViewComponentController]) {
-        didSetComponentControllers(oldValue)
+        //didSetComponentControllers(oldValue)
     }
   
     open override var componentControllers: [AUIPickerViewComponentController] {
