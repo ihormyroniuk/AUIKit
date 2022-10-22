@@ -37,13 +37,16 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     // MARK: - Loading
     
     open func loadViewComponentControllers(_ viewComponentControllers: [AUIViewPickerViewComponentController]) {
-        
+        self.viewComponentControllers = viewComponentControllers
+        pickerView?.reloadAllComponents()
     }
     
     // MARK: - Reloading
     
     open func reloadViewComponentController(_ viewComponentController: AUIViewPickerViewComponentController, viewItemControllers: [AUIViewPickerViewItemController]) {
-        
+        guard let component = viewComponentControllers.firstIndex(where: { $0 === viewComponentController }) else { return }
+        viewComponentController.viewItemControllers = viewItemControllers
+        pickerView?.reloadComponent(component)
     }
   
     // MARK: UIPickerViewDelegateProxyDelegate
