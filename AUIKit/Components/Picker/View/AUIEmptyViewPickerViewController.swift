@@ -8,14 +8,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
   
     // MARK: Component Controllers
   
-    open var viewComponentControllers: [AUIViewPickerViewComponentController] = [] {
-        didSet {
-            didSetViewComponentControllers(oldValue)
-        }
-    }
-    open func didSetViewComponentControllers(_ oldValue: [AUIViewPickerViewComponentController]) {
-        //didSetComponentControllers(oldValue)
-    }
+    open var viewComponentControllers: [AUIViewPickerViewComponentController] = []
   
     open override var componentControllers: [AUIPickerViewComponentController] {
         return viewComponentControllers
@@ -25,7 +18,7 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
   
     open override func setup() {
         super.setup()
-        pickerViewDelegateProxy.delegate = self
+        pickerViewDelegateProxy.emptyViewPickerViewController = self
     }
   
     // MARK: UIPickerView
@@ -40,8 +33,42 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         super.unsetupPickerView()
         pickerView?.delegate = nil
     }
+    
+    // MARK: - Loading
+    
+    open func loadViewComponentControllers(_ viewComponentControllers: [AUIViewPickerViewComponentController]) {
+        
+    }
+    
+    // MARK: - Reloading
+    
+    open func reloadViewComponentController(_ viewComponentController: AUIViewPickerViewComponentController, viewItemControllers: [AUIViewPickerViewItemController]) {
+        
+    }
   
     // MARK: UIPickerViewDelegateProxyDelegate
+    
+    private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
+        
+        weak var emptyViewPickerViewController: AUIEmptyViewPickerViewController?
+      
+        func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+            return emptyViewPickerViewController?.viewForItem(row, inComponent: component, reusingView: view) ?? UIView()
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+            return emptyViewPickerViewController?.widthForComponent(component) ?? 0
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+            return emptyViewPickerViewController?.heightForComponent(component) ?? 0
+        }
+      
+        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+            emptyViewPickerViewController?.didSelectItem(row, inComponent: component)
+        }
+        
+    }
   
     open func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
         guard component >= 0, component < componentControllers.count else { return UIView() }
@@ -68,26 +95,4 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         let itemController = componentController.itemControllers[item]
         didSelectItemController(itemController, inComponentController: componentController)
     }
-}
-
-private class UIPickerViewDelegateProxy: NSObject, UIPickerViewDelegate {
-    
-    weak var delegate: AUIEmptyViewPickerViewController?
-  
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        return delegate?.viewForItem(row, inComponent: component, reusingView: view) ?? UIView()
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        return delegate?.widthForComponent(component) ?? 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return delegate?.heightForComponent(component) ?? 0
-    }
-  
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        delegate?.didSelectItem(row, inComponent: component)
-    }
-    
 }

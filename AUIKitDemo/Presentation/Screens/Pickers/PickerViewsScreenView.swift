@@ -12,6 +12,7 @@ class ScreenView: BackButtonTitleLabelScreenView {
     override func setup() {
         super.setup()
         backgroundColor = .white
+        titlePickerView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
         addSubview(titlePickerView)
     }
     

@@ -2,7 +2,7 @@ import UIKit
 
 public protocol AUIViewPickerViewComponentController: AUIPickerViewComponentController {
   
-    // MARK: Items Controllers
+    // MARK: - ViewItemControllers
   
     var viewItemControllers: [AUIViewPickerViewItemController] { get set }
     

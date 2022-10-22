@@ -27,6 +27,7 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     
     open func setupPickerView() {
         pickerView?.dataSource = pickerViewDataSourceProxy
+        pickerView?.reloadAllComponents()
     }
   
     open override func unsetupView() {
