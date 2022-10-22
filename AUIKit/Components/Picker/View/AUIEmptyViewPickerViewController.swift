@@ -2,11 +2,7 @@ import UIKit
 
 open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIViewPickerViewController {
   
-    // MARK: Delegates
-  
-    private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
-  
-    // MARK: Component Controllers
+    // MARK: - ViewComponentControllers
   
     open var viewComponentControllers: [AUIViewPickerViewComponentController] = []
   
@@ -72,6 +68,8 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
         }
         
     }
+    
+    private let pickerViewDelegateProxy = UIPickerViewDelegateProxy()
   
     open func viewForItem(_ item: Int, inComponent component: Int, reusingView view: UIView?) -> UIView {
         guard component >= 0, component < componentControllers.count else { return UIView() }

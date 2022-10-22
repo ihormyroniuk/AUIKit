@@ -2,7 +2,7 @@ import UIKit
 
 open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponentController {
     
-    // MARK: Initializer
+    // MARK: - Initialization
     
     public init() {
       setup()
@@ -13,6 +13,8 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     open func setup() {
       
     }
+    
+    // MARK: - ViewItemControllers
   
     open var itemControllers: [AUIPickerViewItemController] {
         return viewItemControllers
