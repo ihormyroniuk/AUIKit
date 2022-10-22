@@ -83,7 +83,7 @@ final class PickerViewsScreenViewController: UIViewController {
             let cityTitleItemController = AUIEmptyTitlePickerViewItemController(title: name)
             citiesTitleItemControllers.append(cityTitleItemController)
         }
-        titlePickerViewController.reloadComponent(citiesTitleComponentController, titleItemControllers: citiesTitleItemControllers)
+        titlePickerViewController.reloadTitleComponentController(citiesTitleComponentController, titleItemControllers: citiesTitleItemControllers)
         if let firstCityTitleItemController = citiesTitleItemControllers.first {
             titlePickerViewController.selectItemController(firstCityTitleItemController, atComponentController: citiesTitleComponentController, animated: false)
         }
@@ -118,7 +118,7 @@ final class PickerViewsScreenViewController: UIViewController {
         }
         let citiesTitleComponentController = AUIEmptyTitlePickerViewComponentController(titleItemControllers: citiesTitleItemControllers)
         self.citiesTitleComponentController = citiesTitleComponentController
-        titlePickerViewController.loadComponents([countriesTitleComponentController, citiesTitleComponentController])
+        titlePickerViewController.loadTitleComponentControllers([countriesTitleComponentController, citiesTitleComponentController])
     }
     
 }

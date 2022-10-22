@@ -32,14 +32,14 @@ open class AUIEmptyTitlePickerViewController: AUIEmptyPickerViewController, AUIT
     
     // MARK: - Loading
     
-    public func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController]) {
-        titleComponentControllers = componentControllers
+    public func loadTitleComponentControllers(_ titleComponentControllers: [AUITitlePickerViewComponentController]) {
+        self.titleComponentControllers = titleComponentControllers
         pickerView?.reloadAllComponents()
     }
     
     // MARK: - Reloading
     
-    public func reloadComponent(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController]) {
+    public func reloadTitleComponentController(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController]) {
         guard let component = titleComponentControllers.firstIndex(where: { $0 === titleComponentController }) else { return }
         titleComponentController.titleItemControllers = titleItemControllers
         pickerView?.reloadComponent(component)

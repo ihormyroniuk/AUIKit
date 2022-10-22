@@ -8,10 +8,10 @@ public protocol AUITitlePickerViewController: AUIPickerViewController {
     
     // MARK: - Loading
     
-    func loadComponents(_ componentControllers: [AUITitlePickerViewComponentController])
+    func loadTitleComponentControllers(_ titleComponentControllers: [AUITitlePickerViewComponentController])
     
     // MARK: - Reloading
     
-    func reloadComponent(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController])
+    func reloadTitleComponentController(_ titleComponentController: AUITitlePickerViewComponentController, titleItemControllers: [AUITitlePickerViewItemController])
     
 }
