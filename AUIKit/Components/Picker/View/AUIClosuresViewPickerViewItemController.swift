@@ -2,11 +2,7 @@ import UIKit
 
 open class AUIClosuresViewPickerViewItemController: AUIEmptyViewPickerViewItemController {
     
-    // MARK: Initializer
-  
-    public override init() {
-        super.init()
-    }
+    // MARK: - Initialization
     
     open var viewReusingViewClosure: ((UIView?) -> UIView)?
     open override func view(reusingView view: UIView?) -> UIView {
