@@ -162,7 +162,6 @@
 		C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D6D5B277521650069520F /* TableViewScreenViewController.swift */; };
 		C58D6D5E277521760069520F /* TableViewScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D6D5D277521760069520F /* TableViewScreenView.swift */; };
 		C58E150E2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */; };
-		C58E15122773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */; };
 		C58E667C27878EF800D0E5AD /* AUIEmptyPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E667B27878EF800D0E5AD /* AUIEmptyPresentation.swift */; };
 		C58E667E27879BED00D0E5AD /* AUICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E667D27879BED00D0E5AD /* AUICollectionViewController.swift */; };
 		C58E668127879C6800D0E5AD /* AUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E668027879C6800D0E5AD /* AUICollectionViewCell.swift */; };
@@ -188,6 +187,7 @@
 		C5BB41922779286600F6DA1B /* CurlPagesScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB41912779286600F6DA1B /* CurlPagesScreenViewController.swift */; };
 		C5BB41942779287500F6DA1B /* CurlPagesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */; };
 		C5BB419627792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */; };
+		C5C17A072904850E003D174A /* PickerViewScreenCountryViewPickerViewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C17A062904850E003D174A /* PickerViewScreenCountryViewPickerViewItemController.swift */; };
 		C5C30F7F277A6402006B8CAA /* AUIEmptyTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */; };
 		C5C597C827ADDD51005279E4 /* AUIClosuresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */; };
 		C5C5D49C27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C5D49B27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift */; };
@@ -397,7 +397,6 @@
 		C58D6D5B277521650069520F /* TableViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenViewController.swift; sourceTree = "<group>"; };
 		C58D6D5D277521760069520F /* TableViewScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenView.swift; sourceTree = "<group>"; };
 		C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresViewPickerViewItemController.swift; sourceTree = "<group>"; };
-		C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresViewPickerViewComponentController.swift; sourceTree = "<group>"; };
 		C58E667B27878EF800D0E5AD /* AUIEmptyPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyPresentation.swift; sourceTree = "<group>"; };
 		C58E667D27879BED00D0E5AD /* AUICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICollectionViewController.swift; sourceTree = "<group>"; };
 		C58E668027879C6800D0E5AD /* AUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCell.swift; sourceTree = "<group>"; };
@@ -423,6 +422,7 @@
 		C5BB41912779286600F6DA1B /* CurlPagesScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlPagesScreenViewController.swift; sourceTree = "<group>"; };
 		C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurlPagesScreenView.swift; sourceTree = "<group>"; };
 		C5BB419527792C0B00F6DA1B /* AUIEmptyCurlPagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCurlPagesController.swift; sourceTree = "<group>"; };
+		C5C17A062904850E003D174A /* PickerViewScreenCountryViewPickerViewItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewScreenCountryViewPickerViewItemController.swift; sourceTree = "<group>"; };
 		C5C30F7E277A6402006B8CAA /* AUIEmptyTableViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyTableViewCellController.swift; sourceTree = "<group>"; };
 		C5C597C727ADDD51005279E4 /* AUIClosuresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresTableViewController.swift; sourceTree = "<group>"; };
 		C5C5D49B27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIHiddenNavigationBarNavigationController.swift; sourceTree = "<group>"; };
@@ -951,7 +951,6 @@
 				C544E64A2295600B00DE9156 /* AUIEmptyViewPickerViewController.swift */,
 				C544E64622955B0600DE9156 /* AUIViewPickerViewComponentController.swift */,
 				C544E64C2295685E00DE9156 /* AUIEmptyViewPickerViewComponentController.swift */,
-				C58E15112773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift */,
 				C544E64822955B2A00DE9156 /* AUIViewPickerViewItemController.swift */,
 				C544E64E229569A400DE9156 /* AUIEmptyViewPickerViewItemController.swift */,
 				C58E150D2773D6C0002984DD /* AUIClosuresViewPickerViewItemController.swift */,
@@ -1158,6 +1157,7 @@
 			children = (
 				C56E06112901ECCF00B0FD78 /* PickerViewsScreenViewController.swift */,
 				C56E06132901ED1C00B0FD78 /* PickerViewsScreenView.swift */,
+				C5C17A05290484CD003D174A /* CountryViewPickerViewItemController */,
 			);
 			path = Pickers;
 			sourceTree = "<group>";
@@ -1339,6 +1339,14 @@
 				C5BB41932779287500F6DA1B /* CurlPagesScreenView.swift */,
 			);
 			path = CurlPages;
+			sourceTree = "<group>";
+		};
+		C5C17A05290484CD003D174A /* CountryViewPickerViewItemController */ = {
+			isa = PBXGroup;
+			children = (
+				C5C17A062904850E003D174A /* PickerViewScreenCountryViewPickerViewItemController.swift */,
+			);
+			path = CountryViewPickerViewItemController;
 			sourceTree = "<group>";
 		};
 		C5DF085324E11CDE0048DDD9 /* Components */ = {
@@ -1634,7 +1642,6 @@
 				C53AEB202195DC470087F0A2 /* AUIBarButtonItemController.swift in Sources */,
 				C5443BB122A91B75003DE568 /* AUIApplication.swift in Sources */,
 				C5C5D49C27A52C300047FDA0 /* AUIHiddenNavigationBarNavigationController.swift in Sources */,
-				C58E15122773DA60002984DD /* AUIClosuresViewPickerViewComponentController.swift in Sources */,
 				C53AEB1D2195DC470087F0A2 /* AUIBarItemController.swift in Sources */,
 				C53E80E0226F00BB00DD78C8 /* UIStackView+ArrangedSubviews.swift in Sources */,
 				C53AEB152195DBE30087F0A2 /* AUIImageViewController.swift in Sources */,
@@ -1725,6 +1732,7 @@
 				C557C71024CA1F91004801AC /* LabelsScreenController.swift in Sources */,
 				C58CB82128DA506200BF121D /* TableViewScreenHeaderFooterViewController.swift in Sources */,
 				C5319BA82725FCA1002C3B74 /* PresentAnimationScreenViewController.swift in Sources */,
+				C5C17A072904850E003D174A /* PickerViewScreenCountryViewPickerViewItemController.swift in Sources */,
 				C54EAEB024E0538300A8A51E /* MenuScreenView.swift in Sources */,
 				C54EAEB224E0539200A8A51E /* MenuScreenViewController.swift in Sources */,
 				C557C70E24CA1F7F004801AC /* LabelsScreenView.swift in Sources */,

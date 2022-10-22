@@ -4,8 +4,9 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     
     // MARK: - Initialization
     
-    public init() {
-      setup()
+    public init(viewItemControllers: [AUIViewPickerViewItemController]) {
+        self.viewItemControllers = viewItemControllers
+        setup()
     }
     
     // MARK: Setup
@@ -21,12 +22,8 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     }
     open var viewItemControllers: [AUIViewPickerViewItemController] = []
   
-    open var width: CGFloat {
-        return 0
-    }
+    open var width: CGFloat = 0
     
-    open var height: CGFloat {
-        return 0
-    }
+    open var height: CGFloat = 0
   
 }

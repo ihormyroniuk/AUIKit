@@ -8,12 +8,12 @@ final class PickerViewsScreenViewController: UIViewController {
     
     // MARK: - Data
     
-    private struct City: Hashable {
+    struct City: Hashable {
         let id: String = UUID().uuidString
         let name: String
     }
     
-    private struct Country: Hashable {
+    struct Country: Hashable {
         let id: String = UUID().uuidString
         let name: String
         let flag: String
@@ -57,6 +57,10 @@ final class PickerViewsScreenViewController: UIViewController {
     private var countriesTitleComponentController: AUITitlePickerViewComponentController?
     private var citiesTitleComponentController: AUITitlePickerViewComponentController?
     
+    private let viewPickerViewController = AUIEmptyViewPickerViewController()
+    private var countriesViewComponentController: AUIViewPickerViewComponentController?
+    private var citiesViewComponentController: AUIViewPickerViewComponentController?
+    
     // MARK: Setup
     
     override func viewDidLoad() {
@@ -65,7 +69,9 @@ final class PickerViewsScreenViewController: UIViewController {
         screenView.backButton.addTarget(self, action: #selector(back), for: .touchUpInside)
         setContent()
         titlePickerViewController.pickerView = screenView.titlePickerView
+        viewPickerViewController.pickerView = screenView.viewPickerView
         loadTitlePickerViewControllerContent()
+        loadViewPickerViewControllerContent()
     }
 
     // MARK: Actions
@@ -119,6 +125,33 @@ final class PickerViewsScreenViewController: UIViewController {
         let citiesTitleComponentController = AUIEmptyTitlePickerViewComponentController(titleItemControllers: citiesTitleItemControllers)
         self.citiesTitleComponentController = citiesTitleComponentController
         titlePickerViewController.loadTitleComponentControllers([countriesTitleComponentController, citiesTitleComponentController])
+    }
+    
+    private func loadViewPickerViewControllerContent() {
+        var countriesViewItemControllers: [AUIViewPickerViewItemController] = []
+        for country in countries {
+            let countryViewItemController = CountryViewPickerViewItemController(country: country)
+            countryViewItemController.didSelect = { [weak self] in
+                guard let self = self else { return }
+                self.didSelectCountry(country)
+            }
+            countriesViewItemControllers.append(countryViewItemController)
+        }
+        let countriesViewComponentController = AUIEmptyViewPickerViewComponentController(viewItemControllers: countriesViewItemControllers)
+        countriesViewComponentController.width = 100
+        countriesViewComponentController.height = 44
+        self.countriesViewComponentController = countriesViewComponentController
+        let firstCountry = countries.first
+        let cities = firstCountry?.cities ?? []
+        var citiesViewItemControllers: [AUIViewPickerViewItemController] = []
+        for city in cities {
+            let name = city.name
+            let cityViewItemController = AUIEmptyViewPickerViewItemController()
+            citiesViewItemControllers.append(cityViewItemController)
+        }
+        let citiesViewComponentController = AUIEmptyViewPickerViewComponentController(viewItemControllers: citiesViewItemControllers)
+        self.citiesViewComponentController = citiesViewComponentController
+        viewPickerViewController.loadViewComponentControllers([countriesViewComponentController, citiesViewComponentController])
     }
     
 }
