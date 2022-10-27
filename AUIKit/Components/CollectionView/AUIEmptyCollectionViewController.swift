@@ -77,13 +77,17 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     // MARK: Sections
     
     open func numberOfSections() -> Int {
-        return sectionControllers.count
+        let numberOfSections = sectionControllers.count
+        return numberOfSections
     }
     
     // MARK: Cells
     
     open func numberOfItemsInSection(_ section: Int) -> Int {
-        return sectionControllers[section].numberOfItems
+        let sectionController = sectionControllers[section]
+        let cellControllers = sectionController.cellControllers
+        let numberOfItems = cellControllers.count
+        return numberOfItems
     }
     
     open func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
