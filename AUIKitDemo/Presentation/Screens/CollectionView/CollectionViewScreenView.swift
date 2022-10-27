@@ -59,6 +59,28 @@ class CollectionViewScreenView: BackButtonTitleLabelScreenView {
     }
 }
 
+class CollectionViewCellController: AUIClosuresCollectionViewCellController {
+    
+    let i: Int
+    
+    init(i: Int) {
+        self.i = i
+        super.init()
+    }
+    
+    // MARK: - Cell
+    
+    override var cellType: UICollectionViewCell.Type {
+        return CollectionViewCell.self
+    }
+    
+    override func setupCell() {
+        super.setupCell()
+        (cell as? CollectionViewCell)?.textLabel.text = "item \(i)"
+    }
+    
+}
+
 class CollectionViewCell: AUICollectionViewCell {
     
     // MARK: Subview

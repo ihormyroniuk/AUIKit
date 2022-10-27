@@ -16,27 +16,6 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
         return cellControllers.count
     }
     
-    open func prefetchCellAtIndex(_ index: Int) {
-        cellControllers[index].prefetchCell()
-    }
-    
-    open func cancelPrefetchingForCellAtIndex(_ index: Int) {
-        cellControllers[index].cancelPrefetchingForCell()
-    }
-        
-    open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
-        let index = indexPath.row
-        return cellControllers[index].cellForItemAtIndexPath(indexPath)
-    }
-    
-    open func willDisplayCell(_ cell: UICollectionViewCell, atIndex index: Int) {
-        cellControllers[index].willDisplayCell(cell)
-    }
-    
-    open func didEndDisplayingCellAtIndex(_ index: Int) {
-        cellControllers[index].didEndDisplayingCell()
-    }
-    
     open func shouldSelectItemAtIndex(_ index: Int) -> Bool {
         return cellControllers[index].shouldSelectCell
     }

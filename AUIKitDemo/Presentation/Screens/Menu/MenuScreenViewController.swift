@@ -47,13 +47,7 @@ class MenuScreenViewController: UIViewController {
         let sectionController = AUIEmptyCollectionViewSectionController()
         var cellControllers: [AUICollectionViewCellController] = []
         // Scroll Pages
-        let scrollPagesCellController = AUIClosuresCollectionViewCellController()
-        scrollPagesCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Scroll Pages"
-            return cell
-        }
+        let scrollPagesCellController = MenuItemCollectionViewCellController(title: "Scroll Pages")
         scrollPagesCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
@@ -64,13 +58,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(scrollPagesCellController)
         // Curl Pages
-        let curlPagesCellController = AUIClosuresCollectionViewCellController()
-        curlPagesCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Curl Pages"
-            return cell
-        }
+        let curlPagesCellController = MenuItemCollectionViewCellController(title: "Curl Pages")
         curlPagesCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
@@ -81,13 +69,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(curlPagesCellController)
         // Labels
-        let labelsCellController = AUIClosuresCollectionViewCellController()
-        labelsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Labels"
-            return cell
-        }
+        let labelsCellController = MenuItemCollectionViewCellController(title: "Labels")
         labelsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
@@ -98,13 +80,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(labelsCellController)
         // Interactive Labels
-        let interactiveLabelsCellController = AUIClosuresCollectionViewCellController()
-        interactiveLabelsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Interactive Labels"
-            return cell
-        }
+        let interactiveLabelsCellController = MenuItemCollectionViewCellController(title: "Interactive Labels")
         interactiveLabelsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
@@ -115,13 +91,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(interactiveLabelsCellController)
         // Signup
-        let signupCellController = AUIClosuresCollectionViewCellController()
-        signupCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Signup"
-            return cell
-        }
+        let signupCellController = MenuItemCollectionViewCellController(title: "Signup")
         signupCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplaySignupScreen(self)
@@ -132,13 +102,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(signupCellController)
         // Text Field Text Input View
-        let textFieldTextInputViewCellController = AUIClosuresCollectionViewCellController()
-        textFieldTextInputViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Text Field Text Input View"
-            return cell
-        }
+        let textFieldTextInputViewCellController = MenuItemCollectionViewCellController(title: "Text Field Text Input View")
         textFieldTextInputViewCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
@@ -149,13 +113,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(textFieldTextInputViewCellController)
         // Present Animations
-        let presentAnimationsCellController = AUIClosuresCollectionViewCellController()
-        presentAnimationsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Present Animations"
-            return cell
-        }
+        let presentAnimationsCellController = MenuItemCollectionViewCellController(title: "Present Animations")
         presentAnimationsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
@@ -166,13 +124,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(presentAnimationsCellController)
         // Push Animations
-        let pushAnimationsCellController = AUIClosuresCollectionViewCellController()
-        pushAnimationsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Push Animations"
-            return cell
-        }
+        let pushAnimationsCellController = MenuItemCollectionViewCellController(title: "Push Animations")
         pushAnimationsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPushAnimations(self)
@@ -183,13 +135,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(pushAnimationsCellController)
         // Table View
-        let tableViewCellController = AUIClosuresCollectionViewCellController()
-        tableViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Table View"
-            return cell
-        }
+        let tableViewCellController = MenuItemCollectionViewCellController(title: "Table View")
         tableViewCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTableView(self)
@@ -200,13 +146,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(tableViewCellController)
         // Collection View
-        let collectionViewCellController = AUIClosuresCollectionViewCellController()
-        collectionViewCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "Collection View"
-            return cell
-        }
+        let collectionViewCellController = MenuItemCollectionViewCellController(title: "Collection View")
         collectionViewCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCollectionView(self)
@@ -217,13 +157,7 @@ class MenuScreenViewController: UIViewController {
         }
         cellControllers.append(collectionViewCellController)
         // Pickers
-        let pickerViewsCellController = AUIClosuresCollectionViewCellController()
-        pickerViewsCellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-            guard let self = self else { return UICollectionViewCell() }
-            let cell = self.menuScreenView.menuItemCollectionViewCell(indexPath: indexPath)
-            cell.titleLabel.text = "PickerViews"
-            return cell
-        }
+        let pickerViewsCellController = MenuItemCollectionViewCellController(title: "PickerViews")
         pickerViewsCellController.didSelectClosure = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPickerViews(self)

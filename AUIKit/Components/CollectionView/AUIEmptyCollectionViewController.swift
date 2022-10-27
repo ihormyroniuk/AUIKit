@@ -88,32 +88,38 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func prefetchItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if let cellController = deletedIndexPaths[indexPath] {
-                cellController.prefetchCell()
-                return
-            }
             let section = indexPath.section
-            let index = indexPath.item
-            sectionControllers[section].prefetchCellAtIndex(index)
+            let sectionController = sectionControllers[section]
+            let row = indexPath.row
+            let cellController = sectionController.cellControllers[row]
+            cellController.prefetchCell()
         }
     }
     
     open func cancelPrefetchingForItemsAtIndexPaths(_ indexPaths: [IndexPath]) {
         for indexPath in indexPaths {
-            if let cellController = deletedIndexPaths[indexPath] {
-                cellController.cancelPrefetchingForCell()
-                return
-            }
             let section = indexPath.section
-            let index = indexPath.item
-            sectionControllers[section].cancelPrefetchingForCellAtIndex(index)
+            let sectionController = sectionControllers[section]
+            let row = indexPath.row
+            guard row < sectionController.cellControllers.count else { return }
+            let cellController = sectionController.cellControllers[row]
+            cellController.cancelPrefetchingForCell()
         }
     }
     
     open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
         deletedIndexPaths[indexPath] = nil
         let section = indexPath.section
-        return sectionControllers[section].cellForItemAtIndexPath(indexPath)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        guard let collectionView = collectionView else { return UICollectionViewCell() }
+        let cellType = cellController.cellType
+        let cellIdentifier = cellController.cellIdentifier
+        collectionView.register(cellType, forCellWithReuseIdentifier: cellIdentifier)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        cellController.cell = cell
+        return cell
     }
     
     open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
@@ -124,12 +130,17 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func willDisplayCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath) {
         if let cellController = deletedIndexPaths[indexPath] {
-            cellController.willDisplayCell(cell)
+            cellController.willDisplayCell()
             return
         }
         let section = indexPath.section
-        let index = indexPath.item
-        sectionControllers[section].willDisplayCell(cell, atIndex: index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        if cellController.cell != cell {
+            cellController.cell = cell
+        }
+        return cellController.willDisplayCell()
     }
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
@@ -143,8 +154,11 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             return
         }
         let section = indexPath.section
+        let sectionController = sectionControllers[section]
         let index = indexPath.item
-        sectionControllers[section].didEndDisplayingCellAtIndex(index)
+        let cellController = sectionController.cellControllers[index]
+        cellController.cell = nil
+        cellController.didEndDisplayingCell()
     }
     
     open func shouldSelectItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
@@ -155,8 +169,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
         let section = indexPath.section
-        let index = indexPath.item
-        sectionControllers[section].didSelectCellAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let row = indexPath.row
+        let cellController = sectionController.cellControllers[row]
+        cellController.didSelectCell()
     }
     
     // MARK: Modification

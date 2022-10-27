@@ -60,6 +60,28 @@ class MenuScreenView: TitleLabelScreenView {
     
 }
 
+class MenuItemCollectionViewCellController: AUIClosuresCollectionViewCellController {
+    
+    let title: String
+    
+    init(title: String) {
+        self.title = title
+        super.init()
+    }
+    
+    // MARK: - Cell
+    
+    override var cellType: UICollectionViewCell.Type {
+        return MenuItemCollectionViewCell.self
+    }
+    
+    override func setupCell() {
+        super.setupCell()
+        (cell as? MenuItemCollectionViewCell)?.titleLabel.text = title
+    }
+    
+}
+
 class MenuItemCollectionViewCell: AUICollectionViewCell {
     
     // MARK: Subviews

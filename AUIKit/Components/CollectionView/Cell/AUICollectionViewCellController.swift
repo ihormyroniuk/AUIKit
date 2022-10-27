@@ -14,8 +14,12 @@ public protocol AUICollectionViewCellController: AnyObject {
     
     // MARK: - Cell
     
-    func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell
+    var cellType: UICollectionViewCell.Type { get }
     
+    var cellIdentifier: String { get }
+    
+    var cell: UICollectionViewCell? { get set }
+        
     // MARK: - Selection
     
     var shouldSelectCell: Bool { get }
@@ -24,7 +28,7 @@ public protocol AUICollectionViewCellController: AnyObject {
     
     // MARK: - Displaying
     
-    func willDisplayCell(_ cell: UICollectionViewCell)
+    func willDisplayCell()
     
     func didEndDisplayingCell()
     

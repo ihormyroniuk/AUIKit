@@ -41,13 +41,7 @@ final class CollectionViewScreenViewController: UIViewController {
         collectionViewController.isPrefetchingEnabled = true
         var cellControllers: [AUICollectionViewCellController] = []
         for i in 1...100 {
-            let cellController = AUIClosuresCollectionViewCellController()
-            cellController.cellForItemAtIndexPathClosure = { [weak self] indexPath in
-                guard let self = self else { return UICollectionViewCell() }
-                let cell = self.collectionViewScreenView.collectionViewCell(indexPath)
-                cell.textLabel.text = "item \(i)"
-                return cell
-            }
+            let cellController = CollectionViewCellController(i: i)
             cellController.sizeForCellClosure = { [weak self] in
                 guard let self = self else { return .zero }
                 return self.collectionViewScreenView.collectionViewCellSize()

@@ -15,33 +15,56 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
 
     // MARK: CollectionViewCell
   
-    open var collectionViewCell: UICollectionViewCell? {
+//    open var collectionViewCell: UICollectionViewCell? {
+//        set { view = newValue }
+//        get { return view as? UICollectionViewCell }
+//    }
+//
+//    open override func setupView() {
+//        super.setupView()
+//        setupCollectionViewCell()
+//    }
+//
+//    open func setupCollectionViewCell() {
+//
+//    }
+//
+//    open override func unsetupView() {
+//        super.unsetupView()
+//        unsetupCollectionViewCell()
+//    }
+//
+//    open func unsetupCollectionViewCell() {
+//
+//    }
+    
+    // MARK: - Cell
+    
+    open var cellType: UICollectionViewCell.Type { return UICollectionViewCell.self }
+    
+    open var cellIdentifier: String { return String(describing: cellType.self) }
+  
+    open var cell: UICollectionViewCell? {
         set { view = newValue }
         get { return view as? UICollectionViewCell }
     }
   
     open override func setupView() {
         super.setupView()
-        setupCollectionViewCell()
+        setupCell()
     }
   
-    open func setupCollectionViewCell() {
+    open func setupCell() {
         
     }
   
     open override func unsetupView() {
         super.unsetupView()
-        unsetupCollectionViewCell()
+        unsetupCell()
     }
   
-    open func unsetupCollectionViewCell() {
+    open func unsetupCell() {
     
-    }
-    
-    // MARK: - Cell
-    
-    open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
     }
     
     // MARK: - Size
@@ -62,14 +85,12 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     
     // MARK: - Displaying
     
-    open func willDisplayCell(_ cell: UICollectionViewCell) {
-        if collectionViewCell != cell {
-            collectionViewCell = cell
-        }
+    open func willDisplayCell() {
+        
     }
     
     open func didEndDisplayingCell() {
-        collectionViewCell = nil
+
     }
     
 }
