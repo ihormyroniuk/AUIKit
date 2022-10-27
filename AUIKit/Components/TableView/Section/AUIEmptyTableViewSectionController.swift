@@ -2,7 +2,6 @@ import UIKit
 
 open class AUIEmptyTableViewSectionController: AUITableViewSectionController {
     
-    
     // MARK: - Initialization
 
     public init() {

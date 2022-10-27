@@ -1,6 +1,16 @@
 import UIKit
 
 open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUICollectionViewCellController {
+    
+    // MARK: - Prefetching
+    
+    open func prefetchCell() {
+        
+    }
+    
+    open func cancelPrefetchingForCell() {
+        
+    }
   
 
     // MARK: CollectionViewCell
@@ -28,23 +38,29 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     
     }
     
-    // MARK: AUICollectionViewCellController
-    
-    open func prefetchCell() {
-        
-    }
-    
-    open func cancelPrefetchingForCell() {
-        
-    }
+    // MARK: - Cell
     
     open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
     }
     
+    // MARK: - Size
+    
     open var sizeForCell: CGSize {
         return .zero
     }
+    
+    // MARK: - Selection
+  
+    open var shouldSelectCell: Bool {
+        return true
+    }
+    
+    open func didSelectCell() {
+        
+    }
+    
+    // MARK: - Displaying
     
     open func willDisplayCell(_ cell: UICollectionViewCell) {
         if collectionViewCell != cell {
@@ -54,14 +70,6 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     
     open func didEndDisplayingCell() {
         collectionViewCell = nil
-    }
-  
-    open var shouldSelectCell: Bool {
-        return true
-    }
-    
-    open func didSelectCell() {
-        
     }
     
 }
