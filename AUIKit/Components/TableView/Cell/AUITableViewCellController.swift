@@ -32,7 +32,7 @@ public protocol AUITableViewCellController: AUIViewController {
     
     var willDisplay: (() -> Void)? { get set }
     
-    func willDisplayCell(_ cell: UITableViewCell)
+    func willDisplayCell()
     
     var didEndDisplaying: (() -> Void)? { get set }
     

@@ -201,7 +201,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         if cellController.cell != cell {
             cellController.cell = cell
         }
-        return cellController.willDisplayCell(cell)
+        return cellController.willDisplayCell()
     }
   
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
