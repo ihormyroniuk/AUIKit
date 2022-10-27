@@ -11,32 +11,6 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     open func cancelPrefetchingForCell() {
         
     }
-  
-
-    // MARK: CollectionViewCell
-  
-//    open var collectionViewCell: UICollectionViewCell? {
-//        set { view = newValue }
-//        get { return view as? UICollectionViewCell }
-//    }
-//
-//    open override func setupView() {
-//        super.setupView()
-//        setupCollectionViewCell()
-//    }
-//
-//    open func setupCollectionViewCell() {
-//
-//    }
-//
-//    open override func unsetupView() {
-//        super.unsetupView()
-//        unsetupCollectionViewCell()
-//    }
-//
-//    open func unsetupCollectionViewCell() {
-//
-//    }
     
     // MARK: - Cell
     
