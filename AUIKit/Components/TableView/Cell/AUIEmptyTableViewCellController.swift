@@ -64,7 +64,10 @@ open class AUIEmptyTableViewCellController: AUIEmptyViewController, AUITableView
   
     open var willDisplay: (() -> Void)?
     
-    open func willDisplayCell() {
+    open func willDisplayCell(_ cell: UITableViewCell) {
+        if self.cell != cell {
+            self.cell = cell
+        }
         guard let willDisplay = willDisplay else { return }
         willDisplay()
     }
