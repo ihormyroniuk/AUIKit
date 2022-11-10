@@ -21,27 +21,9 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
         return sizeForCellClosure?() ?? super.sizeForCell
     }
     
-    open var willDisplayCellClosure: (() -> Void)?
-    open override func willDisplayCell() {
-        super.willDisplayCell()
-        willDisplayCellClosure?()
-    }
-    
-    open var didEndDisplayingCellClosure: (() -> Void)?
-    open override func didEndDisplayingCell() {
-        super.didEndDisplayingCell()
-        didEndDisplayingCellClosure?()
-    }
-    
     open var shouldSelectCellClosure: (() -> Bool)?
     open override var shouldSelectCell: Bool {
         return shouldSelectCellClosure?() ?? true
-    }
-    
-    open var didSelectClosure: (() -> Void)?
-    open override func didSelectCell() {
-        super.didSelectCell()
-        didSelectClosure?()
     }
 
 }

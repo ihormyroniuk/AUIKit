@@ -2,7 +2,7 @@ import UIKit
 
 public extension UIColor {
     
-    // MARK: Initializer
+    // MARK: - Initialization
     
     convenience init(red: CGFloat, green: CGFloat, blue: CGFloat) {
         self.init(red: red, green: green, blue: blue, alpha: 1)
@@ -12,7 +12,7 @@ public extension UIColor {
         self.init(red: CGFloat(red8Bits) / CGFloat(UInt8.max), green: CGFloat(green8Bits) / CGFloat(UInt8.max), blue: CGFloat(blue8Bits) / CGFloat(UInt8.max), alpha: 1)
     }
     
-    // MARK: Components
+    // MARK: - Components
     
     var componentsRGB: (red: CGFloat, green: CGFloat, blue: CGFloat) {
         let color = CIColor(color: self)

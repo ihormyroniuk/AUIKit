@@ -81,12 +81,16 @@ open class AUIEmptyViewPickerViewController: AUIEmptyPickerViewController, AUIVi
     
     open func widthForComponent(_ component: Int) -> CGFloat {
         guard component >= 0, component < viewComponentControllers.count else { return 0 }
-        return viewComponentControllers[component].width
+        guard let pickerView = pickerView else { return 0 }
+        let size = pickerView.bounds.size
+        return viewComponentControllers[component].width(size)
     }
     
     open func heightForComponent(_ component: Int) -> CGFloat {
         guard component >= 0, component < viewComponentControllers.count else { return 0 }
-        return viewComponentControllers[component].height
+        guard let pickerView = pickerView else { return 0 }
+        let size = pickerView.bounds.size
+        return viewComponentControllers[component].height(size)
     }
   
     open func didSelectItem(_ item: Int, inComponent component: Int) {

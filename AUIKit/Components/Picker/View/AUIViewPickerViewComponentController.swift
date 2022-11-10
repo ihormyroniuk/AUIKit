@@ -6,7 +6,7 @@ public protocol AUIViewPickerViewComponentController: AUIPickerViewComponentCont
   
     var viewItemControllers: [AUIViewPickerViewItemController] { get set }
     
-    var width: CGFloat { get }
+    func width(_ size: CGSize) -> CGFloat
     
-    var height: CGFloat { get }
+    func height(_ size: CGSize) -> CGFloat
 }

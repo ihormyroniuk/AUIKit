@@ -81,17 +81,29 @@ final class PickerViewsScreenViewController: UIViewController {
     }
     
     private func didSelectCountry(_ country: Country) {
-        guard let citiesTitleComponentController = citiesTitleComponentController else { return }
         let cities = country.cities
-        var citiesTitleItemControllers: [AUITitlePickerViewItemController] = []
-        for city in cities {
-            let name = city.name
-            let cityTitleItemController = AUIEmptyTitlePickerViewItemController(title: name)
-            citiesTitleItemControllers.append(cityTitleItemController)
+        if let citiesTitleComponentController = citiesTitleComponentController {
+            var citiesTitleItemControllers: [AUITitlePickerViewItemController] = []
+            for city in cities {
+                let name = city.name
+                let cityTitleItemController = AUIEmptyTitlePickerViewItemController(title: name)
+                citiesTitleItemControllers.append(cityTitleItemController)
+            }
+            titlePickerViewController.reloadTitleComponentController(citiesTitleComponentController, titleItemControllers: citiesTitleItemControllers)
+            if let firstCityTitleItemController = citiesTitleItemControllers.first {
+                titlePickerViewController.selectItemController(firstCityTitleItemController, atComponentController: citiesTitleComponentController, animated: false)
+            }
         }
-        titlePickerViewController.reloadTitleComponentController(citiesTitleComponentController, titleItemControllers: citiesTitleItemControllers)
-        if let firstCityTitleItemController = citiesTitleItemControllers.first {
-            titlePickerViewController.selectItemController(firstCityTitleItemController, atComponentController: citiesTitleComponentController, animated: false)
+        if let citiesViewComponentController = citiesViewComponentController {
+            var citiesViewItemControllers: [CityViewPickerViewItemController] = []
+            for city in cities {
+                let cityViewItemController = CityViewPickerViewItemController(city: city)
+                citiesViewItemControllers.append(cityViewItemController)
+            }
+            viewPickerViewController.reloadViewComponentController(citiesViewComponentController, viewItemControllers: citiesViewItemControllers)
+            if let firstCityViewItemController = citiesViewItemControllers.first {
+                viewPickerViewController.selectItemController(firstCityViewItemController, atComponentController: citiesViewComponentController, animated: false)
+            }
         }
     }
     
@@ -137,19 +149,24 @@ final class PickerViewsScreenViewController: UIViewController {
             }
             countriesViewItemControllers.append(countryViewItemController)
         }
-        let countriesViewComponentController = AUIEmptyViewPickerViewComponentController(viewItemControllers: countriesViewItemControllers)
-        countriesViewComponentController.width = 100
-        countriesViewComponentController.height = 44
+        class CountriesViewComponentController: AUIEmptyViewPickerViewComponentController {
+            override func width(_ size: CGSize) -> CGFloat { return size.width * 0.3 }
+            override func height(_ size: CGSize) -> CGFloat { return 90 }
+        }
+        let countriesViewComponentController = CountriesViewComponentController(viewItemControllers: countriesViewItemControllers)
         self.countriesViewComponentController = countriesViewComponentController
         let firstCountry = countries.first
         let cities = firstCountry?.cities ?? []
-        var citiesViewItemControllers: [AUIViewPickerViewItemController] = []
+        var citiesViewItemControllers: [CityViewPickerViewItemController] = []
         for city in cities {
-            let name = city.name
-            let cityViewItemController = AUIEmptyViewPickerViewItemController()
+            let cityViewItemController = CityViewPickerViewItemController(city: city)
             citiesViewItemControllers.append(cityViewItemController)
         }
-        let citiesViewComponentController = AUIEmptyViewPickerViewComponentController(viewItemControllers: citiesViewItemControllers)
+        class CitiesViewComponentController: AUIEmptyViewPickerViewComponentController {
+            override func width(_ size: CGSize) -> CGFloat { return size.width * 0.3 }
+            override func height(_ size: CGSize) -> CGFloat { return 30 }
+        }
+        let citiesViewComponentController = CitiesViewComponentController(viewItemControllers: citiesViewItemControllers)
         self.citiesViewComponentController = citiesViewComponentController
         viewPickerViewController.loadViewComponentControllers([countriesViewComponentController, citiesViewComponentController])
     }

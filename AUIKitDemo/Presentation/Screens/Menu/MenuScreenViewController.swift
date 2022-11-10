@@ -48,7 +48,7 @@ class MenuScreenViewController: UIViewController {
         var cellControllers: [AUICollectionViewCellController] = []
         // Scroll Pages
         let scrollPagesCellController = MenuItemCollectionViewCellController(title: "Scroll Pages")
-        scrollPagesCellController.didSelectClosure = { [weak self] in
+        scrollPagesCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
         }
@@ -59,7 +59,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(scrollPagesCellController)
         // Curl Pages
         let curlPagesCellController = MenuItemCollectionViewCellController(title: "Curl Pages")
-        curlPagesCellController.didSelectClosure = { [weak self] in
+        curlPagesCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
         }
@@ -70,7 +70,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(curlPagesCellController)
         // Labels
         let labelsCellController = MenuItemCollectionViewCellController(title: "Labels")
-        labelsCellController.didSelectClosure = { [weak self] in
+        labelsCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
         }
@@ -81,7 +81,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(labelsCellController)
         // Interactive Labels
         let interactiveLabelsCellController = MenuItemCollectionViewCellController(title: "Interactive Labels")
-        interactiveLabelsCellController.didSelectClosure = { [weak self] in
+        interactiveLabelsCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
         }
@@ -92,7 +92,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(interactiveLabelsCellController)
         // Signup
         let signupCellController = MenuItemCollectionViewCellController(title: "Signup")
-        signupCellController.didSelectClosure = { [weak self] in
+        signupCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplaySignupScreen(self)
         }
@@ -103,7 +103,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(signupCellController)
         // Text Field Text Input View
         let textFieldTextInputViewCellController = MenuItemCollectionViewCellController(title: "Text Field Text Input View")
-        textFieldTextInputViewCellController.didSelectClosure = { [weak self] in
+        textFieldTextInputViewCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
         }
@@ -114,7 +114,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(textFieldTextInputViewCellController)
         // Present Animations
         let presentAnimationsCellController = MenuItemCollectionViewCellController(title: "Present Animations")
-        presentAnimationsCellController.didSelectClosure = { [weak self] in
+        presentAnimationsCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
         }
@@ -125,7 +125,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(presentAnimationsCellController)
         // Push Animations
         let pushAnimationsCellController = MenuItemCollectionViewCellController(title: "Push Animations")
-        pushAnimationsCellController.didSelectClosure = { [weak self] in
+        pushAnimationsCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPushAnimations(self)
         }
@@ -136,7 +136,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(pushAnimationsCellController)
         // Table View
         let tableViewCellController = MenuItemCollectionViewCellController(title: "Table View")
-        tableViewCellController.didSelectClosure = { [weak self] in
+        tableViewCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTableView(self)
         }
@@ -147,7 +147,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(tableViewCellController)
         // Collection View
         let collectionViewCellController = MenuItemCollectionViewCellController(title: "Collection View")
-        collectionViewCellController.didSelectClosure = { [weak self] in
+        collectionViewCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCollectionView(self)
         }
@@ -158,7 +158,7 @@ class MenuScreenViewController: UIViewController {
         cellControllers.append(collectionViewCellController)
         // Pickers
         let pickerViewsCellController = MenuItemCollectionViewCellController(title: "PickerViews")
-        pickerViewsCellController.didSelectClosure = { [weak self] in
+        pickerViewsCellController.didSelect = { [weak self] in
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPickerViews(self)
         }

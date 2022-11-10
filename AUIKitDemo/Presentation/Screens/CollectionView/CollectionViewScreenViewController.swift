@@ -46,16 +46,16 @@ final class CollectionViewScreenViewController: UIViewController {
                 guard let self = self else { return .zero }
                 return self.collectionViewScreenView.collectionViewCellSize()
             }
-            cellController.willDisplayCellClosure = {
+            cellController.willDisplay = {
                 print("willDisplayCellClosure #\(i)")
             }
-            cellController.didSelectClosure = { [weak self] in
+            cellController.didSelect = { [weak self] in
                 guard let self = self else { return }
                 self.collectionViewController.deleteCellController(cellController) { finished in
                     print("deleteCellControllerAnimated finished")
                 }
             }
-            cellController.didEndDisplayingCellClosure = {
+            cellController.didEndDisplaying = {
                 print("didEndDisplayingCellClosure #\(i)")
             }
             cellController.prefetchCellClosure = {

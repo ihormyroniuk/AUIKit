@@ -167,15 +167,18 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func shouldSelectItemAtIndexPath(_ indexPath: IndexPath) -> Bool {
         let section = indexPath.section
-        let index = indexPath.item
-        return sectionControllers[section].shouldSelectItemAtIndex(index)
+        let sectionController = sectionControllers[section]
+        let item = indexPath.item
+        let cellController = sectionController.cellControllers[item]
+        let shouldSelectCell = cellController.shouldSelectCell
+        return shouldSelectCell
     }
     
     open func didSelectCellAtIndexPath(_ indexPath: IndexPath) {
         let section = indexPath.section
         let sectionController = sectionControllers[section]
-        let row = indexPath.row
-        let cellController = sectionController.cellControllers[row]
+        let item = indexPath.item
+        let cellController = sectionController.cellControllers[item]
         cellController.didSelectCell()
     }
     

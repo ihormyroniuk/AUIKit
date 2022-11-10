@@ -24,11 +24,17 @@ public protocol AUICollectionViewCellController: AnyObject {
     
     var shouldSelectCell: Bool { get }
     
+    var didSelect: (() -> Void)? { get set }
+    
     func didSelectCell()
     
     // MARK: - Displaying
     
+    var willDisplay: (() -> Void)? { get set }
+    
     func willDisplayCell()
+    
+    var didEndDisplaying: (() -> Void)? { get set }
     
     func didEndDisplayingCell()
     

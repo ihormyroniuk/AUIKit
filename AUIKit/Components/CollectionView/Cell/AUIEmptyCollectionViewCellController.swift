@@ -53,18 +53,27 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
         return true
     }
     
+    open var didSelect: (() -> Void)?
+    
     open func didSelectCell() {
-        
+        guard let didSelect = didSelect else { return }
+        didSelect()
     }
     
     // MARK: - Displaying
     
+    open var willDisplay: (() -> Void)?
+    
     open func willDisplayCell() {
-        
+        guard let willDisplay = willDisplay else { return }
+        willDisplay()
     }
     
+    open var didEndDisplaying: (() -> Void)?
+    
     open func didEndDisplayingCell() {
-
+        guard let didEndDisplaying = didEndDisplaying else { return }
+        didEndDisplaying()
     }
     
 }

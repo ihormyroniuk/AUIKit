@@ -103,12 +103,14 @@ open class AUIEmptyPickerViewController: AUIEmptyViewController, AUIPickerViewCo
     private let pickerViewDataSourceProxy = UIPickerViewDataSourceProxy()
     
     open func numberOfComponents() -> Int {
-        return componentControllers.count
+        let numberOfComponents = componentControllers.count
+        return numberOfComponents
     }
   
     open func numberOfItemsInComponent(_ component: Int) -> Int {
         let itemControllers = componentControllers[component].itemControllers
-        return itemControllers.count
+        let numberOfItems = itemControllers.count
+        return numberOfItems
     }
     
 }

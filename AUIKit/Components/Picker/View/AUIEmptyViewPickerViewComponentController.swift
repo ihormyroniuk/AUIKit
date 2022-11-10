@@ -22,8 +22,12 @@ open class AUIEmptyViewPickerViewComponentController: AUIViewPickerViewComponent
     }
     open var viewItemControllers: [AUIViewPickerViewItemController] = []
   
-    open var width: CGFloat = 0
+    open func width(_ size: CGSize) -> CGFloat {
+        return 0
+    }
     
-    open var height: CGFloat = 0
+    open func height(_ size: CGSize) -> CGFloat {
+        return 0
+    }
   
 }

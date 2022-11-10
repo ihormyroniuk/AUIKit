@@ -491,14 +491,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		3333F9F4235F0098007215AB /* RGB */ = {
-			isa = PBXGroup;
-			children = (
-				3333F9F5235F00BE007215AB /* UIColor+RGB.swift */,
-			);
-			path = RGB;
-			sourceTree = "<group>";
-		};
 		3333F9F7235F0F00007215AB /* TextInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,14 +579,6 @@
 				3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */,
 			);
 			path = TextView;
-			sourceTree = "<group>";
-		};
-		C50A5BA72338EC70007E1166 /* RGBA */ = {
-			isa = PBXGroup;
-			children = (
-				C5443BCE22A9624D003DE568 /* UIColor+RGBA.swift */,
-			);
-			path = RGBA;
 			sourceTree = "<group>";
 		};
 		C51DBB262216F2BF0009605A /* TextView */ = {
@@ -990,8 +974,8 @@
 		C54B11B022B12957003EBBA0 /* Colors */ = {
 			isa = PBXGroup;
 			children = (
-				3333F9F4235F0098007215AB /* RGB */,
-				C50A5BA72338EC70007E1166 /* RGBA */,
+				3333F9F5235F00BE007215AB /* UIColor+RGB.swift */,
+				C5443BCE22A9624D003DE568 /* UIColor+RGBA.swift */,
 			);
 			path = Colors;
 			sourceTree = "<group>";
