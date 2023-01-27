@@ -14,6 +14,10 @@ public protocol AUITableViewController: AUIScrollViewController {
     
     var dragInteractionEnabled: Bool { get }
     
+    // MARK: - Scrolling
+    
+    func scrollToCellController(_ cellController: AUITableViewCellController, at scrollPosition: UITableView.ScrollPosition, animated: Bool)
+    
     // MARK: - Reloading
     
     func reloadSection(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController])

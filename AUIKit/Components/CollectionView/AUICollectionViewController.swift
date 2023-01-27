@@ -10,6 +10,10 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     var sectionControllers: [AUICollectionViewSectionController] { get set }
     
+    // MARK: - Scrolling
+    
+    func scrollToCellController(_ cellController: AUICollectionViewCellController, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool)
+    
     // MARK: Modification
     
     func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)

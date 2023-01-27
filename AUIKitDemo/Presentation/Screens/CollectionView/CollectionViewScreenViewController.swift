@@ -51,9 +51,10 @@ final class CollectionViewScreenViewController: UIViewController {
             }
             cellController.didSelect = { [weak self] in
                 guard let self = self else { return }
-                self.collectionViewController.deleteCellController(cellController) { finished in
-                    print("deleteCellControllerAnimated finished")
-                }
+//                self.collectionViewController.deleteCellController(cellController) { finished in
+//                    print("deleteCellControllerAnimated finished")
+//                }
+                self.collectionViewController.scrollToCellController(cellController, at: .centeredVertically, animated: true)
             }
             cellController.didEndDisplaying = {
                 print("didEndDisplayingCellClosure #\(i)")

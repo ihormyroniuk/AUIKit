@@ -182,6 +182,14 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         cellController.didSelectCell()
     }
     
+    // MARK: - Scrolling
+    
+    open func scrollToCellController(_ cellController: AUICollectionViewCellController, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
+        guard let indexPath = indexPathForCellController(cellController) else { return }
+        guard let collectionView = collectionView else { return }
+        collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
+    }
+    
     // MARK: Modification
     
     open var deletedIndexPaths: [IndexPath: AUICollectionViewCellController] = [:]
@@ -258,8 +266,8 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     open func indexPathForCellController(_ cellController: AUICollectionViewCellController) -> IndexPath? {
         for (section, sectionController) in sectionControllers.enumerated() {
-            for (item, _cellController) in sectionController.cellControllers.enumerated() {
-                if _cellController === cellController {
+            for (item, itemCellController) in sectionController.cellControllers.enumerated() {
+                if itemCellController === cellController {
                     let indexPath = IndexPath(item: item, section: section)
                     return indexPath
                 }
@@ -285,21 +293,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[indexPath.section].cellControllers[indexPath.item]
     }
     
-    // MARK: Relaod
-    
-    open func deleteCellControllerReload(_ cellController: AUICollectionViewCellController) {
-        deleteCellControllersReload([cellController])
-    }
-    
-    open func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController]) {
-        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        for (section, indexPaths) in indexPathsBySections {
-            let rows = indexPaths.map({ $0.row })
-            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
-        }
-        reload()
-    }
-    
     private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUICollectionViewCellController]) -> [Int: [IndexPath]] {
         var indexPathsBySections: [Int: [IndexPath]] = [:]
         for (section, sectionController) in sectionControllers.enumerated() {
@@ -313,6 +306,21 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             indexPathsBySections[section] = indexPaths
         }
         return indexPathsBySections
+    }
+    
+    // MARK: Relaod
+    
+    open func deleteCellControllerReload(_ cellController: AUICollectionViewCellController) {
+        deleteCellControllersReload([cellController])
+    }
+    
+    open func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController]) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        reload()
     }
     
 }

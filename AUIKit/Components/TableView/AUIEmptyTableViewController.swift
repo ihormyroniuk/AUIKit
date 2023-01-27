@@ -324,6 +324,14 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         footerController?.didEndDisplayingHeaderFooterView()
     }
     
+    // MARK: - Scrolling
+    
+    open func scrollToCellController(_ cellController: AUITableViewCellController, at scrollPosition: UITableView.ScrollPosition, animated: Bool) {
+        guard let indexPath = indexPathForCellController(cellController) else { return }
+        guard let tableView = tableView else { return }
+        tableView.scrollToRow(at: indexPath, at: scrollPosition, animated: animated)
+    }
+    
     // MARK: - Reloading
     
     open func reload() {
@@ -468,6 +476,21 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     // MARK: - IndexPath
+    
+    private func indexPathForCellController(_ cellController: AUITableViewCellController) -> IndexPath? {
+        let enumeratedSectionControllers = sectionControllers.enumerated()
+        for (section, sectionController) in enumeratedSectionControllers {
+            let cellControllers = sectionController.cellControllers
+            let enumeratedCellControllers = cellControllers.enumerated()
+            for (row, rowCellController) in enumeratedCellControllers {
+                if rowCellController === cellController {
+                    let indexPath = IndexPath(row: row, section: section)
+                    return indexPath
+                }
+            }
+        }
+        return nil
+    }
   
     private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUITableViewCellController]) -> [Int: [IndexPath]] {
         var indexPathsBySections: [Int: [IndexPath]] = [:]
