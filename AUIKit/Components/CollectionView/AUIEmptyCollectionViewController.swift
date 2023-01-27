@@ -2,7 +2,14 @@ import UIKit
 
 open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICollectionViewController {
     
-    // MARK: UICollectionView
+    // MARK: - Setup
+  
+    open override func setup() {
+        super.setup()
+        collectionViewProxyDelegate.delegate = self
+    }
+    
+    // MARK: - UICollectionView
   
     open var collectionView: UICollectionView? {
         set { view = newValue }
@@ -35,7 +42,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.reloadData()
     }
     
-    // MARK: Prefetching
+    // MARK: - Prefetching
     
     open var isPrefetchingEnabled: Bool = true {
         didSet { didSetIsPrefetchingEnabled(oldValue) }
@@ -44,12 +51,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
     }
     
-    // MARK: Proxy Delegate
+    // MARK: - UICollectionViewProxyDelegate
   
     private let collectionViewProxyDelegate = UICollectionViewProxyDelegate()
-  
-    // MARK: Controllers
-  
+    
     open var sectionControllers: [AUICollectionViewSectionController] = [] {
         didSet {
             didSetSectionControllers(oldValue)
@@ -57,13 +62,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     open func didSetSectionControllers(_ oldValue: [AUICollectionViewSectionController]) {
         
-    }
-  
-    // MARK: Setup
-  
-    open override func setup() {
-        super.setup()
-        collectionViewProxyDelegate.delegate = self
     }
     
     open func reload() {
@@ -73,16 +71,12 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         })
         collectionView?.reloadData()
     }
-    
-    // MARK: Sections
-    
+        
     open func numberOfSections() -> Int {
         let numberOfSections = sectionControllers.count
         return numberOfSections
     }
-    
-    // MARK: Cells
-    
+        
     open func numberOfItemsInSection(_ section: Int) -> Int {
         let sectionController = sectionControllers[section]
         let cellControllers = sectionController.cellControllers
@@ -190,7 +184,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
     }
     
-    // MARK: Modification
+    // MARK: - Deleting
     
     open var deletedIndexPaths: [IndexPath: AUICollectionViewCellController] = [:]
     
@@ -215,6 +209,21 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     open func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
         deleteCellControllers([cellController], completion: completion)
     }
+    
+    open func deleteCellControllerReload(_ cellController: AUICollectionViewCellController) {
+        deleteCellControllersReload([cellController])
+    }
+    
+    open func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController]) {
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        for (section, indexPaths) in indexPathsBySections {
+            let rows = indexPaths.map({ $0.row })
+            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
+        }
+        reload()
+    }
+    
+    // MARK: - Inserting
     
     open func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?) {
         collectionView?.performBatchUpdates({ [weak self] in
@@ -251,6 +260,8 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         appendCellControllers([cellController], toSectionController: sectionController, completion: completion)
     }
     
+    // MARK: - Moving
+    
     open var movedIndexPath: IndexPath?
     
     open func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?) {
@@ -262,7 +273,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         })
     }
     
-    // MARK: IndexPath
+    // MARK: - IndexPath
     
     open func indexPathForCellController(_ cellController: AUICollectionViewCellController) -> IndexPath? {
         for (section, sectionController) in sectionControllers.enumerated() {
@@ -307,22 +318,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         }
         return indexPathsBySections
     }
-    
-    // MARK: Relaod
-    
-    open func deleteCellControllerReload(_ cellController: AUICollectionViewCellController) {
-        deleteCellControllersReload([cellController])
-    }
-    
-    open func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController]) {
-        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
-        for (section, indexPaths) in indexPathsBySections {
-            let rows = indexPaths.map({ $0.row })
-            sectionControllers[section].cellControllers = sectionControllers[section].cellControllers.enumerated().filter({ !rows.contains($0.offset) }).map({ $0.element })
-        }
-        reload()
-    }
-    
+        
 }
 
 private class UICollectionViewProxyDelegate: NSObject, UIScrollViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout {

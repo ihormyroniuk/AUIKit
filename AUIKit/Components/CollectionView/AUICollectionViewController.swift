@@ -2,38 +2,41 @@ import UIKit
 
 public protocol AUICollectionViewController: AUIScrollViewController {
     
-    // MARK: UICollectionView
+    // MARK: - UICollectionView
   
     var collectionView: UICollectionView? { get set }
     
-    // MARK: Sections
+    // MARK: - Sections
     
     var sectionControllers: [AUICollectionViewSectionController] { get set }
+    
+    // MARK: - Prefetching
+    
+    var isPrefetchingEnabled: Bool { get }
     
     // MARK: - Scrolling
     
     func scrollToCellController(_ cellController: AUICollectionViewCellController, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool)
     
-    // MARK: Modification
-    
-    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
-    func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    // MARK: - Inserting
     
     func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?)
     func appendSectionController(_ sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     
     func appendCellControllers(_ cellControllers: [AUICollectionViewCellController], toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
     func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     
     func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?)
     
-    // MARK: Reloading
+    // MARK: - Deleting
     
     func deleteCellControllerReload(_ cellController: AUICollectionViewCellController)
+    
     func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController])
     
-    // MARK: Prefetching
+    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
     
-    var isPrefetchingEnabled: Bool { get }
+    func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
     
 }
