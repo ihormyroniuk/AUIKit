@@ -23,7 +23,7 @@ open class AUITextInputFilterValidatorFormatterTextFieldController: AUIEmptyText
             if let inputTextFilter = inputTextFilter {
                 filteredNewValue = inputTextFilter.filter(textInput: newValue) ?? ""
             }
-            guard (textInputValidator?.validate(textInput: "") ?? true) else { return }
+            guard (textInputValidator?.validate(textInput: filteredNewValue) ?? true) else { return }
             if let inputtedTextFormatter = inputTextFormatter {
                 guard formattedText != filteredNewValue else { return }
                 formattedText = inputtedTextFormatter.format(text: filteredNewValue)
