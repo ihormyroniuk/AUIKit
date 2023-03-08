@@ -126,14 +126,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return sectionControllers[section].sizeForCellAtIndex(index)
     }
     
-    open func minimumInteritemSpacingForSectionAt(_ section: Int) -> CGFloat {
-        return sectionControllers[section].minimumInteritemSpacing
-    }
-    
-    open func minimumLineSpacingForSectionAt(_ section: Int) -> CGFloat {
-        return sectionControllers[section].minimumLineSpacing
-    }
-    
     open func willDisplayCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath) {
         if let cellController = deletedIndexPaths[indexPath] {
             cellController.willDisplayCell()
@@ -373,14 +365,6 @@ private class UICollectionViewProxyDelegate: NSObject, UIScrollViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return delegate?.minimumInteritemSpacingForSectionAt(section) ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return delegate?.minimumLineSpacingForSectionAt(section) ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

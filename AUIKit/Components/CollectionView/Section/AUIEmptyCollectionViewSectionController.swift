@@ -2,9 +2,6 @@ import UIKit
 
 open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionController {
     
-    public var minimumInteritemSpacing: CGFloat = 0
-    public var minimumLineSpacing: CGFloat = 0
-    
     // MARK: Initializer
 
     public init() {
