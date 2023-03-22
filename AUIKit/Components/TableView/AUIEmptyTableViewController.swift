@@ -407,6 +407,27 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
+    open func insertCellControllersAtSectionBeginning(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController]) {
+        section.cellControllers.insert(contentsOf: cellControllers, at: 0)
+        reload()
+    }
+    
+    open func insertCellControllersAtSectionBeginningAnimated(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        section.cellControllers.insert(contentsOf: cellControllers, at: 0)
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        let indexPaths = indexPathsBySections.values.reduce([], +)
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
     open func insertCellControllerAtSectionEnd(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
         section.cellControllers.append(cellController)
         reload()
@@ -427,6 +448,32 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             completion?(true)
         }
     }
+    
+    
+    
+    open func insertCellControllersAtSectionEnd(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController]) {
+        section.cellControllers.append(contentsOf: cellControllers)
+        reload()
+    }
+    
+    open func insertCellControllersAtSectionEndAnimated(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        section.cellControllers.append(contentsOf: cellControllers)
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
+        let indexPaths = indexPathsBySections.values.reduce([], +)
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertRows(at: indexPaths, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
+    
+    
   
     open func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController) {
         guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
