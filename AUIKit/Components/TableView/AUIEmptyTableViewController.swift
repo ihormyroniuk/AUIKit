@@ -386,6 +386,46 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
+    open func insertSectionAtEnd(_ sectionController: AUITableViewSectionController) {
+        sectionControllers.append(sectionController)
+        reload()
+    }
+    
+    open func insertSectionAtEndAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        sectionControllers.append(sectionController)
+        let sections: IndexSet = [sectionControllers.count - 1]
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertSections(sections, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
+    open func insertSectionsAtEnd(_ sectionControllers: [AUITableViewSectionController]) {
+        self.sectionControllers.append(contentsOf: sectionControllers)
+        reload()
+    }
+    
+    open func insertSectionsAtEndAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        self.sectionControllers.append(contentsOf: sectionControllers)
+        let sections: IndexSet = IndexSet(integersIn: (self.sectionControllers.count - sectionControllers.count)..<self.sectionControllers.count)
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.insertSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.insertSections(sections, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
     open func insertCellControllerAtSectionBeginning(_ section: AUITableViewSectionController, cellController: AUITableViewCellController) {
         section.cellControllers.insert(cellController, at: 0)
         reload()
