@@ -566,6 +566,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
                 sections.insert(section)
             }
         }
+        sectionControllers.removeAll(where: { sectionController in
+            deletingSectionControllers.contains { deletingSectionController in
+                return sectionController === deletingSectionController
+        }})
         if #available(iOS 11.0, *) {
             tableView?.performBatchUpdates({
                 self.tableView?.deleteSections(sections, with: animation)
