@@ -70,4 +70,14 @@ public protocol AUITableViewController: AUIScrollViewController {
   
     func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
     
+    // MARK: - Moving
+    
+    func moveCellController(_ movingCellController: AUITableViewCellController, toSectionControllerBeginning toSectionController: AUITableViewSectionController)
+    
+    func moveCellController(_ movingCellController: AUITableViewCellController, toSectionControllerBeginning toSectionController: AUITableViewSectionController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
+    func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController)
+    
+    func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
 }

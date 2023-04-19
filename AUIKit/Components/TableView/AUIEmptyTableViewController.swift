@@ -621,6 +621,72 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         }
     }
     
+    // MARK: - Moving
+    
+    open func moveCellController(_ movingCellController: AUITableViewCellController, toSectionControllerBeginning toSectionController: AUITableViewSectionController) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        toSectionController.cellControllers.insert(movingCellController, at: 0)
+        reload()
+    }
+    
+    open func moveCellController(_ movingCellController: AUITableViewCellController, toSectionControllerBeginning toSectionController: AUITableViewSectionController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        toSectionController.cellControllers.insert(movingCellController, at: 0)
+        guard let toIndexPath = indexPathForCellController(movingCellController) else { return }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.moveRow(at: atIndexPath, to: toIndexPath)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.moveRow(at: atIndexPath, to: toIndexPath)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
+    open func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        guard let toSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === afterCellController }) }) else { return }
+        guard var afterIndex = toSectionController.cellControllers.firstIndex(where: { $0 === afterCellController }) else { return }
+        if toSectionController.cellControllers.last === afterCellController {
+            toSectionController.cellControllers.append(movingCellController)
+        } else {
+            afterIndex += 1
+            toSectionController.cellControllers.insert(movingCellController, at: afterIndex)
+        }
+        reload()
+    }
+    
+    open func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        guard let toSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === afterCellController }) }) else { return }
+        guard var afterIndex = toSectionController.cellControllers.firstIndex(where: { $0 === afterCellController }) else { return }
+        if toSectionController.cellControllers.last === afterCellController {
+            toSectionController.cellControllers.append(movingCellController)
+        } else {
+            afterIndex += 1
+            toSectionController.cellControllers.insert(movingCellController, at: afterIndex)
+        }
+        guard let toIndexPath = indexPathForCellController(movingCellController) else { return }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.moveRow(at: atIndexPath, to: toIndexPath)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.moveRow(at: atIndexPath, to: toIndexPath)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
+    
     // MARK: - IndexPath
     
     private func indexPathForCellController(_ cellController: AUITableViewCellController) -> IndexPath? {
