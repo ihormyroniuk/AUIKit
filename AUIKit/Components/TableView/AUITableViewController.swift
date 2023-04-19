@@ -52,6 +52,14 @@ public protocol AUITableViewController: AUIScrollViewController {
     
     // MARK: - Deleting
     
+    func deleteSectionController(_ deletingSectionController: AUITableViewSectionController)
+    
+    func deleteSectionControllerAnimated(_ deletingSectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
+    func deleteSectionControllers(_ deletingSectionControllers: [AUITableViewSectionController])
+  
+    func deleteSectionControllersAnimated(_ deletingSectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
     func deleteCellController(_ cellController: AUITableViewCellController)
     
     func deleteCellControllerAnimated(_ cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)

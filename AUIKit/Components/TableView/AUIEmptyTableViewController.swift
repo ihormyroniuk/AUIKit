@@ -221,6 +221,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let section = indexPath.section
         let sectionController = sectionControllers[section]
         let row = indexPath.row
+        guard row < sectionController.cellControllers.count else { return }
         let cellController = sectionController.cellControllers[row]
         cellController.cell = nil
         cellController.didEndDisplayingCell()
@@ -522,6 +523,43 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     // MARK: - Deleting
+    
+    open func deleteSectionController(_ deletingSectionController: AUITableViewSectionController) {
+        sectionControllers.removeAll(where: { $0 === deletingSectionController })
+        reload()
+    }
+    
+    open func deleteSectionControllerAnimated(_ deletingSectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        let deletingSectionControllers = [deletingSectionController]
+        deleteSectionControllersAnimated(deletingSectionControllers, animation, completion: completion)
+    }
+    
+    open func deleteSectionControllers(_ deletingSectionControllers: [AUITableViewSectionController]) {
+        sectionControllers.removeAll(where: { sectionController in
+            deletingSectionControllers.contains { deletingSectionController in
+                return sectionController === deletingSectionController
+        }})
+        reload()
+    }
+  
+    open func deleteSectionControllersAnimated(_ deletingSectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        var sections: IndexSet = []
+        for deletingSectionController in deletingSectionControllers {
+            if let section = sectionControllers.firstIndex(where: { $0 === deletingSectionController }) {
+                sections.insert(section)
+            }
+        }
+        if #available(iOS 11.0, *) {
+            tableView?.performBatchUpdates({
+                self.tableView?.deleteSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView?.beginUpdates()
+            tableView?.deleteSections(sections, with: animation)
+            tableView?.endUpdates()
+            completion?(true)
+        }
+    }
     
     open func deleteCellController(_ cellController: AUITableViewCellController) {
         deleteCellControllers([cellController])
