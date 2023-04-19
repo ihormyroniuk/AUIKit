@@ -50,6 +50,8 @@ public protocol AUITableViewController: AUIScrollViewController {
   
     func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController)
     
+    func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
     // MARK: - Deleting
     
     func deleteSectionController(_ deletingSectionController: AUITableViewSectionController)
