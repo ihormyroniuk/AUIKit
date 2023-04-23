@@ -7,10 +7,6 @@ class TableViewHeaderFooterViewController: AUIEmptyTableViewHeaderFooterViewCont
     
     let id: Int
     
-    // MARK: - Events
-    
-    var insertAtSectionBegining: (() -> Void)?
-    
     // MARK: - Initialization
     
     init(id: Int) {
@@ -33,6 +29,8 @@ class TableViewHeaderFooterViewController: AUIEmptyTableViewHeaderFooterViewCont
         header?.debugButton.addTarget(self, action: #selector(debugButtonTouchUpInsideAction), for: .touchUpInside)
         header?.insertAtSectionBeginingButton.setTitle("Insert At Section Begining", for: .normal)
         header?.insertAtSectionBeginingButton.addTarget(self, action: #selector(insertAtSectionBeginingButtonTouchUpInsideAction), for: .touchUpInside)
+        header?.deleteButton.setTitle("Delete", for: .normal)
+        header?.deleteButton.addTarget(self, action: #selector(deleteButtonTouchUpInsideAction), for: .touchUpInside)
     }
     
     override func unsetupHeaderFooterView() {
@@ -57,9 +55,18 @@ class TableViewHeaderFooterViewController: AUIEmptyTableViewHeaderFooterViewCont
         print("Section \(id)")
     }
     
+    var insertAtSectionBegining: (() -> Void)?
+    
     @objc private func insertAtSectionBeginingButtonTouchUpInsideAction() {
         guard let insertAtSectionBegining = insertAtSectionBegining else { return }
         insertAtSectionBegining()
+    }
+    
+    var delete: (() -> Void)?
+    
+    @objc private func deleteButtonTouchUpInsideAction() {
+        guard let delete = delete else { return }
+        delete()
     }
     
 }

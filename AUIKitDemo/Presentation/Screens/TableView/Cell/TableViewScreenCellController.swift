@@ -1,9 +1,9 @@
 import UIKit
 import AUIKit
 
+@available(iOS 11.0, *)
 extension TableViewScreenViewController {
-    @available(iOS 11.0, *)
-    class CellController: AUIClosuresTableViewCellController {
+class CellController: AUIClosuresTableViewCellController {
     
     let i: Int
     

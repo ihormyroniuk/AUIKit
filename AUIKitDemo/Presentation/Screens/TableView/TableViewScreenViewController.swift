@@ -61,6 +61,12 @@ final class TableViewScreenViewController: UIViewController {
                 guard let sectionController = sectionController else { return }
                 self.insertAtSectionBegining(sectionController)
             }
+            headerController.delete = { [weak self, weak sectionController] in
+                guard let self = self else { return }
+                guard let sectionController = sectionController else { return }
+                self.deleteSectionController(sectionController)
+                
+            }
             sectionController.headerController = headerController
             sectionController.cellControllers = cellControllers
             sectionControllers.append(sectionController)
@@ -123,6 +129,12 @@ final class TableViewScreenViewController: UIViewController {
             tableViewController.insertCellControllerAtSectionBeginningAnimated(sectionController, cellController: cellController, .automatic) { success in
                 print("insertAtSectionBegining success: \(success)")
             }
+        }
+    }
+    
+    private func deleteSectionController(_ sectionController: AUITableViewSectionController) {
+        tableViewController.deleteSectionControllerAnimated(sectionController, .automatic) { success in
+            print("deleteSectionController success: \(success)")
         }
     }
     

@@ -9,6 +9,7 @@ class Header: AUITableViewHeaderFooterView {
     let idLabel = UILabel()
     let debugButton = UIButton()
     let insertAtSectionBeginingButton = UIButton()
+    let deleteButton = UIButton()
     
     // MARK: - Setup
     
@@ -19,6 +20,7 @@ class Header: AUITableViewHeaderFooterView {
         contentView.addSubview(idLabel)
         contentView.addSubview(debugButton)
         contentView.addSubview(insertAtSectionBeginingButton)
+        contentView.addSubview(deleteButton)
     }
     
     // MARK: - Layout
@@ -28,12 +30,13 @@ class Header: AUITableViewHeaderFooterView {
         layoutIdLabel()
         layoutDebugButton()
         layoutInsertAtSectionBeginingButton()
+        layoutDeleteButton()
     }
     
     private func layoutIdLabel() {
         idLabel.textAlignment = .center
         let x: CGFloat = 16
-        let y: CGFloat = 16
+        let y: CGFloat = 8
         let width = bounds.width - 2 * x
         let height = idLabel.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
         let frame = CGRect(x: x, y: y, width: width, height: height)
@@ -43,7 +46,7 @@ class Header: AUITableViewHeaderFooterView {
     private func layoutDebugButton() {
         let width = (bounds.width - 2 * 16) / 2
         let height = debugButton.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
-        let y: CGFloat = 16
+        let y: CGFloat = 8
         let x: CGFloat = bounds.width - 16 - width
         let frame = CGRect(x: x, y: y, width: width, height: height)
         debugButton.frame = frame
@@ -52,11 +55,21 @@ class Header: AUITableViewHeaderFooterView {
     private func layoutInsertAtSectionBeginingButton() {
         insertAtSectionBeginingButton.titleLabel?.textAlignment = .center
         let x: CGFloat = 16
-        let y: CGFloat = idLabel.frame.maxY + 16
+        let y: CGFloat = idLabel.frame.maxY + 8
         let width = bounds.width - 2 * x
         let height = insertAtSectionBeginingButton.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
         let frame = CGRect(x: x, y: y, width: width, height: height)
         insertAtSectionBeginingButton.frame = frame
+    }
+    
+    private func layoutDeleteButton() {
+        deleteButton.titleLabel?.textAlignment = .center
+        let x: CGFloat = 16
+        let y: CGFloat = insertAtSectionBeginingButton.frame.maxY + 8
+        let width = bounds.width - 2 * x
+        let height = deleteButton.sizeThatFits(CGSize(width: width, height: .greatestFiniteMagnitude)).height
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        deleteButton.frame = frame
     }
     
 }
