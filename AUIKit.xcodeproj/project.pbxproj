@@ -18,6 +18,7 @@
 		3384096B239166570094A920 /* AUIMultipleTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096A239166570094A920 /* AUIMultipleTextInputValidator.swift */; };
 		3384096D239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */; };
 		3386686C236315050071A2C8 /* AUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C53AEA482195AF690087F0A2 /* AUIKit.framework */; };
+		558FEE732A2B8C600089E1AE /* DuplicatingTableViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558FEE722A2B8C600089E1AE /* DuplicatingTableViewScreenViewController.swift */; };
 		C50295E82332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */; };
 		C5041C2522F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */; };
 		C5060C2B2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */; };
@@ -248,6 +249,7 @@
 		3384096C239167C40094A920 /* AUIMaximumLenghtTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIMaximumLenghtTextInputValidator.swift; sourceTree = "<group>"; };
 		33866867236315050071A2C8 /* AUIKitUnitTesting.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AUIKitUnitTesting.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3386686B236315050071A2C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		558FEE722A2B8C600089E1AE /* DuplicatingTableViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatingTableViewScreenViewController.swift; sourceTree = "<group>"; };
 		C50295E72332689D00D7D0CA /* AUIEndRefreshingDelayRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEndRefreshingDelayRefreshControl.swift; sourceTree = "<group>"; };
 		C5041C2422F419CA00907F45 /* AUIResponsiveTextViewTextInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIResponsiveTextViewTextInputViewController.swift; sourceTree = "<group>"; };
 		C5060C2A2476B0C300CEE4AD /* AUIAllowedCharactersTextInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAllowedCharactersTextInputValidator.swift; sourceTree = "<group>"; };
@@ -579,6 +581,13 @@
 				3333F9FB235F293B007215AB /* AUITextViewTextInputView.swift */,
 			);
 			path = TextView;
+			sourceTree = "<group>";
+		};
+		558FEE742A2B8C680089E1AE /* DuplicatingTableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DuplicatingTableView;
 			sourceTree = "<group>";
 		};
 		C51DBB262216F2BF0009605A /* TextView */ = {
@@ -1032,6 +1041,7 @@
 				C5278F5425BF6C67005C6A49 /* PresentAnimation */,
 				C56B60E825C0966A00D27732 /* PushAnimations */,
 				C58D6D5A2775212C0069520F /* TableView */,
+				558FEE742A2B8C680089E1AE /* DuplicatingTableView */,
 				C5A7F8F427B83AD100F71286 /* CollectionView */,
 				C56E06102901EBC300B0FD78 /* Pickers */,
 			);
@@ -1191,6 +1201,7 @@
 				C58D6D5D277521760069520F /* TableViewScreenView.swift */,
 				C58CB81F28DA501B00BF121D /* Header */,
 				C59E0A0028D4CFA000AE70C6 /* Cell */,
+				558FEE722A2B8C600089E1AE /* DuplicatingTableViewScreenViewController.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -1691,6 +1702,7 @@
 				C58D6D5C277521650069520F /* TableViewScreenViewController.swift in Sources */,
 				C59E4C4624DD52CE000FCA59 /* SignupTextViewTextInputView.swift in Sources */,
 				C53DDB8824DAE889001CA320 /* TitleLabelScreenView.swift in Sources */,
+				558FEE732A2B8C600089E1AE /* DuplicatingTableViewScreenViewController.swift in Sources */,
 				C567F90024C9C575002DB6FD /* InteractiveLabelsScreenView.swift in Sources */,
 				C54EAEB424E0979B00A8A51E /* BackButtonTitleLabelScreenView.swift in Sources */,
 				C56360B3261669E00012C419 /* ScrollPagesScreenView.swift in Sources */,

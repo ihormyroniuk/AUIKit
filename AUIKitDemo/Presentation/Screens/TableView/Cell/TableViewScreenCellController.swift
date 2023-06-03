@@ -6,9 +6,11 @@ extension TableViewScreenViewController {
 class CellController: AUIClosuresTableViewCellController {
     
     let i: Int
+    let color: UIColor
     
-    init(i: Int) {
+    init(i: Int, color: UIColor) {
         self.i = i
+        self.color = color
         super.init()
     }
     
@@ -16,6 +18,7 @@ class CellController: AUIClosuresTableViewCellController {
         super.setupCell()
         cell?.textLabel?.text = "text #\(i)"
         cell?.detailTextLabel?.text = "detail #\(i)"
+        cell?.contentView.backgroundColor = color
     }
     
     override func cellEstimatedHeight(_ width: CGFloat) -> CGFloat {

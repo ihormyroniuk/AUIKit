@@ -80,7 +80,7 @@ final class TableViewScreenViewController: UIViewController {
     private func initializeCellController() -> CellController {
         let id = cellId
         cellId += 1
-        let cellConroller = CellController(i: id)
+        let cellConroller = CellController(i: id, color: .white)
         cellConroller.willDisplay = {
             print("willDisplayCellClosure #\(id)")
         }

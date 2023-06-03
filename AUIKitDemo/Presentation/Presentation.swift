@@ -83,9 +83,11 @@ class Presentation: AUIWindowPresentation, MenuScreenViewControllerDelegate, Scr
     }
     
     func menuScreenViewControllerDisplayTableView(_ menuScreenViewController: MenuScreenViewController) {
-        let viewController = TableViewScreenViewController()
-        tableViewScreenViewController = viewController
-        tableViewScreenViewController?.delegate = self
+//        let viewController = TableViewScreenViewController()
+//        tableViewScreenViewController = viewController
+//        tableViewScreenViewController?.delegate = self
+//        mainNavigationController?.pushViewController(viewController, animated: true)
+        let viewController = DuplicatingTableViewScreenViewController()
         mainNavigationController?.pushViewController(viewController, animated: true)
     }
     
