@@ -817,9 +817,27 @@ private class UITableViewDelegateProxy: NSObject, UIScrollViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         emptyTableViewController?.cancelPrefetchingForRowsAtIndexPaths(indexPaths)
     }
+    
+    func validateCellIsCorrect(_ cell: UITableViewCell, indexPath: IndexPath, function: String = #function) {
+        if indexPath.row > 49, cell.contentView.backgroundColor == .yellow {
+            print(function)
+            print("wrong at \(indexPath)")
+            print(cell)
+            print("=============================")
+            print("")
+        } else if indexPath.row < 48, cell.contentView.backgroundColor == .blue {
+            print(function)
+            print("wrong at \(indexPath)")
+            print(cell)
+            print("=============================")
+            print("")
+        }
+    }
       
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return emptyTableViewController?.cellForRowAtIndexPath(indexPath) ?? UITableViewCell()
+        let cell = emptyTableViewController?.cellForRowAtIndexPath(indexPath) ?? UITableViewCell()
+        validateCellIsCorrect(cell, indexPath: indexPath)
+        return cell
     }
       
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -831,6 +849,7 @@ private class UITableViewDelegateProxy: NSObject, UIScrollViewDelegate, UITableV
     }
       
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        validateCellIsCorrect(cell, indexPath: indexPath)
         emptyTableViewController?.willDisplayCell(cell, atIndexPath: indexPath)
     }
       
@@ -839,6 +858,7 @@ private class UITableViewDelegateProxy: NSObject, UIScrollViewDelegate, UITableV
     }
       
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        validateCellIsCorrect(cell, indexPath: indexPath)
         emptyTableViewController?.didEndDisplayingCellAtIndexPath(indexPath)
     }
     

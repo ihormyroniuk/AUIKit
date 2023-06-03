@@ -24,20 +24,16 @@ final class DuplicatingTableViewScreenViewController: UIViewController {
     private func setupTableViewController() {
         tableViewController.tableView = tableViewScreenView.tableView
         tableViewController.dragInteractionEnabled = true
-        var sectionControllers: [AUITableViewSectionController] = []
-        for section in 1...10 {
-            let sectionController = AUIEmptyTableViewSectionController()
-            var cellControllers: [AUITableViewCellController] = []
-            for _ in 1...10 {
-                if #available(iOS 11.0, *) {
-                    let cellConroller = initializeCellController()
-                    cellControllers.append(cellConroller)
-                }
+        let sectionController = AUIEmptyTableViewSectionController()
+        let sectionControllers = [sectionController]
+        var cellControllers: [AUITableViewCellController] = []
+        if #available(iOS 11.0, *) {
+            for _ in 1...100 {
+                let cellConroller = initializeCellController()
+                cellControllers.append(cellConroller)
             }
-            sectionController.cellControllers = cellControllers
-            sectionControllers.append(sectionController)
         }
-        
+        sectionController.cellControllers = cellControllers
         tableViewController.insertSectionsAtBeginning(sectionControllers)
     }
     
