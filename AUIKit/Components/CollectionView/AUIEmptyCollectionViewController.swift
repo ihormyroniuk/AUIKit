@@ -40,6 +40,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView?.prefetchDataSource = nil
         collectionView?.isPrefetchingEnabled = isPrefetchingEnabled
         collectionView?.reloadData()
+        cells = [:]
     }
     
     // MARK: - Prefetching
@@ -117,8 +118,16 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView.register(cellType, forCellWithReuseIdentifier: cellIdentifier)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         cellController.cell = cell
+        let cellCellController = cells[cell]
+        if cellController !== cellCellController {
+            cellCellController?.cell = nil
+            cellController.cell = cell
+            cells[cell] = cellController
+        }
         return cell
     }
+    
+    private var cells: [UICollectionViewCell: AUICollectionViewCellController] = [:]
     
     open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
@@ -135,9 +144,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        if cellController.cell != cell {
-            cellController.cell = cell
-        }
         return cellController.willDisplayCell()
     }
     
@@ -155,7 +161,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         let sectionController = sectionControllers[section]
         let index = indexPath.item
         let cellController = sectionController.cellControllers[index]
-        cellController.cell = nil
         cellController.didEndDisplayingCell()
     }
     
