@@ -47,6 +47,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         if #available(iOS 11.0, *) {
             tableView?.dragDelegate = nil
         }
+        cells = [:]
     }
     
     // MARK: - Drag and Drop Interaction
@@ -164,9 +165,17 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let cellIdentifier = cellController.cellIdentifier
         tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+        let cellCellController = cells[cell]
+        if cellController !== cellCellController {
+            cellCellController?.cell = nil
+            cellController.cell = cell
+            cells[cell] = cellController
+        }
         cellController.cell = cell
         return cell
     }
+    
+    private var cells: [UITableViewCell: AUITableViewCellController] = [:]
   
     open func estimatedHeightForCellAtIndexPath(_ indexPath: IndexPath) -> CGFloat {
         let section = indexPath.section
@@ -198,9 +207,6 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let sectionController = sectionControllers[section]
         let row = indexPath.row
         let cellController = sectionController.cellControllers[row]
-        if cellController.cell != cell {
-            cellController.cell = cell
-        }
         return cellController.willDisplayCell()
     }
   
@@ -223,7 +229,6 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         let row = indexPath.row
         guard row < sectionController.cellControllers.count else { return }
         let cellController = sectionController.cellControllers[row]
-        cellController.cell = nil
         cellController.didEndDisplayingCell()
     }
     
