@@ -118,17 +118,13 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView.register(cellType, forCellWithReuseIdentifier: cellIdentifier)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
         let cellCellController = cells[cell]
-        if cellController !== cellCellController {
-            if let cellCellControllerCell = cellCellController?.cell {
-                if cellCellControllerCell === cell {
-                    cellCellController?.cell = nil
-                } else {
-                    cells[cellCellControllerCell] = nil
-                }
-            }
+        if cellController !== cellCellController, cellCellController?.cell === cell {
+            cellCellController?.cell = nil
         }
-        cellController.cell = cell
-        cells[cell] = cellController
+        if cellController.cell !== cell {
+            cellController.cell = cell
+            cells[cell] = cellController
+        }
         return cell
     }
     

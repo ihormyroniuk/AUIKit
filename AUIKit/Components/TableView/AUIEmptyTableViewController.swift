@@ -166,8 +166,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         tableView.register(cellType, forCellReuseIdentifier: cellIdentifier)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let cellCellController = cells[cell]
-        if cellController !== cellCellController {
+        if cellController !== cellCellController, cellCellController?.cell === cell {
             cellCellController?.cell = nil
+        }
+        if cellController.cell !== cell {
             cellController.cell = cell
             cells[cell] = cellController
         }
