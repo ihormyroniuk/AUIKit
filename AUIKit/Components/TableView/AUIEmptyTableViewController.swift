@@ -171,7 +171,6 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             cellController.cell = cell
             cells[cell] = cellController
         }
-        cellController.cell = cell
         return cell
     }
     
