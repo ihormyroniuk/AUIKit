@@ -126,9 +126,9 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
                     cells[cellCellControllerCell] = nil
                 }
             }
-            cellController.cell = cell
-            cells[cell] = cellController
         }
+        cellController.cell = cell
+        cells[cell] = cellController
         return cell
     }
     
