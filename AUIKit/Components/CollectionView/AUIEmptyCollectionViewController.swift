@@ -306,8 +306,27 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return indexPaths
     }
     
-    open func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController {
-        return sectionControllers[indexPath.section].cellControllers[indexPath.item]
+    private func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController? {
+        guard indexPath.section < sectionControllers.count else { return nil }
+        let sectionController = sectionControllers[indexPath.section]
+        guard indexPath.item < sectionController.cellControllers.count else { return nil }
+        let cellController = sectionController.cellControllers[indexPath.item]
+        return cellController
+    }
+    
+    private func indexPathForCellController(_ cellController: AUITableViewCellController) -> IndexPath? {
+        let enumeratedSectionControllers = sectionControllers.enumerated()
+        for (section, sectionController) in enumeratedSectionControllers {
+            let cellControllers = sectionController.cellControllers
+            let enumeratedCellControllers = cellControllers.enumerated()
+            for (row, rowCellController) in enumeratedCellControllers {
+                if rowCellController === cellController {
+                    let indexPath = IndexPath(row: row, section: section)
+                    return indexPath
+                }
+            }
+        }
+        return nil
     }
     
     private func indexPathsBySectionsForCellControllers(_ cellControllers: [AUICollectionViewCellController]) -> [Int: [IndexPath]] {
