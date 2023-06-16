@@ -306,7 +306,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         return indexPaths
     }
     
-    private func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController? {
+    open func cellControllerForIndexPath(_ indexPath: IndexPath) -> AUICollectionViewCellController? {
         guard indexPath.section < sectionControllers.count else { return nil }
         let sectionController = sectionControllers[indexPath.section]
         guard indexPath.item < sectionController.cellControllers.count else { return nil }
