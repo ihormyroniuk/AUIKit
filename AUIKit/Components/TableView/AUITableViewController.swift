@@ -21,6 +21,10 @@ public protocol AUITableViewController: AUIScrollViewController {
     // MARK: - Reloading
     
     func reloadSection(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController])
+    
+    func reloadCellController(_ cellController: AUITableViewCellController)
+    
+    func reloadCellController(_ cellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
         
     // MARK: - Inserting
         

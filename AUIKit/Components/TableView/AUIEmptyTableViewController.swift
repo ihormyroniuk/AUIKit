@@ -351,6 +351,33 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         reload()
     }
     
+    open func reloadCellController(_ cellController: AUITableViewCellController) {
+        guard let tableView = tableView else { return }
+        tableView.reloadData()
+    }
+    
+    open func reloadCellController(_ cellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard let indexPath = indexPathForCellController(cellController) else {
+            completion?(true)
+            return
+        }
+        guard let tableView = tableView else {
+            completion?(true)
+            return
+        }
+        let indexPaths = [indexPath]
+        if #available(iOS 11.0, *) {
+            tableView.performBatchUpdates({
+                self.tableView?.reloadRows(at: indexPaths, with: animation)
+            }, completion: completion)
+        } else {
+            tableView.beginUpdates()
+            tableView.reloadRows(at: indexPaths, with: animation)
+            tableView.endUpdates()
+            completion?(true)
+        }
+    }
+    
     // MARK: - Inserting
     
     open func insertSectionAtBeginning(_ sectionController: AUITableViewSectionController) {
