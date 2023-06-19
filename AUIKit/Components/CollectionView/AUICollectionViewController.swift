@@ -29,13 +29,13 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     // MARK: - Deleting
     
-    func deleteCellController(_ cellController: AUICollectionViewCellController)
+    func deleteCellController(_ deletingCellController: AUICollectionViewCellController)
     
-    func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    func deleteCellControllerAnimated(_ deletingCellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
     
-    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController])
+    func deleteCellControllers(_ deletingCellControllers: [AUICollectionViewCellController])
     
-    func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
+    func deleteCellControllersAnimated(_ deletingCellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
     
     // MARK: - Moving
     

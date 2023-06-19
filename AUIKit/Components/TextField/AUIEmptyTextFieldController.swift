@@ -33,7 +33,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.autocorrectionType = autocorrectionType
         textField?.autocapitalizationType = autocapitalizationType
         textField?.returnKeyType = returnKeyType
-        textField?.spellCheckingType
+        textField?.spellCheckingType = spellCheckingType
         textField?.text = text
         textField?.delegate = textFieldDelegate
         textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
