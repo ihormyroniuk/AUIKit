@@ -33,6 +33,7 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
         textField?.autocorrectionType = autocorrectionType
         textField?.autocapitalizationType = autocapitalizationType
         textField?.returnKeyType = returnKeyType
+        textField?.spellCheckingType
         textField?.text = text
         textField?.delegate = textFieldDelegate
         textField?.addObserver(keyValueObserverProxy, forKeyPath: UITextFieldTextPropertyKey, options: [.new, .old], context: nil)
@@ -135,6 +136,15 @@ open class AUIEmptyTextFieldController: AUIEmptyControlController, AUITextFieldC
     }
     open func didSetAutocapitalizationType(oldValue: UITextAutocapitalizationType) {
         textField?.autocapitalizationType = autocapitalizationType
+    }
+    
+    open var spellCheckingType: UITextSpellCheckingType = .default {
+        didSet {
+            didSetSpellCheckingType(oldValue: oldValue)
+        }
+    }
+    open func didSetSpellCheckingType(oldValue: UITextSpellCheckingType) {
+        textField?.spellCheckingType = spellCheckingType
     }
   
     open var returnKeyType: UIReturnKeyType = .default {

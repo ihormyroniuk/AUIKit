@@ -34,6 +34,8 @@ public protocol AUITextFieldController: AUIControlController {
     
     var autocapitalizationType: UITextAutocapitalizationType { get set }
     
+    var spellCheckingType: UITextSpellCheckingType { get set }
+    
     var returnKeyType: UIReturnKeyType { get set }
     
     // MARK: - Editing
