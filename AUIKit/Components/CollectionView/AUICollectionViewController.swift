@@ -27,16 +27,18 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     
-    func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?)
-    
     // MARK: - Deleting
     
-    func deleteCellControllerReload(_ cellController: AUICollectionViewCellController)
+    func deleteCellController(_ cellController: AUICollectionViewCellController)
     
-    func deleteCellControllersReload(_ cellControllers: [AUICollectionViewCellController])
+    func deleteCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
     
-    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
+    func deleteCellControllers(_ cellControllers: [AUICollectionViewCellController])
     
-    func deleteCellController(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    func deleteCellControllersAnimated(_ cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
+    
+    // MARK: - Moving
+    
+    func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?)
     
 }

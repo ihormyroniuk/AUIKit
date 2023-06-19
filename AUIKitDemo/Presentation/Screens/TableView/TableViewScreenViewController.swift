@@ -42,11 +42,13 @@ final class TableViewScreenViewController: UIViewController {
         }
     }
     
+    var sectionControllers: [AUITableViewSectionController] = []
+    
     private func setupTableViewController() {
         tableViewController.tableView = tableViewScreenView.tableView
         tableViewController.dragInteractionEnabled = true
         var sectionControllers: [AUITableViewSectionController] = []
-        for section in 1...10 {
+        for section in 1...2 {
             let sectionController = AUIEmptyTableViewSectionController()
             var cellControllers: [AUITableViewCellController] = []
             for _ in 1...10 {
@@ -65,13 +67,12 @@ final class TableViewScreenViewController: UIViewController {
                 guard let self = self else { return }
                 guard let sectionController = sectionController else { return }
                 self.deleteSectionController(sectionController)
-                
             }
             sectionController.headerController = headerController
             sectionController.cellControllers = cellControllers
             sectionControllers.append(sectionController)
         }
-        
+        self.sectionControllers = sectionControllers
         tableViewController.insertSectionsAtBeginning(sectionControllers)
     }
     
@@ -133,7 +134,7 @@ final class TableViewScreenViewController: UIViewController {
     }
     
     private func deleteSectionController(_ sectionController: AUITableViewSectionController) {
-        tableViewController.deleteSectionControllerAnimated(sectionController, .automatic) { success in
+        tableViewController.deleteSectionControllersAnimated(sectionControllers, .automatic) { success in
             print("deleteSectionController success: \(success)")
         }
     }
