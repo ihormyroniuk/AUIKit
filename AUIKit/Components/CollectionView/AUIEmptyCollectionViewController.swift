@@ -254,6 +254,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
                 let sectionController = sectionControllers[section]
                 let item = indexPath.item
                 let cellController = sectionController.cellControllers[item]
+                sectionController.cellControllers.remove(at: item)
                 deletedIndexPaths[indexPath] = cellController
             }
             self.collectionView?.deleteItems(at: indexPaths)
