@@ -107,7 +107,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func cellForItemAtIndexPath(_ indexPath: IndexPath) -> UICollectionViewCell {
-        deletedIndexPaths[indexPath] = nil
+        deletedIndexPaths = [:]
         let section = indexPath.section
         let sectionController = sectionControllers[section]
         let row = indexPath.row
@@ -248,6 +248,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     open func deleteCellControllersAnimated(_ deletingCellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
         collectionView?.performBatchUpdates({ [weak self] in
             guard let self = self else { return }
+            deletedIndexPaths = indexPathsCellControllers
             let indexPaths = indexPathsForCellControllers(deletingCellControllers).sorted(by: >)
             for indexPath in indexPaths {
                 let section = indexPath.section
@@ -255,7 +256,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
                 let item = indexPath.item
                 let cellController = sectionController.cellControllers[item]
                 sectionController.cellControllers.remove(at: item)
-                deletedIndexPaths[indexPath] = cellController
             }
             self.collectionView?.deleteItems(at: indexPaths)
         }, completion: { finished in
@@ -272,6 +272,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func deleteCellControllers(_ deletingCellControllers: [AUICollectionViewCellController]) {
+        deletedIndexPaths = indexPathsCellControllers
         let indexPaths = indexPathsForCellControllers(deletingCellControllers).sorted(by: >)
         for indexPath in indexPaths {
             let section = indexPath.section
@@ -279,7 +280,6 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             let item = indexPath.item
             let cellController = sectionController.cellControllers[item]
             sectionController.cellControllers.remove(at: item)
-            deletedIndexPaths[indexPath] = cellController
         }
         self.collectionView?.reloadData()
     }
@@ -347,6 +347,17 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             indexPathsBySections[section] = indexPaths
         }
         return indexPathsBySections
+    }
+    
+    private var indexPathsCellControllers: [IndexPath: AUICollectionViewCellController] {
+        var indexPathsCellControllers: [IndexPath: AUICollectionViewCellController] = [:]
+        for (section, sectionController) in sectionControllers.enumerated() {
+            for (item, cellController) in sectionController.cellControllers.enumerated() {
+                let indexPath = IndexPath(item: item, section: section)
+                indexPathsCellControllers[indexPath] = cellController
+            }
+        }
+        return indexPathsCellControllers
     }
         
 }
