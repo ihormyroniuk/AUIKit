@@ -141,6 +141,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             cellController.willDisplayCell()
             return
         }
+        deletedIndexPaths[indexPath] = nil
         let section = indexPath.section
         let sectionController = sectionControllers[section]
         let row = indexPath.row
