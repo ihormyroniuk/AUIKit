@@ -130,10 +130,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     private var cells: [UICollectionViewCell: AUICollectionViewCellController] = [:]
     
-    open func sizeForCellAtIndexPath(_ indexPath: IndexPath) -> CGSize {
+    open func sizeForCellAtIndexPath(_ indexPath: IndexPath, size: CGSize) -> CGSize {
         let section = indexPath.section
         let index = indexPath.item
-        return sectionControllers[section].sizeForCellAtIndex(index)
+        return sectionControllers[section].sizeForCellAtIndex(index, size: size)
     }
     
     open func willDisplayCell(_ cell: UICollectionViewCell, atIndexPath indexPath: IndexPath) {
@@ -405,7 +405,11 @@ private class UICollectionViewProxyDelegate: NSObject, UIScrollViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return delegate?.sizeForCellAtIndexPath(indexPath) ?? .zero
+        let size = CGSize(
+            width: collectionView.bounds.width - collectionView.contentInset.left - collectionView.contentInset.right,
+            height: collectionView.bounds.height - collectionView.contentInset.top - collectionView.contentInset.bottom
+        )
+        return delegate?.sizeForCellAtIndexPath(indexPath, size: size) ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

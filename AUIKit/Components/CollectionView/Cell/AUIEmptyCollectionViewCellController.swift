@@ -43,7 +43,7 @@ open class AUIEmptyCollectionViewCellController: AUIEmptyViewController, AUIColl
     
     // MARK: - Size
     
-    open var sizeForCell: CGSize {
+    open func sizeForCell(size: CGSize) -> CGSize {
         return .zero
     }
     

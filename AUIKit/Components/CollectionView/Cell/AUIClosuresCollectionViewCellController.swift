@@ -17,8 +17,8 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
     }
     
     open var sizeForCellClosure: (() -> CGSize)?
-    public override var sizeForCell: CGSize {
-        return sizeForCellClosure?() ?? super.sizeForCell
+    open override func sizeForCell(size: CGSize) -> CGSize {
+        return sizeForCellClosure?() ?? super.sizeForCell(size: size)
     }
     
     open var shouldSelectCellClosure: (() -> Bool)?

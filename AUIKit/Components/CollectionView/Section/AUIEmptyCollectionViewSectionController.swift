@@ -12,8 +12,8 @@ open class AUIEmptyCollectionViewSectionController: AUICollectionViewSectionCont
   
     open var cellControllers: [AUICollectionViewCellController] = []
   
-    public func sizeForCellAtIndex(_ index: Int) -> CGSize {
-        return cellControllers[index].sizeForCell
+    open func sizeForCellAtIndex(_ index: Int, size: CGSize) -> CGSize {
+        return cellControllers[index].sizeForCell(size: size)
     }
     
 }

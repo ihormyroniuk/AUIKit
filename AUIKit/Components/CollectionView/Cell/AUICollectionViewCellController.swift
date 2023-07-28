@@ -10,7 +10,7 @@ public protocol AUICollectionViewCellController: AnyObject {
     
     // MARK: - Size
     
-    var sizeForCell: CGSize { get }
+    func sizeForCell(size: CGSize) -> CGSize
     
     // MARK: - Cell
     
