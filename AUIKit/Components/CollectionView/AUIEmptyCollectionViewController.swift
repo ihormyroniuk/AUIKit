@@ -162,6 +162,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         let section = indexPath.section
         let sectionController = sectionControllers[section]
         let index = indexPath.item
+        guard index < sectionController.cellControllers.count else { return }
         let cellController = sectionController.cellControllers[index]
         cellController.didEndDisplayingCell()
     }
