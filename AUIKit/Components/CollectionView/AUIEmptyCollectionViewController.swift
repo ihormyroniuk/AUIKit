@@ -192,6 +192,49 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         collectionView.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
     }
     
+    // MARK: - Reloading
+    
+    open func reloadSection(_ sectionController: AUICollectionViewSectionController, cellControllers: [AUICollectionViewCellController]) {
+        sectionController.cellControllers = cellControllers
+        reload()
+    }
+    
+    open func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], completion: ((Bool) -> Void)?) {
+        guard let section = sectionControllers.firstIndex(where: { $0 === sectionController }) else {
+            completion?(true)
+            return
+        }
+        let sections = IndexSet([section])
+        guard let collectionView = collectionView else {
+            completion?(true)
+            return
+        }
+        sectionController.cellControllers = cellControllers
+        collectionView.performBatchUpdates({
+            self.collectionView?.reloadSections(sections)
+        }, completion: completion)
+    }
+    
+    open func reloadCellController(_ cellController: AUICollectionViewCellController) {
+        guard let collectionView = collectionView else { return }
+        collectionView.reloadData()
+    }
+    
+    open func reloadCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
+        guard let indexPath = indexPathForCellController(cellController) else {
+            completion?(true)
+            return
+        }
+        guard let collectionView = collectionView else {
+            completion?(true)
+            return
+        }
+        let indexPaths = [indexPath]
+        collectionView.performBatchUpdates({
+            self.collectionView?.reloadItems(at: indexPaths)
+        }, completion: completion)
+    }
+    
     // MARK: - Inserting
     
     open func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?) {

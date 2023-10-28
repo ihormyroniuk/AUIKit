@@ -18,6 +18,16 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     func scrollToCellController(_ cellController: AUICollectionViewCellController, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool)
     
+    // MARK: - Reloading
+    
+    func reloadSection(_ sectionController: AUICollectionViewSectionController, cellControllers: [AUICollectionViewCellController])
+    
+    func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], completion: ((Bool) -> Void)?)
+    
+    func reloadCellController(_ cellController: AUICollectionViewCellController)
+    
+    func reloadCellControllerAnimated(_ cellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?)
+    
     // MARK: - Inserting
     
     func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?)

@@ -351,6 +351,30 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         reload()
     }
     
+    open func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard let section = sectionControllers.firstIndex(where: { $0 === sectionController }) else {
+            completion?(true)
+            return
+        }
+        let sections = IndexSet([section])
+        sectionController.cellControllers = cellControllers
+        guard let tableView = tableView else {
+            completion?(true)
+            return
+        }
+        if #available(iOS 11.0, *) {
+            tableView.performBatchUpdates({ [weak self] in
+                guard let self = self else { return }
+                self.tableView?.reloadSections(sections, with: animation)
+            }, completion: completion)
+        } else {
+            tableView.beginUpdates()
+            tableView.reloadSections(sections, with: animation)
+            tableView.endUpdates()
+            completion?(true)
+        }
+    }
+    
     open func reloadCellController(_ cellController: AUITableViewCellController) {
         guard let tableView = tableView else { return }
         tableView.reloadData()
