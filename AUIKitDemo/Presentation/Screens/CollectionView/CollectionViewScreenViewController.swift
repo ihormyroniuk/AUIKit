@@ -70,7 +70,10 @@ final class CollectionViewScreenViewController: UIViewController {
         let sectionController = AUIEmptyCollectionViewSectionController()
         sectionController.cellControllers = cellControllers
         //collectionViewController.sectionControllers = [sectionController]
-        collectionViewController.appendSectionController(sectionController, completion: nil)
+        //collectionViewController.insertSectionAtBeginning(sectionController)
+        collectionViewController.insertSectionAtBeginningAnimated(sectionController) { finished in
+            
+        }
     }
 
     // MARK: Actions

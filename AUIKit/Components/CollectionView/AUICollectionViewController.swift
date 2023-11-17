@@ -30,6 +30,14 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     // MARK: - Inserting
     
+    func insertSectionAtBeginning(_ insertingSectionController: AUICollectionViewSectionController)
+    
+    func insertSectionAtBeginningAnimated(_ insertingSectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
+    func insertSectionsAtBeginning(_ insertingSectionControllers: [AUICollectionViewSectionController])
+    
+    func insertSectionsAtBeginningAnimated(_ insertingSectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?)
+    
     func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?)
     func appendSectionController(_ sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     

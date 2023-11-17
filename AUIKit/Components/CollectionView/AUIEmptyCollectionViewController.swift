@@ -237,6 +237,35 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     
     // MARK: - Inserting
     
+    open func insertSectionAtBeginning(_ insertingSectionController: AUICollectionViewSectionController) {
+        insertSectionsAtBeginning([insertingSectionController])
+    }
+    
+    open func insertSectionAtBeginningAnimated(_ insertingSectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        insertSectionsAtBeginningAnimated([insertingSectionController], completion: completion)
+    }
+    
+    open func insertSectionsAtBeginning(_ insertingSectionControllers: [AUICollectionViewSectionController]) {
+        sectionControllers.insert(contentsOf: insertingSectionControllers, at: 0)
+        guard let collectionView = collectionView else { return }
+        collectionView.reloadData()
+    }
+    
+    open func insertSectionsAtBeginningAnimated(_ insertingSectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?) {
+        sectionControllers.insert(contentsOf: insertingSectionControllers, at: 0)
+        guard let collectionView = collectionView else {
+            completion?(true)
+            return
+        }
+        collectionView.performBatchUpdates({ in
+            let insertingSectionControllersCount = insertingSectionControllers.count
+            let sections = IndexSet(Array(0..<insertingSectionControllersCount))
+            collectionView.insertSections(sections)
+        }, completion: { finished in
+            completion?(finished)
+        })
+    }
+    
     open func appendSectionControllers(_ sectionControllers: [AUICollectionViewSectionController], completion: ((Bool) -> Void)?) {
         collectionView?.performBatchUpdates({ [weak self] in
             guard let self = self else { return }
