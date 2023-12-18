@@ -22,7 +22,7 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     func reloadSection(_ sectionController: AUICollectionViewSectionController, cellControllers: [AUICollectionViewCellController])
     
-    func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], completion: ((Bool) -> Void)?)
+    func reloadSectionAnimated(_ sectionController: AUICollectionViewSectionController, cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?)
     
     func reloadCellController(_ cellController: AUICollectionViewCellController)
     

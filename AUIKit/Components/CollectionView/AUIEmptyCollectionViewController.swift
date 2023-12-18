@@ -199,7 +199,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         reload()
     }
     
-    open func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], completion: ((Bool) -> Void)?) {
+    open func reloadSectionAnimated(_ sectionController: AUICollectionViewSectionController, cellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
         guard let section = sectionControllers.firstIndex(where: { $0 === sectionController }) else {
             completion?(true)
             return
@@ -257,7 +257,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
             completion?(true)
             return
         }
-        collectionView.performBatchUpdates({ in
+        collectionView.performBatchUpdates({ 
             let insertingSectionControllersCount = insertingSectionControllers.count
             let sections = IndexSet(Array(0..<insertingSectionControllersCount))
             collectionView.insertSections(sections)
