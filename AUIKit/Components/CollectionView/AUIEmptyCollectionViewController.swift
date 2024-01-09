@@ -301,6 +301,32 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         appendCellControllers([cellController], toSectionController: sectionController, completion: completion)
     }
     
+    open func insertCellController(_ insertingCellController: AUICollectionViewCellController, afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController) {
+        insertCellControllers([insertingCellController], afterCellController: cellController, inSection: section)
+    }
+    
+    open func insertCellControllers(_ insertingCellControllers: [AUICollectionViewCellController], afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController) {
+        guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
+        section.cellControllers.insert(contentsOf: insertingCellControllers, at: index + 1)
+        collectionView?.reloadData()
+    }
+    
+    open func insertCellControllerAnimated(_ insertingCellController: AUICollectionViewCellController, afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        insertCellControllersAnimated([insertingCellController], afterCellController: cellController, inSection: section, completion: completion)
+    }
+    
+    open func insertCellControllersAnimated(_ insertingCellControllers: [AUICollectionViewCellController], afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController, completion: ((Bool) -> Void)?) {
+        guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
+        section.cellControllers.insert(contentsOf: insertingCellControllers, at: index + 1)
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(insertingCellControllers)
+        let indexPaths = indexPathsBySections.values.reduce([], +)
+        collectionView?.performBatchUpdates({
+            self.collectionView?.insertItems(at: indexPaths)
+        }, completion: { success in
+            completion?(success)
+        })
+    }
+    
     // MARK: - Moving
     
     open var movedIndexPath: IndexPath?

@@ -45,6 +45,14 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     
     func appendCellController(_ cellController: AUICollectionViewCellController, toSectionController sectionController: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
     
+    func insertCellController(_ insertingCellController: AUICollectionViewCellController, afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController)
+    
+    func insertCellControllers(_ insertingCellControllers: [AUICollectionViewCellController], afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController)
+    
+    func insertCellControllerAnimated(_ insertingCellController: AUICollectionViewCellController, afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
+    func insertCellControllersAnimated(_ insertingCellControllers: [AUICollectionViewCellController], afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController, completion: ((Bool) -> Void)?)
+    
     // MARK: - Deleting
     
     func deleteCellController(_ deletingCellController: AUICollectionViewCellController)
