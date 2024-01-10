@@ -301,6 +301,31 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         appendCellControllers([cellController], toSectionController: sectionController, completion: completion)
     }
     
+    open func insertCellControllerAtSectionBeginning(_ section: AUICollectionViewSectionController, insertingCellController: AUICollectionViewCellController) {
+        insertCellControllersAtSectionBeginning(section, insertingCellControllers: [insertingCellController])
+    }
+    
+    open func insertCellControllersAtSectionBeginning(_ section: AUICollectionViewSectionController, insertingCellControllers: [AUICollectionViewCellController]) {
+        section.cellControllers.insert(contentsOf: insertingCellControllers, at: 0)
+        collectionView?.reloadData()
+    }
+    
+    open func insertCellControllerAtSectionBeginningAnimated(_ section: AUICollectionViewSectionController, insertingCellController: AUICollectionViewCellController, completion: ((Bool) -> Void)?) {
+        insertCellControllersAtSectionBeginningAnimated(section, insertingCellControllers: [insertingCellController], completion: completion)
+    }
+    
+    open func insertCellControllersAtSectionBeginningAnimated(_ section: AUICollectionViewSectionController, insertingCellControllers: [AUICollectionViewCellController], completion: ((Bool) -> Void)?) {
+        section.cellControllers.insert(contentsOf: insertingCellControllers, at: 0)
+        let indexPathsBySections = indexPathsBySectionsForCellControllers(insertingCellControllers)
+        let indexPaths = indexPathsBySections.values.reduce([], +)
+        collectionView?.performBatchUpdates({ [weak self] in
+            guard let self = self else { return }
+            self.collectionView?.insertItems(at: indexPaths)
+        }, completion: { finished in
+            completion?(finished)
+        })
+    }
+    
     open func insertCellController(_ insertingCellController: AUICollectionViewCellController, afterCellController cellController: AUICollectionViewCellController, inSection section: AUICollectionViewSectionController) {
         insertCellControllers([insertingCellController], afterCellController: cellController, inSection: section)
     }
