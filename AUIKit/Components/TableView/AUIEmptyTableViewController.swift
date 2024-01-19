@@ -50,6 +50,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         cells = [:]
     }
     
+    private var isTableViewMounted: Bool {
+        return tableView?.window != nil
+    }
+    
     // MARK: - Drag and Drop Interaction
     
     open var dragInteractionEnabled: Bool = false {
@@ -352,6 +356,11 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func reloadSectionAnimated(_ sectionController: AUITableViewSectionController, cellControllers: [AUITableViewCellController], animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            reloadSection(sectionController, cellControllers: cellControllers)
+            completion?(true)
+            return
+        }
         guard let section = sectionControllers.firstIndex(where: { $0 === sectionController }) else {
             completion?(true)
             return
@@ -381,6 +390,11 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func reloadCellController(_ cellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            reloadCellController(cellController)
+            completion?(true)
+            return
+        }
         guard let indexPath = indexPathForCellController(cellController) else {
             completion?(true)
             return
@@ -410,6 +424,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertSectionAtBeginningAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertSectionAtBeginning(sectionController)
+            return
+        }
         sectionControllers.insert(sectionController, at: 0)
         let sections: IndexSet = [0]
         if #available(iOS 11.0, *) {
@@ -430,6 +448,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertSectionsAtBeginningAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertSectionsAtBeginning(sectionControllers)
+            return
+        }
         self.sectionControllers.insert(contentsOf: sectionControllers, at: 0)
         let sections: IndexSet = IndexSet(integersIn: 0..<sectionControllers.count)
         if #available(iOS 11.0, *) {
@@ -450,6 +472,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertSectionAtEndAnimated(_ sectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertSectionAtEnd(sectionController)
+            return
+        }
         sectionControllers.append(sectionController)
         let sections: IndexSet = [sectionControllers.count - 1]
         if #available(iOS 11.0, *) {
@@ -470,6 +496,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertSectionsAtEndAnimated(_ sectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertSectionsAtEnd(sectionControllers)
+            return
+        }
         self.sectionControllers.append(contentsOf: sectionControllers)
         let sections: IndexSet = IndexSet(integersIn: (self.sectionControllers.count - sectionControllers.count)..<self.sectionControllers.count)
         if #available(iOS 11.0, *) {
@@ -499,6 +529,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertSectionsAnimated(_ sectionControllers: [AUITableViewSectionController], afterSectionController: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertSections(sectionControllers, afterSectionController: afterSectionController)
+            return
+        }
         guard let index = self.sectionControllers.firstIndex(where: { $0 === afterSectionController }) else { return }
         let insertingIndex = index + 1
         self.sectionControllers.insert(contentsOf: sectionControllers, at: insertingIndex)
@@ -521,6 +555,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllerAtSectionBeginningAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertCellControllerAtSectionBeginning(section, cellController: cellController)
+            return
+        }
         section.cellControllers.insert(cellController, at: 0)
         let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
         let indexPaths = indexPathsBySections.values.reduce([], +)
@@ -542,6 +580,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllersAtSectionBeginningAnimated(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertCellControllersAtSectionBeginning(section, cellControllers: cellControllers)
+            return
+        }
         section.cellControllers.insert(contentsOf: cellControllers, at: 0)
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.values.reduce([], +)
@@ -563,6 +605,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllerAtSectionEndAnimated(_ section: AUITableViewSectionController, cellController: AUITableViewCellController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertCellControllerAtSectionEnd(section, cellController: cellController)
+            return
+        }
         section.cellControllers.append(cellController)
         let indexPathsBySections = indexPathsBySectionsForCellControllers([cellController])
         let indexPaths = indexPathsBySections.values.reduce([], +)
@@ -586,6 +632,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllersAtSectionEndAnimated(_ section: AUITableViewSectionController, cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertCellControllersAtSectionEnd(section, cellControllers: cellControllers)
+            return
+        }
         section.cellControllers.append(contentsOf: cellControllers)
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.values.reduce([], +)
@@ -611,6 +661,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func insertCellControllers(_ cellControllers: [AUITableViewCellController], afterCellController cellController: AUITableViewCellController, inSection section: AUITableViewSectionController, _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            insertCellControllers(cellControllers, afterCellController: cellController, inSection: section)
+            return
+        }
         guard let index = section.cellControllers.firstIndex(where: { $0 === cellController }) else { return }
         section.cellControllers.insert(contentsOf: cellControllers, at: index + 1)
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
@@ -648,6 +702,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
   
     open func deleteSectionControllersAnimated(_ deletingSectionControllers: [AUITableViewSectionController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            deleteSectionControllers(deletingSectionControllers)
+            return
+        }
         var sections: IndexSet = []
         for deletingSectionController in deletingSectionControllers {
             if let section = sectionControllers.firstIndex(where: { $0 === deletingSectionController }) {
@@ -689,6 +747,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
   
     open var deletedIndexPaths: [IndexPath] = []
     open func deleteCellControllersAnimated(_ cellControllers: [AUITableViewCellController], _ animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            deleteCellControllers(cellControllers)
+            return
+        }
         let indexPathsBySections = indexPathsBySectionsForCellControllers(cellControllers)
         let indexPaths = indexPathsBySections.values.reduce([], +)
         deletedIndexPaths = indexPaths
@@ -719,6 +781,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func moveCellController(_ movingCellController: AUITableViewCellController, toSectionControllerBeginning toSectionController: AUITableViewSectionController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            moveCellController(movingCellController, toSectionControllerBeginning: toSectionController)
+            return
+        }
         guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
         guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
         fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
@@ -751,6 +817,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isTableViewMounted else {
+            moveCellController(movingCellController, afterCellController: afterCellController)
+            return
+        }
         guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
         guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
         fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
