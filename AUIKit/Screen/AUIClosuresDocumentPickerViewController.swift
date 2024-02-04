@@ -56,7 +56,7 @@ open class AUIClosuresDocumentPickerViewController: UIDocumentPickerViewControll
     
     private var _didPickDocumentsAtUrls: (([URL]) -> Void)?
     @available(iOS 11.0, *)
-    var didPickDocumentsAtUrls: (([URL]) -> Void)? {
+    open var didPickDocumentsAtUrls: (([URL]) -> Void)? {
         get { _didPickDocumentsAtUrls  }
         set { _didPickDocumentsAtUrls = newValue }
     }
@@ -68,7 +68,7 @@ open class AUIClosuresDocumentPickerViewController: UIDocumentPickerViewControll
         
     private var _didCancel: (() -> Void)?
     @available(iOS 8.0, *)
-    var didCancel: (() -> Void)? {
+    open var didCancel: (() -> Void)? {
         get { _didCancel  }
         set { _didCancel = newValue }
     }
@@ -80,7 +80,7 @@ open class AUIClosuresDocumentPickerViewController: UIDocumentPickerViewControll
     
     private var _didPickDocumentsAtUrl: ((URL) -> Void)?
     @available(iOS, introduced: 8.0, deprecated: 11.0)
-    var didPickDocumentsAtUrl: ((URL) -> Void)? {
+    open var didPickDocumentsAtUrl: ((URL) -> Void)? {
         get { _didPickDocumentsAtUrl  }
         set { _didPickDocumentsAtUrl = newValue }
     }
