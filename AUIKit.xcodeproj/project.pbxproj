@@ -175,6 +175,7 @@
 		C591DAEC2788C13F00741F54 /* AUICollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEB2788C13F00741F54 /* AUICollectionViewCellController.swift */; };
 		C591DAEE2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */; };
 		C591DAF02788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */; };
+		C59211A52B71684C0087486B /* AUIClosuresImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59211A42B71684C0087486B /* AUIClosuresImagePickerController.swift */; };
 		C593A82128D46E7900FA6400 /* AUIAutoLayoutScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */; };
 		C59E0A0228D4CFC100AE70C6 /* TableViewScreenCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E0A0128D4CFC100AE70C6 /* TableViewScreenCellController.swift */; };
 		C59E0A0428D4CFF800AE70C6 /* TableViewScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59E0A0328D4CFF800AE70C6 /* TableViewScreenCell.swift */; };
@@ -411,6 +412,7 @@
 		C591DAEB2788C13F00741F54 /* AUICollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUICollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAED2788DDA700741F54 /* AUIEmptyCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIEmptyCollectionViewCellController.swift; sourceTree = "<group>"; };
 		C591DAEF2788DE1A00741F54 /* AUIClosuresCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresCollectionViewCellController.swift; sourceTree = "<group>"; };
+		C59211A42B71684C0087486B /* AUIClosuresImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIClosuresImagePickerController.swift; sourceTree = "<group>"; };
 		C593A82028D46E7900FA6400 /* AUIAutoLayoutScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUIAutoLayoutScrollView.swift; sourceTree = "<group>"; };
 		C59E0A0128D4CFC100AE70C6 /* TableViewScreenCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenCellController.swift; sourceTree = "<group>"; };
 		C59E0A0328D4CFF800AE70C6 /* TableViewScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewScreenCell.swift; sourceTree = "<group>"; };
@@ -1226,6 +1228,7 @@
 				C5618C4124D9DEAA006F1847 /* AUIStatusBarScreenViewController.swift */,
 				C54C730C22C3CE580070AAC8 /* AUIStatusBarScreenView.swift */,
 				C5C6CA582B7033C700C3FF75 /* AUIClosuresDocumentPickerViewController.swift */,
+				C59211A42B71684C0087486B /* AUIClosuresImagePickerController.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -1605,6 +1608,7 @@
 				C53E7C7922187739006CB0D9 /* AUITextViewInputTextViewController.swift in Sources */,
 				C525D8852199866D0057E69F /* AUIEmptyTableViewController.swift in Sources */,
 				3333F9F9235F22D7007215AB /* AUITextFieldTextInputView.swift in Sources */,
+				C59211A52B71684C0087486B /* AUIClosuresImagePickerController.swift in Sources */,
 				C591CFA12778F4EF000D2763 /* AUIEmptyPageController.swift in Sources */,
 				C5FE62CE22CE3DDC0064F989 /* AUIEmptyTableViewSectionController.swift in Sources */,
 				C591DAE42788A62800741F54 /* AUIEmptyCollectionViewController.swift in Sources */,
