@@ -42,7 +42,7 @@ final class CollectionViewScreenViewController: UIViewController {
         var cellControllers: [AUICollectionViewCellController] = []
         for i in 1...100 {
             let cellController = CollectionViewCellController(i: i)
-            cellController.sizeForCellClosure = { [weak self] in
+            cellController.sizeForCellClosure = { [weak self] size in
                 guard let self = self else { return .zero }
                 return self.collectionViewScreenView.collectionViewCellSize()
             }

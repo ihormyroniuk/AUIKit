@@ -52,7 +52,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayScrollPagesScreen(self)
         }
-        scrollPagesCellController.sizeForCellClosure = { [weak self] in
+        scrollPagesCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -63,7 +63,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCurlPagesScreen(self)
         }
-        curlPagesCellController.sizeForCellClosure = { [weak self] in
+        curlPagesCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -74,7 +74,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayLabelsScreen(self)
         }
-        labelsCellController.sizeForCellClosure = { [weak self] in
+        labelsCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -85,7 +85,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayInteractiveLabelsScreen(self)
         }
-        interactiveLabelsCellController.sizeForCellClosure = { [weak self] in
+        interactiveLabelsCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -96,7 +96,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplaySignupScreen(self)
         }
-        signupCellController.sizeForCellClosure = { [weak self] in
+        signupCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -107,7 +107,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTextFieldTextInputViewScreen(self)
         }
-        textFieldTextInputViewCellController.sizeForCellClosure = { [weak self] in
+        textFieldTextInputViewCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -118,7 +118,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPresentAnimations(self)
         }
-        presentAnimationsCellController.sizeForCellClosure = { [weak self] in
+        presentAnimationsCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -129,7 +129,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPushAnimations(self)
         }
-        pushAnimationsCellController.sizeForCellClosure = { [weak self] in
+        pushAnimationsCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -140,7 +140,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayTableView(self)
         }
-        tableViewCellController.sizeForCellClosure = { [weak self] in
+        tableViewCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -151,7 +151,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayCollectionView(self)
         }
-        collectionViewCellController.sizeForCellClosure = { [weak self] in
+        collectionViewCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }
@@ -162,7 +162,7 @@ class MenuScreenViewController: UIViewController {
             guard let self = self else { return }
             self.delegate?.menuScreenViewControllerDisplayPickerViews(self)
         }
-        pickerViewsCellController.sizeForCellClosure = { [weak self] in
+        pickerViewsCellController.sizeForCellClosure = { [weak self] size in
             guard let self = self else { return .zero }
             return self.menuScreenView.menuItemCollectionViewCellSize()
         }

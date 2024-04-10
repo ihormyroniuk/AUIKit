@@ -16,9 +16,9 @@ open class AUIClosuresCollectionViewCellController: AUIEmptyCollectionViewCellCo
         cancelPrefetchingForCellClosure?()
     }
     
-    open var sizeForCellClosure: (() -> CGSize)?
+    open var sizeForCellClosure: ((CGSize) -> CGSize)?
     open override func sizeForCell(size: CGSize) -> CGSize {
-        return sizeForCellClosure?() ?? super.sizeForCell(size: size)
+        return sizeForCellClosure?(size) ?? super.sizeForCell(size: size)
     }
     
     open var shouldSelectCellClosure: (() -> Bool)?
