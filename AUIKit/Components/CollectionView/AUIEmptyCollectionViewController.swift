@@ -150,6 +150,7 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
     }
     
     open func didEndDisplayingCellAtIndexPath(_ indexPath: IndexPath) {
+        guard indexPath.section < sectionControllers.count else { return }
         if movedIndexPath == indexPath {
             movedIndexPath = nil
             return
