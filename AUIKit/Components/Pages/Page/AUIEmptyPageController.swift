@@ -10,7 +10,7 @@ open class AUIEmptyPageController: AUIPageController {
     
     // MARK: - UIViewController
     
-    public var viewController: UIViewController {
+    open var viewController: UIViewController {
         return UIViewController()
     }
     
