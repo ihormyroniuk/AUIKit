@@ -43,6 +43,10 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         cells = [:]
     }
     
+    private var isCollectionViewMounted: Bool {
+        return collectionView?.window != nil
+    }
+    
     // MARK: - Prefetching
     
     open var isPrefetchingEnabled: Bool = true {
@@ -364,6 +368,64 @@ open class AUIEmptyCollectionViewController: AUIEmptyScrollViewController, AUICo
         }, completion: { finished in
             completion?(finished)
         })
+    }
+    
+    open func moveCellController(_ movingCellController: AUICollectionViewCellController, toSectionControllerBeginning toSectionController: AUICollectionViewSectionController) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        toSectionController.cellControllers.insert(movingCellController, at: 0)
+        reload()
+    }
+    
+    open func moveCellController(_ movingCellController: AUICollectionViewCellController, toSectionControllerBeginning toSectionController: AUICollectionViewSectionController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isCollectionViewMounted else {
+            moveCellController(movingCellController, toSectionControllerBeginning: toSectionController)
+            return
+        }
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        toSectionController.cellControllers.insert(movingCellController, at: 0)
+        guard let toIndexPath = indexPathForCellController(movingCellController) else { return }
+        collectionView?.performBatchUpdates({
+            self.collectionView?.moveItem(at: atIndexPath, to: toIndexPath)
+        }, completion: completion)
+    }
+    
+    open func moveCellController(_ movingCellController: AUICollectionViewCellController, afterCellController: AUICollectionViewCellController) {
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        guard let toSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === afterCellController }) }) else { return }
+        guard var afterIndex = toSectionController.cellControllers.firstIndex(where: { $0 === afterCellController }) else { return }
+        if toSectionController.cellControllers.last === afterCellController {
+            toSectionController.cellControllers.append(movingCellController)
+        } else {
+            afterIndex += 1
+            toSectionController.cellControllers.insert(movingCellController, at: afterIndex)
+        }
+        reload()
+    }
+    
+    open func moveCellController(_ movingCellController: AUICollectionViewCellController, afterCellController: AUICollectionViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard isCollectionViewMounted else {
+            moveCellController(movingCellController, afterCellController: afterCellController)
+            return
+        }
+        guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
+        guard let atIndexPath = indexPathForCellController(movingCellController) else { return }
+        fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
+        guard let toSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === afterCellController }) }) else { return }
+        guard var afterIndex = toSectionController.cellControllers.firstIndex(where: { $0 === afterCellController }) else { return }
+        if toSectionController.cellControllers.last === afterCellController {
+            toSectionController.cellControllers.append(movingCellController)
+        } else {
+            afterIndex += 1
+            toSectionController.cellControllers.insert(movingCellController, at: afterIndex)
+        }
+        guard let toIndexPath = indexPathForCellController(movingCellController) else { return }
+        collectionView?.performBatchUpdates({
+            self.collectionView?.moveItem(at: atIndexPath, to: toIndexPath)
+        }, completion: completion)
     }
     
     // MARK: - Deleting

@@ -74,5 +74,13 @@ public protocol AUICollectionViewController: AUIScrollViewController {
     // MARK: - Moving
     
     func moveItem(at atIndexPath: IndexPath, to toIndexPath: IndexPath, completion: ((Bool) -> Void)?)
+        
+    func moveCellController(_ movingCellController: AUICollectionViewCellController, toSectionControllerBeginning toSectionController: AUICollectionViewSectionController)
+    
+    func moveCellController(_ movingCellController: AUICollectionViewCellController, toSectionControllerBeginning toSectionController: AUICollectionViewSectionController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
+    
+    func moveCellController(_ movingCellController: AUICollectionViewCellController, afterCellController: AUICollectionViewCellController)
+    
+    func moveCellController(_ movingCellController: AUICollectionViewCellController, afterCellController: AUICollectionViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?)
     
 }
