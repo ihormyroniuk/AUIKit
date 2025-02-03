@@ -143,6 +143,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
             let section = indexPath.section
             let sectionController = sectionControllers[section]
             let row = indexPath.row
+            guard row < sectionController.cellControllers.count else { return }
             let cellController = sectionController.cellControllers[row]
             cellController.prefetchCell()
         }
