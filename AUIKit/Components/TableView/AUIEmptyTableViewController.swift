@@ -791,6 +791,10 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
         fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
         toSectionController.cellControllers.insert(movingCellController, at: 0)
         guard let toIndexPath = indexPathForCellController(movingCellController) else { return }
+        guard atIndexPath != toIndexPath else {
+            reloadCellController(movingCellController, animation: animation, completion: completion)
+            return
+        }
         if #available(iOS 11.0, *) {
             tableView?.performBatchUpdates({
                 self.tableView?.moveRow(at: atIndexPath, to: toIndexPath)
