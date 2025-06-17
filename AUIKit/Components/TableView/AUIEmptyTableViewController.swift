@@ -808,6 +808,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController) {
+        guard movingCellController !== afterCellController else { return }
         guard let fromSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === movingCellController }) }) else { return }
         fromSectionController.cellControllers.removeAll(where: { $0 === movingCellController })
         guard let toSectionController = sectionControllers.first(where: { $0.cellControllers.contains(where: { $0 === afterCellController }) }) else { return }
@@ -822,6 +823,7 @@ open class AUIEmptyTableViewController: AUIEmptyScrollViewController, AUITableVi
     }
     
     open func moveCellController(_ movingCellController: AUITableViewCellController, afterCellController: AUITableViewCellController, animation: UITableView.RowAnimation, completion: ((Bool) -> Void)?) {
+        guard movingCellController !== afterCellController else { return }
         guard isTableViewMounted else {
             moveCellController(movingCellController, afterCellController: afterCellController)
             return
